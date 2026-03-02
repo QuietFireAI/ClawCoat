@@ -226,13 +226,13 @@ Every control references a source file and a passing test. Run `proof_sheets/` t
 
 ## Who This Is For
 
-**Law firms.** Attorney-client privilege is preserved because your data physically cannot leave your network. No cloud provider can be subpoenaed for data they never received. ABA Model Rules compliance is built in.
+**Law firms.** Your data has no configured path to leave your network — there are no external API calls in the default stack, no cloud inference, no third-party dependencies that receive client data. No cloud provider can be subpoenaed for data they never received. ABA Model Rules mapping is included and documented.
 
-**Healthcare organizations.** PHI is encrypted with AES-256-GCM, de-identified using all 18 HIPAA Safe Harbor identifiers, and never transmitted externally. HIPAA Security Rule mapping is complete.
+**Healthcare organizations.** PHI is encrypted with AES-256-GCM, de-identified using all 18 HIPAA Safe Harbor identifiers, and not transmitted externally by the platform under default configuration. HIPAA Security Rule mapping is documented and structured for independent auditor review.
 
 **Insurance companies.** SOC 2 controls are documented and tested. Data classification with minimum-necessary enforcement. Audit trails that survive litigation.
 
-**Accounting firms.** Financial data stays on your hardware. SOX compliance risk from AI agents is eliminated because every action is governed, every permission is earned, and every decision is logged to a tamper-evident chain.
+**Accounting firms.** Financial data stays on your hardware. SOX compliance risk from AI agents is substantially reduced — every action is governed, every permission is earned, and every decision is logged to a tamper-evident chain.
 
 **Anyone who uses autonomous AI agents and can't afford a security incident.**
 
@@ -255,7 +255,7 @@ Everything runs on your hardware. Your local VRAM. Your residential IP. Your dat
 | **Grafana** | Monitoring dashboards |
 | **Docker** | Container orchestration |
 
-No OpenAI. No Google. No API calls to third-party inference services. The data physically cannot leave.
+No OpenAI. No Google. No API calls to third-party inference services in the default stack. The data has no configured path to leave.
 
 ---
 
