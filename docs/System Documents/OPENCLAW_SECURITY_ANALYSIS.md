@@ -62,7 +62,7 @@ TelsonBase is built on a self-hosted stack that prioritizes local data residency
 | TelsonBase Component | Technical Specification | Security Role |
 |---|---|---|
 | Inference Engine | Ollama (Local LLM) | Eliminates third-party data exfiltration and surveillance. |
-| API Framework | FastAPI (151 Endpoints) | Implements strict RBAC enforcement at the service layer. |
+| API Framework | FastAPI (177 Endpoints) | Implements strict RBAC enforcement at the service layer. |
 | Database | PostgreSQL | Secure, multi-tenant storage for agent configuration and memory. |
 | Cache & Task Queue | Redis, Celery, MQTT | Provides isolation for background tasks and agent messaging. |
 | Security Proxy | Traefik (TLS 1.2+, HSTS) | Secures the control interface and prevents downgrade attacks. |

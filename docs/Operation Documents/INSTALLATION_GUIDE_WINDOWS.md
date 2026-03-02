@@ -52,13 +52,13 @@ winget install Git.Git
 
 ```powershell
 # Open PowerShell or Command Prompt
-git clone https://github.com/quietfire/telsonbase.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 ```
 
 ### Option B: Download ZIP
 
-1. Go to https://github.com/quietfire/telsonbase
+1. Go to https://github.com/QuietFireAI/TelsonBase
 2. Click "Code" → "Download ZIP"
 3. Extract to a folder (e.g., `C:\telsonbase`)
 4. Open PowerShell/Command Prompt in that folder
@@ -308,7 +308,7 @@ docker compose up -d --build
 
 1. **Documentation:** See `docs/` folder
 2. **Troubleshooting:** See `docs/Operation Documents/TROUBLESHOOTING.md`
-3. **Issues:** https://github.com/quietfire/telsonbase/issues
+3. **Issues:** https://github.com/QuietFireAI/TelsonBase/issues
 4. **Email:** support@telsonbase.com
 
 ---

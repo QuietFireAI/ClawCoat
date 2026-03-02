@@ -1,6 +1,6 @@
 # TelsonBase — Legal & Regulatory Compliance Security Profile
 
-**Version:** 7.3.0CC
+**Version:** 9.0.0B
 **Platform:** Zero-Trust AI Agent Security Platform
 **Target Markets:** Real Estate Professionals | Legal Professionals
 **Last Updated:** February 10, 2026
@@ -300,7 +300,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 |---------|---------------|-------|
 | **Capability-Based Sandboxing** | Each agent declares capabilities (filesystem scope, allowed domains, MQTT topics, inter-agent access). Access beyond declared capabilities is denied and audit-logged | `core/capabilities.py` |
 | **Human-in-the-Loop (HITL) Gates** | Sensitive operations pause for human authorization — new external domains, file deletions, anomaly-flagged actions all require approval before execution | `core/approval.py` |
-| **Agent Trust Levels** | Four-tier progression: Quarantine > Probation > Resident > Citizen. Automatic promotion based on behavior, automatic demotion on violations | `core/trust_levels.py` |
+| **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Automatic promotion based on behavior, automatic demotion on violations | `core/trust_levels.py` |
 | **Behavioral Anomaly Detection** | Six anomaly types monitored: rate spikes, new resources, new actions, unusual timing, enumeration patterns, error spikes | `core/anomaly.py` |
 | **Cryptographic Message Signing** | HMAC-SHA256 signing of all inter-agent messages, 5-minute replay window, constant-time signature comparison | `core/signing.py` |
 | **QMS Protocol** | Qualified Message Standard v2.2.0 — all agent communication follows structured formatting with provenance tracking | `core/qms.py` |

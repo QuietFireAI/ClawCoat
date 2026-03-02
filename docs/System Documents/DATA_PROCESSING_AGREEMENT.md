@@ -237,7 +237,7 @@ The Processor has implemented the following technical and organizational securit
 
 | Control | Implementation |
 |---------|---------------|
-| **Tenant Isolation** | Organization-level data isolation with tenant type classification (brokerage, law firm, general) |
+| **Tenant Isolation** | Organization-level data isolation with tenant type classification (real_estate, law_firm, insurance, healthcare, small_business, personal, general) |
 | **Client-Matter Hierarchy** | Data organized within tenants by client matter with lifecycle management (active, closed, hold) |
 | **Redis Key Namespacing** | All data operations scoped via `tenant:{id}:{key}` prefixed keys |
 | **Litigation Holds** | Individual matters can be placed on hold, preventing closure or data deletion; hold release requires Security Officer or Super Admin authorization |

@@ -1,6 +1,6 @@
 # TelsonBase — Healthcare Compliance Security Profile (HIPAA/HITECH/HITRUST)
 
-**Version:** 7.3.0CC
+**Version:** 9.0.0B
 **Platform:** Zero-Trust AI Agent Security Platform
 **Target Markets:** Real Estate Professionals | Legal Professionals (Healthcare-Ready Infrastructure)
 **Last Updated:** February 10, 2026
@@ -280,7 +280,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Agent Trust Levels** | Four-tier progression: Quarantine > Probation > Resident > Citizen. Agents handling PHI require minimum Resident trust level. Automatic demotion on policy violations. PHI access capability requires explicit grant — never inherited from trust level alone | `core/trust_levels.py` |
+| **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Agents handling PHI require minimum Resident trust level. Automatic demotion on policy violations. PHI access capability requires explicit grant — never inherited from trust level alone | `core/trust_levels.py` |
 | **Human-in-the-Loop (HITL) Approval Gates** | All PHI disclosure, PHI export, and PHI de-identification operations require human approval before execution. Configurable approval timeout with automatic denial on expiry. Approval audit trail with approver identity and justification | `core/approval.py` |
 | **Capability-Based Sandboxing** | Each agent declares capabilities (filesystem scope, allowed domains, MQTT topics, inter-agent access). PHI access is a distinct capability — agents without PHI capability cannot read, write, or process PHI regardless of trust level. Unauthorized attempts audit-logged and trigger anomaly detection | `core/capabilities.py` |
 | **QMS Message Validation** | Qualified Message Standard v2.2.0 — all agent communication follows structured formatting with provenance tracking. Messages containing PHI flagged and routed through encrypted channels only. Message schema validation prevents PHI leakage via malformed messages | `core/qms.py` |

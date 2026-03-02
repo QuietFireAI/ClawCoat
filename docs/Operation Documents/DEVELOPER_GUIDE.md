@@ -1,7 +1,7 @@
 # TelsonBase Developer Guide
 
 # REM: =======================================================================================
-# REM: DEVELOPER GUIDE: BUILDING SECURE AGENTS FOR TELSONBASE v7.3.0CC
+# REM: DEVELOPER GUIDE: BUILDING SECURE AGENTS FOR TELSONBASE v9.0.0B
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: AI Model Collaborators: ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
@@ -490,7 +490,7 @@ docker run -d -p 6379:6379 --name redis-dev redis:7-alpine
 
 ```bash
 # Clone repository
-git clone https://github.com/quietfire/telsonbase.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 
 # Create virtual environment

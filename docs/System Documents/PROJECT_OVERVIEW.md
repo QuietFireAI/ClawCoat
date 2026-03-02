@@ -6,7 +6,7 @@
 **Architect:** ::Jeff Phillips:: — ::support@telsonbase.com::
 **Organization:** Quietfire AI
 **Version:** 9.0.0B (March 1, 2026)
-**License:** MIT
+**License:** Apache 2.0
 
 ---
 

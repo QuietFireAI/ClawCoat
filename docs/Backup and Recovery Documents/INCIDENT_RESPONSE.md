@@ -1,6 +1,6 @@
 # TelsonBase Incident Response Plan
 
-**Version:** 7.3.0CC
+**Version:** 9.0.0B
 **Last Updated:** February 23, 2026
 **Architect:** Jeff Phillips — support@telsonbase.com
 **AI Model Collaborators:** ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
@@ -35,7 +35,7 @@ This plan applies to:
 
 ### Automated Response Triggers
 
-TelsonBase v4.3.0CC includes automated threat response. These actions are taken automatically:
+TelsonBase v9.0.0B includes automated threat response. These actions are taken automatically:
 
 | Indicator | Threat Level | Automatic Action |
 |-----------|--------------|------------------|

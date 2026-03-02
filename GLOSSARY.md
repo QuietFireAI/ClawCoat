@@ -10,7 +10,7 @@ Definitions of key terms used throughout TelsonBase documentation and code.
 A software component that performs tasks autonomously. In TelsonBase, agents are isolated, capability-restricted, and cryptographically verified. Each agent has a trust level, declared capabilities, and a signed identity.
 
 ### Agent Trust Level
-Progression system for agent permissions: `QUARANTINE` (new/untrusted) → `PROBATION` (limited) → `RESIDENT` (standard) → `CITIZEN` (full trust). Higher trust unlocks more tool access and capabilities. See `core/trust_levels.py`.
+Progression system for agent permissions: `QUARANTINE` (new/untrusted) → `PROBATION` (limited) → `RESIDENT` (standard) → `CITIZEN` (full trust) → `AGENT` (apex tier). Higher trust unlocks more tool access and capabilities. See `core/trust_levels.py`.
 
 ### Alien
 Code or frameworks from external sources (LangChain, AutoGPT, etc.) that haven't been verified against TelsonBase security standards. Aliens run in quarantine with restricted capabilities. See `agents/alien_adapter.py`.

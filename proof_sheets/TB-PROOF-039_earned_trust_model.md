@@ -37,6 +37,7 @@ VALID_PROMOTIONS (sequential only):
   QUARANTINE → PROBATION
   PROBATION  → RESIDENT
   RESIDENT   → CITIZEN
+  CITIZEN    → AGENT
 
 VALID_DEMOTIONS (skip-capable):
   CITIZEN    → RESIDENT, PROBATION, QUARANTINE
@@ -51,6 +52,7 @@ VALID_DEMOTIONS (skip-capable):
 | **PROBATION** | Read-only, internal | External calls, writes | Destructive |
 | **RESIDENT** | Read/write, internal | Financial, delete, new domains | None (gated) |
 | **CITIZEN** | All allowed tools | Anomaly-flagged only | None |
+| **AGENT** | Full autonomy (300 actions/min), all tools | None | None |
 
 ### Why This Is the "Secret Sauce"
 1. **Default-deny**: No agent has autonomous permissions by default

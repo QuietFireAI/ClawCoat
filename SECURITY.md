@@ -4,8 +4,8 @@
 
 | Version | Supported |
 |---|---|
-| 7.4.x | Yes (current) |
-| < 7.4 | No |
+| 9.0.0B | Yes (current) |
+| < 9.0.0B | No |
 
 Only the latest minor release receives security patches. Upgrade to the current version before reporting.
 
@@ -67,7 +67,7 @@ TelsonBase is built on a zero-trust model. See [docs/SECURITY_ARCHITECTURE.md](d
 | **Secrets** | Docker secrets + env layering | Secrets resolved from `/run/secrets/` first, then env vars |
 | **Audit** | Immutable hash chain | Every state change logged with SHA-256 chain integrity |
 | **Egress** | Domain whitelist | External API calls restricted to approved domains |
-| **Agent Trust** | Four-tier progression | Quarantine → Probation → Resident → Citizen |
+| **Agent Trust** | Five-tier progression | Quarantine → Probation → Resident → Citizen → Agent |
 | **Approval Gates** | Human-in-the-loop | High-risk actions require explicit approval before execution |
 | **Rate Limiting** | Per-tenant Redis-backed | Configurable requests/minute with burst allowance |
 | **Kill Switch** | Instant agent revocation | Redis-persisted, checked before any crypto verification |

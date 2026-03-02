@@ -375,13 +375,13 @@ with JWT Bearer token authentication.
 The admin dashboard (`/dashboard`) and user console (`/console`) are web applications
 accessible from any mobile browser without installation.
 
-For native mobile app integration: standard REST calls with JWT auth against the 151
+For native mobile app integration: standard REST calls with JWT auth against the 177
 documented API endpoints. Full API reference at `/docs` when the stack is running.
 
 No native mobile SDK exists currently — that is a post-drop development item.
 
 **Source files:**
-- `main.py` — 151 API endpoints
+- `main.py` — 177 API endpoints
 - `docs/API_REFERENCE.md` — full endpoint documentation
 - `frontend/index.html` — admin dashboard (web, mobile-accessible)
 - `frontend/user-console.html` — user console (web, mobile-accessible)
@@ -512,7 +512,7 @@ and carries no corporate backing or venture influence.
 The answer to "why trust it" is not credentials — it is evidence:
 
 - **720 passing tests** that you can run yourself in under five minutes
-- **40 proof sheets** that map every public claim to source code and a verification command
+- **42 proof sheets** that map every public claim to source code and a verification command
 - **0 high-severity findings** in static analysis across 37,921 lines
 - **Full source available** — read every line, verify every claim, run every test
 

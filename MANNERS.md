@@ -85,7 +85,7 @@ objectives. When uncertain, agents escalate rather than assume.
 **TelsonBase Implementation:**
 - Capability enforcement: agents can ONLY access resources in their capability profile
 - Behavioral baselines: anomaly detector flags actions outside established patterns
-- Trust levels (UNTRUSTED → VERIFIED → TRUSTED → PRIVILEGED) constrain agent reach
+- Trust levels (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) constrain agent reach
 - Quarantine protocol: new/untrusted agents operate in sandbox until verified
 - Role definitions in agents/registry.yaml bind agents to their job descriptions
 

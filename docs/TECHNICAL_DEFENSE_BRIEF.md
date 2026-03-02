@@ -79,9 +79,11 @@ their `previous_hash` links to the now-invalid #47 hash.
 N separate OS processes, each running a full copy of the app. They share nothing in memory.
 Each has its own Python interpreter, its own copy of all in-memory variables.
 
-**Current configuration: WEB_CONCURRENCY=2 (default), configurable at runtime.**
-The Dockerfile uses `exec gunicorn ... -w ${WEB_CONCURRENCY:-2}`. `exec` ensures Docker's
+**Current configuration: WEB_CONCURRENCY=1 (beta), configurable at runtime.**
+The Dockerfile uses `exec gunicorn ... -w ${WEB_CONCURRENCY:-1}`. `exec` ensures Docker's
 SIGTERM goes directly to gunicorn (PID 1), not to sh — enabling graceful in-flight shutdown.
+WEB_CONCURRENCY=1 in beta — in-memory RBAC user dict is not yet Redis-persisted. Post-launch
+fix will enable WEB_CONCURRENCY=2+.
 
 **Why the audit chain is safe under multiple workers:**
 `_create_chain_entry()` uses Redis WATCH/MULTI/EXEC optimistic locking. The sequence:
@@ -105,10 +107,10 @@ the sequence slot it targeted.
 > same sequence number — one wins, one retries. The chain is linear. 720 tests verify this,
 > including adversarial concurrency scenarios."
 
-**If asked:** *"This doesn't scale beyond 2 workers."*
-> "WEB_CONCURRENCY is configurable. The constraint is Redis throughput and the optimistic
-> retry loop under very high contention — not the architecture. For a governance platform
-> workload, 2 workers is appropriate. Add more at runtime if you need them."
+**If asked:** *"Why only 1 worker in beta?"*
+> "WEB_CONCURRENCY=1 in beta because the RBAC user dict is held in-memory and not yet
+> Redis-persisted. Post-launch sprint 1 fixes that, unblocking WEB_CONCURRENCY=2+.
+> The audit chain itself is WATCH/MULTI/EXEC safe for any number of workers."
 
 ---
 
@@ -355,8 +357,9 @@ required. No non-commercial restrictions. Free for any use.
 ## 12. The Scaling Question — Multi-Worker Today, More Tomorrow
 
 **Current state:**
-`WEB_CONCURRENCY=2` (default). Redis for all persistent state. PostgreSQL for relational data.
+`WEB_CONCURRENCY=1` (beta). Redis for all persistent state. PostgreSQL for relational data.
 In-memory caches for read performance, populated from Redis. Audit chain uses WATCH/MULTI/EXEC.
+WEB_CONCURRENCY=1 in beta — in-memory RBAC user dict is not yet Redis-persisted; post-launch fix will unblock WEB_CONCURRENCY=2+.
 
 **What the current architecture supports:**
 - Multiple workers: ✓ (WATCH/MULTI/EXEC prevents race conditions)
@@ -374,9 +377,9 @@ All N workers fire a startup audit event. Each goes through WATCH/MULTI/EXEC —
 sequential sequence numbers. The chain remains linear. No fork.
 
 **Honest position:**
-For the governance workload TelsonBase is designed for, 2 workers with async I/O is
-appropriate. `WEB_CONCURRENCY` is configurable at deploy time. Multi-replica horizontal
-scaling is a post-1.0 roadmap item.
+For the governance workload TelsonBase is designed for, 1 worker (beta) with async I/O is
+appropriate for launch. `WEB_CONCURRENCY` is configurable at deploy time. Increasing to 2+
+workers is a post-launch sprint 1 item. Multi-replica horizontal scaling is a post-1.0 roadmap item.
 
 ---
 
@@ -387,7 +390,7 @@ scaling is a post-1.0 roadmap item.
 | "Did AI write this?" | "AI was my development tool. I made every decision. Ask me anything specific." |
 | "Redis isn't tamper-proof" | "Neither is Oracle. Application-layer integrity, not insider-threat WORM. We document this." |
 | "Why HS256?" | "Symmetric is correct for a monolith. RS256 is for distributed token verification." |
-| "Why only 2 workers?" | "WEB_CONCURRENCY is configurable. 2 is the default. WATCH/MULTI/EXEC makes any number safe." |
+| "Why only 1 worker?" | "WEB_CONCURRENCY=1 in beta — RBAC user dict not yet Redis-persisted. Post-launch fix enables 2+. Audit chain is WATCH/MULTI/EXEC safe regardless." |
 | "Trust enforcement is just UI?" | "Same API response whether you curl it or use the dashboard. Trust level comes from Redis." |
 | "HITRUST certified?" | "TelsonBase is tooling, not a certification body. We track posture, not certify it." |
 | "ecdsa removal breaks things?" | "We use HS256. ecdsa is the EC algorithm backend. 720 tests pass." |

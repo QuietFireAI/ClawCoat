@@ -32,7 +32,7 @@ This is not a deployment. It's a validation session.
 
 Nothing on the AWS side — pricing is stable. What changed is your stack:
 
-- **709 tests** (up from 509) — OpenClaw governance (54 tests), Identiclaw DID auth, real estate agents (transaction/compliance/doc prep), Manners compliance framework, schemathesis hardening, contract tripwires, adversarial CAPTCHA tests, and stability fixes all added coverage.
+- **720 tests** (up from 509) — OpenClaw governance (54 tests), Identiclaw DID auth, real estate agents (transaction/compliance/doc prep), Manners compliance framework, schemathesis hardening, contract tripwires, adversarial CAPTCHA tests, and stability fixes all added coverage.
 - **Multi-stage Dockerfile** — build tools (gcc, binutils) now in a builder stage only. Runtime image is clean: eliminates 13 LOW binutils CVEs from the image. Gateway has the same pattern.
 - **ecdsa removed post-install** — CVE-2024-23342 HIGH. python-jose transitive dep, unused (TelsonBase uses HS256 only). Safe to remove.
 - **wheel 0.46.2 enforced** in both Dockerfiles — CVE-2026-24049 HIGH was wheel <=0.46.1. Fixed.

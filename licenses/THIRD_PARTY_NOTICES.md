@@ -1,4 +1,4 @@
-# Third-Party Notices — TelsonBase v7.3.0CC
+# Third-Party Notices — TelsonBase v9.0.0B
 
 TelsonBase incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding

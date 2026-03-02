@@ -109,7 +109,7 @@ Quick check that it is running:
 curl http://localhost:8000/health
 # Expected: {"status": "healthy", ...}
 
-curl -H "X-API-Key: $(cat secrets/api_key)" http://localhost:8000/v1/system/status
+curl -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" http://localhost:8000/v1/system/status
 # Expected: 200 with system status JSON
 ```
 
@@ -227,7 +227,7 @@ Then paste this entire block at once — it reads your API key, builds the regis
 
 ```powershell
 # Windows PowerShell
-$API_KEY = Get-Content secrets/api_key
+$API_KEY = Get-Content secrets/telsonbase_mcp_api_key
 
 $body = @{
     name         = "my-first-claw"
@@ -251,7 +251,7 @@ You should see a JSON block with `instance_id`, `trust_level: "quarantine"`, and
 
 ```bash
 # Linux / macOS / WSL / AWS
-API_KEY=$(cat secrets/api_key)
+API_KEY=$(cat secrets/telsonbase_mcp_api_key)
 
 CLAW_ID=$(curl -s -X POST \
   -H "X-API-Key: $API_KEY" \

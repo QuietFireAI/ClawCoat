@@ -37,7 +37,7 @@ It runs as a set of Docker containers on any machine with Docker installed. Agen
 ### Step 1: Clone and Configure
 
 ```bash
-git clone https://github.com/quietfire/telsonbase.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 cp .env.example .env
 ```
@@ -238,7 +238,7 @@ You don't talk to agents directly. You send requests to the API, and TelsonBase 
 Every agent has a trust level that determines what it can do:
 
 ```
-QUARANTINE → PROBATION → RESIDENT → CITIZEN
+QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
 ```
 
 | Level | What It Means |
@@ -247,6 +247,7 @@ QUARANTINE → PROBATION → RESIDENT → CITIZEN
 | **Probation** | Limited permissions. Actions are logged with extra scrutiny. |
 | **Resident** | Standard operating level. Can execute authorized actions. |
 | **Citizen** | Highest trust. Can perform supervisor-level operations. |
+| **Agent** | Apex tier. Full autonomy (300 actions/min), all tools allowed, no approval required. Human-approved designation. |
 
 New agents start at **Quarantine** and must be promoted by an admin. Trust levels can be revoked instantly via the kill switch.
 

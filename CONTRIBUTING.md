@@ -10,7 +10,7 @@ See also: [Ambassador Program](AMBASSADORS.md) for non-code contributions.
 
 ```bash
 # Clone
-git clone https://github.com/quietfire/telsonbase.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 
 # Copy environment

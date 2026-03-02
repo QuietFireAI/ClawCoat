@@ -12,7 +12,7 @@ TelsonBase is built on zero-trust principles. Every agent message is cryptograph
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 4.0.2+  | :white_check_mark: (Current) |
+| 9.0.0B  | :white_check_mark: (Current) |
 | 4.0.x   | :white_check_mark: |
 | 3.0.x   | :warning: Security updates only |
 | < 3.0   | :x:                |

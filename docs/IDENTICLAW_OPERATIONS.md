@@ -1,6 +1,6 @@
 # Identiclaw Agent Operations Guide
 
-## TelsonBase v7.3.0CC — DID-Based Agent Identity
+## TelsonBase v9.0.0B — DID-Based Agent Identity
 
 **Architecture**: Hybrid — Identiclaw issues the driver's license (DID + credentials on Cloudflare). TelsonBase is the racetrack (all operations governed locally).
 

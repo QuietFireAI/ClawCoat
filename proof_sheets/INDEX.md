@@ -57,7 +57,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 ### Security Testing
 | Sheet | Claim | Status |
 |---|---|---|
-| [TB-PROOF-022](TB-PROOF-022_api_fuzz_testing.md) | 151 API Operations Fuzz-Tested | VERIFIED |
+| [TB-PROOF-022](TB-PROOF-022_api_fuzz_testing.md) | 177 API Operations Fuzz-Tested | VERIFIED |
 | [TB-PROOF-023](TB-PROOF-023_generated_test_cases.md) | 107,811 Generated Test Cases | VERIFIED |
 | [TB-PROOF-024](TB-PROOF-024_zero_server_errors.md) | 0 Server Errors Under Fuzzing | VERIFIED |
 | [TB-PROOF-025](TB-PROOF-025_security_test_levels.md) | 5 Automated Security Test Levels | VERIFIED |

@@ -10,30 +10,30 @@
 
 ## Exact Claim
 
-> "93 dedicated security tests and 22 hardening items completed"
+> "96 dedicated security tests and 22 hardening items completed"
 
 ## Verdict
 
-VERIFIED — `tests/test_security_battery.py` contains exactly 93 test functions. An additional 84 security-related tests exist across other test files, totaling 177 security-focused tests.
+VERIFIED — `tests/test_security_battery.py` contains exactly 96 test functions. An additional 84 security-related tests exist across other test files, totaling 180 security-focused tests.
 
 ## Evidence
 
 ### Source Files
 | File | Lines | What It Proves |
 |---|---|---|
-| `tests/test_security_battery.py` | 93 `def test_` functions | Dedicated security test battery |
+| `tests/test_security_battery.py` | 96 `def test_` functions | Dedicated security test battery |
 | `version.py` | Lines 208-223 | v6.0.0CC: 5-level security testing documented |
 
 ### Test Files
 | File | Test Count | What's Tested |
 |---|---|---|
-| `tests/test_security_battery.py` | 93 | SQL injection, XSS, path traversal, JWT tampering, header injection, oversized payloads, CORS, rate limiting, auth bypass, privilege escalation |
+| `tests/test_security_battery.py` | 96 | SQL injection, XSS, path traversal, JWT tampering, header injection, oversized payloads, CORS, rate limiting, auth bypass, privilege escalation |
 
 ### Code Evidence
 
 ```
 $ grep -c "def test_" tests/test_security_battery.py
-93
+96
 ```
 
 Security test categories within the battery:
@@ -57,7 +57,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 ## Expected Result
 
 ```
-93 passed
+96 passed
 ```
 
 ---

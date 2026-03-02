@@ -1,6 +1,6 @@
 # TelsonBase Disaster Recovery Plan
 
-**Version:** 7.3.0CC
+**Version:** 9.0.0B
 **Last Updated:** February 23, 2026
 **Architect:** Jeff Phillips — support@telsonbase.com
 **AI Model Collaborators:** ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
@@ -161,7 +161,7 @@ curl -H "X-API-Key: $API_KEY" http://localhost:8000/v1/agents/
 **Step 1: Infrastructure Recovery**
 ```bash
 # Clone repository
-git clone https://github.com/quietfire/telsonbase.git
+git clone https://github.com/QuietFireAI/TelsonBase.git
 cd telsonbase
 
 # Restore environment
