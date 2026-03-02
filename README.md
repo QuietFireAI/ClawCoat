@@ -3,7 +3,7 @@
 ### Control Your Claw. Trust Is Earned.
 
 <p align="center">
-  <strong>v9.0.0B</strong> &nbsp;|&nbsp;
+  <strong>v9.1.0B</strong> &nbsp;|&nbsp;
   <strong>720 tests passing</strong> &nbsp;|&nbsp;
   <strong>51 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>140+ RBAC endpoints</strong> &nbsp;|&nbsp;
@@ -379,7 +379,7 @@ If you use TelsonBase in research, a paper, or a published project, a `CITATION.
 
 Manual citation:
 ```
-Phillips, J. (2026). TelsonBase (v9.0.0B). Quietfire AI.
+Phillips, J. (2026). TelsonBase (v9.1.0B). Quietfire AI.
 https://github.com/QuietFireAI/TelsonBase
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```

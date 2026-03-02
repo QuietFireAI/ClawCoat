@@ -238,4 +238,50 @@ If a test count, feature, or capability claim changes, update:
 
 ---
 
-*TelsonBase v9.0.0B · Quietfire AI · March 2, 2026*
+---
+
+## Second Full Audit Pass — March 2, 2026 (v9.1.0B)
+
+**Scope:** All 107 .md files read line by line against verified facts.
+**Method:** Dedicated audit agent read every file; findings cross-checked and fixed in a second pass agent.
+**Result:** 32 files corrected, 75 confirmed clean.
+
+### Critical Findings (would have caused damage on drop day)
+
+| Finding | File | Fix |
+|---|---|---|
+| Wrong secret filename: `secrets/api_key` (file doesn't exist) | `OPENCLAW_INTEGRATION_GUIDE.md` (3 lines) | → `secrets/telsonbase_mcp_api_key` |
+| Fictional trust tier names (UNTRUSTED/VERIFIED/TRUSTED/PRIVILEGED) | `MANNERS.md` | → QUARANTINE/PROBATION/RESIDENT/CITIZEN/AGENT |
+| MIT license (wrong — Apache 2.0) | `PROJECT_OVERVIEW.md` | → Apache 2.0 |
+| WEB_CONCURRENCY=2 (wrong — beta ships with 1) | `TECHNICAL_DEFENSE_BRIEF.md` (6 locations) | → WEB_CONCURRENCY=1 + beta explanation |
+| `brokerage` tenant type (removed from enum) | `DATA_PROCESSING_AGREEMENT.md` | → valid types list |
+
+### Numeric Corrections
+
+| Claim | Was | Correct | Files |
+|---|---|---|---|
+| API endpoints | 151 | 177 | FAQ.md, OPENCLAW_SECURITY_ANALYSIS.md, INDEX.md |
+| Security battery tests | 93 | 96 | TB-PROOF-002 |
+| Bandit medium findings | 2 | 8 | TB-PROOF-027 |
+| Proof sheets | 40 | 42 | FAQ.md |
+| Total tests | 709 | 720 | AWS_TESTING_GUIDE.md |
+
+### Trust Tier Corrections (4-tier → 5-tier, AGENT missing)
+
+Corrected in: `GLOSSARY.md`, `SECURITY.md`, `USER_GUIDE.md`, `HEALTHCARE_COMPLIANCE.md`, `LEGAL_COMPLIANCE.md`, `TB-PROOF-039`
+
+### GitHub URL Corrections (8 files)
+
+`quietfire/telsonbase` → `QuietFireAI/TelsonBase` in: `CONTRIBUTING.md`, `USER_GUIDE.md`, `INSTALLATION_GUIDE_WINDOWS.md` (3x), `TROUBLESHOOTING.md`, `DEVELOPER_GUIDE.md`, `DISASTER_RECOVERY.md`
+
+### Version Header Corrections (15 files)
+
+v7.3.0CC or earlier → v9.0.0B in: `SECURITY_GUIDELINES.md`, `IDENTICLAW_OPERATIONS.md`, `INCIDENT_RESPONSE.md`, `COMPLIANCE_ROADMAP.md`, `HEALTHCARE_COMPLIANCE.md`, `LEGAL_COMPLIANCE.md`, `DISASTER_RECOVERY_TEST.md`, `API_REFERENCE.md`, `ENV_CONFIGURATION.md`, `SECURITY_ARCHITECTURE.md`, `THIRD_PARTY_NOTICES.md`, `DEVELOPER_GUIDE.md`, `TROUBLESHOOTING.md`, `DISASTER_RECOVERY.md`, `TOOLROOM.md`
+
+### Status After Second Pass
+
+All findings resolved. Version bumped to 9.1.0B. 720 tests still passing.
+
+---
+
+*TelsonBase v9.1.0B · Quietfire AI · March 2, 2026*

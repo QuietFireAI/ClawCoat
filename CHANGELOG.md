@@ -6,6 +6,31 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ---
 
+## [9.1.0B] — 2026-03-02 (Full .md audit + GitHub launch prep)
+
+**Status:** 720 tests, 0 failed — 32 documentation files corrected, GitHub repo live
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Documentation — Full .md Audit (107 files read, 32 corrected)
+
+Critical fixes:
+- `secrets/api_key` → `secrets/telsonbase_mcp_api_key` in `OPENCLAW_INTEGRATION_GUIDE.md` (3 locations) — would have broken all deployments following that guide
+- Wrong trust tier names in `MANNERS.md` (fictional names → QUARANTINE/PROBATION/RESIDENT/CITIZEN/AGENT)
+- MIT license → Apache 2.0 in `PROJECT_OVERVIEW.md`
+- WEB_CONCURRENCY=2 → WEB_CONCURRENCY=1 throughout `TECHNICAL_DEFENSE_BRIEF.md`
+- `brokerage` tenant type removed from `DATA_PROCESSING_AGREEMENT.md`
+
+Numbers corrected: 151 endpoints → 177, 93 security tests → 96, 2 Bandit medium → 8, 40 proof sheets → 42, 709 tests → 720, 4-tier trust → 5-tier + AGENT in 6 files. GitHub URLs fixed in 8 files. Version headers updated in 15 files.
+
+### GitHub Repository Created
+
+- `QuietFireAI/TelsonBase` — private until March 6, 2026 drop
+- `CITATION.cff`: ORCID 0009-0000-1375-1725 (J. Phillips / Quietfire AI), Apache 2.0
+- README: AGENT tier diagram, nav links, clone URL, proof sheet count, ORCID + citation section, 9 screenshots wired
+- 10 repo topics: ai-governance, ai-agents, zero-trust, self-hosted, human-in-the-loop, kill-switch, audit-trail, mcp, fastapi, docker
+
+---
+
 ## [9.0.0B] — 2026-03-02 (LAUNCH PREP — v9.0.0B_20260302d — Math CAPTCHA + Screenshots)
 
 **Status:** 720 tests, 0 failed
