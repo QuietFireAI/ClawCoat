@@ -140,8 +140,8 @@ TelsonBase is a **self-hosted, governance-first security platform** for autonomo
 Every other platform gives agents permissions and hopes for the best. TelsonBase does the opposite. Every agent starts at **Quarantine** with zero autonomous permissions and earns its way up.
 
 ```
-QUARANTINE ──────► PROBATION ──────► RESIDENT ──────► CITIZEN
-  (all gated)       (internal ok)    (read/write ok)   (autonomous)
+QUARANTINE ──► PROBATION ──► RESIDENT ──► CITIZEN ──► AGENT
+ (all gated)  (internal ok) (read/write)  (autonomous) (apex)
 
   Promotion: sequential, human-approved, earned
   Demotion:  instant, skip-capable, automatic on bad behavior
@@ -153,8 +153,9 @@ QUARANTINE ──────► PROBATION ──────► RESIDENT ──
 | **Probation** | Read-only internal | External calls, writes | Destructive |
 | **Resident** | Read/write internal | Financial, delete, new domains | -- |
 | **Citizen** | All allowed tools | Anomaly-flagged only | -- |
+| **Agent** | Full autonomy (300 actions/min) | Nothing | Nothing |
 
-Promotion is sequential. You can't skip from Quarantine to Citizen. Demotion is instant and can skip levels. A Citizen agent whose Manners compliance score drops below 50% is automatically demoted to Quarantine. No human delay. No grace period.
+Promotion is sequential. You can't skip from Quarantine to Citizen. Demotion is instant and can skip levels. A Citizen agent whose Manners compliance score drops below 50% is automatically demoted to Quarantine. No human delay. No grace period. Agent is the apex tier — fully verified, human-approved designation with the strictest re-verification requirements.
 
 This is the architecture the industry needs. Not more guardrails inside the model. **Deterministic enforcement outside the model** that doesn't care if the LLM is being prompt-injected.
 
