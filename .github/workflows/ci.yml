@@ -160,6 +160,11 @@ jobs:
 
       - name: Generate SLSA Build L2 provenance attestation
         uses: actions/attest-build-provenance@v2
+        continue-on-error: true
+        # REM: Attestation storage requires a public repository.
+        # REM: This step generates provenance on every run but cannot persist
+        # REM: until the repo goes public on March 6, 2026. No code change needed
+        # REM: at drop time — attestations will store automatically once public.
         with:
           subject-name: telsonbase-mcp
           subject-digest: ${{ steps.image-meta.outputs.digest }}
