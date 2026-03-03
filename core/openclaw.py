@@ -964,12 +964,10 @@ class OpenClawManager:
         REM: Must follow valid promotion path: QUARANTINE → PROBATION → RESIDENT → CITIZEN
         REM: A pending demotion review is flagged in audit — see clear_review() for sign-off.
         """
-        # REM: Multi-worker fix: evict stale in-memory copy before reading authoritative Redis state.
-        # REM: local_fallback pattern: same as evaluate_action — restore from cache when Redis unavailable.
-        local_fallback = self._instances.pop(instance_id, None)
+        # REM: No destructive pop for mutations — get_instance reads local cache then Redis.
+        # REM: _persist_instance writes to both _instances and Redis after a successful mutation.
+        # REM: Only evaluate_action needs forced Redis eviction (governance decision must be authoritative).
         instance = self.get_instance(instance_id)
-        if instance is None and local_fallback is not None:
-            instance = local_fallback
         if not instance:
             return False
 
@@ -1049,12 +1047,10 @@ class OpenClawManager:
         REM: Demotions can skip levels (instant consequences).
         REM: Sets demotion review flag — human admin should call clear_review() before re-promotion.
         """
-        # REM: Multi-worker fix: evict stale in-memory copy before reading authoritative Redis state.
-        # REM: local_fallback pattern: same as evaluate_action — restore from cache when Redis unavailable.
-        local_fallback = self._instances.pop(instance_id, None)
+        # REM: No destructive pop for mutations — get_instance reads local cache then Redis.
+        # REM: _persist_instance writes to both _instances and Redis after a successful mutation.
+        # REM: Only evaluate_action needs forced Redis eviction (governance decision must be authoritative).
         instance = self.get_instance(instance_id)
-        if instance is None and local_fallback is not None:
-            instance = local_fallback
         if not instance:
             return False
 
@@ -1121,12 +1117,9 @@ class OpenClawManager:
         REM: Immediately suspend an OpenClaw instance. The kill switch.
         REM: All subsequent actions are rejected until reinstatement.
         """
-        # REM: Multi-worker fix: evict stale in-memory copy before reading authoritative Redis state.
-        # REM: local_fallback pattern: restore from cache when Redis unavailable (test env / outage).
-        local_fallback = self._instances.pop(instance_id, None)
+        # REM: No destructive pop for mutations — get_instance reads local cache then Redis.
+        # REM: _persist_instance writes to both _instances and Redis after a successful mutation.
         instance = self.get_instance(instance_id)
-        if instance is None and local_fallback is not None:
-            instance = local_fallback
         if not instance:
             return False
 
@@ -1168,11 +1161,9 @@ class OpenClawManager:
     def reinstate_instance(self, instance_id: str, reinstated_by: str, reason: str = "") -> bool:
         """REM: Clear suspension after human review. Instance returns to its previous trust level."""
         # REM: Multi-worker fix: evict stale in-memory copy before reading authoritative Redis state.
-        # REM: local_fallback pattern: restore from cache when Redis unavailable (test env / outage).
-        local_fallback = self._instances.pop(instance_id, None)
+        # REM: No destructive pop for mutations — get_instance reads local cache then Redis.
+        # REM: _persist_instance writes to both _instances and Redis after a successful mutation.
         instance = self.get_instance(instance_id)
-        if instance is None and local_fallback is not None:
-            instance = local_fallback
         if not instance:
             return False
 
