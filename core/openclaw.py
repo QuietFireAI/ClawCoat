@@ -521,6 +521,13 @@ class OpenClawManager:
         # REM: after the pop — local_fallback never activates there.
         if instance is None and local_fallback is not None:
             instance = local_fallback
+            # REM: Redis unavailable — restore to _instances immediately.
+            # REM: Early-exit paths (kill switch, nonce replay) return without calling _persist_instance,
+            # REM: which would otherwise be the write-back. Without this, the instance is lost after
+            # REM: any early-exit and subsequent operations (reinstate, etc.) cannot find it.
+            # REM: In production (Redis healthy), get_instance() already restored _instances above;
+            # REM: this line only activates in the no-Redis path.
+            self._instances[instance_id] = instance
         if not instance:
             audit.log(
                 AuditEventType.OPENCLAW_ACTION_BLOCKED,
