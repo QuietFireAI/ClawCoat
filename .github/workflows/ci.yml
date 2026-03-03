@@ -132,6 +132,7 @@ jobs:
                    telsonbase_grafana_password; do
             echo "ci_dummy_not_real_do_not_use" > "secrets/$f"
           done
+          cp .env.example .env
 
       - name: Validate docker-compose configuration
         run: docker compose config --quiet
