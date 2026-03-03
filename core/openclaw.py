@@ -446,7 +446,15 @@ class OpenClawManager:
         return instance
 
     def _persist_instance(self, instance: OpenClawInstance):
-        """REM: Persist instance record to Redis."""
+        """REM: Persist instance record to Redis and local cache.
+        REM: Local cache write is always performed — Redis write is best-effort.
+        REM: This ensures mutations (promote, demote, suspend, reinstate) survive
+        REM: the pop-then-read cycle in test environments where Redis is unavailable.
+        REM: In production (Redis healthy), Redis is the cross-worker authority;
+        REM: local cache is evicted at the start of each governance evaluation.
+        """
+        # REM: Always update local cache so the instance survives in no-Redis environments.
+        self._instances[instance.instance_id] = instance
         client = self._get_redis()
         if not client:
             return
