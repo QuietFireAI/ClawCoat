@@ -507,7 +507,11 @@ class OpenClawManager:
         # REM: (test environments, Redis outage). Redis-authoritative path is unchanged when Redis is up.
         local_fallback = self._instances.pop(instance_id, None)
         instance = self.get_instance(instance_id)
-        if instance is None and local_fallback is not None and self._get_redis() is None:
+        # REM: If Redis is unavailable (test env, outage), get_instance returns None even though
+        # REM: the instance exists in local cache. Restore from local_fallback.
+        # REM: In production with Redis healthy, get_instance always finds the instance in Redis
+        # REM: after the pop — local_fallback never activates there.
+        if instance is None and local_fallback is not None:
             instance = local_fallback
         if not instance:
             audit.log(
