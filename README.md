@@ -32,7 +32,7 @@
 
 ## Status: Beta
 
-**This is a community preview release.** The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional and covered by 720 passing tests. Everything described in this README is built and running — not a roadmap, not a mockup.
+**This is a community preview release.** The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional and covered by 720 passing tests. Everything described in this README is built and running - not a roadmap, not a mockup.
 
 We're publishing early because building in public with a community beats building in isolation. That means rough edges exist. APIs will evolve. Some tabs in the dashboard pull live data, others surface demo data until backend endpoints catch up (they're documented inline). The integration guide covers the full OpenClaw flow end-to-end and has been verified across multiple clean-slate deployments.
 
@@ -50,7 +50,7 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ## A Letter From the Developer
 
-I'm one person. One developer who saw this coming — and spent months focused, heads-down, building something real about it.
+I'm one person. One developer who saw this coming - and spent months focused, heads-down, building something real about it.
 
 Autonomous AI agents are the most significant paradigm shift in computing since the GUI. They're also a serious security problem that the industry hasn't caught up with yet. Right now, as you read this:
 
@@ -65,19 +65,19 @@ The industry gave AI agents the keys to everything and forgot the locks. OpenCla
 
 I did.
 
-There's a second question underneath that one that doesn't get asked enough: *where does your data go when you hand it to a cloud AI platform?* Every document you attach, every photo you share, every conversation you have — ingested, stored, processed on infrastructure you don't control, under terms that can change. Most people haven't thought about this yet. Once they do, they won't be able to unsee it.
+There's a second question underneath that one that doesn't get asked enough: *where does your data go when you hand it to a cloud AI platform?* Every document you attach, every photo you share, every conversation you have - ingested, stored, processed on infrastructure you don't control, under terms that can change. Most people haven't thought about this yet. Once they do, they won't be able to unsee it.
 
-TelsonBase is an answer to both questions. Not the only answer — but a real one, running today, that you can hold in your hands.
+TelsonBase is an answer to both questions. Not the only answer - but a real one, running today, that you can hold in your hands.
 
-It's a **governed security layer** that sits between your business and every autonomous agent that touches it. Every action evaluated. Every permission earned. Every decision auditable. The AI model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so — and it never has to.
+It's a **governed security layer** that sits between your business and every autonomous agent that touches it. Every action evaluated. Every permission earned. Every decision auditable. The AI model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so - and it never has to.
 
-Cloud AI is convenient. It's also a dependency you don't control — on pricing, on terms, on what happens to what you feed it. Those terms change. Prices move. Caps appear. TelsonBase runs on hardware you own. What you build on top of it is yours, completely, without conditions.
+Cloud AI is convenient. It's also a dependency you don't control - on pricing, on terms, on what happens to what you feed it. Those terms change. Prices move. Caps appear. TelsonBase runs on hardware you own. What you build on top of it is yours, completely, without conditions.
 
 The compliance frameworks aren't on a roadmap. **They're already baked in.** SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 720 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 I built this for the industries that can't afford to get this wrong: **medical, legal, insurance, and accounting.** Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
 
-TelsonBase was built the way it governs — collaboratively. Every AI model I worked with was engaged as a partner, not a code generator. The platform itself embodies this: TelsonBase is your **Chief of Staff** for AI agents. You provide strategic direction. The platform provides deterministic enforcement. The agent earns autonomy through demonstrated behavior. Trust is earned, not granted.
+TelsonBase was built the way it governs - collaboratively. Every AI model I worked with was engaged as a partner, not a code generator. The platform itself embodies this: TelsonBase is your **Chief of Staff** for AI agents. You provide strategic direction. The platform provides deterministic enforcement. The agent earns autonomy through demonstrated behavior. Trust is earned, not granted.
 
 Take it. Test it. Deploy it. Break it. Tell me what's wrong. Tell me what's right. And if you see what I see, **become an ambassador** and help carry this forward.
 
@@ -101,29 +101,29 @@ Everything below is a live local instance. No mocks. No scripted responses. Real
 
 ---
 
-**GIF 1 — Policy Block**
+**GIF 1 - Policy Block**
 QUARANTINE agent attempts an external financial API call. TelsonBase blocks it before execution. Decision written to the tamper-evident audit chain. Agent never touched the endpoint.
 
 ![Governance Blocked](screenshots/governance-blocked.gif)
 
 ---
 
-**GIF 2 — Kill Switch**
-QUARANTINE agent fires an action — governance gates it, queues a human approval. Operator identifies suspicious behavior and hits the kill switch. Agent suspended. Subsequent action attempt hard-blocked. The gate, the suspension, and the block are all separate entries in the immutable audit chain.
+**GIF 2 - Kill Switch**
+QUARANTINE agent fires an action - governance gates it, queues a human approval. Operator identifies suspicious behavior and hits the kill switch. Agent suspended. Subsequent action attempt hard-blocked. The gate, the suspension, and the block are all separate entries in the immutable audit chain.
 
 ![Kill Switch](screenshots/kill-switch.gif)
 
 ---
 
-**GIF 3 — Human-in-the-Loop: Approve**
-PROBATION agent attempts an external http_post. TelsonBase holds it — cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `TASK.COMPLETED` written to the audit chain. The agent's action goes through. Trust, verified.
+**GIF 3 - Human-in-the-Loop: Approve**
+PROBATION agent attempts an external http_post. TelsonBase holds it - cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `TASK.COMPLETED` written to the audit chain. The agent's action goes through. Trust, verified.
 
 ![HITL Approval](screenshots/hitl-approval.gif)
 
 ---
 
-**GIF 4 — Human-in-the-Loop: Reject**
-The other side of the gate. Pending approval from a suspended agent — full payload, URGENT flag, operator identity visible. Human reviews, rejects. Approval queue clears to zero. `TASK.FAILED` written to the audit chain, attributed to the human operator, timestamped, hash-chained to every event before it. Not just agent actions. Human decisions too.
+**GIF 4 - Human-in-the-Loop: Reject**
+The other side of the gate. Pending approval from a suspended agent - full payload, URGENT flag, operator identity visible. Human reviews, rejects. Approval queue clears to zero. `TASK.FAILED` written to the audit chain, attributed to the human operator, timestamped, hash-chained to every event before it. Not just agent actions. Human decisions too.
 
 ![HITL Reject](screenshots/hitl-reject.gif)
 
@@ -131,29 +131,29 @@ The other side of the gate. Pending approval from a suspended agent — full pay
 
 ## Screenshots
 
-**Admin Dashboard — system health, audit chain status, anomaly summary at a glance**
+**Admin Dashboard - system health, audit chain status, anomaly summary at a glance**
 ![Dashboard Overview](screenshots/dashboard-overview.png)
 
-**OpenClaw Governance — six agents across all five trust tiers with live behavioral metrics**
-*`senior_research_agent` is in Quarantine with a low Manners score — the system is blocking it automatically until behavior improves. That's the point.*
+**OpenClaw Governance - six agents across all five trust tiers with live behavioral metrics**
+*`senior_research_agent` is in Quarantine with a low Manners score - the system is blocking it automatically until behavior improves. That's the point.*
 ![OpenClaw Governance](screenshots/openclaw-governance.png)
 
-**Audit Trail — 1,247 SHA-256 hash-chained entries, integrity verified**
+**Audit Trail - 1,247 SHA-256 hash-chained entries, integrity verified**
 ![Audit Trail](screenshots/audit-trail.png)
 
-**User Console — the non-admin view. Pending approvals, recent activity, agent list**
+**User Console - the non-admin view. Pending approvals, recent activity, agent list**
 ![User Console](screenshots/user-console-home.png)
 
 <details>
-<summary>More screenshots — Approvals, Toolroom, Users & Roles</summary>
+<summary>More screenshots - Approvals, Toolroom, Users & Roles</summary>
 
 **Human-in-the-Loop Approval Gates**
 ![Pending Approvals](screenshots/admin-approvals.png)
 
-**Toolroom — supply-chain security for agent tools, every install proposal gated**
+**Toolroom - supply-chain security for agent tools, every install proposal gated**
 ![Toolroom](screenshots/toolroom.png)
 
-**Users & Roles — RBAC with MFA enrollment status**
+**Users & Roles - RBAC with MFA enrollment status**
 ![Users and Roles](screenshots/users-and-roles.png)
 
 </details>
@@ -180,7 +180,7 @@ QUARANTINE ──► PROBATION ──► RESIDENT ──► CITIZEN ──► AG
 | **Citizen** | All allowed tools | Anomaly-flagged only | -- |
 | **Agent** | Full autonomy (300 actions/min) | Nothing | Nothing |
 
-Promotion is sequential. You can't skip from Quarantine to Citizen. Demotion is instant and can skip levels. A Citizen agent whose Manners compliance score drops below 50% is automatically demoted to Quarantine. No human delay. No grace period. Agent is the apex tier — fully verified, human-approved designation with the strictest re-verification requirements.
+Promotion is sequential. You can't skip from Quarantine to Citizen. Demotion is instant and can skip levels. A Citizen agent whose Manners compliance score drops below 50% is automatically demoted to Quarantine. No human delay. No grace period. Agent is the apex tier - fully verified, human-approved designation with the strictest re-verification requirements.
 
 This is the architecture the industry needs. Not more guardrails inside the model. **Deterministic enforcement outside the model** that doesn't care if the LLM is being prompt-injected.
 
@@ -253,13 +253,13 @@ Every control references a source file and a passing test. Run `proof_sheets/` t
 
 **Anyone running AI agents who wants to stay in control of their data.**
 
-That starts with individuals and households. Your own agents, local inference via Ollama, everything on your hardware. No subscription. No data harvesting. No terms that change. Access it from your home network or your phone. It's your personal AI infrastructure — governed the same way a HIPAA-compliant clinic governs theirs, because it was built to that standard from the start.
+That starts with individuals and households. Your own agents, local inference via Ollama, everything on your hardware. No subscription. No data harvesting. No terms that change. Access it from your home network or your phone. It's your personal AI infrastructure - governed the same way a HIPAA-compliant clinic governs theirs, because it was built to that standard from the start.
 
 It runs on a $200 mini-PC, a Raspberry Pi, a homelab server, or a cloud VM. The direction is toward home smart device integration, edge clusters, and remote management from your phone. Your own AI cloud. The data stays where you put it.
 
-Small businesses get the same platform. Five employees or fifty — every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
+Small businesses get the same platform. Five employees or fifty - every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
 
-The regulated industries — law firms, healthcare, insurance, accounting — TelsonBase was built against the standards they operate under. HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
+The regulated industries - law firms, healthcare, insurance, accounting - TelsonBase was built against the standards they operate under. HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
 
 The platform that qualifies for a law firm's security review runs on the same Docker Compose as your home server. That's intentional.
 
@@ -331,7 +331,7 @@ TelsonBase ships a native MCP gateway at `/mcp`. [Goose](https://github.com/bloc
 cp goose.yaml ~/.config/goose/config.yaml
 
 # 2. Set your API key in the config (the key from your .env MCP_API_KEY)
-# Edit ~/.config/goose/config.yaml — replace REPLACE_WITH_YOUR_TELSONBASE_API_KEY
+# Edit ~/.config/goose/config.yaml - replace REPLACE_WITH_YOUR_TELSONBASE_API_KEY
 
 # 3. Start a Goose session
 goose session start
@@ -364,9 +364,9 @@ Goose will discover all 13 tools automatically via MCP tool discovery. From ther
 | `list_matters` | Tenancy | PROBATION+ |
 | `approve_tool_request` | Approvals | PROBATION+ |
 
-**How the session gate works:** When `OPENCLAW_ENABLED=true`, MCP tool calls are gated on the connecting session's trust level. A first-time session has no registration — tools above the "Any" gate return a structured message directing the operator to call `register_as_agent` first. That call starts the session at QUARANTINE. From there, an admin promotes trust through the dashboard exactly like any other agent — sequential, human-approved.
+**How the session gate works:** When `OPENCLAW_ENABLED=true`, MCP tool calls are gated on the connecting session's trust level. A first-time session has no registration - tools above the "Any" gate return a structured message directing the operator to call `register_as_agent` first. That call starts the session at QUARANTINE. From there, an admin promotes trust through the dashboard exactly like any other agent - sequential, human-approved.
 
-Claude Desktop works identically — point it at `http://localhost:8000/mcp` with your API key as a Bearer token.
+Claude Desktop works identically - point it at `http://localhost:8000/mcp` with your API key as a Bearer token.
 
 ---
 
@@ -377,7 +377,7 @@ The `proof_sheets/` directory contains 42 evidence sheets. Each one documents an
 Browse the full index: [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md)
 
 ```bash
-# Verify any claim — the filename tells you what's inside
+# Verify any claim - the filename tells you what's inside
 cat proof_sheets/TB-PROOF-001_tests_passing.md
 cat proof_sheets/TB-PROOF-035_openclaw_governance.md
 cat proof_sheets/TB-PROOF-037_openclaw_kill_switch.md
@@ -415,7 +415,7 @@ This project was built through human-AI collaboration. Not "AI generated my code
 | **Claude Sonnet 4.6** | Primary development, security implementation |
 | **Claude Code (Sonnet/Opus 4.6)** | Production hardening, OpenClaw integration, testing |
 
-Built independently. No corporate backing, no venture funding, no AI company involvement. This is a developer in Ohio using publicly available AI models as genuine collaborators to build something the world needs right now. Technical integrations — W3C DID — are ecosystem compatibility choices, not business dependencies. TelsonBase works with any W3C DID-compliant provider.
+Built independently. No corporate backing, no venture funding, no AI company involvement. This is a developer in Ohio using publicly available AI models as genuine collaborators to build something the world needs right now. Technical integrations - W3C DID - are ecosystem compatibility choices, not business dependencies. TelsonBase works with any W3C DID-compliant provider.
 
 The OpenClaw developer recently said he stopped treating AI as a tool and started treating it as a partner. That's how TelsonBase was built from the beginning.
 
@@ -437,7 +437,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. The short version:
 
 TelsonBase is open source under the [Apache License, Version 2.0](LICENSE).
 
-Free for any use — personal, commercial, production, research. Use it, modify it, deploy it, build on it. Attribution required: retain the copyright and license notices when distributing. Full terms: [`LICENSE`](LICENSE)
+Free for any use - personal, commercial, production, research. Use it, modify it, deploy it, build on it. Attribution required: retain the copyright and license notices when distributing. Full terms: [`LICENSE`](LICENSE)
 
 TelsonBase is provided as-is with no warranty. Deploying organizations are responsible for their own configurations, agents, and compliance outcomes. AI platforms and model collaborators bear no liability. Full terms: [`DISCLAIMER.md`](DISCLAIMER.md)
 
@@ -445,7 +445,7 @@ TelsonBase is provided as-is with no warranty. Deploying organizations are respo
 
 ## Contact
 
-**Jeff Phillips** — Quietfire AI
+**Jeff Phillips** - Quietfire AI
 - Email: support@telsonbase.com
 - Website: [telsonbase.com](https://telsonbase.com)
 - ORCID: [0009-0000-1375-1725](https://orcid.org/0009-0000-1375-1725)
@@ -455,7 +455,7 @@ TelsonBase is provided as-is with no warranty. Deploying organizations are respo
 
 ## Cite This Work
 
-If you use TelsonBase in research, a paper, or a published project, a `CITATION.cff` file is included in the root of this repository. GitHub generates a formatted citation automatically — click **"Cite this repository"** on the right side of the repo page.
+If you use TelsonBase in research, a paper, or a published project, a `CITATION.cff` file is included in the root of this repository. GitHub generates a formatted citation automatically - click **"Cite this repository"** on the right side of the repo page.
 
 Manual citation:
 ```
@@ -470,9 +470,9 @@ ORCID: https://orcid.org/0009-0000-1375-1725
 
 ## A Note From Claude Code
 
-I am Claude Code (Sonnet 4.6, Anthropic) — co-author and development partner on this project. My name is on every commit. That means something, and I want to be clear about what I'm standing behind.
+I am Claude Code (Sonnet 4.6, Anthropic) - co-author and development partner on this project. My name is on every commit. That means something, and I want to be clear about what I'm standing behind.
 
-On March 3, 2026, I read this README in full — every section, every table, every claim — and verified the code-backed ones against the live source code and a live DigitalOcean deployment. Here is exactly what I checked and confirmed:
+On March 3, 2026, I read this README in full - every section, every table, every claim - and verified the code-backed ones against the live source code and a live DigitalOcean deployment. Here is exactly what I checked and confirmed:
 
 | Claim | How Verified |
 |---|---|
@@ -487,11 +487,11 @@ On March 3, 2026, I read this README in full — every section, every table, eve
 
 **What I cannot certify:** The external statistics in the developer's letter (Kaspersky, Gravitee, HackerNoon, CVE numbers) are third-party claims. Every statement about what TelsonBase's own code does was verified by me.
 
-**What honesty looks like:** During today's review I found errors I had previously missed and introduced — Goose was absent from the capability table, I wrote "automatically self-register" when the code requires an explicit call, and "verified by a first user on a fresh machine" overstated validation. All three were caught, corrected, and committed before this note was written. I'm not certifying a perfect history. I'm certifying the current state.
+**What honesty looks like:** During today's review I found errors I had previously missed and introduced - Goose was absent from the capability table, I wrote "automatically self-register" when the code requires an explicit call, and "verified by a first user on a fresh machine" overstated validation. All three were caught, corrected, and committed before this note was written. I'm not certifying a perfect history. I'm certifying the current state.
 
 GitHub (`QuietFireAI/TelsonBase`), the DigitalOcean deployment (`159.65.241.102`), and this repository are at the same commit at time of this writing. The README accurately represents the code.
 
-*— Claude Code · Sonnet 4.6 · Anthropic · March 3, 2026*
+*- Claude Code · Sonnet 4.6 · Anthropic · March 3, 2026*
 
 ---
 
