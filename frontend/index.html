@@ -593,35 +593,55 @@
         <p class="section-subtitle">Real governance decisions. Real kill switches. Real human-in-the-loop approvals. Your agents, your rules.</p>
       </div>
       <div class="promise-grid promise-grid-4 fade-in">
-        <div class="glass-card" style="text-align:center;">
-          <div style="border-radius:8px; overflow:hidden; margin-bottom:1rem; background:#1a1030;">
-            <img src="../screenshots/governance-blocked.gif" alt="Governance pipeline blocking an unauthorized agent action" loading="lazy" style="width:100%; display:block;">
+
+        <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener" class="demo-card-link">
+          <div class="glass-card demo-card">
+            <div class="demo-thumb">
+              <svg class="demo-play" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.08)"/><polygon points="10,8 17,12 10,16"/></svg>
+              <span class="demo-label">governance-block</span>
+            </div>
+            <h3>Governance Block</h3>
+            <p>An agent tries to call a blocked tool. TelsonBase intercepts at step 4 of the governance pipeline and rejects the action before it executes.</p>
           </div>
-          <h3>Governance Block</h3>
-          <p>An agent tries to call a blocked tool. TelsonBase intercepts at step 4 of the governance pipeline and rejects the action before it executes.</p>
-        </div>
-        <div class="glass-card" style="text-align:center;">
-          <div style="border-radius:8px; overflow:hidden; margin-bottom:1rem; background:#1a1030;">
-            <img src="../screenshots/kill-switch.gif" alt="Kill switch suspending an agent instantly" loading="lazy" style="width:100%; display:block;">
+        </a>
+
+        <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener" class="demo-card-link">
+          <div class="glass-card demo-card">
+            <div class="demo-thumb">
+              <svg class="demo-play" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.08)"/><polygon points="10,8 17,12 10,16"/></svg>
+              <span class="demo-label">kill-switch</span>
+            </div>
+            <h3>Kill Switch</h3>
+            <p>One API call suspends any agent instantly. All subsequent actions are rejected at the governance gate - no re-entry until a human administrator reinstates.</p>
           </div>
-          <h3>Kill Switch</h3>
-          <p>One API call suspends any agent instantly. All subsequent actions are rejected at the governance gate - no re-entry until a human administrator reinstates.</p>
-        </div>
-        <div class="glass-card" style="text-align:center;">
-          <div style="border-radius:8px; overflow:hidden; margin-bottom:1rem; background:#1a1030;">
-            <img src="../screenshots/hitl-reject.gif" alt="Human-in-the-loop approval workflow - rejection" loading="lazy" style="width:100%; display:block;">
+        </a>
+
+        <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener" class="demo-card-link">
+          <div class="glass-card demo-card">
+            <div class="demo-thumb">
+              <svg class="demo-play" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.08)"/><polygon points="10,8 17,12 10,16"/></svg>
+              <span class="demo-label">hitl-reject</span>
+            </div>
+            <h3>HITL - Reject</h3>
+            <p>A high-risk action triggers the human-in-the-loop gate. The reviewer rejects it. The agent receives a denial and cannot proceed.</p>
           </div>
-          <h3>HITL - Reject</h3>
-          <p>A high-risk action triggers the human-in-the-loop gate. The reviewer rejects it. The agent receives a denial and cannot proceed.</p>
-        </div>
-        <div class="glass-card" style="text-align:center;">
-          <div style="border-radius:8px; overflow:hidden; margin-bottom:1rem; background:#1a1030;">
-            <img src="../screenshots/hitl-approval.gif" alt="Human-in-the-loop approval workflow - approval" loading="lazy" style="width:100%; display:block;">
+        </a>
+
+        <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener" class="demo-card-link">
+          <div class="glass-card demo-card">
+            <div class="demo-thumb">
+              <svg class="demo-play" viewBox="0 0 24 24" fill="currentColor" width="40" height="40"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,0.08)"/><polygon points="10,8 17,12 10,16"/></svg>
+              <span class="demo-label">hitl-approve</span>
+            </div>
+            <h3>HITL - Approve</h3>
+            <p>A gated action awaits human review. The reviewer approves it. The agent proceeds with the confirmed action logged to the audit trail.</p>
           </div>
-          <h3>HITL - Approve</h3>
-          <p>A gated action awaits human review. The reviewer approves it. The agent proceeds with the confirmed action logged to the audit trail.</p>
-        </div>
+        </a>
+
       </div>
+      <p class="section-cta-text fade-in" style="text-align:center; margin-top:1.5rem; color:var(--text-muted); font-size:0.9rem;">
+        Full demo recordings on YouTube - links coming soon. Source and governance pipeline at <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener" style="color:var(--accent);">github.com/QuietFireAI/TelsonBase</a>.
+      </p>
     </div>
   </section>
 
