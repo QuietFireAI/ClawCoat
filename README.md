@@ -87,7 +87,7 @@ March 6, 2026
 
 TelsonBase is a **self-hosted, governance-first security platform** for autonomous AI agents. It acts as a governed MCP proxy: agents connect to TelsonBase, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. TelsonBase wraps it.
 
-**One sentence:** TelsonBase is the security layer that should have existed before anyone gave an AI agent access to a file system.
+**One sentence:** Nobody asked what happens to your data when an AI agent has no one watching it. TelsonBase is the answer.
 
 ---
 
