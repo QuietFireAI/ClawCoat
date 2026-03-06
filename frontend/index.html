@@ -559,10 +559,10 @@
                     style={onClick ? {cursor:'pointer'} : {}}
                     onMouseEnter={onClick ? e => e.currentTarget.style.borderColor='rgba(34,211,238,0.35)' : undefined}
                     onMouseLeave={onClick ? e => e.currentTarget.style.borderColor='' : undefined}>
-                    <div className="flex items-start justify-between">
-                        <div>
+                    <div className="flex items-start justify-between gap-2">
+                        <div className="min-w-0 flex-1">
                             <p className="text-sm mb-1" style={{color:'var(--text-secondary)'}}>{title}</p>
-                            <p className={`text-3xl font-bold ${color||'text-white'}`}>{value}</p>
+                            <p className={`text-3xl font-bold truncate ${color||'text-white'}`} title={typeof value==='string'?value:undefined}>{value}</p>
                             {subtitle && <p className="text-xs mt-1" style={{color:'var(--text-muted)'}}>{subtitle}</p>}
                         </div>
                         <div className="w-11 h-11 rounded-lg flex items-center justify-center" style={{background:'var(--bg-elevated)'}}>
@@ -2230,16 +2230,16 @@
                             const score = (c.manners_score||1)*100;
                             return (<div key={c.instance_id} className="card p-5 fade-in cursor-pointer transition-all hover:border-orange-400/30" onClick={()=>setSelectedClaw(c)} title="Click for details and governance actions">
                                 <div className="flex items-center justify-between mb-3">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{background:'rgba(251,146,60,0.1)'}}><Icon name="shield" size={20} className="text-orange-400"/></div>
-                                        <div>
-                                            <h3 className="text-white font-semibold text-sm">{c.name||'Unnamed Claw'}</h3>
-                                            <p className="text-xs mono" style={{color:'var(--text-muted)'}}>{c.instance_id}</p>
+                                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                                        <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{background:'rgba(251,146,60,0.1)'}}><Icon name="shield" size={20} className="text-orange-400"/></div>
+                                        <div className="min-w-0">
+                                            <h3 className="text-white font-semibold text-sm truncate">{c.name||'Unnamed Claw'}</h3>
+                                            <p className="text-xs mono truncate" style={{color:'var(--text-muted)'}}>{c.instance_id}</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-2">
-                                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${trustColors[tl]}`} style={{background:trustBg[tl],border:`1px solid ${trustBorder[tl]}`}}>{tl}</span>
-                                        {c.suspended ? <span className="text-xs font-medium px-2 py-0.5 rounded-full text-red-400" style={{background:'rgba(248,113,113,0.08)',border:'1px solid rgba(248,113,113,0.2)'}}>SUSPENDED</span> : <div className="w-2.5 h-2.5 rounded-full bg-green-400 pulse-ring" title="Active"/>}
+                                    <div className="flex items-center gap-1.5 flex-shrink-0 flex-wrap justify-end ml-2">
+                                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full whitespace-nowrap ${trustColors[tl]}`} style={{background:trustBg[tl],border:`1px solid ${trustBorder[tl]}`}}>{tl}</span>
+                                        {c.suspended ? <span className="text-xs font-medium px-2 py-0.5 rounded-full text-red-400 whitespace-nowrap" style={{background:'rgba(248,113,113,0.08)',border:'1px solid rgba(248,113,113,0.2)'}}>SUSP.</span> : <div className="w-2.5 h-2.5 rounded-full bg-green-400 pulse-ring flex-shrink-0" title="Active"/>}
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-4 gap-2 text-xs text-center mb-3">
