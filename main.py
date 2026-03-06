@@ -210,13 +210,13 @@ async def lifespan(app: FastAPI):
     else:
         logger.warning("REM: MQTT bus unavailable — agent-to-agent messaging disabled_Excuse_Me")
     
-    # REM: v7.3.0CC — Initialize Identiclaw MCP-I identity engine if enabled
+    # REM: v7.3.0CC — Initialize W3C DID identity engine if enabled
     if settings.identiclaw_enabled:
         from core.identiclaw import identiclaw_manager
         identiclaw_manager.startup_check()
-        logger.info("REM: Identiclaw MCP-I identity engine enabled_Thank_You")
+        logger.info("REM: W3C DID identity engine enabled_Thank_You")
     else:
-        logger.info("REM: Identiclaw MCP-I disabled (set IDENTICLAW_ENABLED=true to enable)")
+        logger.info("REM: W3C DID identity disabled (set IDENTICLAW_ENABLED=true to enable)")
 
     # REM: v7.4.0CC — Initialize OpenClaw governance engine if enabled
     if settings.openclaw_enabled:
@@ -252,7 +252,7 @@ _standard_responses = {
     422: {"description": "Validation error. Check request body, query parameters, or path parameters."},
     429: {"description": "Rate limit exceeded. Retry after the indicated delay.", "content": {"application/json": {"example": {"error": "Rate limit exceeded", "qms_status": "Thank_You_But_No", "retry_after": 1, "limit": "300 requests per minute"}}}},
     500: {"description": "Internal server error. Check server logs."},
-    503: {"description": "Service unavailable. A required dependency (Ollama, Identiclaw, Celery) is not enabled or reachable."},
+    503: {"description": "Service unavailable. A required dependency (Ollama, DID identity, Celery) is not enabled or reachable."},
 }
 
 app = FastAPI(
@@ -415,7 +415,7 @@ app.include_router(compliance_router)
 app.include_router(tenancy_router)
 app.include_router(tenant_rate_limit_router)
 
-# REM: v7.3.0CC — Identiclaw MCP-I identity management routes
+# REM: v7.3.0CC — W3C DID identity management routes
 from api.identiclaw_routes import router as identiclaw_router
 app.include_router(identiclaw_router)
 

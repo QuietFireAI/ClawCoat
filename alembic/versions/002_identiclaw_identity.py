@@ -1,15 +1,15 @@
-"""Add agent_identities table for Identiclaw MCP-I integration
+"""Add agent_identities table for W3C DID identity integration
 
 Revision ID: 002_identiclaw_identity
 Revises: 001_initial_schema
 Create Date: 2026-02-17
 
 REM: =======================================================================================
-REM: IDENTICLAW IDENTITY SCHEMA MIGRATION
+REM: W3C DID IDENTITY SCHEMA MIGRATION
 REM: =======================================================================================
 REM: Architect: ::Quietfire AI Project::
 REM: Date: February 23, 2026
-REM: v7.3.0CC: Adds durable storage for DID-based agent identities from Identiclaw.
+REM: v7.3.0CC: Adds durable storage for W3C DID-based agent identities.
 REM: Redis is the hot cache for auth-path performance; PostgreSQL provides durable
 REM: storage for compliance queries and legal discovery.
 REM:

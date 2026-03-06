@@ -1,22 +1,22 @@
 # TelsonBase/core/identiclaw.py
 # REM: =======================================================================================
-# REM: IDENTICLAW MCP-I IDENTITY ENGINE
+# REM: W3C DID IDENTITY ENGINE
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
 #
-# REM: v7.3.0CC: Identiclaw integration — DID-based agent identity verification
+# REM: v7.3.0CC: W3C DID-based agent identity verification
 #
 # REM: Mission Statement: Give AI agents cryptographic identities they can prove,
-# REM: while keeping all operations governed on TelsonBase. Identiclaw issues the
-# REM: driver's license (DID + Verifiable Credentials). TelsonBase is the racetrack
-# REM: with guardrails, pit stops, and race officials.
+# REM: while keeping all operations governed on TelsonBase. The identity provider
+# REM: issues the driver's license (DID + Verifiable Credentials). TelsonBase is
+# REM: the racetrack with guardrails, pit stops, and race officials.
 #
 # REM: Architecture (Option 2 — Hybrid):
-# REM:   - Identity registration/issuance: Cloudflare (Identiclaw's infrastructure)
+# REM:   - Identity registration/issuance: W3C DID-compatible identity provider
 # REM:   - Identity verification: LOCAL (Ed25519 crypto, no external calls)
 # REM:   - Agent operations: LOCAL (TelsonBase approval gates, egress, audit)
-# REM:   - Kill switch: LOCAL (overrides Identiclaw status immediately)
+# REM:   - Kill switch: LOCAL (overrides identity provider status immediately)
 #
 # REM: Auth flow per-request (all local, no network):
 # REM:   Parse X-DID-Auth header → Check nonce not replayed (Redis, 5min) →
@@ -52,7 +52,7 @@ class DIDDocument(BaseModel):
     """
     REM: Parsed W3C DID Document.
     REM: Contains the agent's public key for local signature verification.
-    REM: Resolved from Identiclaw registry on first contact, cached locally.
+    REM: Resolved from identity provider registry on first contact, cached locally.
     """
     did: str                                    # e.g., "did:key:z6MkhaXgBZDvotDkL..."
     method: str                                 # "key" or "web"
@@ -74,7 +74,7 @@ class DIDDocument(BaseModel):
 class VerifiableCredential(BaseModel):
     """
     REM: Parsed W3C Verifiable Credential.
-    REM: Contains scoped permissions issued by Identiclaw to an agent.
+    REM: Contains scoped permissions issued by a W3C DID identity provider to an agent.
     """
     vc_id: str                                  # Unique credential identifier
     issuer_did: str                             # Who issued this credential
@@ -119,7 +119,7 @@ class AgentIdentityRecord(BaseModel):
 # REM: =======================================================================================
 # REM: SCOPE-TO-PERMISSION MAPPING
 # REM: =======================================================================================
-# REM: Maps Identiclaw VC scopes to TelsonBase permission strings.
+# REM: Maps W3C VC scopes to TelsonBase permission strings.
 # REM: CRITICAL: Unknown scopes grant ZERO permissions (fail-closed).
 # REM: =======================================================================================
 
@@ -254,12 +254,12 @@ def parse_did(did: str) -> Optional[Dict[str, Any]]:
 
 
 # REM: =======================================================================================
-# REM: IDENTICLAW MANAGER (SINGLETON)
+# REM: DID IDENTITY MANAGER (SINGLETON)
 # REM: =======================================================================================
 
 class IdenticlawManager:
     """
-    REM: v7.3.0CC — Singleton manager for all Identiclaw identity operations.
+    REM: v7.3.0CC — Singleton manager for W3C DID identity operations.
     REM: Follows the pattern of: APIKeyRegistry (auth.py), ApprovalGate (approval.py)
     REM:
     REM: Responsibilities:
@@ -268,7 +268,7 @@ class IdenticlawManager:
     REM:   3. W3C Verifiable Credential parsing and validation
     REM:   4. Credential-to-permission mapping
     REM:   5. Agent identity cache (Redis-backed)
-    REM:   6. Kill switch (local revocation overrides Identiclaw status)
+    REM:   6. Kill switch (local revocation overrides identity provider status)
     """
 
     def __init__(self):
@@ -287,7 +287,7 @@ class IdenticlawManager:
         self._load_from_persistence()
         self._initialized = True
         logger.info(
-            f"REM: Identiclaw MCP-I engine initialized — "
+            f"REM: W3C DID identity engine initialized — "
             f"{len(self._identity_cache)} agents cached, "
             f"{len(self._revoked_dids)} revoked_Thank_You"
         )
@@ -352,7 +352,7 @@ class IdenticlawManager:
                 f"{len(self._did_cache)} DID docs, {len(self._revoked_dids)} revocations_Thank_You"
             )
         except Exception as e:
-            logger.warning(f"REM: Failed to load Identiclaw state from Redis: {e}_Excuse_Me")
+            logger.warning(f"REM: Failed to load DID identity state from Redis: {e}_Excuse_Me")
 
     # REM: ==========================================
     # REM: DID DOCUMENT RESOLUTION
@@ -594,7 +594,7 @@ class IdenticlawManager:
 
     def map_scopes_to_permissions(self, scopes: List[str]) -> List[str]:
         """
-        REM: Map Identiclaw VC scopes to TelsonBase permission strings.
+        REM: Map W3C VC scopes to TelsonBase permission strings.
         REM: CRITICAL: Unknown scopes grant ZERO permissions (fail-closed).
         """
         permissions = set()
@@ -620,7 +620,7 @@ class IdenticlawManager:
         registered_by: str = "system"
     ) -> Optional[AgentIdentityRecord]:
         """
-        REM: Register an agent identity from Identiclaw.
+        REM: Register a DID agent identity.
         REM: Resolves the DID, validates credentials, maps permissions.
         REM: The agent starts at QUARANTINE trust level.
         """
@@ -852,7 +852,7 @@ class IdenticlawManager:
 
     def revoke_agent(self, did: str, revoked_by: str, reason: str = "") -> bool:
         """
-        REM: Immediately revoke a DID agent. Overrides Identiclaw status.
+        REM: Immediately revoke a DID agent. Overrides identity provider status.
         REM: This is the TelsonBase kill switch.
         """
         self._revoked_dids.add(did)

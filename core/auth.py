@@ -51,7 +51,7 @@ def _should_log_apikey_auth(actor: str) -> bool:
 # REM: Security schemes for FastAPI's automatic docs
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 bearer_scheme = HTTPBearer(auto_error=False)
-# REM: v7.3.0CC — Identiclaw DID authentication header
+# REM: v7.3.0CC — W3C DID authentication header
 # REM: Format: <did>|<base64-signature>|<nonce>|<timestamp>
 did_auth_header = APIKeyHeader(name="X-DID-Auth", auto_error=False)
 
@@ -358,7 +358,7 @@ async def authenticate_request(
     """
     REM: FastAPI dependency that authenticates incoming requests.
     REM: Supports API key (X-API-Key), Bearer token, and DID (X-DID-Auth) authentication.
-    REM: v7.3.0CC: Added DID authentication via Identiclaw MCP-I.
+    REM: v7.3.0CC: Added DID authentication via W3C DID standard.
 
     Usage in endpoints:
         @app.get("/protected")
@@ -408,7 +408,7 @@ async def authenticate_request(
                 headers={"WWW-Authenticate": "Bearer"}
             )
 
-    # REM: v7.3.0CC — Try DID authentication (Identiclaw MCP-I)
+    # REM: v7.3.0CC — Try DID authentication (W3C DID)
     # REM: Only active when IDENTICLAW_ENABLED=true. Silently skipped otherwise.
     if did_auth:
         if settings.identiclaw_enabled:
@@ -417,7 +417,7 @@ async def authenticate_request(
                 from fastapi import Request
 
                 # REM: Extract request path and method from the scope
-                # REM: The IdenticlawManager handles all verification locally
+                # REM: DID manager handles all verification locally (no external calls)
                 did_result = identiclaw_manager.authenticate_from_header(
                     did_auth, "/", "GET"  # Path/method populated by middleware if needed
                 )
@@ -448,7 +448,7 @@ async def authenticate_request(
                     headers={"WWW-Authenticate": "DID"}
                 )
         else:
-            # REM: Identiclaw disabled — ignore the DID header silently
+            # REM: W3C DID auth disabled — ignore the DID header silently
             logger.debug("REM: X-DID-Auth header present but IDENTICLAW_ENABLED=false, ignoring")
 
     # REM: No credentials provided

@@ -321,8 +321,8 @@
 # REM:         - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
 # REM:         - Unit tests: 621 passed, 2 skipped, 1 cosmetic failure
 # REM:         - Website updated with verified security metrics
-# REM: 7.3.0CC - Identiclaw MCP-I Integration (Claude Code):
-# REM:         - DID-based agent identity via Identiclaw (Vouched.id)
+# REM: 7.3.0CC - W3C DID Identity Integration (Claude Code):
+# REM:         - W3C DID-based agent identity verification
 # REM:         - core/identiclaw.py: DID document resolution, Ed25519 signature verification
 # REM:           (local crypto, no external calls), W3C Verifiable Credential parsing,
 # REM:           scope-to-permission mapping (fail-closed), Redis-backed caching, kill switch
@@ -336,7 +336,7 @@
 # REM:         - alembic migration 002: agent_identities table
 # REM:         - MCP-I Protocol: https://modelcontextprotocol-identity.io/
 # REM:         - Hybrid architecture: identity issuance on Cloudflare, operations on-base
-# REM:         - Kill switch overrides Identiclaw status (local, immediate, Redis-persisted)
+# REM:         - Kill switch overrides identity provider status (local, immediate, Redis-persisted)
 # REM:         - MANNERS.md + Profession.md agent constraint system links
 # REM:         - Zero new Python dependencies (cryptography Ed25519 already available)
 # REM: 7.4.0CC - "Control Your Claw" — OpenClaw Governance Integration (Claude Code):

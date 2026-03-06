@@ -88,7 +88,7 @@ class ComplianceRecordModel(Base):
 
 class AgentIdentityModel(Base):
     """
-    REM: v7.3.0CC — Durable storage for DID-based agent identities from Identiclaw.
+    REM: v7.3.0CC — Durable storage for W3C DID-based agent identities.
     REM: Redis is the hot cache; PostgreSQL is the durable store for compliance
     REM: queries and legal discovery.
     """

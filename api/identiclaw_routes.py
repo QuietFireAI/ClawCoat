@@ -1,11 +1,11 @@
 # TelsonBase/api/identiclaw_routes.py
 # REM: =======================================================================================
-# REM: IDENTICLAW MCP-I IDENTITY MANAGEMENT API
+# REM: W3C DID IDENTITY MANAGEMENT API
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
 #
-# REM: v7.3.0CC: REST endpoints for DID-based agent identity management.
+# REM: v7.3.0CC: REST endpoints for W3C DID-based agent identity management.
 #
 # REM: Mission Statement: Provide the administrative interface for registering,
 # REM: verifying, revoking, and managing DID-authenticated agents on TelsonBase.
@@ -96,7 +96,7 @@ async def register_did_agent(
             status_code=503,
             detail=format_qms(
                 "Identity_Register", QMSStatus.THANK_YOU_BUT_NO,
-                error="Identiclaw integration is disabled (set IDENTICLAW_ENABLED=true)"
+                error="W3C DID identity integration is disabled (set IDENTICLAW_ENABLED=true)"
             )
         )
 
@@ -152,7 +152,7 @@ async def list_did_agents(
     """REM: List all registered DID agents."""
     settings = get_settings()
     if not settings.identiclaw_enabled:
-        raise HTTPException(status_code=503, detail="Identiclaw integration is disabled")
+        raise HTTPException(status_code=503, detail="W3C DID identity integration is disabled")
 
     from core.identiclaw import identiclaw_manager
 
@@ -183,7 +183,7 @@ async def get_did_agent(
     """REM: Get a specific DID agent's identity record."""
     settings = get_settings()
     if not settings.identiclaw_enabled:
-        raise HTTPException(status_code=503, detail="Identiclaw integration is disabled")
+        raise HTTPException(status_code=503, detail="W3C DID identity integration is disabled")
 
     from core.identiclaw import identiclaw_manager
 
@@ -221,11 +221,11 @@ async def revoke_did_agent(
 ):
     """
     REM: KILL SWITCH — Immediately revoke a DID agent.
-    REM: Overrides Identiclaw status. All subsequent auth attempts fail instantly.
+    REM: Overrides identity provider status. All subsequent auth attempts fail instantly.
     """
     settings = get_settings()
     if not settings.identiclaw_enabled:
-        raise HTTPException(status_code=503, detail="Identiclaw integration is disabled")
+        raise HTTPException(status_code=503, detail="W3C DID identity integration is disabled")
 
     from core.identiclaw import identiclaw_manager
 
@@ -263,7 +263,7 @@ async def reinstate_did_agent(
     """REM: Reinstate a previously revoked DID agent after human review."""
     settings = get_settings()
     if not settings.identiclaw_enabled:
-        raise HTTPException(status_code=503, detail="Identiclaw integration is disabled")
+        raise HTTPException(status_code=503, detail="W3C DID identity integration is disabled")
 
     from core.identiclaw import identiclaw_manager
 
@@ -296,10 +296,10 @@ async def refresh_did_credentials(
     request: RefreshCredentialsRequest,
     auth: AuthResult = Depends(require_permission("admin"))
 ):
-    """REM: Force refresh of DID document and credentials from Identiclaw."""
+    """REM: Force refresh of DID document and credentials from identity provider."""
     settings = get_settings()
     if not settings.identiclaw_enabled:
-        raise HTTPException(status_code=503, detail="Identiclaw integration is disabled")
+        raise HTTPException(status_code=503, detail="W3C DID identity integration is disabled")
 
     from core.identiclaw import identiclaw_manager
 

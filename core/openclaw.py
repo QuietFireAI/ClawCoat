@@ -277,7 +277,7 @@ class TrustChangeRecord(BaseModel):
 class OpenClawManager:
     """
     REM: v7.4.0CC — Singleton manager for OpenClaw governance.
-    REM: Follows the IdenticlawManager pattern (core/identiclaw.py).
+    REM: Follows the singleton pattern from core/identiclaw.py.
     REM:
     REM: Responsibilities:
     REM:   1. Instance registration and lifecycle management

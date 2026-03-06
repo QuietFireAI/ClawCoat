@@ -160,7 +160,7 @@ class AuditEventType(str, Enum):
     TOOL_REQUEST = "tool.request"             # Agent requested a new tool
     TOOL_HITL_GATE = "tool.hitl_gate"         # HITL approval required for tool operation
 
-    # Identity events (v7.3.0CC — Identiclaw MCP-I integration)
+    # Identity events (v7.3.0CC — W3C DID identity integration)
     IDENTITY_REGISTERED = "identity.registered"               # New DID agent registered
     IDENTITY_VERIFIED = "identity.verified"                   # DID signature verified
     IDENTITY_VERIFICATION_FAILED = "identity.verification_failed"  # Verification failure

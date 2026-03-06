@@ -244,18 +244,18 @@ class Settings(BaseSettings):
     rate_limit_per_minute: int = Field(default=300, env="RATE_LIMIT_PER_MINUTE")
     rate_limit_burst: int = Field(default=60, env="RATE_LIMIT_BURST")
 
-    # --- Identiclaw / MCP-I Identity Integration (v7.3.0CC) ---
-    # REM: DID-based agent identity via Identiclaw. Master switch: IDENTICLAW_ENABLED.
+    # --- W3C DID Identity Integration (v7.3.0CC) ---
+    # REM: DID-based agent identity via W3C DID standard. Master switch: IDENTICLAW_ENABLED.
     # REM: When disabled (default), DID auth headers are silently ignored.
     identiclaw_enabled: bool = Field(default=False, env="IDENTICLAW_ENABLED")
     identiclaw_registry_url: str = Field(
-        default="https://identity.identiclaw.com",
+        default="https://agent-identity.local",
         env="IDENTICLAW_REGISTRY_URL"
     )
     identiclaw_did_cache_ttl_hours: int = Field(default=24, env="IDENTICLAW_DID_CACHE_TTL_HOURS")
     identiclaw_vc_cache_ttl_hours: int = Field(default=12, env="IDENTICLAW_VC_CACHE_TTL_HOURS")
     identiclaw_known_issuers: List[str] = Field(
-        default=["did:web:identiclaw.com"],
+        default=["did:web:agent-identity.local"],
         env="IDENTICLAW_KNOWN_ISSUERS"
     )
 

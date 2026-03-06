@@ -1,6 +1,6 @@
 # tests/test_identiclaw.py
 # REM: =======================================================================================
-# REM: IDENTICLAW MCP-I IDENTITY ENGINE TESTS
+# REM: W3C DID IDENTITY ENGINE TESTS
 # REM: =======================================================================================
 # REM: v7.3.0CC: Tests for DID parsing, Ed25519 verification, VC validation,
 # REM: scope-to-permission mapping, auth flow, kill switch, and approval gates.
@@ -70,7 +70,7 @@ def sample_vc():
     return {
         "id": "vc-test-001",
         "type": ["VerifiableCredential", "AgentCapability"],
-        "issuer": "did:web:identiclaw.com",
+        "issuer": "did:web:agent-identity.local",
         "issuanceDate": datetime.now(timezone.utc).isoformat(),
         "expirationDate": (datetime.now(timezone.utc) + timedelta(days=30)).isoformat(),
         "credentialSubject": {
@@ -100,7 +100,7 @@ class TestDIDParsing:
         assert result["public_key_bytes"] == expected_bytes
 
     def test_parse_did_web_valid(self):
-        result = parse_did("did:web:identiclaw.com")
+        result = parse_did("did:web:agent-identity.local")
         assert result is not None
         assert result["method"] == "web"
         assert result["public_key_bytes"] is None  # Requires HTTP resolution
@@ -180,7 +180,7 @@ class TestVCValidation:
     @patch("core.identiclaw.get_settings")
     def test_valid_vc(self, mock_settings, manager, sample_vc):
         settings = MagicMock()
-        settings.identiclaw_known_issuers = ["did:web:identiclaw.com"]
+        settings.identiclaw_known_issuers = ["did:web:agent-identity.local"]
         settings.identiclaw_vc_cache_ttl_hours = 12
         mock_settings.return_value = settings
         manager._get_redis = MagicMock(return_value=None)
@@ -188,7 +188,7 @@ class TestVCValidation:
         result = manager.validate_credential(sample_vc)
         assert result is not None
         assert result.vc_id == "vc-test-001"
-        assert result.issuer_did == "did:web:identiclaw.com"
+        assert result.issuer_did == "did:web:agent-identity.local"
         assert "agent:read" in result.scopes
         assert "agent:write" in result.scopes
         assert "mcp:tool:invoke" in result.scopes
@@ -196,7 +196,7 @@ class TestVCValidation:
     @patch("core.identiclaw.get_settings")
     def test_expired_vc(self, mock_settings, manager, sample_vc):
         settings = MagicMock()
-        settings.identiclaw_known_issuers = ["did:web:identiclaw.com"]
+        settings.identiclaw_known_issuers = ["did:web:agent-identity.local"]
         mock_settings.return_value = settings
 
         sample_vc["expirationDate"] = (datetime.now(timezone.utc) - timedelta(days=1)).isoformat()
@@ -215,7 +215,7 @@ class TestVCValidation:
     @patch("core.identiclaw.get_settings")
     def test_scope_extraction(self, mock_settings, manager, sample_vc):
         settings = MagicMock()
-        settings.identiclaw_known_issuers = ["did:web:identiclaw.com"]
+        settings.identiclaw_known_issuers = ["did:web:agent-identity.local"]
         settings.identiclaw_vc_cache_ttl_hours = 12
         mock_settings.return_value = settings
         manager._get_redis = MagicMock(return_value=None)
@@ -315,7 +315,7 @@ class TestAgentRegistration:
     @patch("core.identiclaw.get_settings")
     def test_register_did_key_agent(self, mock_settings, manager, sample_did_key, sample_vc):
         settings = MagicMock()
-        settings.identiclaw_known_issuers = ["did:web:identiclaw.com"]
+        settings.identiclaw_known_issuers = ["did:web:agent-identity.local"]
         settings.identiclaw_did_cache_ttl_hours = 24
         settings.identiclaw_vc_cache_ttl_hours = 12
         mock_settings.return_value = settings
@@ -583,7 +583,7 @@ class TestAuditEventTypes:
 # REM: =======================================================================================
 
 class TestConfigSettings:
-    """REM: Test Identiclaw settings are in config."""
+    """REM: Test W3C DID identity settings are in config."""
 
     def test_identiclaw_settings_exist(self):
         from core.config import Settings

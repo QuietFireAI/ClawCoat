@@ -168,7 +168,7 @@ DEFAULT_APPROVAL_RULES = [
         timeout_seconds=3600,
         auto_reject_on_timeout=False  # Don't auto-reject financial stuff
     ),
-    # REM: v7.3.0CC — Identiclaw DID agent identity rules
+    # REM: v7.3.0CC — W3C DID agent identity rules
     ApprovalRule(
         rule_id="rule-did-first-registration",
         name="DID Agent First Registration",
@@ -404,7 +404,7 @@ class ApprovalGate:
             if float(value) > threshold:
                 return True
 
-        # REM: v7.3.0CC — Identiclaw DID conditions
+        # REM: v7.3.0CC — W3C DID conditions
         elif condition == "first_did_registration":
             did = payload.get("did")
             if did and did not in self._known_dids:
