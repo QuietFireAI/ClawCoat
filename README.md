@@ -93,14 +93,35 @@ TelsonBase is a **self-hosted, governance-first security platform** for autonomo
 
 ## See It Working
 
-**Governance in action — QUARANTINE agent attempts an external API call, blocked in under 100ms, decision written to the audit chain**
+Everything below is a live local instance. No mocks. No scripted responses. Real governance pipeline, real audit chain, real decisions.
+
+---
+
+**GIF 1 — Policy Block**
+QUARANTINE agent attempts an external financial API call. TelsonBase blocks it before execution. Decision written to the tamper-evident audit chain. Agent never touched the endpoint.
+
 ![Governance Blocked](screenshots/governance-blocked.gif)
 
-**Kill switch — one API call suspends an agent, all subsequent actions rejected before trust level is even checked**
+---
+
+**GIF 2 — Kill Switch**
+QUARANTINE agent fires an action — governance gates it, queues a human approval. Operator identifies suspicious behavior and hits the kill switch. Agent suspended. Subsequent action attempt hard-blocked. The gate, the suspension, and the block are all separate entries in the immutable audit chain.
+
 ![Kill Switch](screenshots/kill-switch.gif)
 
-**Human-in-the-loop — external action from PROBATION agent held pending approval, human approves from dashboard, decision logged**
+---
+
+**GIF 3 — Human-in-the-Loop: Approve**
+PROBATION agent attempts an external http_post. TelsonBase holds it — cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `TASK.COMPLETED` written to the audit chain. The agent's action goes through. Trust, verified.
+
 ![HITL Approval](screenshots/hitl-approval.gif)
+
+---
+
+**GIF 4 — Human-in-the-Loop: Reject**
+The other side of the gate. Pending approval from a suspended agent — full payload, URGENT flag, operator identity visible. Human reviews, rejects. Approval queue clears to zero. `TASK.FAILED` written to the audit chain, attributed to the human operator, timestamped, hash-chained to every event before it. Not just agent actions. Human decisions too.
+
+![HITL Reject](screenshots/hitl-reject.gif)
 
 ---
 
