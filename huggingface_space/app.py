@@ -248,7 +248,6 @@ with gr.Blocks(
     theme=gr.themes.Base(
         primary_hue=gr.themes.colors.violet,
         neutral_hue=gr.themes.colors.slate,
-        font=gr.themes.GoogleFont("Inter"),
     ),
     css="""
         .output-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
