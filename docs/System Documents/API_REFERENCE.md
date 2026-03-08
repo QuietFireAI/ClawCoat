@@ -1,13 +1,6 @@
-# TelsonBase API Reference
+# TelsonBase - API Reference
 
-# REM: =======================================================================================
-# REM: API REFERENCE FOR TELSONBASE v10.0.0Bminus
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: AI Model Collaborators: ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
-# REM: Date: February 23, 2026
-# REM: Updated: 2026-02-04
-# REM: =======================================================================================
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 # API Reference
 

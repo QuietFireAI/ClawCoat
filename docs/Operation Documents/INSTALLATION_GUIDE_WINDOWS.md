@@ -1,6 +1,6 @@
 # TelsonBase Installation Guide for Windows
 
-**Version:** 7.4.0CC
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 **Target Audience:** Windows users, including those new to Docker
 
 ---

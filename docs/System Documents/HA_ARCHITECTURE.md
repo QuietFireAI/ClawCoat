@@ -1,8 +1,7 @@
 # TelsonBase High Availability Architecture
 
-**Version:** 1.0
-**Date:** February 23, 2026
-**Status:** Planning Document (Roadmap Item 17)
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
+**Status:** Planning Document
 **Applies to:** TelsonBase v6.3.0CC
 
 ---

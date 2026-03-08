@@ -266,4 +266,4 @@ See `CODE_OF_CONDUCT.md`. Summary: Be respectful, be constructive, focus on the 
 
 ---
 
-*"The industry gave AI agents the keys to everything and forgot the locks. We built the locks."*
+*"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*

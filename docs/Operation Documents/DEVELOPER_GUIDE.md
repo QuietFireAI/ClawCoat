@@ -1,6 +1,6 @@
 # TelsonBase Developer Guide
 
-**Version:** v10.0.0Bminus | **Updated:** March 8, 2026
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 # Developer Guide: Building Secure Agents
 

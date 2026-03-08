@@ -55,6 +55,8 @@ The form does NOT generate a new key - it registers a key you already have.
 
 Once registered via the Agents tab, the instance immediately appears in the OpenClaw tab.
 
+> **Also:** A "Register Agent" shortcut button is available in the OpenClaw tab header so you can register without navigating away. It opens the same modal and calls the same endpoint.
+
 ---
 
 ## Click Path for Demo
@@ -78,4 +80,4 @@ Both call the same backend endpoint. Both produce the same audit trail.
 
 ---
 
-*Reference Sheet | TelsonBase v10.0.0Bminus | March 1, 2026 | Quietfire AI*
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

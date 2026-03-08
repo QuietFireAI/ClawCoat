@@ -1,21 +1,6 @@
-# TelsonBase/RESTORE_RECOVERY_GUIDE.md
+# TelsonBase - Restore and Recovery Guide
 
-# REM: =======================================================================================
-# REM: COMPREHENSIVE DATA RESTORATION AND RECOVERY PROTOCOL FOR THE TelsonBase
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: Date: June 21, 2025
-# REM:
-# REM: Mission Statement: This document provides detailed, step-by-step instructions for the
-# REM: restoration of the TelsonBase platform from previously created backup archives. Data
-# REM: recovery is not an ancillary feature; it is a fundamental pillar of data sovereignty.
-# REM: The ability to reliably restore one's own data is the ultimate expression of control
-# REM: and ownership. This guide aims to make that process transparent, reliable, and
-# REM: understandable.
-# REM:
-# REM: This guide focuses on restoring from the `.tar.gz` archives created by the automated
-# REM: `backup_agent` that is a core component of this operating system.
-# REM: =======================================================================================
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 ---
 

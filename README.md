@@ -63,7 +63,7 @@ Autonomous AI agents are the most significant paradigm shift in computing since 
 - The Dutch government has formally warned that AI agents pose "major cybersecurity and privacy risks"
 - The Register called it a "security dumpster fire"
 
-The industry gave AI agents the keys to everything and forgot the locks. OpenClaw hit 194,000 GitHub stars in 82 days. Nobody asked what happens to your data when an AI agent has no one watching it.
+The industry gives AI agents the keys to everything and forgot to build the locks. OpenClaw hit 194,000 GitHub stars in 82 days. Nobody asked what happens to your data when an AI agent has no one watching it.
 
 I did.
 
@@ -567,4 +567,4 @@ GitHub (`QuietFireAI/TelsonBase`), the DigitalOcean deployment (`159.65.241.102`
 
 ---
 
-*"The industry gave AI agents the keys to everything and forgot the locks. We built the locks."*
+*"The industry gives AI agents the keys to everything and forgot to build the locks. We built the locks."*
