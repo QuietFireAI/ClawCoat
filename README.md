@@ -130,14 +130,14 @@ QUARANTINE agent fires an action - governance gates it, queues a human approval.
 ---
 
 **GIF 3 - Human-in-the-Loop: Approve**
-PROBATION agent attempts an external http_post. TelsonBase holds it - cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `TASK.COMPLETED` written to the audit chain. The agent's action goes through. Trust, verified.
+PROBATION agent attempts an external http_post. TelsonBase holds it - cannot execute without human review. Operator reviews the full payload in the approval dashboard and approves. `::_Thank_You::` logged to the audit chain - the QMS™ command block for successful completion, attributed to the operator, hash-chained to every event before it. The agent's action goes through. Trust, verified.
 
 ![HITL Approval](screenshots/hitl-approval.gif)
 
 ---
 
 **GIF 4 - Human-in-the-Loop: Reject**
-The other side of the gate. Pending approval from a suspended agent - full payload, URGENT flag, operator identity visible. Human reviews, rejects. Approval queue clears to zero. `TASK.FAILED` written to the audit chain, attributed to the human operator, timestamped, hash-chained to every event before it. Not just agent actions. Human decisions too.
+The other side of the gate. Pending approval from a suspended agent - full payload, URGENT flag, operator identity visible. Human reviews, rejects. Approval queue clears to zero. `::_Thank_You_But_No::` logged to the audit chain - the QMS™ command block for refusal, attributed to the human operator, timestamped, hash-chained to every event before it. Not just agent actions. Human decisions too.
 
 ![HITL Reject](screenshots/hitl-reject.gif)
 
