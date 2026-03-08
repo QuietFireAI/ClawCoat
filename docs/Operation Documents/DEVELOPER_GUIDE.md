@@ -592,4 +592,8 @@ For questions: support@telsonbase.com
 
 ---
 
+> **On AI collaboration:** TelsonBase was built with Claude Code (Anthropic) as engineering co-author. 80+ commits carry a `Co-Authored-By: Claude Sonnet 4.6` trailer. That is an accurate record of how this was built, not a liability disclaimer. The README contains a full verification note from Claude Code covering what was checked against the live codebase before launch. If you have questions about methodology, `support@telsonbase.com` reaches the human.
+
+---
+
 *TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
