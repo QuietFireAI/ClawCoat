@@ -109,6 +109,35 @@ If you are building agents for your company and you want a governance layer you 
 
 ---
 
+## QMS™ — How Agents Talk to Each Other
+
+One piece of this that deserves its own moment: the Qualified Message Standard.
+
+Most agent communication protocols require a shared configuration layer — both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
+
+QMS™ solves that differently. The grammar is in the format itself:
+
+```
+::<agent_id>::-::@@REQ_id@@::-::Action_Name::-::##data##::-::_Thank_You::
+```
+
+Three rules cover the whole protocol:
+- `::content::` — every block starts and ends with `::`, no exceptions
+- `::block::-::block::` — blocks are linked by `-`, every chain ends with `::`
+- Leading `_` marks a connector word (`::_Thank_You::`) vs. an action word (`::Create_Backup::`)
+
+That is the entire grammar. An AI agent encountering QMS for the first time — from any framework, any vendor, any training background — can figure it out from a few examples. No schema registration. No handshake. No shared library. The format teaches itself.
+
+This matters more than it sounds. The agent ecosystem is not going to stay homogeneous. New frameworks ship constantly. New model architectures follow. Whatever governs how agents communicate needs to be legible to things that do not share your codebase. QMS is legible to anything that can recognize a pattern — which is all of them.
+
+It also translates. The `::`, `-`, and `_` conventions work regardless of what language fills the blocks. English, Spanish, technical jargon, domain-specific vocabulary — the structure holds. You could technically write valid QMS chains in Klingon. The grammar does not care. Only the structure matters.
+
+This was not a grand design decision. It is just how the problem looked when I sat down to solve it — keep it simple enough that nothing needs to be explained, and structure it so the format itself does the explaining. That turned out to be more useful than expected.
+
+QMS™ is an open standard (MIT licensed). The trademark covers the name. The protocol is free to implement, adapt, and build on.
+
+---
+
 ## See It Working
 
 Everything below is a live local instance. No mocks. No scripted responses. Real governance pipeline, real audit chain, real decisions.
