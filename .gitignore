@@ -70,7 +70,8 @@ docs/DEMO_WALKTHROUGH_step_by_step.md
 docs/Testing Documents/PRE_DROP_AUDIT.md
 docs/IDENTICLAW_OPERATIONS.md
 
-# Website variants (internal/staging)
+# Website (served separately — not part of the GitHub repo)
+website/
 website-demo/
 website-quietfire/
 
