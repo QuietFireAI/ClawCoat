@@ -1,20 +1,12 @@
 # TelsonBase -- SOC 2 Type I Report Documentation
 
-# REM: =======================================================================================
-# REM: SOC 2 TYPE I -- TRUST SERVICE CRITERIA CONTROL MAPPING
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: AI Model Collaborators: Claude Opus 4.6
-# REM: Date: February 23, 2026
-# REM: Version: 10.0.0Bminus
-# REM: Classification: Auditor-Ready Documentation
-# REM: =======================================================================================
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI · **Classification:** Auditor-Ready Documentation
 
 ---
 
 ## 1. Management Assertion Statement
 
-The management of TelsonBase asserts that the accompanying description of the TelsonBase Zero-Trust AI Agent Security Platform, version 10.0.0Bminus, fairly presents the system as designed and implemented as of March 6, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
+The management of TelsonBase asserts that the accompanying description of the TelsonBase Zero-Trust AI Agent Security Platform, version v11.0.1, fairly presents the system as designed and implemented as of March 8, 2026. The description includes the principal service commitments and system requirements, and the controls stated in the description were suitably designed to provide reasonable assurance that the principal service commitments and system requirements would be achieved based on the applicable Trust Service Criteria set forth in TSP Section 100, 2017 Trust Services Criteria for Security, Availability, Processing Integrity, Confidentiality, and Privacy (AICPA, Trust Services Criteria), if the controls operated effectively throughout the specified period, and if the complementary user entity controls and complementary subservice organization controls described herein operated effectively throughout the specified period.
 
 This assertion covers TelsonBase as an open-source, self-hosted platform. Management makes no assertion regarding any individual deployment of TelsonBase, which remains entirely under the control of the deploying organization. See `DISCLAIMER.md` for the full limitation of liability applicable to this software.
 
@@ -70,7 +62,7 @@ Self-hosted, single-node Docker Compose deployment. All services run on the cust
 
 ### 3.1 Governance
 
-TelsonBase maintains a documented production hardening roadmap (items 1--18) tracked in `CLAUDE.md`. Engineering decisions follow a defined working agreement. All code changes are subject to automated CI/CD testing via GitHub Actions (`.github/workflows/ci.yml`) with 720 tests (588 core, 96 security, 29 end-to-end, 7 contract).
+TelsonBase maintains a documented production hardening roadmap tracked via GitHub Issues. Engineering decisions follow a defined working agreement documented in `CONTRIBUTING.md`. All code changes are subject to automated CI/CD testing via GitHub Actions (`.github/workflows/ci.yml`) with 720 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 289 core).
 
 ### 3.2 Security Program
 
@@ -97,6 +89,7 @@ TelsonBase employs a threat-driven risk assessment approach:
 3. **Vulnerability management:** Automated security scanning via CI/CD (pip-audit, bandit). Known vulnerabilities are tracked in `CLAUDE.md` under Known Issues.
 4. **Control mapping:** Each identified risk is mapped to one or more implemented controls, documented in this report.
 5. **Residual risk acceptance:** Risks that cannot be fully mitigated by TelsonBase are assigned to the customer via the Shared Responsibility Model (see Section 9).
+6. **Known issues:** Tracked via GitHub Issues. Current open security items include dependency CVEs (pip-audit findings from CI/CD) and a tarfile extraction finding in `backup_agent.py`. All are triaged; none affect the design suitability of the controls in this report.
 
 ### 4.2 Risk Register (Summary)
 
@@ -118,9 +111,9 @@ The Security criteria address whether the system is protected against unauthoriz
 
 | Control ID | Control Description | TelsonBase Implementation | Evidence Location |
 |-----------|-------------------|--------------------------|------------------|
-| CC1.1 | Organization demonstrates commitment to integrity and ethical values | Documented working agreement and production hardening roadmap with defined ownership between business and engineering | `CLAUDE.md` (lines 11--16) |
+| CC1.1 | Organization demonstrates commitment to integrity and ethical values | Documented working agreement with defined ownership between business and engineering; production hardening roadmap tracked via GitHub Issues | `CONTRIBUTING.md`, GitHub Issues |
 | CC2.1 | Information communicated internally to support security objectives | Structured documentation suite covering security architecture, secrets management, encryption, backup/recovery, incident response, and compliance | `docs/SECURITY_ARCHITECTURE.md`, `docs/SECRETS_MANAGEMENT.md`, `docs/INCIDENT_RESPONSE.md` |
-| CC3.1 | Risk identification and assessment processes | Threat-driven risk assessment; zero-trust architecture assumes untrusted agents and networks; automated vulnerability scanning in CI/CD | `.github/workflows/ci.yml`, `CLAUDE.md` (Known Issues) |
+| CC3.1 | Risk identification and assessment processes | Threat-driven risk assessment; zero-trust architecture assumes untrusted agents and networks; automated vulnerability scanning in CI/CD; known issues tracked and triaged in GitHub Issues | `.github/workflows/ci.yml`, GitHub Issues |
 | CC4.1 | Monitoring of controls | Prometheus metrics collection with Grafana dashboards and alerting (HighErrorRate, HighLatency, AuthFailureSpike, AuditChainBroken, ServiceDown) | `monitoring/prometheus.yml`, `monitoring/prometheus/alerts.yml`, `monitoring/grafana/provisioning/` |
 | CC5.1 | Logical access security over system components | RBAC with 5 roles (admin, manager, operator, analyst, viewer) and granular permissions enforced via `require_permission()` decorator on all 140+ endpoints | `core/rbac.py`, `main.py`, `api/security_routes.py`, `api/compliance_routes.py`, `api/tenancy_routes.py` |
 | CC5.2 | Authentication mechanisms | Multi-factor authentication (TOTP with backup codes), bcrypt password hashing (12 rounds), account lockout (5 attempts / 15 minutes), password strength validation (12+ characters, mixed case/symbols) | `core/mfa.py`, `core/auth.py`, `core/user_management.py`, `api/auth_routes.py` |
@@ -134,7 +127,7 @@ The Security criteria address whether the system is protected against unauthoriz
 | CC6.6 | Error sanitization | Global exception handler catches all unhandled errors; sanitized responses with no stack traces, file paths, or internal error class names leaked to clients | `main.py`, `core/middleware.py` |
 | CC6.7 | Network isolation | Docker internal networks isolate data-tier services (Redis, PostgreSQL) from external access; only Traefik reverse proxy is externally reachable | `docker-compose.yml` |
 | CC7.1 | Vulnerability management | Automated CI/CD pipeline with pip-audit (dependency CVE scanning) and bandit (static analysis); known issues tracked and triaged | `.github/workflows/ci.yml`, `CLAUDE.md` (Known Issues) |
-| CC7.2 | Automated testing | 720 tests: 588 core unit tests, 96 security battery tests, 29 end-to-end integration tests, 7 contract tests; pytest with dedicated security and e2e markers | `tests/test_security_battery.py`, `tests/test_e2e_integration.py`, `tests/test_contracts.py`, `run_tests.bat`, `run_security_tests.bat` |
+| CC7.2 | Automated testing | 720 tests across 7 domains (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 end-to-end, 7 contract, 289 core); pytest executed via `docker compose exec mcp_server python -m pytest tests/ -v`; expected result: 720 passed, 1 skipped, 0 failed | `tests/test_security_battery.py`, `tests/test_e2e_integration.py`, `tests/test_contracts.py`, `.github/workflows/ci.yml` |
 
 ---
 
@@ -272,9 +265,9 @@ A SOC 2 Type I report evaluates the suitability of design of controls at a speci
 
 | Artifact | Location | Description |
 |----------|---------|-------------|
-| Automated test suite results | `tests/` directory, CI/CD logs | 720 tests (588 core, 96 security, 27 E2E, 7 contract) with pass/fail results |
+| Automated test suite results | `tests/` directory, CI/CD logs | 720 tests (96 security, 115 QMS, 129 tool governance, 55 OpenClaw, 29 E2E, 7 contract, 289 core) with pass/fail results |
 | Security battery tests | `tests/test_security_battery.py` | 96 tests covering authentication, authorization, session management, MFA, encryption, error sanitization, and runtime boundaries |
-| End-to-end integration tests | `tests/test_e2e_integration.py` | 26 tests across 6 test classes: UserLifecycle, TenantWorkflow, TenantIsolation, SecurityEndpoints, AuditChainIntegrity, ErrorSanitization |
+| End-to-end integration tests | `tests/test_e2e_integration.py` | 29 tests across 6 test classes: UserLifecycle, TenantWorkflow, TenantIsolation, SecurityEndpoints, AuditChainIntegrity, ErrorSanitization |
 | RBAC permission matrix | `core/rbac.py` | 5 roles with enumerated permissions; `require_permission()` decorator applied to 140+ endpoints |
 | Audit chain verification | `core/audit.py`, `/v1/audit/chain/verify` endpoint | SHA-256 hash-linked chain with programmatic integrity verification |
 | Encryption implementation | `core/secure_storage.py`, `core/mfa.py`, `core/auth.py` | Fernet, AES-256-GCM, bcrypt implementations with key derivation |
@@ -294,7 +287,7 @@ A SOC 2 Type I report evaluates the suitability of design of controls at a speci
 
 2. **Self-hosted model:** Because TelsonBase is deployed on customer infrastructure, certain controls (physical security, volume encryption, network security) are the customer's responsibility. The Complementary User Entity Controls (Section 10) must be evaluated in conjunction with TelsonBase's controls.
 
-3. **Known issues:** The current known issues (documented in `CLAUDE.md`) include 16 CVEs in 8 dependency packages and one bandit finding (tarfile extraction in backup_agent.py). These are tracked and triaged; none affect the design suitability of the controls described in this report. Remediation should be verified in a Type II engagement.
+3. **Known issues:** Tracked via GitHub Issues. Current items include dependency CVEs surfaced by pip-audit in CI/CD and one bandit finding (tarfile extraction in `backup_agent.py`). All are tracked and triaged; none affect the design suitability of the controls described in this report. Remediation status should be verified in a Type II engagement.
 
 ---
 
@@ -325,11 +318,11 @@ The following matrix maps TelsonBase controls to the AICPA 2017 Trust Services C
 | Field | Value |
 |-------|-------|
 | Document Title | TelsonBase SOC 2 Type I -- Trust Service Criteria Control Mapping |
-| Version | 1.1 |
-| Date | March 6, 2026 |
+| Version | 1.2 |
+| Date | March 8, 2026 |
 | Classification | Auditor-Ready Documentation |
-| Platform Version | 10.0.0Bminus |
-| Author | Jeff Phillips (Architect), Claude Sonnet 4.6 (AI Model Collaborator) |
+| Platform Version | v11.0.1 |
+| Author | Jeff Phillips, Architect — Quietfire AI |
 | Review Status | Updated for public release -- pending independent auditor review |
 | Next Review | Prior to Type II engagement or upon material system change |
 
@@ -346,3 +339,7 @@ The following matrix maps TelsonBase controls to the AICPA 2017 Trust Services C
 - [Legal Compliance](LEGAL_COMPLIANCE.md) -- Regulatory compliance mapping
 - [Healthcare Compliance](HEALTHCARE_COMPLIANCE.md) -- HIPAA/HITECH/HITRUST guidance
 - [Disclaimer and Terms of Use](../../DISCLAIMER.md) -- Limitation of liability, no warranty, AI platform disclaimer
+
+---
+
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
