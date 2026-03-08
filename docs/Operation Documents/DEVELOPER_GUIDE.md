@@ -1,17 +1,12 @@
 # TelsonBase Developer Guide
 
-# REM: =======================================================================================
-# REM: DEVELOPER GUIDE: BUILDING SECURE AGENTS FOR TELSONBASE v10.0.0Bminus
-# REM: =======================================================================================
-# REM: Architect: ::Quietfire AI Project::
-# REM: AI Model Collaborators: ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
-# REM: Date: February 23, 2026
-# REM: Updated: 2026-02-04
-# REM: =======================================================================================
+**Version:** v10.0.0Bminus | **Updated:** March 8, 2026
 
 # Developer Guide: Building Secure Agents
 
-This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture.
+This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** — agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
+
+> **External agents (Goose, Claude Desktop, any HTTP client)** use a different integration path — the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
 
 ## Table of Contents
 
@@ -216,7 +211,7 @@ def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
     # REM: All external requests go through the egress gateway
     response = self.external.post(
         "https://api.anthropic.com/v1/messages",
-        json={"model": "claude-3", "messages": [...]}
+        json={"model": "claude-sonnet-4-6", "messages": [...]}
     )
     
     return {"response": response.json()}
@@ -478,7 +473,7 @@ For quick iteration on agent code or running tests, you can run components local
 ### Prerequisites
 
 ```bash
-# Python 3.10+
+# Python 3.11+
 python --version
 
 # Redis (required for state persistence)
