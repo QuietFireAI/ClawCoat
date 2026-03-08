@@ -78,6 +78,18 @@ A Block is the fundamental, atomic unit of QMS. It is a self-contained, machine-
   - Resistance to collision with other data formats (JSON, XML, URLs)
   - Easy searchability (grep `::`)
 
+**The underscore prefix -- connector words vs. action words:**
+
+Words inside `::...::` that describe the *status or mechanism* of a transaction, rather than the *subject* of the transaction, carry a leading `_` prefix:
+
+- `::Create_Backup::` -- an action word (what is being done)
+- `::_Please::` -- a connector word (how the transaction is initiated)
+- `::_Thank_You::` -- a connector word (how the transaction concludes)
+
+The `_` prefix is not decoration. It is a grammar signal: this block describes the transaction mechanism, not the transaction content. A parser can identify command blocks by the leading `_` without any external schema.
+
+Internal underscores within a block name are word separators -- equivalent to spaces: `::Create_Backup::`, `::_Thank_You_But_No::`. The **leading** `_` is the type marker. **Internal** `_` characters are word separators. These are distinct roles.
+
 **Examples of valid Blocks:**
 
 ```
@@ -93,6 +105,20 @@ A Block is the fundamental, atomic unit of QMS. It is a self-contained, machine-
 ### 2.2 The Instruction Chain — Linked Blocks
 
 An Instruction Chain is the complete, ordered expression of a single transactional thought, formed by linking one or more Blocks with a `-` (dash) separator.
+
+**The `-` separator:**
+
+The dash connects the closing `::` of one block to the opening `::` of the next. It is not a prefix or suffix -- it sits between blocks:
+
+```
+::BLOCK_ONE::-::BLOCK_TWO::-::BLOCK_THREE::
+```
+
+The chain starts with `::` (the opening of the first block) and ends with `::` (the closing of the last block). Always.
+
+**Structural invariant -- every valid chain ends with `::`:**
+
+Because every Block closes with `::`, the final two characters of any complete, valid Instruction Chain are always `::`. This is not a convention -- it is a structural guarantee of the grammar. A chain that does not end with `::` is incomplete or malformed. In a log file, `::` at the end of a line is the parse-termination signal: the chain is complete and can be processed.
 
 **Syntax:**
 
@@ -185,7 +211,9 @@ Position 2 of every chain MUST be a Correlation Block `::@@id@@::`. A chain with
 
 ### 4.A Command Blocks — Transaction Terminators
 
-Command Blocks define the nature and completion of a transaction. They are ALWAYS the final block in a standard chain. Their "polite" naming is intentional — it encodes transaction semantics in words that a jury, a compliance officer, or a hospital administrator can understand without a decoder ring.
+Command Blocks define the nature and completion of a transaction. They are ALWAYS the final block in a standard chain, which means every valid chain ends with one of these blocks and therefore ends with `::`.
+
+The leading `_` prefix on every command block is the grammar signal that marks it as a connector word -- a word about the transaction, not in the transaction. Their "polite" naming is intentional -- it encodes transaction semantics in words that a jury, a compliance officer, or a hospital administrator can understand without a decoder ring.
 
 | Command Block | Meaning | Analogous To |
 |---------------|---------|--------------|

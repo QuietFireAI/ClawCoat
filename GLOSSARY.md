@@ -169,19 +169,21 @@ Identifier format used throughout the toolroom for QMS parseability: `CHKOUT-{uu
 ## Q
 
 ### QMS™ (Qualified Message Standard)
-TelsonBase's internal messaging convention (v2.1.6) that embeds human-readable semantics into agent communications. Uses suffixes (`_Please`, `_Thank_You`, etc.), field markers (`::value::`), and formal chain syntax. See `core/qms.py` and `QMS_SPECIFICATION.md`.
+TelsonBase's inter-agent communication protocol (v2.1.6). Blocks are delimited by `::...::` and linked by `-` separators: `::BLOCK::-::BLOCK::`. Every valid chain ends with `::`. Command/connector words carry a leading `_` prefix (`::_Thank_You::`) to distinguish them from action words (`::Create_Backup::`). See `core/qms.py` and `QMS_SPECIFICATION.md`.
 
 ### QMS Chain
-Structured message format: `::origin::-::@@correlation@@::-::action::-::data::`. Supports halt postscript (`::%%%%::-::%%reason%%::`) for emergency stops.
+Structured message format where blocks are linked by `-`: `::origin::-::@@correlation@@::-::action::-::data::-::_command::`. The chain always ends with `::` -- the closing delimiter of the final block. Supports halt postscript (`::%%%%::-::%%reason%%::`) for emergency stops.
 
-### QMS Suffixes
-| Suffix | Meaning |
+### QMS Command Blocks
+The five terminal connector words that end every standard chain. Leading `_` marks them as connector words (about the transaction) vs. action words (in the transaction):
+
+| Command Block | Meaning |
 |--------|---------|
-| `_Please` | Request initiation |
-| `_Thank_You` | Successful completion |
-| `_Thank_You_But_No` | Failed with explanation |
-| `_Excuse_Me` | Needs clarification |
-| `_Pretty_Please` | High priority / escalation |
+| `::_Please::` | Request initiation |
+| `::_Thank_You::` | Successful completion |
+| `::_Thank_You_But_No::` | Refused with explanation |
+| `::_Excuse_Me::` | Needs clarification |
+| `::_Pretty_Please::` | High priority / escalation |
 
 ### Quarantine
 Lowest trust level for agents. Quarantined agents have minimal capabilities and enhanced monitoring. Also: the restricted execution environment for unverified external code (aliens).
