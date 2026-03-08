@@ -66,4 +66,4 @@ All anomaly detection tests pass, validating all 7 detection types.
 
 ---
 
-*Sheet TB-PROOF-020 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-020 | TelsonBase v11.0.1 | February 23, 2026*

@@ -55,4 +55,4 @@ schemathesis run http://localhost:8000/openapi.json \
 
 ---
 
-*Sheet TB-PROOF-023 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-023 | TelsonBase v11.0.1 | February 23, 2026*

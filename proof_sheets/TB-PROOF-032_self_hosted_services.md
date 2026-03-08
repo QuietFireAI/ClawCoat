@@ -77,4 +77,4 @@ docker compose ps --format "table {{.Name}}\t{{.Image}}\t{{.Status}}"
 
 ---
 
-*Sheet TB-PROOF-032 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-032 | TelsonBase v11.0.1 | February 23, 2026*

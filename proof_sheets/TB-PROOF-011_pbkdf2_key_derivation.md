@@ -62,4 +62,4 @@ grep -n "iterations\|PBKDF2" core/secure_storage.py
 
 ---
 
-*Sheet TB-PROOF-011 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-011 | TelsonBase v11.0.1 | February 23, 2026*

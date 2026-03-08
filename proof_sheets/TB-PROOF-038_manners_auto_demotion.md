@@ -69,4 +69,4 @@ References to Manners score checking, auto-demotion logic, and threshold compari
 
 ---
 
-*Sheet TB-PROOF-038 | TelsonBase v7.4.0CC | February 23, 2026*
+*Sheet TB-PROOF-038 | TelsonBase v11.0.1 | February 23, 2026*

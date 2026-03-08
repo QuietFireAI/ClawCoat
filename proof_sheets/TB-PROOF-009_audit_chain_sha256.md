@@ -70,4 +70,4 @@ All audit chain tests pass, including tamper detection tests that verify chain b
 
 ---
 
-*Sheet TB-PROOF-009 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-009 | TelsonBase v11.0.1 | February 23, 2026*

@@ -56,4 +56,4 @@ grep "5 LEVELS PASS\|Security, Chaos, Contract" version.py
 
 ---
 
-*Sheet TB-PROOF-025 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-025 | TelsonBase v11.0.1 | February 23, 2026*

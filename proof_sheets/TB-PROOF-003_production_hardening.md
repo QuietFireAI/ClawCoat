@@ -79,4 +79,4 @@ All 22 items listed with their descriptions under the v7.0.0CC version entry.
 
 ---
 
-*Sheet TB-PROOF-003 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-003 | TelsonBase v11.0.1 | February 23, 2026*

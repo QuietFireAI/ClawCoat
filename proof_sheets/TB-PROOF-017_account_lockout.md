@@ -68,4 +68,4 @@ grep -n "MAX_FAILED\|LOCKOUT_DURATION\|_is_account_locked\|_record_failed" core/
 
 ---
 
-*Sheet TB-PROOF-017 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-017 | TelsonBase v11.0.1 | February 23, 2026*

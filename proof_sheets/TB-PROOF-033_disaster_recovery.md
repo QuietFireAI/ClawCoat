@@ -66,4 +66,4 @@ References to daily backup schedule and RPO=24hr, RTO=15min targets.
 
 ---
 
-*Sheet TB-PROOF-033 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-033 | TelsonBase v11.0.1 | February 23, 2026*

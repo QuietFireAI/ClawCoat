@@ -54,4 +54,4 @@ HMAC-based signing implementation with key management.
 
 ---
 
-*Sheet TB-PROOF-013 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-013 | TelsonBase v11.0.1 | February 23, 2026*

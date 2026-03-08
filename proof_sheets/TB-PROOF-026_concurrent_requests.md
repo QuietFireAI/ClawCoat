@@ -76,4 +76,4 @@ All 50 requests return HTTP 200.
 
 ---
 
-*Sheet TB-PROOF-026 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-026 | TelsonBase v11.0.1 | February 23, 2026*

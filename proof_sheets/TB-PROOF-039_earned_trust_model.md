@@ -81,4 +81,4 @@ References to VALID_PROMOTIONS dictionary (sequential), VALID_DEMOTIONS dictiona
 
 ---
 
-*Sheet TB-PROOF-039 | TelsonBase v7.4.0CC | February 23, 2026*
+*Sheet TB-PROOF-039 | TelsonBase v11.0.1 | February 23, 2026*

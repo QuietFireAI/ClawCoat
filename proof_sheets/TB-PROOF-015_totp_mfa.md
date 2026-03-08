@@ -67,4 +67,4 @@ References to pyotp, RFC 6238, TOTP operations, backup codes, and replay prevent
 
 ---
 
-*Sheet TB-PROOF-015 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-015 | TelsonBase v11.0.1 | February 23, 2026*

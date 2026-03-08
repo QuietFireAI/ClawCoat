@@ -66,4 +66,4 @@ grep -n "idle\|PRIVILEGED\|timeout\|164.312" core/session_management.py
 
 ---
 
-*Sheet TB-PROOF-016 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-016 | TelsonBase v11.0.1 | February 23, 2026*

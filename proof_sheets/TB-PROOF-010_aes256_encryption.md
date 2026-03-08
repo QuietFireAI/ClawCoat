@@ -62,4 +62,4 @@ Lines showing AESGCM import, 32-byte key size, 12-byte nonce, and encrypt/decryp
 
 ---
 
-*Sheet TB-PROOF-010 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-010 | TelsonBase v11.0.1 | February 23, 2026*

@@ -74,4 +74,4 @@ All references point to `http://ollama:11434` (Docker internal network address).
 
 ---
 
-*Sheet TB-PROOF-029 | TelsonBase v7.3.0CC | February 23, 2026*
+*Sheet TB-PROOF-029 | TelsonBase v11.0.1 | February 23, 2026*
