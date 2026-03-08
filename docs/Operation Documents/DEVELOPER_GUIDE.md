@@ -142,7 +142,21 @@ curl -X POST http://localhost:8000/v1/openclaw/{instance_id}/promote \
   -d '{"reason": "Initial deployment — reviewed and approved"}'
 ```
 
-**Automatic demotion:** If your agent's behavioral compliance score (Manners) drops below 50%, it is automatically demoted to QUARANTINE — no human delay required. Build agents that behave predictably. *(proof: TB-PROOF-038)*
+**Manners compliance score:** Every agent receives a score from 0.0 to 1.0, updated in real time. Five states:
+
+| Score | Status | Operational impact |
+|---|---|---|
+| 0.90-1.00 | EXEMPLARY | Full autonomous operation |
+| 0.75-0.89 | COMPLIANT | Normal operation |
+| 0.50-0.74 | DEGRADED | Increased monitoring, weekly review triggered |
+| 0.25-0.49 | NON_COMPLIANT | Read-only access only |
+| 0.00-0.24 | SUSPENDED | Quarantined, human review required |
+
+**Two triggers for automatic quarantine** (no human delay required):
+1. Score drops below 0.25 (SUSPENDED range)
+2. Three or more violations within any 24-hour window - regardless of overall score
+
+Build agents that behave predictably. *(proof: TB-PROOF-038)*
 
 ---
 

@@ -248,6 +248,70 @@ curl http://localhost:11434/api/tags
 
 ---
 
+## What to Know Before Your Agents Go Live
+
+Two systems govern agent behavior at runtime. Neither is optional when `OPENCLAW_ENABLED=true`. Understanding them before you register your first agent will save you a lot of confusion.
+
+### Trust Levels
+
+Every agent starts at **QUARANTINE**. This is a hard default — not a misconfiguration. An agent at QUARANTINE is severely restricted and requires an operator to manually promote it before it can do useful work.
+
+Promotion is done via the Admin Console (OpenClaw tab) or the API:
+
+```bash
+curl -X POST http://localhost:8000/v1/openclaw/{instance_id}/promote \
+  -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" \
+  -d '{"reason": "Initial deployment, reviewed and approved"}'
+```
+
+The five trust levels, in order:
+
+| Level | What the agent can do |
+|---|---|
+| QUARANTINE | Severely restricted. Manual review required to proceed. |
+| PROBATION | Limited capabilities. Closely monitored. |
+| RESIDENT | Standard capabilities. Periodic re-verification. |
+| CITIZEN | Full capabilities. 95%+ success rate required to maintain. |
+| AGENT | Apex. 99.9% success rate, zero anomaly tolerance, re-verified every 3 days. |
+
+Promotion is sequential — an agent cannot skip from QUARANTINE to CITIZEN. Demotion can skip levels instantly.
+
+### Manners Scoring
+
+Every agent receives a **Manners compliance score** from 0.0 to 1.0. The score is computed across five behavioral principles (human control, transparency, value alignment, privacy, security). It updates in real time as the agent acts.
+
+| Score | Status | What it means operationally |
+|---|---|---|
+| 0.90-1.00 | EXEMPLARY | Full autonomous operation |
+| 0.75-0.89 | COMPLIANT | Normal operation |
+| 0.50-0.74 | DEGRADED | Increased monitoring, weekly review triggered |
+| 0.25-0.49 | NON_COMPLIANT | Read-only access only |
+| 0.00-0.24 | SUSPENDED | Quarantined, human review required |
+
+**Two triggers for automatic quarantine:**
+1. Score drops to SUSPENDED range (below 0.25)
+2. Three or more violations within any 24-hour window — regardless of overall score
+
+**One thing that catches new operators:** agents under 24 hours old are capped at DEGRADED status even with a perfect score. This is intentional — the system needs behavioral data before granting higher autonomy. Do not try to override it on day one.
+
+**Where to see scores:** Admin Console → OpenClaw tab → agent card shows the current status badge. API: `GET /v1/manners/agent/{name}` for the full report.
+
+**Common violations and their score impact:**
+
+| Violation | Severity | What triggers it |
+|---|---|---|
+| APPROVAL_BYPASS | 0.30 | Action requiring approval attempted without one |
+| CAPABILITY_VIOLATION | 0.25 | Access to resource outside declared capabilities |
+| CROSS_TENANT_ACCESS | 0.35 | Data from another tenant accessed |
+| UNSIGNED_MESSAGE | 0.15 | Inter-agent message sent without signature |
+| NON_QMS_MESSAGE | 0.05 | Message to Foreman not in QMS format |
+
+Violations decay over time — full weight for 24 hours, 50% at 72 hours, 25% at 168 hours. An agent that stops misbehaving recovers.
+
+For the full scoring model, violation types, and API reference: `docs/Compliance Documents/MANNERS_COMPLIANCE.md`
+
+---
+
 ## Running the Test Suite
 
 TelsonBase ships with 720 tests. Run them from inside the Docker container:
