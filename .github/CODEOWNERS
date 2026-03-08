@@ -1,0 +1,34 @@
+# CODEOWNERS - TelsonBase
+#
+# These owners are automatically requested for review on pull requests
+# that modify files matching the patterns below.
+#
+# Format: file-pattern @github-username
+
+# Default owner for all files
+* @QuietFireAI
+
+# Security-sensitive paths - maintainer review required
+SECURITY.md @QuietFireAI
+core/auth.py @QuietFireAI
+core/audit.py @QuietFireAI
+core/trust_levels.py @QuietFireAI
+core/openclaw.py @QuietFireAI
+core/manners.py @QuietFireAI
+gateway/ @QuietFireAI
+
+# Compliance documentation - maintainer review required
+docs/Compliance\ Documents/ @QuietFireAI
+docs/QMS\ Documents/ @QuietFireAI
+proof_sheets/ @QuietFireAI
+
+# License and legal files
+LICENSE @QuietFireAI
+NOTICE @QuietFireAI
+TRADEMARKS.md @QuietFireAI
+COMMERCIAL_LICENSE.md @QuietFireAI
+licenses/ @QuietFireAI
+
+# CI and release pipeline
+.github/workflows/ @QuietFireAI
+version.py @QuietFireAI

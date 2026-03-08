@@ -2,7 +2,48 @@
 
 All notable changes to this project are documented in this file.
 
-Format: [Semantic Versioning](https://semver.org/)
+Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+Versioning follows [Semantic Versioning](https://semver.org/).
+
+---
+
+## [11.0.1] - 2026-03-08 (Public launch - full documentation sweep and pre-drop polish)
+
+**Status:** 720 passed, 1 skipped, 0 failed. Public GitHub drop. DO server synced.
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Added
+- `GOVERNANCE.md` - Project governance, decision process, release procedure, contributor path
+- `SUPPORT.md` - Support channels, response times, bug report guidance (GitHub surfaces this automatically)
+- `NOTICE` - Apache 2.0 required attribution file, third-party component summary
+- `.github/CODEOWNERS` - Auto-review assignment for security-sensitive paths and legal files
+- `docs/DASHBOARD_agent_registration.md` - Full video-ready agent registration walkthrough: connect, register, promote, verify governance loop, audit trail
+- `docs/Operation Documents/INSTALLATION_GUIDE_WINDOWS.md` - New file: fresh Windows install guide, Docker Desktop through first agent
+
+### Changed
+- **Terminology:** "governance layer" replaced with "guiding layer" in user-facing and positioning contexts. "governance layer" preserved in compliance-specific and regulated-industry contexts (hybrid approach)
+- `docs/Operation Documents/INSTALLATION_GUIDE_WINDOWS.md` - OPENCLAW_ENABLED step changed from optional to required with copy-paste sed/PowerShell commands; service count corrected (12 -> 11 for standard start, MailHog is dev-profile only); port conflict fix now a copy-paste command instead of manual file edit
+- `docs/DASHBOARD_agent_registration.md` - All curl commands use $API_KEY variable pattern; Git Bash context explicit; step-by-step video walkthrough with expected responses documented
+- `agents/doc_prep_agent.py` - Hardcoded version string `v9.0.0B` replaced with `APP_VERSION` import from `version.py`
+- `proof_sheets/TB-PROOF-001` through `TB-PROOF-042` - Bulk version update to v11.0.1, Last Verified date to March 8, 2026
+- `docs/System Documents/PROJECT_OVERVIEW.md` - v10.0.0Bminus -> v11.0.1, Architect line removed, header normalized
+- `docs/System Documents/ENCRYPTION_AT_REST.md` - REM block replaced with standard version header
+- `docs/System Documents/ENV_CONFIGURATION.md` - AI Model Collaborators line removed
+- `docs/System Documents/HA_ARCHITECTURE.md` - Stale "Applies to: TelsonBase v6.3.0CC" corrected to v11.0.1
+- `docs/Operation Documents/OPENCLAW_OPERATIONS.md` - Missing citizen->agent promotion path added
+- `docs/Operation Documents/SHARED_RESPONSIBILITY.md` - REM block replaced with version header
+- `docs/Testing Documents/HARDENING_CC.md` - REM block replaced with version header and recorded date
+- `docs/Testing Documents/DISASTER_RECOVERY_TEST.md` - Version and date updated, Architect line removed
+- `docs/QMS Documents/QMS_SPECIFICATION.md` - Architect -> Maintainer; footer added
+- `docs/Compliance Documents/MANNERS_COMPLIANCE.md` - Version header and footer added (had neither)
+- `docs/Compliance Documents/PENTEST_PREPARATION.md` - REM block replaced with clean version header
+- Multiple compliance, backup, and operation docs - Version strings, dates, and footer standardization across the full doc tree
+- `PROJECT_STRUCTURE.md` - Removed five deleted file references; Testing Documents section updated to reflect actual files
+
+### Fixed
+- `agents/doc_prep_agent.py` - Generated document footers were showing `TelsonBase v9.0.0B`; now tracks `APP_VERSION`
+- `docs/Compliance Documents/HEALTHCARE_COMPLIANCE.md` and `LEGAL_COMPLIANCE.md` - QMS version corrected from v2.2.0 to v2.1.6
+- `docs/Operation Documents/OPENCLAW_OPERATIONS.md` - citizen->agent promotion path was missing from the documented promotion targets list
 
 ---
 

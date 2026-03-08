@@ -495,13 +495,15 @@ The OpenClaw developer recently said he stopped treating AI as a tool and starte
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines. The short version:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process and [GOVERNANCE.md](GOVERNANCE.md) for how the project is run. The short version:
 
 1. Fork it
 2. Create a feature branch
 3. Write tests (we don't ship untested code)
 4. Submit a PR with a clear description
 5. Every PR runs the full 720-test suite
+
+Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 
 ---
 

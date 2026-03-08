@@ -1,0 +1,51 @@
+TelsonBase
+Copyright 2026 Jeff Phillips / Quietfire AI
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this software except in compliance with the License.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---
+
+Third-Party Component Notices
+
+TelsonBase incorporates open-source components. Full attribution, license
+texts, and version details are in:
+
+    licenses/THIRD_PARTY_NOTICES.md
+
+Key dependencies and their licenses:
+
+  FastAPI          - MIT License
+  Uvicorn          - BSD 3-Clause License
+  Gunicorn         - MIT License
+  Pydantic         - MIT License
+  SQLAlchemy       - MIT License
+  Alembic          - MIT License
+  Celery           - BSD 3-Clause License
+  Redis (Python)   - MIT License
+  paho-mqtt        - Eclipse Public License 2.0 / Eclipse Distribution License 1.0
+  httpx            - BSD 3-Clause License
+  cryptography     - Apache License 2.0 / BSD License
+  PyJWT            - MIT License
+  passlib          - BSD License
+  starlette        - BSD 3-Clause License
+  mcp              - MIT License
+
+Full license texts are in the licenses/ directory of this repository.
+
+---
+
+QMS (Qualified Message Standard) is a communication protocol developed by
+Quietfire AI and released as an open standard under the MIT License.
+The QMS trademark is held by Quietfire AI. See TRADEMARKS.md.
+
+ORCID: 0009-0000-1375-1725 (Jeff Phillips / Quietfire AI)
