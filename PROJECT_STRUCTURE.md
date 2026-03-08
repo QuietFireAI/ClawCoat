@@ -231,7 +231,6 @@ telsonbase/
 │   │   ├── DEPLOYMENT_GUIDE.md        # Full deployment guide
 │   │   ├── INSTALLATION_GUIDE_WINDOWS.md  # Windows setup
 │   │   ├── TROUBLESHOOTING.md
-│   │   ├── COMPETITIVE_POSITIONING.md
 │   │   ├── PRICING_MODEL.md
 │   │   └── SHARED_RESPONSIBILITY.md
 │   ├── System Documents/
@@ -243,8 +242,7 @@ telsonbase/
 │   │   ├── SOC2_TYPE_I.md
 │   │   ├── HA_ARCHITECTURE.md
 │   │   ├── PROJECT_OVERVIEW.md
-│   │   ├── DATA_PROCESSING_AGREEMENT.md
-│   │   └── OPENCLAW_SECURITY_ANALYSIS.md
+│   │   └── DATA_PROCESSING_AGREEMENT.md
 │   ├── Compliance Documents/
 │   │   ├── COMPLIANCE_ROADMAP.md
 │   │   ├── HEALTHCARE_COMPLIANCE.md
@@ -259,10 +257,13 @@ telsonbase/
 │   ├── QMS Documents/
 │   │   └── QMS_SPECIFICATION.md   # QMS™ protocol reference v2.1.6
 │   └── Testing Documents/
-│       ├── AWS_TESTING_GUIDE.md
-│       ├── SECURITY_TESTING_STACK.md
-│       ├── PRE_DROP_AUDIT.md
-│       └── (additional test result documents)
+│       ├── ADDITIONAL_AWS_TESTS.md
+│       ├── DISASTER_RECOVERY_TEST.md
+│       ├── HARDENING_CC.md
+│       ├── TEST_RESULTS_6.0.0CC.md
+│       ├── VALIDATION_REPORT_v7.4.0CC.md
+│       ├── governance_smoke_test_result.txt
+│       └── user_ui_tests.md
 │
 ├── licenses/                   # Third-party license files
 │

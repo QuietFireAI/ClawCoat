@@ -32,4 +32,4 @@ Trademark questions: support@telsonbase.com
 
 ---
 
-*TelsonBase · Quietfire AI / Jeff Phillips · March 2026*
+*TelsonBase v11.0.1 · Quietfire AI / Jeff Phillips · March 8, 2026*

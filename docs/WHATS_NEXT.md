@@ -1,6 +1,6 @@
 # TelsonBase - What's Next
 
-**Version:** v11.0.1 · **Launch:** March 6, 2026 · **Maintainer:** Quietfire AI
+**Version:** v11.0.1 · **Launch:** March 8, 2026 · **Maintainer:** Quietfire AI
 
 This document is an honest account of where TelsonBase stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
@@ -127,4 +127,4 @@ If you find something broken, open an issue. If something is missing, start a di
 
 ---
 
-*TelsonBase v11.0.1 · March 6, 2026 · Quietfire AI*
+*TelsonBase v11.0.1 · March 8, 2026 · Quietfire AI*
