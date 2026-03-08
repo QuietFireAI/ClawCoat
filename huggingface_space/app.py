@@ -87,7 +87,7 @@ def _format_decision(data: dict, tool_name: str) -> str:
         f"  Approval ID   {approval_id}",
         f"  QMS Status    {qms_status}",
         bar,
-        f"  {_ts()} UTC · TelsonBase v10.0.0Bminus",
+        f"  {_ts()} UTC · TelsonBase v11.0.1",
     ]
     return "\n".join(lines)
 
@@ -153,6 +153,7 @@ def kill_citizen() -> str:
         resp = requests.post(
             f"{API_BASE}/v1/openclaw/{instance_id}/suspend",
             headers=HEADERS,
+            json={"reason": "Demo kill switch activated"},
             timeout=TIMEOUT,
         )
         if resp.status_code == 200:
@@ -194,6 +195,7 @@ def reinstate_citizen() -> str:
         resp = requests.post(
             f"{API_BASE}/v1/openclaw/{instance_id}/reinstate",
             headers=HEADERS,
+            json={"reason": "Demo reset for next visitor"},
             timeout=TIMEOUT,
         )
         if resp.status_code == 200:
@@ -243,18 +245,7 @@ Step 2 of the pipeline fire — instant rejection, before trust levels, before e
 Hit **Reinstate Agent** when you're done to reset the demo for the next visitor.
 """
 
-with gr.Blocks(
-    title="TelsonBase — Live Governance Demo",
-    theme=gr.themes.Base(
-        primary_hue=gr.themes.colors.violet,
-        neutral_hue=gr.themes.colors.slate,
-    ),
-    css="""
-        .output-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
-        .status-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
-        footer { display: none !important; }
-    """,
-) as demo:
+with gr.Blocks(title="TelsonBase — Live Governance Demo") as demo:
 
     gr.Markdown(f"# TelsonBase — Live Governance Demo\n{DESCRIPTION}")
 
@@ -312,10 +303,20 @@ with gr.Blocks(
 
     gr.Markdown(
         "---\n"
-        "*TelsonBase v10.0.0Bminus · [GitHub](https://github.com/QuietFireAI/TelsonBase) · "
-        "Quietfire AI · Apache 2.0 · "
-        "Built with human-AI collaboration (Jeff Phillips + Claude, Anthropic)*"
+        "*TelsonBase v11.0.1 by Quietfire AI · "
+        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · "
+        "Built with human-AI collaboration (Jeff Phillips + Claude by Anthropic)*"
     )
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(
+        theme=gr.themes.Base(
+            primary_hue=gr.themes.colors.violet,
+            neutral_hue=gr.themes.colors.slate,
+        ),
+        css="""
+            .output-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
+            .status-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
+            footer { display: none !important; }
+        """,
+    )
