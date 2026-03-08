@@ -82,8 +82,8 @@ telsonbase/
 │   ├── mqtt_bus.py             # MQTT pub/sub integration
 │   ├── ollama_service.py       # Local LLM inference client
 │   ├── semantic_matching.py    # Semantic tool-to-category matching
-│   ├── qms.py                  # Qualified Message Standard logger
-│   └── qms_schema.json         # QMS log schema
+│   ├── qms.py                  # QMS™ (Qualified Message Standard) logger
+│   └── qms_schema.json         # QMS™ log schema
 │
 ├── agents/                     # Agent implementations
 │   ├── __init__.py             # Central agent registry + metadata
@@ -155,6 +155,8 @@ telsonbase/
 │
 ├── scripts/                    # Operational utilities
 │   ├── generate_secrets.sh     # Secret generation + .env sync + mosquitto password
+│   ├── generate_individual_proof_sheets.py  # Generate TB-TEST-* sheets (721 files)
+│   ├── generate_class_level_proof_sheets.py # Generate TB-PROOF-053+ class-level sheets
 │   ├── backup.sh               # Backup script
 │   ├── restore.sh              # Restore script
 │   ├── dr_test.sh              # Disaster recovery test
@@ -182,11 +184,27 @@ telsonbase/
 │   ├── test_signing.py         # Cryptographic signing tests
 │   └── test_toolroom.py        # Toolroom supply-chain tests
 │
-├── proof_sheets/               # 42 evidence sheets — every claim, backed by code
-│   ├── INDEX.md                # Full index with verification status
+├── proof_sheets/               # 787 proof documents — every claim and every test, backed by code
+│   ├── INDEX.md                # Full index (787 documents, verification status)
 │   ├── TB-PROOF-001_tests_passing.md
 │   ├── TB-PROOF-002_security_tests.md
-│   └── ... (TB-PROOF-001 through TB-PROOF-042)
+│   ├── ... (TB-PROOF-001 through TB-PROOF-066, class-level evidence)
+│   └── individual/             # 721 individual test proof sheets (TB-TEST-* series)
+│       ├── sec/                # 96 sheets — security battery
+│       ├── qms/                # 115 sheets — QMS™ protocol tests
+│       ├── tool/               # 129 sheets — Toolroom tests
+│       ├── ocl/                # 55 sheets — OpenClaw governance tests
+│       ├── idn/                # 50 sheets — IdentiClaw identity tests
+│       ├── oll/                # 49 sheets — Ollama LLM tests
+│       ├── obs/                # 40 sheets — Observability tests
+│       ├── beh/                # 30 sheets — Behavioral tests
+│       ├── e2e/                # 29 sheets — End-to-end integration tests
+│       ├── scrt/               # 48 sheets — Secrets management tests
+│       ├── int/                # 26 sheets — Cross-system integration tests
+│       ├── cap/                # 15 sheets — Capability enforcement tests
+│       ├── sign/               # 13 sheets — Message signing tests
+│       ├── api/                # 19 sheets — API endpoint tests
+│       └── ctrct/              # 7 sheets — Enum contract tests
 │
 ├── huggingface_space/          # HuggingFace live demo
 │   ├── app.py                  # Gradio app — live governance pipeline demo
@@ -239,7 +257,7 @@ telsonbase/
 │   │   ├── INCIDENT_RESPONSE.md
 │   │   └── Restore_and_Recover_Guide.md
 │   ├── QMS Documents/
-│   │   └── QMS_SPECIFICATION.md
+│   │   └── QMS_SPECIFICATION.md   # QMS™ protocol reference v2.1.6
 │   └── Testing Documents/
 │       ├── AWS_TESTING_GUIDE.md
 │       ├── SECURITY_TESTING_STACK.md
@@ -256,7 +274,7 @@ telsonbase/
 ├── CODE_OF_CONDUCT.md
 ├── COMMERCIAL_LICENSE.md       # Commercial licensing terms
 ├── CONTRIBUTING.md
-├── DISCLAIMER.md               # Liability and warranty disclaimer
+├── TERMS_OF_USE.md             # Terms of use, liability, indemnification (replaces DISCLAIMER.md)
 ├── GLOSSARY.md                 # Term definitions
 ├── MANNERS.md                  # Manners compliance framework documentation
 ├── PROJECT_STRUCTURE.md        # This file
