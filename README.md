@@ -239,7 +239,7 @@ Step 2: KILL SWITCH (suspended?)     Reject immediately
 Step 3: Nonce replay protection      Reject if replayed
 Step 4: Tool on blocklist?           Reject if blocked
 Step 5: Classify action category     READ / WRITE / DELETE / EXTERNAL / FINANCIAL / SYSTEM
-Step 6: Manners compliance score        Auto-demote if < 0.50
+Step 6: Manners compliance score        Auto-quarantine if < 0.25 or 3+ violations / 24h
 Step 7: Trust level permission       Allow / Gate / Block per matrix
 Step 8: Anomaly detection            Flag behavioral deviations
 ```
@@ -264,7 +264,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **Manners Compliance Engine** | Anthropic safety framework, runtime scoring | 7 |
 | **Egress Firewall** | Domain whitelist, external call governance | 5 |
 | **Multi-Tenant Isolation** | Redis key namespacing, litigation holds | 8 |
-| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials | 50 |
+| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch — see `docs/WHATS_NEXT.md`) | 50 |
 | **OpenClaw Governance** | Governed MCP proxy, kill switch, Manners auto-demotion | 55 |
 | **Session Management** | HIPAA-compliant idle timeout, privileged role limits | 6 |
 | **Federation** | Cross-instance trust with mTLS, RSA-4096 signatures | 5 |
