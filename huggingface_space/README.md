@@ -19,7 +19,7 @@ tags:
   - human-in-the-loop
   - kill-switch
   - audit-trail
-short_description: Live demo — zero-trust governance for autonomous AI agents. Real pipeline, real decisions.
+short_description: Live demo — zero-trust governance for AI agents.
 ---
 
 # TelsonBase — Live Governance Demo
