@@ -6,7 +6,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
-**Last Verified:** March 1, 2026 | **Version:** 9.0.0B | **Tests Passing:** 720
+**Last Verified:** March 8, 2026 | **Version:** v10.0.0Bminus | **Tests Passing:** 720
 
 ---
 
@@ -40,7 +40,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 ### Authentication and Access Control
 | Sheet | Claim | Status |
 |---|---|---|
-| [TB-PROOF-014](TB-PROOF-014_rbac_endpoints.md) | 140+ RBAC-Protected Endpoints | VERIFIED |
+| [TB-PROOF-014](TB-PROOF-014_rbac_endpoints.md) | 177 RBAC-Protected Endpoints | VERIFIED |
 | [TB-PROOF-015](TB-PROOF-015_totp_mfa.md) | RFC 6238 TOTP Multi-Factor Authentication | VERIFIED |
 | [TB-PROOF-016](TB-PROOF-016_session_management.md) | HIPAA-Compliant Session Management | VERIFIED |
 | [TB-PROOF-017](TB-PROOF-017_account_lockout.md) | Account Lockout After 5 Failed Attempts | VERIFIED |
@@ -91,7 +91,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 ### Integration Guides
 | Sheet | Claim | Status |
 |---|---|---|
-| [TB-PROOF-040](TB-PROOF-040_openclaw_integration_guide.md) | OpenClaw Integration: Start to Finish (under 45 min) | PENDING |
+| [TB-PROOF-040](TB-PROOF-040_openclaw_integration_guide.md) | OpenClaw Integration: Start to Finish (under 45 min) | VERIFIED |
 | [TB-PROOF-041](TB-PROOF-041_agent_registration.md) | How to Add an Agent — Developer Deep Dive | VERIFIED |
 
 ---
@@ -111,4 +111,4 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short --ignore=te
 
 ---
 
-*Generated February 23, 2026 | TelsonBase v9.0.0B | Updated March 1, 2026*
+*Generated February 23, 2026 | TelsonBase v10.0.0Bminus | Updated March 8, 2026*
