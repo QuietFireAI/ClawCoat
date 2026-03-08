@@ -1,4 +1,4 @@
-# TB-TEST-SEC-094 — TestRuntimeBoundaries · `test_rate_limiter_blocks_at_burst_limit`
+# TB-TEST-SEC-094 - TestRuntimeBoundaries · `test_rate_limiter_blocks_at_burst_limit`
 
 **Sheet ID:** TB-TEST-SEC-094
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Rate limiter allows exactly burst_size requests then blocks the next — wall is real, not advisory
+> Rate limiter allows exactly burst_size requests then blocks the next - wall is real, not advisory
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-029 — TestEncryptionIntegrity · `test_encrypted_dict_roundtrip_preserves_fields`
+# TB-TEST-SEC-029 - TestEncryptionIntegrity · `test_encrypted_dict_roundtrip_preserves_fields`
 
 **Sheet ID:** TB-TEST-SEC-029
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

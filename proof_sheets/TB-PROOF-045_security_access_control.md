@@ -1,4 +1,4 @@
-# TB-PROOF-045 — Security Battery: Access Control
+# TB-PROOF-045 - Security Battery: Access Control
 
 **Sheet ID:** TB-PROOF-045
 **Claim Source:** tests/test_security_battery.py::TestAccessControl
@@ -10,13 +10,13 @@
 
 ## Exact Claim
 
-> "177 RBAC-Protected Endpoints — 4-tier permissions, deny overrides allow" — README capability table
+> "177 RBAC-Protected Endpoints - 4-tier permissions, deny overrides allow" - README capability table
 
 This sheet proves the **Access Control** category of the TelsonBase security battery. 13 tests covering role-based permission enforcement, custom grants and denials, user deactivation, session management, and MFA enforcement for privileged roles.
 
 ## Verdict
 
-VERIFIED — All 13 tests pass. RBAC enforces hard permission walls between roles: viewers cannot manage agents, operators cannot access admin config, admins have management permissions, and super admins have full access. Custom denials override role-level grants. User deactivation immediately blocks access. MFA is enforced for privileged roles before session creation.
+VERIFIED - All 13 tests pass. RBAC enforces hard permission walls between roles: viewers cannot manage agents, operators cannot access admin config, admins have management permissions, and super admins have full access. Custom denials override role-level grants. User deactivation immediately blocks access. MFA is enforced for privileged roles before session creation.
 
 ## Test Functions
 
@@ -39,11 +39,11 @@ VERIFIED — All 13 tests pass. RBAC enforces hard permission walls between role
 ## Source Files Tested
 
 - `tests/test_security_battery.py::TestAccessControl`
-- `core/rbac.py` — Role definitions, permission checks, custom grants/denials
-- `core/auth.py` — User authentication, session creation
-- `core/session_management.py` — Session lifecycle
-- `core/audit.py` — Role assignment audit logging
-- `core/mfa.py` — MFA enrollment status enforcement
+- `core/rbac.py` - Role definitions, permission checks, custom grants/denials
+- `core/auth.py` - User authentication, session creation
+- `core/session_management.py` - Session lifecycle
+- `core/audit.py` - Role assignment audit logging
+- `core/mfa.py` - MFA enrollment status enforcement
 
 ## Verification Command
 

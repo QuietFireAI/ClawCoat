@@ -1,4 +1,4 @@
-# TB-TEST-QMS-039 — TestBuildHaltChain · `test_halt_chain_has_halt_block`
+# TB-TEST-QMS-039 - TestBuildHaltChain · `test_halt_chain_has_halt_block`
 
 **Sheet ID:** TB-TEST-QMS-039
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

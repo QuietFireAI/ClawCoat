@@ -1,7 +1,7 @@
-# TB-PROOF-052 — Full Test Suite Manifest
+# TB-PROOF-052 - Full Test Suite Manifest
 
 **Sheet ID:** TB-PROOF-052
-**Claim Source:** README.md — "720 tests passing"
+**Claim Source:** README.md - "720 tests passing"
 **Status:** VERIFIED
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
@@ -16,12 +16,12 @@ This sheet is the complete manifest of every test in the TelsonBase test suite. 
 
 ## Verdict
 
-VERIFIED — 720 tests pass, 1 skipped, 0 failed. Confirmed on live DigitalOcean deployment. The 1 skipped test is `test_mqtt_stress.py` (excluded from standard runs — requires a running MQTT broker and is a stress test, not a correctness test).
+VERIFIED - 720 tests pass, 1 skipped, 0 failed. Confirmed on live DigitalOcean deployment. The 1 skipped test is `test_mqtt_stress.py` (excluded from standard runs - requires a running MQTT broker and is a stress test, not a correctness test).
 
 ## Verification Command
 
 ```bash
-# Full suite — run inside the container
+# Full suite - run inside the container
 docker compose exec mcp_server python -m pytest tests/ \
   --ignore=tests/test_mqtt_stress.py -v --tb=short 2>&1 | tail -5
 
@@ -40,7 +40,7 @@ docker compose exec mcp_server python -m pytest tests/ \
 
 ## Complete Test Index
 
-### `tests/test_security_battery.py` — 96 tests
+### `tests/test_security_battery.py` - 96 tests
 *The dedicated security test battery. 9 categories, 96 tests. See TB-PROOF-043 through TB-PROOF-051 for category-level proof sheets.*
 
 Run category alone:
@@ -48,7 +48,7 @@ Run category alone:
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py -v --tb=short -m security
 ```
 
-**TestAuthSecurity** — 19 tests
+**TestAuthSecurity** - 19 tests
 | Function |
 |---|
 | `test_api_key_hash_uses_sha256` |
@@ -71,7 +71,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_session_auto_logoff_idle_timeout` |
 | `test_session_max_duration_enforcement` |
 
-**TestEncryptionIntegrity** — 11 tests
+**TestEncryptionIntegrity** - 11 tests
 | Function |
 |---|
 | `test_aes256gcm_ciphertext_differs_from_plaintext` |
@@ -86,7 +86,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_encrypted_dict_roundtrip_preserves_fields` |
 | `test_string_encryption_roundtrip` |
 
-**TestAccessControl** — 13 tests
+**TestAccessControl** - 13 tests
 | Function |
 |---|
 | `test_viewer_cannot_manage_agents` |
@@ -103,7 +103,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_mfa_enforcement_blocks_unenrolled_privileged` |
 | `test_session_creation_blocked_for_inactive_user` |
 
-**TestAuditTrailIntegrity** — 11 tests
+**TestAuditTrailIntegrity** - 11 tests
 | Function |
 |---|
 | `test_audit_chain_starts_with_genesis_hash` |
@@ -118,7 +118,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_sequence_numbers_monotonically_increasing` |
 | `test_chain_verification_passes_for_valid_chain` |
 
-**TestNetworkSecurity** — 9 tests
+**TestNetworkSecurity** - 9 tests
 | Function |
 |---|
 | `test_cors_no_wildcard_default` |
@@ -131,7 +131,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_jwt_algorithm_configured` |
 | `test_external_domain_whitelist_restrictive` |
 
-**TestDataProtection** — 11 tests
+**TestDataProtection** - 11 tests
 | Function |
 |---|
 | `test_phi_deidentification_removes_all_18_identifiers` |
@@ -146,7 +146,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_tenant_data_isolation_scoped_keys` |
 | `test_legal_hold_release_changes_status` |
 
-**TestComplianceInfrastructure** — 11 tests
+**TestComplianceInfrastructure** - 11 tests
 | Function |
 |---|
 | `test_sanctions_can_be_imposed_and_tracked` |
@@ -161,7 +161,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_breach_notification_deadline_tracking` |
 | `test_sanctions_resolution` |
 
-**TestCryptographicStandards** — 8 tests
+**TestCryptographicStandards** - 8 tests
 | Function |
 |---|
 | `test_signing_key_length_minimum_256_bits` |
@@ -173,7 +173,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 | `test_gcm_nonce_size_is_96_bits` |
 | `test_encryption_key_derivation_uses_sha256` |
 
-**TestRuntimeBoundaries** — 3 tests
+**TestRuntimeBoundaries** - 3 tests
 | Function |
 |---|
 | `test_rate_limiter_blocks_at_burst_limit` |
@@ -182,7 +182,7 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 
 ---
 
-### `tests/test_qms.py` — 115 tests
+### `tests/test_qms.py` - 115 tests
 *QMS v2.2.0 protocol specification compliance. Every block type, chain operation, parsing rule, and legacy compatibility case.*
 
 ```bash
@@ -207,8 +207,8 @@ docker compose exec mcp_server python -m pytest tests/test_qms.py -v --tb=short
 
 ---
 
-### `tests/test_toolroom.py` — 129 tests
-*Toolroom supply-chain security — registry, checkout, foreman, cage, versioning, rollback, API endpoints.*
+### `tests/test_toolroom.py` - 129 tests
+*Toolroom supply-chain security - registry, checkout, foreman, cage, versioning, rollback, API endpoints.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_toolroom.py -v --tb=short
@@ -216,8 +216,8 @@ docker compose exec mcp_server python -m pytest tests/test_toolroom.py -v --tb=s
 
 ---
 
-### `tests/test_openclaw.py` — 55 tests
-*OpenClaw governance engine — the 8-step pipeline, trust tiers, kill switch, Manners auto-demotion, permission matrix. See TB-PROOF-035 through TB-PROOF-039.*
+### `tests/test_openclaw.py` - 55 tests
+*OpenClaw governance engine - the 8-step pipeline, trust tiers, kill switch, Manners auto-demotion, permission matrix. See TB-PROOF-035 through TB-PROOF-039.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_openclaw.py -v --tb=short
@@ -237,8 +237,8 @@ docker compose exec mcp_server python -m pytest tests/test_openclaw.py -v --tb=s
 
 ---
 
-### `tests/test_identiclaw.py` — 50 tests
-*W3C DID identity — parsing, Ed25519 verification, verifiable credentials, scope mapping, kill switch, auth flow.*
+### `tests/test_identiclaw.py` - 50 tests
+*W3C DID identity - parsing, Ed25519 verification, verifiable credentials, scope mapping, kill switch, auth flow.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_identiclaw.py -v --tb=short
@@ -261,8 +261,8 @@ docker compose exec mcp_server python -m pytest tests/test_identiclaw.py -v --tb
 
 ---
 
-### `tests/test_ollama.py` — 49 tests
-*Local LLM inference integration — model management, generation, chat, health checks, async safety.*
+### `tests/test_ollama.py` - 49 tests
+*Local LLM inference integration - model management, generation, chat, health checks, async safety.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_ollama.py -v --tb=short
@@ -270,7 +270,7 @@ docker compose exec mcp_server python -m pytest tests/test_ollama.py -v --tb=sho
 
 ---
 
-### `tests/test_observability.py` — 40 tests
+### `tests/test_observability.py` - 40 tests
 *Prometheus metrics, MQTT bus, Grafana/monitoring configuration.*
 
 ```bash
@@ -288,8 +288,8 @@ docker compose exec mcp_server python -m pytest tests/test_observability.py -v -
 
 ---
 
-### `tests/test_behavioral.py` — 30 tests
-*Behavioral specifications — Ollama agent model management, QMS protocol discipline, security boundaries, system resilience, trust level progression, data sovereignty.*
+### `tests/test_behavioral.py` - 30 tests
+*Behavioral specifications - Ollama agent model management, QMS protocol discipline, security boundaries, system resilience, trust level progression, data sovereignty.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_behavioral.py -v --tb=short
@@ -306,7 +306,7 @@ docker compose exec mcp_server python -m pytest tests/test_behavioral.py -v --tb
 
 ---
 
-### `tests/test_e2e_integration.py` — 29 tests
+### `tests/test_e2e_integration.py` - 29 tests
 *End-to-end: user lifecycle, tenant workflow, tenant isolation, security endpoints, audit chain integrity, error sanitization.*
 
 ```bash
@@ -324,8 +324,8 @@ docker compose exec mcp_server python -m pytest tests/test_e2e_integration.py -v
 
 ---
 
-### `tests/test_secrets.py` — 48 tests
-*Secrets management — SecretValue redaction, secret registry, SecretsProvider Docker/env resolution, production startup guard, Docker Compose wiring.*
+### `tests/test_secrets.py` - 48 tests
+*Secrets management - SecretValue redaction, secret registry, SecretsProvider Docker/env resolution, production startup guard, Docker Compose wiring.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_secrets.py -v --tb=short
@@ -343,8 +343,8 @@ docker compose exec mcp_server python -m pytest tests/test_secrets.py -v --tb=sh
 
 ---
 
-### `tests/test_integration.py` — 26 tests
-*Integration layer — federation handshake, egress gateway blocking, approval workflow, cross-agent messaging, anomaly detection, key revocation, audit chain, threat response, secure storage.*
+### `tests/test_integration.py` - 26 tests
+*Integration layer - federation handshake, egress gateway blocking, approval workflow, cross-agent messaging, anomaly detection, key revocation, audit chain, threat response, secure storage.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_integration.py -v --tb=short
@@ -364,8 +364,8 @@ docker compose exec mcp_server python -m pytest tests/test_integration.py -v --t
 
 ---
 
-### `tests/test_capabilities.py` — 15 tests
-*Capability enforcement — parsing, matching, glob patterns, deny rules, CapabilitySet, CapabilityEnforcer.*
+### `tests/test_capabilities.py` - 15 tests
+*Capability enforcement - parsing, matching, glob patterns, deny rules, CapabilitySet, CapabilityEnforcer.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_capabilities.py -v --tb=short
@@ -379,8 +379,8 @@ docker compose exec mcp_server python -m pytest tests/test_capabilities.py -v --
 
 ---
 
-### `tests/test_signing.py` — 13 tests
-*Cryptographic message signing — SignedAgentMessage, AgentKeyRegistry, MessageSigner, replay attack prevention.*
+### `tests/test_signing.py` - 13 tests
+*Cryptographic message signing - SignedAgentMessage, AgentKeyRegistry, MessageSigner, replay attack prevention.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_signing.py -v --tb=short
@@ -394,8 +394,8 @@ docker compose exec mcp_server python -m pytest tests/test_signing.py -v --tb=sh
 
 ---
 
-### `tests/test_api.py` — 19 tests
-*API endpoint smoke tests — public endpoints, authentication, system endpoints, agent endpoints, approval endpoints, anomaly endpoints, federation endpoints, QMS conventions.*
+### `tests/test_api.py` - 19 tests
+*API endpoint smoke tests - public endpoints, authentication, system endpoints, agent endpoints, approval endpoints, anomaly endpoints, federation endpoints, QMS conventions.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_api.py -v --tb=short
@@ -414,8 +414,8 @@ docker compose exec mcp_server python -m pytest tests/test_api.py -v --tb=short
 
 ---
 
-### `tests/test_contracts.py` — 7 tests
-*Enum contract tripwires — any addition or removal of TenantType or AgentTrustLevel values breaks these tests immediately, preventing silent contract breaks.*
+### `tests/test_contracts.py` - 7 tests
+*Enum contract tripwires - any addition or removal of TenantType or AgentTrustLevel values breaks these tests immediately, preventing silent contract breaks.*
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_contracts.py -v --tb=short

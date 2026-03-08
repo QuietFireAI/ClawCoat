@@ -1,4 +1,4 @@
-# TB-TEST-INT-023 — TestThreatResponse · `test_indicator_enable_disable`
+# TB-TEST-INT-023 - TestThreatResponse · `test_indicator_enable_disable`
 
 **Sheet ID:** TB-TEST-INT-023
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
 
 ## Source
 

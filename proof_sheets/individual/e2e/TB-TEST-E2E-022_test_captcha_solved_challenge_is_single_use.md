@@ -1,4 +1,4 @@
-# TB-TEST-E2E-022 — TestSecurityEndpoints · `test_captcha_solved_challenge_is_single_use`
+# TB-TEST-E2E-022 - TestSecurityEndpoints · `test_captcha_solved_challenge_is_single_use`
 
 **Sheet ID:** TB-TEST-E2E-022
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 

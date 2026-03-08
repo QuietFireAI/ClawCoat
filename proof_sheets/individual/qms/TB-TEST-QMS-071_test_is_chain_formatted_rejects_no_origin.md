@@ -1,4 +1,4 @@
-# TB-TEST-QMS-071 — TestSecurityFlagging · `test_is_chain_formatted_rejects_no_origin`
+# TB-TEST-QMS-071 - TestSecurityFlagging · `test_is_chain_formatted_rejects_no_origin`
 
 **Sheet ID:** TB-TEST-QMS-071
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

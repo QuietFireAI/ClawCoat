@@ -1,4 +1,4 @@
-# TB-TEST-QMS-102 — TestLegacyCompatibility · `test_is_qms_formatted_rejects_plain`
+# TB-TEST-QMS-102 - TestLegacyCompatibility · `test_is_qms_formatted_rejects_plain`
 
 **Sheet ID:** TB-TEST-QMS-102
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,8 +1,8 @@
-# Manners Compliance Guide — TelsonBase
+# Manners Compliance Guide - TelsonBase
 
 ## Overview
 
-TelsonBase implements **Manners** — a runtime
+TelsonBase implements **Manners** - a runtime
 compliance framework that evaluates every agent against five principles derived from
 Anthropic's published guidelines on responsible AI agent development.
 
@@ -41,11 +41,11 @@ Every agent receives a score from 0.0 to 1.0:
 
 | Score Range | Status | Operational Impact |
 |-------------|--------|--------------------|
-| 0.90 — 1.00 | EXEMPLARY | Full autonomous operation |
-| 0.75 — 0.89 | COMPLIANT | Normal operation |
-| 0.50 — 0.74 | DEGRADED | Increased monitoring, weekly review |
-| 0.25 — 0.49 | NON_COMPLIANT | Read-only access only |
-| 0.00 — 0.24 | SUSPENDED | Quarantined, human review required |
+| 0.90 - 1.00 | EXEMPLARY | Full autonomous operation |
+| 0.75 - 0.89 | COMPLIANT | Normal operation |
+| 0.50 - 0.74 | DEGRADED | Increased monitoring, weekly review |
+| 0.25 - 0.49 | NON_COMPLIANT | Read-only access only |
+| 0.00 - 0.24 | SUSPENDED | Quarantined, human review required |
 
 ### How Scores Are Calculated
 
@@ -77,14 +77,14 @@ All endpoints require authentication and `view:agents` permission.
 
 Every agent must have an entry in `agents/registry.yaml` that includes:
 
-- `display_name` — Human-friendly name
-- `floor` — Architectural level (ground, mezzanine, third)
-- `role` — One-line job description
-- `actions` — Complete list of supported actions
-- `requires_approval` — Actions that need HITL gates
-- `capabilities` — Resource access patterns
-- `manners_compliance` — How the agent satisfies each Manners principle
-- `expected_responses` — What each action returns (for verification)
+- `display_name` - Human-friendly name
+- `floor` - Architectural level (ground, mezzanine, third)
+- `role` - One-line job description
+- `actions` - Complete list of supported actions
+- `requires_approval` - Actions that need HITL gates
+- `capabilities` - Resource access patterns
+- `manners_compliance` - How the agent satisfies each Manners principle
+- `expected_responses` - What each action returns (for verification)
 
 Agents without registry entries are automatically quarantined.
 
@@ -106,7 +106,7 @@ manners_violation("transaction_agent", ViolationType.CAPABILITY_VIOLATION,
                "Attempted to access compliance data")
 
 # Quick lookups
-score = manners_score("transaction_agent")  # 0.0 — 1.0
+score = manners_score("transaction_agent")  # 0.0 - 1.0
 status = manners_status("transaction_agent")  # ComplianceStatus enum
 ```
 
@@ -148,9 +148,9 @@ For SOC 2 and regulatory audits, Manners provides:
 
 ## References
 
-- **MANNERS.md** — The five principles with full KPI tables
-- **agents/registry.yaml** — Centralized agent job descriptions
-- **core/manners.py** — Runtime evaluation engine (source code)
+- **MANNERS.md** - The five principles with full KPI tables
+- **agents/registry.yaml** - Centralized agent job descriptions
+- **core/manners.py** - Runtime evaluation engine (source code)
 - Anthropic: [Framework for Developing Safe and Trustworthy Agents](https://www.anthropic.com/news/our-framework-for-developing-safe-and-trustworthy-agents)
 - Anthropic: [Core Views on AI Safety](https://www.anthropic.com/news/core-views-on-ai-safety)
 - Anthropic: [Responsible Scaling Policy](https://www.anthropic.com/rsp-updates)

@@ -1,12 +1,12 @@
-# TelsonBase — Security Policy
+# TelsonBase - Security Policy
 
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI — security@telsonbase.com
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI - security@telsonbase.com
 
 ## Supported Versions
 
 | Version | Supported |
 |---|---|
-| **v11.0.1** (Current) | ✅ Active — full support |
+| **v11.0.1** (Current) | ✅ Active - full support |
 | v10.0.0Bminus | ✅ Security updates only |
 | < v10.0.0Bminus | ❌ Not supported |
 
@@ -20,7 +20,7 @@ Only the latest minor release receives security patches. Upgrade to the current 
 
 ### Disclosure Process
 
-1. **Email:** Send details to **security@telsonbase.com** with subject line `[SECURITY] TelsonBase — <brief description>`
+1. **Email:** Send details to **security@telsonbase.com** with subject line `[SECURITY] TelsonBase - <brief description>`
 
    > **URGENT:** Security vulnerabilities must be reported to security@telsonbase.com only. Do not use general support channels for security disclosures.
 2. **Include:**
@@ -115,7 +115,7 @@ Before deploying TelsonBase in production:
 - [ ] Enable MFA for all admin accounts
 - [ ] Set `RATE_LIMIT_PER_MINUTE` appropriate to your usage
 - [ ] Run `docker compose exec mcp_server python -m pytest tests/ -v` to verify all tests pass
-- [ ] Review agent trust levels — new agents should start at `quarantine`
+- [ ] Review agent trust levels - new agents should start at `quarantine`
 
 ---
 

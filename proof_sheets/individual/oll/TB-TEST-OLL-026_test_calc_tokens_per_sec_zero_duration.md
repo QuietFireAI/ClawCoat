@@ -1,4 +1,4 @@
-# TB-TEST-OLL-026 — TestTokensPerSecond · `test_calc_tokens_per_sec_zero_duration`
+# TB-TEST-OLL-026 - TestTokensPerSecond · `test_calc_tokens_per_sec_zero_duration`
 
 **Sheet ID:** TB-TEST-OLL-026
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
 
 ## Source
 

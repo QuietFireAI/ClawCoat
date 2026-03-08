@@ -1,4 +1,4 @@
-# TB-TEST-SEC-024 — TestEncryptionIntegrity · `test_pbkdf2_key_derivation_consistent`
+# TB-TEST-SEC-024 - TestEncryptionIntegrity · `test_pbkdf2_key_derivation_consistent`
 
 **Sheet ID:** TB-TEST-SEC-024
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> PBKDF2 produces the same key for the same password and salt — deterministic
+> PBKDF2 produces the same key for the same password and salt - deterministic
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

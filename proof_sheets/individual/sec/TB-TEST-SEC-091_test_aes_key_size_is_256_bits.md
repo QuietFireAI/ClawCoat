@@ -1,4 +1,4 @@
-# TB-TEST-SEC-091 — TestCryptographicStandards · `test_aes_key_size_is_256_bits`
+# TB-TEST-SEC-091 - TestCryptographicStandards · `test_aes_key_size_is_256_bits`
 
 **Sheet ID:** TB-TEST-SEC-091
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> AES key size is exactly 256 bits — not 128, not 192
+> AES key size is exactly 256 bits - not 128, not 192
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

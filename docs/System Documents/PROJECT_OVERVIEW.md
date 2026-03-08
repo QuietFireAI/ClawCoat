@@ -1,9 +1,9 @@
-# TelsonBase — Project Overview
+# TelsonBase - Project Overview
 
 **A Zero-Trust AI Agent Security Platform**
 **Built for Data Sovereignty. Designed for Local-First Deployment.**
 
-**Architect:** ::Jeff Phillips:: — ::support@telsonbase.com::
+**Architect:** ::Jeff Phillips:: - ::support@telsonbase.com::
 **Organization:** Quietfire AI
 **Version:** 10.0.0Bminus (March 3, 2026)
 **License:** Apache 2.0
@@ -14,7 +14,7 @@
 
 TelsonBase is a self-hosted AI agent security platform. It provides the infrastructure for running, monitoring, securing, and federating AI agents on hardware you own. Every component runs inside Docker containers on a single machine. No cloud dependencies. No external API calls required. No vendor lock-in.
 
-The platform is designed for industries where data cannot leave the premises — legal, healthcare, finance, manufacturing — but the architecture applies to any organization that wants AI capabilities without surrendering data to third parties.
+The platform is designed for industries where data cannot leave the premises - legal, healthcare, finance, manufacturing - but the architecture applies to any organization that wants AI capabilities without surrendering data to third parties.
 
 ---
 
@@ -34,28 +34,28 @@ Every AI agent operates under a cryptographic identity and behavioral enforcemen
 
 ### 2. Qualified Message Standard (QMS™)
 
-QMS is a communication protocol that embeds human semantics directly into machine-parseable messages. It's not just a naming convention — it's a formal specification (v2.1.6) with grammar rules, priority levels, and inline data tagging.
+QMS is a communication protocol that embeds human semantics directly into machine-parseable messages. It's not just a naming convention - it's a formal specification (v2.1.6) with grammar rules, priority levels, and inline data tagging.
 
 Core suffixes create an implicit state machine:
-- `_Please` — Request for action
-- `_Thank_You` — Successful completion
-- `_Thank_You_But_No` — Failed with explanation
-- `_Excuse_Me` — Need clarification
-- `_Pretty_Please` — High priority (triggers retain flags, elevated routing)
+- `_Please` - Request for action
+- `_Thank_You` - Successful completion
+- `_Thank_You_But_No` - Failed with explanation
+- `_Excuse_Me` - Need clarification
+- `_Pretty_Please` - High priority (triggers retain flags, elevated routing)
 
 Inline tagging with `::double_colons::` marks extractable data within messages. Extended markers (`$$financial$$`, `##policy_id##`, `@@agent_target@@`, `??uncertainty??`) enable type-aware routing.
 
 The result: `Backup_Failed_::Volume_Ollama_Data_Corrupted::_Thank_You_But_No` is simultaneously human-readable in a log stream and machine-parseable by any downstream agent or workflow.
 
-No other agent communication standard does this. LangChain, CrewAI, and AutoGen all use structured JSON — machine-readable but opaque to humans. QMS makes agent behavior immediately debuggable without tooling.
+No other agent communication standard does this. LangChain, CrewAI, and AutoGen all use structured JSON - machine-readable but opaque to humans. QMS makes agent behavior immediately debuggable without tooling.
 
 ### 3. Multi-AI Collaborative Development
 
-TelsonBase was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms — ChatGPT, Google Gemini, and Claude — rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
+TelsonBase was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms - ChatGPT, Google Gemini, and Claude - rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
 
-This is documented in the codebase and is part of the project's story. Gemini ran the first external test suite (Colab). Claude built the security core, observability, and MQTT bus. ChatGPT contributed early architectural scaffolding. The rotation methodology itself — using cross-platform validation to maintain coherence — is a reproducible pattern for AI-assisted software development.
+This is documented in the codebase and is part of the project's story. Gemini ran the first external test suite (Colab). Claude built the security core, observability, and MQTT bus. ChatGPT contributed early architectural scaffolding. The rotation methodology itself - using cross-platform validation to maintain coherence - is a reproducible pattern for AI-assisted software development.
 
-### 4. Federation — Cross-Instance Encrypted Trust
+### 4. Federation - Cross-Instance Encrypted Trust
 
 TelsonBase instances can establish trust relationships with other TelsonBase instances for cross-organizational agent collaboration. The federation protocol uses RSA-OAEP encrypted session key exchange, and all cross-instance messages are encrypted end-to-end. Trust levels (Standard, Elevated, Full) control what actions federated agents can perform.
 
@@ -188,7 +188,7 @@ Services only join networks they need. If Redis is compromised, the attacker has
 | Monitoring | Prometheus + Grafana | Metrics collection, dashboards, alerting |
 | Container Metrics | cAdvisor + Node Exporter | Docker and host-level metrics |
 | AI Chat UI | Open-WebUI | Human-AI conversation interface |
-| Agent Interface | MCP gateway (`/mcp`) | Goose / Claude Desktop integration — operator-authenticated, HITL-gated |
+| Agent Interface | MCP gateway (`/mcp`) | Goose / Claude Desktop integration - operator-authenticated, HITL-gated |
 | Secrets | Docker Secrets + generate_secrets.sh | tmpfs-mounted secrets, never on disk |
 
 All Python dependencies are version-pinned for reproducible builds.
@@ -230,7 +230,7 @@ Three tiers, all automated:
 - **Startup snapshots** on container restart (23h cooldown)
 - **Deployment snapshots** triggered manually before code changes
 
-Archives are `.tar.gz` files stored in `./backups/{type}/` on the host. Restore process documented in `RESTORE_RECOVERY_GUIDE.md` — tested procedure, not theory.
+Archives are `.tar.gz` files stored in `./backups/{type}/` on the host. Restore process documented in `RESTORE_RECOVERY_GUIDE.md` - tested procedure, not theory.
 
 ### Monitoring
 
@@ -273,7 +273,7 @@ This project was built using a documented methodology of rotating between AI pla
 - **Gemini (Google):** External test validation (Colab environment), dependency conflict identification, independent bug discovery.
 - **ChatGPT (OpenAI):** Early architectural scaffolding, initial QMS concept development.
 
-The rotation serves as a form of cross-validation. Each platform reviews the others' output. Drift, hallucination, and single-platform bias are caught by submitting the same codebase to a different model for analysis. This methodology is itself a contribution — a reproducible pattern for AI-assisted software development.
+The rotation serves as a form of cross-validation. Each platform reviews the others' output. Drift, hallucination, and single-platform bias are caught by submitting the same codebase to a different model for analysis. This methodology is itself a contribution - a reproducible pattern for AI-assisted software development.
 
 ### Version History
 
@@ -294,16 +294,16 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 1. A 42,000-line zero-trust AI agent platform can be built on consumer hardware.
 2. Multi-AI collaborative development produces more robust output than single-platform development.
-3. Data sovereignty is not a marketing term — it's an architecture with 720 passing tests.
+3. Data sovereignty is not a marketing term - it's an architecture with 720 passing tests.
 4. AI-assisted development, directed by a human architect with clear vision, can produce production-grade infrastructure.
 5. QMS makes agent behavior immediately debuggable without specialized tooling.
-6. Local-first AI deployment is not just possible — it's preferable for any organization that takes data ownership seriously.
+6. Local-first AI deployment is not just possible - it's preferable for any organization that takes data ownership seriously.
 
 ---
 
 ## Contact
 
-**Jeff Phillips** — Architect
+**Jeff Phillips** - Architect
 support@telsonbase.com
 
-**Quietfire AI** — quietfireai.com
+**Quietfire AI** - quietfireai.com

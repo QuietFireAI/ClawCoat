@@ -1,4 +1,4 @@
-# TB-TEST-QMS-115 — TestSpecExamples · `test_spec_example_clarification`
+# TB-TEST-QMS-115 - TestSpecExamples · `test_spec_example_clarification`
 
 **Sheet ID:** TB-TEST-QMS-115
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

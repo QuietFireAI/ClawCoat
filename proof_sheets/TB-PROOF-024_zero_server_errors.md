@@ -1,7 +1,7 @@
 # TB-PROOF-024: 0 Server Errors Under Fuzzing
 
 **Sheet ID:** TB-PROOF-024
-**Claim Source:** telsonbase.com — Security Testing Section
+**Claim Source:** telsonbase.com - Security Testing Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — After 16 code fixes in v7.2.5CC, Schemathesis fuzzing across 107,811 test cases produced 0 server errors (5xx responses). Every malformed input returns a proper 4xx validation error, never a crash.
+VERIFIED - After 16 code fixes in v7.2.5CC, Schemathesis fuzzing across 107,811 test cases produced 0 server errors (5xx responses). Every malformed input returns a proper 4xx validation error, never a crash.
 
 ## Evidence
 
@@ -26,20 +26,20 @@ VERIFIED — After 16 code fixes in v7.2.5CC, Schemathesis fuzzing across 107,81
 
 ### The 16 Fixes (v7.2.5CC)
 
-1. BreachSeverity enum — empty/null → 422 instead of 500
-2. SanctionSeverity enum — same pattern
-3. TrainingType enum — same pattern
-4. ContingencyTestType enum — same pattern
-5. HITRUSTDomain enum — same pattern
-6. PHI disclosure date parsing — string "null" and invalid ISO → 422
+1. BreachSeverity enum - empty/null → 422 instead of 500
+2. SanctionSeverity enum - same pattern
+3. TrainingType enum - same pattern
+4. ContingencyTestType enum - same pattern
+5. HITRUSTDomain enum - same pattern
+6. PHI disclosure date parsing - string "null" and invalid ISO → 422
 7. Legal hold release reason parameter added
 8. SessionManager.get_session() method added
 9. Emergency access duration overflow protection (cap at 1440 min)
-10. LLM model endpoints — bad model names → 404 instead of 500
-11. n8n integration — format_qms kwarg conflict fixed
-12. n8n integration — approval status method fix
-13. system/analyze — try/except wrapper
-14. system/analyze — auth.identity → auth.actor
+10. LLM model endpoints - bad model names → 404 instead of 500
+11. n8n integration - format_qms kwarg conflict fixed
+12. n8n integration - approval status method fix
+13. system/analyze - try/except wrapper
+14. system/analyze - auth.identity → auth.actor
 15. General input validation tightening
 16. Error response format standardization
 
@@ -47,7 +47,7 @@ VERIFIED — After 16 code fixes in v7.2.5CC, Schemathesis fuzzing across 107,81
 
 - **107,811 randomized payloads** sent to **151 API operations**
 - Every payload designed to break the API (nulls, huge numbers, special chars, wrong types)
-- **Zero 5xx responses** — every bad input gets a proper 4xx rejection
+- **Zero 5xx responses** - every bad input gets a proper 4xx rejection
 - The API never crashes, panics, or returns an unhandled exception
 
 ## Verification Command

@@ -1,7 +1,7 @@
 # TB-PROOF-017: Account Lockout After 5 Failed Attempts
 
 **Sheet ID:** TB-PROOF-017
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/user_management.py` implements account lockout after 5 failed login attempts with a 15-minute lockout duration.
+VERIFIED - `core/user_management.py` implements account lockout after 5 failed login attempts with a 15-minute lockout duration.
 
 ## Evidence
 

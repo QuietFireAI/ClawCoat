@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-030 — TestSecretsProvider · `test_empty_docker_secret_file_ignored`
+# TB-TEST-SCRT-030 - TestSecretsProvider · `test_empty_docker_secret_file_ignored`
 
 **Sheet ID:** TB-TEST-SCRT-030
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

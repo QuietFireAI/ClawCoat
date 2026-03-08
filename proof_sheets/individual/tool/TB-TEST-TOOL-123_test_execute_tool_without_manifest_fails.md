@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-123 — TestForemanExecution · `test_execute_tool_without_manifest_fails`
+# TB-TEST-TOOL-123 - TestForemanExecution · `test_execute_tool_without_manifest_fails`
 
 **Sheet ID:** TB-TEST-TOOL-123
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-081 — TestComplianceInfrastructure · `test_phi_disclosure_accounting_records`
+# TB-TEST-SEC-081 - TestComplianceInfrastructure · `test_phi_disclosure_accounting_records`
 
 **Sheet ID:** TB-TEST-SEC-081
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

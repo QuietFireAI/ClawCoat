@@ -17,9 +17,9 @@ Every tool in the registry has three access control fields set at install time:
 | `requires_api_access` | bool | `False` | If true, HITL gate triggers regardless of trust level |
 | `allowed_agents` | list | `[]` (all) | Explicit allowlist; empty means any agent of sufficient trust level |
 
-**Source:** `toolroom/registry.py` — `ToolMetadata` dataclass.
+**Source:** `toolroom/registry.py` - `ToolMetadata` dataclass.
 
-All three are evaluated in sequence by the Foreman during every checkout request (`toolroom/foreman.py` — `handle_checkout_request()`):
+All three are evaluated in sequence by the Foreman during every checkout request (`toolroom/foreman.py` - `handle_checkout_request()`):
 
 ```
 1. Does the tool exist?
@@ -33,7 +33,7 @@ All three are evaluated in sequence by the Foreman during every checkout request
 
 ## The Promotion Ladder
 
-Agents are promoted sequentially from QUARANTINE through to AGENT — the top tier. There are no skips on promotion. Every agent earns its way through the full ladder.
+Agents are promoted sequentially from QUARANTINE through to AGENT - the top tier. There are no skips on promotion. Every agent earns its way through the full ladder.
 
 ```
 QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT
@@ -56,13 +56,13 @@ This matters for toolroom access: tool designations map directly to this ladder.
 
 **The default `min_trust_level` is `"resident"`**, which means QUARANTINE and PROBATION agents cannot check out any standard tool without the operator explicitly lowering the designation.
 
-Unknown trust levels (unregistered agents) are treated as QUARANTINE — the most restrictive fallback.
+Unknown trust levels (unregistered agents) are treated as QUARANTINE - the most restrictive fallback.
 
 ---
 
 ## API Access Gate
 
-`requires_api_access = True` is a separate gate from trust level. It triggers a HITL approval request regardless of the agent's tier — even AGENT-level agents require human authorization before checking out an API-access tool.
+`requires_api_access = True` is a separate gate from trust level. It triggers a HITL approval request regardless of the agent's tier - even AGENT-level agents require human authorization before checking out an API-access tool.
 
 This is intentional: external API access carries credential and egress risk that no tier designation removes.
 
@@ -73,13 +73,13 @@ Tool requires_api_access = True
   → Only after approval: checkout proceeds
 ```
 
-**Source:** `toolroom/foreman.py` — `handle_checkout_request()` Step 4.
+**Source:** `toolroom/foreman.py` - `handle_checkout_request()` Step 4.
 
 ---
 
 ## Recommended Designations by Tool Category
 
-These are operator guidelines, not enforced defaults. The Foreman does not assign `min_trust_level` automatically by category — the installing operator sets it at install time.
+These are operator guidelines, not enforced defaults. The Foreman does not assign `min_trust_level` automatically by category - the installing operator sets it at install time.
 
 | Category | Recommended `min_trust_level` | `requires_api_access` | Rationale |
 |---|---|---|---|
@@ -96,7 +96,7 @@ These are operator guidelines, not enforced defaults. The Foreman does not assig
 | `integration` | `citizen` | `True` | External services. CITIZEN + HITL. |
 | Highest-sensitivity tools | `agent` | `True` | Reserved for apex-tier agents only. Full promotion ladder required. |
 
-`min_trust_level = "agent"` is the most restrictive designation. Only agents that have completed the full QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT promotion path — meeting every behavioral threshold and receiving human approval at each step — can check out these tools. Use this designation for tools with destructive, irreversible, or system-level consequences where anything less than proven trust is unacceptable.
+`min_trust_level = "agent"` is the most restrictive designation. Only agents that have completed the full QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT promotion path - meeting every behavioral threshold and receiving human approval at each step - can check out these tools. Use this designation for tools with destructive, irreversible, or system-level consequences where anything less than proven trust is unacceptable.
 
 ---
 
@@ -134,7 +134,7 @@ def hash_text(text: str, algorithm: str = "sha256") -> dict:
 
 ### Post-Install Update
 
-Re-register the tool with updated metadata. The registry carries forward version history on update. Only human operators can change tool designations — the Foreman cannot modify its own registry entries except during installs and updates.
+Re-register the tool with updated metadata. The registry carries forward version history on update. Only human operators can change tool designations - the Foreman cannot modify its own registry entries except during installs and updates.
 
 ---
 
@@ -152,7 +152,7 @@ metadata = ToolMetadata(
 )
 ```
 
-An empty list (default) means any agent meeting the `min_trust_level` can check it out. A non-empty list is an allowlist — trust level still applies on top of it.
+An empty list (default) means any agent meeting the `min_trust_level` can check it out. A non-empty list is an allowlist - trust level still applies on top of it.
 
 ---
 
@@ -160,11 +160,11 @@ An empty list (default) means any agent meeting the `min_trust_level` can check 
 
 | Check | Where Enforced |
 |---|---|
-| `min_trust_level` comparison | `toolroom/foreman.py` — `handle_checkout_request()` |
-| `allowed_agents` check | `toolroom/foreman.py` — Step 2 |
-| `requires_api_access` gate | `toolroom/foreman.py` — Step 4 |
-| Trust hierarchy definition | `core/trust_levels.py` — `AgentTrustLevel` enum |
-| Constraints per tier | `core/trust_levels.py` — `TRUST_LEVEL_CONSTRAINTS` |
+| `min_trust_level` comparison | `toolroom/foreman.py` - `handle_checkout_request()` |
+| `allowed_agents` check | `toolroom/foreman.py` - Step 2 |
+| `requires_api_access` gate | `toolroom/foreman.py` - Step 4 |
+| Trust hierarchy definition | `core/trust_levels.py` - `AgentTrustLevel` enum |
+| Constraints per tier | `core/trust_levels.py` - `TRUST_LEVEL_CONSTRAINTS` |
 
 ---
 

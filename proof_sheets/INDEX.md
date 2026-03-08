@@ -2,7 +2,7 @@
 
 **Every claim is backed by evidence.**
 
-Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding evidence sheet in this directory. Each sheet documents the exact claim, provides the source code files, test files, and verification commands that prove it. No marketing fluff — just traceable evidence.
+Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding evidence sheet in this directory. Each sheet documents the exact claim, provides the source code files, test files, and verification commands that prove it. No marketing fluff - just traceable evidence.
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
@@ -52,7 +52,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 | [TB-PROOF-019](TB-PROOF-019_hitl_approval_gates.md) | Human-in-the-Loop Approval Gates | VERIFIED |
 | [TB-PROOF-020](TB-PROOF-020_anomaly_detection.md) | Behavioral Anomaly Detection | VERIFIED |
 | [TB-PROOF-021](TB-PROOF-021_multi_tenant_isolation.md) | Multi-Tenant Data Isolation | VERIFIED |
-| [TB-PROOF-042](TB-PROOF-042_tenant_access_control.md) | Tenant Access Control — allowed_actors Enforcement | VERIFIED |
+| [TB-PROOF-042](TB-PROOF-042_tenant_access_control.md) | Tenant Access Control - allowed_actors Enforcement | VERIFIED |
 
 ### Security Testing
 | Sheet | Claim | Status |
@@ -92,27 +92,27 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 | Sheet | Claim | Status |
 |---|---|---|
 | [TB-PROOF-040](TB-PROOF-040_openclaw_integration_guide.md) | OpenClaw Integration: Start to Finish (under 45 min) | VERIFIED |
-| [TB-PROOF-041](TB-PROOF-041_agent_registration.md) | How to Add an Agent — Developer Deep Dive | VERIFIED |
+| [TB-PROOF-041](TB-PROOF-041_agent_registration.md) | How to Add an Agent - Developer Deep Dive | VERIFIED |
 
-### Security Battery — Test-by-Test Evidence
+### Security Battery - Test-by-Test Evidence
 *One proof sheet per test class. Every claim in the 96-test security battery is traceable to source code and a verification command.*
 
 | Sheet | Claim | Tests | Status |
 |---|---|---|---|
-| [TB-PROOF-043](TB-PROOF-043_security_auth.md) | Authentication Security — API key hashing, JWT lifecycle, MFA, sessions | 19 | VERIFIED |
-| [TB-PROOF-044](TB-PROOF-044_security_encryption.md) | Encryption Integrity — AES-256-GCM, PBKDF2, HMAC correctness | 11 | VERIFIED |
-| [TB-PROOF-045](TB-PROOF-045_security_access_control.md) | Access Control — RBAC enforcement, custom grants/denials, deactivation | 13 | VERIFIED |
-| [TB-PROOF-046](TB-PROOF-046_security_audit_trail.md) | Audit Trail Integrity — SHA-256 chain, tamper detection, UTC timestamps | 11 | VERIFIED |
-| [TB-PROOF-047](TB-PROOF-047_security_network.md) | Network Security — CORS, Redis auth, production mode, session timeouts, MQTT | 9 | VERIFIED |
-| [TB-PROOF-048](TB-PROOF-048_security_data_protection.md) | Data Protection & Privacy — PHI de-id (18 identifiers), minimum necessary, legal hold | 11 | VERIFIED |
-| [TB-PROOF-049](TB-PROOF-049_security_compliance.md) | Compliance Infrastructure — HITRUST, BAA lifecycle, breach notification, sanctions | 11 | VERIFIED |
-| [TB-PROOF-050](TB-PROOF-050_security_cryptography.md) | Cryptographic Standards — algorithm verification, key sizes, RFC 6238 TOTP | 8 | VERIFIED |
-| [TB-PROOF-051](TB-PROOF-051_security_runtime_boundaries.md) | Runtime Boundary Enforcement — rate limiter, CAPTCHA expiry, email token expiry | 3 | VERIFIED |
+| [TB-PROOF-043](TB-PROOF-043_security_auth.md) | Authentication Security - API key hashing, JWT lifecycle, MFA, sessions | 19 | VERIFIED |
+| [TB-PROOF-044](TB-PROOF-044_security_encryption.md) | Encryption Integrity - AES-256-GCM, PBKDF2, HMAC correctness | 11 | VERIFIED |
+| [TB-PROOF-045](TB-PROOF-045_security_access_control.md) | Access Control - RBAC enforcement, custom grants/denials, deactivation | 13 | VERIFIED |
+| [TB-PROOF-046](TB-PROOF-046_security_audit_trail.md) | Audit Trail Integrity - SHA-256 chain, tamper detection, UTC timestamps | 11 | VERIFIED |
+| [TB-PROOF-047](TB-PROOF-047_security_network.md) | Network Security - CORS, Redis auth, production mode, session timeouts, MQTT | 9 | VERIFIED |
+| [TB-PROOF-048](TB-PROOF-048_security_data_protection.md) | Data Protection & Privacy - PHI de-id (18 identifiers), minimum necessary, legal hold | 11 | VERIFIED |
+| [TB-PROOF-049](TB-PROOF-049_security_compliance.md) | Compliance Infrastructure - HITRUST, BAA lifecycle, breach notification, sanctions | 11 | VERIFIED |
+| [TB-PROOF-050](TB-PROOF-050_security_cryptography.md) | Cryptographic Standards - algorithm verification, key sizes, RFC 6238 TOTP | 8 | VERIFIED |
+| [TB-PROOF-051](TB-PROOF-051_security_runtime_boundaries.md) | Runtime Boundary Enforcement - rate limiter, CAPTCHA expiry, email token expiry | 3 | VERIFIED |
 
 ### Full Test Suite Manifest
 | Sheet | Claim | Status |
 |---|---|---|
-| [TB-PROOF-052](TB-PROOF-052_full_test_manifest.md) | Complete 720-Test Suite Manifest — every file, class, and function name | VERIFIED |
+| [TB-PROOF-052](TB-PROOF-052_full_test_manifest.md) | Complete 720-Test Suite Manifest - every file, class, and function name | VERIFIED |
 
 ### Test Suite Class-Level Evidence
 *One proof sheet per test suite. Every test class in each suite is listed with its test count and what it proves.*

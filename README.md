@@ -99,21 +99,21 @@ TelsonBase is a **self-hosted, governance-first security platform** for autonomo
 
 ## A Solution, Not THE Solution
 
-TelsonBase is not the definitive answer to AI agent governance. It is one answer — the approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
+TelsonBase is not the definitive answer to AI agent governance. It is one answer - the approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
 
-Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem — it was to model one way to solve it seriously and put that model where others can use it.
+Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem - it was to model one way to solve it seriously and put that model where others can use it.
 
-The platform will keep evolving. Formal certifications — HIPAA, HITRUST, SOC 2 Type II — are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review. Both matter. Both will ship.
+The platform will keep evolving. Formal certifications - HIPAA, HITRUST, SOC 2 Type II - are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review. Both matter. Both will ship.
 
 If you are building agents for your company and you want a governance layer you control completely, this is built for that. If you are researching AI safety and want a real implementation to study, test, or critique, this is built for that too. If you see gaps, the issues tab is open.
 
 ---
 
-## QMS™ — How Agents Talk to Each Other
+## QMS™ - How Agents Talk to Each Other
 
 One piece of this that deserves its own moment: the Qualified Message Standard.
 
-Most agent communication protocols require a shared configuration layer — both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
+Most agent communication protocols require a shared configuration layer - both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
 
 QMS™ solves that differently. The grammar is in the format itself:
 
@@ -122,17 +122,17 @@ QMS™ solves that differently. The grammar is in the format itself:
 ```
 
 Three rules cover the whole protocol:
-- `::content::` — every block starts and ends with `::`, no exceptions
-- `::block::-::block::` — blocks are linked by `-`, every chain ends with `::`
+- `::content::` - every block starts and ends with `::`, no exceptions
+- `::block::-::block::` - blocks are linked by `-`, every chain ends with `::`
 - Leading `_` marks a connector word (`::_Thank_You::`) vs. an action word (`::Create_Backup::`)
 
-That is the entire grammar. An AI agent encountering QMS for the first time — from any framework, any vendor, any training background — can figure it out from a few examples. No schema registration. No handshake. No shared library. The format teaches itself.
+That is the entire grammar. An AI agent encountering QMS for the first time - from any framework, any vendor, any training background - can figure it out from a few examples. No schema registration. No handshake. No shared library. The format teaches itself.
 
-This matters more than it sounds. The agent ecosystem is not going to stay homogeneous. New frameworks ship constantly. New model architectures follow. Whatever governs how agents communicate needs to be legible to things that do not share your codebase. QMS is legible to anything that can recognize a pattern — which is all of them.
+This matters more than it sounds. The agent ecosystem is not going to stay homogeneous. New frameworks ship constantly. New model architectures follow. Whatever governs how agents communicate needs to be legible to things that do not share your codebase. QMS is legible to anything that can recognize a pattern - which is all of them.
 
-It also translates. The `::`, `-`, and `_` conventions work regardless of what language fills the blocks. English, Spanish, technical jargon, domain-specific vocabulary — the structure holds. You could technically write valid QMS chains in Klingon. The grammar does not care. Only the structure matters.
+It also translates. The `::`, `-`, and `_` conventions work regardless of what language fills the blocks. English, Spanish, technical jargon, domain-specific vocabulary - the structure holds. You could technically write valid QMS chains in Klingon. The grammar does not care. Only the structure matters.
 
-This was not a grand design decision. It is just how the problem looked when I sat down to solve it — keep it simple enough that nothing needs to be explained, and structure it so the format itself does the explaining. That turned out to be more useful than expected.
+This was not a grand design decision. It is just how the problem looked when I sat down to solve it - keep it simple enough that nothing needs to be explained, and structure it so the format itself does the explaining. That turned out to be more useful than expected.
 
 QMS™ is an open standard (MIT licensed). The trademark covers the name. The protocol is free to implement, adapt, and build on.
 
@@ -417,14 +417,14 @@ Claude Desktop works identically - point it at `http://localhost:8000/mcp` with 
 
 The `proof_sheets/` directory contains **773 evidence documents**.
 
-This is not a marketing decision. If we preach governance, we have to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed — not hidden.
+This is not a marketing decision. If we preach governance, we have to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
 **Two tiers:**
 
 | Tier | Format | Count | Purpose |
 |---|---|---|---|
-| **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim — source files, verdict, verification command |
-| **Individual test** | `TB-TEST-[CODE]-NNN` | 721 sheets | One sheet per test function — single-command verification, class cross-reference |
+| **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim - source files, verdict, verification command |
+| **Individual test** | `TB-TEST-[CODE]-NNN` | 721 sheets | One sheet per test function - single-command verification, class cross-reference |
 
 ```
 proof_sheets/
@@ -445,7 +445,7 @@ proof_sheets/
 # Check a specific claim
 cat proof_sheets/TB-PROOF-037_openclaw_kill_switch.md
 
-# Check one specific test — the exact docker command is inside
+# Check one specific test - the exact docker command is inside
 cat proof_sheets/individual/sec/TB-TEST-SEC-001_test_api_key_hash_uses_sha256.md
 
 # Verify any test yourself

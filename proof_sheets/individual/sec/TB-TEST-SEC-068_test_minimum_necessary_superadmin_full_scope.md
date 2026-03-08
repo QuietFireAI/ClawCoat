@@ -1,4 +1,4 @@
-# TB-TEST-SEC-068 — TestDataProtection · `test_minimum_necessary_superadmin_full_scope`
+# TB-TEST-SEC-068 - TestDataProtection · `test_minimum_necessary_superadmin_full_scope`
 
 **Sheet ID:** TB-TEST-SEC-068
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Super admins receive full scope — no fields stripped
+> Super admins receive full scope - no fields stripped
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

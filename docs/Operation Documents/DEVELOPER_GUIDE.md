@@ -4,9 +4,9 @@
 
 # Developer Guide: Building Secure Agents
 
-This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** — agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
+This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
 
-> **External agents (Goose, Claude Desktop, any HTTP client)** use a different integration path — the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
+> **External agents (Goose, Claude Desktop, any HTTP client)** use a different integration path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
 
 ## Table of Contents
 

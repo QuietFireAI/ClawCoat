@@ -1,4 +1,4 @@
-# TB-TEST-INT-019 — TestAuditChain · `test_audit_chain_concurrent_writes_remain_linear`
+# TB-TEST-INT-019 - TestAuditChain · `test_audit_chain_concurrent_writes_remain_linear`
 
 **Sheet ID:** TB-TEST-INT-019
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
 
 ## Source
 

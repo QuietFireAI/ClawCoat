@@ -1,4 +1,4 @@
-# TB-TEST-BEH-029 — TestBehavior_DataSovereignty · `test_GIVEN_ollama_agent_THEN_filesystem_access_is_scoped_not_global`
+# TB-TEST-BEH-029 - TestBehavior_DataSovereignty · `test_GIVEN_ollama_agent_THEN_filesystem_access_is_scoped_not_global`
 
 **Sheet ID:** TB-TEST-BEH-029
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

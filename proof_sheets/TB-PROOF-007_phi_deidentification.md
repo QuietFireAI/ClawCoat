@@ -1,7 +1,7 @@
 # TB-PROOF-007: PHI De-identification (18 Safe Harbor Identifiers)
 
 **Sheet ID:** TB-PROOF-007
-**Claim Source:** telsonbase.com — The Promise Section
+**Claim Source:** telsonbase.com - The Promise Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/phi_deidentification.py` implements all 18 HIPAA Safe Harbor identifiers as defined in 45 CFR 164.514(b)(2), with 58 pattern strings for auto-detection.
+VERIFIED - `core/phi_deidentification.py` implements all 18 HIPAA Safe Harbor identifiers as defined in 45 CFR 164.514(b)(2), with 58 pattern strings for auto-detection.
 
 ## Evidence
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-001 — TestAuthSecurity · `test_api_key_hash_uses_sha256`
+# TB-TEST-SEC-001 - TestAuthSecurity · `test_api_key_hash_uses_sha256`
 
 **Sheet ID:** TB-TEST-SEC-001
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> API keys are hashed with SHA-256 before storage — raw key is never persisted
+> API keys are hashed with SHA-256 before storage - raw key is never persisted
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-038 — TestAccessControl · `test_custom_denial_overrides_role_grant`
+# TB-TEST-SEC-038 - TestAccessControl · `test_custom_denial_overrides_role_grant`
 
 **Sheet ID:** TB-TEST-SEC-038
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> A custom denial on a user overrides what the role would allow — deny wins
+> A custom denial on a user overrides what the role would allow - deny wins
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

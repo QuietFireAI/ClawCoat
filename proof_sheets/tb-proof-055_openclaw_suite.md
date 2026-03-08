@@ -12,7 +12,7 @@
 
 > "720 tests passing" -- README, proof_sheets/INDEX.md
 
-This sheet proves the **OpenClaw Agent Governance Test Suite**: 55 tests across 9 classes verifying TelsonBase's governance wrapper around OpenClaw — the third-party autonomous AI agent. TelsonBase wraps OpenClaw as a governed MCP proxy, enforcing trust-tier access control, HITL gates, kill-switch suspension, and Manners compliance scoring on every agent action.
+This sheet proves the **OpenClaw Agent Governance Test Suite**: 55 tests across 9 classes verifying TelsonBase's governance wrapper around OpenClaw - the third-party autonomous AI agent. TelsonBase wraps OpenClaw as a governed MCP proxy, enforcing trust-tier access control, HITL gates, kill-switch suspension, and Manners compliance scoring on every agent action.
 
 ## Verdict
 

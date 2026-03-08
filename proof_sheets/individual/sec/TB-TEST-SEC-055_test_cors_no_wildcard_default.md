@@ -1,4 +1,4 @@
-# TB-TEST-SEC-055 — TestNetworkSecurity · `test_cors_no_wildcard_default`
+# TB-TEST-SEC-055 - TestNetworkSecurity · `test_cors_no_wildcard_default`
 
 **Sheet ID:** TB-TEST-SEC-055
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

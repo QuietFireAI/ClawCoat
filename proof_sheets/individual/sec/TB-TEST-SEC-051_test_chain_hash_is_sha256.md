@@ -1,4 +1,4 @@
-# TB-TEST-SEC-051 — TestAuditTrailIntegrity · `test_chain_hash_is_sha256`
+# TB-TEST-SEC-051 - TestAuditTrailIntegrity · `test_chain_hash_is_sha256`
 
 **Sheet ID:** TB-TEST-SEC-051
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> The audit chain hash algorithm is SHA-256 — not MD5, not SHA-1
+> The audit chain hash algorithm is SHA-256 - not MD5, not SHA-1
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

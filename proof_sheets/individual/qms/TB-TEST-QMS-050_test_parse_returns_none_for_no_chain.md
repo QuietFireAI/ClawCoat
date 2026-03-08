@@ -1,4 +1,4 @@
-# TB-TEST-QMS-050 — TestParseChain · `test_parse_returns_none_for_no_chain`
+# TB-TEST-QMS-050 - TestParseChain · `test_parse_returns_none_for_no_chain`
 
 **Sheet ID:** TB-TEST-QMS-050
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

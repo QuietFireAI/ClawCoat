@@ -1,4 +1,4 @@
-# TB-TEST-E2E-010 — TestTenantWorkflow · `test_list_matters_for_tenant`
+# TB-TEST-E2E-010 - TestTenantWorkflow · `test_list_matters_for_tenant`
 
 **Sheet ID:** TB-TEST-E2E-010
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 

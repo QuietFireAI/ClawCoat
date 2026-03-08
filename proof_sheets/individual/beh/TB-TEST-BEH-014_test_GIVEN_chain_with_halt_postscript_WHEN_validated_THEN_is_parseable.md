@@ -1,4 +1,4 @@
-# TB-TEST-BEH-014 — TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_chain_with_halt_postscript_WHEN_validated_THEN_is_parseable`
+# TB-TEST-BEH-014 - TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_chain_with_halt_postscript_WHEN_validated_THEN_is_parseable`
 
 **Sheet ID:** TB-TEST-BEH-014
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

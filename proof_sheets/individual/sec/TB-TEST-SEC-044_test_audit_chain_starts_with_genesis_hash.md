@@ -1,4 +1,4 @@
-# TB-TEST-SEC-044 — TestAuditTrailIntegrity · `test_audit_chain_starts_with_genesis_hash`
+# TB-TEST-SEC-044 - TestAuditTrailIntegrity · `test_audit_chain_starts_with_genesis_hash`
 
 **Sheet ID:** TB-TEST-SEC-044
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

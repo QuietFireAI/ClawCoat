@@ -1,4 +1,4 @@
-# TB-TEST-SEC-021 — TestEncryptionIntegrity · `test_aes256gcm_decryption_recovers_original`
+# TB-TEST-SEC-021 - TestEncryptionIntegrity · `test_aes256gcm_decryption_recovers_original`
 
 **Sheet ID:** TB-TEST-SEC-021
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

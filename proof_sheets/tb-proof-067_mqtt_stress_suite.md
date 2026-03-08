@@ -14,11 +14,11 @@
 
 This sheet proves the **MQTT Bus Load and Stress Test Suite**: 26 tests across 8 classes exercising the MQTT bus under volume and concurrency: message throughput, topic routing accuracy, concurrent publishing from multiple threads, handler error isolation, reconnection subscription restoration, and QMS chain integration.
 
-*Note: This suite is excluded from the main 720-test count and run separately. It requires no live broker — all tests use mocked paho-mqtt.*
+*Note: This suite is excluded from the main 720-test count and run separately. It requires no live broker - all tests use mocked paho-mqtt.*
 
 ## Verdict
 
-VERIFIED -- All 26 stress tests pass. The MQTT bus correctly handles 1,000-message serialize/deserialize cycles without exception. Topic routing delivers messages to the correct handlers and ignores unmatched topics without crashing. Concurrent publishing from multiple threads produces no race conditions. Handler exceptions and timeouts are isolated — they do not crash the bus. Subscriptions are restored after reconnection. QMS command suffixes (::_Please::, ::_Thank_You::, ::_Pretty_Please::, ::_Excuse_Me::) are preserved through publish/receive cycles. Agent inbox topics are isolated per agent.
+VERIFIED -- All 26 stress tests pass. The MQTT bus correctly handles 1,000-message serialize/deserialize cycles without exception. Topic routing delivers messages to the correct handlers and ignores unmatched topics without crashing. Concurrent publishing from multiple threads produces no race conditions. Handler exceptions and timeouts are isolated - they do not crash the bus. Subscriptions are restored after reconnection. QMS command suffixes (::_Please::, ::_Thank_You::, ::_Pretty_Please::, ::_Excuse_Me::) are preserved through publish/receive cycles. Agent inbox topics are isolated per agent.
 
 ## Test Classes
 

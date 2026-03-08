@@ -1,4 +1,4 @@
-# TB-TEST-SEC-083 — TestComplianceInfrastructure · `test_hitrust_compliance_posture_calculation`
+# TB-TEST-SEC-083 - TestComplianceInfrastructure · `test_hitrust_compliance_posture_calculation`
 
 **Sheet ID:** TB-TEST-SEC-083
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

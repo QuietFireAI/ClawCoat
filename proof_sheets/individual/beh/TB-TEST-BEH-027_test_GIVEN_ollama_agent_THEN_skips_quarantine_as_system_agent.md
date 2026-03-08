@@ -1,4 +1,4 @@
-# TB-TEST-BEH-027 — TestBehavior_TrustLevelProgression · `test_GIVEN_ollama_agent_THEN_skips_quarantine_as_system_agent`
+# TB-TEST-BEH-027 - TestBehavior_TrustLevelProgression · `test_GIVEN_ollama_agent_THEN_skips_quarantine_as_system_agent`
 
 **Sheet ID:** TB-TEST-BEH-027
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

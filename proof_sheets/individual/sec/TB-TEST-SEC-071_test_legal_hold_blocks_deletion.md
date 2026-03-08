@@ -1,4 +1,4 @@
-# TB-TEST-SEC-071 — TestDataProtection · `test_legal_hold_blocks_deletion`
+# TB-TEST-SEC-071 - TestDataProtection · `test_legal_hold_blocks_deletion`
 
 **Sheet ID:** TB-TEST-SEC-071
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Records under legal hold cannot be deleted — deletion returns an error
+> Records under legal hold cannot be deleted - deletion returns an error
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,7 +1,7 @@
 # TB-PROOF-021: Multi-Tenant Data Isolation
 
 **Sheet ID:** TB-PROOF-021
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — Multi-tenancy with Redis key namespacing, per-tenant rate limiting, litigation hold support, 4-tier data classification, and actor-scoped access control (v9.0.0B).
+VERIFIED - Multi-tenancy with Redis key namespacing, per-tenant rate limiting, litigation hold support, 4-tier data classification, and actor-scoped access control (v9.0.0B).
 
 ## Evidence
 
@@ -44,7 +44,7 @@ VERIFIED — Multi-tenancy with Redis key namespacing, per-tenant rate limiting,
 - **Litigation holds**: Block data deletion when legal hold is active
 - **Actor-scoped access control (v9.0.0B)**: Every tenant stores `created_by` and `allowed_actors`. All tenant and matter routes call `_require_tenant_access()` which returns HTTP 403 if `auth.actor` is not in `allowed_actors`. Admins (`admin:config` or `*`) bypass for management operations. See TB-PROOF-042 for full detail.
 
-> **Correction (v9.0.0B, March 1, 2026):** Prior version of this sheet claimed "Cross-tenant query prevention: Data queries scoped to authenticated tenant." That claim was inaccurate — the routes lacked user-to-tenant binding checks. This has been corrected: `allowed_actors` enforcement is now implemented at the route layer and verified by E2E test `test_cross_tenant_access_rejected`.
+> **Correction (v9.0.0B, March 1, 2026):** Prior version of this sheet claimed "Cross-tenant query prevention: Data queries scoped to authenticated tenant." That claim was inaccurate - the routes lacked user-to-tenant binding checks. This has been corrected: `allowed_actors` enforcement is now implemented at the route layer and verified by E2E test `test_cross_tenant_access_rejected`.
 
 ## Verification Command
 

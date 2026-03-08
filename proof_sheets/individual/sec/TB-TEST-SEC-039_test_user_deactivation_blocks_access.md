@@ -1,4 +1,4 @@
-# TB-TEST-SEC-039 — TestAccessControl · `test_user_deactivation_blocks_access`
+# TB-TEST-SEC-039 - TestAccessControl · `test_user_deactivation_blocks_access`
 
 **Sheet ID:** TB-TEST-SEC-039
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

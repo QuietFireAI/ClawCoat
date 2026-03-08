@@ -1,4 +1,4 @@
-# TB-TEST-QMS-072 — TestSecurityFlagging · `test_is_chain_formatted_rejects_empty`
+# TB-TEST-QMS-072 - TestSecurityFlagging · `test_is_chain_formatted_rejects_empty`
 
 **Sheet ID:** TB-TEST-QMS-072
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-075 — TestComplianceInfrastructure · `test_sanctions_can_be_imposed_and_tracked`
+# TB-TEST-SEC-075 - TestComplianceInfrastructure · `test_sanctions_can_be_imposed_and_tracked`
 
 **Sheet ID:** TB-TEST-SEC-075
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

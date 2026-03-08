@@ -1,4 +1,4 @@
-# TelsonBase — Encryption at Rest Guide
+# TelsonBase - Encryption at Rest Guide
 
 # REM: =======================================================================================
 # REM: ENCRYPTION AT REST FOR TELSONBASE

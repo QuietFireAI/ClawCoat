@@ -1,4 +1,4 @@
-# TB-TEST-BEH-018 — TestBehavior_SecurityBoundaries · `test_GIVEN_invalid_api_key_WHEN_token_requested_THEN_rejected_with_401`
+# TB-TEST-BEH-018 - TestBehavior_SecurityBoundaries · `test_GIVEN_invalid_api_key_WHEN_token_requested_THEN_rejected_with_401`
 
 **Sheet ID:** TB-TEST-BEH-018
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

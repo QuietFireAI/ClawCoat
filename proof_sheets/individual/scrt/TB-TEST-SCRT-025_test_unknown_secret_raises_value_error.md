@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-025 — TestSecretsProvider · `test_unknown_secret_raises_value_error`
+# TB-TEST-SCRT-025 - TestSecretsProvider · `test_unknown_secret_raises_value_error`
 
 **Sheet ID:** TB-TEST-SCRT-025
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

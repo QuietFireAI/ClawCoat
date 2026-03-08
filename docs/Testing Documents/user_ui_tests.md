@@ -1,10 +1,10 @@
-# TelsonBase v10.0.0Bminus — User Console UI Test Plan
+# TelsonBase v10.0.0Bminus - User Console UI Test Plan
 
 **Date:** 2026-02-12
 **Tester:** Jeff
 **URL:** `http://localhost:8000/console`
 **Mode:** Start in Demo, then repeat key tests in Live
-**Companion file:** `security_ui_tests.md` (Admin Console tests — retained locally, not in repo)
+**Companion file:** `security_ui_tests.md` (Admin Console tests - retained locally, not in repo)
 
 ---
 
@@ -20,7 +20,7 @@
 | 1.6 | System health dot | Green pulsing dot visible in header (healthy) |  |
 | 1.7 | Admin Console link | "Admin" link with external icon visible in header |  |
 | 1.8 | Click Admin link | Navigates to `/dashboard` (Admin Console) |  |
-| 1.9 | Tab bar renders 5 tabs | Home, Chat, Agents, My Approvals, Activity — centered, no overflow |  |
+| 1.9 | Tab bar renders 5 tabs | Home, Chat, Agents, My Approvals, Activity - centered, no overflow |  |
 | 1.10 | Tab bar fits on mobile | All 5 tabs visible without horizontal scroll at ~375px width |  |
 
 ---
@@ -55,7 +55,7 @@
 | 3.10 | Recent activity feed | 5 audit entries with timestamps, event type badges, descriptions, actors |  |
 | 3.11 | Activity event type badges | Color-coded: login=blue, approval=green, security=red, default=gray |  |
 | 3.12 | "View all activity" link | Click → navigates to Activity tab |  |
-| 3.13 | Demo note at bottom | "Demo data — connect to API for live data" text present |  |
+| 3.13 | Demo note at bottom | "Demo data - connect to API for live data" text present |  |
 
 ---
 
@@ -76,7 +76,7 @@
 | 4.11 | Clear button | Click "Clear" → all messages removed, empty state returns |  |
 | 4.12 | Shift+Enter for newline | Pressing Shift+Enter adds a line break instead of sending |  |
 | 4.13 | Send button disabled when empty | Send button at 30% opacity when input is empty |  |
-| 4.14 | Chat area height | Takes most of the viewport — significantly larger than admin console's chat |  |
+| 4.14 | Chat area height | Takes most of the viewport - significantly larger than admin console's chat |  |
 | 4.15 | Multiple messages | Send 3-4 messages → all visible, auto-scrolls to bottom |  |
 | 4.16 | Error message (system) | If connected and Ollama down, red system message appears |  |
 
@@ -90,13 +90,13 @@
 | 5.2 | 3 agent cards render | backup_agent, ollama_agent, monitor_agent |  |
 | 5.3 | Agent card layout | Each card: icon, agent_id (mono), capability count, signing key dot |  |
 | 5.4 | Signing key indicators | All 3 demo agents show green pulsing dot (keys registered) |  |
-| 5.5 | Expand capabilities — backup_agent | Click "Show capabilities" → "perform_automated_backup", "snapshot_volumes" |  |
-| 5.6 | Expand capabilities — ollama_agent | "generate_text", "summarize", "classify" |  |
-| 5.7 | Expand capabilities — monitor_agent | "health_check", "anomaly_scan", "metric_collect" |  |
+| 5.5 | Expand capabilities - backup_agent | Click "Show capabilities" → "perform_automated_backup", "snapshot_volumes" |  |
+| 5.6 | Expand capabilities - ollama_agent | "generate_text", "summarize", "classify" |  |
+| 5.7 | Expand capabilities - monitor_agent | "health_check", "anomaly_scan", "metric_collect" |  |
 | 5.8 | Collapse capabilities | Click "Hide capabilities" → list collapses |  |
 | 5.9 | No admin controls | No edit, delete, register, or configuration buttons visible |  |
 | 5.10 | 3-column layout on desktop | Cards arrange in 3 columns at full width |  |
-| 5.11 | Demo note at bottom | "Demo data — connect to API for live agent list" |  |
+| 5.11 | Demo note at bottom | "Demo data - connect to API for live agent list" |  |
 
 ---
 
@@ -116,7 +116,7 @@
 | 6.10 | Reject button | Red "Reject" button with X icon |  |
 | 6.11 | Approve action (demo) | Click Approve → card disappears from list |  |
 | 6.12 | Reject action (demo) | Click Reject → card disappears from list |  |
-| 6.13 | Demo mode note | "Demo mode — actions simulated" visible on each card |  |
+| 6.13 | Demo mode note | "Demo mode - actions simulated" visible on each card |  |
 | 6.14 | All approved → empty state | Approve both → shows "No pending approvals" with "You're all caught up!" message |  |
 | 6.15 | Tab badge updates | After approving one, tab badge changes from "2" to "1" |  |
 | 6.16 | 2-column layout on desktop | Cards in 2 columns at full width |  |
@@ -137,12 +137,12 @@
 | 7.8 | 1 anomaly card | web_agent unsigned_request, medium severity (yellow badge) |  |
 | 7.9 | Anomaly "Review" badge | Yellow "Review" badge since requires_human_review is true |  |
 | 7.10 | Expand anomaly evidence | Click "Show evidence" → JSON with action and target |  |
-| 7.11 | No resolve button | Anomaly cards are read-only — no "Resolve" action (admin territory) |  |
+| 7.11 | No resolve button | Anomaly cards are read-only - no "Resolve" action (admin territory) |  |
 | 7.12 | Audit Entries section | "Recent Audit Entries" card with blue clock icon |  |
 | 7.13 | 5 audit entries | Sequence numbers, timestamps, event type badges, descriptions, actors, hashes |  |
 | 7.14 | Audit sequence numbers | #1247, #1246, #1245, #1244, #1243 in mono |  |
 | 7.15 | Audit hash markers | Green verified hash markers on each entry |  |
-| 7.16 | Demo note at bottom | "Demo data — connect to API for live activity feed" |  |
+| 7.16 | Demo note at bottom | "Demo data - connect to API for live activity feed" |  |
 
 ---
 
@@ -206,12 +206,12 @@
 | 12.1 | Same dark theme | Color palette matches Admin Console exactly |  |
 | 12.2 | Same card styling | Cards have same border, hover, radius as Admin Console |  |
 | 12.3 | "User Console" label | Header clearly distinguishes from Admin Console |  |
-| 12.4 | Only 5 tabs | Not 15 — simpler navigation |  |
+| 12.4 | Only 5 tabs | Not 15 - simpler navigation |  |
 | 12.5 | Tabs centered | Tab bar is centered, not left-aligned with overflow scroll |  |
-| 12.6 | Wider content area | max-w-6xl (User) vs max-w-7xl (Admin) — content feels roomier |  |
+| 12.6 | Wider content area | max-w-6xl (User) vs max-w-7xl (Admin) - content feels roomier |  |
 | 12.7 | Larger chat area | Chat uses more vertical space (calc(100vh - 160px)) than admin (180px) |  |
-| 12.8 | Welcome card on Home | Dashboard-style welcome — not present in Admin Console |  |
-| 12.9 | Quick action cards | 3 clickable action cards — unique to User Console |  |
+| 12.8 | Welcome card on Home | Dashboard-style welcome - not present in Admin Console |  |
+| 12.9 | Quick action cards | 3 clickable action cards - unique to User Console |  |
 | 12.10 | No admin features | No Users & Roles, Sessions, Tenants, Compliance, Security, Toolroom, Federation, Sovereign, or QMS filter tabs |  |
 | 12.11 | Footer present | "TelsonBase User Console v10.0.0Bminus" footer at bottom |  |
 
@@ -239,7 +239,7 @@
 4. Verify cross-links: `/console` ↔ `/dashboard`
 5. Connect with valid API key
 6. Re-run tests 2.3–2.5, then spot-check each tab with live data
-7. Open `/dashboard` in another tab — confirm Admin Console still works
+7. Open `/dashboard` in another tab - confirm Admin Console still works
 8. Screenshot anything broken or unexpected
 9. Note any layout/UX issues in the Pass? column
 
@@ -247,10 +247,10 @@
 
 ## Known Limitations (Demo Mode)
 
-- Demo user is hardcoded as "kparker" / "operator" — live mode would pull from auth
+- Demo user is hardcoded as "kparker" / "operator" - live mode would pull from auth
 - Approvals are not filtered by user scope in demo (shows all pending)
 - Activity tab QMS log uses static demo data (not live QMS feed)
-- Anomaly cards are read-only — resolve action is intentionally admin-only
+- Anomaly cards are read-only - resolve action is intentionally admin-only
 - No pagination on audit entries, QMS log, or agent list
-- Chat model list in demo is hardcoded — live mode queries Ollama API
+- Chat model list in demo is hardcoded - live mode queries Ollama API
 - Auto-refresh only fires when connected (demo mode is static)

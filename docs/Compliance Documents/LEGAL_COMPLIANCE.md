@@ -1,4 +1,4 @@
-# TelsonBase — Legal & Regulatory Compliance Security Profile
+# TelsonBase - Legal & Regulatory Compliance Security Profile
 
 **Version:** 10.0.0Bminus
 **Platform:** Zero-Trust AI Agent Security Platform
@@ -10,7 +10,7 @@
 
 ## I. Executive Summary
 
-TelsonBase is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure — no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
+TelsonBase is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure - no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
 
 This document maps TelsonBase's security architecture to the compliance frameworks most commonly evaluated by real estate brokerages, law firms, and their respective regulatory bodies.
 
@@ -30,10 +30,10 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Dual Authentication** | API Key (X-API-Key header) + JWT Bearer Token — both supported, both validated per request | `core/auth.py` |
+| **Dual Authentication** | API Key (X-API-Key header) + JWT Bearer Token - both supported, both validated per request | `core/auth.py` |
 | **API Key Security** | SHA-256 hashed storage, per-key scoped permissions, labels, owner tracking, zero-downtime rotation via key registry | `core/auth.py` |
 | **JWT Tokens** | HS256 signed, configurable expiration (default 24h), unique JTI per token, Redis-backed revocation list with TTL auto-cleanup | `core/auth.py`, `core/config.py` |
-| **Constant-Time Comparison** | `hmac.compare_digest()` used for all credential validation — prevents timing attacks | `core/auth.py` |
+| **Constant-Time Comparison** | `hmac.compare_digest()` used for all credential validation - prevents timing attacks | `core/auth.py` |
 | **TOTP Multi-Factor Authentication** | RFC 6238 TOTP enrollment with QR provisioning URI, 10 one-time backup codes, replay-safe verification, role-based enforcement (Admin/Security Officer/Super Admin roles require MFA) | `core/mfa.py` |
 | **Role-Based Access Control (RBAC)** | Five-tier role system (Viewer, Operator, Admin, Security Officer, Super Admin) with 24 granular permissions across 6 categories, custom per-user grants and denials | `core/rbac.py` |
 | **Session Management** | Configurable duration (default 8 hours), automatic invalidation on user deactivation, unique session IDs via `uuid.uuid4()` | `core/rbac.py` |
@@ -68,9 +68,9 @@ This document maps TelsonBase's security architecture to the compliance framewor
 |---------|---------------|-------|
 | **Encryption at Rest** | AES-256-GCM with PBKDF2-derived keys (100,000 iterations), 96-bit random nonces per operation, authenticated encryption (GCM detects tampering) | `core/secure_storage.py` |
 | **Automatic Field Encryption** | Eight sensitive field types auto-encrypted: signing_key, secret_key, api_key, token, password, private_key, session_key, encryption_key | `core/secure_storage.py` |
-| **Versioned Ciphertext** | Format: `[version][nonce][ciphertext]` — enables future algorithm migration without re-encryption | `core/secure_storage.py` |
+| **Versioned Ciphertext** | Format: `[version][nonce][ciphertext]` - enables future algorithm migration without re-encryption | `core/secure_storage.py` |
 | **Encryption in Transit** | Traefik reverse proxy with Let's Encrypt ACME TLS certificates, HTTP-to-HTTPS redirect middleware | `docker-compose.yml` |
-| **Federation mTLS** | Mutual TLS for cross-instance communication — RSA-4096 CA keys, RSA-2048 instance certificates, SHA-256 fingerprint pinning | `federation/mtls.py` |
+| **Federation mTLS** | Mutual TLS for cross-instance communication - RSA-4096 CA keys, RSA-2048 instance certificates, SHA-256 fingerprint pinning | `federation/mtls.py` |
 | **Secret Management** | Docker secrets mounted at `/run/secrets/` (not visible in `docker inspect`), layered resolution: Docker secrets > environment variables > defaults | `core/config.py` |
 | **Redis Authentication** | Password-protected Redis with `requirepass`, AOF persistence with `appendfsync everysec` | `docker-compose.yml` |
 
@@ -98,11 +98,11 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Cryptographic Audit Chain** | SHA-256 hash-chained log entries — each entry contains the hash of the previous entry, creating a tamper-evident chain. If any entry is modified, the chain breaks on verification | `core/audit.py` |
+| **Cryptographic Audit Chain** | SHA-256 hash-chained log entries - each entry contains the hash of the previous entry, creating a tamper-evident chain. If any entry is modified, the chain breaks on verification | `core/audit.py` |
 | **47 Event Types Tracked** | Authentication (success/failure), task lifecycle, external requests, agent behavior, security alerts, capability enforcement, approvals, tool operations, system events | `core/audit.py` |
 | **Chain Verification API** | Public endpoint `/v1/audit/chain/verify` validates chain integrity on demand | `main.py` |
 | **Compliance Export** | `export_chain_for_compliance()` packages audit entries with verification metadata for auditor consumption | `core/audit.py` |
-| **Monotonic Sequencing** | Each chain entry has a monotonically increasing sequence number — gaps are detectable | `core/audit.py` |
+| **Monotonic Sequencing** | Each chain entry has a monotonically increasing sequence number - gaps are detectable | `core/audit.py` |
 | **Per-Chain Identifiers** | Unique chain ID per instance lifetime for provenance tracking | `core/audit.py` |
 | **Request Tracing** | Unique UUID assigned to every HTTP request for end-to-end correlation | `core/middleware.py` |
 
@@ -131,16 +131,16 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Five Isolated Docker Networks** | frontend (public-facing), backend (application tier), data (database — internal only), ai (inference — internal only), monitoring (metrics — internal only) | `docker-compose.yml` |
-| **Internal Network Enforcement** | Data, AI, and monitoring networks use `internal: true` — no external routing possible | `docker-compose.yml` |
-| **Localhost-Bound Services** | Open-WebUI, Prometheus, Grafana bound to `127.0.0.1` — not reachable from external network. MCP gateway at `/mcp` is Bearer-token authenticated. | `docker-compose.yml` |
+| **Five Isolated Docker Networks** | frontend (public-facing), backend (application tier), data (database - internal only), ai (inference - internal only), monitoring (metrics - internal only) | `docker-compose.yml` |
+| **Internal Network Enforcement** | Data, AI, and monitoring networks use `internal: true` - no external routing possible | `docker-compose.yml` |
+| **Localhost-Bound Services** | Open-WebUI, Prometheus, Grafana bound to `127.0.0.1` - not reachable from external network. MCP gateway at `/mcp` is Bearer-token authenticated. | `docker-compose.yml` |
 | **MQTT Authentication** | Mosquitto broker requires username/password, anonymous access disabled, no external port exposure | `monitoring/mosquitto/mosquitto.conf` |
-| **Rate Limiting** | Token bucket algorithm — 300 requests/minute, burst 60, per-client tracking by API key or IP, stale bucket cleanup | `core/middleware.py` |
+| **Rate Limiting** | Token bucket algorithm - 300 requests/minute, burst 60, per-client tracking by API key or IP, stale bucket cleanup | `core/middleware.py` |
 | **Per-Agent Rate Limiting** | Trust-level-based tiers: Quarantine (5/min), Probation (20/min), Resident (60/min), Citizen (120/min), System (unlimited). Action-cost multipliers (delete = 2x, external = 3x) | `core/rate_limiting.py` |
 | **Security Headers** | X-Content-Type-Options: nosniff, X-Frame-Options: DENY, X-XSS-Protection: 1; mode=block, Referrer-Policy: strict-origin-when-cross-origin, server header stripped | `core/middleware.py` |
 | **Request Size Limiting** | Configurable max body size (default 10MB) | `core/middleware.py` |
 | **CORS Restrictions** | Explicit origin allowlist (no wildcard), credentials only with named origins, restricted methods and headers | `core/config.py`, `main.py` |
-| **Egress Firewall** | All outbound API calls filtered through domain whitelist — default: api.anthropic.com, api.perplexity.ai, api.venice.ai only | `gateway/egress_proxy.py` |
+| **Egress Firewall** | All outbound API calls filtered through domain whitelist - default: api.anthropic.com, api.perplexity.ai, api.venice.ai only | `gateway/egress_proxy.py` |
 
 ### Regulatory Mapping
 
@@ -167,8 +167,8 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Self-Hosted Architecture** | Entire platform runs on customer infrastructure — Docker Compose orchestration on customer-owned hardware | `docker-compose.yml` |
-| **Local AI Inference** | Ollama runs locally on the `ai` network (internal only) — no data sent to external AI APIs for inference or training | `docker-compose.yml` |
+| **Self-Hosted Architecture** | Entire platform runs on customer infrastructure - Docker Compose orchestration on customer-owned hardware | `docker-compose.yml` |
+| **Local AI Inference** | Ollama runs locally on the `ai` network (internal only) - no data sent to external AI APIs for inference or training | `docker-compose.yml` |
 | **Data Sovereignty Score** | Calculated score (0-100) factoring LLM locality (35%), data residency (25%), network exposure (20%), backup sovereignty (10%), auth posture (10%) | `core/system_analysis.py` |
 | **Data Classification** | Four-tier system: PUBLIC, INTERNAL, CONFIDENTIAL, RESTRICTED (attorney-client privilege level). Auto-classification rules based on data type and tenant type (law firms default to CONFIDENTIAL) | `core/data_classification.py` |
 | **Data Retention Engine** | Configurable per-tenant retention policies, automated expiry detection, CCPA-compliant deletion request workflow (pending > approved > executing > completed), legal hold integration (deletion blocked when hold active) | `core/data_retention.py` |
@@ -201,8 +201,8 @@ This document maps TelsonBase's security architecture to the compliance framewor
 | Control | Implementation | Files |
 |---------|---------------|-------|
 | **Tenant Model** | Organization-level isolation with tenant type classification (law_firm, insurance, real_estate, healthcare, small_business, personal, general), per-tenant configuration overrides, automatic data classification defaults | `core/tenancy.py` |
-| **Client-Matter Hierarchy** | Data organized within tenants by client matter — supports transaction, litigation, and client_file types with lifecycle management (active > closed > hold) | `core/tenancy.py` |
-| **Redis Key Namespacing** | `tenant_scoped_key()` utility generates `tenant:{id}:{key}` prefixed keys — all data operations scoped to tenant context | `core/tenancy.py` |
+| **Client-Matter Hierarchy** | Data organized within tenants by client matter - supports transaction, litigation, and client_file types with lifecycle management (active > closed > hold) | `core/tenancy.py` |
+| **Redis Key Namespacing** | `tenant_scoped_key()` utility generates `tenant:{id}:{key}` prefixed keys - all data operations scoped to tenant context | `core/tenancy.py` |
 | **Tenant Context** | Lightweight request-scoping object (tenant_id, user_id, matter_id) passed through request handling for enforcement | `core/tenancy.py` |
 | **Litigation Hold on Matters** | Individual matters can be placed on hold, preventing closure or data deletion | `core/tenancy.py`, `core/legal_hold.py` |
 
@@ -231,9 +231,9 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 | Control | Implementation | Files |
 |---------|---------------|-------|
-| **Legal Hold System** | Full lifecycle management — create, enforce, release with audit trail at every step | `core/legal_hold.py` |
+| **Legal Hold System** | Full lifecycle management - create, enforce, release with audit trail at every step | `core/legal_hold.py` |
 | **Scope Control** | Holds can target specific matters or entire tenants, covering specific data types (all, communications, documents, transactions) | `core/legal_hold.py` |
-| **Deletion Override** | Active holds block all retention-based and manual deletion — `is_data_held()` checked before any data destruction | `core/legal_hold.py`, `core/data_retention.py` |
+| **Deletion Override** | Active holds block all retention-based and manual deletion - `is_data_held()` checked before any data destruction | `core/legal_hold.py`, `core/data_retention.py` |
 | **Custodian Management** | Track which users have been notified of a hold, record timestamped acknowledgments, report unacknowledged custodians | `core/legal_hold.py` |
 | **Release Authorization** | Hold release requires Security Officer or Super Admin role, full audit details recorded including release reason | `core/legal_hold.py` |
 | **Tamper-Evident Audit** | All hold activities (creation, custodian addition, acknowledgment, release) logged to the cryptographic audit chain | `core/legal_hold.py`, `core/audit.py` |
@@ -268,7 +268,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 | **Breach Assessment Engine** | Severity classification (Critical/High/Medium/Low), affected tenant tracking, data type exposure analysis, containment status progression | `core/breach_notification.py` |
 | **Auto Notification Determination** | Rules engine maps exposed data types to notification requirements: SSN (required, 30 days), financial (required, 60 days), PII (required, 60 days), privileged (required, 30 days), medical (required, 60 days) | `core/breach_notification.py` |
 | **Notification Tracking** | Per-recipient records (regulator, affected individual, tenant, law enforcement) with method, send status, and acknowledgment tracking | `core/breach_notification.py` |
-| **Overdue Detection** | `get_overdue_notifications()` identifies assessments past their notification deadline with pending notifications — for scheduled alerting | `core/breach_notification.py` |
+| **Overdue Detection** | `get_overdue_notifications()` identifies assessments past their notification deadline with pending notifications - for scheduled alerting | `core/breach_notification.py` |
 | **Disaster Recovery** | RTO < 4 hours, RPO < 1 hour, MTTR < 2 hours. Backup retention: hourly snapshots (24h), daily (30d), weekly (1y), audit chains (7y) | `docs/DISASTER_RECOVERY.md` |
 | **Automated Threat Response** | Critical threats trigger automatic agent quarantine, key revocation, and rate limiting escalation | `core/threat_response.py` |
 
@@ -299,11 +299,11 @@ This document maps TelsonBase's security architecture to the compliance framewor
 | Control | Implementation | Files |
 |---------|---------------|-------|
 | **Capability-Based Sandboxing** | Each agent declares capabilities (filesystem scope, allowed domains, MQTT topics, inter-agent access). Access beyond declared capabilities is denied and audit-logged | `core/capabilities.py` |
-| **Human-in-the-Loop (HITL) Gates** | Sensitive operations pause for human authorization — new external domains, file deletions, anomaly-flagged actions all require approval before execution | `core/approval.py` |
+| **Human-in-the-Loop (HITL) Gates** | Sensitive operations pause for human authorization - new external domains, file deletions, anomaly-flagged actions all require approval before execution | `core/approval.py` |
 | **Agent Trust Levels** | Five-tier progression: Quarantine > Probation > Resident > Citizen > Agent. Automatic promotion based on behavior, automatic demotion on violations | `core/trust_levels.py` |
 | **Behavioral Anomaly Detection** | Six anomaly types monitored: rate spikes, new resources, new actions, unusual timing, enumeration patterns, error spikes | `core/anomaly.py` |
 | **Cryptographic Message Signing** | HMAC-SHA256 signing of all inter-agent messages, 5-minute replay window, constant-time signature comparison | `core/signing.py` |
-| **QMS™ Protocol** | Qualified Message Standard (QMS™) v2.2.0 — all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
+| **QMS™ Protocol** | Qualified Message Standard (QMS™) v2.2.0 - all agent communication follows structured formatting with provenance tracking | `core/qms.py` |
 
 ### Regulatory Mapping
 
@@ -335,7 +335,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 ---
 
-## XII. Evaluator Quick Reference — Regulation-to-Feature Map
+## XII. Evaluator Quick Reference - Regulation-to-Feature Map
 
 ### For Real Estate Evaluators
 
@@ -363,7 +363,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 ---
 
-## XIII. Architecture Diagram — Security Layers
+## XIII. Architecture Diagram - Security Layers
 
 ```
                     INTERNET
@@ -397,7 +397,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 - **Security Policy:** `SECURITY.md` in project root
 - **Vulnerability Reporting:** Responsible disclosure process documented
 - **Response Times:** Critical (24h), High (7d), Medium (30d), Low (next release)
-- **Architect:** Jeff Phillips — support@telsonbase.com
+- **Architect:** Jeff Phillips - support@telsonbase.com
 
 ---
 

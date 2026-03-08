@@ -1,4 +1,4 @@
-# TB-TEST-BEH-026 — TestBehavior_TrustLevelProgression · `test_GIVEN_trust_progression_THEN_each_level_adds_capabilities`
+# TB-TEST-BEH-026 - TestBehavior_TrustLevelProgression · `test_GIVEN_trust_progression_THEN_each_level_adds_capabilities`
 
 **Sheet ID:** TB-TEST-BEH-026
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

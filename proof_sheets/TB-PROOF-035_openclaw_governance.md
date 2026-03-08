@@ -1,7 +1,7 @@
 # TB-PROOF-035: OpenClaw Governance Pipeline
 
 **Sheet ID:** TB-PROOF-035
-**Claim Source:** telsonbase.com — OpenClaw Integration
+**Claim Source:** telsonbase.com - OpenClaw Integration
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "Control Your Claw — TelsonBase acts as a governed MCP proxy for OpenClaw. Every action is evaluated against trust levels, approval gates, Manners compliance, anomaly detection, and egress control."
+> "Control Your Claw - TelsonBase acts as a governed MCP proxy for OpenClaw. Every action is evaluated against trust levels, approval gates, Manners compliance, anomaly detection, and egress control."
 
 ## Verdict
 
-VERIFIED — `core/openclaw.py` implements a complete 8-step governance pipeline that evaluates every OpenClaw action before execution. Feature-flagged via `OPENCLAW_ENABLED`.
+VERIFIED - `core/openclaw.py` implements a complete 8-step governance pipeline that evaluates every OpenClaw action before execution. Feature-flagged via `OPENCLAW_ENABLED`.
 
 ## Evidence
 
@@ -31,17 +31,17 @@ VERIFIED — `core/openclaw.py` implements a complete 8-step governance pipeline
 ### The 8-Step Governance Pipeline
 | Step | Check | On Fail |
 |---|---|---|
-| 1 | Instance registered? | Reject — unregistered claw |
-| 2 | Kill switch (suspended)? | Reject — immediate |
-| 3 | Nonce replay protection | Reject — replay detected |
-| 4 | Tool on blocklist? | Reject — tool blocked |
+| 1 | Instance registered? | Reject - unregistered claw |
+| 2 | Kill switch (suspended)? | Reject - immediate |
+| 3 | Nonce replay protection | Reject - replay detected |
+| 4 | Tool on blocklist? | Reject - tool blocked |
 | 5 | Classify action category | Map to READ/WRITE/DELETE/EXTERNAL/FINANCIAL/SYSTEM |
 | 6 | Manners compliance score | Auto-demote to quarantine if < 0.50 |
 | 7 | Trust level permission check | Allow / Gate / Block based on matrix |
 | 8 | Anomaly detection | Flag behavioral deviations (even for Citizens) |
 
 ### Key Design Decisions
-- Feature-flagged: `OPENCLAW_ENABLED=false` by default — zero impact on existing deployments
+- Feature-flagged: `OPENCLAW_ENABLED=false` by default - zero impact on existing deployments
 - Fail-closed: unregistered claws rejected, unknown tools classified as writes
 - Kill switch checked before ANY other logic (Step 2)
 - Manners auto-demotion happens before trust check (Step 6 before Step 7)

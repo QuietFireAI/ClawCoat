@@ -1,4 +1,4 @@
-# TB-TEST-BEH-004 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_offline_WHEN_model_pull_requested_THEN_returns_connection_error_not_model_error`
+# TB-TEST-BEH-004 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_offline_WHEN_model_pull_requested_THEN_returns_connection_error_not_model_error`
 
 **Sheet ID:** TB-TEST-BEH-004
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

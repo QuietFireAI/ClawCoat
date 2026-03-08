@@ -1,7 +1,7 @@
 # TB-PROOF-001: Test Suite Count
 
 **Sheet ID:** TB-PROOF-001
-**Claim Source:** telsonbase.com — Hero Section
+**Claim Source:** telsonbase.com - Hero Section
 **Status:** VERIFIED
 **Last Verified:** March 2, 2026
 **Version:** 9.0.0B
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — **720 tests passing, 1 skipped, 0 failed**. Verified on live DigitalOcean deployment (March 2, 2026). Confirmed across multiple consecutive clean-slate deployments. Includes 55 OpenClaw governance tests, 50 Identiclaw DID auth tests, 96 security battery tests, 29 E2E integration tests, 7 contract tests (enum tripwires + version consistency + migration idempotency).
+VERIFIED - **720 tests passing, 1 skipped, 0 failed**. Verified on live DigitalOcean deployment (March 2, 2026). Confirmed across multiple consecutive clean-slate deployments. Includes 55 OpenClaw governance tests, 50 Identiclaw DID auth tests, 96 security battery tests, 29 E2E integration tests, 7 contract tests (enum tripwires + version consistency + migration idempotency).
 
 ## Evidence
 
@@ -62,4 +62,4 @@ docker compose exec mcp_server python -m pytest tests/ \
 
 ---
 
-*Sheet TB-PROOF-001 | TelsonBase v9.0.0B | March 2, 2026 — Updated from pre-drop audit*
+*Sheet TB-PROOF-001 | TelsonBase v9.0.0B | March 2, 2026 - Updated from pre-drop audit*

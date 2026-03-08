@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-026 — TestSecretsProvider · `test_load_all_returns_all_secrets`
+# TB-TEST-SCRT-026 - TestSecretsProvider · `test_load_all_returns_all_secrets`
 
 **Sheet ID:** TB-TEST-SCRT-026
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

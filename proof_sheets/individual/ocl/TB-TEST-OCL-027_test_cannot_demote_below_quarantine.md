@@ -1,4 +1,4 @@
-# TB-TEST-OCL-027 — TestTrustLevels · `test_cannot_demote_below_quarantine`
+# TB-TEST-OCL-027 - TestTrustLevels · `test_cannot_demote_below_quarantine`
 
 **Sheet ID:** TB-TEST-OCL-027
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
 
 ## Source
 

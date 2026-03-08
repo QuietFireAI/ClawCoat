@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-028 — TestSecretsProvider · `test_report_status_no_values_exposed`
+# TB-TEST-SCRT-028 - TestSecretsProvider · `test_report_status_no_values_exposed`
 
 **Sheet ID:** TB-TEST-SCRT-028
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-031 — TestAccessControl · `test_viewer_cannot_manage_agents`
+# TB-TEST-SEC-031 - TestAccessControl · `test_viewer_cannot_manage_agents`
 
 **Sheet ID:** TB-TEST-SEC-031
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

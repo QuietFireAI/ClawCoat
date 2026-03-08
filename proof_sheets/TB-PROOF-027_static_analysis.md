@@ -1,7 +1,7 @@
 # TB-PROOF-027: 0 High-Severity Findings (Static Analysis)
 
 **Sheet ID:** TB-PROOF-027
-**Claim Source:** telsonbase.com — Security Testing Section
+**Claim Source:** telsonbase.com - Security Testing Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 9.0.0B
@@ -12,26 +12,26 @@
 
 > "0 High-severity findings"
 
-## Reviewer Note — CI Pipeline and Changelog Evidence
+## Reviewer Note - CI Pipeline and Changelog Evidence
 
 > **Do NOT expect to find Bandit output in Python test files.**
-> Static analysis is run by the CI pipeline and by the advanced test suite batch runner —
+> Static analysis is run by the CI pipeline and by the advanced test suite batch runner -
 > not by pytest. Results are recorded in the version changelog.
 >
 > **Where to look:**
-> - `.github/workflows/ci.yml` lines 80-86 — Bandit runs on every push to main
-> - `version.py` line 209 — `Static Analysis` listed as Level 5 test category
-> - `version.py` line 219 — `Bandit: 1 high (tarfile.extractall), 8 medium (2x B104 0.0.0.0 binds + 6x B113 requests without timeout)`
-> - `version.py` line 243 — CWE-22 fix applied in v6.1.0CC
-> - `run_advanced_tests.bat` — A1/A2 static analysis tests
-> - `tests/test_security_battery.py` header — `static_analysis: bandit security scan (0 high-severity findings)`
+> - `.github/workflows/ci.yml` lines 80-86 - Bandit runs on every push to main
+> - `version.py` line 209 - `Static Analysis` listed as Level 5 test category
+> - `version.py` line 219 - `Bandit: 1 high (tarfile.extractall), 8 medium (2x B104 0.0.0.0 binds + 6x B113 requests without timeout)`
+> - `version.py` line 243 - CWE-22 fix applied in v6.1.0CC
+> - `run_advanced_tests.bat` - A1/A2 static analysis tests
+> - `tests/test_security_battery.py` header - `static_analysis: bandit security scan (0 high-severity findings)`
 >
 > A scanner limited to `.py` source files will miss the CI pipeline and `.bat` runner evidence.
 > That is a scanner limitation, not a gap in the implementation.
 
 ## Verdict
 
-VERIFIED — Bandit security scan initially found 1 high-severity finding (tarfile.extractall in backup_agent.py). This was remediated in v6.1.0CC with `filter='data'` (CWE-22 fix). After remediation: 0 high-severity findings.
+VERIFIED - Bandit security scan initially found 1 high-severity finding (tarfile.extractall in backup_agent.py). This was remediated in v6.1.0CC with `filter='data'` (CWE-22 fix). After remediation: 0 high-severity findings.
 
 ## Evidence
 
@@ -42,7 +42,7 @@ VERIFIED — Bandit security scan initially found 1 high-severity finding (tarfi
 | `version.py` | Line 219 | `Bandit: 1 high (tarfile.extractall in backup_agent), 8 medium (2x B104 0.0.0.0 binds + 6x B113 requests without timeout in scripts/test_security_flow.py)` |
 | `version.py` | Line 243 | v6.1.0CC: `tarfile.extractall filter='data'` (CWE-22 fix in backup_agent.py) |
 | `.github/workflows/ci.yml` | Lines 80-86 | Bandit runs in CI pipeline on every push |
-| `tests/test_security_battery.py` | Header | `static_analysis: bandit security scan (0 high-severity findings, 8 medium — expected)` |
+| `tests/test_security_battery.py` | Header | `static_analysis: bandit security scan (0 high-severity findings, 8 medium - expected)` |
 
 ### Remediation Timeline
 
@@ -54,7 +54,7 @@ VERIFIED — Bandit security scan initially found 1 high-severity finding (tarfi
 
 ### Medium Findings (Not High)
 
-8 medium findings remain: 2x B104 (0.0.0.0 bind in `__main__` dev blocks — expected in Docker) and 6x B113 (requests without timeout in `scripts/test_security_flow.py` diagnostic script — not production code). These are expected and do not represent high-severity risk.
+8 medium findings remain: 2x B104 (0.0.0.0 bind in `__main__` dev blocks - expected in Docker) and 6x B113 (requests without timeout in `scripts/test_security_flow.py` diagnostic script - not production code). These are expected and do not represent high-severity risk.
 
 ### Code Evidence
 
@@ -73,7 +73,7 @@ bandit -r core/ api/ agents/ federation/ toolroom/ gateway/ -ll --format screen
 
 ## Expected Result
 
-0 high-severity findings. 8 medium findings (2x B104 0.0.0.0 binds + 6x B113 requests without timeout in scripts/test_security_flow.py — expected).
+0 high-severity findings. 8 medium findings (2x B104 0.0.0.0 binds + 6x B113 requests without timeout in scripts/test_security_flow.py - expected).
 
 ---
 

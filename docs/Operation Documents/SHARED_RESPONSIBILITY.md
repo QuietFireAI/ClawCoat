@@ -1,4 +1,4 @@
-# TelsonBase — Shared Responsibility Matrix
+# TelsonBase - Shared Responsibility Matrix
 
 # REM: =======================================================================================
 # REM: SHARED RESPONSIBILITY MATRIX

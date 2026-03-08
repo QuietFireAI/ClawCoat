@@ -1,4 +1,4 @@
-# TB-TEST-E2E-025 — TestAuditChainIntegrity · `test_audit_chain_verify_valid`
+# TB-TEST-E2E-025 - TestAuditChainIntegrity · `test_audit_chain_verify_valid`
 
 **Sheet ID:** TB-TEST-E2E-025
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 

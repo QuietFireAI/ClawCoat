@@ -1,7 +1,7 @@
 # TB-PROOF-036: Trust Level Permission Matrix
 
 **Sheet ID:** TB-PROOF-036
-**Claim Source:** telsonbase.com — OpenClaw Integration
+**Claim Source:** telsonbase.com - OpenClaw Integration
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "Earned trust — degraded permissions that earn their way up, not blanket autonomy. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT."
+> "Earned trust - degraded permissions that earn their way up, not blanket autonomy. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT."
 
 ## Verdict
 
-VERIFIED — `core/openclaw.py` implements a **5-level trust model** with enforced sequential promotion path, skip-capable demotion, and per-level permission matrices covering 6 action categories. AGENT tier added February 25, 2026 — anomalies advisory only, pre-authorized action profile.
+VERIFIED - `core/openclaw.py` implements a **5-level trust model** with enforced sequential promotion path, skip-capable demotion, and per-level permission matrices covering 6 action categories. AGENT tier added February 25, 2026 - anomalies advisory only, pre-authorized action profile.
 
 ## Evidence
 
@@ -67,10 +67,10 @@ QUARANTINE → []                                          (already at bottom)
 ```
 
 ### Manners Auto-Demotion
-When Manners compliance score drops below threshold (default 0.50), the instance is automatically demoted to QUARANTINE regardless of current trust level — including AGENT.
+When Manners compliance score drops below threshold (default 0.50), the instance is automatically demoted to QUARANTINE regardless of current trust level - including AGENT.
 
-### AGENT Tier — Anomaly Behavior
-At AGENT tier, anomaly detection still runs (Step 8 of governance pipeline). The difference: anomalies log loudly but do **not** gate execution. Code reference: `core/openclaw.py` line 655-660 — `if anomaly_flagged and trust_level == TrustLevel.AGENT: audit.log(... "Advisory anomaly (AGENT tier — not gated)")`.
+### AGENT Tier - Anomaly Behavior
+At AGENT tier, anomaly detection still runs (Step 8 of governance pipeline). The difference: anomalies log loudly but do **not** gate execution. Code reference: `core/openclaw.py` line 655-660 - `if anomaly_flagged and trust_level == TrustLevel.AGENT: audit.log(... "Advisory anomaly (AGENT tier - not gated)")`.
 
 ## Verification Command
 

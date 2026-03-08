@@ -1,4 +1,4 @@
-# TB-TEST-SEC-052 — TestAuditTrailIntegrity · `test_audit_entries_timestamped_utc`
+# TB-TEST-SEC-052 - TestAuditTrailIntegrity · `test_audit_entries_timestamped_utc`
 
 **Sheet ID:** TB-TEST-SEC-052
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

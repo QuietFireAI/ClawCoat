@@ -1,4 +1,4 @@
-# TB-TEST-BEH-013 — TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_chain_missing_agent_origin_WHEN_validated_THEN_flagged_as_invalid`
+# TB-TEST-BEH-013 - TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_chain_missing_agent_origin_WHEN_validated_THEN_flagged_as_invalid`
 
 **Sheet ID:** TB-TEST-BEH-013
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-002 — TestToolMetadata · `test_tool_metadata_default_trust_level_is_lowercase`
+# TB-TEST-TOOL-002 - TestToolMetadata · `test_tool_metadata_default_trust_level_is_lowercase`
 
 **Sheet ID:** TB-TEST-TOOL-002
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,7 +1,7 @@
 # TB-PROOF-009: SHA-256 Hash-Chained Audit Trail
 
 **Sheet ID:** TB-PROOF-009
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/audit.py` implements SHA-256 hash-chained audit logging with genesis block, chain linking, and tamper detection verification.
+VERIFIED - `core/audit.py` implements SHA-256 hash-chained audit logging with genesis block, chain linking, and tamper detection verification.
 
 ## Evidence
 
@@ -24,7 +24,7 @@ VERIFIED — `core/audit.py` implements SHA-256 hash-chained audit logging with 
 | `core/audit.py` | Line 36 | Genesis hash: `"0" * 64` |
 | `core/audit.py` | Lines 56-69 | SHA-256 hash computation with `hashlib.sha256` |
 | `core/audit.py` | Lines 257-294 | Chain linking (previous_hash → current entry) |
-| `core/audit.py` | Lines 489-556 | `verify_chain()` — tamper detection |
+| `core/audit.py` | Lines 489-556 | `verify_chain()` - tamper detection |
 
 ### Code Evidence
 

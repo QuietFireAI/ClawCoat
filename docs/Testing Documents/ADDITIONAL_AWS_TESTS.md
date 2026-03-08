@@ -1,4 +1,4 @@
-# TelsonBase — Additional AWS Tests & Pre-Handoff Strategy
+# TelsonBase - Additional AWS Tests & Pre-Handoff Strategy
 
 **Date:** March 1, 2026
 **Context:** Supplemental tests beyond the 10-phase AWS Testing Guide
@@ -13,7 +13,7 @@
 3. NDA signed
 4. Then outside eyes
 
-No rush on external review. Your own test results, your own screenshots, your own AWS bill showing $3 spent — that's sufficient evidence without anyone else's stamp.
+No rush on external review. Your own test results, your own screenshots, your own AWS bill showing $3 spent - that's sufficient evidence without anyone else's stamp.
 
 ---
 
@@ -22,7 +22,7 @@ No rush on external review. Your own test results, your own screenshots, your ow
 ### 1. Dependency Vulnerability Audit (2 minutes)
 
 ```bash
-# Run inside the container — uses the exact same packages the running app uses
+# Run inside the container - uses the exact same packages the running app uses
 docker compose exec mcp_server sh -c "pip install pip-audit -q && pip-audit -r /app/requirements.txt"
 ```
 
@@ -36,11 +36,11 @@ docker image ls | grep mcp_server
 docker scout cves <image-name>:latest
 ```
 
-Same idea — known vulnerabilities in your base images. Free, built into Docker.
+Same idea - known vulnerabilities in your base images. Free, built into Docker.
 Note: golang/stdlib CVEs in the output are from the Ollama vendor image, not TelsonBase.
 Your Python CVE count should be 0. The multi-stage Dockerfile also eliminates 13 LOW binutils CVEs.
 
-### 3. Secret Leak Scan — Verify No Secrets in Built Images
+### 3. Secret Leak Scan - Verify No Secrets in Built Images
 
 ```bash
 docker history mcp_server:latest --no-trunc | grep -i key
@@ -59,7 +59,7 @@ watch docker compose ps
 
 Document the number. Investors and buyers ask "how fast does it deploy."
 
-### 5. Kill Recovery — Resilience Test
+### 5. Kill Recovery - Resilience Test
 
 ```bash
 docker kill telsonbase-mcp_server-1

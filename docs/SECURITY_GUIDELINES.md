@@ -1,5 +1,5 @@
-# TelsonBase — Security Policy
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI — security@telsonbase.com
+# TelsonBase - Security Policy
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI - security@telsonbase.com
 
 TelsonBase is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
 
@@ -11,7 +11,7 @@ TelsonBase is built on zero-trust principles. Every agent message is cryptograph
 
 | Version | Supported |
 |---|---|
-| **v11.0.1** (Current) | ✅ Active — full support |
+| **v11.0.1** (Current) | ✅ Active - full support |
 | v10.0.0Bminus | ✅ Security updates only |
 | < v10.0.0Bminus | ❌ Not supported |
 
@@ -67,14 +67,14 @@ Out of scope:
 
 ## Security Architecture Overview
 
-TelsonBase's security model is documented across the following sources. There is no single architecture document — the architecture is verified through proof sheets and explained through the technical reference.
+TelsonBase's security model is documented across the following sources. There is no single architecture document - the architecture is verified through proof sheets and explained through the technical reference.
 
 | Document | What It Covers |
 |---|---|
 | `docs/AUDIT_TRAIL.md` | Hash-chained audit trail: entry structure, storage architecture, API, real-time stream, verification, offline verification |
 | `docs/TOOLROOM_TRUST_MATRIX.md` | Tool access control: `min_trust_level`, `requires_api_access` HITL gate, designation by category |
 | `docs/FAQ.md` | 8-step governance pipeline, Manners compliance, trust promotion, egress control |
-| `proof_sheets/INDEX.md` | 788 proof documents — every security claim traced to source code and a verification command |
+| `proof_sheets/INDEX.md` | 788 proof documents - every security claim traced to source code and a verification command |
 
 **Security-specific proof sheets:**
 
@@ -84,10 +84,10 @@ TelsonBase's security model is documented across the following sources. There is
 | `TB-PROOF-013` | Cryptographic message signing (HMAC-SHA256) |
 | `TB-PROOF-019` | Human-in-the-loop approval gates |
 | `TB-PROOF-020` | Behavioral anomaly detection |
-| `TB-PROOF-027` | Static analysis — 0 high-severity findings |
+| `TB-PROOF-027` | Static analysis - 0 high-severity findings |
 | `TB-PROOF-028` | Zero data leaves the network |
 | `TB-PROOF-035` | OpenClaw 8-step governance pipeline |
-| `TB-PROOF-037` | Kill switch — instant agent suspension |
+| `TB-PROOF-037` | Kill switch - instant agent suspension |
 | `TB-PROOF-038` | Manners auto-demotion |
 | `TB-PROOF-043` | Authentication security battery |
 | `TB-PROOF-044` | Encryption integrity battery |
@@ -101,17 +101,17 @@ TelsonBase's security model is documented across the following sources. There is
 
 Current verified security status as of March 8, 2026:
 
-- **720 tests passing** — 0 failures, 1 expected skip (Alembic idempotency test, requires live DB)
-- **96 dedicated security tests** — authentication, encryption, access control, audit trail, network, data protection, compliance, cryptography, runtime boundaries
-- **Bandit static analysis** — 0 high-severity findings across 37,921 lines of source code
-- **Server errors under fuzzing** — 657 reduced to 0 across hardening sessions
-- **QMS™ validation as security gate** — non-QMS messages to the Foreman are discarded and logged as `NON_QMS_MESSAGE` anomaly events; never processed
-- **8-step governance pipeline** — every agent action evaluated on all 8 steps with no bypass path
-- **AGENT apex tier** — 99.9% success rate, zero anomaly tolerance, re-verification every 3 days; anomalies at this tier are advisory, not gating
-- **Hash-chained audit trail** — Redis WATCH/MULTI/EXEC; race-free under any worker count
-- **Manners auto-demotion** — agents dropping below 50% behavioral compliance score are demoted to QUARANTINE automatically, no human delay
-- **CAPTCHA replay protection** — challenges consumed on first redemption, preventing automation bypass
-- **Secret isolation** — all secrets in Docker secrets files, never in environment variables, never in container layers
+- **720 tests passing** - 0 failures, 1 expected skip (Alembic idempotency test, requires live DB)
+- **96 dedicated security tests** - authentication, encryption, access control, audit trail, network, data protection, compliance, cryptography, runtime boundaries
+- **Bandit static analysis** - 0 high-severity findings across 37,921 lines of source code
+- **Server errors under fuzzing** - 657 reduced to 0 across hardening sessions
+- **QMS™ validation as security gate** - non-QMS messages to the Foreman are discarded and logged as `NON_QMS_MESSAGE` anomaly events; never processed
+- **8-step governance pipeline** - every agent action evaluated on all 8 steps with no bypass path
+- **AGENT apex tier** - 99.9% success rate, zero anomaly tolerance, re-verification every 3 days; anomalies at this tier are advisory, not gating
+- **Hash-chained audit trail** - Redis WATCH/MULTI/EXEC; race-free under any worker count
+- **Manners auto-demotion** - agents dropping below 50% behavioral compliance score are demoted to QUARANTINE automatically, no human delay
+- **CAPTCHA replay protection** - challenges consumed on first redemption, preventing automation bypass
+- **Secret isolation** - all secrets in Docker secrets files, never in environment variables, never in container layers
 
 ---
 
@@ -143,6 +143,6 @@ Security patches are announced via:
 
 ---
 
-*"Data sovereignty is security sovereignty."* — Quietfire AI
+*"Data sovereignty is security sovereignty."* - Quietfire AI
 
 *TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-056 — TestNetworkSecurity · `test_redis_url_contains_password_when_configured`
+# TB-TEST-SEC-056 - TestNetworkSecurity · `test_redis_url_contains_password_when_configured`
 
 **Sheet ID:** TB-TEST-SEC-056
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

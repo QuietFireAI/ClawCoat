@@ -1,8 +1,8 @@
-# Qualified Message Standard (QMS™) — Specification Reference
+# Qualified Message Standard (QMS™) - Specification Reference
 
 ## Version: 2.1.6 | Protocol: AI Audit Chain
 
-**Architect:** Jeff Phillips — Quietfire AI
+**Architect:** Jeff Phillips - Quietfire AI
 **Canonical Reference:** qms.codes  
 **License:** Open Standard (MIT)
 **Trademark:** QMS™ is a trademark of Quietfire AI / Jeff Phillips. Registration pending.
@@ -19,7 +19,7 @@
 
 QMS exists to solve a single problem: inter-agent AI communication is opaque.
 
-The prevailing paradigm — JSON payloads, implicit API conventions, nested data structures — is efficient for machines but obscures intent and outcome from human oversight. In regulated industries (healthcare, legal, finance), "the computer did it" is not an acceptable answer when automated decisions have real-world consequences.
+The prevailing paradigm - JSON payloads, implicit API conventions, nested data structures - is efficient for machines but obscures intent and outcome from human oversight. In regulated industries (healthcare, legal, finance), "the computer did it" is not an acceptable answer when automated decisions have real-world consequences.
 
 QMS is built on one radical principle:
 
@@ -29,11 +29,11 @@ The protocol re-imagines the log file as the primary user interface for system a
 
 - **For machines:** A simple, robust, unambiguous grammar that standardizes communication, eliminates parsing ambiguity, and makes inter-agent interactions efficient, verifiable, and compliant with standards like the Model Context Protocol (MCP).
 
-- **For humans:** A "human-centric alphabet" — intentionally designed so that a non-technical person (a lawyer, doctor, executive, or student) can read a QMS log file and understand the "code" of an AI conversation without a technical translator or special library.
+- **For humans:** A "human-centric alphabet" - intentionally designed so that a non-technical person (a lawyer, doctor, executive, or student) can read a QMS log file and understand the "code" of an AI conversation without a technical translator or special library.
 
 The protocol's structure *is* the documentation. Its clarity is its strength.
 
-### 1.1 The Security Layer — Why QMS Was Built
+### 1.1 The Security Layer - Why QMS Was Built
 
 QMS was conceived first and foremost as a **security watermark** and **governance primitive**. The observability and human-readability benefits came from the same design, but the security use case is the origin.
 
@@ -44,7 +44,7 @@ These are independent security questions. An attacker who steals an agent's sign
 
 **Three threat vectors that QMS mitigates:**
 
-1. **Non-QMS message arrives.** A raw or malformed command injected into the agent communication layer triggers `NON_QMS_MESSAGE` — a MANNERS-2 anomaly event. Logged. Flagged. Investigated.
+1. **Non-QMS message arrives.** A raw or malformed command injected into the agent communication layer triggers `NON_QMS_MESSAGE` - a MANNERS-2 anomaly event. Logged. Flagged. Investigated.
 
 2. **QMS output goes silent.** A registered active agent that stops producing QMS log entries deviates from its established behavioral baseline. The anomaly detector fires on the gap. An attacker who kills the logging to cover their tracks does not go quiet -- they go loud. Silence is detectable. The absence of the log IS the signal.
 
@@ -58,7 +58,7 @@ Think of it like radio comms in a large facility. Every staff member has a radio
 
 ## 2. Core Components
 
-### 2.1 The Block — Atomic Unit
+### 2.1 The Block - Atomic Unit
 
 A Block is the fundamental, atomic unit of QMS. It is a self-contained, machine-parsable piece of information.
 
@@ -102,7 +102,7 @@ Internal underscores within a block name are word separators -- equivalent to sp
 ::@@REQ_a8f3c200@@::
 ```
 
-### 2.2 The Instruction Chain — Linked Blocks
+### 2.2 The Instruction Chain - Linked Blocks
 
 An Instruction Chain is the complete, ordered expression of a single transactional thought, formed by linking one or more Blocks with a `-` (dash) separator.
 
@@ -130,8 +130,8 @@ Because every Block closes with `::`, the final two characters of any complete, 
 
 | Position | Block Type | Required | Description |
 |----------|-----------|----------|-------------|
-| 1 | Origin `::<agent_id>::` | **YES** | Who is speaking — the radio callsign |
-| 2 | Correlation `::@@REQ_id@@::` | **YES** | Transaction thread — links request to response |
+| 1 | Origin `::<agent_id>::` | **YES** | Who is speaking - the radio callsign |
+| 2 | Correlation `::@@REQ_id@@::` | **YES** | Transaction thread - links request to response |
 | 3 | Action `::Action_Name::` | **YES** | What is being done |
 | 4+ | Data (various qualifiers) | Optional | Parameters, values, context |
 | Terminal | Command `::_Please::` etc. | **YES** | How the transaction concludes |
@@ -139,7 +139,7 @@ Because every Block closes with `::`, the final two characters of any complete, 
 **Purpose:**
 
 - Forms a complete, transactional "thought" executable by a receiving agent
-- Provides a rich, self-documenting, persistent record of an action, its parameters, and its context — all in a single readable line
+- Provides a rich, self-documenting, persistent record of an action, its parameters, and its context - all in a single readable line
 - Represents a single, complete entry in the audit ledger
 - Enables request/response tracing through the correlation thread
 
@@ -163,11 +163,11 @@ A receiving agent's parser operates as follows:
 5. **Detect** block types from qualifier markers
 6. **Extract** origin, correlation, action, data, and command from canonical positions
 
-This is a simple, non-recursive split operation — computationally inexpensive and trivial to implement. This is a critical feature for high-throughput systems.
+This is a simple, non-recursive split operation - computationally inexpensive and trivial to implement. This is a critical feature for high-throughput systems.
 
 ---
 
-## 3. Validation Rules — "Blockchain" Integrity
+## 3. Validation Rules - "Blockchain" Integrity
 
 ### 3.1 Block Integrity
 
@@ -185,9 +185,9 @@ After any Block closes with its `::` delimiters, the parser enters a **decision 
 
 | Next Character | Meaning |
 |----------------|---------|
-| `-` (dash) | **Continuation** — another Block must follow |
-| ` ` (space) or end-of-line | **Termination** — the Instruction Chain is complete |
-| Any other character | **Syntax error** — invalid chain |
+| `-` (dash) | **Continuation** - another Block must follow |
+| ` ` (space) or end-of-line | **Termination** - the Instruction Chain is complete |
+| Any other character | **Syntax error** - invalid chain |
 
 This eliminates all ambiguity. There are exactly two valid next states after a closing `::`.
 
@@ -199,17 +199,17 @@ Every standard Instruction Chain MUST end with one of the five official **Comman
 
 ### 3.4 Origin Integrity (v2.1.6)
 
-Position 1 of every chain MUST be an Origin Block `::<agent_id>::`. A chain without an origin is an **anonymous transmission** — the message came from something that doesn't have a radio callsign. This is a security-flaggable event.
+Position 1 of every chain MUST be an Origin Block `::<agent_id>::`. A chain without an origin is an **anonymous transmission** - the message came from something that doesn't have a radio callsign. This is a security-flaggable event.
 
 ### 3.5 Correlation Integrity (v2.1.6)
 
-Position 2 of every chain MUST be a Correlation Block `::@@id@@::`. A chain without a correlation ID is an **untraceable transaction** — it cannot be linked to its request/response counterpart.
+Position 2 of every chain MUST be a Correlation Block `::@@id@@::`. A chain without a correlation ID is an **untraceable transaction** - it cannot be linked to its request/response counterpart.
 
 ---
 
 ## 4. Block Types
 
-### 4.A Command Blocks — Transaction Terminators
+### 4.A Command Blocks - Transaction Terminators
 
 Command Blocks define the nature and completion of a transaction. They are ALWAYS the final block in a standard chain, which means every valid chain ends with one of these blocks and therefore ends with `::`.
 
@@ -219,17 +219,17 @@ The leading `_` prefix on every command block is the grammar signal that marks i
 |---------------|---------|--------------|
 | `::_Please::` | Standard request / action initiation | HTTP Request |
 | `::_Thank_You::` | Successful completion / acknowledgment | HTTP 200 OK |
-| `::_Thank_You_But_No::` | Graceful failure — understood but cannot comply | HTTP 403/422 |
-| `::_Excuse_Me::` | Request for clarification — ambiguous or incomplete | HTTP 400 |
-| `::_Pretty_Please::` | High-priority request — requires immediate attention | Priority flag |
+| `::_Thank_You_But_No::` | Graceful failure - understood but cannot comply | HTTP 403/422 |
+| `::_Excuse_Me::` | Request for clarification - ambiguous or incomplete | HTTP 400 |
+| `::_Pretty_Please::` | High-priority request - requires immediate attention | Priority flag |
 
-### 4.B Data Blocks & Qualifiers — Typed Payloads
+### 4.B Data Blocks & Qualifiers - Typed Payloads
 
 Data Blocks carry the content of the instruction. Optional **qualifiers** inside the block delimiters denote specific data types, enabling typed parsing without external schema.
 
 | Qualifier | Block Type | Data Type | Purpose | Example |
 |-----------|-----------|-----------|---------|---------|
-| `<...>` | Origin | Agent Identity | Who is speaking — the radio callsign | `::<backup_agent>::` |
+| `<...>` | Origin | Agent Identity | Who is speaking - the radio callsign | `::<backup_agent>::` |
 | `@@...@@` | Correlation | Transaction Thread | Links request to response | `::@@REQ_a8f3c200@@::` |
 | (none) | Generic | Action / Object | High-level objects, functions, actions | `::Process_Payroll::` |
 | `$$...$$` | Numeric | Financial / Numeric | Integers, floats, financial values | `::$$49.99$$::` |
@@ -239,9 +239,9 @@ Data Blocks carry the content of the instruction. Optional **qualifiers** inside
 | `&&...&&` | Version | Protocol Version | Protocol or schema version numbers | `::&&QMS_v2.1.6&&::` |
 | `\|\|...\|\|` | Encrypted | Hash / Encrypted | Static string values, encrypted hashes | `::\|\|a746fg2e\|\|::` |
 
-**Note:** The qualifier markers sit *inside* the `::` block delimiters. The block is still `::CONTENT::` — the qualifier is part of the content.
+**Note:** The qualifier markers sit *inside* the `::` block delimiters. The block is still `::CONTENT::` - the qualifier is part of the content.
 
-### 4.C System Halt Block — Catastrophic Failure
+### 4.C System Halt Block - Catastrophic Failure
 
 **Syntax:** `::%%%%::`
 
@@ -249,7 +249,7 @@ A special, content-free block that signals a catastrophic, unrecoverable system 
 
 **Properties:**
 
-- Visually dense and distinct — immediately draws the eye in any log file
+- Visually dense and distinct - immediately draws the eye in any log file
 - A "full stop" for the AI grammar
 - Emitted when an agent encounters an unhandleable situation (lost database connection, corrupted state, etc.)
 - Triggers high-priority alerts in downstream monitoring systems
@@ -258,7 +258,7 @@ A special, content-free block that signals a catastrophic, unrecoverable system 
 
 **v2.1.6 Halt Postscript Convention:**
 
-The halt block fires first — the siren. An optional reason block follows — the incident report.
+The halt block fires first - the siren. An optional reason block follows - the incident report.
 
 ```
 Pattern:  ...::-::%%%%::-::%%reason%%::
@@ -268,7 +268,7 @@ The `::%%%%::` is the circuit breaker. The `::%%reason%%::` immediately after it
 
 | Pattern | Valid? | Description |
 |---------|--------|-------------|
-| `...::-::%%%%::` | ✅ | Bare halt — siren only |
+| `...::-::%%%%::` | ✅ | Bare halt - siren only |
 | `...::-::%%%%::-::%%Database connection lost%%::` | ✅ | Halt with incident report |
 | `...::-::%%%%::-::##some_id##::` | ❌ | Only `%%...%%` may follow halt |
 | `...::-::%%%%::-::%%reason1%%::-::%%reason2%%::` | ❌ | Only ONE block may follow halt |
@@ -277,7 +277,7 @@ The `::%%%%::` is the circuit breaker. The `::%%reason%%::` immediately after it
 
 ---
 
-## 5. Agent Identity — The Radio System (v2.1.6)
+## 5. Agent Identity - The Radio System (v2.1.6)
 
 ### 5.1 The Origin Block
 
@@ -287,7 +287,7 @@ Every chain begins with an Origin Block that identifies which agent is speaking:
 ::<agent_id>::
 ```
 
-The angle bracket `<>` qualifier was chosen for maximum visual distinctiveness. In a wall of log lines with `##`, `$$`, `%%`, and `@@` qualifiers, the `<>` brackets stand out immediately — you can scan a log file and see WHO is talking before you read WHAT they said.
+The angle bracket `<>` qualifier was chosen for maximum visual distinctiveness. In a wall of log lines with `##`, `$$`, `%%`, and `@@` qualifiers, the `<>` brackets stand out immediately - you can scan a log file and see WHO is talking before you read WHAT they said.
 
 ### 5.2 Agent Registry and Numerical IDs
 
@@ -322,11 +322,11 @@ An agent without a registered Origin ID is like a person on a hotel radio networ
 2. A security alert is logged to the audit trail
 3. The receiving system may reject the chain depending on trust policy
 
-This is NOT authentication (that's what cryptographic signatures do). This is **provenance verification** — confirming the message traveled through legitimate internal channels. Defense in depth.
+This is NOT authentication (that's what cryptographic signatures do). This is **provenance verification** - confirming the message traveled through legitimate internal channels. Defense in depth.
 
 ---
 
-## 6. Correlation — Transaction Threading (v2.1.6)
+## 6. Correlation - Transaction Threading (v2.1.6)
 
 ### 6.1 The Correlation Block
 
@@ -359,7 +359,7 @@ Correlation IDs are auto-generated as `REQ_` followed by 8 hex characters (from 
 
 ---
 
-## 7. Use Cases — The AI Audit Chain in Practice
+## 7. Use Cases - The AI Audit Chain in Practice
 
 ### 7.1 Simple Health Check (Ping/Pong)
 
@@ -434,21 +434,21 @@ Note: different origin agents, same correlation ID. The request and rejection ar
 |---------|---------|
 | v2.1.4 | Initial formal specification. Numeric qualifier used bare `::49.99::` |
 | v2.1.5 | Numeric qualifier changed to `::$$49.99$$::`. Added `::##True##::` / `::##False##::` boolean support. Added `::||...||::` encrypted qualifier. System Halt `::%%%%::` placement exception clarified. Parsing rule: text outside valid chains MUST be ignored. Invalid examples added for clarity. |
-| v2.1.6 | **Origin Block** `::<agent_id>::` — mandatory position 1. Agent identity as radio callsign. Anonymous transmissions flagged as security events. **Correlation Block** `::@@REQ_id@@::` — mandatory position 2. Transaction threading for request/response tracing. **Halt Postscript** — optional `::%%reason%%::` block may follow `::%%%%::` (one block only, must be `%%...%%` type). The siren fires first, the incident report follows. **Agent Registry** — numerical ID concept for machine-fast validation. |
+| v2.1.6 | **Origin Block** `::<agent_id>::` - mandatory position 1. Agent identity as radio callsign. Anonymous transmissions flagged as security events. **Correlation Block** `::@@REQ_id@@::` - mandatory position 2. Transaction threading for request/response tracing. **Halt Postscript** - optional `::%%reason%%::` block may follow `::%%%%::` (one block only, must be `%%...%%` type). The siren fires first, the incident report follows. **Agent Registry** - numerical ID concept for machine-fast validation. |
 
 ---
 
-## 9. Design Rationale — Why This Matters
+## 9. Design Rationale - Why This Matters
 
 ### 9.1 Auditability
 
 When the log says `::<file_agent>::-::@@REQ_d1e2f3a4@@::-::Delete_Patient_Record::-::##PATIENT_9987##::-::%%Permission Denied%%::-::_Thank_You_But_No::`, everyone in the room knows what happened. The agent identified itself. The transaction is traceable. The action is named. The data is tagged. The outcome is stated. No log parser, no Splunk query, no developer translation needed.
 
-For HIPAA auditors, legal discovery, and compliance reviews — the QMS log line IS the audit trail.
+For HIPAA auditors, legal discovery, and compliance reviews - the QMS log line IS the audit trail.
 
 ### 9.2 The Radio Analogy
 
-The Origin Block system works exactly like radio communications in a large facility. Every staff member has a radio with a callsign. Before you speak, you identify yourself. If someone transmits without a callsign — that's suspicious. If someone transmits with a callsign that isn't registered — that's an intruder.
+The Origin Block system works exactly like radio communications in a large facility. Every staff member has a radio with a callsign. Before you speak, you identify yourself. If someone transmits without a callsign - that's suspicious. If someone transmits with a callsign that isn't registered - that's an intruder.
 
 The QMS Origin Block is the callsign. The Agent Registry is the roster. No radio, no trust.
 
@@ -484,7 +484,7 @@ QMS chains do NOT carry timestamps. The log infrastructure already timestamps ev
 
 ---
 
-## 10. Implementation Status — TelsonBase
+## 10. Implementation Status - TelsonBase
 
 ### 10.1 What Is Implemented (v4.6.0CC+)
 
@@ -500,7 +500,7 @@ The `core/qms.py` module provides:
 
 ### 10.2 Legacy Compatibility
 
-Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate_qms()`) are preserved. The unified `is_qms_formatted()` function accepts BOTH legacy suffix patterns and formal chain syntax. Migration is incremental — agents adopt formal chains at their own pace.
+Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate_qms()`) are preserved. The unified `is_qms_formatted()` function accepts BOTH legacy suffix patterns and formal chain syntax. Migration is incremental - agents adopt formal chains at their own pace.
 
 ### 10.3 Migration Path
 
@@ -511,4 +511,4 @@ Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate
 
 ---
 
-*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." — Quietfire AI*
+*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." - Quietfire AI*

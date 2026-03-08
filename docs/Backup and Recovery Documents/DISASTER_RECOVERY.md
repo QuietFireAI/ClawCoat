@@ -2,7 +2,7 @@
 
 **Version:** 10.0.0Bminus
 **Last Updated:** March 3, 2026
-**Architect:** Jeff Phillips — support@telsonbase.com
+**Architect:** Jeff Phillips - support@telsonbase.com
 **AI Model Collaborators:** ChatGPT 3.5/4.0, Gemini 3, Claude Sonnet 4.5, Claude Opus 4.5
 
 ---

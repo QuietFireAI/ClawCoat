@@ -1,4 +1,4 @@
-# TB-TEST-SEC-011 — TestAuthSecurity · `test_mfa_replay_attack_prevention`
+# TB-TEST-SEC-011 - TestAuthSecurity · `test_mfa_replay_attack_prevention`
 
 **Sheet ID:** TB-TEST-SEC-011
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> The same TOTP token is rejected if presented twice — replay protection active
+> The same TOTP token is rejected if presented twice - replay protection active
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

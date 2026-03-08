@@ -1,4 +1,4 @@
-# TB-TEST-BEH-012 — TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_valid_chain_with_all_blocks_WHEN_validated_THEN_passes_validation`
+# TB-TEST-BEH-012 - TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_valid_chain_with_all_blocks_WHEN_validated_THEN_passes_validation`
 
 **Sheet ID:** TB-TEST-BEH-012
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

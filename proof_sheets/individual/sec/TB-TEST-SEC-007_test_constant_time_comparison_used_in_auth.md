@@ -1,4 +1,4 @@
-# TB-TEST-SEC-007 — TestAuthSecurity · `test_constant_time_comparison_used_in_auth`
+# TB-TEST-SEC-007 - TestAuthSecurity · `test_constant_time_comparison_used_in_auth`
 
 **Sheet ID:** TB-TEST-SEC-007
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> API key comparison uses hmac.compare_digest — timing-attack resistant
+> API key comparison uses hmac.compare_digest - timing-attack resistant
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

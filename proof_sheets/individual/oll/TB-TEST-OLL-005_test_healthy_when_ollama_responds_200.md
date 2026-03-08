@@ -1,4 +1,4 @@
-# TB-TEST-OLL-005 — TestOllamaServiceHealthCheck · `test_healthy_when_ollama_responds_200`
+# TB-TEST-OLL-005 - TestOllamaServiceHealthCheck · `test_healthy_when_ollama_responds_200`
 
 **Sheet ID:** TB-TEST-OLL-005
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
 
 ## Source
 

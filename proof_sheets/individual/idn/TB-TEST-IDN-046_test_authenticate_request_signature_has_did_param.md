@@ -1,4 +1,4 @@
-# TB-TEST-IDN-046 — TestAuthModuleIntegration · `test_authenticate_request_signature_has_did_param`
+# TB-TEST-IDN-046 - TestAuthModuleIntegration · `test_authenticate_request_signature_has_did_param`
 
 **Sheet ID:** TB-TEST-IDN-046
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

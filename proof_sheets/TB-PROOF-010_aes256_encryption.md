@@ -1,7 +1,7 @@
 # TB-PROOF-010: AES-256-GCM Encryption at Rest
 
 **Sheet ID:** TB-PROOF-010
-**Claim Source:** telsonbase.com — Capabilities Section, The Promise Section
+**Claim Source:** telsonbase.com - Capabilities Section, The Promise Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -15,7 +15,7 @@
 
 ## Verdict
 
-VERIFIED — `core/secure_storage.py` implements AES-256-GCM encryption using the `cryptography` library's `AESGCM` class with 32-byte keys and 12-byte nonces.
+VERIFIED - `core/secure_storage.py` implements AES-256-GCM encryption using the `cryptography` library's `AESGCM` class with 32-byte keys and 12-byte nonces.
 
 ## Evidence
 

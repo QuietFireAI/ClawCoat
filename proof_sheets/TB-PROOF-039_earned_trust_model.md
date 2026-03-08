@@ -1,7 +1,7 @@
 # TB-PROOF-039: Earned Trust Model
 
 **Sheet ID:** TB-PROOF-039
-**Claim Source:** telsonbase.com — Control Your Claw
+**Claim Source:** telsonbase.com - Control Your Claw
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.4.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `OpenClawManager.register_instance()` starts every claw at QUARANTINE (configurable via `OPENCLAW_DEFAULT_TRUST`, defaults to "quarantine"). `promote_trust()` enforces sequential promotion only via `VALID_PROMOTIONS` dictionary. `demote_trust()` allows skip-level demotion via `VALID_DEMOTIONS` dictionary. An agent cannot promote itself — promotion requires admin authentication.
+VERIFIED - `OpenClawManager.register_instance()` starts every claw at QUARANTINE (configurable via `OPENCLAW_DEFAULT_TRUST`, defaults to "quarantine"). `promote_trust()` enforces sequential promotion only via `VALID_PROMOTIONS` dictionary. `demote_trust()` allows skip-level demotion via `VALID_DEMOTIONS` dictionary. An agent cannot promote itself - promotion requires admin authentication.
 
 ## Evidence
 
@@ -62,12 +62,12 @@ VALID_DEMOTIONS (skip-capable):
 5. **Manners-enforced**: Behavioral compliance is continuously scored, not just checked at promotion time
 
 ### Test Coverage
-- `test_registration_default_quarantine` — New instances start at QUARANTINE
-- `test_promotion_sequential_only` — Cannot skip from QUARANTINE to RESIDENT
-- `test_demotion_skip_levels` — Can skip from CITIZEN to QUARANTINE
-- `test_invalid_promotion_rejected` — Invalid promotion transitions are rejected
-- `test_invalid_demotion_rejected` — Cannot "demote" upward
-- `test_promotion_requires_valid_transition` — Each step validated against VALID_PROMOTIONS
+- `test_registration_default_quarantine` - New instances start at QUARANTINE
+- `test_promotion_sequential_only` - Cannot skip from QUARANTINE to RESIDENT
+- `test_demotion_skip_levels` - Can skip from CITIZEN to QUARANTINE
+- `test_invalid_promotion_rejected` - Invalid promotion transitions are rejected
+- `test_invalid_demotion_rejected` - Cannot "demote" upward
+- `test_promotion_requires_valid_transition` - Each step validated against VALID_PROMOTIONS
 
 ## Verification Command
 

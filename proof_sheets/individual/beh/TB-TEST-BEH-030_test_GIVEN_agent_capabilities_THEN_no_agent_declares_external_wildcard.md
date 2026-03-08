@@ -1,4 +1,4 @@
-# TB-TEST-BEH-030 — TestBehavior_DataSovereignty · `test_GIVEN_agent_capabilities_THEN_no_agent_declares_external_wildcard`
+# TB-TEST-BEH-030 - TestBehavior_DataSovereignty · `test_GIVEN_agent_capabilities_THEN_no_agent_declares_external_wildcard`
 
 **Sheet ID:** TB-TEST-BEH-030
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

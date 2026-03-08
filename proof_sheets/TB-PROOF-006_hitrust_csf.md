@@ -1,7 +1,7 @@
 # TB-PROOF-006: HITRUST CSF 12 Domains
 
 **Sheet ID:** TB-PROOF-006
-**Claim Source:** telsonbase.com — Compliance Section
+**Claim Source:** telsonbase.com - Compliance Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "HITRUST CSF — 12 domains tracked with baseline controls, risk assessment scoring, and automated gap analysis."
+> "HITRUST CSF - 12 domains tracked with baseline controls, risk assessment scoring, and automated gap analysis."
 
 ## Verdict
 
-VERIFIED — `core/hitrust.py` and `core/hitrust_controls.py` implement 12 HITRUST CSF domains with baseline controls and risk scoring.
+VERIFIED - `core/hitrust.py` and `core/hitrust_controls.py` implement 12 HITRUST CSF domains with baseline controls and risk scoring.
 
 ## Evidence
 

@@ -1,4 +1,4 @@
-# TB-TEST-BEH-005 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_WHEN_capabilities_checked_THEN_pull_and_delete_require_approval`
+# TB-TEST-BEH-005 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_WHEN_capabilities_checked_THEN_pull_and_delete_require_approval`
 
 **Sheet ID:** TB-TEST-BEH-005
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

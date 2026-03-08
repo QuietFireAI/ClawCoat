@@ -1,4 +1,4 @@
-# TB-TEST-OCL-046 — TestAuthentication · `test_authenticate_suspended_returns_none`
+# TB-TEST-OCL-046 - TestAuthentication · `test_authenticate_suspended_returns_none`
 
 **Sheet ID:** TB-TEST-OCL-046
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
 
 ## Source
 

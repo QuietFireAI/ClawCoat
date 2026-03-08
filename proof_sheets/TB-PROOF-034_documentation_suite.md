@@ -1,7 +1,7 @@
 # TB-PROOF-034: Contract-Ready Documentation Suite
 
 **Sheet ID:** TB-PROOF-034
-**Claim Source:** telsonbase.com — Reports Section
+**Claim Source:** telsonbase.com - Reports Section
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -13,26 +13,26 @@
 > "Contract-ready documentation, out of the box"
 > SOC 2 Type I Report, Data Processing Agreement, Pen Test Preparation, Disaster Recovery, Shared Responsibility Matrix, High Availability Architecture
 
-## Reviewer Note — Documentation Evidence
+## Reviewer Note - Documentation Evidence
 
 > **This claim is verified by file existence, not by Python source code.**
 > The deliverables are `.md` documents under the `docs/` directory. A code scanner
 > searching `.py` files will find nothing and incorrectly report this as unverified.
 >
 > **Where to look:**
-> - `docs/System Documents/SOC2_TYPE_I.md` — 330+ lines, 51 controls
-> - `docs/System Documents/DATA_PROCESSING_AGREEMENT.md` — 200+ lines, GDPR-aligned
-> - `docs/Compliance Documents/PENTEST_PREPARATION.md` — attack surface inventory
-> - `docs/Backup and Recovery Documents/DISASTER_RECOVERY.md` — RPO/RTO procedures
-> - `docs/Operation Documents/SHARED_RESPONSIBILITY.md` — 12-domain responsibility table
-> - `docs/System Documents/HA_ARCHITECTURE.md` — Docker Swarm → Kubernetes path
-> - `core/compliance.py` — `ComplianceFramework.SOC2`, `SOC2_CONTROLS` — runtime engine that consumes this suite
+> - `docs/System Documents/SOC2_TYPE_I.md` - 330+ lines, 51 controls
+> - `docs/System Documents/DATA_PROCESSING_AGREEMENT.md` - 200+ lines, GDPR-aligned
+> - `docs/Compliance Documents/PENTEST_PREPARATION.md` - attack surface inventory
+> - `docs/Backup and Recovery Documents/DISASTER_RECOVERY.md` - RPO/RTO procedures
+> - `docs/Operation Documents/SHARED_RESPONSIBILITY.md` - 12-domain responsibility table
+> - `docs/System Documents/HA_ARCHITECTURE.md` - Docker Swarm → Kubernetes path
+> - `core/compliance.py` - `ComplianceFramework.SOC2`, `SOC2_CONTROLS` - runtime engine that consumes this suite
 >
 > Verification is: `ls -la` the 6 files above. If they exist with non-zero size, the claim is verified.
 
 ## Verdict
 
-VERIFIED — All 6 claimed deliverables exist as substantive documents (not stubs) with real content.
+VERIFIED - All 6 claimed deliverables exist as substantive documents (not stubs) with real content.
 
 ## Evidence
 
@@ -50,7 +50,7 @@ VERIFIED — All 6 claimed deliverables exist as substantive documents (not stub
 ### Code Reference
 | File | What It Proves |
 |---|---|
-| `core/compliance.py` | `ComplianceFramework.SOC2` enum, `SOC2_CONTROLS` list, `ComplianceEngine.generate_report()` — runtime engine that consumes the documentation suite |
+| `core/compliance.py` | `ComplianceFramework.SOC2` enum, `SOC2_CONTROLS` list, `ComplianceEngine.generate_report()` - runtime engine that consumes the documentation suite |
 | `tests/test_security_battery.py` | Header comment: `documentation_suite: SOC2, DPA, PenTest, DR, Shared Responsibility, HA Architecture` |
 
 ### What "Contract-Ready" Means

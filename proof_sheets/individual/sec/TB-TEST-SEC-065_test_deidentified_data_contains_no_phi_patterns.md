@@ -1,4 +1,4 @@
-# TB-TEST-SEC-065 — TestDataProtection · `test_deidentified_data_contains_no_phi_patterns`
+# TB-TEST-SEC-065 - TestDataProtection · `test_deidentified_data_contains_no_phi_patterns`
 
 **Sheet ID:** TB-TEST-SEC-065
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

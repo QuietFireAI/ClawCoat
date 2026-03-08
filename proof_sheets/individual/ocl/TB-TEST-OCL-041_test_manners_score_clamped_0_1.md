@@ -1,4 +1,4 @@
-# TB-TEST-OCL-041 — TestMannersAutoDemotion · `test_manners_score_clamped_0_1`
+# TB-TEST-OCL-041 - TestMannersAutoDemotion · `test_manners_score_clamped_0_1`
 
 **Sheet ID:** TB-TEST-OCL-041
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-IDN-007 — TestDIDParsing · `test_parse_did_key_extracts_32_bytes`
+# TB-TEST-IDN-007 - TestDIDParsing · `test_parse_did_key_extracts_32_bytes`
 
 **Sheet ID:** TB-TEST-IDN-007
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

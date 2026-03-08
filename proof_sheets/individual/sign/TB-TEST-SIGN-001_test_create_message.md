@@ -1,4 +1,4 @@
-# TB-TEST-SIGN-001 — TestSignedAgentMessage · `test_create_message`
+# TB-TEST-SIGN-001 - TestSignedAgentMessage · `test_create_message`
 
 **Sheet ID:** TB-TEST-SIGN-001
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 13-test Cryptographic Message Signing suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 13-test Cryptographic Message Signing suite. Run the verification command below to confirm independently.
 
 ## Source
 

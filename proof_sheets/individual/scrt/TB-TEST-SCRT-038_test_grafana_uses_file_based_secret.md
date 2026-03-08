@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-038 — TestDockerComposeSecrets · `test_grafana_uses_file_based_secret`
+# TB-TEST-SCRT-038 - TestDockerComposeSecrets · `test_grafana_uses_file_based_secret`
 
 **Sheet ID:** TB-TEST-SCRT-038
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

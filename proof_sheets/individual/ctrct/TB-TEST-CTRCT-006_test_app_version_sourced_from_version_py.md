@@ -1,4 +1,4 @@
-# TB-TEST-CTRCT-006 — TestVersionContract · `test_app_version_sourced_from_version_py`
+# TB-TEST-CTRCT-006 - TestVersionContract · `test_app_version_sourced_from_version_py`
 
 **Sheet ID:** TB-TEST-CTRCT-006
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
 
 ## Source
 

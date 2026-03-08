@@ -1,4 +1,4 @@
-# TB-TEST-SEC-064 — TestDataProtection · `test_phi_deidentification_removes_all_18_identifiers`
+# TB-TEST-SEC-064 - TestDataProtection · `test_phi_deidentification_removes_all_18_identifiers`
 
 **Sheet ID:** TB-TEST-SEC-064
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

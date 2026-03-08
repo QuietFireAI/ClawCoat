@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-018 — TestSecretsProvider · `test_docker_secret_overrides_env_var`
+# TB-TEST-SCRT-018 - TestSecretsProvider · `test_docker_secret_overrides_env_var`
 
 **Sheet ID:** TB-TEST-SCRT-018
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-OCL-039 — TestMannersAutoDemotion · `test_auto_demotion_records_in_history`
+# TB-TEST-OCL-039 - TestMannersAutoDemotion · `test_auto_demotion_records_in_history`
 
 **Sheet ID:** TB-TEST-OCL-039
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
 
 ## Source
 

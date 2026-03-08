@@ -1,7 +1,7 @@
 # TB-PROOF-018: Built on Anthropic's Agent Safety Framework (Manners)
 
 **Sheet ID:** TB-PROOF-018
-**Claim Source:** telsonbase.com — AI Safety Section
+**Claim Source:** telsonbase.com - AI Safety Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "TelsonBase adopts Anthropic's published guidelines for developing safe and trustworthy AI agents as binding operational principles. Every agent is scored against five measurable standards at runtime. Compliance is not optional — it is enforced, audited, and reported."
+> "TelsonBase adopts Anthropic's published guidelines for developing safe and trustworthy AI agents as binding operational principles. Every agent is scored against five measurable standards at runtime. Compliance is not optional - it is enforced, audited, and reported."
 
 ## Verdict
 
-VERIFIED — `MANNERS.md` defines the 5 principles, `core/manners.py` implements the runtime scoring engine with 15 violation types and automatic quarantine, `agents/registry.yaml` maps every agent to all 5 principles.
+VERIFIED - `MANNERS.md` defines the 5 principles, `core/manners.py` implements the runtime scoring engine with 15 violation types and automatic quarantine, `agents/registry.yaml` maps every agent to all 5 principles.
 
 ## Evidence
 

@@ -1,4 +1,4 @@
-# TB-TEST-BEH-001 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_model_not_found_WHEN_generate_requested_THEN_raises_clear_error_with_model_name`
+# TB-TEST-BEH-001 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_model_not_found_WHEN_generate_requested_THEN_raises_clear_error_with_model_name`
 
 **Sheet ID:** TB-TEST-BEH-001
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

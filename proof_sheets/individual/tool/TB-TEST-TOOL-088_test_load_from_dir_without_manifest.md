@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-088 — TestManifestFileLoading · `test_load_from_dir_without_manifest`
+# TB-TEST-TOOL-088 - TestManifestFileLoading · `test_load_from_dir_without_manifest`
 
 **Sheet ID:** TB-TEST-TOOL-088
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -29,7 +29,7 @@ These volumes are Docker-managed storage locations on your host machine's filesy
 
 The automated `backup_agent` is specifically configured to archive the data from the following named volumes. Understanding their contents is key to performing a targeted restoration.
 
-* **`TelsonBase_n8n_data`**: *(Retained for recovery — n8n service is disabled as of v8.0.2; replaced by the native MCP gateway at `/mcp`.)* This volume preserves any workflows built before the migration. If you need to recover and re-enable n8n, restore this volume first.
+* **`TelsonBase_n8n_data`**: *(Retained for recovery - n8n service is disabled as of v8.0.2; replaced by the native MCP gateway at `/mcp`.)* This volume preserves any workflows built before the migration. If you need to recover and re-enable n8n, restore this volume first.
 * **`TelsonBase_ollama_data`**: Your local AI brain trust. This volume stores the multi-gigabyte Large Language Models (LLMs) you have downloaded. Restoring this saves hours or days of re-downloading.
 * **`TelsonBase_open_webui_data`**: The memory of your human-AI interactions. This stores all user accounts, chat history, and interface settings for the Open-WebUI.
 * **`TelsonBase_redis_data`**: The system's short-term memory and nervous system buffer. This contains Redis database persistence files (RDB/AOF), which may hold queued background jobs.
@@ -59,7 +59,7 @@ This process will generally involve the following carefully sequenced steps:
 
 ## **III. Step-by-Step Data Restoration Example (Restoring a Docker Volume)**
 
-> **Note:** The example below uses `n8n_data` as the illustrative volume. n8n has been removed from the active stack (v8.0.2, Feb 2026) and replaced by the MCP gateway at `/mcp`. The volume is retained for recovery purposes. **The procedure below applies identically to any Docker volume** — replace `n8n_data` with `redis_data`, `postgres_data`, `ollama_data`, etc. as needed.
+> **Note:** The example below uses `n8n_data` as the illustrative volume. n8n has been removed from the active stack (v8.0.2, Feb 2026) and replaced by the MCP gateway at `/mcp`. The volume is retained for recovery purposes. **The procedure below applies identically to any Docker volume** - replace `n8n_data` with `redis_data`, `postgres_data`, `ollama_data`, etc. as needed.
 
 REM: This example provides a granular walkthrough for restoring a Docker-managed volume. The commands and principles are directly applicable to any volume in the system.
 

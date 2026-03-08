@@ -1,4 +1,4 @@
-# TB-TEST-SEC-096 — TestRuntimeBoundaries · `test_email_verification_expired_token_rejected`
+# TB-TEST-SEC-096 - TestRuntimeBoundaries · `test_email_verification_expired_token_rejected`
 
 **Sheet ID:** TB-TEST-SEC-096
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> An expired email verification token is rejected and marked EXPIRED — tokens cannot be recycled
+> An expired email verification token is rejected and marked EXPIRED - tokens cannot be recycled
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

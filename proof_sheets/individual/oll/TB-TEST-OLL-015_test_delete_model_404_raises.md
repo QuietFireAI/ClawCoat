@@ -1,4 +1,4 @@
-# TB-TEST-OLL-015 — TestOllamaServiceModels · `test_delete_model_404_raises`
+# TB-TEST-OLL-015 - TestOllamaServiceModels · `test_delete_model_404_raises`
 
 **Sheet ID:** TB-TEST-OLL-015
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
 
 ## Source
 

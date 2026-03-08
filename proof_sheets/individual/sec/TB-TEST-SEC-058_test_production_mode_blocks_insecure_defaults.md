@@ -1,4 +1,4 @@
-# TB-TEST-SEC-058 — TestNetworkSecurity · `test_production_mode_blocks_insecure_defaults`
+# TB-TEST-SEC-058 - TestNetworkSecurity · `test_production_mode_blocks_insecure_defaults`
 
 **Sheet ID:** TB-TEST-SEC-058
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

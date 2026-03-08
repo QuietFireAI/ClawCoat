@@ -1,4 +1,4 @@
-# TB-TEST-BEH-016 — TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_qms_statuses_THEN_names_follow_human_readable_convention`
+# TB-TEST-BEH-016 - TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_qms_statuses_THEN_names_follow_human_readable_convention`
 
 **Sheet ID:** TB-TEST-BEH-016
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

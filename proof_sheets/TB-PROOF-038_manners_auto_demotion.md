@@ -1,7 +1,7 @@
 # TB-PROOF-038: Manners Auto-Demotion
 
 **Sheet ID:** TB-PROOF-038
-**Claim Source:** telsonbase.com — Control Your Claw
+**Claim Source:** telsonbase.com - Control Your Claw
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.4.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `OpenClawManager.evaluate_action()` Step 6 checks Manners compliance score against `openclaw_auto_demote_manners_threshold` (default 0.50). When score drops below threshold, the instance is automatically demoted to QUARANTINE trust level before the trust permission check at Step 7, meaning the current action is immediately affected.
+VERIFIED - `OpenClawManager.evaluate_action()` Step 6 checks Manners compliance score against `openclaw_auto_demote_manners_threshold` (default 0.50). When score drops below threshold, the instance is automatically demoted to QUARANTINE trust level before the trust permission check at Step 7, meaning the current action is immediately affected.
 
 ## Evidence
 
@@ -37,7 +37,7 @@ Step 6 of Governance Pipeline:
      a. Call demote_trust(instance_id, "quarantine", reason="Manners auto-demotion")
      b. Log AuditEventType.OPENCLAW_TRUST_DEMOTED
      c. Logger emits "REM: Manners auto-demotion" warning
-  4. Continue to Step 7 (trust level check) — now at QUARANTINE
+  4. Continue to Step 7 (trust level check) - now at QUARANTINE
 ```
 
 ### Why Step 6 Before Step 7
@@ -53,9 +53,9 @@ The Manners auto-demotion is intentionally placed BEFORE the trust level permiss
 | **Demotion** | Skip-capable: CITIZEN → QUARANTINE (instant, no intermediate steps) |
 
 ### Test Coverage
-- `test_manners_auto_demotion_triggers` — Score below threshold triggers demotion to quarantine
-- `test_manners_auto_demotion_threshold` — Score at exactly threshold does NOT trigger demotion
-- `test_manners_above_threshold_no_demotion` — Score above threshold allows normal operation
+- `test_manners_auto_demotion_triggers` - Score below threshold triggers demotion to quarantine
+- `test_manners_auto_demotion_threshold` - Score at exactly threshold does NOT trigger demotion
+- `test_manners_above_threshold_no_demotion` - Score above threshold allows normal operation
 
 ## Verification Command
 

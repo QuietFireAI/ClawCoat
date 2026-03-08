@@ -1,7 +1,7 @@
 # TelsonBase Audit Trail
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-Every governance decision made by TelsonBase is written to a hash-chained audit record. Not logged to a file. Not stored in a table. **Hash-chained** — each entry cryptographically binds to the one before it. You can hand this record to a regulator, opposing counsel, or a forensic investigator and prove that nothing was altered after the fact.
+Every governance decision made by TelsonBase is written to a hash-chained audit record. Not logged to a file. Not stored in a table. **Hash-chained** - each entry cryptographically binds to the one before it. You can hand this record to a regulator, opposing counsel, or a forensic investigator and prove that nothing was altered after the fact.
 
 This document covers the implementation, the API, the real-time stream, and the limits you need to know about before you go to production.
 
@@ -11,7 +11,7 @@ This document covers the implementation, the API, the real-time stream, and the 
 
 Conventional log files can be edited. A compromised system can append to them, truncate them, or rewrite them. This is an obvious problem when the thing being logged is an AI agent with file system access.
 
-TelsonBase's audit chain uses the same principle as a blockchain — without the overhead. Every entry contains a SHA-256 hash computed over its own content plus the hash of the previous entry. To silently alter entry #4,200, you would need to recompute the hash of #4,200, then #4,201, then every entry after it, and update the chain state stored in Redis — all without triggering a verification failure. In practice: if the chain shows `valid`, nothing was tampered with. If it shows `invalid`, something was.
+TelsonBase's audit chain uses the same principle as a blockchain - without the overhead. Every entry contains a SHA-256 hash computed over its own content plus the hash of the previous entry. To silently alter entry #4,200, you would need to recompute the hash of #4,200, then #4,201, then every entry after it, and update the chain state stored in Redis - all without triggering a verification failure. In practice: if the chain shows `valid`, nothing was tampered with. If it shows `invalid`, something was.
 
 The genesis entry uses a 64-character zero hash (`0000...0000`) as its `previous_hash`. From there, every entry is linked.
 
@@ -19,7 +19,7 @@ The genesis entry uses a 64-character zero hash (`0000...0000`) as its `previous
 
 ## What the Chain Captures
 
-The chain records every event that matters to governance and compliance. Not infrastructure noise — not health checks, not Redis PING/PONG — governance events.
+The chain records every event that matters to governance and compliance. Not infrastructure noise - not health checks, not Redis PING/PONG - governance events.
 
 ### Authentication
 | Event Type | Triggered by |
@@ -36,7 +36,7 @@ The chain records every event that matters to governance and compliance. Not inf
 | `openclaw.action_blocked` | Action rejected (blocklist, kill switch, policy) |
 | `openclaw.action_gated` | Action sent to human approval queue |
 | `openclaw.trust_promoted` | Trust level raised (Quarantine → Probation, etc.) |
-| `openclaw.trust_demoted` | Trust level lowered — includes Manners auto-demotion |
+| `openclaw.trust_demoted` | Trust level lowered - includes Manners auto-demotion |
 | `openclaw.suspended` | Kill switch activated |
 | `openclaw.reinstated` | Kill switch cleared by a human |
 
@@ -100,7 +100,7 @@ Every chain entry has the same shape:
   "sequence": 4207,
   "timestamp": "2026-02-23T18:44:12.003Z",
   "event_type": "openclaw.trust_demoted",
-  "message": "Agent web_agent demoted: RESIDENT → PROBATION — Manners score 0.41 < 0.50 threshold_Thank_You_But_No",
+  "message": "Agent web_agent demoted: RESIDENT → PROBATION - Manners score 0.41 < 0.50 threshold_Thank_You_But_No",
   "actor": "system:governance",
   "actor_type": "system",
   "resource": "web_agent",
@@ -128,7 +128,7 @@ The `entry_hash` is SHA-256 of the canonical JSON of `sequence + timestamp + eve
 | Redis sorted set (`audit:chain:entries`) | 100,000 entries (configurable) | Survives restarts |
 | Redis chain state | Current sequence, last hash, chain ID | Survives restarts |
 
-**The 100K Redis cap** is controlled by `AUDIT_MAX_REDIS_ENTRIES` in your `.env`. When the cap is reached, oldest entries are trimmed. The chain state (last sequence, last hash) is preserved — new entries continue chaining from where they left off. The trimmed entries are gone unless you've exported them.
+**The 100K Redis cap** is controlled by `AUDIT_MAX_REDIS_ENTRIES` in your `.env`. When the cap is reached, oldest entries are trimmed. The chain state (last sequence, last hash) is preserved - new entries continue chaining from where they left off. The trimmed entries are gone unless you've exported them.
 
 **Verification scope**: `GET /v1/audit/chain/verify` verifies the last N entries loaded into memory (default: 100, max: 1,000). A verification pass against 100 entries tells you those 100 are intact. To verify the full chain, export it and verify offline, or increase the verification limit.
 
@@ -230,7 +230,7 @@ curl -H "X-API-Key: $API_KEY" \
 GET /v1/audit/stream?api_key=YOUR_KEY&last_sequence=0
 ```
 
-New entries are pushed as [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) within approximately 2 seconds of being written to the chain. Use `last_sequence` to receive only entries you haven't seen yet — pass the sequence number of the last entry you received to resume without re-receiving old entries.
+New entries are pushed as [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) within approximately 2 seconds of being written to the chain. Use `last_sequence` to receive only entries you haven't seen yet - pass the sequence number of the last entry you received to resume without re-receiving old entries.
 
 **Authentication note**: Browser `EventSource` cannot send custom headers. The `api_key` query parameter is the authentication mechanism for this endpoint specifically. On a local self-hosted deployment this is acceptable. If you're exposing TelsonBase to a network boundary, put it behind Traefik with TLS and rate-limit the endpoint.
 
@@ -248,7 +248,7 @@ es.onopen = () => console.log('Audit stream connected');
 
 es.onmessage = (event) => {
   const entry = JSON.parse(event.data);
-  console.log(`[${entry.sequence}] ${entry.event_type} — ${entry.actor}: ${entry.message}`);
+  console.log(`[${entry.sequence}] ${entry.event_type} - ${entry.actor}: ${entry.message}`);
 };
 
 es.onerror = () => {
@@ -273,7 +273,7 @@ with httpx.stream("GET", url, params=params, timeout=None) as response:
     for line in response.iter_lines():
         if line.startswith("data:"):
             entry = json.loads(line[5:].strip())
-            print(f"[{entry['sequence']}] {entry['event_type']} — {entry['actor']}")
+            print(f"[{entry['sequence']}] {entry['event_type']} - {entry['actor']}")
 ```
 
 ### Shell (curl)
@@ -290,7 +290,7 @@ The stream sends `: keepalive` comment lines when no new entries arrive. These m
 
 The TelsonBase admin dashboard (`/dashboard` → Audit Trail tab) connects to the SSE stream when you're on the tab and authenticated. You'll see a pulsing green indicator labeled **"Live stream · entries pushed in real-time"** when the EventSource connection is open. If the SSE endpoint is unreachable, it falls back to a 10-second poll and shows **"Polling · refreshing every 10s"** in amber.
 
-The **Verify Chain** button in the dashboard calls `POST /v1/audit/chain/verify` and displays the result inline — no browser `alert()`, no page reload. The **Export JSON** button fetches up to 1,000 entries via the API client (with authentication headers) and downloads `audit_export.json` to your machine.
+The **Verify Chain** button in the dashboard calls `POST /v1/audit/chain/verify` and displays the result inline - no browser `alert()`, no page reload. The **Export JSON** button fetches up to 1,000 entries via the API client (with authentication headers) and downloads `audit_export.json` to your machine.
 
 ---
 
@@ -358,7 +358,7 @@ The `qms_status` parameter appends a QMS suffix to the message (`_Thank_You`, `_
 
 ## Proof Sheet
 
-`proof_sheets/TB-PROOF-009_audit_chain_sha256.md` — SHA-256 hash-chained audit trail verification. `proof_sheets/TB-PROOF-046_security_audit_trail.md` — audit trail integrity tests from the security battery: chain creation, hash verification, tamper detection, and UTC timestamp enforcement. Run:
+`proof_sheets/TB-PROOF-009_audit_chain_sha256.md` - SHA-256 hash-chained audit trail verification. `proof_sheets/TB-PROOF-046_security_audit_trail.md` - audit trail integrity tests from the security battery: chain creation, hash verification, tamper detection, and UTC timestamp enforcement. Run:
 
 ```bash
 docker compose exec mcp_server python -m pytest tests/test_audit.py -v

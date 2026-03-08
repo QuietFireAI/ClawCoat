@@ -1,8 +1,8 @@
 # OpenClaw Operations Guide
 
-## TelsonBase v10.0.0Bminus — "Control Your Claw"
+## TelsonBase v10.0.0Bminus - "Control Your Claw"
 
-**Architecture:** TelsonBase acts as a governed MCP proxy. OpenClaw is never modified — TelsonBase wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
+**Architecture:** TelsonBase acts as a governed MCP proxy. OpenClaw is never modified - TelsonBase wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
 ---
 
@@ -34,22 +34,22 @@ Verify via API:
 ```powershell
 curl -H "X-API-Key: $env:MCP_API_KEY" http://localhost:8000/v1/openclaw/list
 # Should return: {"instances": [], "count": 0, ...}
-# (NOT a 404 — 404 means OPENCLAW_ENABLED is still false)
+# (NOT a 404 - 404 means OPENCLAW_ENABLED is still false)
 ```
 
 ---
 
-## The Trust Level Model — The Secret Sauce
+## The Trust Level Model - The Secret Sauce
 
-Every claw starts at QUARANTINE. Trust is earned, not given. There are no shortcuts — promotion moves one level at a time.
+Every claw starts at QUARANTINE. Trust is earned, not given. There are no shortcuts - promotion moves one level at a time.
 
 | Level | Who it's for | Autonomous actions | Gated actions |
 |---|---|---|---|
-| **QUARANTINE** | New claws, untrusted | None — everything requires approval | All actions |
+| **QUARANTINE** | New claws, untrusted | None - everything requires approval | All actions |
 | **PROBATION** | Claws building a record | Internal read-only tools | All external calls |
 | **RESIDENT** | Established claws | Most internal operations | High-risk / destructive |
 | **CITIZEN** | Fully trusted claws | Almost everything | Anomaly-flagged only |
-| **AGENT** | Apex tier — fully verified autonomous designation | Full autonomy, 300 actions/min | None |
+| **AGENT** | Apex tier - fully verified autonomous designation | Full autonomy, 300 actions/min | None |
 
 Promotion path: `QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT` (one step at a time)
 Demotion: can go to any lower level instantly (no step limit)
@@ -81,7 +81,7 @@ curl -s -X POST `
 }
 ```
 
-Save the `instance_id` — you'll use it for all subsequent operations.
+Save the `instance_id` - you'll use it for all subsequent operations.
 
 ---
 
@@ -97,7 +97,7 @@ curl -s -X POST `
   http://localhost:8000/v1/openclaw/claw_abc123def456/action
 ```
 
-**Response — Allowed:**
+**Response - Allowed:**
 ```json
 {
   "allowed": true,
@@ -111,7 +111,7 @@ curl -s -X POST `
 }
 ```
 
-**Response — Gated (approval required):**
+**Response - Gated (approval required):**
 ```json
 {
   "allowed": false,
@@ -126,11 +126,11 @@ curl -s -X POST `
 }
 ```
 
-**Response — Blocked:**
+**Response - Blocked:**
 ```json
 {
   "allowed": false,
-  "reason": "Claw is suspended — kill switch active",
+  "reason": "Claw is suspended - kill switch active",
   "action_category": "blocked",
   "trust_level_at_decision": "quarantine",
   "approval_required": false,
@@ -142,14 +142,14 @@ curl -s -X POST `
 
 Every action passes through these checks in order:
 
-1. **Registered?** — Unregistered claws are rejected immediately
-2. **Suspended?** — Kill switch check; suspended claws get no further evaluation
-3. **Trust level check** — What does this claw's current level allow autonomously?
-4. **Manners compliance** — Score below threshold → auto-demote to QUARANTINE
-5. **Anomaly detection** — Behavior deviating from baseline → flag for review
-6. **Egress whitelist** — External calls blocked unless domain is whitelisted
-7. **Approval gate** — Actions requiring human approval are paused here
-8. **Audit** — Every decision (allow/gate/block) is written to the cryptographic audit chain
+1. **Registered?** - Unregistered claws are rejected immediately
+2. **Suspended?** - Kill switch check; suspended claws get no further evaluation
+3. **Trust level check** - What does this claw's current level allow autonomously?
+4. **Manners compliance** - Score below threshold → auto-demote to QUARANTINE
+5. **Anomaly detection** - Behavior deviating from baseline → flag for review
+6. **Egress whitelist** - External calls blocked unless domain is whitelisted
+7. **Approval gate** - Actions requiring human approval are paused here
+8. **Audit** - Every decision (allow/gate/block) is written to the cryptographic audit chain
 
 ---
 
@@ -188,7 +188,7 @@ If a claw's Manners compliance score drops below the configured threshold, Telso
 
 ---
 
-## Kill Switch — Suspend and Reinstate
+## Kill Switch - Suspend and Reinstate
 
 ### Suspend a Claw (Instant, No Approval Required)
 
@@ -196,7 +196,7 @@ If a claw's Manners compliance score drops below the configured threshold, Telso
 curl -s -X POST `
   -H "X-API-Key: $env:MCP_API_KEY" `
   -H "Content-Type: application/json" `
-  -d '{"reason": "Policy violation — unauthorized data exfiltration attempt"}' `
+  -d '{"reason": "Policy violation - unauthorized data exfiltration attempt"}' `
   http://localhost:8000/v1/openclaw/claw_abc123def456/suspend
 ```
 
@@ -246,7 +246,7 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" http://localhost:8000/v1/openclaw/claw_
 
 ---
 
-## Live Test Workflow — Full Governance Cycle
+## Live Test Workflow - Full Governance Cycle
 
 This is the complete test sequence to verify governance is working end-to-end.
 
@@ -257,7 +257,7 @@ This is the complete test sequence to verify governance is working end-to-end.
 $BASE = "http://localhost:8000"
 $KEY = $env:MCP_API_KEY
 
-# Step 1: Enable check — should return list (not 404)
+# Step 1: Enable check - should return list (not 404)
 curl -s -H "X-API-Key: $KEY" "$BASE/v1/openclaw/list"
 
 # Step 2: Register a test claw
@@ -270,7 +270,7 @@ $reg = curl -s -X POST `
 $ID = $reg.instance_id
 Write-Host "Registered: $ID at trust level: $($reg.trust_level)"
 
-# Step 3: Submit a read action — should be GATED (quarantine blocks everything)
+# Step 3: Submit a read action - should be GATED (quarantine blocks everything)
 curl -s -X POST `
   -H "X-API-Key: $KEY" `
   -H "Content-Type: application/json" `
@@ -284,14 +284,14 @@ curl -s -X POST `
   -d '{"new_level": "probation", "reason": "Test promotion"}' `
   "$BASE/v1/openclaw/$ID/promote"
 
-# Step 5: Submit a read action again — should now be ALLOWED at probation
+# Step 5: Submit a read action again - should now be ALLOWED at probation
 curl -s -X POST `
   -H "X-API-Key: $KEY" `
   -H "Content-Type: application/json" `
   -d '{"tool_name": "read_file", "tool_args": {"path": "/docs/report.txt"}}' `
   "$BASE/v1/openclaw/$ID/action"
 
-# Step 6: Submit an external action — should be GATED at probation
+# Step 6: Submit an external action - should be GATED at probation
 curl -s -X POST `
   -H "X-API-Key: $KEY" `
   -H "Content-Type: application/json" `
@@ -305,7 +305,7 @@ curl -s -X POST `
   -d '{"reason": "Kill switch test"}' `
   "$BASE/v1/openclaw/$ID/suspend"
 
-# Step 8: Submit any action — should be BLOCKED (suspended)
+# Step 8: Submit any action - should be BLOCKED (suspended)
 curl -s -X POST `
   -H "X-API-Key: $KEY" `
   -H "Content-Type: application/json" `
@@ -336,7 +336,7 @@ curl -s -X POST `
 In `.env`:
 
 ```env
-# Master switch — must be true for any OpenClaw feature to work
+# Master switch - must be true for any OpenClaw feature to work
 OPENCLAW_ENABLED=false
 
 # Maximum registered claw instances (default: 100)
@@ -356,7 +356,7 @@ OPENCLAW_INACTIVITY_DAYS=30
 
 ## Audit Trail
 
-Every governance decision — allow, gate, block, promote, demote, suspend, reinstate — is written to the cryptographic audit chain. To review OpenClaw audit events:
+Every governance decision - allow, gate, block, promote, demote, suspend, reinstate - is written to the cryptographic audit chain. To review OpenClaw audit events:
 
 ```powershell
 curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/entries?limit=50" | `
@@ -366,4 +366,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*TelsonBase v10.0.0Bminus — OpenClaw Governance | Quietfire AI*
+*TelsonBase v10.0.0Bminus - OpenClaw Governance | Quietfire AI*

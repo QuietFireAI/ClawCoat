@@ -1,4 +1,4 @@
-# TB-TEST-QMS-047 — TestParseChain · `test_parse_halt_chain_bare`
+# TB-TEST-QMS-047 - TestParseChain · `test_parse_halt_chain_bare`
 
 **Sheet ID:** TB-TEST-QMS-047
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

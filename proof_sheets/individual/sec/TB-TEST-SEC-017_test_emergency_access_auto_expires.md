@@ -1,4 +1,4 @@
-# TB-TEST-SEC-017 — TestAuthSecurity · `test_emergency_access_auto_expires`
+# TB-TEST-SEC-017 - TestAuthSecurity · `test_emergency_access_auto_expires`
 
 **Sheet ID:** TB-TEST-SEC-017
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Emergency access sessions auto-expire — no indefinite privilege elevation
+> Emergency access sessions auto-expire - no indefinite privilege elevation
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

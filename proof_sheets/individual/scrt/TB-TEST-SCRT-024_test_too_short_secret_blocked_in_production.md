@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-024 — TestSecretsProvider · `test_too_short_secret_blocked_in_production`
+# TB-TEST-SCRT-024 - TestSecretsProvider · `test_too_short_secret_blocked_in_production`
 
 **Sheet ID:** TB-TEST-SCRT-024
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

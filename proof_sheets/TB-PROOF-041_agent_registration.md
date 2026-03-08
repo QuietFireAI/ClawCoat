@@ -1,7 +1,7 @@
-# TB-PROOF-041: How to Add an Agent — Developer Deep Dive
+# TB-PROOF-041: How to Add an Agent - Developer Deep Dive
 
 **Sheet ID:** TB-PROOF-041
-**Claim Source:** telsonbase.com — Control Your Claw
+**Claim Source:** telsonbase.com - Control Your Claw
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -16,7 +16,7 @@
 
 ## Verdict
 
-VERIFIED — Agent registration is a single authenticated POST to `/v1/openclaw/register`. The system hashes the agent's API key (SHA-256, never stored plaintext), writes the instance to Redis, initializes trust history, and logs the registration to the cryptographic audit chain. Default trust level is QUARANTINE. No agent can start above QUARANTINE without an administrator supplying a substantive written override reason (minimum 10 characters), which is written verbatim to the immutable audit log.
+VERIFIED - Agent registration is a single authenticated POST to `/v1/openclaw/register`. The system hashes the agent's API key (SHA-256, never stored plaintext), writes the instance to Redis, initializes trust history, and logs the registration to the cryptographic audit chain. Default trust level is QUARANTINE. No agent can start above QUARANTINE without an administrator supplying a substantive written override reason (minimum 10 characters), which is written verbatim to the immutable audit log.
 
 ---
 
@@ -30,13 +30,13 @@ The agent itself is never modified. TelsonBase wraps it.
 
 ## Two Registration Paths
 
-### Path A — Self-Registration (Agent Registers Itself)
+### Path A - Self-Registration (Agent Registers Itself)
 
 The agent calls the registration endpoint when it first starts up, using its own credentials. It gets back an `instance_id` and a starting trust level of QUARANTINE. It uses that `instance_id` on every subsequent action call.
 
 **When to use:** Agents you control that run on your own infrastructure. Standard deployment pattern.
 
-### Path B — Pre-Registration (Admin Registers the Agent First)
+### Path B - Pre-Registration (Admin Registers the Agent First)
 
 An administrator registers the agent in the dashboard or via API before the agent is deployed. The agent is given a pre-assigned `instance_id` and API key. When the agent starts, it already has a governance record.
 
@@ -64,10 +64,10 @@ OPENCLAW_ENABLED=true
 
 ## Step-by-Step: Path A (Self-Registration)
 
-### Step 1 — The Agent Sends a Registration Request
+### Step 1 - The Agent Sends a Registration Request
 
 **Endpoint:** `POST /v1/openclaw/register`
-**Auth required:** Yes — admin or `security:write` permission
+**Auth required:** Yes - admin or `security:write` permission
 
 ```python
 import httpx
@@ -75,7 +75,7 @@ import httpx
 TELSONBASE_URL = "http://localhost:8000"
 ADMIN_TOKEN = "your-jwt-token-here"
 
-# The agent's own API key — this gets hashed (SHA-256) before storage.
+# The agent's own API key - this gets hashed (SHA-256) before storage.
 # TelsonBase never stores the plaintext key.
 AGENT_API_KEY = "my-secret-agent-key-abc123"
 
@@ -98,7 +98,7 @@ response = httpx.post(
 
 instance = response.json()
 print(instance["instance_id"])      # e.g. "a3f9c1b2e4d67890"
-print(instance["trust_level"])      # "quarantine" — always
+print(instance["trust_level"])      # "quarantine" - always
 print(instance["qms_status"])       # "Thank_You"
 ```
 
@@ -114,10 +114,10 @@ register_instance() [core/openclaw.py:366]
   ├── Initialize trust history: [{old="unregistered", new="quarantine", type="registration"}]
   ├── _persist_trust_history() → Redis: "openclaw:trust_history:{instance_id}"
   └── audit.log(OPENCLAW_REGISTERED, actor=registered_by, ...)
-      └── Written to SHA-256 hash-chained audit trail — tamper-evident, permanent
+      └── Written to SHA-256 hash-chained audit trail - tamper-evident, permanent
 ```
 
-### Step 2 — Store the instance_id
+### Step 2 - Store the instance_id
 
 The `instance_id` is the agent's governed identity. Every action evaluation call requires it.
 
@@ -125,7 +125,7 @@ The `instance_id` is the agent's governed identity. Every action evaluation call
 INSTANCE_ID = instance["instance_id"]  # store this
 ```
 
-### Step 3 — Submit Actions for Governance Evaluation
+### Step 3 - Submit Actions for Governance Evaluation
 
 **Endpoint:** `POST /v1/openclaw/{instance_id}/action`
 
@@ -155,7 +155,7 @@ print(result["qms_status"])           # "Thank_You" / "Excuse_Me" / "Thank_You_B
 
 | Action | Result | Why |
 |---|---|---|
-| `file_read` | `allowed=False, approval_required=True` | Gated — reads allowed but require HITL approval |
+| `file_read` | `allowed=False, approval_required=True` | Gated - reads allowed but require HITL approval |
 | `file_write` | `allowed=False, approval_required=False` | Blocked entirely at QUARANTINE |
 | `http_request` | `allowed=False, approval_required=False` | Blocked at QUARANTINE |
 | `file_delete` | `allowed=False, approval_required=False` | Blocked at QUARANTINE |
@@ -207,7 +207,7 @@ def validate_trust_override(self) -> "RegisterClawRequest":
 {
   "detail": [{
     "msg": "Value error, override_reason is required when initial_trust_level is 'probation'.
-             Provide a substantive justification — it is written verbatim to the audit log.",
+             Provide a substantive justification - it is written verbatim to the audit log.",
     "type": "value_error"
   }]
 }
@@ -215,7 +215,7 @@ def validate_trust_override(self) -> "RegisterClawRequest":
 
 ---
 
-## The Trust Level Ladder — What Changes as the Agent Earns Trust
+## The Trust Level Ladder - What Changes as the Agent Earns Trust
 
 ```
 QUARANTINE ──► PROBATION ──► RESIDENT ──► CITIZEN ──► AGENT
@@ -231,7 +231,7 @@ httpx.post(
     f"{TELSONBASE_URL}/v1/openclaw/{INSTANCE_ID}/promote",
     headers={"Authorization": f"Bearer {ADMIN_TOKEN}"},
     json={
-        "new_level": "probation",    # must be the next level up — no skipping
+        "new_level": "probation",    # must be the next level up - no skipping
         "reason": "30 days of clean operation at QUARANTINE. All HITL approvals granted."
     }
 )
@@ -244,8 +244,8 @@ httpx.post(
     f"{TELSONBASE_URL}/v1/openclaw/{INSTANCE_ID}/demote",
     headers={"Authorization": f"Bearer {ADMIN_TOKEN}"},
     json={
-        "new_level": "quarantine",   # can skip levels — CITIZEN → QUARANTINE in one call
-        "reason": "Anomalous behavior detected — credential enumeration pattern."
+        "new_level": "quarantine",   # can skip levels - CITIZEN → QUARANTINE in one call
+        "reason": "Anomalous behavior detected - credential enumeration pattern."
     }
 )
 ```
@@ -254,7 +254,7 @@ httpx.post(
 
 ## Full Permission Matrix by Trust Level
 
-Source: `core/openclaw.py` — `TRUST_PERMISSION_MATRIX`
+Source: `core/openclaw.py` - `TRUST_PERMISSION_MATRIX`
 
 | Trust Level | Autonomous | Gated (HITL required) | Blocked |
 |---|---|---|---|
@@ -267,7 +267,7 @@ Source: `core/openclaw.py` — `TRUST_PERMISSION_MATRIX`
 ### Tool-to-Category Map (partial)
 
 ```python
-# Source: core/openclaw.py — TOOL_CATEGORY_MAP
+# Source: core/openclaw.py - TOOL_CATEGORY_MAP
 "file_read"          → READ_INTERNAL
 "file_write"         → WRITE_INTERNAL
 "edit_file"          → WRITE_INTERNAL
@@ -288,20 +288,20 @@ Source: `core/openclaw.py` — `TRUST_PERMISSION_MATRIX`
 
 ## The 8-Step Governance Pipeline (What Runs on Every Action Call)
 
-Source: `core/openclaw.py` — `evaluate_action()` at line 474
+Source: `core/openclaw.py` - `evaluate_action()` at line 474
 
 ```
 Step 1: Instance registered?
    └── get_instance(instance_id) → checks in-memory + Redis fallback
    └── REJECT if unknown: "Instance not registered"
 
-Step 2: Kill switch — is this instance suspended?
+Step 2: Kill switch - is this instance suspended?
    └── Checked BEFORE trust level, BEFORE Manners, BEFORE everything
-   └── Redis-backed via is_suspended() — survives restarts
+   └── Redis-backed via is_suspended() - survives restarts
    └── REJECT if suspended: "Instance suspended: {reason}"
 
 Step 3: Nonce replay protection
-   └── _check_nonce(nonce) — Redis-backed, TTL-based
+   └── _check_nonce(nonce) - Redis-backed, TTL-based
    └── REJECT if nonce already seen: "Nonce replay detected"
 
 Step 4: Tool blocklist check
@@ -356,15 +356,15 @@ Every action evaluation returns:
 
 | `qms_status` value | Meaning |
 |---|---|
-| `Thank_You` | Action allowed — proceed |
-| `Excuse_Me` | Action gated — waiting for human approval |
-| `Thank_You_But_No` | Action blocked — do not proceed |
+| `Thank_You` | Action allowed - proceed |
+| `Excuse_Me` | Action gated - waiting for human approval |
+| `Thank_You_But_No` | Action blocked - do not proceed |
 
 When `approval_required=true`, the `approval_id` is returned. Poll `GET /v1/approvals/{approval_id}` for the human decision.
 
 ---
 
-## Instant Suspend — The Kill Switch
+## Instant Suspend - The Kill Switch
 
 One call. Zero grace period. All subsequent actions from this instance return blocked regardless of trust level.
 
@@ -372,12 +372,12 @@ One call. Zero grace period. All subsequent actions from this instance return bl
 httpx.post(
     f"{TELSONBASE_URL}/v1/openclaw/{INSTANCE_ID}/suspend",
     headers={"Authorization": f"Bearer {ADMIN_TOKEN}"},
-    json={"reason": "Credential enumeration behavior detected — suspended pending review."}
+    json={"reason": "Credential enumeration behavior detected - suspended pending review."}
 )
 # → {"suspended": true, "qms_status": "Thank_You"}
 ```
 
-Kill switch check is Step 2 of the pipeline — before trust levels, before Manners, before nonce. Only a human administrator can reinstate a suspended agent.
+Kill switch check is Step 2 of the pipeline - before trust levels, before Manners, before nonce. Only a human administrator can reinstate a suspended agent.
 
 ---
 
@@ -400,8 +400,8 @@ The dashboard calls the same `/v1/openclaw/register` endpoint under the hood. Sa
 
 | File | Purpose |
 |---|---|
-| `core/openclaw.py` | Full governance engine — TrustLevel enum, VALID_PROMOTIONS, VALID_DEMOTIONS, TRUST_PERMISSION_MATRIX, TOOL_CATEGORY_MAP, OpenClawInstance model, register_instance(), evaluate_action() |
-| `api/openclaw_routes.py` | REST API layer — RegisterClawRequest with model_validator, POST /register, POST /{id}/action, POST /{id}/promote, POST /{id}/demote, POST /{id}/suspend |
+| `core/openclaw.py` | Full governance engine - TrustLevel enum, VALID_PROMOTIONS, VALID_DEMOTIONS, TRUST_PERMISSION_MATRIX, TOOL_CATEGORY_MAP, OpenClawInstance model, register_instance(), evaluate_action() |
+| `api/openclaw_routes.py` | REST API layer - RegisterClawRequest with model_validator, POST /register, POST /{id}/action, POST /{id}/promote, POST /{id}/demote, POST /{id}/suspend |
 | `tests/test_openclaw.py` | 54 tests covering registration, trust transitions, pipeline steps, kill switch, Manners auto-demotion, anomaly detection |
 
 ---
@@ -413,7 +413,7 @@ The dashboard calls the same `/v1/openclaw/register` endpoint under the hood. Sa
 curl -s http://localhost:8000/v1/openclaw/register -X POST \
   -H "Content-Type: application/json" \
   -d '{"name":"test","api_key":"test"}' | python3 -m json.tool
-# → 401 Unauthorized (correct — auth required)
+# → 401 Unauthorized (correct - auth required)
 
 # Register an agent and confirm QUARANTINE start
 TOKEN=$(curl -s -X POST http://localhost:8000/v1/auth/login \
@@ -443,22 +443,22 @@ docker compose exec mcp_server python -m pytest tests/test_openclaw.py -v --tb=s
 ## Skeptic Follow-Ups
 
 **"Can the agent promote its own trust level?"**
-No. The `POST /{id}/promote` endpoint requires `security:write` permission — the same permission level as an administrator. The agent's own API key does not have this permission. An agent cannot elevate itself. Source: `api/openclaw_routes.py` — `promote_claw()` calls `require_permission("security:write")`.
+No. The `POST /{id}/promote` endpoint requires `security:write` permission - the same permission level as an administrator. The agent's own API key does not have this permission. An agent cannot elevate itself. Source: `api/openclaw_routes.py` - `promote_claw()` calls `require_permission("security:write")`.
 
 **"What if the agent lies about its instance_id?"**
 It gets a 404-equivalent governance rejection: "Instance not registered." The registration records the SHA-256 hash of the API key. The governance pipeline does not accept an `instance_id` without a matching registered record. There is no path to a valid governance decision without being registered.
 
 **"What happens if TelsonBase goes down and comes back up?"**
-All instance state is persisted to Redis at every write. On startup, `_load_from_redis()` restores all instances, trust levels, trust history, and the suspended IDs set. A suspended agent remains suspended after restart. Source: `core/openclaw.py` — `_load_from_redis()`.
+All instance state is persisted to Redis at every write. On startup, `_load_from_redis()` restores all instances, trust levels, trust history, and the suspended IDs set. A suspended agent remains suspended after restart. Source: `core/openclaw.py` - `_load_from_redis()`.
 
 **"What if the agent sends the same nonce twice (replay attack)?"**
-Step 3 of the pipeline. Nonces are stored in Redis with a TTL. If the nonce has been seen, the action is rejected immediately: "Nonce replay detected." The instance counters are not updated on replay rejection (replay attempts are not counted as agent actions). Source: `core/openclaw.py` — `_check_nonce()`, `_mark_nonce_used()`.
+Step 3 of the pipeline. Nonces are stored in Redis with a TTL. If the nonce has been seen, the action is rejected immediately: "Nonce replay detected." The instance counters are not updated on replay rejection (replay attempts are not counted as agent actions). Source: `core/openclaw.py` - `_check_nonce()`, `_mark_nonce_used()`.
 
 **"Does registering above QUARANTINE bypass the audit trail?"**
 No. Registration with a trust override uses `promote_trust()` called once per step from QUARANTINE to the target level. Each step produces its own `TrustChangeRecord` and audit log entry. The override reason is written verbatim to every entry. An auditor can see every step that was taken and why. Source: `api/openclaw_routes.py:257-268`.
 
 **"What stops someone from registering 1,000 agents?"**
-`OPENCLAW_MAX_INSTANCES` — configured in `.env`, checked on every registration attempt. If the active instance count is at or above the limit, `register_instance()` returns `None` and the endpoint returns a 400. Source: `core/openclaw.py:382-388`.
+`OPENCLAW_MAX_INSTANCES` - configured in `.env`, checked on every registration attempt. If the active instance count is at or above the limit, `register_instance()` returns `None` and the endpoint returns a 400. Source: `core/openclaw.py:382-388`.
 
 ---
 
@@ -468,7 +468,7 @@ No. Registration with a trust override uses `promote_trust()` called once per st
 |---|---|
 | [TB-PROOF-035](TB-PROOF-035_openclaw_governance.md) | OpenClaw Governance Pipeline (overview) |
 | [TB-PROOF-036](TB-PROOF-036_trust_level_matrix.md) | Full Trust Level Permission Matrix |
-| [TB-PROOF-037](TB-PROOF-037_openclaw_kill_switch.md) | Kill Switch — instant suspension |
+| [TB-PROOF-037](TB-PROOF-037_openclaw_kill_switch.md) | Kill Switch - instant suspension |
 | [TB-PROOF-038](TB-PROOF-038_manners_auto_demotion.md) | Manners Auto-Demotion |
 | [TB-PROOF-039](TB-PROOF-039_earned_trust_model.md) | Earned Trust Model |
 | [TB-PROOF-019](TB-PROOF-019_hitl_approval_gates.md) | Human-in-the-Loop Approval Gates |

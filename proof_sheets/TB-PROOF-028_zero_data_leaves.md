@@ -1,7 +1,7 @@
 # TB-PROOF-028: Zero Data Leaves Your Network
 
 **Sheet ID:** TB-PROOF-028
-**Claim Source:** telsonbase.com — The Promise Section
+**Claim Source:** telsonbase.com - The Promise Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -15,7 +15,7 @@
 
 ## Verdict
 
-VERIFIED — No OpenAI, Google, or external inference API calls exist anywhere in the codebase. All LLM inference runs via local Ollama container. Docker network segmentation enforces isolation with `internal: true` on data and AI networks.
+VERIFIED - No OpenAI, Google, or external inference API calls exist anywhere in the codebase. All LLM inference runs via local Ollama container. Docker network segmentation enforces isolation with `internal: true` on data and AI networks.
 
 ## Evidence
 

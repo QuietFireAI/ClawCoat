@@ -1,4 +1,4 @@
-# TB-TEST-OLL-029 — TestSingleton · `test_get_ollama_service_returns_same_instance`
+# TB-TEST-OLL-029 - TestSingleton · `test_get_ollama_service_returns_same_instance`
 
 **Sheet ID:** TB-TEST-OLL-029
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
 
 ## Source
 

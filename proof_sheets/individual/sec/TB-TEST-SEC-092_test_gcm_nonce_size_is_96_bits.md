@@ -1,4 +1,4 @@
-# TB-TEST-SEC-092 — TestCryptographicStandards · `test_gcm_nonce_size_is_96_bits`
+# TB-TEST-SEC-092 - TestCryptographicStandards · `test_gcm_nonce_size_is_96_bits`
 
 **Sheet ID:** TB-TEST-SEC-092
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> GCM nonce size is 96 bits — NIST-recommended for AES-GCM
+> GCM nonce size is 96 bits - NIST-recommended for AES-GCM
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

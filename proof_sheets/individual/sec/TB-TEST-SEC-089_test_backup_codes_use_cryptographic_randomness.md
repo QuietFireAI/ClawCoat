@@ -1,4 +1,4 @@
-# TB-TEST-SEC-089 — TestCryptographicStandards · `test_backup_codes_use_cryptographic_randomness`
+# TB-TEST-SEC-089 - TestCryptographicStandards · `test_backup_codes_use_cryptographic_randomness`
 
 **Sheet ID:** TB-TEST-SEC-089
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

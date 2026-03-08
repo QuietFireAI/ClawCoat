@@ -1,4 +1,4 @@
-# TB-TEST-SEC-076 — TestComplianceInfrastructure · `test_training_requirements_enforce_role_compliance`
+# TB-TEST-SEC-076 - TestComplianceInfrastructure · `test_training_requirements_enforce_role_compliance`
 
 **Sheet ID:** TB-TEST-SEC-076
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Training requirements are enforced per role — non-compliant users are flagged
+> Training requirements are enforced per role - non-compliant users are flagged
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

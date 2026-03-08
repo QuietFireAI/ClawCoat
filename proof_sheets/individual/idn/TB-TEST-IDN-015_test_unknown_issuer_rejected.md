@@ -1,4 +1,4 @@
-# TB-TEST-IDN-015 — TestVCValidation · `test_unknown_issuer_rejected`
+# TB-TEST-IDN-015 - TestVCValidation · `test_unknown_issuer_rejected`
 
 **Sheet ID:** TB-TEST-IDN-015
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

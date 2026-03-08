@@ -1,4 +1,4 @@
-# TB-TEST-SEC-061 — TestNetworkSecurity · `test_mqtt_auth_required`
+# TB-TEST-SEC-061 - TestNetworkSecurity · `test_mqtt_auth_required`
 
 **Sheet ID:** TB-TEST-SEC-061
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> MQTT broker configuration enforces authentication — anonymous connections rejected
+> MQTT broker configuration enforces authentication - anonymous connections rejected
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

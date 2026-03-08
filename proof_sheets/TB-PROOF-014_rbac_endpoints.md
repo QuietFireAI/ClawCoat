@@ -1,7 +1,7 @@
 # TB-PROOF-014: 140+ RBAC-Protected Endpoints
 
 **Sheet ID:** TB-PROOF-014
-**Claim Source:** telsonbase.com — Hero Section, Capabilities Section
+**Claim Source:** telsonbase.com - Hero Section, Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — 141 endpoints use `Depends(require_permission(...))` across 6 files. 157 total API endpoints exist. Four-tier permission taxonomy confirmed.
+VERIFIED - 141 endpoints use `Depends(require_permission(...))` across 6 files. 157 total API endpoints exist. Four-tier permission taxonomy confirmed.
 
 ## Evidence
 

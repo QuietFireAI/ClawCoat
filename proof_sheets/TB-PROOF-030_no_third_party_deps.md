@@ -1,7 +1,7 @@
 # TB-PROOF-030: No Third-Party Data Dependencies
 
 **Sheet ID:** TB-PROOF-030
-**Claim Source:** telsonbase.com — Hero Section, FAQ
+**Claim Source:** telsonbase.com - Hero Section, FAQ
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -15,7 +15,7 @@
 
 ## Verdict
 
-VERIFIED — All core functionality operates without any external service. No telemetry, no analytics, no cloud callbacks. Docker network segmentation enforces this at the infrastructure level.
+VERIFIED - All core functionality operates without any external service. No telemetry, no analytics, no cloud callbacks. Docker network segmentation enforces this at the infrastructure level.
 
 ## Evidence
 

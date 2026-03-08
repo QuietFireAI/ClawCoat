@@ -1,4 +1,4 @@
-# TB-TEST-QMS-032 — TestBuildChain · `test_chain_has_action_in_position_3`
+# TB-TEST-QMS-032 - TestBuildChain · `test_chain_has_action_in_position_3`
 
 **Sheet ID:** TB-TEST-QMS-032
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

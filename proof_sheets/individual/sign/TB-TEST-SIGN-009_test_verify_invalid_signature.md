@@ -1,4 +1,4 @@
-# TB-TEST-SIGN-009 — TestAgentKeyRegistry · `test_verify_invalid_signature`
+# TB-TEST-SIGN-009 - TestAgentKeyRegistry · `test_verify_invalid_signature`
 
 **Sheet ID:** TB-TEST-SIGN-009
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 13-test Cryptographic Message Signing suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 13-test Cryptographic Message Signing suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -2,7 +2,7 @@
 
 **Version:** 10.0.0Bminus
 **Last Updated:** March 3, 2026
-**Architect:** Jeff Phillips — support@telsonbase.com
+**Architect:** Jeff Phillips - support@telsonbase.com
 **Script:** `scripts/dr_test.sh`
 
 ---
@@ -154,11 +154,11 @@ The DR test passes (exit code 0) when ALL of the following are true:
 
 This DR test procedure satisfies evidence requirements for the following controls:
 
-- **SOC 2 A1.2** — Recovery testing: "The entity tests recovery plan procedures supporting system recovery to meet its objectives." This script provides automated, logged, and timestamped evidence of recovery testing.
+- **SOC 2 A1.2** - Recovery testing: "The entity tests recovery plan procedures supporting system recovery to meet its objectives." This script provides automated, logged, and timestamped evidence of recovery testing.
 
-- **HIPAA 164.308(a)(7)(ii)(D)** — Testing and revision procedures: "Implement procedures for periodic testing and revision of contingency plans." The quarterly execution schedule and logged results fulfill this requirement.
+- **HIPAA 164.308(a)(7)(ii)(D)** - Testing and revision procedures: "Implement procedures for periodic testing and revision of contingency plans." The quarterly execution schedule and logged results fulfill this requirement.
 
-- **HITRUST 12.e** — Testing of information security continuity: evidence of tested backup and restore procedures.
+- **HITRUST 12.e** - Testing of information security continuity: evidence of tested backup and restore procedures.
 
 Test results are written to `logs/dr_test_YYYYMMDD.log` and should be retained for audit purposes (minimum 7 years for HIPAA, 1 year for SOC 2).
 
@@ -166,7 +166,7 @@ Test results are written to `logs/dr_test_YYYYMMDD.log` and should be retained f
 
 ## 9. Related Documents
 
-- [Backup and Recovery](BACKUP_RECOVERY.md) — Backup script usage and cron setup
-- [Disaster Recovery Plan](DISASTER_RECOVERY.md) — Full DR plan and recovery scenarios
-- [Encryption at Rest](ENCRYPTION_AT_REST.md) — Data protection at the volume level
-- [Incident Response](INCIDENT_RESPONSE.md) — Procedures when a real disaster occurs
+- [Backup and Recovery](BACKUP_RECOVERY.md) - Backup script usage and cron setup
+- [Disaster Recovery Plan](DISASTER_RECOVERY.md) - Full DR plan and recovery scenarios
+- [Encryption at Rest](ENCRYPTION_AT_REST.md) - Data protection at the volume level
+- [Incident Response](INCIDENT_RESPONSE.md) - Procedures when a real disaster occurs

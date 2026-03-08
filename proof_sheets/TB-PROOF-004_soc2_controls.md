@@ -1,7 +1,7 @@
 # TB-PROOF-004: 51 SOC 2 Controls Mapped to Source Code
 
 **Sheet ID:** TB-PROOF-004
-**Claim Source:** telsonbase.com — Compliance Section, Hero Section
+**Claim Source:** telsonbase.com - Compliance Section, Hero Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -15,7 +15,7 @@
 
 ## Verdict
 
-VERIFIED — `docs/System Documents/SOC2_TYPE_I.md` contains 51 unique controls across 5 Trust Service Criteria, each mapped to specific source code files with evidence locations.
+VERIFIED - `docs/System Documents/SOC2_TYPE_I.md` contains 51 unique controls across 5 Trust Service Criteria, each mapped to specific source code files with evidence locations.
 
 ## Evidence
 

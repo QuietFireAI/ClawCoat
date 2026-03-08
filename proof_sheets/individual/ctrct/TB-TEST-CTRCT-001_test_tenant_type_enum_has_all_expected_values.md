@@ -1,4 +1,4 @@
-# TB-TEST-CTRCT-001 — TestTenantTypeContract · `test_tenant_type_enum_has_all_expected_values`
+# TB-TEST-CTRCT-001 - TestTenantTypeContract · `test_tenant_type_enum_has_all_expected_values`
 
 **Sheet ID:** TB-TEST-CTRCT-001
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
 
 ## Source
 

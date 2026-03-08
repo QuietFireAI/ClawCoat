@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-047 — TestApprovalIntegration · `test_toolroom_approval_rule_registered`
+# TB-TEST-TOOL-047 - TestApprovalIntegration · `test_toolroom_approval_rule_registered`
 
 **Sheet ID:** TB-TEST-TOOL-047
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

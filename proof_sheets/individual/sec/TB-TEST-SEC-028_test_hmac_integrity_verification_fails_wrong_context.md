@@ -1,4 +1,4 @@
-# TB-TEST-SEC-028 — TestEncryptionIntegrity · `test_hmac_integrity_verification_fails_wrong_context`
+# TB-TEST-SEC-028 - TestEncryptionIntegrity · `test_hmac_integrity_verification_fails_wrong_context`
 
 **Sheet ID:** TB-TEST-SEC-028
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

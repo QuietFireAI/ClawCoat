@@ -1,4 +1,4 @@
-# TB-TEST-SEC-086 — TestCryptographicStandards · `test_signing_key_length_minimum_256_bits`
+# TB-TEST-SEC-086 - TestCryptographicStandards · `test_signing_key_length_minimum_256_bits`
 
 **Sheet ID:** TB-TEST-SEC-086
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Signing keys are at least 256 bits — no short keys accepted
+> Signing keys are at least 256 bits - no short keys accepted
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

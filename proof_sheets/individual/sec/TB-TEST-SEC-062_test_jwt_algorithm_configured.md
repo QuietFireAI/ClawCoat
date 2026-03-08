@@ -1,4 +1,4 @@
-# TB-TEST-SEC-062 — TestNetworkSecurity · `test_jwt_algorithm_configured`
+# TB-TEST-SEC-062 - TestNetworkSecurity · `test_jwt_algorithm_configured`
 
 **Sheet ID:** TB-TEST-SEC-062
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> JWT signing algorithm is explicitly configured — not defaulted to 'none'
+> JWT signing algorithm is explicitly configured - not defaulted to 'none'
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

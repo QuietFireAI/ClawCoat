@@ -42,7 +42,7 @@ TelsonBase is a zero-trust AI agent security platform that provides secure orche
 | Reverse Proxy / TLS | Traefik | HTTPS termination, HSTS, security headers |
 | Monitoring | Prometheus + Grafana | Metrics collection, dashboards, alerting |
 | Task Queue | Celery (Redis broker) | Asynchronous task execution |
-| Agent Interface | MCP gateway (`/mcp`) | Goose / Claude Desktop integration — operator-authenticated, HITL-gated |
+| Agent Interface | MCP gateway (`/mcp`) | Goose / Claude Desktop integration - operator-authenticated, HITL-gated |
 | Container Runtime | Docker Compose | Service orchestration and health management |
 
 ### 2.3 System Boundaries

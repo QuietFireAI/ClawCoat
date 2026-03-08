@@ -1,7 +1,7 @@
 # TB-PROOF-002: Dedicated Security Tests
 
 **Sheet ID:** TB-PROOF-002
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `tests/test_security_battery.py` contains exactly 96 test functions. An additional 84 security-related tests exist across other test files, totaling 180 security-focused tests.
+VERIFIED - `tests/test_security_battery.py` contains exactly 96 test functions. An additional 84 security-related tests exist across other test files, totaling 180 security-focused tests.
 
 ## Evidence
 

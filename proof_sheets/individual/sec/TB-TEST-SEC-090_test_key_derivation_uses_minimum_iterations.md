@@ -1,4 +1,4 @@
-# TB-TEST-SEC-090 — TestCryptographicStandards · `test_key_derivation_uses_minimum_iterations`
+# TB-TEST-SEC-090 - TestCryptographicStandards · `test_key_derivation_uses_minimum_iterations`
 
 **Sheet ID:** TB-TEST-SEC-090
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> PBKDF2 runs at minimum 100,000 iterations — brute-force resistant
+> PBKDF2 runs at minimum 100,000 iterations - brute-force resistant
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

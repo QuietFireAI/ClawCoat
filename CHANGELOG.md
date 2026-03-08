@@ -1,4 +1,4 @@
-# CHANGELOG — TelsonBase
+# CHANGELOG - TelsonBase
 
 All notable changes to this project are documented in this file.
 
@@ -6,7 +6,7 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ---
 
-## [10.0.0Bminus] — 2026-03-03 (Full documentation audit — 34 stale files corrected)
+## [10.0.0Bminus] - 2026-03-03 (Full documentation audit - 34 stale files corrected)
 
 **Status:** Documentation accuracy pass complete. All public-facing docs audited and corrected.
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
@@ -14,36 +14,36 @@ Format: [Semantic Versioning](https://semver.org/)
 ### Changed
 - Full audit of all docs, licenses, HuggingFace space, USER_GUIDE, README, and proof sheets
 - 34 stale documents corrected: version headers, test counts, trust tier counts, n8n references removed, tenant API paths corrected
-- `licenses/N8N-Sustainable-Use.txt` removed — n8n removed from stack Feb 2026
+- `licenses/N8N-Sustainable-Use.txt` removed - n8n removed from stack Feb 2026
 - `licenses/THIRD_PARTY_NOTICES.md` updated: Pydantic 2.9.2, httpx 0.28.1, starlette >=0.47.2, mcp >=1.2.0, n8n row removed
 - `huggingface_space/README.md` and `app.py` corrected: five trust tiers (not three), AGENT as apex
 - `USER_GUIDE.md`: alembic step added, CORS/rate-limit defaults corrected, tenant API paths corrected, trust tier descriptions corrected
 
 ---
 
-## [9.6.0B] — 2026-03-03 (First green CI — verified build milestone)
+## [9.6.0B] - 2026-03-03 (First green CI - verified build milestone)
 
-**Status:** 720 passed, 1 skipped, 0 failed — CI green for the first time in repo history
+**Status:** 720 passed, 1 skipped, 0 failed - CI green for the first time in repo history
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Milestone
-- **CI green** — TelsonBase CI passes all 5 stages on every push for the first time
+- **CI green** - TelsonBase CI passes all 5 stages on every push for the first time
 - All 26 prior CI runs were red; fixed root causes rather than symptoms
 
 ### Fixed
-- `core/openclaw.py` — multi-worker Redis eviction: `evaluate_action()` local_fallback rescue, `_persist_instance()` always writes local cache, mutation methods no longer use destructive pop
-- `toolroom/foreman.py` + `toolroom/executor.py` — `TOOLROOM_PATH` hardcoded to `/app/toolroom/tools`; now env-var configurable (same pattern as `CAGE_PATH`)
-- `.github/workflows/ci.yml` — Docker Build missing `.env` file; added `cp .env.example .env`; added `TOOLROOM_PATH=/tmp/telsonbase_toolroom` to all test env sections
+- `core/openclaw.py` - multi-worker Redis eviction: `evaluate_action()` local_fallback rescue, `_persist_instance()` always writes local cache, mutation methods no longer use destructive pop
+- `toolroom/foreman.py` + `toolroom/executor.py` - `TOOLROOM_PATH` hardcoded to `/app/toolroom/tools`; now env-var configurable (same pattern as `CAGE_PATH`)
+- `.github/workflows/ci.yml` - Docker Build missing `.env` file; added `cp .env.example .env`; added `TOOLROOM_PATH=/tmp/telsonbase_toolroom` to all test env sections
 
 ### Security
-- `gateway/requirements.txt` — upgraded fastapi 0.109.2 → 0.125.0, httpx 0.26.0 → 0.28.1, pydantic 2.6.1 → 2.9.2; added `starlette>=0.47.2` floor (closes Dependabot HIGH #3, MODERATE #4)
-- `requirements.txt` — explicit `starlette>=0.47.2` floor added (closes Dependabot HIGH #3, MODERATE #4 on main app)
+- `gateway/requirements.txt` - upgraded fastapi 0.109.2 → 0.125.0, httpx 0.26.0 → 0.28.1, pydantic 2.6.1 → 2.9.2; added `starlette>=0.47.2` floor (closes Dependabot HIGH #3, MODERATE #4)
+- `requirements.txt` - explicit `starlette>=0.47.2` floor added (closes Dependabot HIGH #3, MODERATE #4 on main app)
 
 ---
 
-## [9.5.0B] — 2026-03-03 (HuggingFace live demo + distribution strategy)
+## [9.5.0B] - 2026-03-03 (HuggingFace live demo + distribution strategy)
 
-**Status:** 720 tests, 1 skipped, 0 failed — OPENCLAW enabled on DO, all 5 demo agents live
+**Status:** 720 tests, 1 skipped, 0 failed - OPENCLAW enabled on DO, all 5 demo agents live
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### HuggingFace Live Demo Space
@@ -51,7 +51,7 @@ Format: [Semantic Versioning](https://semver.org/)
   - All 5 trust tiers represented (QUARANTINE through AGENT apex)
   - Governance Pipeline Explorer: agent + tool picker, real 8-step pipeline decision
   - Kill Switch Demo: suspend demo_citizen, verify Step 2 rejection, reinstate
-  - API credentials loaded from HF Space secrets — not in code
+  - API credentials loaded from HF Space secrets - not in code
 - `huggingface_space/README.md`: SDK changed static → gradio, updated description
 - `huggingface_space/requirements.txt`: gradio>=4.0.0, requests>=2.31.0
 
@@ -61,15 +61,15 @@ Format: [Semantic Versioning](https://semver.org/)
 | demo_quarantine | 60b364aacef04beb | QUARANTINE | file_read → HITL gated, file_delete → blocked |
 | demo_probation  | 2c2ce1b0a2364c50 | PROBATION  | file_read → autonomous, email_send → HITL gated, payment_send → blocked |
 | demo_resident   | e64a3549463c48f6 | RESIDENT   | file_write → autonomous, email_send → HITL gated |
-| demo_citizen    | 9856076620944eeb | CITIZEN    | most autonomous — kill switch target |
-| demo_agent      | db59ef829ac04d9e | AGENT      | payment_send, file_delete, config_update — all autonomous |
+| demo_citizen    | 9856076620944eeb | CITIZEN    | most autonomous - kill switch target |
+| demo_agent      | db59ef829ac04d9e | AGENT      | payment_send, file_delete, config_update - all autonomous |
 
 ### OPENCLAW_ENABLED=true on DO server
 - Governance pipeline now active on live server
 - 720/720 tests pass with OPENCLAW enabled (confirmed)
 
 ### Legal / Distribution
-- `DISCLAIMER.md`: New — explicit NOT RESPONSIBLE, AI platform disclaimer, beta warning
+- `DISCLAIMER.md`: New - explicit NOT RESPONSIBLE, AI platform disclaimer, beta warning
 - `docs/System Documents/SOC2_TYPE_I.md`: Management Assertion updated v9.5.0B, Mar 6 2026
 - `README.md`: 6 absolute guarantee claims softened to design intent, DISCLAIMER.md linked
 - `README.md`: "A Note From Claude Code" certification section with verified claim table
@@ -77,7 +77,7 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ### Distribution Strategy
 - `docs/LAUNCH_SOCIAL_CHECKLIST.md`: HuggingFace Phase 1, full setup steps, sequencing table
-- ProductHunt strategy: week 2 post-momentum — not day one
+- ProductHunt strategy: week 2 post-momentum - not day one
 
 ### CI
 - `api/__init__.py`: Removed stale n8n_integration import (CI was failing)
@@ -85,15 +85,15 @@ Format: [Semantic Versioning](https://semver.org/)
 
 ---
 
-## [9.1.0B] — 2026-03-02 (Full .md audit + GitHub launch prep)
+## [9.1.0B] - 2026-03-02 (Full .md audit + GitHub launch prep)
 
-**Status:** 720 tests, 0 failed — 32 documentation files corrected, GitHub repo live
+**Status:** 720 tests, 0 failed - 32 documentation files corrected, GitHub repo live
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Documentation — Full .md Audit (107 files read, 32 corrected)
+### Documentation - Full .md Audit (107 files read, 32 corrected)
 
 Critical fixes:
-- `secrets/api_key` → `secrets/telsonbase_mcp_api_key` in `OPENCLAW_INTEGRATION_GUIDE.md` (3 locations) — would have broken all deployments following that guide
+- `secrets/api_key` → `secrets/telsonbase_mcp_api_key` in `OPENCLAW_INTEGRATION_GUIDE.md` (3 locations) - would have broken all deployments following that guide
 - Wrong trust tier names in `MANNERS.md` (fictional names → QUARANTINE/PROBATION/RESIDENT/CITIZEN/AGENT)
 - MIT license → Apache 2.0 in `PROJECT_OVERVIEW.md`
 - WEB_CONCURRENCY=2 → WEB_CONCURRENCY=1 throughout `TECHNICAL_DEFENSE_BRIEF.md`
@@ -103,21 +103,21 @@ Numbers corrected: 151 endpoints → 177, 93 security tests → 96, 2 Bandit med
 
 ### GitHub Repository Created
 
-- `QuietFireAI/TelsonBase` — private until March 6, 2026 drop
+- `QuietFireAI/TelsonBase` - private until March 6, 2026 drop
 - `CITATION.cff`: ORCID 0009-0000-1375-1725 (J. Phillips / Quietfire AI), Apache 2.0
 - README: AGENT tier diagram, nav links, clone URL, proof sheet count, ORCID + citation section, 9 screenshots wired
 - 10 repo topics: ai-governance, ai-agents, zero-trust, self-hosted, human-in-the-loop, kill-switch, audit-trail, mcp, fastapi, docker
 
 ---
 
-## [9.0.0B] — 2026-03-02 (LAUNCH PREP — v9.0.0B_20260302d — Math CAPTCHA + Screenshots)
+## [9.0.0B] - 2026-03-02 (LAUNCH PREP - v9.0.0B_20260302d - Math CAPTCHA + Screenshots)
 
 **Status:** 720 tests, 0 failed
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### UX — CAPTCHA Changed to Math-Only
+### UX - CAPTCHA Changed to Math-Only
 
-- **`core/captcha.py`** — Default challenge type changed from `random.choice(list(ChallengeType))` to `ChallengeType.MATH`. Word scramble and text-reverse challenges are still available via explicit `challenge_type` parameter but will no longer appear in the registration flow.
+- **`core/captcha.py`** - Default challenge type changed from `random.choice(list(ChallengeType))` to `ChallengeType.MATH`. Word scramble and text-reverse challenges are still available via explicit `challenge_type` parameter but will no longer appear in the registration flow.
 - Number ranges simplified: addition uses 2–20, subtraction uses 10–25 minus 1–(a), multiplication uses 2–9 × 2–9. Results are unambiguous for any human, still require computation for a bot.
 - Multiplication display changed from `*` to `x` for cleaner user-facing rendering.
 
@@ -129,12 +129,12 @@ Numbers corrected: 151 endpoints → 177, 93 security tests → 96, 2 Bandit med
 
 ---
 
-## [9.0.0B] — 2026-03-02 (LAUNCH PREP — v9.0.0B_20260302b — Pre-drop claims audit)
+## [9.0.0B] - 2026-03-02 (LAUNCH PREP - v9.0.0B_20260302b - Pre-drop claims audit)
 
-**Status:** 720 tests, 0 failed — 22 stale claims resolved across 10 files
+**Status:** 720 tests, 0 failed - 22 stale claims resolved across 10 files
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Pre-Drop Claims Audit — All Findings Resolved
+### Pre-Drop Claims Audit - All Findings Resolved
 
 Complete audit of every public-facing claim against live test output, live bandit scan, and live route count. Zero open findings at close.
 
@@ -155,70 +155,70 @@ Complete audit of every public-facing claim against live test output, live bandi
 | Trust chain missing AGENT | OPENCLAW_INTEGRATION_GUIDE, OPENCLAW_OPERATIONS | Added AGENT to chain |
 | "four trust levels" docstring | test_behavioral.py | Updated to five trust levels |
 
-New file: `docs/Testing Documents/PRE_DROP_AUDIT.md` — permanent audit record, referenced in CLAUDE.md for every session.
+New file: `docs/Testing Documents/PRE_DROP_AUDIT.md` - permanent audit record, referenced in CLAUDE.md for every session.
 
 ---
 
-## [9.0.0B] — 2026-03-02 (LAUNCH PREP — v9.0.0B_20260302a — AGENT 5th tier)
+## [9.0.0B] - 2026-03-02 (LAUNCH PREP - v9.0.0B_20260302a - AGENT 5th tier)
 
-**Status:** 720 tests, 0 failed — AGENT apex tier fully wired
+**Status:** 720 tests, 0 failed - AGENT apex tier fully wired
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Trust Governance — AGENT as 5th Trust Tier
+### Trust Governance - AGENT as 5th Trust Tier
 
-- **`core/trust_levels.py`** — `AgentTrustLevel.AGENT` added as apex tier. Wired into: `TRUST_LEVEL_CONSTRAINTS` (300 actions/min, all capabilities unlocked), `REVERIFICATION_CONFIG` (strictest: 3-day interval, 99.9% success rate, 0 anomalies, min 50 actions/period), `PROMOTION_REQUIREMENTS` for CITIZEN→AGENT (90 days at CITIZEN, 5,000 successful actions, 99.9% success rate, 0 anomalies, 0 denied approvals, human approval required), `level_order` in both `promote()` and `demote()`, `check_promotion_eligibility()` ceiling updated from CITIZEN to AGENT.
-- **`tests/test_contracts.py`** — `EXPECTED` set updated to include `"agent"`. Promotion path docstring and ordered list updated: QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT.
-- **`tests/test_behavioral.py`** — `test_GIVEN_trust_levels_THEN_citizen_is_most_trusted` renamed to `test_GIVEN_trust_levels_THEN_agent_is_most_trusted` and updated to assert AGENT has the highest rate limit. CITIZEN capability assertions retained. `test_GIVEN_trust_levels_THEN_exactly_four_levels_exist` renamed to `test_GIVEN_trust_levels_THEN_exactly_five_levels_exist`, expected set updated to include `"agent"`.
+- **`core/trust_levels.py`** - `AgentTrustLevel.AGENT` added as apex tier. Wired into: `TRUST_LEVEL_CONSTRAINTS` (300 actions/min, all capabilities unlocked), `REVERIFICATION_CONFIG` (strictest: 3-day interval, 99.9% success rate, 0 anomalies, min 50 actions/period), `PROMOTION_REQUIREMENTS` for CITIZEN→AGENT (90 days at CITIZEN, 5,000 successful actions, 99.9% success rate, 0 anomalies, 0 denied approvals, human approval required), `level_order` in both `promote()` and `demote()`, `check_promotion_eligibility()` ceiling updated from CITIZEN to AGENT.
+- **`tests/test_contracts.py`** - `EXPECTED` set updated to include `"agent"`. Promotion path docstring and ordered list updated: QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT.
+- **`tests/test_behavioral.py`** - `test_GIVEN_trust_levels_THEN_citizen_is_most_trusted` renamed to `test_GIVEN_trust_levels_THEN_agent_is_most_trusted` and updated to assert AGENT has the highest rate limit. CITIZEN capability assertions retained. `test_GIVEN_trust_levels_THEN_exactly_four_levels_exist` renamed to `test_GIVEN_trust_levels_THEN_exactly_five_levels_exist`, expected set updated to include `"agent"`.
 
 ---
 
-## [9.0.0B] — 2026-03-01 (LAUNCH PREP — v9.0.0B_20260301i — Apache 2.0)
+## [9.0.0B] - 2026-03-01 (LAUNCH PREP - v9.0.0B_20260301i - Apache 2.0)
 
-**Status:** 720 tests, 0 failed — ninth archive — launch candidate
+**Status:** 720 tests, 0 failed - ninth archive - launch candidate
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### License — Apache 2.0 (replaces AGPL v3 dual-license)
+### License - Apache 2.0 (replaces AGPL v3 dual-license)
 
-- **LICENSE** — replaced AGPL v3 / commercial dual-license with Apache License, Version 2.0. Full standard license text + copyright + social impact commitment. No commercial license required for any use.
-- **COMMERCIAL_LICENSE.md** — retired. File now contains a short redirect notice explaining the move to Apache 2.0.
-- **README.md** — license section updated to Apache 2.0. Removed dual-license description and "commercial license required" language.
-- **website/index.html** — all AGPL-3.0 references updated to Apache 2.0 across 5 occurrences (feature card, FAQ, CTA section, open-source modal intro, modal for-home card).
-- **docs/LAUNCH_DRAFTS.md** — 3 occurrences of AGPL/commercial-license language updated to Apache 2.0.
-- **docs/FAQ.md** — Q16 updated (AGPL → Apache 2.0); Q19 rewritten as "What is the license and what can I do with TelsonBase?" — explains Apache 2.0 permissions, attribution requirement, and consulting availability.
-- **docs/TECHNICAL_DEFENSE_BRIEF.md** — Section 11 rewritten as "The License — Apache 2.0"; table row updated.
-- **docs/WHATS_NEXT.md** — "commercial license customers" → "consulting customers and enterprise sponsors".
-- **docs/System Documents/OPENCLAW_SECURITY_ANALYSIS.md** — "source-available under AGPL v3" → "open source under Apache 2.0".
-- **PROJECT_STRUCTURE.md** — LICENSE file description updated.
+- **LICENSE** - replaced AGPL v3 / commercial dual-license with Apache License, Version 2.0. Full standard license text + copyright + social impact commitment. No commercial license required for any use.
+- **COMMERCIAL_LICENSE.md** - retired. File now contains a short redirect notice explaining the move to Apache 2.0.
+- **README.md** - license section updated to Apache 2.0. Removed dual-license description and "commercial license required" language.
+- **website/index.html** - all AGPL-3.0 references updated to Apache 2.0 across 5 occurrences (feature card, FAQ, CTA section, open-source modal intro, modal for-home card).
+- **docs/LAUNCH_DRAFTS.md** - 3 occurrences of AGPL/commercial-license language updated to Apache 2.0.
+- **docs/FAQ.md** - Q16 updated (AGPL → Apache 2.0); Q19 rewritten as "What is the license and what can I do with TelsonBase?" - explains Apache 2.0 permissions, attribution requirement, and consulting availability.
+- **docs/TECHNICAL_DEFENSE_BRIEF.md** - Section 11 rewritten as "The License - Apache 2.0"; table row updated.
+- **docs/WHATS_NEXT.md** - "commercial license customers" → "consulting customers and enterprise sponsors".
+- **docs/System Documents/OPENCLAW_SECURITY_ANALYSIS.md** - "source-available under AGPL v3" → "open source under Apache 2.0".
+- **PROJECT_STRUCTURE.md** - LICENSE file description updated.
 
 ---
 
-## [9.0.0B] — 2026-03-01 (LAUNCH PREP — v9.0.0B_20260301g)
+## [9.0.0B] - 2026-03-01 (LAUNCH PREP - v9.0.0B_20260301g)
 
-**Status:** 720 tests, 0 failed — seventh consecutive clean-slate deployment — launch candidate
+**Status:** 720 tests, 0 failed - seventh consecutive clean-slate deployment - launch candidate
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Security — OpenClaw Mutation Operation Cache Eviction (Multi-Worker Fix)
+### Security - OpenClaw Mutation Operation Cache Eviction (Multi-Worker Fix)
 
 `promote_trust()`, `demote_trust()`, `suspend_instance()`, `reinstate_instance()` in `core/openclaw.py` all called `get_instance()` which served stale in-memory state on the calling worker. Applied the same fix as `evaluate_action()` (which received this fix in the previous session): `self._instances.pop(instance_id, None)` before every authoritative Redis read in mutation operations. Prevents a worker from operating on stale trust level or suspension state when a parallel worker made the change.
 
-### Governance — Specific Decision Reasons in All Governance Paths
+### Governance - Specific Decision Reasons in All Governance Paths
 
 `evaluate_action()` now returns structured, specific reason strings for all three outcomes:
-- **Blocked:** `"BLOCKED: 'quarantine' tier prohibits 'external_request' actions — tool='http_request', category='external_request', trust='quarantine' — promote instance to enable this action category"`
-- **Gated:** `"HITL gate: 'probation' tier requires human approval for 'external_request' — tool='http_request', approval_id=<id>"`
-- **Allowed:** `"Autonomous: 'probation' tier permits 'read_internal' — tool='read_file' allowed without HITL"`
+- **Blocked:** `"BLOCKED: 'quarantine' tier prohibits 'external_request' actions - tool='http_request', category='external_request', trust='quarantine' - promote instance to enable this action category"`
+- **Gated:** `"HITL gate: 'probation' tier requires human approval for 'external_request' - tool='http_request', approval_id=<id>"`
+- **Allowed:** `"Autonomous: 'probation' tier permits 'read_internal' - tool='read_file' allowed without HITL"`
 Every governance decision now includes trust level, action category, tool name, and disposition in the reason field.
 
-### Governance — Demotion Review Framework
+### Governance - Demotion Review Framework
 
 Any trust demotion (manual or Manners auto-demotion) now sets a Redis-backed demotion review flag:
 - `_set_review_required()` stores demotion context: who demoted, reason, action count, review_note ("Review last N actions for cross-infection")
-- `_is_review_required()` — Redis-backed check (multi-worker safe)
-- `get_review_status()` — returns flag details or None
-- `clear_review()` — admin sign-off method, deletes flag, writes to audit trail
+- `_is_review_required()` - Redis-backed check (multi-worker safe)
+- `get_review_status()` - returns flag details or None
+- `clear_review()` - admin sign-off method, deletes flag, writes to audit trail
 - Advisory mode in beta: promotion proceeds with audit warning if review is pending. Infrastructure is in place; hard-block is one line change post-launch.
 
-### API — Agent Status Announcement Endpoint
+### API - Agent Status Announcement Endpoint
 
 New `GET /v1/openclaw/{instance_id}/status`:
 - Trust tier, suspended state, Manners score, action count, last_action_at
@@ -226,7 +226,7 @@ New `GET /v1/openclaw/{instance_id}/status`:
 - `review_required: true/false` (demotion review pending)
 - Pre-flight handshake for agent-to-agent communication: Agent B calls this before delegating to Agent A to route around capability gaps rather than experiencing silent blocking
 
-### API — Clear-Review Endpoint
+### API - Clear-Review Endpoint
 
 New `POST /v1/openclaw/{instance_id}/clear-review`:
 - Admin-only (`admin:config` permission required)
@@ -234,44 +234,44 @@ New `POST /v1/openclaw/{instance_id}/clear-review`:
 - Clears the demotion review flag, writes signed entry to audit chain
 - Returns `{"review_cleared": true, "actions_reviewed": N, "cleared_by": "admin"}`
 
-### Configuration — WEB_CONCURRENCY=1 for Beta
+### Configuration - WEB_CONCURRENCY=1 for Beta
 
 `docker-compose.yml` WEB_CONCURRENCY set to `"1"` (was `"2"`). Beta safety measure: `RBACManager._users` is in-memory only (no Redis persistence). Under multiple workers, a user registered on Worker A cannot log in via Worker B. Single worker eliminates this failure mode for beta deployments. Post-launch fix: Redis-persist the RBAC user dict.
 
-### Docs — Launch Date Updated to March 6, 2026
+### Docs - Launch Date Updated to March 6, 2026
 
 - `README.md` letter date updated: February 23 → March 6, 2026
 - `website/index.html` all "March 1, 2026" references updated to "March 6, 2026"
 - `docs/LAUNCH_DRAFTS.md` HN post context date updated
 
-### Docs — WHATS_NEXT.md Created
+### Docs - WHATS_NEXT.md Created
 
-New `docs/WHATS_NEXT.md` — honest account of what's shipped, known beta limitations with mitigations, near-term priorities, and integration roadmap. Written for enterprise evaluators and community contributors.
+New `docs/WHATS_NEXT.md` - honest account of what's shipped, known beta limitations with mitigations, near-term priorities, and integration roadmap. Written for enterprise evaluators and community contributors.
 
 ---
 
-## [9.0.0B] — 2026-03-01 (FINAL — v9.0.0B_20260301f)
+## [9.0.0B] - 2026-03-01 (FINAL - v9.0.0B_20260301f)
 
-**Status:** 720 tests, 0 failed — fifth consecutive clean-slate deployment confirmed — engineering hardening complete
+**Status:** 720 tests, 0 failed - fifth consecutive clean-slate deployment confirmed - engineering hardening complete
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Security — Multi-Worker Tenant Manager Redis Fallback (Gap 1)
+### Security - Multi-Worker Tenant Manager Redis Fallback (Gap 1)
 
 Under `WEB_CONCURRENCY=2` (enabled in this version), Worker B could return HTTP 404 for tenants created on Worker A because each worker had its own in-memory `_tenants` dict. Fixed by applying the same Redis fallback pattern already used in `OpenClawManager.get_instance()`.
 
 - `TenantManager.get_tenant()` now checks in-memory first, then queries Redis if not found, then caches in this worker's memory for subsequent requests
-- Failure mode is safe (warn + return None) — Redis fault does not crash the request
+- Failure mode is safe (warn + return None) - Redis fault does not crash the request
 
-### Security — Grant-Access Tests Added (Gap 2)
+### Security - Grant-Access Tests Added (Gap 2)
 
 Two new E2E tests added to `TestTenantIsolation`:
 
-1. `test_admin_grant_access_allows_user` — full positive path: admin creates tenant → User C gets 403 → admin grants access → User C gets 200 → re-grant is idempotent (200)
-2. `test_cross_tenant_denial_is_audit_logged` — verifies that HTTP 403 denials are written to the tamper-evident audit chain with `auth.failure` event type and the tenant_id as resource
+1. `test_admin_grant_access_allows_user` - full positive path: admin creates tenant → User C gets 403 → admin grants access → User C gets 200 → re-grant is idempotent (200)
+2. `test_cross_tenant_denial_is_audit_logged` - verifies that HTTP 403 denials are written to the tamper-evident audit chain with `auth.failure` event type and the tenant_id as resource
 
-### Governance — Smoke Test Script
+### Governance - Smoke Test Script
 
-`scripts/governance_smoke_test.sh` — new curl-based post-deploy verification script:
+`scripts/governance_smoke_test.sh` - new curl-based post-deploy verification script:
 - Verifies API liveness + Redis health
 - Registers a test agent (quarantine)
 - Exercises all trust tier transitions (quarantine → probation)
@@ -283,7 +283,7 @@ Two new E2E tests added to `TestTenantIsolation`:
 - Gracefully skips governance steps when `OPENCLAW_ENABLED=false`
 - Validated live: 13/13 passed on DigitalOcean server (March 1, 2026)
 
-### Security — Multi-Worker OpenClaw evaluate_action Fix
+### Security - Multi-Worker OpenClaw evaluate_action Fix
 
 Under `WEB_CONCURRENCY=2`, governance decisions in `evaluate_action()` could use stale in-memory trust tier and suspension state from the registering worker, ignoring subsequent promotions/demotions applied on a different worker.
 
@@ -291,20 +291,20 @@ Under `WEB_CONCURRENCY=2`, governance decisions in `evaluate_action()` could use
 
 **Fix:** `evaluate_action()` now calls `self._instances.pop(instance_id, None)` before `get_instance()`, evicting any stale local copy and forcing a fresh Redis read. Governance decisions are always authoritative.
 
-Found by: live governance smoke test — step 6 (probation allows internal read) returned `trust_level_at_decision: quarantine` under 2-worker load, failing with allowed=False when it should pass.
+Found by: live governance smoke test - step 6 (probation allows internal read) returned `trust_level_at_decision: quarantine` under 2-worker load, failing with allowed=False when it should pass.
 
-### Changed — Agent Registry (n8n → Goose)
+### Changed - Agent Registry (n8n → Goose)
 
-- `agents/__init__.py`: `n8n_developer_agent` metadata entry removed. Replaced with `goose_operator` — documents Goose (by Block) as the native MCP operator integration
+- `agents/__init__.py`: `n8n_developer_agent` metadata entry removed. Replaced with `goose_operator` - documents Goose (by Block) as the native MCP operator integration
 - Module header updated: "n8n integration" → "Goose/MCP integration"
 - n8n workflow JSON files in `scripts/` remain as legacy/reference artifacts (already documented as such in PROJECT_STRUCTURE.md and CLAUDE.md)
 
-### API Documentation — Swagger Pass
+### API Documentation - Swagger Pass
 
 - `api/tenancy_routes.py`: Added `summary` and `description` to all tenant route decorators
 - The `grant-access` endpoint now clearly documents admin-only requirement, idempotency, and audit trail behavior in `/docs`
 
-### Tests — Total 720 (up from 718)
+### Tests - Total 720 (up from 718)
 
 Two new E2E tests (grant-access positive + audit log denial):
 
@@ -318,45 +318,45 @@ CI threshold: `716 → 718`
 
 ---
 
-## [9.0.0B] — 2026-03-01 (multi-tenancy access control fix)
+## [9.0.0B] - 2026-03-01 (multi-tenancy access control fix)
 
-**Status:** Deployment milestone — third clean-slate deployment confirmed + CAPTCHA replay fix + 8 new tests + multi-tenancy access control fix
+**Status:** Deployment milestone - third clean-slate deployment confirmed + CAPTCHA replay fix + 8 new tests + multi-tenancy access control fix
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
-### Security — Multi-Tenant Access Control (v9.0.0B, March 1 continuation)
+### Security - Multi-Tenant Access Control (v9.0.0B, March 1 continuation)
 
-Prior versions stored tenants without recording which user created them. Any authenticated user with `view:dashboard` (the default viewer role) could query any tenant's client matters by guessing a `tenant_id`. This was a HIPAA/SOC2 access control gap — no user-to-tenant binding existed at the route layer.
+Prior versions stored tenants without recording which user created them. Any authenticated user with `view:dashboard` (the default viewer role) could query any tenant's client matters by guessing a `tenant_id`. This was a HIPAA/SOC2 access control gap - no user-to-tenant binding existed at the route layer.
 
 **Fix:**
 - `Tenant` dataclass now stores `created_by` (set from `auth.actor` at creation, never user-supplied) and `allowed_actors: List[str]` initialized to `[created_by]`
-- `TenantManager.grant_tenant_access(tenant_id, actor_id)` — admin-only method to expand access
-- `_require_tenant_access(tenant_id, auth)` — route-layer helper called in every tenant-scoped and matter-scoped route. Returns HTTP 403 and writes an `AUTH_FAILURE` audit entry for unauthorized access
-- Admins (`admin:config` or `*`) bypass — full access to all tenants
-- `POST /v1/tenancy/tenants/{id}/grant-access` — admin endpoint to delegate tenant access
-- `GET /tenants` filtered by `actor_filter` for non-admins — non-admins see only their own tenants
+- `TenantManager.grant_tenant_access(tenant_id, actor_id)` - admin-only method to expand access
+- `_require_tenant_access(tenant_id, auth)` - route-layer helper called in every tenant-scoped and matter-scoped route. Returns HTTP 403 and writes an `AUTH_FAILURE` audit entry for unauthorized access
+- Admins (`admin:config` or `*`) bypass - full access to all tenants
+- `POST /v1/tenancy/tenants/{id}/grant-access` - admin endpoint to delegate tenant access
+- `GET /tenants` filtered by `actor_filter` for non-admins - non-admins see only their own tenants
 - README quick-start: added missing `alembic upgrade head` step (first-run 500 errors without it)
 
-**Proof sheets:** TB-PROOF-021 updated (corrects false "cross-tenant query prevention" claim), TB-PROOF-042 created (new — documents `allowed_actors` enforcement model)
+**Proof sheets:** TB-PROOF-021 updated (corrects false "cross-tenant query prevention" claim), TB-PROOF-042 created (new - documents `allowed_actors` enforcement model)
 
-### Security — CAPTCHA Replay Attack Fix
+### Security - CAPTCHA Replay Attack Fix
 
 - **Bug fixed:** `auth_routes.py` used `captcha_manager.is_solved()` which checked the solved flag but never deleted the challenge. A solved `captcha_challenge_id` could be replayed to register unlimited accounts without solving a new challenge.
-- **Fix:** Added `consume_challenge()` to `CAPTCHAManager` (`core/captcha.py`) — checks solved status AND deletes from in-memory store and Redis on first redemption. Registration endpoint (`api/auth_routes.py`) now calls `consume_challenge()` instead of `is_solved()`.
-- **Proof:** `test_captcha_solved_challenge_is_single_use` (E2E) — second registration with same `challenge_id` rejected HTTP 400.
+- **Fix:** Added `consume_challenge()` to `CAPTCHAManager` (`core/captcha.py`) - checks solved status AND deletes from in-memory store and Redis on first redemption. Registration endpoint (`api/auth_routes.py`) now calls `consume_challenge()` instead of `is_solved()`.
+- **Proof:** `test_captcha_solved_challenge_is_single_use` (E2E) - second registration with same `challenge_id` rejected HTTP 400.
 
-### Tests — Gap Coverage (718 total, up from 709)
+### Tests - Gap Coverage (718 total, up from 709)
 
 9 new tests closing previously identified coverage gaps:
 
-1. **Cross-tenant access rejection** — `test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_access_rejected` (HTTP 403 for unauthorized actor)
-2. **CAPTCHA replay** — `test_e2e_integration.py::TestSecurityEndpoints::test_captcha_solved_challenge_is_single_use`
-3. **Tenant data isolation** — `test_e2e_integration.py::TestTenantIsolation::test_tenant_matter_lists_are_isolated`
-4. **Rate limiter boundary wall** — `test_security_battery.py::TestRuntimeBoundaries::test_rate_limiter_blocks_at_burst_limit`
-5. **CAPTCHA challenge expiry** — `test_security_battery.py::TestRuntimeBoundaries::test_captcha_expired_challenge_rejected`
-6. **Email token expiry** — `test_security_battery.py::TestRuntimeBoundaries::test_email_verification_expired_token_rejected`
-7. **Concurrent audit linearity** — `test_integration.py::TestAuditChain::test_audit_chain_concurrent_writes_remain_linear`
-8. **Kill switch Redis persistence** — `test_openclaw.py::TestKillSwitch::test_kill_switch_survives_cache_clear`
-9. **Alembic migration idempotency** — `test_contracts.py::TestOperationalContracts::test_alembic_upgrade_head_is_idempotent`
+1. **Cross-tenant access rejection** - `test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_access_rejected` (HTTP 403 for unauthorized actor)
+2. **CAPTCHA replay** - `test_e2e_integration.py::TestSecurityEndpoints::test_captcha_solved_challenge_is_single_use`
+3. **Tenant data isolation** - `test_e2e_integration.py::TestTenantIsolation::test_tenant_matter_lists_are_isolated`
+4. **Rate limiter boundary wall** - `test_security_battery.py::TestRuntimeBoundaries::test_rate_limiter_blocks_at_burst_limit`
+5. **CAPTCHA challenge expiry** - `test_security_battery.py::TestRuntimeBoundaries::test_captcha_expired_challenge_rejected`
+6. **Email token expiry** - `test_security_battery.py::TestRuntimeBoundaries::test_email_verification_expired_token_rejected`
+7. **Concurrent audit linearity** - `test_integration.py::TestAuditChain::test_audit_chain_concurrent_writes_remain_linear`
+8. **Kill switch Redis persistence** - `test_openclaw.py::TestKillSwitch::test_kill_switch_survives_cache_clear`
+9. **Alembic migration idempotency** - `test_contracts.py::TestOperationalContracts::test_alembic_upgrade_head_is_idempotent`
 
 **Test suite breakdown:**
 | Suite | Before | After |
@@ -391,27 +391,27 @@ CI threshold: `701 → 716`
 - Health check: `https://your-domain.com/health` → `http://localhost:8000/health` (works pre-TLS)
 - Registration: `full_name` field replaced with `username` (matches current API schema)
 - Added CAPTCHA note for subsequent user registrations
-- New step **3h — Security Verification**: run 96-test security battery before registering users
+- New step **3h - Security Verification**: run 96-test security battery before registering users
 
 ---
 
-## [8.0.2] — 2026-02-21
+## [8.0.2] - 2026-02-21
 
-**Status:** Container security hardening — Docker Scout CVE remediation
+**Status:** Container security hardening - Docker Scout CVE remediation
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Security
 
-- **CVE-2024-23342 (HIGH, CVSS 7.4) — ecdsa timing side-channel** — `ecdsa` package removed
+- **CVE-2024-23342 (HIGH, CVSS 7.4) - ecdsa timing side-channel** - `ecdsa` package removed
   from runtime image. It was a transitive dependency of `python-jose` but is not used:
   TelsonBase uses `JWT_ALGORITHM=HS256` (HMAC), and `python-jose[cryptography]` routes all
   cryptographic operations through the `cryptography` library backend. No upstream fix exists
   for this CVE; removal is the correct remediation.
 
-- **CVE-2026-24049 (HIGH, CVSS 7.1) — wheel 0.45.1** — `wheel` upgraded to `0.46.2` enforced
+- **CVE-2026-24049 (HIGH, CVSS 7.1) - wheel 0.45.1** - `wheel` upgraded to `0.46.2` enforced
   explicitly in both `Dockerfile` and `gateway/Dockerfile` pip upgrade step.
 
-- **13 LOW binutils CVEs eliminated via multi-stage Dockerfile** — `gcc` (which depends on
+- **13 LOW binutils CVEs eliminated via multi-stage Dockerfile** - `gcc` (which depends on
   `binutils`) is now confined to a builder stage only. The runtime image is built from a
   clean `python:3.11-slim-bookworm` base with only pip-installed packages copied in from
   the builder. `binutils` never ships in the production container. CVEs addressed:
@@ -419,95 +419,95 @@ CI threshold: `701 → 716`
   CVE-2025-11840, CVE-2025-1182, CVE-2024-53589, CVE-2024-57360, CVE-2025-1148,
   CVE-2025-1179, CVE-2025-5245, CVE-2018-20673.
 
-- **CVE-2025-14831, CVE-2025-9820 (MEDIUM — gnutls28), CVE-2025-45582 (MEDIUM — tar)** —
+- **CVE-2025-14831, CVE-2025-9820 (MEDIUM - gnutls28), CVE-2025-45582 (MEDIUM - tar)** -
   `apt-get upgrade -y` added to both Dockerfiles' runtime stage, applying all available
   Debian Bookworm security patches on each image build.
 
-- **6 curl LOW CVEs + 5 openldap LOW CVEs eliminated** — `curl` package removed from the
+- **6 curl LOW CVEs + 5 openldap LOW CVEs eliminated** - `curl` package removed from the
   runtime image entirely. It was only installed for the healthcheck (`curl -f ...`). In
   Debian, `curl` depends on `libcurl4` which depends on `libldap-2.5-0` (openldap client
   library), so removing `curl` also removes `openldap`. The Dockerfile HEALTHCHECK now uses
-  Python's built-in `urllib.request` instead — no external binary required. curl CVEs:
+  Python's built-in `urllib.request` instead - no external binary required. curl CVEs:
   CVE-2025-10966, CVE-2025-15079, CVE-2025-0725, CVE-2024-2379, CVE-2025-15224,
   CVE-2025-14017. openldap CVEs: CVE-2026-22185, CVE-2015-3276, CVE-2017-17740,
   CVE-2020-15719, CVE-2017-14159.
 
 ### Accepted Residual Risk (No Action Taken)
 
-- **CVE-2011-3389 (gnutls28 — BEAST attack)** — No upstream fix; mitigated by TLS 1.2+
+- **CVE-2011-3389 (gnutls28 - BEAST attack)** - No upstream fix; mitigated by TLS 1.2+
   enforcement in Traefik which prohibits CBC cipher suites used by BEAST.
 
-- **CVE-2005-2541 (tar — 2005)** — No upstream fix; not exploitable in this context (tar
+- **CVE-2005-2541 (tar - 2005)** - No upstream fix; not exploitable in this context (tar
   is a system utility, not exposed to untrusted input via the TelsonBase API).
 
-- **CVE-2019-9192, CVE-2018-20796, CVE-2019-1010025, CVE-2019-1010024 (glibc)** — Debian
+- **CVE-2019-9192, CVE-2018-20796, CVE-2019-1010025, CVE-2019-1010024 (glibc)** - Debian
   has formally classified these as "won't fix" / "unimportant". They appear in essentially
   every Debian/Ubuntu container image. The findings relate to ASLR predictability and regex
   edge cases with no practical exploit path. No action available.
 
 ---
 
-## [8.0.1] — 2026-02-21
+## [8.0.1] - 2026-02-21
 
-**Status:** Startup stability patch — three service issues resolved, PRE-002 security fix
+**Status:** Startup stability patch - three service issues resolved, PRE-002 security fix
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Fixed
 
-- **Celery Beat crash loop** — beat service was exiting with code 0 immediately on every start.
+- **Celery Beat crash loop** - beat service was exiting with code 0 immediately on every start.
   Root cause: `depends_on: redis` used the default condition (container started, not healthy),
   allowing beat to attempt broker connection before Redis was ready. Fix: changed to
   `condition: service_healthy` on beat → redis, and added `--pidfile=/tmp/celerybeat.pid
   --schedule=/tmp/celerybeat-schedule` to prevent stale file issues. Same health condition
   applied to mcp_server and worker for startup ordering correctness.
 
-- **Traefik ACME constant error loop** — Traefik was attempting Let's Encrypt certificate
+- **Traefik ACME constant error loop** - Traefik was attempting Let's Encrypt certificate
   acquisition on every startup using `admin@example.com` against `localhost` (LE rejects
   both). Fix: removed ACME from base `docker-compose.yml` (local dev runs HTTP only).
   Created `docker-compose.prod.yml` overlay for production: adds ACME, HTTP→HTTPS redirect,
   and HSTS security headers. `.env` updated with real email.
   Production command: `docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d`
 
-- **Grafana duplicate dashboard UIDs** — two identical provisioning config files
+- **Grafana duplicate dashboard UIDs** - two identical provisioning config files
   (`dashboards.yml` and `provider.yml`) in `monitoring/grafana/provisioning/dashboards/`
   caused every dashboard UID to be registered twice. Both files defined the same provider
   name pointing to the same path. Deleted `provider.yml`.
 
-- **Grafana operations dashboard hardcoded datasource UID** — `telsonbase-operations.json`
+- **Grafana operations dashboard hardcoded datasource UID** - `telsonbase-operations.json`
   used `PBFA97CFB590B2093` as the Prometheus datasource UID, which Grafana cannot resolve
   unless the UID is pinned in the datasource config. Fixed: added `uid: PBFA97CFB590B2093`
   to `monitoring/grafana/provisioning/datasources/datasource.yml`.
 
-- **Grafana overview dashboard template variables** — `telsonbase_overview.json` used
+- **Grafana overview dashboard template variables** - `telsonbase_overview.json` used
   `${DS_PROMETHEUS}` variable references (import-time syntax) instead of a stable UID.
   File provisioning does not resolve `__inputs` templates. Fixed: replaced all 27
   `${DS_PROMETHEUS}` references with `PBFA97CFB590B2093`; removed `__inputs` and
   `__requires` sections.
 
-- **PRE-002 tarfile path traversal (CWE-22)** — `backup_agent.py` path validation
+- **PRE-002 tarfile path traversal (CWE-22)** - `backup_agent.py` path validation
   only checked `startswith("..")` and `startswith("/")`, missing embedded traversal
   components like `legit/../../../etc`. Fixed: replaced with `Path.resolve()`-based
   check that validates each archive member resolves within the restore target directory.
   `filter='data'` (Python 3.11.4+ backport of PEP 706) retained as second layer.
   PENTEST_PREPARATION.md PRE-002 updated to Fixed status.
 
-- **Documentation** — AWS_TESTING_GUIDE.md vague login comment `admin / admin (or whatever
+- **Documentation** - AWS_TESTING_GUIDE.md vague login comment `admin / admin (or whatever
   was generated)` replaced with precise instruction referencing the secrets file.
 
 ---
 
-## [8.0.0] — 2026-02-21
+## [8.0.0] - 2026-02-21
 
-**Status:** First public release — drop-ready
+**Status:** First public release - drop-ready
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Milestone
 
-Version 8.0.0 marks TelsonBase's first public release. The CC suffix is retired —
+Version 8.0.0 marks TelsonBase's first public release. The CC suffix is retired -
 version numbers are pure semver going forward. The engineering checklist is complete.
 telsonbase.com is live. The governance pipeline is proven.
 
-### OpenClaw Governance — Live Test Complete (10/10)
+### OpenClaw Governance - Live Test Complete (10/10)
 
 Full end-to-end governance pipeline validated against a live Docker stack
 (mcp_server, PostgreSQL 16, Redis 7). All 10 steps passed:
@@ -519,7 +519,7 @@ Full end-to-end governance pipeline validated against a live Docker stack
 5. http_request gated at PROBATION (external_request category) ✓
 6. Kill switch (suspend) ✓
 7. Action while suspended → hard block, not gated ✓
-8. Trust report — correct history, action counts, timestamps ✓
+8. Trust report - correct history, action counts, timestamps ✓
 9. Reinstatement ✓
 10. read_file autonomous post-reinstatement ✓
 
@@ -530,7 +530,7 @@ Full end-to-end governance pipeline validated against a live Docker stack
   misclassified read actions. Added all variants → `READ_INTERNAL`.
 
 - **is_suspended() bypass**: `evaluate_action()` Step 2 (kill switch check) used
-  `instance.suspended or instance_id in self._suspended_ids` — both in-memory only.
+  `instance.suspended or instance_id in self._suspended_ids` - both in-memory only.
   `is_suspended()` existed with Redis fallback but was never called. Under multi-worker
   or restart conditions the check could silently pass. Fixed: changed check to call
   `self.is_suspended(instance_id)` (in-memory + Redis-backed). Critical safety fix.
@@ -552,7 +552,7 @@ Python's `configparser` INI parser. Converted to `#` comments.
 
 ### Infrastructure
 
-- telsonbase.com live — deep purple glassmorphism, "Control Your Claw" hero,
+- telsonbase.com live - deep purple glassmorphism, "Control Your Claw" hero,
   Chief of Staff framing, trust level pipeline visualization
 - Pre-drop engineering checklist: 10/10 complete
 - Validation report: `docs/Testing Documents/VALIDATION_REPORT_v7.4.0CC.md`
@@ -563,61 +563,61 @@ Python's `configparser` INI parser. Converted to `#` comments.
 
 ---
 
-## [7.2.0CC] — 2026-02-13
+## [7.2.0CC] - 2026-02-13
 
-**Status:** Third Floor — Real Estate Agents + Manners Compliance Framework
+**Status:** Third Floor - Real Estate Agents + Manners Compliance Framework
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Added
-- **MANNERS.md** — Anthropic-aligned agent operating principles. Five binding principles (Human Control, Transparency, Value Alignment, Privacy, Security) with measurable KPIs. Compliance scoring (0.0–1.0) with five status tiers from EXEMPLARY to SUSPENDED. Auto-suspension at 3+ violations in 24 hours.
-- **core/manners.py** (~400 lines) — Runtime Manners compliance engine. Singleton `manners_engine` tracks violations per agent per principle, computes weighted scores with time-decay, integrates with anomaly detection and trust levels. Convenience functions: `manners_check()`, `manners_violation()`, `manners_score()`, `manners_status()`. Redis persistence for violation history.
-- **agents/registry.yaml** — Centralized HR registry for all 10 agents. Each entry: display_name, floor, role, description, actions, requires_approval, capabilities, trust_level, rate_limit, expected_responses, manners_compliance mapping. Covers ground level (4), mezzanine (1), third floor RE (3), n8n integration (1).
-- **n8n Developer Agent** registered in `agents/__init__.py` metadata — visible on dashboard with actions, capabilities, and workflow file reference.
+- **MANNERS.md** - Anthropic-aligned agent operating principles. Five binding principles (Human Control, Transparency, Value Alignment, Privacy, Security) with measurable KPIs. Compliance scoring (0.0–1.0) with five status tiers from EXEMPLARY to SUSPENDED. Auto-suspension at 3+ violations in 24 hours.
+- **core/manners.py** (~400 lines) - Runtime Manners compliance engine. Singleton `manners_engine` tracks violations per agent per principle, computes weighted scores with time-decay, integrates with anomaly detection and trust levels. Convenience functions: `manners_check()`, `manners_violation()`, `manners_score()`, `manners_status()`. Redis persistence for violation history.
+- **agents/registry.yaml** - Centralized HR registry for all 10 agents. Each entry: display_name, floor, role, description, actions, requires_approval, capabilities, trust_level, rate_limit, expected_responses, manners_compliance mapping. Covers ground level (4), mezzanine (1), third floor RE (3), n8n integration (1).
+- **n8n Developer Agent** registered in `agents/__init__.py` metadata - visible on dashboard with actions, capabilities, and workflow file reference.
 - **Manners API endpoints** in `main.py`: `GET /v1/manners/status` (all-agent summary), `GET /v1/manners/agent/{name}` (per-agent report), `GET /v1/manners/violations/{name}` (violation history).
-- **docs/MANNERS_COMPLIANCE.md** — Full compliance guide with scoring methodology, violation types table, API reference, integration examples, and audit evidence documentation.
-- **Transaction Coordinator Agent** (`agents/transaction_agent.py`, ~600 lines) — full closing lifecycle: create/update/close/cancel transactions, 19-item purchase checklist, 11-item lease checklist, party management (10 roles), 14 document types tracked per purchase, deadline monitoring with overdue detection, transaction summaries. 3 pre-seeded demo transactions. Celery tasks with daily deadline check at 7:00 AM UTC.
-- **Compliance Check Agent** (`agents/compliance_check_agent.py`, ~550 lines) — Ohio-specific license tracking (ORC 5302.30, ORC 4735.56, 42 USC 4852d, ORC 4112.02), fair housing red flag scanner (17 phrases), continuing education tracking (30hr/3yr Ohio requirement), brokerage-wide compliance reports, violation management. 4 demo licenses (incl. 1 expired), daily compliance sweep at 7:30 AM UTC.
-- **Document Preparation Agent** (`agents/doc_prep_agent.py`, ~500 lines) — 7 templates (purchase agreement, seller disclosure, agency disclosure, closing checklist, listing agreement, CMA report, lead paint disclosure), template field validation, generate/preview/finalize workflow with SHA-256 hashing. 3 pre-seeded demo documents.
+- **docs/MANNERS_COMPLIANCE.md** - Full compliance guide with scoring methodology, violation types table, API reference, integration examples, and audit evidence documentation.
+- **Transaction Coordinator Agent** (`agents/transaction_agent.py`, ~600 lines) - full closing lifecycle: create/update/close/cancel transactions, 19-item purchase checklist, 11-item lease checklist, party management (10 roles), 14 document types tracked per purchase, deadline monitoring with overdue detection, transaction summaries. 3 pre-seeded demo transactions. Celery tasks with daily deadline check at 7:00 AM UTC.
+- **Compliance Check Agent** (`agents/compliance_check_agent.py`, ~550 lines) - Ohio-specific license tracking (ORC 5302.30, ORC 4735.56, 42 USC 4852d, ORC 4112.02), fair housing red flag scanner (17 phrases), continuing education tracking (30hr/3yr Ohio requirement), brokerage-wide compliance reports, violation management. 4 demo licenses (incl. 1 expired), daily compliance sweep at 7:30 AM UTC.
+- **Document Preparation Agent** (`agents/doc_prep_agent.py`, ~500 lines) - 7 templates (purchase agreement, seller disclosure, agency disclosure, closing checklist, listing agreement, CMA report, lead paint disclosure), template field validation, generate/preview/finalize workflow with SHA-256 hashing. 3 pre-seeded demo documents.
 - Agent registry updated: 3 new entries in `agents/__init__.py` (class registry + metadata)
 - Celery worker updated: 3 new task modules + 2 scheduled beats (deadline check, compliance sweep)
 - Seed data updated: real estate agent capabilities, 3 new approval requests, 3 new behavioral baselines
 
 ### Fixed
-- User Console (`frontend/user-console.html`): added `/v1/auth/profile` fetch to `fetchLiveData()`. Previously used hardcoded demo user (`kparker`) even when connected to live API — approval decisions now use the real authenticated user.
+- User Console (`frontend/user-console.html`): added `/v1/auth/profile` fetch to `fetchLiveData()`. Previously used hardcoded demo user (`kparker`) even when connected to live API - approval decisions now use the real authenticated user.
 
 ---
 
-## [7.1.0CC] — 2026-02-12
+## [7.1.0CC] - 2026-02-12
 
-**Status:** User Console (Layer B) — operator-facing interface
+**Status:** User Console (Layer B) - operator-facing interface
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Added
 
-- **User Console SPA** — `frontend/user-console.html` (~550 lines). 5-tab interface for day-to-day operators (paralegals, associates, case managers):
+- **User Console SPA** - `frontend/user-console.html` (~550 lines). 5-tab interface for day-to-day operators (paralegals, associates, case managers):
   - **Home:** Welcome card with user/role, quick stats (agents/approvals/health), quick-action cards (New Chat, View Agents, Check Approvals), recent activity feed
   - **Chat:** Full LLM chat interface ported from admin console. Model selector, demo responses, message history
   - **Agents:** Read-only agent cards with capability drill-down. No admin controls
   - **My Approvals:** Approve/reject with notes field, count badge on tab. Filtered to pending
   - **Activity:** Combined QMS log + anomaly alerts + audit entries. Read-only (no resolve)
-- **`GET /console` route** in `main.py` — same pattern as `/dashboard`
-- **Cross-links** — Admin Console header links to User Console; User Console header links to Admin Console
-- **`user_ui_tests.md`** — 13 sections, 100+ test cases covering all tabs, cross-console navigation, responsiveness, edge cases
-- **`clausenotes.md`** — Session log with architecture decisions and next steps
+- **`GET /console` route** in `main.py` - same pattern as `/dashboard`
+- **Cross-links** - Admin Console header links to User Console; User Console header links to Admin Console
+- **`user_ui_tests.md`** - 13 sections, 100+ test cases covering all tabs, cross-console navigation, responsiveness, edge cases
+- **`clausenotes.md`** - Session log with architecture decisions and next steps
 
 ### Design Decisions
 
-- Separate file, not hidden tabs — different layout, different focus
+- Separate file, not hidden tabs - different layout, different focus
 - Same design system (CSS variables, dark theme, card/badge patterns)
-- Shared `telsonbase_api_key` in localStorage — connect once, both consoles work
+- Shared `telsonbase_api_key` in localStorage - connect once, both consoles work
 - Read-only where appropriate (agents, anomalies). Only chat and approvals are write surfaces
-- 5 tabs vs 15 — no compliance, sessions, federation, sovereign, toolroom, tenants, users, security, audit chain, or QMS filter views
+- 5 tabs vs 15 - no compliance, sessions, federation, sovereign, toolroom, tenants, users, security, audit chain, or QMS filter views
 
 ---
 
-## [7.0.0CC] — 2026-02-11
+## [7.0.0CC] - 2026-02-11
 
-**Status:** Production Hardening Roadmap Complete — 22 items, 3 clusters, fully autonomous
+**Status:** Production Hardening Roadmap Complete - 22 items, 3 clusters, fully autonomous
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Summary
@@ -626,41 +626,41 @@ Complete execution of the 22-item production hardening roadmap across 6 sessions
 
 ### Cluster A: Pre-Demo Essentials (Items 1-6)
 
-- **TLS termination** — Traefik HTTP→HTTPS redirect, HSTS (1yr, includeSubdomains, preload), security headers middleware (nosniff, frameDeny, XSS protection)
-- **Per-user auth** — `core/user_management.py` (509 lines), `api/auth_routes.py` (484 lines). Register, login, MFA onboarding, change password, profile, logout. bcrypt 12 rounds, account lockout (5 attempts/15min), password strength (12+ chars, mixed)
-- **Error sanitization** — Global exception handler, sanitized responses (no stack traces/paths), SecurityHeadersMiddleware (pure ASGI), fixed 8 `str(e)` leaks
-- **Alembic migrations** — `alembic.ini`, `alembic/env.py`, initial migration (4 tables: users, audit_entries, tenants, compliance_records)
-- **Backup & recovery** — `scripts/backup.sh` (155 lines), `scripts/restore.sh` (175 lines). RPO=24hr, RTO=15min
-- **Secrets management** — `generate_secrets.sh` updated with `--rotate`/`--check` flags, 3 new production validators
+- **TLS termination** - Traefik HTTP→HTTPS redirect, HSTS (1yr, includeSubdomains, preload), security headers middleware (nosniff, frameDeny, XSS protection)
+- **Per-user auth** - `core/user_management.py` (509 lines), `api/auth_routes.py` (484 lines). Register, login, MFA onboarding, change password, profile, logout. bcrypt 12 rounds, account lockout (5 attempts/15min), password strength (12+ chars, mixed)
+- **Error sanitization** - Global exception handler, sanitized responses (no stack traces/paths), SecurityHeadersMiddleware (pure ASGI), fixed 8 `str(e)` leaks
+- **Alembic migrations** - `alembic.ini`, `alembic/env.py`, initial migration (4 tables: users, audit_entries, tenants, compliance_records)
+- **Backup & recovery** - `scripts/backup.sh` (155 lines), `scripts/restore.sh` (175 lines). RPO=24hr, RTO=15min
+- **Secrets management** - `generate_secrets.sh` updated with `--rotate`/`--check` flags, 3 new production validators
 
 ### Cluster B: Pilot Readiness (Items 7-12)
 
-- **E2E integration tests** — `tests/test_e2e_integration.py` (658 lines, 22 tests). 5 test classes: UserLifecycle, TenantWorkflow, SecurityEndpoints, AuditChainIntegrity, ErrorSanitization
-- **RBAC enforcement** — `require_permission()` on all 140+ endpoints across 4 files. Permission taxonomy: view:*, manage:*, admin:*, security:*
-- **Observability** — Grafana dashboard (`telsonbase_overview.json`), Prometheus alert rules (HighErrorRate, HighLatency, AuthFailureSpike, AuditChainBroken, ServiceDown)
-- **Tenant-scoped rate limiting** — `core/tenant_rate_limiting.py` (674 lines). Redis sliding window, per-tenant (600/min), per-user (120/min), premium multiplier, in-memory fallback
-- **Encryption at rest** — Volume-level (LUKS/BitLocker) recommended, pgcrypto supplementary, compliance mapping (HIPAA, CJIS, SOC 2, PCI DSS, GDPR)
+- **E2E integration tests** - `tests/test_e2e_integration.py` (658 lines, 22 tests). 5 test classes: UserLifecycle, TenantWorkflow, SecurityEndpoints, AuditChainIntegrity, ErrorSanitization
+- **RBAC enforcement** - `require_permission()` on all 140+ endpoints across 4 files. Permission taxonomy: view:*, manage:*, admin:*, security:*
+- **Observability** - Grafana dashboard (`telsonbase_overview.json`), Prometheus alert rules (HighErrorRate, HighLatency, AuthFailureSpike, AuditChainBroken, ServiceDown)
+- **Tenant-scoped rate limiting** - `core/tenant_rate_limiting.py` (674 lines). Redis sliding window, per-tenant (600/min), per-user (120/min), premium multiplier, in-memory fallback
+- **Encryption at rest** - Volume-level (LUKS/BitLocker) recommended, pgcrypto supplementary, compliance mapping (HIPAA, CJIS, SOC 2, PCI DSS, GDPR)
 
 ### Cluster C: Contract Readiness (Items 13-18)
 
-- **SOC 2 Type I** — 51 controls across 5 Trust Service Criteria, management assertion, evidence locations mapped to source files
-- **Pen test preparation** — Attack surface inventory (140+ endpoints, 8 network services), OWASP Top 10 mapping, 5 known vulns in remediation tracker
-- **Data Processing Agreement** — 13 sections + 3 annexes, placeholder brackets for customer details
-- **Disaster recovery test** — `scripts/dr_test.sh` (--quick/--full), automated backup→stop→restore→verify→report
-- **HA architecture** — Phase 1 Docker Swarm (2-3 days), Phase 2 Kubernetes (1-2 weeks), decision matrix by scale
-- **Compliance roadmap** — HITRUST CSF, HIPAA SRA, SOC 2 Type II, CJIS, GDPR, PCI DSS. 6-phase, $50-125K, 12-18 months
+- **SOC 2 Type I** - 51 controls across 5 Trust Service Criteria, management assertion, evidence locations mapped to source files
+- **Pen test preparation** - Attack surface inventory (140+ endpoints, 8 network services), OWASP Top 10 mapping, 5 known vulns in remediation tracker
+- **Data Processing Agreement** - 13 sections + 3 annexes, placeholder brackets for customer details
+- **Disaster recovery test** - `scripts/dr_test.sh` (--quick/--full), automated backup→stop→restore→verify→report
+- **HA architecture** - Phase 1 Docker Swarm (2-3 days), Phase 2 Kubernetes (1-2 weeks), decision matrix by scale
+- **Compliance roadmap** - HITRUST CSF, HIPAA SRA, SOC 2 Type II, CJIS, GDPR, PCI DSS. 6-phase, $50-125K, 12-18 months
 
 ### Post-Hardening (Items 19-22)
 
-- **Competitive positioning** — 2-page, 5-competitor matrix, ICP definition, pricing advantage
-- **Pricing model** — 3 tiers (Starter $150, Professional $400, Enterprise $750-1000/seat/month)
-- **Deployment guide** — Prerequisites, 10-step install, post-install checklist, upgrade procedure
-- **Shared responsibility matrix** — 1-page, 12-domain responsibility table
+- **Competitive positioning** - 2-page, 5-competitor matrix, ICP definition, pricing advantage
+- **Pricing model** - 3 tiers (Starter $150, Professional $400, Enterprise $750-1000/seat/month)
+- **Deployment guide** - Prerequisites, 10-step install, post-install checklist, upgrade procedure
+- **Shared responsibility matrix** - 1-page, 12-domain responsibility table
 
 ### Engineering Decisions (13 autonomous choices documented)
 
 - Pure ASGI middleware (replaced BaseHTTPMiddleware for Starlette TestClient compatibility)
-- Direct bcrypt library (replaced passlib — bcrypt 4.x removed `__about__` module)
+- Direct bcrypt library (replaced passlib - bcrypt 4.x removed `__about__` module)
 - Dual-dependency RBAC pattern (`auth` + `_perm`) for backward-compatible permission enforcement
 - Four-tier permission taxonomy: view:*, manage:*, admin:*, security:*
 - AuditEventType consolidation (SECURITY_ALERT + `details.action` for specificity)
@@ -697,12 +697,12 @@ Complete execution of the 22-item production hardening roadmap across 6 sessions
 
 ---
 
-## [6.1.0CC] — 2026-02-10
+## [6.1.0CC] - 2026-02-10
 
 **Status:** Dependency CVE remediation + production hardening
 **Contributors:** Claude Code (Opus 4.6)
 
-### Security — Dependency CVE Remediation (16 → 1)
+### Security - Dependency CVE Remediation (16 → 1)
 
 | Package | Before | After | CVEs Fixed |
 |---------|--------|-------|------------|
@@ -715,9 +715,9 @@ Complete execution of the 22-item production hardening roadmap across 6 sessions
 | pip | 24.0 | 26.0.1 | CVE-2025-8869, CVE-2026-1703 |
 | wheel | 0.45.1 | 0.46.2 | CVE-2026-24049 |
 
-**Remaining:** ecdsa 0.19.1 (CVE-2024-23342) — no fix version available, transitive dep of python-jose.
+**Remaining:** ecdsa 0.19.1 (CVE-2024-23342) - no fix version available, transitive dep of python-jose.
 
-### Security — Bandit CWE-22 Fix
+### Security - Bandit CWE-22 Fix
 - `backup_agent.py:347`: Added `filter='data'` to `tarfile.extractall()` to prevent path traversal
 
 ### Infrastructure
@@ -731,9 +731,9 @@ Complete execution of the 22-item production hardening roadmap across 6 sessions
 
 ---
 
-## [6.0.0CC] — 2026-02-09
+## [6.0.0CC] - 2026-02-09
 
-**Status:** Advanced testing validation — 5-level test infrastructure verified
+**Status:** Advanced testing validation - 5-level test infrastructure verified
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Rate Limiting Configuration
@@ -747,35 +747,35 @@ Complete execution of the 22-item production hardening roadmap across 6 sessions
 
 New 20-test-group automated validation suite across 5 levels:
 
-#### Level 1: Security Testing (S1-S6) — 6/6 PASS
-- **S1** SQL/NoSQL injection — Pydantic rejects malformed params (422), no query execution
-- **S2** QMS chain injection — Malicious `::SYSTEM_HALT::` and origin spoofing payloads safely handled
-- **S3** Path traversal + command injection — `../../../etc/passwd` and `repo; curl | bash` both rejected by approved-sources gate
-- **S4** JWT tampering — Expired, wrong-algo, empty, and garbage tokens all return 401
-- **S5** Oversized payloads — 1MB payload and 100-level nested JSON handled gracefully (no crash/OOM)
-- **S6** Header injection — CRLF injection and Host header spoofing return normal 200
+#### Level 1: Security Testing (S1-S6) - 6/6 PASS
+- **S1** SQL/NoSQL injection - Pydantic rejects malformed params (422), no query execution
+- **S2** QMS chain injection - Malicious `::SYSTEM_HALT::` and origin spoofing payloads safely handled
+- **S3** Path traversal + command injection - `../../../etc/passwd` and `repo; curl | bash` both rejected by approved-sources gate
+- **S4** JWT tampering - Expired, wrong-algo, empty, and garbage tokens all return 401
+- **S5** Oversized payloads - 1MB payload and 100-level nested JSON handled gracefully (no crash/OOM)
+- **S6** Header injection - CRLF injection and Host header spoofing return normal 200
 
-#### Level 2: Chaos/Resilience (C1-C4) — 4/4 PASS
-- **C1** Redis down — API reports `redis: unhealthy`, fully recovers after restart
-- **C2** Ollama down — Health stays 200, LLM endpoints show unreachable, recovers after restart
-- **C3** Mosquitto down — API continues, MQTT reports disconnected, recovers
-- **C4** Concurrent stress — 50/50 parallel requests all return 200 (RunspacePool)
+#### Level 2: Chaos/Resilience (C1-C4) - 4/4 PASS
+- **C1** Redis down - API reports `redis: unhealthy`, fully recovers after restart
+- **C2** Ollama down - Health stays 200, LLM endpoints show unreachable, recovers after restart
+- **C3** Mosquitto down - API continues, MQTT reports disconnected, recovers
+- **C4** Concurrent stress - 50/50 parallel requests all return 200 (RunspacePool)
 
-#### Level 3: Contract/Schema (K1-K3) — 2/3 PASS
-- **K1** Schemathesis — OpenAPI contract testing integrated (`st run` CLI)
-- **K2** OpenAPI completeness — 69 documented endpoints confirmed
-- **K3** Content-Type consistency — All 7 tested endpoints return `application/json`
+#### Level 3: Contract/Schema (K1-K3) - 2/3 PASS
+- **K1** Schemathesis - OpenAPI contract testing integrated (`st run` CLI)
+- **K2** OpenAPI completeness - 69 documented endpoints confirmed
+- **K3** Content-Type consistency - All 7 tested endpoints return `application/json`
 
-#### Level 4: Performance (P1-P3) — 3/3 PASS
-- **P1** Sustained load — 200/200 requests, p50=41ms, p95=55ms, p99=71ms, 0 errors
-- **P2** Authenticated latency — 20/20 requests, p50=86ms, p99=194ms, 0 errors
-- **P3** Rate limiter — Wall confirmed at request #25 (working as designed)
+#### Level 4: Performance (P1-P3) - 3/3 PASS
+- **P1** Sustained load - 200/200 requests, p50=41ms, p95=55ms, p99=71ms, 0 errors
+- **P2** Authenticated latency - 20/20 requests, p50=86ms, p99=194ms, 0 errors
+- **P3** Rate limiter - Wall confirmed at request #25 (working as designed)
 
-#### Level 5: Static Analysis (A1-A4) — 3/4 PASS
-- **A1** Bandit — 1 high (tarfile.extractall in backup_agent.py CWE-22), 2 medium (0.0.0.0 binds — expected in Docker)
-- **A2** pip-audit — 16 CVEs in 8 packages flagged (cryptography, gunicorn, python-jose, requests, starlette, pip, wheel, ecdsa)
-- **A3** Import health — All 18 core modules import successfully
-- **A4** Dead endpoints — 15/15 endpoints responding, 0 errors
+#### Level 5: Static Analysis (A1-A4) - 3/4 PASS
+- **A1** Bandit - 1 high (tarfile.extractall in backup_agent.py CWE-22), 2 medium (0.0.0.0 binds - expected in Docker)
+- **A2** pip-audit - 16 CVEs in 8 packages flagged (cryptography, gunicorn, python-jose, requests, starlette, pip, wheel, ecdsa)
+- **A3** Import health - All 18 core modules import successfully
+- **A4** Dead endpoints - 15/15 endpoints responding, 0 errors
 
 ### Test Infrastructure Improvements
 - Bat file uses PowerShell `Invoke-WebRequest` for injection payloads (avoids cmd.exe metacharacter issues)
@@ -791,54 +791,54 @@ New 20-test-group automated validation suite across 5 levels:
 
 ---
 
-## [5.5.2CC] — 2026-02-09
+## [5.5.2CC] - 2026-02-09
 
 **Status:** Test suite fixes and Docker secrets hardening
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Test Fixes (15 failures → 0)
 
-- **LLM endpoint tests** (`tests/test_ollama.py`) — 5 tests used `MagicMock` for async service methods (`ahealth_check`, `alist_models`, `aget_recommended_models`, `agenerate`, `achat`). Changed to `AsyncMock` to match the `await` calls in `main.py` endpoints.
-- **Egress gateway tests** (`tests/test_integration.py`) — 2 tests failed because `ALLOWED_EXTERNAL_DOMAINS` was set in JSON array format (`["a.com","b.com"]`) but `egress_proxy.py` only handled comma-separated. Now strips brackets and quotes from env var values.
-- **Docker Compose secrets tests** (`tests/test_secrets.py`) — 6 tests failed because `docker-compose.yml`, `.dockerignore`, and `.gitignore` are excluded by `.dockerignore` and don't exist inside containers. Tests now `pytest.skip()` when files are unavailable.
-- **QMS halt test** (`tests/test_qms.py`) — `test_spec_example_halt_with_reason` expected string didn't include the `::!URGENT!::` priority prefix added in v2.2.0 (v5.5.0CC). Updated expected value.
-- **Toolroom install test** (`tests/test_toolroom.py`) — `test_execute_install_without_approval_warns` didn't mock `load_manifest_from_tool_dir` or `cage.archive_tool`, both required since v5.4.0CC. Added mocks.
+- **LLM endpoint tests** (`tests/test_ollama.py`) - 5 tests used `MagicMock` for async service methods (`ahealth_check`, `alist_models`, `aget_recommended_models`, `agenerate`, `achat`). Changed to `AsyncMock` to match the `await` calls in `main.py` endpoints.
+- **Egress gateway tests** (`tests/test_integration.py`) - 2 tests failed because `ALLOWED_EXTERNAL_DOMAINS` was set in JSON array format (`["a.com","b.com"]`) but `egress_proxy.py` only handled comma-separated. Now strips brackets and quotes from env var values.
+- **Docker Compose secrets tests** (`tests/test_secrets.py`) - 6 tests failed because `docker-compose.yml`, `.dockerignore`, and `.gitignore` are excluded by `.dockerignore` and don't exist inside containers. Tests now `pytest.skip()` when files are unavailable.
+- **QMS halt test** (`tests/test_qms.py`) - `test_spec_example_halt_with_reason` expected string didn't include the `::!URGENT!::` priority prefix added in v2.2.0 (v5.5.0CC). Updated expected value.
+- **Toolroom install test** (`tests/test_toolroom.py`) - `test_execute_install_without_approval_warns` didn't mock `load_manifest_from_tool_dir` or `cage.archive_tool`, both required since v5.4.0CC. Added mocks.
 
 ### Docker Compose Hardening
 
-- **Top-level `secrets:` section** — 5 file-based secrets defined (`telsonbase_mcp_api_key`, `telsonbase_jwt_secret`, `telsonbase_encryption_key`, `telsonbase_encryption_salt`, `telsonbase_grafana_password`)
-- **`mcp_server` service** — secrets mounted at `/run/secrets/`
-- **Grafana** — switched from `GF_SECURITY_ADMIN_PASSWORD` (plaintext env var) to `GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/telsonbase_grafana_password`
+- **Top-level `secrets:` section** - 5 file-based secrets defined (`telsonbase_mcp_api_key`, `telsonbase_jwt_secret`, `telsonbase_encryption_key`, `telsonbase_encryption_salt`, `telsonbase_grafana_password`)
+- **`mcp_server` service** - secrets mounted at `/run/secrets/`
+- **Grafana** - switched from `GF_SECURITY_ADMIN_PASSWORD` (plaintext env var) to `GF_SECURITY_ADMIN_PASSWORD__FILE=/run/secrets/telsonbase_grafana_password`
 
 ### Egress Gateway Fix
 
-- **`gateway/egress_proxy.py`** — `ALLOWED_EXTERNAL_DOMAINS` parsing now handles both comma-separated (`a.com,b.com`) and JSON array format (`["a.com","b.com"]`). Strips `[]`, `"`, and `'` from individual domain entries.
+- **`gateway/egress_proxy.py`** - `ALLOWED_EXTERNAL_DOMAINS` parsing now handles both comma-separated (`a.com,b.com`) and JSON array format (`["a.com","b.com"]`). Strips `[]`, `"`, and `'` from individual domain entries.
 
 ---
 
-## [5.5.1CC] — 2026-02-09
+## [5.5.1CC] - 2026-02-09
 
 **Status:** P0/P1 bug fixes from senior dev review + LLM chat interface
 **Contributors:** Claude Code (Opus 4.6)
 
 ### P0 Bug Fixes (Crash Prevention)
 
-- **`ToolMetadata.from_dict` / `ToolCheckout.from_dict`** — Now filter to known dataclass fields before construction. Prevents `TypeError` crash when Redis contains records from older/newer schema versions. This was a data migration time bomb.
-- **`execute_tool_install`** (`toolroom/foreman.py`) — Removed `mkdir` before `git clone`. Git clone creates its own directory; pre-creating it caused "destination already exists" failures. Now cleans stale directories before cloning.
-- **`cage.py` import safety** — Lazy `core.audit` imports (try/except inside methods). `Cage.__init__` catches `PermissionError`/`OSError` for graceful degradation in dev/test environments where `/app` doesn't exist. `CAGE_PATH` now configurable via environment variable.
+- **`ToolMetadata.from_dict` / `ToolCheckout.from_dict`** - Now filter to known dataclass fields before construction. Prevents `TypeError` crash when Redis contains records from older/newer schema versions. This was a data migration time bomb.
+- **`execute_tool_install`** (`toolroom/foreman.py`) - Removed `mkdir` before `git clone`. Git clone creates its own directory; pre-creating it caused "destination already exists" failures. Now cleans stale directories before cloning.
+- **`cage.py` import safety** - Lazy `core.audit` imports (try/except inside methods). `Cage.__init__` catches `PermissionError`/`OSError` for graceful degradation in dev/test environments where `/app` doesn't exist. `CAGE_PATH` now configurable via environment variable.
 
 ### P1 Bug Fixes (Logic Corrections)
 
-- **Cage `verify_tool` hash consistency** — `_hash_directory` now applies the same exclusion rules (`.git`, `__pycache__`, `node_modules`, `.pyc`, etc.) as `_archive_directory`. Previously, the live tool hash included files the archive excluded, causing false "tampered" alerts on every verification. Also includes relative file paths in hash so file renames are detected.
-- **Cage symlink safety** — `_archive_directory` no longer follows symlinks. Malicious tool packages with symlinks to `/etc/passwd` or similar can no longer exfiltrate data into the cage archive.
-- **Foreman hash delegation** — `ForemanAgent._hash_directory` now delegates to `Cage._hash_directory` for consistent hashing across both systems.
-- **Repo normalization** — `propose_tool_install`, `execute_tool_install`, and `check_for_updates` all normalize repo names to lowercase before comparing against `APPROVED_GITHUB_SOURCES`.
-- **Stale checkout cleanup** — New `cleanup_stale_checkouts(max_age_hours=24)` method on `ToolRegistry`. Prevents permanently locked tools when a worker crashes mid-checkout.
-- **`qms_endpoint` decorator** — Now handles both sync and async functions correctly using `asyncio.iscoroutinefunction`. Uses `functools.wraps` for proper metadata preservation.
+- **Cage `verify_tool` hash consistency** - `_hash_directory` now applies the same exclusion rules (`.git`, `__pycache__`, `node_modules`, `.pyc`, etc.) as `_archive_directory`. Previously, the live tool hash included files the archive excluded, causing false "tampered" alerts on every verification. Also includes relative file paths in hash so file renames are detected.
+- **Cage symlink safety** - `_archive_directory` no longer follows symlinks. Malicious tool packages with symlinks to `/etc/passwd` or similar can no longer exfiltrate data into the cage archive.
+- **Foreman hash delegation** - `ForemanAgent._hash_directory` now delegates to `Cage._hash_directory` for consistent hashing across both systems.
+- **Repo normalization** - `propose_tool_install`, `execute_tool_install`, and `check_for_updates` all normalize repo names to lowercase before comparing against `APPROVED_GITHUB_SOURCES`.
+- **Stale checkout cleanup** - New `cleanup_stale_checkouts(max_age_hours=24)` method on `ToolRegistry`. Prevents permanently locked tools when a worker crashes mid-checkout.
+- **`qms_endpoint` decorator** - Now handles both sync and async functions correctly using `asyncio.iscoroutinefunction`. Uses `functools.wraps` for proper metadata preservation.
 
 ### UI: Chat Interface
 
-- **New "Chat" tab** in the dashboard — standard LLM conversation interface
+- **New "Chat" tab** in the dashboard - standard LLM conversation interface
 - Model selector dropdown (auto-fetches available models from `/v1/llm/models`)
 - Message bubbles with user/assistant distinction, timestamps
 - Enter to send, Shift+Enter for new line
@@ -847,32 +847,32 @@ New 20-test-group automated validation suite across 5 levels:
 
 ---
 
-## [5.5.0CC] — 2026-02-09
+## [5.5.0CC] - 2026-02-09
 
-**Status:** QMS v2.2.0 — message priority, correlation TTL, schema registry
+**Status:** QMS v2.2.0 - message priority, correlation TTL, schema registry
 **Contributors:** Claude Code (Opus 4.6)
 
 ### QMS v2.2.0 Improvements
 
 - **Message priority levels** (`core/qms.py`)
   - New `PRIORITY` block type: `::!URGENT!::`, `::!P1!::`, `::!P2!::`, `::!P3!::`
-  - Optional prefix before origin block — backward compatible with v2.1.6
+  - Optional prefix before origin block - backward compatible with v2.1.6
   - Halt chains automatically default to `URGENT` priority
   - Invalid priorities logged with warning and defaulted to `P2`
   - Priority exposed via `QMSChain.priority` property
 
 - **Correlation TTL** (`core/qms.py`)
   - Embedded in correlation block: `::@@REQ_id@@TTL_30s@@::`
-  - Agents know when to stop waiting for a response — prevents hung states
+  - Agents know when to stop waiting for a response - prevents hung states
   - Default TTLs per priority: URGENT=10s, P1=30s, P2=120s, P3=600s
   - TTL exposed via `QMSChain.ttl_seconds` property
   - `build_chain(ttl_seconds=30)` parameter for easy usage
 
 - **Schema registry** (`core/qms_schema.json`)
   - JSON file defining 10 message types with required/optional blocks
-  - `validate_chain_semantics()` — checks action, status, priority validity per type
-  - `get_message_schema()` — lookup schema by action name
-  - `get_default_ttl()` — get default TTL for a priority level
+  - `validate_chain_semantics()` - checks action, status, priority validity per type
+  - `get_message_schema()` - lookup schema by action name
+  - `get_default_ttl()` - get default TTL for a priority level
   - Unknown message types warn but don't block (extensibility preserved)
 
 - All v2.1.6 chains remain fully valid (no breaking changes)
@@ -880,7 +880,7 @@ New 20-test-group automated validation suite across 5 levels:
 
 ---
 
-## [5.4.0CC] — 2026-02-09
+## [5.4.0CC] - 2026-02-09
 
 **Status:** Toolroom hardening and completion. All 6 senior dev review toolroom gaps closed.
 **Contributors:** Claude Code (Opus 4.6)
@@ -912,16 +912,16 @@ New 20-test-group automated validation suite across 5 levels:
   - `rollback_tool()` method with audit trail
   - `GET /v1/toolroom/tools/{id}/versions` and `POST /v1/toolroom/tools/{id}/rollback` endpoints
 
-### The Cage — Compliance Archive
+### The Cage - Compliance Archive
 
-- **`toolroom/cage.py`** (NEW) — Secured archive for tool provenance
+- **`toolroom/cage.py`** (NEW) - Secured archive for tool provenance
   - Every tool installation/update archived with timestamped receipt
   - `CageReceipt` records: SHA-256, source, approver, approval ID, timestamp
-  - `verify_tool()` — integrity check comparing live tool against cage archive
+  - `verify_tool()` - integrity check comparing live tool against cage archive
   - Auto-purge oldest entries beyond 20 per tool
-  - `GET /v1/toolroom/cage` — inventory listing
-  - `GET /v1/toolroom/cage/{receipt_id}` — specific receipt
-  - `POST /v1/toolroom/cage/verify/{tool_id}` — integrity verification
+  - `GET /v1/toolroom/cage` - inventory listing
+  - `GET /v1/toolroom/cage/{receipt_id}` - specific receipt
+  - `POST /v1/toolroom/cage/verify/{tool_id}` - integrity verification
 
 ### New API Endpoints (10 total)
 
@@ -939,56 +939,56 @@ New 20-test-group automated validation suite across 5 levels:
 
 ### Documentation
 
-- **GLOSSARY.md** — Added 25+ new terms (Cage, Foreman, Pinch Point, Rollback, etc.)
-- **CHANGELOG.md** — Brought current through v5.4.0CC (was missing v5.2.0-v5.3.0)
-- **USER_GUIDE.md** — New solopreneur-friendly guide to running TelsonBase
-- **docs/claude_code_comments.md** — New unfiltered commentary section (v5.2.0-v5.4.0)
+- **GLOSSARY.md** - Added 25+ new terms (Cage, Foreman, Pinch Point, Rollback, etc.)
+- **CHANGELOG.md** - Brought current through v5.4.0CC (was missing v5.2.0-v5.3.0)
+- **USER_GUIDE.md** - New solopreneur-friendly guide to running TelsonBase
+- **docs/claude_code_comments.md** - New unfiltered commentary section (v5.2.0-v5.4.0)
 
 ---
 
-## [5.3.0CC] — 2026-02-09
+## [5.3.0CC] - 2026-02-09
 
-**Status:** Senior dev gap fixes — 11 non-test gaps closed. 509+ tests passing.
+**Status:** Senior dev gap fixes - 11 non-test gaps closed. 509+ tests passing.
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Security Fixes
 
-- **JWT token revocation list** (`core/auth.py`) — Redis-backed `jti` revocation with TTL auto-cleanup
-- **API key registry** (`core/auth.py`) — Multi-key support with per-key scoped permissions, SHA-256 hashed storage, zero-downtime rotation
-- **Capability deny check bug** (`core/capabilities.py`) — Deny loop now checks action field (was only checking resource+scope)
-- **Timing attack fix** — `hmac.compare_digest()` for API key comparison (v5.2.0CC)
+- **JWT token revocation list** (`core/auth.py`) - Redis-backed `jti` revocation with TTL auto-cleanup
+- **API key registry** (`core/auth.py`) - Multi-key support with per-key scoped permissions, SHA-256 hashed storage, zero-downtime rotation
+- **Capability deny check bug** (`core/capabilities.py`) - Deny loop now checks action field (was only checking resource+scope)
+- **Timing attack fix** - `hmac.compare_digest()` for API key comparison (v5.2.0CC)
 
 ### Architecture Fixes
 
-- **Delegation Redis persistence** (`core/delegation.py`) — Delegations survive container restarts
-- **Cascading delegation expiry** (`core/delegation.py`) — Children expire when parent expires
-- **Delegation public API** (`core/delegation.py`) — `get_delegation_ids_by_grantor/grantee()` replaces private attribute access
-- **EnforcedFilesystem async methods** (`core/capabilities.py`) — `aread()`, `awrite()`, `alist_dir()` via `asyncio.to_thread()`
-- **`_handle_block_external()` honesty** (`core/threat_response.py`) — Returns `False` (was returning `True` for a no-op)
-- **QMS regex fix** (`core/qms.py`) — Colons in block content (URLs, paths) no longer break parsing
-- **Dockerfile HEALTHCHECK** — `curl -f http://localhost:8000/health`
-- **Dead code removal** — Unused `passlib` import removed from `core/auth.py`
+- **Delegation Redis persistence** (`core/delegation.py`) - Delegations survive container restarts
+- **Cascading delegation expiry** (`core/delegation.py`) - Children expire when parent expires
+- **Delegation public API** (`core/delegation.py`) - `get_delegation_ids_by_grantor/grantee()` replaces private attribute access
+- **EnforcedFilesystem async methods** (`core/capabilities.py`) - `aread()`, `awrite()`, `alist_dir()` via `asyncio.to_thread()`
+- **`_handle_block_external()` honesty** (`core/threat_response.py`) - Returns `False` (was returning `True` for a no-op)
+- **QMS regex fix** (`core/qms.py`) - Colons in block content (URLs, paths) no longer break parsing
+- **Dockerfile HEALTHCHECK** - `curl -f http://localhost:8000/health`
+- **Dead code removal** - Unused `passlib` import removed from `core/auth.py`
 
 ---
 
-## [5.2.1CC] — 2026-02-09
+## [5.2.1CC] - 2026-02-09
 
 **Status:** P2 production hardening. 509+ tests passing.
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Performance & Reliability
 
-- **`redis.keys()` → `scan_iter()`** (`core/persistence.py`) — Non-blocking key enumeration
-- **Async httpx for Ollama** (`core/ollama_service.py`) — No longer blocks event loop
-- **MQTT authentication** (`core/mqtt_bus.py`) — Supports `MOSQUITTO_USER`/`MOSQUITTO_PASSWORD`
-- **RBAC `require_permission` rewrite** (`core/rbac.py`) — Functional FastAPI dependency
-- **Rate limiter stale bucket cleanup** (`core/middleware.py`) — Prevents unbounded memory growth
+- **`redis.keys()` → `scan_iter()`** (`core/persistence.py`) - Non-blocking key enumeration
+- **Async httpx for Ollama** (`core/ollama_service.py`) - No longer blocks event loop
+- **MQTT authentication** (`core/mqtt_bus.py`) - Supports `MOSQUITTO_USER`/`MOSQUITTO_PASSWORD`
+- **RBAC `require_permission` rewrite** (`core/rbac.py`) - Functional FastAPI dependency
+- **Rate limiter stale bucket cleanup** (`core/middleware.py`) - Prevents unbounded memory growth
 
 ---
 
-## [5.2.0CC] — 2026-02-09
+## [5.2.0CC] - 2026-02-09
 
-**Status:** P0/P1 bug fix sweep — 19 fixes across 18 files. 509+ tests passing.
+**Status:** P0/P1 bug fix sweep - 19 fixes across 18 files. 509+ tests passing.
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Critical Fixes
@@ -1005,21 +1005,21 @@ New 20-test-group automated validation suite across 5 levels:
 
 ---
 
-## [5.1.0CC] — 2026-02-07
+## [5.1.0CC] - 2026-02-07
 
 **Status:** 483 tests passing (48 new secrets tests + 435 existing). Zero failures.
 **Contributors:** Claude
 
-### Major: Docker Secrets Management — Closing the Last Critical Gap
+### Major: Docker Secrets Management - Closing the Last Critical Gap
 
 The one security gap that existed in BOTH the inner TelsonBase codebase and the outer TelsonBase wrapper: secrets stored in plaintext `.env` files. This release eliminates that gap entirely for production deployments.
 
 ### Architecture
 
 **Resolution Chain (layered, deterministic):**
-1. Docker secrets files at `/run/secrets/<name>` — **production standard**
-2. Environment variables from `.env` — **development fallback**
-3. Hard error or warning — depending on `TELSONBASE_ENV` mode
+1. Docker secrets files at `/run/secrets/<name>` - **production standard**
+2. Environment variables from `.env` - **development fallback**
+3. Hard error or warning - depending on `TELSONBASE_ENV` mode
 
 **Threat model addressed:**
 - `.env` file exposure via accidental git commit → `secrets/` dir is gitignored + dockerignored
@@ -1059,25 +1059,25 @@ The one security gap that existed in BOTH the inner TelsonBase codebase and the 
 | `webui_secret_key` | `telsonbase_webui_secret` | `WEBUI_SECRET_KEY` | No | 32 |
 | `grafana_admin_password` | `telsonbase_grafana_password` | `GRAFANA_ADMIN_PASSWORD` | No | 12 |
 
-### Test Suite — Full Output
+### Test Suite - Full Output
 
 ```
-tests/test_api.py             — 19 passed
-tests/test_capabilities.py    — 15 passed
-tests/test_signing.py         — 13 passed
-tests/test_qms.py             — 115 passed
-tests/test_behavioral.py      — 30 passed
-tests/test_ollama.py          — 69 passed
-tests/test_toolroom.py        — 134 passed
-tests/test_observability.py   — 40 passed
-tests/test_secrets.py         — 48 passed
+tests/test_api.py             - 19 passed
+tests/test_capabilities.py    - 15 passed
+tests/test_signing.py         - 13 passed
+tests/test_qms.py             - 115 passed
+tests/test_behavioral.py      - 30 passed
+tests/test_ollama.py          - 69 passed
+tests/test_toolroom.py        - 134 passed
+tests/test_observability.py   - 40 passed
+tests/test_secrets.py         - 48 passed
                                 ──────────
                                 483 passed in 7.99s
 ```
 
 ---
 
-## [5.0.0CC] — 2026-02-07
+## [5.0.0CC] - 2026-02-07
 
 **Status:** 435 tests passing (40 new observability tests + 395 existing). Zero failures.
 **Contributors:** Claude
@@ -1088,36 +1088,36 @@ Closes the three remaining architectural gaps identified in the production audit
 
 #### New: Prometheus & Grafana Configuration (`monitoring/`)
 
-- **`monitoring/prometheus.yml`** — Complete scrape configuration targeting all 5 service tiers: TelsonBase API (10s interval), Redis exporter, node-exporter, cAdvisor, and Prometheus self-monitoring. Organized by security zone matching docker-compose network segmentation.
-- **`monitoring/grafana/provisioning/datasources/prometheus.yml`** — Auto-provisions Prometheus as Grafana's default datasource on first boot. Zero manual setup.
-- **`monitoring/grafana/provisioning/dashboards/provider.yml`** — Auto-loads pre-built dashboards from the mounted directory.
-- **`monitoring/grafana/dashboards/telsonbase-operations.json`** — Pre-built Grafana dashboard with 4 panel rows: API Security (auth failures, rate limits, anomalies), HTTP Traffic (request rate, p95 latency), Agent Activity & QMS Protocol (message counts by status, agent actions), Infrastructure (host CPU/memory/disk gauges, Redis memory).
+- **`monitoring/prometheus.yml`** - Complete scrape configuration targeting all 5 service tiers: TelsonBase API (10s interval), Redis exporter, node-exporter, cAdvisor, and Prometheus self-monitoring. Organized by security zone matching docker-compose network segmentation.
+- **`monitoring/grafana/provisioning/datasources/prometheus.yml`** - Auto-provisions Prometheus as Grafana's default datasource on first boot. Zero manual setup.
+- **`monitoring/grafana/provisioning/dashboards/provider.yml`** - Auto-loads pre-built dashboards from the mounted directory.
+- **`monitoring/grafana/dashboards/telsonbase-operations.json`** - Pre-built Grafana dashboard with 4 panel rows: API Security (auth failures, rate limits, anomalies), HTTP Traffic (request rate, p95 latency), Agent Activity & QMS Protocol (message counts by status, agent actions), Infrastructure (host CPU/memory/disk gauges, Redis memory).
 
 #### New: Prometheus Metrics Instrumentation (`core/metrics.py`)
 
-- **`/metrics` endpoint** — Unauthenticated Prometheus-compatible endpoint. Accessible only from internal Docker monitoring network, not publicly exposed via Traefik.
-- **`MetricsMiddleware`** — Automatic HTTP request tracking: count, duration histogram (11 buckets from 5ms to 10s), in-progress gauge. Path normalization prevents label cardinality explosion.
+- **`/metrics` endpoint** - Unauthenticated Prometheus-compatible endpoint. Accessible only from internal Docker monitoring network, not publicly exposed via Traefik.
+- **`MetricsMiddleware`** - Automatic HTTP request tracking: count, duration histogram (11 buckets from 5ms to 10s), in-progress gauge. Path normalization prevents label cardinality explosion.
 - **12 metric families**: `telsonbase_http_requests_total`, `telsonbase_http_request_duration_seconds`, `telsonbase_auth_total`, `telsonbase_qms_messages_total`, `telsonbase_agent_actions_total`, `telsonbase_anomalies_total`, `telsonbase_rate_limited_total`, `telsonbase_approvals_pending`, `telsonbase_approvals_total`, `telsonbase_federation_messages_total`, `telsonbase_sovereign_score`, `telsonbase_sovereign_factor`.
 - **Helper functions** for recording business events: `record_auth()`, `record_qms_message()`, `record_agent_action()`, `record_anomaly()`, `set_sovereign_score()`, etc.
 
 #### New: MQTT Agent-to-Agent Communication Bus (`core/mqtt_bus.py`)
 
-- **`MQTTBus` class** — Singleton connection manager with auto-reconnect, background thread loop, and thread-safe handler registration.
+- **`MQTTBus` class** - Singleton connection manager with auto-reconnect, background thread loop, and thread-safe handler registration.
 - **Topic structure**: `telsonbase/agents/{id}/inbox` (direct), `telsonbase/agents/{id}/outbox` (audit trail), `telsonbase/broadcast/all` (system-wide), `telsonbase/events/{type}` (anomaly/approval/federation events).
-- **`AgentMessage` envelope** — Structured message format with source/target agent, QMS-formatted message_type, payload, signature field, priority level, and reply_to topic. Full JSON serialization/deserialization.
-- **Lifecycle integration** — Bus initializes on application startup (lifespan), subscribes to system events, and shuts down gracefully on exit.
-- **Health check integration** — `/health` endpoint now reports MQTT bus connection status.
+- **`AgentMessage` envelope** - Structured message format with source/target agent, QMS-formatted message_type, payload, signature field, priority level, and reply_to topic. Full JSON serialization/deserialization.
+- **Lifecycle integration** - Bus initializes on application startup (lifespan), subscribes to system events, and shuts down gracefully on exit.
+- **Health check integration** - `/health` endpoint now reports MQTT bus connection status.
 - **Security**: Malformed messages on the bus are caught and logged as `SECURITY_ALERT` audit events.
 
 #### New: Test Suite (`tests/test_observability.py`)
 
 40 new tests across 5 test classes:
-- `TestPrometheusMetrics` (12 tests) — Counter increments, gauge sets, histogram observation, path normalization, metrics response format
-- `TestAgentMessage` (5 tests) — Creation, serialization, broadcast, priority, reply_to
-- `TestMQTTBus` (9 tests) — Connection, subscribe, publish, disconnect, callbacks, malformed message handling
-- `TestMQTTBusSingleton` (1 test) — Singleton pattern verification
-- `TestMonitoringConfigs` (8 tests) — File existence, content validation, JSON parsing for all config files
-- `TestMetricsEndpoint` (3 tests) — HTTP endpoint accessibility, content verification
+- `TestPrometheusMetrics` (12 tests) - Counter increments, gauge sets, histogram observation, path normalization, metrics response format
+- `TestAgentMessage` (5 tests) - Creation, serialization, broadcast, priority, reply_to
+- `TestMQTTBus` (9 tests) - Connection, subscribe, publish, disconnect, callbacks, malformed message handling
+- `TestMQTTBusSingleton` (1 test) - Singleton pattern verification
+- `TestMonitoringConfigs` (8 tests) - File existence, content validation, JSON parsing for all config files
+- `TestMetricsEndpoint` (3 tests) - HTTP endpoint accessibility, content verification
 
 #### Production Audit Gap Closure
 
@@ -1134,67 +1134,67 @@ Closes the three remaining architectural gaps identified in the production audit
 
 | File | Change |
 |------|--------|
-| `core/metrics.py` | **NEW** — Prometheus instrumentation (220 lines) |
-| `core/mqtt_bus.py` | **NEW** — MQTT agent communication bus (340 lines) |
-| `monitoring/prometheus.yml` | **NEW** — Prometheus scrape config |
-| `monitoring/grafana/provisioning/datasources/prometheus.yml` | **NEW** — Grafana auto-provisioning |
-| `monitoring/grafana/provisioning/dashboards/provider.yml` | **NEW** — Dashboard provider |
-| `monitoring/grafana/dashboards/telsonbase-operations.json` | **NEW** — Pre-built Grafana dashboard |
-| `tests/test_observability.py` | **NEW** — 40 tests |
+| `core/metrics.py` | **NEW** - Prometheus instrumentation (220 lines) |
+| `core/mqtt_bus.py` | **NEW** - MQTT agent communication bus (340 lines) |
+| `monitoring/prometheus.yml` | **NEW** - Prometheus scrape config |
+| `monitoring/grafana/provisioning/datasources/prometheus.yml` | **NEW** - Grafana auto-provisioning |
+| `monitoring/grafana/provisioning/dashboards/provider.yml` | **NEW** - Dashboard provider |
+| `monitoring/grafana/dashboards/telsonbase-operations.json` | **NEW** - Pre-built Grafana dashboard |
+| `tests/test_observability.py` | **NEW** - 40 tests |
 | `main.py` | Added /metrics endpoint, MetricsMiddleware, MQTT lifecycle, MQTT health status |
 | `version.py` | `4.9.0CC` → `5.0.0CC` |
 
-### Test Suite — Full Output
+### Test Suite - Full Output
 
 ```
-tests/test_api.py             — 19 passed
-tests/test_capabilities.py    — 15 passed
-tests/test_signing.py         — 13 passed
-tests/test_qms.py             — 115 passed
-tests/test_behavioral.py      — 30 passed
-tests/test_ollama.py          — 69 passed
-tests/test_toolroom.py        — 134 passed
-tests/test_observability.py   — 40 passed
+tests/test_api.py             - 19 passed
+tests/test_capabilities.py    - 15 passed
+tests/test_signing.py         - 13 passed
+tests/test_qms.py             - 115 passed
+tests/test_behavioral.py      - 30 passed
+tests/test_ollama.py          - 69 passed
+tests/test_toolroom.py        - 134 passed
+tests/test_observability.py   - 40 passed
                                 ──────────
                                 435 passed in 7.67s
 ```
 
-## [4.9.0CC] — 2026-02-07
+## [4.9.0CC] - 2026-02-07
 
 **Status:** 365 tests passing (49 new Ollama tests + 316 existing). Zero failures.
 **Contributors:** Claude (bug fix, integration verification)
 
-### Ollama/LLM Integration — Verified Complete
+### Ollama/LLM Integration - Verified Complete
 
 Full investigation of the three-layer Ollama architecture confirmed all components were already implemented. One capability system bug prevented agent instantiation.
 
 #### Bug Fix
 
-- **`core/capabilities.py`** — Added `MANAGE = "manage"` to `ActionType` enum
+- **`core/capabilities.py`** - Added `MANAGE = "manage"` to `ActionType` enum
   - Root cause: `OllamaAgent` declared `ollama.manage:*` capabilities but the enum only had read/write/execute/publish/subscribe/none
   - `ValueError: 'manage' is not a valid ActionType` on agent construction
   - All 12 agent-layer tests were failing from this single missing enum value
 
 #### Verified Components (already existed, no changes needed)
 
-- **`core/ollama_service.py`** (570 lines) — Direct httpx→Ollama REST client
+- **`core/ollama_service.py`** (570 lines) - Direct httpx→Ollama REST client
   - Health, list, info, pull, delete, generate, chat
   - Recommended models registry with tier classification
   - QMS protocol throughout, singleton pattern
-- **`agents/ollama_agent.py`** (345 lines) — SecureAgent wrapper
+- **`agents/ollama_agent.py`** (345 lines) - SecureAgent wrapper
   - 9 supported actions: generate, chat, list_models, model_info, pull_model, delete_model, health_check, recommended, set_default
   - Approval required for pull_model, delete_model
   - Full error handling for Ollama exception hierarchy
-- **`main.py /v1/llm/*`** (lines 1644-1920) — 9 API endpoints
+- **`main.py /v1/llm/*`** (lines 1644-1920) - 9 API endpoints
   - GET health, models, recommended, model detail
   - POST pull, generate, chat; DELETE model; PUT default
   - All auth-gated, audit-logged, QMS-compliant
-- **`tests/test_ollama.py`** (834 lines) — 49 tests across all three layers
-- **`requirements.txt`** — ollama client removed, httpx direct (no version pin conflict)
+- **`tests/test_ollama.py`** (834 lines) - 49 tests across all three layers
+- **`requirements.txt`** - ollama client removed, httpx direct (no version pin conflict)
 
 ---
 
-## [4.7.0CC] — 2026-02-07
+## [4.7.0CC] - 2026-02-07
 
 **Status:** 316 tests passing (115 new QMS tests + 201 existing). Zero failures.
 **Contributors:** Claude (specification synthesis, test suite, documentation)
@@ -1205,21 +1205,21 @@ Synthesized from 8 source documents into a single canonical reference. Implement
 
 #### New Features
 
-- **QMS_SPECIFICATION.md** — Complete formal reference for QMS v2.1.6
+- **QMS_SPECIFICATION.md** - Complete formal reference for QMS v2.1.6
   - Guiding philosophy, core components, validation rules, block types
   - Use cases with TelsonBase-specific examples (toolroom, backup, federation)
   - Implementation status and migration path from legacy format
   - Design rationale (auditability, radio analogy, defense in depth)
 
 - **Agent Identity Origin Block** `::<agent_id>::`
-  - Mandatory position 1 in every chain — the "radio callsign"
+  - Mandatory position 1 in every chain - the "radio callsign"
   - Supports numerical IDs: `::<backup_agent/007>::`
   - Supports federation: `::<alpha_instance/sync_agent/012>::`
   - Missing origin = anonymous transmission = security alert
   - Analogy: no radio on the hotel comms network = suspect
 
 - **Correlation Block** `::@@REQ_id@@::`
-  - Mandatory position 2 — links request to response
+  - Mandatory position 2 - links request to response
   - Auto-generated `REQ_` + 8 hex chars (from UUID4)
   - Enables `grep @@REQ_id@@` to get complete conversation thread
   - Without this, 15 concurrent agents produce unintelligible log interleaving
@@ -1257,7 +1257,7 @@ Synthesized from 8 source documents into a single canonical reference. Implement
 | `version.py` | Updated | 4.6.0CC → 4.7.0CC |
 | `CHANGELOG.md` | Updated | This entry |
 
-### Core Implementation (unchanged — already built in 4.6.0CC)
+### Core Implementation (unchanged - already built in 4.6.0CC)
 
 The `core/qms.py` module already contained the v2.1.6 chain infrastructure:
 `build_chain()`, `build_halt_chain()`, `parse_chain()`, `find_chains()`,
@@ -1267,9 +1267,9 @@ that validates and documents that implementation.
 
 ---
 
-## [4.3.3CC] — 2026-02-04
+## [4.3.3CC] - 2026-02-04
 
-**Status:** Documentation completeness — Gemini review (Perspective 3/4)
+**Status:** Documentation completeness - Gemini review (Perspective 3/4)
 **Contributors:** Claude Code, Gemini 3 - Documentation Analysis
 
 ### Documentation Enhancements
@@ -1311,9 +1311,9 @@ Based on Gemini's comprehensive documentation analysis (Grade: A):
 
 ---
 
-## [4.3.2CC] — 2026-02-04
+## [4.3.2CC] - 2026-02-04
 
-**Status:** Comprehensive analysis integration — Gemini review (Perspective 2/4)
+**Status:** Comprehensive analysis integration - Gemini review (Perspective 2/4)
 **Contributors:** Claude Code, Gemini 3 - Validation & Review
 
 ### Documentation
@@ -1344,9 +1344,9 @@ Based on Gemini's comprehensive documentation analysis (Grade: A):
 
 ---
 
-## [4.3.1CC] — 2026-02-04
+## [4.3.1CC] - 2026-02-04
 
-**Status:** Documentation milestone — Gemini review integration (Perspective 1/4)
+**Status:** Documentation milestone - Gemini review integration (Perspective 1/4)
 **Contributors:** Claude Code, Gemini 3 - Review
 
 ### Documentation Improvements
@@ -1380,24 +1380,24 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### AI Collaboration Documentation
 
-- Added `docs/claude_code_comments.md` — Claude Code's project observations
-- Added `docs/gemini_comments.md` — Template for Gemini's observations
+- Added `docs/claude_code_comments.md` - Claude Code's project observations
+- Added `docs/gemini_comments.md` - Template for Gemini's observations
 - Updated README.md with AI collaborator credits and human oversight note
 
 ---
 
-## [4.1.0CC] — 2026-02-04
+## [4.1.0CC] - 2026-02-04
 
-**Status:** Production hardening release — Full Redis persistence + Integration tests
+**Status:** Production hardening release - Full Redis persistence + Integration tests
 **Contributor:** Claude Code (Anthropic)
 
 ### Major Enhancements
 
 - **Redis Persistence** (All security modules now persist to Redis)
-  - `core/signing.py` — Agent keys persist across restarts
-  - `core/approval.py` — Pending approvals survive container restarts
-  - `core/anomaly.py` — Behavioral baselines and anomalies persisted
-  - `federation/trust.py` — Trust relationships persisted (session keys excluded for security)
+  - `core/signing.py` - Agent keys persist across restarts
+  - `core/approval.py` - Pending approvals survive container restarts
+  - `core/anomaly.py` - Behavioral baselines and anomalies persisted
+  - `federation/trust.py` - Trust relationships persisted (session keys excluded for security)
 
 - **Key Revocation Mechanism** (`core/signing.py`)
   - Added `revoke_agent(agent_id, reason, revoked_by)` with full audit trail
@@ -1429,9 +1429,9 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [4.0.5CC] — 2026-02-04
+## [4.0.5CC] - 2026-02-04
 
-**Status:** Security hardening release — All 47 tests passing
+**Status:** Security hardening release - All 47 tests passing
 **Contributor:** Claude Code (Anthropic)
 
 ### Security Improvements
@@ -1450,9 +1450,9 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Bug Fixes
 - **Fixed bare `except:` handlers** (security best practice)
-  - `agents/document_agent.py:216` — Now catches `(IOError, OSError, UnicodeDecodeError)`
-  - `agents/document_agent.py:515` — Now catches `(IOError, OSError)`
-  - `main.py:306` — Now catches `Exception` with logging
+  - `agents/document_agent.py:216` - Now catches `(IOError, OSError, UnicodeDecodeError)`
+  - `agents/document_agent.py:515` - Now catches `(IOError, OSError)`
+  - `main.py:306` - Now catches `Exception` with logging
 
 - **Fixed HTTPException format** (`main.py:396`)
   - `detail` parameter now string, not dict (FastAPI convention)
@@ -1475,35 +1475,35 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [4.0.1C] — 2026-02-04
+## [4.0.1C] - 2026-02-04
 
-**Status:** Documentation release — GitHub-ready  
+**Status:** Documentation release - GitHub-ready  
 **Contributor:** Claude (Anthropic)
 
 ### Added
-- `LICENSE` — MIT License with Quietfire AI social impact commitment
-- `SECURITY.md` — Vulnerability reporting procedures
-- `CONTRIBUTING.md` — Project-specific contribution guide with QMS conventions
-- `CODE_OF_CONDUCT.md` — Community standards
-- `GLOSSARY.md` — 25+ term definitions
-- `PROJECT_STRUCTURE.md` — Accurate directory documentation
-- `.github/ISSUE_TEMPLATE/bug_report.md` — Bug report template
-- `.github/ISSUE_TEMPLATE/feature_request.md` — Feature request template
-- `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist
+- `LICENSE` - MIT License with Quietfire AI social impact commitment
+- `SECURITY.md` - Vulnerability reporting procedures
+- `CONTRIBUTING.md` - Project-specific contribution guide with QMS conventions
+- `CODE_OF_CONDUCT.md` - Community standards
+- `GLOSSARY.md` - 25+ term definitions
+- `PROJECT_STRUCTURE.md` - Accurate directory documentation
+- `.github/ISSUE_TEMPLATE/bug_report.md` - Bug report template
+- `.github/ISSUE_TEMPLATE/feature_request.md` - Feature request template
+- `.github/PULL_REQUEST_TEMPLATE.md` - PR checklist
 
 ### Changed
 - Consolidated `CHANGELOG_v3.0.1.md`, `CHANGELOG_v3.0.2.md`, `CHANGELOG_v3.0.3.md` into single `CHANGELOG.md`
 
 ---
 
-## [4.0.0C] — 2026-02-04
+## [4.0.0C] - 2026-02-04
 
-**Status:** Bug fix release — Config validation  
+**Status:** Bug fix release - Config validation  
 **Contributor:** Claude (Anthropic)  
 **Bug Source:** Gemini Colab test run v4.0.0G
 
 ### Fixed
-- `core/config.py` — Added missing Settings fields causing `ValidationError`:
+- `core/config.py` - Added missing Settings fields causing `ValidationError`:
   - `backup_dir_host_path`
   - `webui_secret_key`
   - `grafana_admin_user`
@@ -1511,16 +1511,16 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [3.0.3] — 2026-02-03
+## [3.0.3] - 2026-02-03
 
-**Status:** Major feature release — Production hardening + Complete agent ecosystem  
+**Status:** Major feature release - Production hardening + Complete agent ecosystem  
 **Contributor:** Claude (Anthropic)
 
 ### Added
 - **n8n Integration** (`api/n8n_integration.py`)
-  - `/v1/n8n/execute` — Execute agent actions from n8n
-  - `/v1/n8n/agents` — List available agents
-  - `/v1/n8n/approvals/{id}/status` — Poll approval status
+  - `/v1/n8n/execute` - Execute agent actions from n8n
+  - `/v1/n8n/agents` - List available agents
+  - `/v1/n8n/approvals/{id}/status` - Poll approval status
   - Webhook callbacks for async approval workflows
 
 - **Production Middleware** (`core/middleware.py`)
@@ -1546,19 +1546,19 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [3.0.2] — 2026-02-03
+## [3.0.2] - 2026-02-03
 
-**Status:** Feature release — QMS integration  
+**Status:** Feature release - QMS integration  
 **Contributor:** Claude (Anthropic)
 
 ### Added
 - **QMS Module** (`core/qms.py`)
   - `QMSStatus` enum (Please, Thank_You, Thank_You_But_No, Excuse_Me, Pretty_Please)
-  - `validate_qms()` — Validate message format
-  - `parse_qms()` — Parse into structured QMSMessage
-  - `format_qms()` — Format outgoing messages
+  - `validate_qms()` - Validate message format
+  - `parse_qms()` - Parse into structured QMSMessage
+  - `format_qms()` - Format outgoing messages
   - `qms_endpoint` decorator
-  - `log_qms_transaction()` — Audit trail logging
+  - `log_qms_transaction()` - Audit trail logging
 
 - **Audit Event Types** (`core/audit.py`)
   - `SECURITY_ALERT`
@@ -1569,37 +1569,37 @@ Based on Gemini's documentation analysis and recommendations:
   - LangChain dependencies (isolated, not integrated)
 
 ### Changed
-- `main.py` — Added QMS protocol documentation header
-- `agents/base.py` — Added QMS protocol documentation
-- `core/__init__.py` — QMS exports
+- `main.py` - Added QMS protocol documentation header
+- `agents/base.py` - Added QMS protocol documentation
+- `core/__init__.py` - QMS exports
 
 ---
 
-## [3.0.1] — 2026-02-03
+## [3.0.1] - 2026-02-03
 
-**Status:** Bug fix release — All 47 tests passing  
+**Status:** Bug fix release - All 47 tests passing  
 **Bug Source:** Gemini Colab test run  
 **Contributor:** Claude (Anthropic)
 
 ### Fixed
-- **Bug 1:** `federation/trust.py` — FederatedMessage dataclass field ordering
+- **Bug 1:** `federation/trust.py` - FederatedMessage dataclass field ordering
   - Error: `TypeError: non-default argument 'action' follows default argument`
   - Fix: Reordered fields so required fields precede optional fields
 
-- **Bug 2:** `core/auth.py` — AuditEventType import
+- **Bug 2:** `core/auth.py` - AuditEventType import
   - Error: `AttributeError: 'AuditLogger' object has no attribute 'AuditEventType'`
   - Fix: Added `AuditEventType` to imports, fixed references
 
-- **Bug 3:** `requirements.txt` — Dependency conflicts
+- **Bug 3:** `requirements.txt` - Dependency conflicts
   - `httpx==0.26.0` → `httpx==0.25.2` (ollama compatibility)
   - `pytest==8.0.0` → `pytest==7.4.4` (pytest-asyncio compatibility)
   - Removed duplicate sections
 
 ---
 
-## [3.0.0] — 2026-02-03
+## [3.0.0] - 2026-02-03
 
-**Status:** Major release — Zero-trust agent security  
+**Status:** Major release - Zero-trust agent security  
 **Contributor:** Claude (Anthropic)
 
 ### Added
@@ -1637,7 +1637,7 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [2.0.0] — 2026-02-03
+## [2.0.0] - 2026-02-03
 
 **Status:** Production-ready foundation  
 **Contributor:** Claude (Anthropic)
@@ -1650,7 +1650,7 @@ Based on Gemini's documentation analysis and recommendations:
 
 ---
 
-## [1.0.1] — 2026-02 (Initial)
+## [1.0.1] - 2026-02 (Initial)
 
 **Status:** Proof of concept
 **Architect:** Jeff Phillips
@@ -1667,11 +1667,11 @@ Based on Gemini's documentation analysis and recommendations:
 
 | Suffix | Contributor |
 |--------|-------------|
-| G | Gemini (Google) — Testing, validation, documentation review |
-| C | Claude (Anthropic) — Implementation, architecture |
-| CC | Claude Code (Anthropic) — Production hardening, security, toolroom |
+| G | Gemini (Google) - Testing, validation, documentation review |
+| C | Claude (Anthropic) - Implementation, architecture |
+| CC | Claude Code (Anthropic) - Production hardening, security, toolroom |
 
 ---
 
-**Architect:** Jeff Phillips — support@telsonbase.com
+**Architect:** Jeff Phillips - support@telsonbase.com
 **Project:** TelsonBase by Quietfire AI

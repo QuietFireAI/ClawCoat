@@ -1,4 +1,4 @@
-# TB-TEST-SEC-020 — TestEncryptionIntegrity · `test_aes256gcm_ciphertext_differs_from_plaintext`
+# TB-TEST-SEC-020 - TestEncryptionIntegrity · `test_aes256gcm_ciphertext_differs_from_plaintext`
 
 **Sheet ID:** TB-TEST-SEC-020
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

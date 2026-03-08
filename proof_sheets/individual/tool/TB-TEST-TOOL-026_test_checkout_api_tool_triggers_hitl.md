@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-026 — TestForemanCheckout · `test_checkout_api_tool_triggers_hitl`
+# TB-TEST-TOOL-026 - TestForemanCheckout · `test_checkout_api_tool_triggers_hitl`
 
 **Sheet ID:** TB-TEST-TOOL-026
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

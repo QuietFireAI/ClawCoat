@@ -1,4 +1,4 @@
-# TB-TEST-BEH-006 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_THEN_generate_and_chat_do_NOT_require_approval`
+# TB-TEST-BEH-006 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_THEN_generate_and_chat_do_NOT_require_approval`
 
 **Sheet ID:** TB-TEST-BEH-006
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

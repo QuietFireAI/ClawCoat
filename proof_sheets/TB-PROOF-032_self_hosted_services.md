@@ -1,7 +1,7 @@
 # TB-PROOF-032: 10 Self-Hosted Services
 
 **Sheet ID:** TB-PROOF-032
-**Claim Source:** telsonbase.com — Integrations Section
+**Claim Source:** telsonbase.com - Integrations Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -13,21 +13,21 @@
 > "Everything runs on your hardware"
 > "No SaaS dependencies. No OpenAI, Google cloud or external API calls for core functionality."
 
-## Reviewer Note — Infrastructure Evidence
+## Reviewer Note - Infrastructure Evidence
 
 > **Do NOT search Python application source for service definitions.**
-> The self-hosted service stack is defined in `docker-compose.yml` — not in any `.py` file.
+> The self-hosted service stack is defined in `docker-compose.yml` - not in any `.py` file.
 >
 > **Where to look:**
-> - `docker-compose.yml` lines 24-510 — all service definitions, images, ports, networks
-> - `docker-compose.yml` network definitions — 5 isolated networks, `data` and `ai` marked `internal: true`
+> - `docker-compose.yml` lines 24-510 - all service definitions, images, ports, networks
+> - `docker-compose.yml` network definitions - 5 isolated networks, `data` and `ai` marked `internal: true`
 >
 > A code-only scanner that searches `.py` files exclusively will not find this evidence.
 > That is a scanner limitation, not a gap in the implementation.
 
 ## Verdict
 
-VERIFIED — `docker-compose.yml` defines 10 services, all running as local Docker containers. Zero external service dependencies for core functionality.
+VERIFIED - `docker-compose.yml` defines 10 services, all running as local Docker containers. Zero external service dependencies for core functionality.
 
 ## Evidence
 
@@ -46,8 +46,8 @@ VERIFIED — `docker-compose.yml` defines 10 services, all running as local Dock
 | 4 | `mosquitto` | eclipse-mosquitto:2 | MQTT agent-to-agent messaging | 1883 |
 | 5 | `ollama` | ollama/ollama:latest | Local LLM inference | 11434 |
 | 6 | `mcp_server` | (built from Dockerfile) | Main FastAPI application | 8000 |
-| 7 | `worker` | (built from Dockerfile) | Celery background tasks | — |
-| 8 | `beat` | (built from Dockerfile) | Celery scheduled tasks | — |
+| 7 | `worker` | (built from Dockerfile) | Celery background tasks | - |
+| 8 | `beat` | (built from Dockerfile) | Celery scheduled tasks | - |
 | 9 | `prometheus` | prom/prometheus:v2.49.1 | Metrics collection | 9090 |
 | 10 | `grafana` | grafana/grafana:10.3.1 | Monitoring dashboards | 3000 |
 
@@ -63,7 +63,7 @@ VERIFIED — `docker-compose.yml` defines 10 services, all running as local Dock
 
 ### Technology Stack (matching website logos)
 
-FastAPI, PostgreSQL, Redis, Ollama, Traefik, Celery, MQTT (Mosquitto), Prometheus, Grafana, Docker — all self-hosted.
+FastAPI, PostgreSQL, Redis, Ollama, Traefik, Celery, MQTT (Mosquitto), Prometheus, Grafana, Docker - all self-hosted.
 
 ## Verification Command
 

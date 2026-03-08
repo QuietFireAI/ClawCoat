@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-109 — TestApprovalStatusLookup · `test_get_status_not_found`
+# TB-TEST-TOOL-109 - TestApprovalStatusLookup · `test_get_status_not_found`
 
 **Sheet ID:** TB-TEST-TOOL-109
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

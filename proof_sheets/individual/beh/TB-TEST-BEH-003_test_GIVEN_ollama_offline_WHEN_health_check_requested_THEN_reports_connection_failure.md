@@ -1,4 +1,4 @@
-# TB-TEST-BEH-003 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_offline_WHEN_health_check_requested_THEN_reports_connection_failure`
+# TB-TEST-BEH-003 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_offline_WHEN_health_check_requested_THEN_reports_connection_failure`
 
 **Sheet ID:** TB-TEST-BEH-003
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

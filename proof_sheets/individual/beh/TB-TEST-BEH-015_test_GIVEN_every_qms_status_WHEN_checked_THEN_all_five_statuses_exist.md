@@ -1,4 +1,4 @@
-# TB-TEST-BEH-015 — TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_every_qms_status_WHEN_checked_THEN_all_five_statuses_exist`
+# TB-TEST-BEH-015 - TestBehavior_QMS_ProtocolDiscipline · `test_GIVEN_every_qms_status_WHEN_checked_THEN_all_five_statuses_exist`
 
 **Sheet ID:** TB-TEST-BEH-015
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

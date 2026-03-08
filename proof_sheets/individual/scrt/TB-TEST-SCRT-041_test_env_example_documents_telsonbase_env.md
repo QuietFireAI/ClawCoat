@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-041 — TestDockerComposeSecrets · `test_env_example_documents_telsonbase_env`
+# TB-TEST-SCRT-041 - TestDockerComposeSecrets · `test_env_example_documents_telsonbase_env`
 
 **Sheet ID:** TB-TEST-SCRT-041
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

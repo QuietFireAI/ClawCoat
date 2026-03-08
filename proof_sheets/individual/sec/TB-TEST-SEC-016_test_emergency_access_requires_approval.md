@@ -1,4 +1,4 @@
-# TB-TEST-SEC-016 — TestAuthSecurity · `test_emergency_access_requires_approval`
+# TB-TEST-SEC-016 - TestAuthSecurity · `test_emergency_access_requires_approval`
 
 **Sheet ID:** TB-TEST-SEC-016
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

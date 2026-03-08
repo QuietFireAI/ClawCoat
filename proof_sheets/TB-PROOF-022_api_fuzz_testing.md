@@ -1,7 +1,7 @@
 # TB-PROOF-022: 151 API Operations Fuzz-Tested
 
 **Sheet ID:** TB-PROOF-022
-**Claim Source:** telsonbase.com — Security Testing Section
+**Claim Source:** telsonbase.com - Security Testing Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — Schemathesis fuzz testing covered 151 API operations as documented in `version.py` v7.2.5CC entry (line 312). 16 code fixes were made to achieve 0 server errors.
+VERIFIED - Schemathesis fuzz testing covered 151 API operations as documented in `version.py` v7.2.5CC entry (line 312). 16 code fixes were made to achieve 0 server errors.
 
 ## Evidence
 

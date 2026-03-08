@@ -1,4 +1,4 @@
-# TB-TEST-CTRCT-004 — TestAgentTrustLevelContract · `test_trust_level_promotion_path_intact`
+# TB-TEST-CTRCT-004 - TestAgentTrustLevelContract · `test_trust_level_promotion_path_intact`
 
 **Sheet ID:** TB-TEST-CTRCT-004
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
 
 ## Source
 

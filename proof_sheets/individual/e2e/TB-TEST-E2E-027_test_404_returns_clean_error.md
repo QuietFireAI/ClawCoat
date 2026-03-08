@@ -1,4 +1,4 @@
-# TB-TEST-E2E-027 — TestErrorSanitization · `test_404_returns_clean_error`
+# TB-TEST-E2E-027 - TestErrorSanitization · `test_404_returns_clean_error`
 
 **Sheet ID:** TB-TEST-E2E-027
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,7 +1,7 @@
 # TB-PROOF-031: Non-Root Container Execution
 
 **Sheet ID:** TB-PROOF-031
-**Claim Source:** SECURITY.md — Container Security
+**Claim Source:** SECURITY.md - Container Security
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -12,22 +12,22 @@
 
 > "All containers run as non-root users (UID 1000)"
 
-## Reviewer Note — Infrastructure Evidence
+## Reviewer Note - Infrastructure Evidence
 
 > **Do NOT search Python application source for container user configuration.**
 > Non-root execution is enforced at the container build layer, not in application code.
 >
 > **Where to look:**
-> - `Dockerfile` lines 18-19 — `groupadd`/`useradd` for `aiagent` (UID 1000)
-> - `Dockerfile` line 51 — `USER aiagent` directive
-> - `.github/workflows/ci.yml` lines 133-137 — CI verification: `whoami | grep -q "aiagent"`
+> - `Dockerfile` lines 18-19 - `groupadd`/`useradd` for `aiagent` (UID 1000)
+> - `Dockerfile` line 51 - `USER aiagent` directive
+> - `.github/workflows/ci.yml` lines 133-137 - CI verification: `whoami | grep -q "aiagent"`
 >
 > A code-only scanner that searches `.py` files exclusively will not find this evidence.
 > That is a scanner limitation, not a gap in the implementation.
 
 ## Verdict
 
-VERIFIED — `Dockerfile` creates user `aiagent` (UID 1000) and sets `USER aiagent`. CI pipeline verifies this with `docker run --rm ... whoami`.
+VERIFIED - `Dockerfile` creates user `aiagent` (UID 1000) and sets `USER aiagent`. CI pipeline verifies this with `docker run --rm ... whoami`.
 
 ## Evidence
 

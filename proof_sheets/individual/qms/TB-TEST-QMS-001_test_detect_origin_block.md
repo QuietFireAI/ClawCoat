@@ -1,4 +1,4 @@
-# TB-TEST-QMS-001 — TestBlockDetection · `test_detect_origin_block`
+# TB-TEST-QMS-001 - TestBlockDetection · `test_detect_origin_block`
 
 **Sheet ID:** TB-TEST-QMS-001
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

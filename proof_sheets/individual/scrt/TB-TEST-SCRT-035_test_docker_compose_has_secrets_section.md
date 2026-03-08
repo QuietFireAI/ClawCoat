@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-035 — TestDockerComposeSecrets · `test_docker_compose_has_secrets_section`
+# TB-TEST-SCRT-035 - TestDockerComposeSecrets · `test_docker_compose_has_secrets_section`
 
 **Sheet ID:** TB-TEST-SCRT-035
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

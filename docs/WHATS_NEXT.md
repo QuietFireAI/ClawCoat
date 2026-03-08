@@ -1,8 +1,8 @@
-# TelsonBase — What's Next
+# TelsonBase - What's Next
 
 **Version:** v11.0.1 · **Launch:** March 6, 2026 · **Maintainer:** Quietfire AI
 
-This document is an honest account of where TelsonBase stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact — things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
+This document is an honest account of where TelsonBase stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
 ---
 
@@ -32,7 +32,7 @@ Everything documented in the README is built, tested, and passing 720 tests. Tha
 
 These are gaps we know about. None of them are surprise findings. They are deferred because shipping a working, tested platform now beats a perfect platform at an unknown future date.
 
-### 1. RBAC User State — Single Worker Required
+### 1. RBAC User State - Single Worker Required
 
 **What it is:** `RBACManager._users` is an in-memory dict with no Redis persistence. Under multiple Gunicorn workers, a user registered on Worker A cannot log in via Worker B.
 
@@ -60,11 +60,11 @@ These are gaps we know about. None of them are surprise findings. They are defer
 
 **Fix:** Celery beat task for Redis → PostgreSQL archival on a configurable schedule. Scheduled.
 
-### 5. Demotion Review — Advisory Mode in Beta
+### 5. Demotion Review - Advisory Mode in Beta
 
 **What it is:** When an agent is demoted, a review flag is set requiring human sign-off via `POST /v1/openclaw/{id}/clear-review` before re-promotion. In beta this is advisory (promotion proceeds with an audit warning).
 
-**Post-launch:** Convert advisory to hard block — one line change in `promote_trust()`. The infrastructure is in place. The decision to make it advisory in beta was deliberate: new operators need to learn the workflow before it blocks them.
+**Post-launch:** Convert advisory to hard block - one line change in `promote_trust()`. The infrastructure is in place. The decision to make it advisory in beta was deliberate: new operators need to learn the workflow before it blocks them.
 
 ### 6. Agent Actor Attribution in Approval Decisions
 
@@ -78,40 +78,40 @@ These are gaps we know about. None of them are surprise findings. They are defer
 
 These are the first things that get worked on after launch:
 
-1. **RBAC Redis persistence** — unblock multi-worker deployments
-2. **User management live endpoint** — close the dashboard data gap
-3. **Demotion review hard-block** — flip advisory → enforcing
-4. **Audit chain PostgreSQL archival** — production-grade chain storage
-5. **QMS real-time log feed** — Server-Sent Events from audit log to dashboard
+1. **RBAC Redis persistence** - unblock multi-worker deployments
+2. **User management live endpoint** - close the dashboard data gap
+3. **Demotion review hard-block** - flip advisory → enforcing
+4. **Audit chain PostgreSQL archival** - production-grade chain storage
+5. **QMS real-time log feed** - Server-Sent Events from audit log to dashboard
 
 ---
 
 ## Integration Roadmap
 
-### OpenClaw (Current — Beta)
-Full governance proxy integration is live. Every action evaluated through the 8-step pipeline. Trust levels, Manners, anomaly detection, kill switch, approval gates — all working.
+### OpenClaw (Current - Beta)
+Full governance proxy integration is live. Every action evaluated through the 8-step pipeline. Trust levels, Manners, anomaly detection, kill switch, approval gates - all working.
 
 ### Identiclaw (Post-Launch)
-TelsonBase's W3C DID identity engine (`core/identiclaw.py`) is built and tested — Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
+TelsonBase's W3C DID identity engine (`core/identiclaw.py`) is built and tested - Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
 
 The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how TelsonBase thinks about agent identity.
 
-### Goose (Current — Native MCP)
+### Goose (Current - Native MCP)
 Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 TelsonBase tools are available. Configuration via `goose.yaml`.
 
 ### Other Agent Frameworks
-OpenClaw is a third-party autonomous AI agent. TelsonBase's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer — every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
+OpenClaw is a third-party autonomous AI agent. TelsonBase's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer - every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
 
-Any MCP-compatible agent framework can connect to TelsonBase without modification. The governance proxy wraps the agent at the MCP layer — the agent never needs to know TelsonBase exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
+Any MCP-compatible agent framework can connect to TelsonBase without modification. The governance proxy wraps the agent at the MCP layer - the agent never needs to know TelsonBase exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
 
 ---
 
 ## Compliance Roadmap
 
 SOC 2 Type I documentation and 51 controls are complete. The path to Type II is:
-1. **90-day observation period** — automated collection of evidence already in place via the audit chain
-2. **Auditor engagement** — Quietfire AI consulting customers and enterprise sponsors will receive assistance
-3. **Continuous monitoring** — Prometheus + Grafana dashboards + QMS log feed
+1. **90-day observation period** - automated collection of evidence already in place via the audit chain
+2. **Auditor engagement** - Quietfire AI consulting customers and enterprise sponsors will receive assistance
+3. **Continuous monitoring** - Prometheus + Grafana dashboards + QMS log feed
 
 Full compliance roadmap: [`docs/Compliance Documents/COMPLIANCE_ROADMAP.md`](Compliance%20Documents/COMPLIANCE_ROADMAP.md)
 

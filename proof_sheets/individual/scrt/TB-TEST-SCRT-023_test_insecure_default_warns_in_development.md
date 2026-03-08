@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-023 — TestSecretsProvider · `test_insecure_default_warns_in_development`
+# TB-TEST-SCRT-023 - TestSecretsProvider · `test_insecure_default_warns_in_development`
 
 **Sheet ID:** TB-TEST-SCRT-023
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

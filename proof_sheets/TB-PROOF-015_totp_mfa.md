@@ -1,7 +1,7 @@
 # TB-PROOF-015: RFC 6238 TOTP Multi-Factor Authentication
 
 **Sheet ID:** TB-PROOF-015
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/mfa.py` implements RFC 6238 TOTP using the `pyotp` library with QR provisioning URIs, 10 backup codes, and replay attack prevention via constant-time comparison.
+VERIFIED - `core/mfa.py` implements RFC 6238 TOTP using the `pyotp` library with QR provisioning URIs, 10 backup codes, and replay attack prevention via constant-time comparison.
 
 ## Evidence
 

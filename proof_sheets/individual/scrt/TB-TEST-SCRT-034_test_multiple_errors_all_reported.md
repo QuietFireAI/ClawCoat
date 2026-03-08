@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-034 — TestProductionStartupGuard · `test_multiple_errors_all_reported`
+# TB-TEST-SCRT-034 - TestProductionStartupGuard · `test_multiple_errors_all_reported`
 
 **Sheet ID:** TB-TEST-SCRT-034
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

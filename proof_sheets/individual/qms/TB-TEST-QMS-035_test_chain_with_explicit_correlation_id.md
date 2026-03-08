@@ -1,4 +1,4 @@
-# TB-TEST-QMS-035 — TestBuildChain · `test_chain_with_explicit_correlation_id`
+# TB-TEST-QMS-035 - TestBuildChain · `test_chain_with_explicit_correlation_id`
 
 **Sheet ID:** TB-TEST-QMS-035
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

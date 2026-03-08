@@ -1,4 +1,4 @@
-# TB-TEST-BEH-022 — TestBehavior_SystemResilience · `test_GIVEN_authenticated_request_WHEN_root_endpoint_hit_THEN_returns_welcome`
+# TB-TEST-BEH-022 - TestBehavior_SystemResilience · `test_GIVEN_authenticated_request_WHEN_root_endpoint_hit_THEN_returns_welcome`
 
 **Sheet ID:** TB-TEST-BEH-022
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

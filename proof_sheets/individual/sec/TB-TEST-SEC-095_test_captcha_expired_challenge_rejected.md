@@ -1,4 +1,4 @@
-# TB-TEST-SEC-095 — TestRuntimeBoundaries · `test_captcha_expired_challenge_rejected`
+# TB-TEST-SEC-095 - TestRuntimeBoundaries · `test_captcha_expired_challenge_rejected`
 
 **Sheet ID:** TB-TEST-SEC-095
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> An expired CAPTCHA challenge is rejected even with the correct answer — time enforcement is real
+> An expired CAPTCHA challenge is rejected even with the correct answer - time enforcement is real
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

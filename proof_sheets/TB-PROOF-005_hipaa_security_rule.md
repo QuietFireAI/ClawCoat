@@ -1,7 +1,7 @@
 # TB-PROOF-005: HIPAA Security Rule Full Mapping
 
 **Sheet ID:** TB-PROOF-005
-**Claim Source:** telsonbase.com — Compliance Section
+**Claim Source:** telsonbase.com - Compliance Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "HIPAA Security Rule — Full mapping across Administrative, Physical, Technical, and Organizational safeguards (45 CFR Part 164)."
+> "HIPAA Security Rule - Full mapping across Administrative, Physical, Technical, and Organizational safeguards (45 CFR Part 164)."
 
 ## Verdict
 
-VERIFIED — 12 HIPAA/HITECH compliance modules implemented with real enforcement logic across `core/` directory, documented in `docs/Compliance Documents/HEALTHCARE_COMPLIANCE.md`.
+VERIFIED - 12 HIPAA/HITECH compliance modules implemented with real enforcement logic across `core/` directory, documented in `docs/Compliance Documents/HEALTHCARE_COMPLIANCE.md`.
 
 ## Evidence
 
@@ -41,10 +41,10 @@ VERIFIED — 12 HIPAA/HITECH compliance modules implemented with real enforcemen
 |---|---|---|
 | Administrative | 45 CFR 164.308 | User management, training, access controls, BAA tracking |
 | Physical | 45 CFR 164.310 | Docker container isolation, non-root execution |
-| Technical — Access Control | 45 CFR 164.312(a) | RBAC, MFA, automatic logoff, emergency access |
-| Technical — Audit Controls | 45 CFR 164.312(b) | SHA-256 hash-chained audit trail |
-| Technical — Integrity | 45 CFR 164.312(c) | HMAC-SHA256 integrity verification |
-| Technical — Transmission | 45 CFR 164.312(e) | TLS 1.2+, HSTS preload |
+| Technical - Access Control | 45 CFR 164.312(a) | RBAC, MFA, automatic logoff, emergency access |
+| Technical - Audit Controls | 45 CFR 164.312(b) | SHA-256 hash-chained audit trail |
+| Technical - Integrity | 45 CFR 164.312(c) | HMAC-SHA256 integrity verification |
+| Technical - Transmission | 45 CFR 164.312(e) | TLS 1.2+, HSTS preload |
 | Organizational | 45 CFR 164.314 | BAA templates, data processing agreements |
 
 ## Verification Command

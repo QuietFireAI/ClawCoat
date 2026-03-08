@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-028 — TestForemanInstall · `test_propose_install_unapproved_source_rejected`
+# TB-TEST-TOOL-028 - TestForemanInstall · `test_propose_install_unapproved_source_rejected`
 
 **Sheet ID:** TB-TEST-TOOL-028
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-002 — TestAuthSecurity · `test_api_key_hash_not_plaintext`
+# TB-TEST-SEC-002 - TestAuthSecurity · `test_api_key_hash_not_plaintext`
 
 **Sheet ID:** TB-TEST-SEC-002
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Hashed key is provably different from the original plaintext — no identity encoding
+> Hashed key is provably different from the original plaintext - no identity encoding
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

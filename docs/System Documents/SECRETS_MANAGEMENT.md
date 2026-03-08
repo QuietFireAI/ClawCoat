@@ -1,4 +1,4 @@
-# TelsonBase — Secrets Management Guide
+# TelsonBase - Secrets Management Guide
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
@@ -23,9 +23,9 @@
 
 TelsonBase uses a three-layer resolution strategy (see `core/config.py`):
 
-1. **Docker secrets** (`/run/secrets/<name>`) — highest priority, production path
-2. **Environment variables** (from `.env` or shell) — development convenience
-3. **Hardcoded defaults** — insecure, triggers warnings; blocked in production
+1. **Docker secrets** (`/run/secrets/<name>`) - highest priority, production path
+2. **Environment variables** (from `.env` or shell) - development convenience
+3. **Hardcoded defaults** - insecure, triggers warnings; blocked in production
 
 Docker Compose mounts files from `./secrets/` into containers at `/run/secrets/`.
 These files are never baked into images and never written to container disk layers.
@@ -72,15 +72,15 @@ correct file permissions. No secrets are generated or modified.
 
 ## What to Back Up
 
-- `./secrets/` directory — back up to Drobo NAS or AWS Snowball device
-- `./backups/` directory — application data backups
-- `acme.json` (Let's Encrypt certificates) — stored in the `letsencrypt_data` volume
+- `./secrets/` directory - back up to Drobo NAS or AWS Snowball device
+- `./backups/` directory - application data backups
+- `acme.json` (Let's Encrypt certificates) - stored in the `letsencrypt_data` volume
 
 ## What to NEVER Commit
 
-- `./secrets/` — must be in `.gitignore`
+- `./secrets/` - must be in `.gitignore`
 - Any file containing raw passwords or API keys
-- `acme.json` — contains private TLS keys
+- `acme.json` - contains private TLS keys
 
 ## Rotation Reminder
 

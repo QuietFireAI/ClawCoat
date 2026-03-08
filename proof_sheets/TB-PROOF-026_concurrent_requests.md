@@ -1,7 +1,7 @@
 # TB-PROOF-026: 50 Concurrent Requests Handled
 
 **Sheet ID:** TB-PROOF-026
-**Claim Source:** telsonbase.com — Security Testing Section
+**Claim Source:** telsonbase.com - Security Testing Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -12,30 +12,30 @@
 
 > "50 Concurrent requests handled"
 
-## Reviewer Note — Test Runner Evidence
+## Reviewer Note - Test Runner Evidence
 
 > **Do NOT expect to find this in a Python test file.**
-> The concurrent stress test was executed via PowerShell RunspacePool — a Windows-native
-> parallel HTTP client — not via pytest. The result is recorded in the version changelog.
+> The concurrent stress test was executed via PowerShell RunspacePool - a Windows-native
+> parallel HTTP client - not via pytest. The result is recorded in the version changelog.
 >
 > **Where to look:**
-> - `version.py` line 213 — `Concurrent stress: 50/50 parallel requests via RunspacePool — all 200`
-> - `tests/test_security_battery.py` header — `concurrent_requests: 50 parallel requests validated`
-> - `run_advanced_tests.bat` — C4 chaos test (Level 2: Chaos/Resilience)
+> - `version.py` line 213 - `Concurrent stress: 50/50 parallel requests via RunspacePool - all 200`
+> - `tests/test_security_battery.py` header - `concurrent_requests: 50 parallel requests validated`
+> - `run_advanced_tests.bat` - C4 chaos test (Level 2: Chaos/Resilience)
 >
 > A scanner limited to `.py` source files will miss the `.bat` test runner evidence.
 > That is a scanner limitation, not a gap in the implementation.
 
 ## Verdict
 
-VERIFIED — 50 parallel requests via PowerShell RunspacePool all returned HTTP 200, documented in `version.py` v6.0.0CC.
+VERIFIED - 50 parallel requests via PowerShell RunspacePool all returned HTTP 200, documented in `version.py` v6.0.0CC.
 
 ## Evidence
 
 ### Source Files
 | File | Lines | What It Proves |
 |---|---|---|
-| `version.py` | Line 213 | `Concurrent stress: 50/50 parallel requests via RunspacePool — all 200` |
+| `version.py` | Line 213 | `Concurrent stress: 50/50 parallel requests via RunspacePool - all 200` |
 | `tests/test_security_battery.py` | Header | `concurrent_requests: 50 parallel requests validated (C4 chaos test, all 200 OK)` |
 
 ### Test Methodology
@@ -50,7 +50,7 @@ VERIFIED — 50 parallel requests via PowerShell RunspacePool all returned HTTP 
 
 From `version.py` line 214:
 ```python
-# REM:         - Concurrent stress: 50/50 parallel requests via RunspacePool — all 200
+# REM:         - Concurrent stress: 50/50 parallel requests via RunspacePool - all 200
 ```
 
 Performance metrics from the same test:

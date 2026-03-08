@@ -1,4 +1,4 @@
-# TB-TEST-OBS-040 — TestMetricsEndpoint · `test_metrics_contains_http_metrics`
+# TB-TEST-OBS-040 - TestMetricsEndpoint · `test_metrics_contains_http_metrics`
 
 **Sheet ID:** TB-TEST-OBS-040
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
 
 ## Source
 

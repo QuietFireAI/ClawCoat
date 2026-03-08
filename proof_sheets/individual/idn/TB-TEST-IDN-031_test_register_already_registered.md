@@ -1,4 +1,4 @@
-# TB-TEST-IDN-031 — TestAgentRegistration · `test_register_already_registered`
+# TB-TEST-IDN-031 - TestAgentRegistration · `test_register_already_registered`
 
 **Sheet ID:** TB-TEST-IDN-031
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TelsonBase v6.0.0CC — Test Results Summary
+# TelsonBase v6.0.0CC - Test Results Summary
 **Date:** February 9, 2026
 **Host:** COMMANDCENTER
 **Tester:** Claude Code (Opus 4.6)
@@ -15,7 +15,7 @@
 | **Failed** | 0 |
 | **Pass rate** | 100% (of non-skipped) |
 
-Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.dockerignore` (docker-compose.yml, .dockerignore, .gitignore) — these only run on host, not inside container.
+Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.dockerignore` (docker-compose.yml, .dockerignore, .gitignore) - these only run on host, not inside container.
 
 ---
 
@@ -25,7 +25,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 
 ---
 
-### Level 1: Security Testing — 6/6 PASS
+### Level 1: Security Testing - 6/6 PASS
 
 | Test | Description | Result | Evidence |
 |------|-------------|--------|----------|
@@ -38,7 +38,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 
 ---
 
-### Level 2: Chaos/Resilience — 4/4 PASS
+### Level 2: Chaos/Resilience - 4/4 PASS
 
 | Test | Description | Result | Evidence |
 |------|-------------|--------|----------|
@@ -49,7 +49,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 
 ---
 
-### Level 3: Contract/Schema — 2/3 PASS
+### Level 3: Contract/Schema - 2/3 PASS
 
 | Test | Description | Result | Evidence |
 |------|-------------|--------|----------|
@@ -73,7 +73,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 
 ---
 
-### Level 4: Performance — 3/3 PASS
+### Level 4: Performance - 3/3 PASS
 
 | Test | Description | Result | Evidence |
 |------|-------------|--------|----------|
@@ -83,7 +83,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 
 ---
 
-### Level 5: Static Analysis — 3/4 PASS
+### Level 5: Static Analysis - 3/4 PASS
 
 | Test | Description | Result | Evidence |
 |------|-------------|--------|----------|
@@ -97,7 +97,7 @@ Skipped tests: 6 tests in `test_secrets.py` that require files excluded by `.doc
 | Package | Version | CVEs | Fix Version |
 |---------|---------|------|-------------|
 | cryptography | 42.0.4 | GHSA-h4gh-qq45-vh27, CVE-2024-12797 | 43.0.1 / 44.0.1 |
-| ecdsa | 0.19.1 | CVE-2024-23342 | — |
+| ecdsa | 0.19.1 | CVE-2024-23342 | - |
 | gunicorn | 21.2.0 | CVE-2024-1135, CVE-2024-6827 | 22.0.0 |
 | pip | 24.0 | CVE-2025-8869, CVE-2026-1703 | 25.3 / 26.0 |
 | python-jose | 3.3.0 | PYSEC-2024-232, PYSEC-2024-233 (x2 each) | 3.4.0 |

@@ -1,4 +1,4 @@
-# TB-TEST-OLL-004 — TestOllamaServiceInit · `test_default_model_can_be_changed`
+# TB-TEST-OLL-004 - TestOllamaServiceInit · `test_default_model_can_be_changed`
 
 **Sheet ID:** TB-TEST-OLL-004
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 49-test Local LLM Inference suite. Run the verification command below to confirm independently.
 
 ## Source
 

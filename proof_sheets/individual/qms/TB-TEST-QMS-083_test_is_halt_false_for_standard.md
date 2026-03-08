@@ -1,4 +1,4 @@
-# TB-TEST-QMS-083 — TestChainProperties · `test_is_halt_false_for_standard`
+# TB-TEST-QMS-083 - TestChainProperties · `test_is_halt_false_for_standard`
 
 **Sheet ID:** TB-TEST-QMS-083
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

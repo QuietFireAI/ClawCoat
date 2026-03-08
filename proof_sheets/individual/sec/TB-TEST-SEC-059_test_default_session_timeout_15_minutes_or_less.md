@@ -1,4 +1,4 @@
-# TB-TEST-SEC-059 — TestNetworkSecurity · `test_default_session_timeout_15_minutes_or_less`
+# TB-TEST-SEC-059 - TestNetworkSecurity · `test_default_session_timeout_15_minutes_or_less`
 
 **Sheet ID:** TB-TEST-SEC-059
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Standard session idle timeout is 15 minutes or less — HIPAA compliant
+> Standard session idle timeout is 15 minutes or less - HIPAA compliant
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-053 — TestAuditTrailIntegrity · `test_sequence_numbers_monotonically_increasing`
+# TB-TEST-SEC-053 - TestAuditTrailIntegrity · `test_sequence_numbers_monotonically_increasing`
 
 **Sheet ID:** TB-TEST-SEC-053
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Sequence numbers increment by 1 per entry — no gaps, no reuse
+> Sequence numbers increment by 1 per entry - no gaps, no reuse
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

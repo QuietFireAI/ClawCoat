@@ -1,7 +1,7 @@
-# TB-PROOF-042: Tenant Access Control — allowed_actors Enforcement
+# TB-PROOF-042: Tenant Access Control - allowed_actors Enforcement
 
 **Sheet ID:** TB-PROOF-042
-**Claim Source:** TelsonBase architecture — multi-tenancy security model
+**Claim Source:** TelsonBase architecture - multi-tenancy security model
 **Status:** VERIFIED
 **Last Verified:** March 1, 2026
 **Version:** 9.0.0B
@@ -16,7 +16,7 @@
 
 ## Verdict
 
-VERIFIED — `Tenant.allowed_actors` is populated on creation with `auth.actor` (the authenticated creator's identity). All tenant-scoped and matter-scoped API routes call `_require_tenant_access()` before returning data. Unauthorized access returns HTTP 403 with `qms_status: Thank_You_But_No`. Access denial is audit-logged.
+VERIFIED - `Tenant.allowed_actors` is populated on creation with `auth.actor` (the authenticated creator's identity). All tenant-scoped and matter-scoped API routes call `_require_tenant_access()` before returning data. Unauthorized access returns HTTP 403 with `qms_status: Thank_You_But_No`. Access denial is audit-logged.
 
 ---
 
@@ -26,16 +26,16 @@ VERIFIED — `Tenant.allowed_actors` is populated on creation with `auth.actor` 
 
 | Actor permission | Tenant access |
 |---|---|
-| `*` (master API key / super_admin) | All tenants — admin bypass |
-| `admin:config` | All tenants — admin bypass |
+| `*` (master API key / super_admin) | All tenants - admin bypass |
+| `admin:config` | All tenants - admin bypass |
 | `manage:agents`, `view:dashboard` | Only tenants where `auth.actor in tenant.allowed_actors` |
 
-### Data Model — `core/tenancy.py`
+### Data Model - `core/tenancy.py`
 
 `Tenant` dataclass has two access control fields added in v9.0.0B:
 
 ```python
-# REM: v9.0.0B — Access control: creator and explicitly granted actors only
+# REM: v9.0.0B - Access control: creator and explicitly granted actors only
 created_by: str = "system"
 allowed_actors: List[str] = field(default_factory=list)
 ```
@@ -44,7 +44,7 @@ allowed_actors: List[str] = field(default_factory=list)
 
 `TenantManager.grant_tenant_access(tenant_id, actor_id, granted_by)` is an admin-only method that appends to `allowed_actors` and persists to Redis.
 
-### Route Enforcement — `api/tenancy_routes.py`
+### Route Enforcement - `api/tenancy_routes.py`
 
 `_require_tenant_access(tenant_id, auth)` is called in every tenant-scoped and matter-scoped route:
 
@@ -96,7 +96,7 @@ pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_acc
 1. `allowed_actors` and `created_by` fields visible in `Tenant` dataclass and `to_dict()`
 2. `_require_tenant_access` present in 9+ route locations
 3. `grant_tenant_access` method confirmed in `TenantManager`
-4. E2E test `test_cross_tenant_access_rejected` passes — HTTP 403 returned for unauthorized actor
+4. E2E test `test_cross_tenant_access_rejected` passes - HTTP 403 returned for unauthorized actor
 
 ---
 

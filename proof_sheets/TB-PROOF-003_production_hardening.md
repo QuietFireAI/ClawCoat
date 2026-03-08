@@ -1,7 +1,7 @@
 # TB-PROOF-003: 22 Production Hardening Items
 
 **Sheet ID:** TB-PROOF-003
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — 22 production hardening items completed across 3 clusters in v7.0.0CC, documented in `version.py` lines 246-279 and `docs/Testing Documents/HARDENING_CC.md`.
+VERIFIED - 22 production hardening items completed across 3 clusters in v7.0.0CC, documented in `version.py` lines 246-279 and `docs/Testing Documents/HARDENING_CC.md`.
 
 ## Evidence
 
@@ -26,7 +26,7 @@ VERIFIED — 22 production hardening items completed across 3 clusters in v7.0.0
 
 ### The 22 Items
 
-**Cluster A — Pre-Demo Essentials (6):**
+**Cluster A - Pre-Demo Essentials (6):**
 1. TLS termination (Traefik HTTPS redirect, HSTS 1yr, security headers)
 2. Per-user authentication (register, login, MFA, bcrypt 12 rounds, account lockout)
 3. Error sanitization (global handler, no stack traces, 8 `str(e)` leaks fixed)
@@ -34,14 +34,14 @@ VERIFIED — 22 production hardening items completed across 3 clusters in v7.0.0
 5. Backup and recovery (RPO=24hr, RTO=15min, Redis BGSAVE + pg_dump)
 6. Secrets management (generate_secrets.sh --rotate/--check, 3 validators)
 
-**Cluster B — Pilot Readiness (5):**
+**Cluster B - Pilot Readiness (5):**
 7. E2E integration tests (22 tests, 5 classes, 658 lines)
 8. RBAC enforcement on all 140+ endpoints (view/manage/admin/security)
 9. Observability (Grafana dashboard, Prometheus alerts, auto-provisioning)
 10. Tenant-scoped rate limiting (Redis sliding window, 674 lines)
 11. Encryption at rest documentation (LUKS/BitLocker, compliance mapping)
 
-**Cluster C — Contract Readiness (6):**
+**Cluster C - Contract Readiness (6):**
 12. SOC 2 Type I (51 controls, 5 Trust Service Criteria)
 13. Pen test preparation (attack surface inventory, OWASP Top 10 mapping)
 14. Data Processing Agreement template (13 sections + 3 annexes)
@@ -62,7 +62,7 @@ From `version.py` lines 246-248:
 ```python
 # REM: 7.0.0CC - Production Hardening Roadmap Complete (Claude Code):
 # REM:         22-item roadmap executed autonomously across 6 sessions.
-# REM:         Cluster A — Pre-Demo Essentials:
+# REM:         Cluster A - Pre-Demo Essentials:
 ```
 
 ## Verification Command

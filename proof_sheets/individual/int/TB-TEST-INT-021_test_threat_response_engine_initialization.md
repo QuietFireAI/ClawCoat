@@ -1,4 +1,4 @@
-# TB-TEST-INT-021 — TestThreatResponse · `test_threat_response_engine_initialization`
+# TB-TEST-INT-021 - TestThreatResponse · `test_threat_response_engine_initialization`
 
 **Sheet ID:** TB-TEST-INT-021
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
 
 ## Source
 

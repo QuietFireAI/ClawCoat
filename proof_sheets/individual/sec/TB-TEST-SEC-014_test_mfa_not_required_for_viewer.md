@@ -1,4 +1,4 @@
-# TB-TEST-SEC-014 — TestAuthSecurity · `test_mfa_not_required_for_viewer`
+# TB-TEST-SEC-014 - TestAuthSecurity · `test_mfa_not_required_for_viewer`
 
 **Sheet ID:** TB-TEST-SEC-014
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -30,7 +30,7 @@ docker compose exec mcp_server python -m pytest tests/ -v --tb=short
 
 ### 1. REM Comments
 
-TelsonBase uses `REM:` prefix for architectural documentation comments. This is intentional—it distinguishes design rationale from implementation notes.
+TelsonBase uses `REM:` prefix for architectural documentation comments. This is intentional-it distinguishes design rationale from implementation notes.
 
 ```python
 # REM: This function validates QMS message format before cryptographic signing.

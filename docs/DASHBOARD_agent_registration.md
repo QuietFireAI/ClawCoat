@@ -1,10 +1,10 @@
-# Dashboard Agent Registration — Reference Sheet
+# Dashboard Agent Registration - Reference Sheet
 
 **What this covers:** How to add an agent to TelsonBase from the dashboard UI (no terminal required).
 
 ---
 
-## Yes — The Dashboard Has a Register Agent Form
+## Yes - The Dashboard Has a Register Agent Form
 
 The "Register Agent" button lives on the **Agents tab** (not the OpenClaw tab).
 Three places trigger the same modal:
@@ -14,13 +14,13 @@ Three places trigger the same modal:
 
 ---
 
-## The Form — Five Fields
+## The Form - Five Fields
 
 | Field | Type | Notes |
 |---|---|---|
 | Agent Type | Dropdown | OpenClaw / Generic / DID Agent |
 | Agent Name | Text | Goes into audit log as-is |
-| API Key | Text | The key this agent authenticates with — hashed before storage |
+| API Key | Text | The key this agent authenticates with - hashed before storage |
 | Starting Trust Level | Dropdown | Quarantine (default) through Agent |
 | Trust Override Justification | Text | Blank for Quarantine; required and enforced if you pick anything higher |
 
@@ -38,7 +38,7 @@ Three places trigger the same modal:
 ## One Thing to Know Before Using the Form
 
 The API Key field has a hint: "Get one from the Connection panel."
-The form does NOT generate a new key — it registers a key you already have.
+The form does NOT generate a new key - it registers a key you already have.
 
 **Two-step UI flow:**
 1. Generate the API key (Connection panel or API)
@@ -51,7 +51,7 @@ The form does NOT generate a new key — it registers a key you already have.
 | Tab | Purpose |
 |---|---|
 | Agents tab | Register agents, see all agent types in one place |
-| OpenClaw tab | Monitor registered instances — trust levels, action counts, manners scores |
+| OpenClaw tab | Monitor registered instances - trust levels, action counts, manners scores |
 
 Once registered via the Agents tab, the instance immediately appears in the OpenClaw tab.
 
@@ -63,16 +63,16 @@ Once registered via the Agents tab, the instance immediately appears in the Open
 2. Click Register Agent (top right)
 3. Fill in the 5 fields
 4. Submit
-5. Switch to OpenClaw tab — instance appears at Quarantine
+5. Switch to OpenClaw tab - instance appears at Quarantine
 
 ---
 
-## Terminal vs. Dashboard — Which to Show
+## Terminal vs. Dashboard - Which to Show
 
 | Option | Shows |
 |---|---|
-| Terminal path | The raw machinery — API calls, JSON responses, nonces |
-| Dashboard path | Accessible to non-developers — form, dropdowns, visual confirmation |
+| Terminal path | The raw machinery - API calls, JSON responses, nonces |
+| Dashboard path | Accessible to non-developers - form, dropdowns, visual confirmation |
 
 Both call the same backend endpoint. Both produce the same audit trail.
 

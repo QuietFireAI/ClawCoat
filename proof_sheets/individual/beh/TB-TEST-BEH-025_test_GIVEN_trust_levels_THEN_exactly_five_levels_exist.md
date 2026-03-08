@@ -1,4 +1,4 @@
-# TB-TEST-BEH-025 — TestBehavior_TrustLevelProgression · `test_GIVEN_trust_levels_THEN_exactly_five_levels_exist`
+# TB-TEST-BEH-025 - TestBehavior_TrustLevelProgression · `test_GIVEN_trust_levels_THEN_exactly_five_levels_exist`
 
 **Sheet ID:** TB-TEST-BEH-025
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

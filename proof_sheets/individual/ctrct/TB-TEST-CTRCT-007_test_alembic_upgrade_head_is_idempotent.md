@@ -1,4 +1,4 @@
-# TB-TEST-CTRCT-007 — TestOperationalContracts · `test_alembic_upgrade_head_is_idempotent`
+# TB-TEST-CTRCT-007 - TestOperationalContracts · `test_alembic_upgrade_head_is_idempotent`
 
 **Sheet ID:** TB-TEST-CTRCT-007
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 7-test Enum Contract Tripwires suite. Run the verification command below to confirm independently.
 
 ## Source
 

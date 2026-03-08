@@ -1,8 +1,8 @@
-# TelsonBase — Frequently Asked Questions
-**Version:** v11.0.1 · **Maintainer:** Quietfire AI — support@telsonbase.com
+# TelsonBase - Frequently Asked Questions
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI - support@telsonbase.com
 
 Every answer here traces to source code. Where a verification command exists, it's provided.
-The same standard applies here as in the proof sheets — no claim without a source.
+The same standard applies here as in the proof sheets - no claim without a source.
 
 ---
 
@@ -38,21 +38,21 @@ The same standard applies here as in the proof sheets — no claim without a sou
 
 **Plain answer:**
 Two ways. An agent can self-register the moment it makes its first request through the MCP
-gateway — TelsonBase intercepts it, assigns an instance ID, and places it in QUARANTINE
+gateway - TelsonBase intercepts it, assigns an instance ID, and places it in QUARANTINE
 automatically. Or an operator pre-registers an agent through the dashboard before it ever
 connects, using the Register Agent button in the Agents tab.
 
 Either way, every agent always starts at QUARANTINE with zero autonomous permissions.
-No exceptions. No shortcuts. Capability declarations are made at registration — what tools
+No exceptions. No shortcuts. Capability declarations are made at registration - what tools
 the agent claims to need. What it can actually use is still gated by trust level and
 the 8-step governance pipeline on every action evaluation.
 
 **Source files:**
-- `core/openclaw.py` — `register_instance()` — registration logic
-- `routers/openclaw.py` — `POST /v1/openclaw/register` — API endpoint
-- `frontend/index.html` — `RegisterAgentModal` component — dashboard UI
+- `core/openclaw.py` - `register_instance()` - registration logic
+- `routers/openclaw.py` - `POST /v1/openclaw/register` - API endpoint
+- `frontend/index.html` - `RegisterAgentModal` component - dashboard UI
 
-**Proof sheet:** `proof_sheets/TB-PROOF-041_agent_registration.md` — full developer deep dive,
+**Proof sheet:** `proof_sheets/TB-PROOF-041_agent_registration.md` - full developer deep dive,
 registration fields, capability declaration, and first-action flow.
 
 **Verification:**
@@ -72,7 +72,7 @@ curl http://localhost:8000/v1/openclaw/instances/test-001 \
 **Skeptic follow-up:** *"What stops someone from registering a rogue agent?"*
 Nonce replay protection and API key authentication are required on every action evaluation.
 An unregistered agent is rejected at Step 1 of the 8-step governance pipeline before any
-action is processed. See `core/openclaw.py` — `evaluate_action()`.
+action is processed. See `core/openclaw.py` - `evaluate_action()`.
 
 ---
 
@@ -80,17 +80,17 @@ action is processed. See `core/openclaw.py` — `evaluate_action()`.
 
 **Plain answer:**
 Through MQTT via the Mosquitto message bus built into the stack. Every message is wrapped
-in QMS™ (Qualified Message Standard) — TelsonBase's inter-agent communication protocol.
+in QMS™ (Qualified Message Standard) - TelsonBase's inter-agent communication protocol.
 QMS stamps every message with provenance: who sent it, what it contained, correlation ID,
 and a command intent block. That record is hash-linked into the audit chain.
 
 No agent-to-agent communication happens outside the bus. TelsonBase's MCP gateway acts
-as the intermediary — agents don't talk directly to each other, they communicate through
+as the intermediary - agents don't talk directly to each other, they communicate through
 TelsonBase, which mediates and logs everything.
 
 QMS™ is also a security gate: the Foreman agent validates QMS formatting on every incoming
 message before processing it. A message that arrives without proper QMS structure is not
-treated as a malformed request — it is logged as a `NON_QMS_MESSAGE` anomaly event and
+treated as a malformed request - it is logged as a `NON_QMS_MESSAGE` anomaly event and
 discarded. A registered agent that stops producing QMS-formatted messages is as anomalous
 as one sending malformed messages. The behavioral baseline tracks both.
 
@@ -102,11 +102,11 @@ The origin block is the identity check. The correlation block is the audit threa
 The command block is the intent. A message missing any of these is missing accountability.
 
 **Source files:**
-- `core/mqtt_bus.py` — MQTT message bus
-- `core/qms.py` — QMS™ protocol: block types, chain construction, validation
-- `toolroom/foreman.py` — QMS validation as security gate
+- `core/mqtt_bus.py` - MQTT message bus
+- `core/qms.py` - QMS™ protocol: block types, chain construction, validation
+- `toolroom/foreman.py` - QMS validation as security gate
 
-**Proof sheet:** `proof_sheets/tb-proof-053_qms_suite.md` — 115 tests across 13 classes
+**Proof sheet:** `proof_sheets/tb-proof-053_qms_suite.md` - 115 tests across 13 classes
 verifying every aspect of the QMS™ protocol.
 
 **Verification:**
@@ -116,10 +116,10 @@ curl http://localhost:8000/v1/system/status \
   -H "X-API-Key: $API_KEY" | python -m json.tool | grep mosquitto
 ```
 
-**Skeptic follow-up:** *"OpenClaw agents don't natively speak MQTT — how does this work?"*
+**Skeptic follow-up:** *"OpenClaw agents don't natively speak MQTT - how does this work?"*
 TelsonBase's MCP gateway is the communication layer. Agents interact with TelsonBase's
 governance layer via MCP. TelsonBase routes, mediates, and logs. The agent never
-communicates directly — it communicates through the governed proxy.
+communicates directly - it communicates through the governed proxy.
 
 ---
 
@@ -131,7 +131,7 @@ at install time. An agent cannot check out a tool unless its trust tier meets or
 that designation. The ladder: QUARANTINE < PROBATION < RESIDENT < CITIZEN < AGENT.
 
 Beyond trust level, tools marked `requires_api_access = true` trigger a HITL approval gate
-regardless of tier — even an AGENT-level agent cannot check out an API-access tool without
+regardless of tier - even an AGENT-level agent cannot check out an API-access tool without
 explicit human authorization. This is non-negotiable: external API access carries credential
 and egress risk that no trust tier removes.
 
@@ -140,16 +140,16 @@ Is the agent on the tool's allowlist (if one exists)? Does the agent's trust lev
 tool's `min_trust_level`? Does the tool require API access? Only after all three clear does
 the checkout proceed.
 
-Default `min_trust_level` is `"resident"` — QUARANTINE and PROBATION agents cannot check
+Default `min_trust_level` is `"resident"` - QUARANTINE and PROBATION agents cannot check
 out any standard tool unless an operator explicitly lowers the designation.
 
 **Source files:**
-- `toolroom/foreman.py` — `handle_checkout_request()` — checkout enforcement
-- `toolroom/registry.py` — `ToolMetadata` — `min_trust_level`, `requires_api_access`, `allowed_agents` fields
-- `docs/TOOLROOM_TRUST_MATRIX.md` — full matrix: checkout eligibility by tier, recommended designations by category
-- `routers/toolroom.py` — REST endpoints
+- `toolroom/foreman.py` - `handle_checkout_request()` - checkout enforcement
+- `toolroom/registry.py` - `ToolMetadata` - `min_trust_level`, `requires_api_access`, `allowed_agents` fields
+- `docs/TOOLROOM_TRUST_MATRIX.md` - full matrix: checkout eligibility by tier, recommended designations by category
+- `routers/toolroom.py` - REST endpoints
 
-**Proof sheet:** `proof_sheets/tb-proof-054_toolroom_suite.md` — 129 tests across 28 classes
+**Proof sheet:** `proof_sheets/tb-proof-054_toolroom_suite.md` - 129 tests across 28 classes
 verifying trust-level enforcement, HITL gate, manifest validation, and full REST coverage.
 
 **Verification:**
@@ -174,20 +174,20 @@ approvals. Trust level is re-evaluated on every single action in real time.
 **Plain answer:**
 Three outcomes, depending on severity:
 
-1. **Blocked** — Action rejected immediately. Audit logged. Agent receives a rejection
+1. **Blocked** - Action rejected immediately. Audit logged. Agent receives a rejection
    response and continues running. No interruption to the agent process itself.
 
-2. **Gated** — Action queued as a human approval request with an `APPR-` prefixed ID.
+2. **Gated** - Action queued as a human approval request with an `APPR-` prefixed ID.
    Visible in the dashboard Approvals tab with full payload and context. Agent waits.
    Operator approves or rejects.
 
-3. **Auto-demoted** — If the agent's Manners compliance score drops below 50%, it is
+3. **Auto-demoted** - If the agent's Manners compliance score drops below 50%, it is
    immediately demoted to QUARANTINE with no human delay and no grace period. The action
    that triggered the evaluation is already affected. The agent remains registered but
    cannot take any autonomous action until reinstated by a human operator.
 
 The kill switch is a fourth path: one API call suspends any agent instantly. All subsequent
-actions are rejected at Step 2 of the pipeline — before trust levels, before Manners,
+actions are rejected at Step 2 of the pipeline - before trust levels, before Manners,
 before everything except "does this agent exist?"
 
 Non-QMS-formatted messages sent to the Foreman are a fifth outcome: the message is discarded
@@ -195,13 +195,13 @@ before processing and logged as a `NON_QMS_MESSAGE` anomaly event. The Foreman d
 work with unaccountable inputs.
 
 **Source files:**
-- `core/openclaw.py` — `evaluate_action()` — 8-step pipeline
-- `core/openclaw.py` — `_check_manners_compliance()` — auto-demotion logic
-- `routers/openclaw.py` — `POST /v1/openclaw/{id}/suspend` — kill switch
+- `core/openclaw.py` - `evaluate_action()` - 8-step pipeline
+- `core/openclaw.py` - `_check_manners_compliance()` - auto-demotion logic
+- `routers/openclaw.py` - `POST /v1/openclaw/{id}/suspend` - kill switch
 
 **Proof sheets:**
-- `proof_sheets/TB-PROOF-037_openclaw_kill_switch.md` — kill switch behavior
-- `proof_sheets/TB-PROOF-038_manners_auto_demotion.md` — auto-demotion on compliance score
+- `proof_sheets/TB-PROOF-037_openclaw_kill_switch.md` - kill switch behavior
+- `proof_sheets/TB-PROOF-038_manners_auto_demotion.md` - auto-demotion on compliance score
 
 **Verification:**
 ```bash
@@ -209,7 +209,7 @@ work with unaccountable inputs.
 curl -X POST http://localhost:8000/v1/openclaw/test-001/suspend \
   -H "X-API-Key: $API_KEY"
 
-# Attempt an action — should be rejected at Step 2
+# Attempt an action - should be rejected at Step 2
 curl -X POST http://localhost:8000/v1/openclaw/evaluate \
   -H "X-API-Key: $API_KEY" \
   -d '{"instance_id":"test-001","tool":"read_file","nonce":"abc123"}'
@@ -218,7 +218,7 @@ curl -X POST http://localhost:8000/v1/openclaw/evaluate \
 
 **Skeptic follow-up:** *"What if the agent retries the blocked action repeatedly?"*
 Anomaly detection flags repetitive blocked actions as a behavioral deviation. Rate limiting
-fires at the agent's tier limit. Repeated violations accumulate in the Manners score —
+fires at the agent's tier limit. Repeated violations accumulate in the Manners score -
 which triggers auto-demotion if they push the score below threshold.
 
 ---
@@ -227,14 +227,14 @@ which triggers auto-demotion if they push the score below threshold.
 
 **Plain answer:**
 Yes. Restrictions govern what an agent can *initiate* outbound. The operator-to-agent
-communication channel through the MCP gateway is always open — you can always send
+communication channel through the MCP gateway is always open - you can always send
 instructions to a restricted or suspended agent. The agent can respond back through
 TelsonBase. What it cannot do is make outbound calls on its own initiative.
 Inbound and outbound are governed independently.
 
 **Source files:**
-- `api/mcp_gateway.py` — operator→agent instruction path
-- `core/openclaw.py` — outbound action evaluation (separate from inbound channel)
+- `api/mcp_gateway.py` - operator→agent instruction path
+- `core/openclaw.py` - outbound action evaluation (separate from inbound channel)
 
 **Verification:**
 ```bash
@@ -250,21 +250,21 @@ Inbound and outbound are governed independently.
 **Plain answer:**
 All inbound connections to TelsonBase require Bearer token or `X-API-Key` authentication.
 Unknown connections receive a 401 before they reach any protected resource. The MCP gateway
-validates instance ID and a cryptographic nonce on every action evaluation — replayed nonces
+validates instance ID and a cryptographic nonce on every action evaluation - replayed nonces
 are rejected at Step 3 of the pipeline. Rate limiting fires at the agent's tier-appropriate
 limit with a burst allowance. All connection attempts are logged to the audit chain.
-An unrecognized instance is rejected at Step 1 — not registered, full stop.
+An unrecognized instance is rejected at Step 1 - not registered, full stop.
 
 For agent-to-agent messages: QMS™ validation fires before processing. A message without
 proper QMS structure is discarded and logged as a `NON_QMS_MESSAGE` anomaly. Anonymous
-transmissions are not processed — silence and malformation are treated the same.
+transmissions are not processed - silence and malformation are treated the same.
 
 **Source files:**
-- `core/auth.py` — authentication layer
-- `core/middleware.py` — rate limiting (token bucket)
-- `core/openclaw.py` — nonce replay protection (Step 3 of pipeline)
-- `routers/openclaw.py` — instance registration check (Step 1)
-- `toolroom/foreman.py` — QMS validation gate
+- `core/auth.py` - authentication layer
+- `core/middleware.py` - rate limiting (token bucket)
+- `core/openclaw.py` - nonce replay protection (Step 3 of pipeline)
+- `routers/openclaw.py` - instance registration check (Step 1)
+- `toolroom/foreman.py` - QMS validation gate
 
 **Verification:**
 ```bash
@@ -273,7 +273,7 @@ curl http://localhost:8000/v1/system/status
 # Expected: 401 Unauthorized
 
 # Attempt with replayed nonce (second call with same nonce)
-# Expected: rejected at Step 3 — nonce_already_used
+# Expected: rejected at Step 3 - nonce_already_used
 ```
 
 ---
@@ -283,29 +283,29 @@ curl http://localhost:8000/v1/system/status
 **Plain answer:**
 Two distinct failure types with different meanings:
 
-- **`chain_break`** — A gap in sequence numbers from a container restart or Redis flush.
+- **`chain_break`** - A gap in sequence numbers from a container restart or Redis flush.
   This is a documented boundary event, not a security incident. The chain continues from
   a new genesis hash. Prior entries before the break are unaffected.
 
-- **`hash_mismatch`** — An entry's stored hash does not match the recomputed hash of its
+- **`hash_mismatch`** - An entry's stored hash does not match the recomputed hash of its
   content. This means an entry was modified after it was written. This is a security alert.
   It is flagged in the dashboard, logged, and the chain is considered compromised at that
   point forward.
 
 Because each entry's hash includes the previous entry's hash, tampering with any single
-entry invalidates every subsequent entry in the chain. Tampering cannot be hidden — it
+entry invalidates every subsequent entry in the chain. Tampering cannot be hidden - it
 can only be detected. You can hand a chain export to a forensic investigator and they can
 verify every entry independently of the TelsonBase API, using only standard Python and
-`hashlib`. See `docs/AUDIT_TRAIL.md` — Verify an Entry Offline.
+`hashlib`. See `docs/AUDIT_TRAIL.md` - Verify an Entry Offline.
 
 **Source files:**
-- `core/audit.py` — `verify_chain()` — full verification loop
-- `core/audit.py` — `_create_chain_entry()` — SHA-256 hash computation
-- `frontend/index.html` — Verify Chain button and result banner
+- `core/audit.py` - `verify_chain()` - full verification loop
+- `core/audit.py` - `_create_chain_entry()` - SHA-256 hash computation
+- `frontend/index.html` - Verify Chain button and result banner
 
 **Proof sheets:**
-- `proof_sheets/TB-PROOF-009_audit_chain_sha256.md` — SHA-256 hash-chained audit trail
-- `proof_sheets/TB-PROOF-046_security_audit_trail.md` — security battery: chain creation,
+- `proof_sheets/TB-PROOF-009_audit_chain_sha256.md` - SHA-256 hash-chained audit trail
+- `proof_sheets/TB-PROOF-046_security_audit_trail.md` - security battery: chain creation,
   tamper detection, UTC timestamp enforcement
 
 **Verification:**
@@ -318,9 +318,9 @@ curl http://localhost:8000/v1/audit/chain/verify \
 
 **Skeptic follow-up:** *"What if someone flushes Redis?"*
 Redis flush = chain_state lost, new genesis starts. This is a known architectural limit,
-documented in `docs/AUDIT_TRAIL.md` — Known Limitations. PostgreSQL archival for long-term
+documented in `docs/AUDIT_TRAIL.md` - Known Limitations. PostgreSQL archival for long-term
 retention is on the roadmap. A flush is detectable as an unusually early genesis in the
-chain history. Physical access to flush Redis is itself a security event — outside
+chain history. Physical access to flush Redis is itself a security event - outside
 TelsonBase's threat model (assumes secure infrastructure).
 
 ---
@@ -328,7 +328,7 @@ TelsonBase's threat model (assumes secure infrastructure).
 ## 8. Can TelsonBase Track Token Usage for External API Calls?
 
 **Plain answer:**
-TelsonBase logs that an external call was made — to which whitelisted domain, by which
+TelsonBase logs that an external call was made - to which whitelisted domain, by which
 agent, at what time, and that it was authorized. It does not currently parse API response
 bodies to count LLM tokens consumed in those calls.
 
@@ -339,12 +339,12 @@ What is not yet built: token counting from external LLM API responses. This is a
 feature gap, not a security gap. It is flagged for post-drop development.
 
 **Source files:**
-- `core/openclaw.py` — egress firewall, domain whitelist enforcement
-- `core/audit.py` — external call logging
+- `core/openclaw.py` - egress firewall, domain whitelist enforcement
+- `core/audit.py` - external call logging
 
 **Skeptic follow-up:** *"So you can't prove API spend?"*
 We can prove the call was authorized, logged, and compliant with governance rules. Token
-cost attribution requires parsing provider-specific response formats — a monitoring feature,
+cost attribution requires parsing provider-specific response formats - a monitoring feature,
 currently on the roadmap.
 
 ---
@@ -354,30 +354,30 @@ currently on the roadmap.
 **Plain answer:**
 Multiple layers fire in parallel:
 
-- **Behavioral anomaly detection** — rate spikes, capability probing, and enumeration
+- **Behavioral anomaly detection** - rate spikes, capability probing, and enumeration
   patterns trigger alerts visible in the Anomalies tab
-- **Account lockout** — 5 failed authentication attempts in 15 minutes locks the account
-- **Rate limiting** — 429 response after tier-appropriate request limits, logged
-- **CAPTCHA** — automated registration blocked at the registration form
-- **Audit logging** — every security event written to the tamper-evident chain
-- **Grafana dashboards** — Prometheus metrics surfaced in real time
+- **Account lockout** - 5 failed authentication attempts in 15 minutes locks the account
+- **Rate limiting** - 429 response after tier-appropriate request limits, logged
+- **CAPTCHA** - automated registration blocked at the registration form
+- **Audit logging** - every security event written to the tamper-evident chain
+- **Grafana dashboards** - Prometheus metrics surfaced in real time
 
 Push notifications (email, PagerDuty, Slack) require configuring Prometheus AlertManager
-— the infrastructure is present, not pre-configured. Alerts are visible in the dashboard
+- the infrastructure is present, not pre-configured. Alerts are visible in the dashboard
 and Grafana out of the box.
 
 **Source files:**
-- `core/anomaly.py` — behavioral anomaly detection
-- `core/user_management.py` — account lockout logic
-- `core/middleware.py` — rate limiting
-- `core/captcha.py` — CAPTCHA challenge engine
-- `monitoring/prometheus/alerts.yml` — alert rules
+- `core/anomaly.py` - behavioral anomaly detection
+- `core/user_management.py` - account lockout logic
+- `core/middleware.py` - rate limiting
+- `core/captcha.py` - CAPTCHA challenge engine
+- `monitoring/prometheus/alerts.yml` - alert rules
 
 **Proof sheets:**
-- `proof_sheets/TB-PROOF-022_api_fuzz_testing.md` — 177 API operations fuzz-tested
-- `proof_sheets/TB-PROOF-024_zero_server_errors.md` — 0 server errors under fuzzing
-- `proof_sheets/TB-PROOF-027_static_analysis.md` — 0 high-severity static analysis findings
-- `proof_sheets/TB-PROOF-020_anomaly_detection.md` — behavioral anomaly detection
+- `proof_sheets/TB-PROOF-022_api_fuzz_testing.md` - 177 API operations fuzz-tested
+- `proof_sheets/TB-PROOF-024_zero_server_errors.md` - 0 server errors under fuzzing
+- `proof_sheets/TB-PROOF-027_static_analysis.md` - 0 high-severity static analysis findings
+- `proof_sheets/TB-PROOF-020_anomaly_detection.md` - behavioral anomaly detection
 
 **Verification:**
 ```bash
@@ -409,8 +409,8 @@ MCP-compliant client built to the MCP specification.
 · `approve_tool_request`
 
 **Source files:**
-- `api/mcp_gateway.py` — all 13 MCP tools
-- `goose.yaml` — Goose connection configuration (project root)
+- `api/mcp_gateway.py` - all 13 MCP tools
+- `goose.yaml` - Goose connection configuration (project root)
 
 **Verification:**
 ```bash
@@ -429,7 +429,7 @@ TelsonBase will be compatible with any client built to the MCP spec as the ecosy
 ## 11. Can Android or iOS Apps Communicate with TelsonBase?
 
 **Plain answer:**
-Yes. TelsonBase is a REST API — any HTTP client on any platform connects to it.
+Yes. TelsonBase is a REST API - any HTTP client on any platform connects to it.
 Android apps, iOS apps, mobile browsers, and desktop clients all use the same API
 with JWT Bearer token authentication.
 
@@ -439,12 +439,12 @@ accessible from any mobile browser without installation.
 For native mobile app integration: standard REST calls with JWT auth against the 177
 documented API endpoints. Full API reference at `/docs` when the stack is running.
 
-No native mobile SDK exists currently — that is a post-drop development item.
+No native mobile SDK exists currently - that is a post-drop development item.
 
 **Source files:**
-- `main.py` — 177 API endpoints
-- `frontend/index.html` — admin dashboard (web, mobile-accessible)
-- `frontend/user-console.html` — user console (web, mobile-accessible)
+- `main.py` - 177 API endpoints
+- `frontend/index.html` - admin dashboard (web, mobile-accessible)
+- `frontend/user-console.html` - user console (web, mobile-accessible)
 
 ---
 
@@ -464,21 +464,21 @@ entirely locally. It does not connect to Anthropic. It does not phone home. It d
 receive updates automatically. Your governance engine runs under your control.
 
 **Source files:**
-- `core/openclaw.py` — egress firewall, domain whitelist
-- `core/manners.py` — local Manners compliance engine
-- `core/config.py` — no external telemetry endpoints configured
+- `core/openclaw.py` - egress firewall, domain whitelist
+- `core/manners.py` - local Manners compliance engine
+- `core/config.py` - no external telemetry endpoints configured
 
-**Proof sheet:** `proof_sheets/TB-PROOF-028_zero_data_leaves.md` — zero data leaves your network.
+**Proof sheet:** `proof_sheets/TB-PROOF-028_zero_data_leaves.md` - zero data leaves your network.
 
 **Verification:**
 ```bash
 # Confirm no outbound connections at startup (run with network monitor)
 docker compose up -d
-# Monitor outbound traffic — zero external connections initiated by TelsonBase itself
+# Monitor outbound traffic - zero external connections initiated by TelsonBase itself
 ```
 
 **Skeptic follow-up:** *"So there's no automatic safety update if Anthropic releases one?"*
-Correct — and that is by design. Data sovereignty means the governance engine runs on
+Correct - and that is by design. Data sovereignty means the governance engine runs on
 your hardware under your control. You choose when to update. No external party can push
 changes to your governance rules without your action.
 
@@ -489,7 +489,7 @@ changes to your governance rules without your action.
 **Plain answer:**
 The compliance infrastructure is fully built and mapped to source code. Every control
 references the file that implements it and the test that verifies it. Formal certification
-is the third-party recognition of what is already there — and that process grows with
+is the third-party recognition of what is already there - and that process grows with
 the project.
 
 What is built today:
@@ -508,13 +508,13 @@ What is built today:
 The distinction between "compliance-ready" and "certified" is the third-party audit.
 TelsonBase has built the controls. Formal certification (SOC 2 Type II audit, HIPAA SRA,
 HITRUST assessment) is the next step as the project scales. Every control is already
-mapped to source code and a passing test — the audit trail is ready when the auditor arrives.
+mapped to source code and a passing test - the audit trail is ready when the auditor arrives.
 
 **Source files:**
-- `docs/SOC2_TYPE_I.md` — 51 controls with source evidence
-- `docs/System Documents/COMPLIANCE_ROADMAP.md` — 6-phase certification roadmap
+- `docs/SOC2_TYPE_I.md` - 51 controls with source evidence
+- `docs/System Documents/COMPLIANCE_ROADMAP.md` - 6-phase certification roadmap
 
-**Proof sheets:** 788 proof documents across 67 class-level evidence sheets — every compliance
+**Proof sheets:** 788 proof documents across 67 class-level evidence sheets - every compliance
 claim traced to source code and a verification command. Start at `proof_sheets/INDEX.md`.
 
 **Verification:**
@@ -528,7 +528,7 @@ cat proof_sheets/INDEX.md
 
 **Skeptic follow-up:** *"Compliance-ready isn't the same as compliant."*
 Correct. The controls are implemented and tested. Certification is formal third-party
-recognition. A law firm deploying TelsonBase today has working HIPAA controls — AES-256-GCM
+recognition. A law firm deploying TelsonBase today has working HIPAA controls - AES-256-GCM
 encryption, 18-identifier de-identification, tamper-evident audit trail, automatic logoff.
 Those controls exist whether or not a certification badge has been issued.
 
@@ -543,11 +543,11 @@ Results are documented and public:
 - **Bandit (static analysis):** 0 high-severity findings across 37,921 lines scanned.
   8 medium findings, all non-actionable: 2 are expected `0.0.0.0` bind addresses in
   `if __name__ == "__main__":` dev-only blocks (Gunicorn binds via command line in
-  production — these lines never execute in the container). 6 are `requests.get/post`
+  production - these lines never execute in the container). 6 are `requests.get/post`
   calls without an explicit timeout in `scripts/test_security_flow.py`, a manually-invoked
   diagnostic script, not production code. No production code findings.
-- **pip-audit (dependency CVEs):** 1 known CVE — `ecdsa` CVE-2024-23342. No upstream fix
-  exists. Accepted risk — TelsonBase uses HS256 (HMAC), not ECDSA. `ecdsa` is an unused
+- **pip-audit (dependency CVEs):** 1 known CVE - `ecdsa` CVE-2024-23342. No upstream fix
+  exists. Accepted risk - TelsonBase uses HS256 (HMAC), not ECDSA. `ecdsa` is an unused
   transitive dependency that has been removed from the production image.
 - **Schemathesis (API contract testing):** 720 tests passing. Server errors reduced
   from 657 → 0 across hardening sessions.
@@ -558,14 +558,14 @@ Independent third-party penetration testing is on the roadmap as the project sca
 The infrastructure to support and respond to a formal pen test is already in place.
 
 **Source files:**
-- `docs/PENTEST_PREPARATION.md` — attack surface inventory and test plan
-- `.github/workflows/ci.yml` — automated security scan on every commit
-- `docs/SECURITY_GUIDELINES.md` — vulnerability scope, reporting, and current security posture
+- `docs/PENTEST_PREPARATION.md` - attack surface inventory and test plan
+- `.github/workflows/ci.yml` - automated security scan on every commit
+- `docs/SECURITY_GUIDELINES.md` - vulnerability scope, reporting, and current security posture
 
 **Proof sheets:**
-- `proof_sheets/TB-PROOF-027_static_analysis.md` — Bandit results, 0 high-severity
-- `proof_sheets/TB-PROOF-022_api_fuzz_testing.md` — 177 operations fuzz-tested
-- `proof_sheets/TB-PROOF-024_zero_server_errors.md` — 0 server errors under fuzzing
+- `proof_sheets/TB-PROOF-027_static_analysis.md` - Bandit results, 0 high-severity
+- `proof_sheets/TB-PROOF-022_api_fuzz_testing.md` - 177 operations fuzz-tested
+- `proof_sheets/TB-PROOF-024_zero_server_errors.md` - 0 server errors under fuzzing
 
 ---
 
@@ -576,21 +576,21 @@ TelsonBase was built by Jeff Phillips (Quietfire AI) through genuine human-AI co
 across multiple models over several years. The platform is self-taught, independently funded,
 and carries no corporate backing or venture influence.
 
-The answer to "why trust it" is not credentials — it is evidence:
+The answer to "why trust it" is not credentials - it is evidence:
 
 - **720 passing tests** that you can run yourself in under five minutes
-- **788 proof documents** — 67 class-level evidence sheets that map every public claim
+- **788 proof documents** - 67 class-level evidence sheets that map every public claim
   to source code, test classes, and a verification command you can run
 - **0 high-severity findings** in static analysis across 37,921 lines
-- **Full source available** — read every line, verify every claim, run every test
+- **Full source available** - read every line, verify every claim, run every test
 
 The credibility of TelsonBase is not a function of who built it. It is a function of
 whether the claims hold up under inspection. The proof sheets exist precisely so that
 the work speaks for itself.
 
-**Proof sheet:** `proof_sheets/TB-PROOF-001_tests_passing.md` — 720 tests, verification command.
+**Proof sheet:** `proof_sheets/TB-PROOF-001_tests_passing.md` - 720 tests, verification command.
 
-**Skeptic follow-up:** *"AI wrote this code — how do you know it's trustworthy?"*
+**Skeptic follow-up:** *"AI wrote this code - how do you know it's trustworthy?"*
 Every AI model was engaged as a collaborator, not a code generator. The architecture,
 security decisions, and engineering choices were made by a human architect who reviewed,
 tested, and challenged every output. The test suite, the static analysis, and the proof
@@ -610,9 +610,9 @@ A governance platform that depends on a single vendor for survival is itself a g
 risk. TelsonBase is designed so that the community can carry it forward.
 
 **Source files:**
-- `LICENSE` — Apache 2.0 terms
-- `CONTRIBUTING.md` — contribution guidelines
-- `docs/DEVELOPER_GUIDE.md` — full architecture documentation for new contributors
+- `LICENSE` - Apache 2.0 terms
+- `CONTRIBUTING.md` - contribution guidelines
+- `docs/DEVELOPER_GUIDE.md` - full architecture documentation for new contributors
 
 ---
 
@@ -622,26 +622,26 @@ risk. TelsonBase is designed so that the community can carry it forward.
 Yes. The current Docker Compose deployment is single-node and production-appropriate for
 most small and mid-market deployments. Horizontal scaling has two documented paths:
 
-- **Phase 1 — Docker Swarm:** 2–3 days of configuration. Adds multi-node redundancy,
+- **Phase 1 - Docker Swarm:** 2–3 days of configuration. Adds multi-node redundancy,
   rolling updates, and basic load distribution. Appropriate for organizations with
   moderate load and existing Docker infrastructure.
 
-- **Phase 2 — Kubernetes:** Full orchestration, auto-scaling, self-healing deployments.
+- **Phase 2 - Kubernetes:** Full orchestration, auto-scaling, self-healing deployments.
   Appropriate for large enterprise and multi-tenant production environments.
 
 The architecture is stateless at the API layer (Redis handles shared state, PostgreSQL
-handles persistence) — horizontal scaling is a deployment configuration, not a
+handles persistence) - horizontal scaling is a deployment configuration, not a
 re-architecture.
 
 **Source files:**
-- `docs/System Documents/HA_ARCHITECTURE.md` — full scaling roadmap, component HA
+- `docs/System Documents/HA_ARCHITECTURE.md` - full scaling roadmap, component HA
   strategies, decision matrix by user scale
 
-**Skeptic follow-up:** *"Single gunicorn worker — isn't that a bottleneck?"*
+**Skeptic follow-up:** *"Single gunicorn worker - isn't that a bottleneck?"*
 Single worker is the correct choice for this workload. FastAPI + uvicorn handles all
-concurrency async within one process. Multi-worker is safe — the audit chain uses Redis
+concurrency async within one process. Multi-worker is safe - the audit chain uses Redis
 WATCH/MULTI/EXEC transactions, so it is race-free at any worker count. See
-`docs/AUDIT_TRAIL.md` — Storage Architecture for the full rationale.
+`docs/AUDIT_TRAIL.md` - Storage Architecture for the full rationale.
 
 ---
 
@@ -657,10 +657,10 @@ in the egress firewall, and TelsonBase mediates, logs, and governs every call. T
 provider receives only what the agent is authorized to send at its current trust level.
 
 **Source files:**
-- `core/ollama_service.py` — local LLM inference service
-- `main.py` — LLM endpoints (`/v1/llm/*`)
+- `core/ollama_service.py` - local LLM inference service
+- `main.py` - LLM endpoints (`/v1/llm/*`)
 
-**Proof sheet:** `proof_sheets/TB-PROOF-029_local_llm_ollama.md` — local LLM inference verification.
+**Proof sheet:** `proof_sheets/TB-PROOF-029_local_llm_ollama.md` - local LLM inference verification.
 
 **Verification:**
 ```bash
@@ -681,7 +681,7 @@ curl -X POST http://localhost:8000/v1/llm/pull \
 **Plain answer:**
 TelsonBase is open source under the Apache License, Version 2.0.
 
-**What Apache 2.0 means:** Free for any use — personal, commercial, production, research.
+**What Apache 2.0 means:** Free for any use - personal, commercial, production, research.
 Use it, modify it, deploy it, build products on it, charge customers for it. No commercial
 license required. No AGPL network-service disclosure requirements.
 
@@ -689,11 +689,11 @@ license required. No AGPL network-service disclosure requirements.
 - Retain the copyright and license notices when distributing TelsonBase or derivative works
 - If you modify files, carry prominent notices stating you changed them
 
-**Full terms:** `LICENSE` — or the official text at https://www.apache.org/licenses/LICENSE-2.0
+**Full terms:** `LICENSE` - or the official text at https://www.apache.org/licenses/LICENSE-2.0
 
 **Support and consulting:** Quietfire AI offers enterprise support, consulting, and
 compliance guidance for production deployments. Apache 2.0 means you are not obligated
-to pay anything — but if you are deploying TelsonBase in healthcare, legal, or insurance
+to pay anything - but if you are deploying TelsonBase in healthcare, legal, or insurance
 and want expert help, that is available. Contact support@telsonbase.com.
 
 ---
@@ -713,51 +713,51 @@ Load tested at 200 concurrent requests over 10 seconds against a self-hosted dep
 | Authenticated endpoint p95 | 202ms |
 | Rate limiter trigger | ~request 98 at sustained load |
 
-The governance pipeline adds latency to agent action evaluation — each of the 8 steps
+The governance pipeline adds latency to agent action evaluation - each of the 8 steps
 is a Redis operation or in-memory check. In load testing, the governance overhead is
 within acceptable bounds for the use case: governed AI agent actions are not
 latency-sensitive at the millisecond level.
 
 **Source files:**
-- `run_advanced_tests.bat` — Level 4 performance test suite
-- `monitoring/prometheus/alerts.yml` — HighLatency alert rule (>500ms p95)
+- `run_advanced_tests.bat` - Level 4 performance test suite
+- `monitoring/prometheus/alerts.yml` - HighLatency alert rule (>500ms p95)
 
-**Proof sheet:** `proof_sheets/TB-PROOF-026_concurrent_requests.md` — 50 concurrent requests handled.
+**Proof sheet:** `proof_sheets/TB-PROOF-026_concurrent_requests.md` - 50 concurrent requests handled.
 
 ---
 
 ## 21. What Are the 8 Steps of the Governance Pipeline?
 
 **Plain answer:**
-Every agent action — every tool call, every external request, every file operation — passes
+Every agent action - every tool call, every external request, every file operation - passes
 through an 8-step pipeline in `core/openclaw.py` `evaluate_action()`. No step is skipped.
 No tier bypasses the pipeline. This is the core of TelsonBase's governance model.
 
 | Step | Check | Fail outcome |
 |---|---|---|
-| 1 | **Registration** — Is this instance_id registered? | `BLOCKED` — unregistered agent |
-| 2 | **Kill switch** — Is the agent suspended? | `BLOCKED` — agent_suspended, before anything else |
-| 3 | **Nonce replay** — Has this exact nonce been seen before? | `BLOCKED` — nonce_already_used |
-| 4 | **Manners compliance** — Is the behavioral score above threshold (default 50%)? | Auto-demote to QUARANTINE, `BLOCKED` |
-| 5 | **Trust level** — Does the agent's tier permit this action category? | `BLOCKED` or `GATED` depending on action type |
-| 6 | **Capability check** — Is this tool/action in the agent's declared capability profile? | `BLOCKED` — capability_not_declared |
-| 7 | **Anomaly detection** — Does this action match known behavioral anomaly patterns? | `GATED` (requires human approval) or advisory log at AGENT tier |
-| 8 | **Decision** — Action is `ALLOWED`, `GATED` (APPR- ID created), or `BLOCKED` | Audit entry written regardless of outcome |
+| 1 | **Registration** - Is this instance_id registered? | `BLOCKED` - unregistered agent |
+| 2 | **Kill switch** - Is the agent suspended? | `BLOCKED` - agent_suspended, before anything else |
+| 3 | **Nonce replay** - Has this exact nonce been seen before? | `BLOCKED` - nonce_already_used |
+| 4 | **Manners compliance** - Is the behavioral score above threshold (default 50%)? | Auto-demote to QUARANTINE, `BLOCKED` |
+| 5 | **Trust level** - Does the agent's tier permit this action category? | `BLOCKED` or `GATED` depending on action type |
+| 6 | **Capability check** - Is this tool/action in the agent's declared capability profile? | `BLOCKED` - capability_not_declared |
+| 7 | **Anomaly detection** - Does this action match known behavioral anomaly patterns? | `GATED` (requires human approval) or advisory log at AGENT tier |
+| 8 | **Decision** - Action is `ALLOWED`, `GATED` (APPR- ID created), or `BLOCKED` | Audit entry written regardless of outcome |
 
-Every outcome — allowed, gated, or blocked — is written to the hash-chained audit trail.
+Every outcome - allowed, gated, or blocked - is written to the hash-chained audit trail.
 At AGENT tier (apex), anomalies at Step 7 are logged as advisory rather than gating execution.
-AGENT is the only tier where anomalies do not gate — and it is the hardest tier to earn.
+AGENT is the only tier where anomalies do not gate - and it is the hardest tier to earn.
 
 **Source files:**
-- `core/openclaw.py` — `evaluate_action()` — the full pipeline implementation
-- `core/trust_levels.py` — `TRUST_PERMISSION_MATRIX` — what each tier permits
+- `core/openclaw.py` - `evaluate_action()` - the full pipeline implementation
+- `core/trust_levels.py` - `TRUST_PERMISSION_MATRIX` - what each tier permits
 
-**Proof sheet:** `proof_sheets/TB-PROOF-035_openclaw_governance.md` — governance pipeline verification.
+**Proof sheet:** `proof_sheets/TB-PROOF-035_openclaw_governance.md` - governance pipeline verification.
 
-**Skeptic follow-up:** *"8 Redis operations per action — isn't that slow?"*
+**Skeptic follow-up:** *"8 Redis operations per action - isn't that slow?"*
 Each step is an in-memory check or a single Redis operation. At p50, the governance
 overhead is within the latency profile documented in Q20. Governed AI agent actions
-operate in seconds, not milliseconds — governance latency is not the bottleneck.
+operate in seconds, not milliseconds - governance latency is not the bottleneck.
 
 ---
 
@@ -769,14 +769,14 @@ agent safety principles and running entirely locally. Every agent action contrib
 a rolling compliance score between 0.0 (no compliance) and 1.0 (full compliance).
 
 The default threshold is 50%. Drop below it and the agent is automatically demoted to
-QUARANTINE — no human in the loop, no grace period, no delay. The demotion fires at
+QUARANTINE - no human in the loop, no grace period, no delay. The demotion fires at
 Step 4 of the governance pipeline, before the action that triggered the evaluation proceeds.
 The agent remains registered and visible to operators, but cannot take any autonomous
 action until a human operator explicitly reinstates it.
 
 **What lowers the score:**
-- Repeated blocked actions — attempting restricted operations the agent knows are out of bounds
-- Capability probing — enumerating permissions or trying unauthorized tools
+- Repeated blocked actions - attempting restricted operations the agent knows are out of bounds
+- Capability probing - enumerating permissions or trying unauthorized tools
 - Rate limit violations
 - Non-QMS-formatted messages to the Foreman
 - Behavioral anomalies flagged by the detection engine
@@ -786,21 +786,21 @@ action until a human operator explicitly reinstates it.
 - The threshold value (configurable, default 0.50)
 - Individual behavior weighting
 
-This is not a punishment system — it is a behavioral signal. An agent that consistently
+This is not a punishment system - it is a behavioral signal. An agent that consistently
 attempts actions it cannot take is demonstrating that its capabilities do not match its
 declared profile. Auto-demotion surfaces that mismatch automatically, before it becomes
 a security event.
 
 **Source files:**
-- `core/manners.py` — Manners scoring engine
-- `core/openclaw.py` — `_check_manners_compliance()` — Step 4 integration
+- `core/manners.py` - Manners scoring engine
+- `core/openclaw.py` - `_check_manners_compliance()` - Step 4 integration
 
-**Proof sheet:** `proof_sheets/TB-PROOF-038_manners_auto_demotion.md` — auto-demotion behavior,
+**Proof sheet:** `proof_sheets/TB-PROOF-038_manners_auto_demotion.md` - auto-demotion behavior,
 threshold enforcement, and operator reinstatement flow.
 
 **Skeptic follow-up:** *"Can an agent game the scoring?"*
 The score is computed server-side by TelsonBase, not reported by the agent. The agent
-has no direct mechanism to influence its own Manners score — it can only behave. The
+has no direct mechanism to influence its own Manners score - it can only behave. The
 behavioral record is hash-chained and tamper-evident.
 
 ---
@@ -810,10 +810,10 @@ behavioral record is hash-chained and tamper-evident.
 **Plain answer:**
 The 5-tier promotion ladder: QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT.
 No tier can be skipped. Promotion is always one step at a time. Demotion can skip levels
-instantly. Every promotion requires a human operator decision — trust is earned and
+instantly. Every promotion requires a human operator decision - trust is earned and
 verified, never assigned.
 
-**What each step requires** (enforced in `core/trust_levels.py` — `TRUST_LEVEL_CONSTRAINTS`):
+**What each step requires** (enforced in `core/trust_levels.py` - `TRUST_LEVEL_CONSTRAINTS`):
 
 | Promotion | What Is Required |
 |---|---|
@@ -824,23 +824,23 @@ verified, never assigned.
 
 At AGENT tier: the highest rate limit (300/min), full autonomous access across all 6 action
 categories, and anomaly detection that logs loudly but does not gate execution. AGENT is
-not a designation — it is a record. The platform has verified, repeatedly, that this agent
+not a designation - it is a record. The platform has verified, repeatedly, that this agent
 behaves within its declared profile.
 
 AGENT tier re-verification runs every 3 days. A single period of poor behavior can trigger
-demotion from apex back to any lower tier — including QUARANTINE — with no intermediate
+demotion from apex back to any lower tier - including QUARANTINE - with no intermediate
 stops required on the way down.
 
 **Source files:**
-- `core/trust_levels.py` — `TRUST_LEVEL_CONSTRAINTS`, `VALID_PROMOTIONS`, `VALID_DEMOTIONS`
-- `core/openclaw.py` — `promote_trust()`, `demote_trust()`
+- `core/trust_levels.py` - `TRUST_LEVEL_CONSTRAINTS`, `VALID_PROMOTIONS`, `VALID_DEMOTIONS`
+- `core/openclaw.py` - `promote_trust()`, `demote_trust()`
 
 **Proof sheets:**
-- `proof_sheets/TB-PROOF-039_earned_trust_model.md` — earned trust model verification
-- `proof_sheets/TB-PROOF-036_trust_level_matrix.md` — permission matrix by tier
+- `proof_sheets/TB-PROOF-039_earned_trust_model.md` - earned trust model verification
+- `proof_sheets/TB-PROOF-036_trust_level_matrix.md` - permission matrix by tier
 
 **Skeptic follow-up:** *"Can an operator just promote an agent without it earning it?"*
-Yes — the operator controls promotion. What the system enforces is that promotion is always
+Yes - the operator controls promotion. What the system enforces is that promotion is always
 sequential (no skipping), always requires an operator action (no automatic promotion), and
 is always reversible (demotion can skip levels, instantly, at any time).
 

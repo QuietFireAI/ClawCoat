@@ -159,7 +159,7 @@ These Terms are governed by and construed in accordance with the laws of the Sta
 
 TelsonBase supports optional integrations with third-party services. These integrations are disabled by default and must be explicitly enabled by the deploying operator.
 
-**OpenClaw** is a third-party autonomous AI agent. TelsonBase acts as a governed MCP proxy for OpenClaw — intercepting and evaluating every action against the governance pipeline before execution. OpenClaw itself is not modified. OpenClaw operates under its own license and terms.
+**OpenClaw** is a third-party autonomous AI agent. TelsonBase acts as a governed MCP proxy for OpenClaw - intercepting and evaluating every action against the governance pipeline before execution. OpenClaw itself is not modified. OpenClaw operates under its own license and terms.
 
 **Goose** (Block, Inc.) is an open-source MCP-compatible agent operator that may be used to operate TelsonBase-governed agents. Goose operates under its own license and terms published at https://github.com/block/goose.
 

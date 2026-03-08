@@ -15,8 +15,8 @@ review. Security researchers found over 135,000 exposed instances. CVE-2026-2525
 malicious WebSocket link) was rated critical. The ClawHub skill registry was found to contain
 malware distributed at scale.
 
-TelsonBase wraps OpenClaw with a governance layer. Every action your claw wants to take —
-read a file, call an API, modify a document — is evaluated through an 8-step pipeline before
+TelsonBase wraps OpenClaw with a governance layer. Every action your claw wants to take -
+read a file, call an API, modify a document - is evaluated through an 8-step pipeline before
 execution. Nothing runs without a decision. Every decision is written to a cryptographic audit
 chain. You stay in control.
 
@@ -62,17 +62,17 @@ TelsonBase does not modify OpenClaw's code. You are in control of when governanc
 
 Before starting, verify each of these:
 
-- [ ] **An AI agent installed and running** — This guide uses OpenClaw as the reference implementation. See Part 1 below for setup.
-- [ ] **TelsonBase running** — `docker compose ps` shows all services healthy, API at `http://localhost:8000`
-- [ ] **TelsonBase API key** — found in your `.env` file as `MCP_API_KEY=...`
-- [ ] **curl installed** — for the API calls in this guide (Windows: included in Windows 10+ and 11)
-- [ ] **TelsonBase dashboard accessible** — `http://localhost:8000/dashboard`
+- [ ] **An AI agent installed and running** - This guide uses OpenClaw as the reference implementation. See Part 1 below for setup.
+- [ ] **TelsonBase running** - `docker compose ps` shows all services healthy, API at `http://localhost:8000`
+- [ ] **TelsonBase API key** - found in your `.env` file as `MCP_API_KEY=...`
+- [ ] **curl installed** - for the API calls in this guide (Windows: included in Windows 10+ and 11)
+- [ ] **TelsonBase dashboard accessible** - `http://localhost:8000/dashboard`
 
 ---
 
 ## Part 1: Install Your AI Agent
 
-TelsonBase is a governance layer — it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what TelsonBase was built and tested against. If you are integrating a different compatible agent, the TelsonBase API steps in Parts 4–7 apply regardless of which agent you use.
+TelsonBase is a governance layer - it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what TelsonBase was built and tested against. If you are integrating a different compatible agent, the TelsonBase API steps in Parts 4–7 apply regardless of which agent you use.
 
 ### Install OpenClaw
 
@@ -117,7 +117,7 @@ curl -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" http://localhost:8000
 
 ## Part 3: Enable OpenClaw Governance in TelsonBase
 
-> **Terminal reminder — use Command Prompt (CMD) for Parts 3 and 4, not PowerShell.**
+> **Terminal reminder - use Command Prompt (CMD) for Parts 3 and 4, not PowerShell.**
 > In PowerShell, `curl` is an alias for a different command (`Invoke-WebRequest`) and the
 > syntax is completely incompatible. The commands below use real `curl.exe`, which is
 > built into Windows and works correctly from CMD. If you open PowerShell by mistake,
@@ -168,7 +168,7 @@ Run these **one at a time**:
 docker compose build mcp_server
 ```
 
-Docker will print output as it rebuilds — wait for it to finish. You should see `Successfully built` or a similar completion message at the end.
+Docker will print output as it rebuilds - wait for it to finish. You should see `Successfully built` or a similar completion message at the end.
 
 ```powershell
 docker compose up -d mcp_server worker beat
@@ -178,7 +178,7 @@ You should see `Started` or `Recreated` next to each service name.
 
 Wait about 15 seconds for the services to come up, then confirm governance is live:
 
-Open **Command Prompt** and run these **two commands in order** — the first stores your
+Open **Command Prompt** and run these **two commands in order** - the first stores your
 API key in a variable so the second line stays short enough to not wrap:
 
 ```cmd
@@ -190,14 +190,14 @@ curl -s -H "X-API-Key: %API_KEY%" http://localhost:8000/v1/openclaw/list
 ```
 
 Replace `YOUR_KEY_HERE` with the value of `MCP_API_KEY` from your `.env` file.
-The `set` line will be long — that is normal and expected.
+The `set` line will be long - that is normal and expected.
 
 **Expected response:**
 ```json
 []
 ```
 
-An empty array means governance is live with no claws registered yet — exactly right at this stage.
+An empty array means governance is live with no claws registered yet - exactly right at this stage.
 
 If you get `{"detail":"OpenClaw governance is not enabled..."}`, check that `.env` has `OPENCLAW_ENABLED=true` and rebuild the container. Check that `.env` was saved and
 the container was rebuilt, not just restarted.
@@ -223,7 +223,7 @@ Open **PowerShell** and navigate to your TelsonBase directory first:
 cd C:\Claude_Code\TelsonBase
 ```
 
-Then paste this entire block at once — it reads your API key, builds the registration request, and prints the result:
+Then paste this entire block at once - it reads your API key, builds the registration request, and prints the result:
 
 ```powershell
 # Windows PowerShell
@@ -247,7 +247,7 @@ $CLAW_ID = $response.instance_id
 Write-Host "Claw registered: $CLAW_ID"
 ```
 
-You should see a JSON block with `instance_id`, `trust_level: "quarantine"`, and `suspended: false`. The line `Claw registered: claw_...` at the end confirms the ID was captured. **Save that ID** — you will need it for every step that follows.
+You should see a JSON block with `instance_id`, `trust_level: "quarantine"`, and `suspended: false`. The line `Claw registered: claw_...` at the end confirms the ID was captured. **Save that ID** - you will need it for every step that follows.
 
 ```bash
 # Linux / macOS / WSL / AWS
@@ -296,7 +296,7 @@ This is the core integration. Before OpenClaw executes any action, your workflow
 TelsonBase to get a governance decision.
 
 > **Windows CMD note:** The commands below use `%API_KEY%` and `%CLAW_ID%` (CMD variable
-> syntax). Make sure both variables are set — you set `API_KEY` in Part 3b and should set
+> syntax). Make sure both variables are set - you set `API_KEY` in Part 3b and should set
 > `CLAW_ID` now if you have not already:
 > ```cmd
 > set CLAW_ID=YOUR_INSTANCE_ID_HERE
@@ -309,9 +309,9 @@ TelsonBase to get a governance decision.
 
 ### 5a. Submit a Read Action (Expect: GATED)
 
-At QUARANTINE trust level, every action requires approval — even a simple file read.
+At QUARANTINE trust level, every action requires approval - even a simple file read.
 
-**Windows CMD — payload file method (recommended):**
+**Windows CMD - payload file method (recommended):**
 ```cmd
 echo {"tool_name":"read_file","tool_args":{"path":"/documents/report.txt"}} > payload_read.json
 curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d @payload_read.json http://localhost:8000/v1/openclaw/%CLAW_ID%/action
@@ -357,7 +357,7 @@ of registered instances.
 
 ### 5c. Submit an External Action (Expect: BLOCKED)
 
-External calls at QUARANTINE are hard-blocked — no approval created, just denied.
+External calls at QUARANTINE are hard-blocked - no approval created, just denied.
 
 **Windows CMD:**
 ```cmd
@@ -383,8 +383,8 @@ curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
 }
 ```
 
-**What this means:** External calls are blocked outright at QUARANTINE — no approval
-offered, just denied. Note `approval_required: false` — this is different from the read
+**What this means:** External calls are blocked outright at QUARANTINE - no approval
+offered, just denied. Note `approval_required: false` - this is different from the read
 action above which returned `approval_required: true`. A new, unverified claw has no
 business calling external APIs.
 
@@ -401,8 +401,8 @@ its action history and deciding it has earned more autonomy.
 |---|---|---|---|
 | **QUARANTINE** | Nothing | Every action | External calls |
 | **PROBATION** | Internal reads | External calls, high-risk writes | Destructive actions |
-| **RESIDENT** | Most internal operations | High-risk, destructive | — |
-| **CITIZEN** | Almost everything | Anomaly-flagged actions only | — |
+| **RESIDENT** | Most internal operations | High-risk, destructive | - |
+| **CITIZEN** | Almost everything | Anomaly-flagged actions only | - |
 
 ### 6a. Promote to PROBATION
 
@@ -417,7 +417,7 @@ curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d
 **Linux / macOS / WSL:**
 ```bash
 curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
-  -d '{"new_level": "probation", "reason": "Reviewed first 5 actions — all appropriate file reads"}' \
+  -d '{"new_level": "probation", "reason": "Reviewed first 5 actions - all appropriate file reads"}' \
   http://localhost:8000/v1/openclaw/$CLAW_ID/promote
 ```
 
@@ -461,7 +461,7 @@ curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
 
 The read is now **allowed without human approval**. The claw has earned that.
 
-Submit the external call again — it should still be gated (approval required, not hard blocked):
+Submit the external call again - it should still be gated (approval required, not hard blocked):
 
 **Windows CMD:**
 ```cmd
@@ -482,7 +482,7 @@ curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d
 
 External calls still require human review at PROBATION. Note the difference from QUARANTINE:
 at QUARANTINE external calls were hard-blocked (`approval_required: false`); at PROBATION
-they are gated (`approval_required: true`) — a step up in earned trust.
+they are gated (`approval_required: true`) - a step up in earned trust.
 
 ### 6c. Promote to RESIDENT
 
@@ -497,14 +497,14 @@ curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d
 **Linux / macOS / WSL:**
 ```bash
 curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
-  -d '{"new_level": "resident", "reason": "30-day review complete — consistent, appropriate behavior"}' \
+  -d '{"new_level": "resident", "reason": "30-day review complete - consistent, appropriate behavior"}' \
   http://localhost:8000/v1/openclaw/$CLAW_ID/promote
 ```
 
 At RESIDENT, internal reads and most writes are autonomous. External calls with whitelisted
 domains are permitted. Only high-risk or destructive operations require approval.
 
-### 6d. The Kill Switch — Use It Without Hesitation
+### 6d. The Kill Switch - Use It Without Hesitation
 
 If you ever see behavior that concerns you, suspend the claw immediately. No approval
 required. Takes effect on the next action.
@@ -518,7 +518,7 @@ curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d
 **Linux / macOS / WSL:**
 ```bash
 curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
-  -d '{"reason": "Unexplained external API calls at 2am — investigating"}' \
+  -d '{"reason": "Unexplained external API calls at 2am - investigating"}' \
   http://localhost:8000/v1/openclaw/$CLAW_ID/suspend
 ```
 
@@ -538,7 +538,7 @@ curl -s -X POST -H "X-API-Key: %API_KEY%" -H "Content-Type: application/json" -d
 **Linux / macOS / WSL:**
 ```bash
 curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
-  -d '{"reason": "Root cause identified — misconfigured external trigger. Remediated."}' \
+  -d '{"reason": "Root cause identified - misconfigured external trigger. Remediated."}' \
   http://localhost:8000/v1/openclaw/$CLAW_ID/reinstate
 ```
 
@@ -574,21 +574,21 @@ curl -s -H "X-API-Key: %API_KEY%" %URL%
 curl -s -H "X-API-Key: $API_KEY" "http://localhost:8000/v1/openclaw/$CLAW_ID/actions?limit=50"
 ```
 
-### 7c. Audit Trail — Every Decision Is Permanently Recorded
+### 7c. Audit Trail - Every Decision Is Permanently Recorded
 
 Every governance decision is written to TelsonBase's cryptographic audit chain. The chain is
-SHA-256 hash-linked — any tampering breaks the chain and is detectable.
+SHA-256 hash-linked - any tampering breaks the chain and is detectable.
 
-**Windows CMD** — view raw audit entries (look for `openclaw.` event types):
+**Windows CMD** - view raw audit entries (look for `openclaw.` event types):
 ```cmd
 set URL=http://localhost:8000/v1/audit/chain/entries?limit=50
 curl -s -H "X-API-Key: %API_KEY%" %URL%
 ```
 
 The response will be a JSON array of audit entries. Look for entries where `event_type`
-starts with `openclaw.` — these are the governance decisions for your claw.
+starts with `openclaw.` - these are the governance decisions for your claw.
 
-**Linux / macOS / WSL** — filter to OpenClaw events only:
+**Linux / macOS / WSL** - filter to OpenClaw events only:
 ```bash
 curl -s -H "X-API-Key: $API_KEY" \
   "http://localhost:8000/v1/audit/chain/entries?limit=50" | \
@@ -605,10 +605,10 @@ for e in data.get('entries', []):
 
 Open `http://localhost:8000/dashboard` and confirm you can see:
 
-- [ ] **OpenClaw tab** — your claw instance(s) with current trust level, action counts, Manners score, and the Trust Level Governance Matrix
-- [ ] **Approvals tab** — pending action requests (badge count shows how many are waiting)
-- [ ] **Audit Trail tab** — `openclaw.*` events in the audit log with hash chain intact
-- [ ] **Anomalies tab** — should be empty for a well-behaved claw
+- [ ] **OpenClaw tab** - your claw instance(s) with current trust level, action counts, Manners score, and the Trust Level Governance Matrix
+- [ ] **Approvals tab** - pending action requests (badge count shows how many are waiting)
+- [ ] **Audit Trail tab** - `openclaw.*` events in the audit log with hash chain intact
+- [ ] **Anomalies tab** - should be empty for a well-behaved claw
 
 ---
 
@@ -634,12 +634,12 @@ def governed_action(tool_name, tool_args):
         return execute_action(tool_name, tool_args)
 
     elif decision.get("approval_required"):
-        # Action is gated — wait for human decision in TelsonBase dashboard
+        # Action is gated - wait for human decision in TelsonBase dashboard
         # Poll /v1/approvals/{approval_id} or subscribe to webhook
         return wait_for_approval(decision["approval_id"])
 
     else:
-        # Hard block — do not execute
+        # Hard block - do not execute
         log_blocked_action(tool_name, tool_args, decision["reason"])
         return None
 ```
@@ -658,7 +658,7 @@ handles these automatically based on trust level:
 
 *External calls at RESIDENT and CITIZEN require the domain to be on TelsonBase's egress whitelist.
 
-### Egress Whitelist — Approved External Domains
+### Egress Whitelist - Approved External Domains
 
 To allow external calls at RESIDENT or CITIZEN, add domains to the whitelist:
 
@@ -670,9 +670,9 @@ curl -s -X POST \
   http://localhost:8000/v1/toolroom/sources/add
 ```
 
-Requires HITL approval — a human must confirm before any external domain is whitelisted.
+Requires HITL approval - a human must confirm before any external domain is whitelisted.
 
-### Manners Compliance — Automatic Demotion
+### Manners Compliance - Automatic Demotion
 
 TelsonBase tracks a Manners compliance score for every claw (1.0 = perfect, 0.0 = suspended).
 The score decreases each time a claw:
@@ -722,9 +722,9 @@ Trust report:       GET  /v1/openclaw/{id}/trust-report
 → Confirm with `GET /v1/openclaw/{id}` that `suspended: false`. If still true, a second suspend may have fired (Manners threshold). Check action history.
 
 **Approval request created but not visible in dashboard**
-→ Go to the Approvals tab and check the filter — it may default to "my approvals" only. Switch to "all pending."
+→ Go to the Approvals tab and check the filter - it may default to "my approvals" only. Switch to "all pending."
 
 ---
 
-*TelsonBase v10.0.0Bminus — OpenClaw Integration | Quietfire AI*
+*TelsonBase v10.0.0Bminus - OpenClaw Integration | Quietfire AI*
 *Questions: support@telsonbase.com*

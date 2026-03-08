@@ -1,4 +1,4 @@
-# TB-TEST-API-008 — TestSystemEndpoints · `test_system_status`
+# TB-TEST-API-008 - TestSystemEndpoints · `test_system_status`
 
 **Sheet ID:** TB-TEST-API-008
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 19-test API Endpoint Smoke Tests suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 19-test API Endpoint Smoke Tests suite. Run the verification command below to confirm independently.
 
 ## Source
 

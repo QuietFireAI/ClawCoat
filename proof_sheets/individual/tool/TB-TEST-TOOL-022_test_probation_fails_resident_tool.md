@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-022 — TestTrustLevelNormalization · `test_probation_fails_resident_tool`
+# TB-TEST-TOOL-022 - TestTrustLevelNormalization · `test_probation_fails_resident_tool`
 
 **Sheet ID:** TB-TEST-TOOL-022
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

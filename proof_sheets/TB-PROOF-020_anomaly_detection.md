@@ -1,7 +1,7 @@
 # TB-PROOF-020: Behavioral Anomaly Detection
 
 **Sheet ID:** TB-PROOF-020
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/anomaly.py` implements 7 anomaly detection types with statistical baselines and exponential moving average.
+VERIFIED - `core/anomaly.py` implements 7 anomaly detection types with statistical baselines and exponential moving average.
 
 ## Evidence
 

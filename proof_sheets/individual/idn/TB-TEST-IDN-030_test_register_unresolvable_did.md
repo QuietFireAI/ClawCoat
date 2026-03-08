@@ -1,4 +1,4 @@
-# TB-TEST-IDN-030 — TestAgentRegistration · `test_register_unresolvable_did`
+# TB-TEST-IDN-030 - TestAgentRegistration · `test_register_unresolvable_did`
 
 **Sheet ID:** TB-TEST-IDN-030
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

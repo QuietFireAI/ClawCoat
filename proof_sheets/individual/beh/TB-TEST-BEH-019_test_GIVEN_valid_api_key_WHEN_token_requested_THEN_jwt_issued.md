@@ -1,4 +1,4 @@
-# TB-TEST-BEH-019 — TestBehavior_SecurityBoundaries · `test_GIVEN_valid_api_key_WHEN_token_requested_THEN_jwt_issued`
+# TB-TEST-BEH-019 - TestBehavior_SecurityBoundaries · `test_GIVEN_valid_api_key_WHEN_token_requested_THEN_jwt_issued`
 
 **Sheet ID:** TB-TEST-BEH-019
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

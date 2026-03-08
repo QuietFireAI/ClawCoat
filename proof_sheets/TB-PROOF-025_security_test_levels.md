@@ -1,7 +1,7 @@
 # TB-PROOF-025: 5 Automated Security Test Levels
 
 **Sheet ID:** TB-PROOF-025
-**Claim Source:** telsonbase.com — Security Testing Section
+**Claim Source:** telsonbase.com - Security Testing Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -11,11 +11,11 @@
 ## Exact Claim
 
 > "Five levels of automated security testing"
-> "Security · Chaos/Resilience · API Contract · Performance/Load · Static Analysis — all passing."
+> "Security · Chaos/Resilience · API Contract · Performance/Load · Static Analysis - all passing."
 
 ## Verdict
 
-VERIFIED — 5 test levels implemented and documented in `version.py` v6.0.0CC (lines 208-223) and `docs/Testing Documents/SECURITY_TESTING_STACK.md`. All 5 levels pass.
+VERIFIED - 5 test levels implemented and documented in `version.py` v6.0.0CC (lines 208-223) and `docs/Testing Documents/SECURITY_TESTING_STACK.md`. All 5 levels pass.
 
 ## Evidence
 

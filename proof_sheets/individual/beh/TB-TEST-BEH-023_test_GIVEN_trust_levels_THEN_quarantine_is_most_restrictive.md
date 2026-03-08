@@ -1,4 +1,4 @@
-# TB-TEST-BEH-023 — TestBehavior_TrustLevelProgression · `test_GIVEN_trust_levels_THEN_quarantine_is_most_restrictive`
+# TB-TEST-BEH-023 - TestBehavior_TrustLevelProgression · `test_GIVEN_trust_levels_THEN_quarantine_is_most_restrictive`
 
 **Sheet ID:** TB-TEST-BEH-023
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

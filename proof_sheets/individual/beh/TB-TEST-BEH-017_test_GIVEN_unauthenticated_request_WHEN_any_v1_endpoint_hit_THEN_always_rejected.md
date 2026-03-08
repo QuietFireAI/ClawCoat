@@ -1,4 +1,4 @@
-# TB-TEST-BEH-017 — TestBehavior_SecurityBoundaries · `test_GIVEN_unauthenticated_request_WHEN_any_v1_endpoint_hit_THEN_always_rejected`
+# TB-TEST-BEH-017 - TestBehavior_SecurityBoundaries · `test_GIVEN_unauthenticated_request_WHEN_any_v1_endpoint_hit_THEN_always_rejected`
 
 **Sheet ID:** TB-TEST-BEH-017
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

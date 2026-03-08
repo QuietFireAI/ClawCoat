@@ -1,4 +1,4 @@
-# TB-TEST-QMS-105 — TestConstantsAndEnums · `test_system_halt_constant`
+# TB-TEST-QMS-105 - TestConstantsAndEnums · `test_system_halt_constant`
 
 **Sheet ID:** TB-TEST-QMS-105
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-008 — TestAuthSecurity · `test_mfa_enrollment_generates_valid_totp_secret`
+# TB-TEST-SEC-008 - TestAuthSecurity · `test_mfa_enrollment_generates_valid_totp_secret`
 
 **Sheet ID:** TB-TEST-SEC-008
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

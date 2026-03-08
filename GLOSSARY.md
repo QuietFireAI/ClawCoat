@@ -10,7 +10,7 @@ Definitions of key terms used throughout TelsonBase documentation and code.
 A software component that performs tasks autonomously. In TelsonBase, agents are isolated, capability-restricted, and cryptographically verified. Each agent has a trust level, declared capabilities, and a signed identity.
 
 ### Agent Trust Level
-Progression system for agent permissions: `QUARANTINE` (new/untrusted) → `PROBATION` (limited) → `RESIDENT` (standard) → `CITIZEN` (full trust) → `AGENT` (apex tier). Higher trust unlocks more tool access and capabilities. See `core/trust_levels.py`. For toolroom access specifically — which tools are available at each tier and how designations are set — see `docs/TOOLROOM_TRUST_MATRIX.md`.
+Progression system for agent permissions: `QUARANTINE` (new/untrusted) → `PROBATION` (limited) → `RESIDENT` (standard) → `CITIZEN` (full trust) → `AGENT` (apex tier). Higher trust unlocks more tool access and capabilities. See `core/trust_levels.py`. For toolroom access specifically - which tools are available at each tier and how designations are set - see `docs/TOOLROOM_TRUST_MATRIX.md`.
 
 ### Alien
 Code or frameworks from external sources (LangChain, AutoGPT, etc.) that haven't been verified against TelsonBase security standards. Aliens run in quarantine with restricted capabilities. See `agents/alien_adapter.py`.
@@ -83,7 +83,7 @@ Capability delegation system where one agent (grantor) can delegate a subset of 
 ## E
 
 ### Egress Gateway
-Secure proxy that controls all outbound network traffic from agents. Enforces domain whitelisting — only pre-approved external APIs can be reached. See `gateway/egress_proxy.py`.
+Secure proxy that controls all outbound network traffic from agents. Enforces domain whitelisting - only pre-approved external APIs can be reached. See `gateway/egress_proxy.py`.
 
 ### Egress Whitelist
 List of approved external domains agents can contact. Configured in `core/config.py` via `ALLOWED_EXTERNAL_DOMAINS`.
@@ -115,7 +115,7 @@ A Python function registered via `@register_function_tool` decorator for in-proc
 Hash-based Message Authentication Code using SHA-256. Used for signing agent messages to ensure integrity and authenticity.
 
 ### Human-in-the-Loop (HITL)
-Design pattern where critical operations require explicit human approval before execution. In TelsonBase, ALL external API access triggers HITL — no exceptions. Implemented via approval gates.
+Design pattern where critical operations require explicit human approval before execution. In TelsonBase, ALL external API access triggers HITL - no exceptions. Implemented via approval gates.
 
 ---
 
@@ -149,17 +149,17 @@ Agent-to-agent communication system using Mosquitto. Topic structure: `telsonbas
 ## O
 
 ### Ollama
-Local LLM inference engine. TelsonBase runs Ollama in Docker for sovereign AI — all inference happens on your hardware. Accessed via `core/ollama_service.py` and the `agents/ollama_agent.py` wrapper.
+Local LLM inference engine. TelsonBase runs Ollama in Docker for sovereign AI - all inference happens on your hardware. Accessed via `core/ollama_service.py` and the `agents/ollama_agent.py` wrapper.
 
 ### Origin Block
-QMS v2.1.6 element (`::<agent_id>::`) identifying the sending agent. Mandatory position 1 in every QMS chain — the "radio callsign." Missing origin = anonymous transmission = security alert.
+QMS v2.1.6 element (`::<agent_id>::`) identifying the sending agent. Mandatory position 1 in every QMS chain - the "radio callsign." Missing origin = anonymous transmission = security alert.
 
 ---
 
 ## P
 
 ### Pinch Point
-Architectural term for a controlled bottleneck where all access must flow through a single, auditable mechanism. QMS and the Toolroom are pinch points by design — built tight with the ability to loosen.
+Architectural term for a controlled bottleneck where all access must flow through a single, auditable mechanism. QMS and the Toolroom are pinch points by design - built tight with the ability to loosen.
 
 ### Prefixed ID
 Identifier format used throughout the toolroom for QMS parseability: `CHKOUT-{uuid}` (checkouts), `TOOLREQ-{uuid}` (tool requests), `APPR-{uuid}` (approvals), `CAGE-{uuid}` (cage receipts).

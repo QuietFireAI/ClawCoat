@@ -37,7 +37,7 @@ TelsonBase runs as a single-host Docker Compose stack. All services execute on o
 | **postgres** | postgres:16-alpine | Durable storage (users, audit entries, tenants, compliance records) | data |
 | **ollama** | ollama/ollama | Local LLM inference (sovereign AI) | ai |
 | **mosquitto** | eclipse-mosquitto:2 | MQTT event bus for agent communication | data |
-| ~~**n8n**~~ | — | **Removed** — replaced by MCP gateway at `/mcp` (v8.0.2, Feb 2026) | — |
+| ~~**n8n**~~ | - | **Removed** - replaced by MCP gateway at `/mcp` (v8.0.2, Feb 2026) | - |
 | **open-webui** | ghcr.io/open-webui/open-webui | Human-AI chat interface | frontend, ai |
 | **prometheus** | prom/prometheus:v2.49.1 | Metrics collection, alert rules | monitoring, backend |
 | **grafana** | grafana/grafana:10.3.1 | Metrics visualization, dashboards | monitoring, frontend |
@@ -223,7 +223,7 @@ telsonbase-chart/
     deployment-traefik.yaml        (or use Traefik Helm subchart)
     deployment-mosquitto.yaml
     deployment-ollama.yaml
-    # deployment-n8n.yaml  # REMOVED — replaced by MCP gateway on mcp_server
+    # deployment-n8n.yaml  # REMOVED - replaced by MCP gateway on mcp_server
     deployment-open-webui.yaml
     deployment-prometheus.yaml     (or use kube-prometheus-stack subchart)
     deployment-grafana.yaml        (or use kube-prometheus-stack subchart)
@@ -241,7 +241,7 @@ telsonbase-chart/
     pvc-ollama.yaml
     pvc-mosquitto.yaml
     pvc-grafana.yaml
-    # pvc-n8n.yaml  # REMOVED — n8n data volume retained locally; not needed in k8s
+    # pvc-n8n.yaml  # REMOVED - n8n data volume retained locally; not needed in k8s
     pvc-letsencrypt.yaml
   charts/                          (subcharts for Traefik, Prometheus, etc.)
 ```
@@ -258,7 +258,7 @@ telsonbase-chart/
 | Ollama | Deployment | 1-N | GPU node affinity, resource requests for GPU |
 | Mosquitto | StatefulSet | 1 | Or replace with EMQX for native clustering |
 | Traefik | Deployment / DaemonSet | 2+ | Or replaced by NGINX Ingress Controller |
-| ~~n8n~~ | — | — | **Removed** — MCP gateway runs inside mcp_server pod (no separate deployment) |
+| ~~n8n~~ | - | - | **Removed** - MCP gateway runs inside mcp_server pod (no separate deployment) |
 | Prometheus | StatefulSet | 1 | PVC for TSDB |
 | Grafana | Deployment | 1 | PVC for dashboards and config |
 
@@ -505,7 +505,7 @@ Resource budget based on current `docker-compose.yml` resource reservations:
 | postgres | 0.2 | 128 MB |
 | ollama | 1.0 | 4 GB |
 | mosquitto | 0.1 | 64 MB |
-| ~~n8n~~ | — | — |
+| ~~n8n~~ | - | - |
 | open-webui | 0.3 | 128 MB |
 | prometheus | 0.2 | 128 MB |
 | grafana | 0.2 | 128 MB |

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-023 — TestEncryptionIntegrity · `test_tampered_ciphertext_fails_decryption`
+# TB-TEST-SEC-023 - TestEncryptionIntegrity · `test_tampered_ciphertext_fails_decryption`
 
 **Sheet ID:** TB-TEST-SEC-023
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

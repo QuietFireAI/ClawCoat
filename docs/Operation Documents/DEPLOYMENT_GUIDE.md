@@ -82,7 +82,7 @@ git --version             # git version 2.x
 | Outbound HTTPS | Required for Let's Encrypt ACME challenge and optional external API integrations. |
 
 **Internal ports (bound to 127.0.0.1, not exposed externally):**
-- ~~5678: n8n workflow engine~~ — **removed**; Goose connects to port 8000 (`/mcp`)
+- ~~5678: n8n workflow engine~~ - **removed**; Goose connects to port 8000 (`/mcp`)
 - 9090: Prometheus metrics
 - 3001: Grafana dashboards
 
@@ -106,7 +106,7 @@ cd telsonbase
 
 # 2. Configure environment
 cp .env.example .env
-# Edit .env — set TRAEFIK_ACME_EMAIL, TRAEFIK_DOMAIN, and TELSONBASE_ENV=production
+# Edit .env - set TRAEFIK_ACME_EMAIL, TRAEFIK_DOMAIN, and TELSONBASE_ENV=production
 # All secret values (API keys, passwords) are auto-populated in the next step.
 nano .env
 
@@ -163,7 +163,7 @@ telsonbase/
 cp .env.example .env
 ```
 
-Edit `.env` and set these three required values — everything else is auto-populated in the next step:
+Edit `.env` and set these three required values - everything else is auto-populated in the next step:
 
 ```bash
 # Set to "production" for production deployments
@@ -180,7 +180,7 @@ See [Section 5: Configuration Reference](#5-configuration-reference) for all ava
 
 ### 3c. Generate Secrets
 
-Run the bootstrap script **after** creating `.env`. It generates all cryptographic secrets, syncs their values into `.env`, and creates the Mosquitto MQTT password file — no manual key copying required.
+Run the bootstrap script **after** creating `.env`. It generates all cryptographic secrets, syncs their values into `.env`, and creates the Mosquitto MQTT password file - no manual key copying required.
 
 ```bash
 chmod +x scripts/generate_secrets.sh
@@ -199,9 +199,9 @@ This creates all files in `./secrets/` and auto-populates these `.env` values:
 | `WEBUI_SECRET_KEY` | `secrets/telsonbase_webui_secret` |
 | `DATABASE_URL` | Updated inline with Postgres password |
 
-It also regenerates `monitoring/mosquitto/password_file` using Docker — no separate `mosquitto` install required on the host.
+It also regenerates `monitoring/mosquitto/password_file` using Docker - no separate `mosquitto` install required on the host.
 
-**Important:** The `secrets/` directory is excluded from version control via `.gitignore`. Back up these files securely — if they are lost, all encrypted data becomes unrecoverable.
+**Important:** The `secrets/` directory is excluded from version control via `.gitignore`. Back up these files securely - if they are lost, all encrypted data becomes unrecoverable.
 
 Verify secret generation:
 
@@ -264,7 +264,7 @@ This starts the following 12 services:
 | 1 | traefik | traefik:v2.10 | TLS termination, reverse proxy, security headers |
 | 2 | redis | redis:7-alpine | Session store, cache, audit chain, rate limiting |
 | 3 | postgres | postgres:16-alpine | Durable storage (users, audit, tenants, compliance) |
-| 4 | mailhog | mailhog/mailhog | Dev SMTP catcher — catches all outbound email (UI at port 8025). Remove in production and set real SMTP_* vars. |
+| 4 | mailhog | mailhog/mailhog | Dev SMTP catcher - catches all outbound email (UI at port 8025). Remove in production and set real SMTP_* vars. |
 | 5 | open-webui | ghcr.io/open-webui/open-webui | Human-AI interface |
 | 6 | mosquitto | eclipse-mosquitto:2 | MQTT event bus for real-time agent communication |
 | 7 | ollama | ollama/ollama | Local AI inference engine |
@@ -347,7 +347,7 @@ Expected result:
 93 passed in ~30s
 ```
 
-If any tests fail, do not proceed. Review the failure output — it will point to the specific control that is misconfigured or broken. Common causes: missing environment variable, wrong secret file permissions, database migration not applied.
+If any tests fail, do not proceed. Review the failure output - it will point to the specific control that is misconfigured or broken. Common causes: missing environment variable, wrong secret file permissions, database migration not applied.
 
 The security battery covers:
 - Authentication gates (valid/invalid tokens, expired tokens, tampered tokens)

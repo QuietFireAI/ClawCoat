@@ -1,7 +1,7 @@
 # TB-PROOF-013: Cryptographic Message Signing Between Agents
 
 **Sheet ID:** TB-PROOF-013
-**Claim Source:** telsonbase.com — AI Safety Section
+**Claim Source:** telsonbase.com - AI Safety Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/signing.py` implements HMAC-based message signing for inter-agent communication, with key management persisted in Redis.
+VERIFIED - `core/signing.py` implements HMAC-based message signing for inter-agent communication, with key management persisted in Redis.
 
 ## Evidence
 

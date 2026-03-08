@@ -1,4 +1,4 @@
-# TB-TEST-SEC-012 — TestAuthSecurity · `test_mfa_backup_code_single_use`
+# TB-TEST-SEC-012 - TestAuthSecurity · `test_mfa_backup_code_single_use`
 
 **Sheet ID:** TB-TEST-SEC-012
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> MFA backup codes are consumed on first use — cannot be reused
+> MFA backup codes are consumed on first use - cannot be reused
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

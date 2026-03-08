@@ -1,4 +1,4 @@
-# TB-TEST-SEC-005 — TestAuthSecurity · `test_jwt_expiration_enforcement`
+# TB-TEST-SEC-005 - TestAuthSecurity · `test_jwt_expiration_enforcement`
 
 **Sheet ID:** TB-TEST-SEC-005
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Expired JWTs are rejected by the decoder — no grace period
+> Expired JWTs are rejected by the decoder - no grace period
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

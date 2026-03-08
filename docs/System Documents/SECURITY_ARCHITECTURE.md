@@ -1,4 +1,4 @@
-# TelsonBase — Security Architecture
+# TelsonBase - Security Architecture
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 

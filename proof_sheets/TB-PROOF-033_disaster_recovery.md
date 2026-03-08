@@ -1,7 +1,7 @@
 # TB-PROOF-033: Disaster Recovery RPO=24hr RTO=15min
 
 **Sheet ID:** TB-PROOF-033
-**Claim Source:** telsonbase.com — Reports Section
+**Claim Source:** telsonbase.com - Reports Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `agents/backup_agent.py` implements daily automated backups (RPO=24hr). Recovery procedure achieves RTO=15min. DR test script and documentation exist.
+VERIFIED - `agents/backup_agent.py` implements daily automated backups (RPO=24hr). Recovery procedure achieves RTO=15min. DR test script and documentation exist.
 
 ## Evidence
 

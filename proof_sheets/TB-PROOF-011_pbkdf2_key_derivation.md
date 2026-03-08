@@ -1,7 +1,7 @@
 # TB-PROOF-011: PBKDF2 Key Derivation (100,000+ Iterations)
 
 **Sheet ID:** TB-PROOF-011
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/secure_storage.py` uses PBKDF2HMAC with SHA-256 and exactly 100,000 iterations for key derivation.
+VERIFIED - `core/secure_storage.py` uses PBKDF2HMAC with SHA-256 and exactly 100,000 iterations for key derivation.
 
 ## Evidence
 

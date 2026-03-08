@@ -1,4 +1,4 @@
-# TB-TEST-SEC-040 — TestAccessControl · `test_session_creation_requires_valid_user`
+# TB-TEST-SEC-040 - TestAccessControl · `test_session_creation_requires_valid_user`
 
 **Sheet ID:** TB-TEST-SEC-040
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

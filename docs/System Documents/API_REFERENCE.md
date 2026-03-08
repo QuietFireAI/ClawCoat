@@ -546,14 +546,14 @@ Responses include a `qms_status` field following the Qualified Message Standard 
 
 TelsonBase exposes its management capabilities as MCP (Model Context Protocol) tools at `/mcp`.
 Operators using **Goose** (by Block), **Claude Desktop**, or any MCP-compatible AI agent can connect
-and drive TelsonBase workflows through natural language — no REST wrappers, no custom scripts.
+and drive TelsonBase workflows through natural language - no REST wrappers, no custom scripts.
 
 > **Security boundary:** The MCP gateway is an **operator interface**, not a public API.
 > All tool calls require a valid Bearer token and are logged to the immutable audit chain.
 > Any agent action that would cross TelsonBase's external data boundary is automatically
 > **queued as a HITL approval request** in the toolroom. Nothing leaves the sovereign perimeter
 > without an explicit human decision. The MCP tools give operators *visibility and control*
-> over that queue — they do not bypass it.
+> over that queue - they do not bypass it.
 
 ### Connection
 
@@ -599,7 +599,7 @@ You: Show me all pending approvals.
 Goose → list_pending_approvals()
 ← { count: 2, approvals: [ { request_id: "APPR-001", agent: "web_agent", action: "POST /api/external" }, ... ] }
 
-You: Approve APPR-001 — I've reviewed it.
+You: Approve APPR-001 - I've reviewed it.
 Goose → approve_tool_request(request_id="APPR-001", approved_by="operator@telsonbase.com")
 ← { approved: true, qms_status: "Thank_You" }
 
@@ -623,7 +623,7 @@ All tools return the QMS status field:
 1. Install Goose: `curl -fsSL https://github.com/block/goose/releases/latest/download/install.sh | bash`
 2. Copy `goose.yaml` from project root → `~/.config/goose/config.yaml`
 3. Set `TELSONBASE_API_KEY` to your TelsonBase API key
-4. Run `goose session` — tools are auto-discovered
+4. Run `goose session` - tools are auto-discovered
 
 ---
 

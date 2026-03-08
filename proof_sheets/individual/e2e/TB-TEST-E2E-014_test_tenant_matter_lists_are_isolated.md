@@ -1,4 +1,4 @@
-# TB-TEST-E2E-014 — TestTenantIsolation · `test_tenant_matter_lists_are_isolated`
+# TB-TEST-E2E-014 - TestTenantIsolation · `test_tenant_matter_lists_are_isolated`
 
 **Sheet ID:** TB-TEST-E2E-014
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,7 +1,7 @@
 # TB-PROOF-016: HIPAA-Compliant Session Management
 
 **Sheet ID:** TB-PROOF-016
-**Claim Source:** telsonbase.com — Capabilities Section
+**Claim Source:** telsonbase.com - Capabilities Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/session_management.py` implements role-based session timeouts per 45 CFR 164.312(a)(2)(iii).
+VERIFIED - `core/session_management.py` implements role-based session timeouts per 45 CFR 164.312(a)(2)(iii).
 
 ## Evidence
 

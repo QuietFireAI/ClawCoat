@@ -1,4 +1,4 @@
-# TB-TEST-BEH-007 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_THEN_has_manage_capability_for_model_operations`
+# TB-TEST-BEH-007 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_THEN_has_manage_capability_for_model_operations`
 
 **Sheet ID:** TB-TEST-BEH-007
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

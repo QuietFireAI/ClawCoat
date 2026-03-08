@@ -1,13 +1,13 @@
-# TelsonBase — Directory & Naming Conventions
+# TelsonBase - Directory & Naming Conventions
 
-**Architect:** ::Jeff Phillips:: — ::support@telsonbase.com::
+**Architect:** ::Jeff Phillips:: - ::support@telsonbase.com::
 **Date:** February 7, 2026
 
 ---
 
 ## The Building Metaphor
 
-TelsonBase is structured as a building. This release is **Ground Level** — the foundation that everything else sits on. Future development builds upward (new agent layers, UI, marketplace) and downward (deeper kernel security, hardware integration, firmware-level sovereignty).
+TelsonBase is structured as a building. This release is **Ground Level** - the foundation that everything else sits on. Future development builds upward (new agent layers, UI, marketplace) and downward (deeper kernel security, hardware integration, firmware-level sovereignty).
 
 ---
 
@@ -18,7 +18,7 @@ TelsonBase is structured as a building. This release is **Ground Level** — the
 | Convention | Notes |
 |------------|-------|
 | `telsonbase/` | Canonical root directory name. Version lives in the archive filename. |
-| `quietfire_mcp_server/` | Legacy name — retired. |
+| `quietfire_mcp_server/` | Legacy name - retired. |
 
 ### Tarball / Archive Naming
 
@@ -30,10 +30,10 @@ Examples:
 - `telsonbase_v6.0.0G.tar.gz` (Gemini-contributed release)
 
 **Suffixes:**
-- `G` — Gemini save / contribution
-- `C` — Claude save / contribution
-- `CC` — Claude Code contribution
-- No suffix — Jeff's direct work
+- `G` - Gemini save / contribution
+- `C` - Claude save / contribution
+- `CC` - Claude Code contribution
+- No suffix - Jeff's direct work
 
 ### Internal References
 

@@ -1,7 +1,7 @@
 # TelsonBase Security Testing Stack
 
 **Version 10.0.0Bminus | March 3, 2026**
-**Classification: Public — Intended for Prospect Distribution**
+**Classification: Public - Intended for Prospect Distribution**
 
 ---
 
@@ -29,9 +29,9 @@ This is not a marketing document. Every test described below runs automatically 
 ### CI/CD Integration
 
 - **GitHub Actions** (`.github/workflows/ci.yml`): Three jobs run on every push and PR:
-  1. `test` — Full pytest suite with Redis service container
-  2. `docker-build` — Verifies the Docker image builds successfully
-  3. `security-scan` — Bandit static analysis + pip-audit dependency scan
+  1. `test` - Full pytest suite with Redis service container
+  2. `docker-build` - Verifies the Docker image builds successfully
+  3. `security-scan` - Bandit static analysis + pip-audit dependency scan
 - All 720 tests must pass before any code merges to main.
 
 ---
@@ -198,7 +198,7 @@ Tests that cryptographic parameter choices meet NIST standards:
 File: `tests/test_e2e_integration.py`
 Marker: `@pytest.mark.e2e`
 
-These tests exercise complete user workflows through the real FastAPI application via TestClient. No mocking — every request hits the actual endpoint, middleware, auth layer, and business logic.
+These tests exercise complete user workflows through the real FastAPI application via TestClient. No mocking - every request hits the actual endpoint, middleware, auth layer, and business logic.
 
 ### TestUserLifecycle (7 tests)
 
@@ -264,7 +264,7 @@ These tests exercise complete user workflows through the real FastAPI applicatio
 File: `run_advanced_tests.bat`
 Runs against a live Docker Compose stack. Tests real network behavior, container resilience, and production performance.
 
-### Level 1: Security Testing (S1-S6) — 6/6 PASS
+### Level 1: Security Testing (S1-S6) - 6/6 PASS
 
 | Group | Attack Vector | Result |
 |-------|---------------|--------|
@@ -275,7 +275,7 @@ Runs against a live Docker Compose stack. Tests real network behavior, container
 | S5 | Oversized payloads (1MB body, 100-level nested JSON) | Graceful handling, no crash/OOM |
 | S6 | Header injection (CRLF injection, Host header spoofing) | Normal 200 response |
 
-### Level 2: Chaos/Resilience Testing (C1-C4) — 4/4 PASS
+### Level 2: Chaos/Resilience Testing (C1-C4) - 4/4 PASS
 
 | Group | Scenario | Result |
 |-------|----------|--------|
@@ -284,7 +284,7 @@ Runs against a live Docker Compose stack. Tests real network behavior, container
 | C3 | Mosquitto container stopped | API continues, MQTT reports disconnected, recovers |
 | C4 | 50 concurrent parallel requests | All 50 return 200, zero errors (RunspacePool) |
 
-### Level 3: Contract/Schema Testing (K1-K3) — 3/3 PASS
+### Level 3: Contract/Schema Testing (K1-K3) - 3/3 PASS
 
 | Group | Test | Result |
 |-------|------|--------|
@@ -292,7 +292,7 @@ Runs against a live Docker Compose stack. Tests real network behavior, container
 | K2 | OpenAPI completeness | 69 documented endpoints confirmed |
 | K3 | Content-Type consistency | All tested endpoints return `application/json` |
 
-### Level 4: Performance Testing (P1-P3) — 3/3 PASS
+### Level 4: Performance Testing (P1-P3) - 3/3 PASS
 
 | Group | Test | Metrics |
 |-------|------|---------|
@@ -300,11 +300,11 @@ Runs against a live Docker Compose stack. Tests real network behavior, container
 | P2 | Authenticated latency (20 requests) | p50=86ms, p99=194ms, 0 errors |
 | P3 | Rate limiter verification | Wall confirmed at request #25 |
 
-### Level 5: Static Analysis (A1-A4) — 4/4 PASS
+### Level 5: Static Analysis (A1-A4) - 4/4 PASS
 
 | Group | Tool | Result |
 |-------|------|--------|
-| A1 | Bandit (static security analysis) | 1 high (tarfile — fixed with `filter='data'`), 2 medium (0.0.0.0 binds — expected in Docker) |
+| A1 | Bandit (static security analysis) | 1 high (tarfile - fixed with `filter='data'`), 2 medium (0.0.0.0 binds - expected in Docker) |
 | A2 | pip-audit (dependency CVEs) | 0 CVEs (all resolved; ecdsa removed in v8.0.2) |
 | A3 | Import health | All 18 core modules import successfully |
 | A4 | Dead endpoint detection | 15/15 endpoints responding, 0 errors |
@@ -425,12 +425,12 @@ Multi-factor authentication uses RFC 6238 TOTP with 30-second time steps. MFA se
 
 ### Docker Network Segmentation
 6 isolated Docker networks prevent lateral movement:
-- `frontend` — Traefik, web UI
-- `backend` — API server, workers
-- `data` — PostgreSQL, Redis (not directly reachable from frontend)
-- `monitoring` — Prometheus, Grafana (internal only)
-- `mqtt` — Mosquitto message bus
-- `ai` — Ollama inference (isolated from internet)
+- `frontend` - Traefik, web UI
+- `backend` - API server, workers
+- `data` - PostgreSQL, Redis (not directly reachable from frontend)
+- `monitoring` - Prometheus, Grafana (internal only)
+- `mqtt` - Mosquitto message bus
+- `ai` - Ollama inference (isolated from internet)
 
 ### Docker Secrets Management (`core/secrets.py`)
 - Production secrets stored at `/run/secrets/` (tmpfs mount, not on disk)
@@ -443,7 +443,7 @@ Multi-factor authentication uses RFC 6238 TOTP with 30-second time steps. MFA se
 - Startup guard checks: MCP_API_KEY, JWT_SECRET_KEY, WEBUI_SECRET_KEY, GRAFANA_ADMIN_PASSWORD
 - Minimum key lengths enforced (32 bytes for crypto keys, 12 for passwords)
 - Infrastructure passwords validated: PostgreSQL, Redis, MQTT
-- `scripts/generate_secrets.sh` — one-command bootstrap with `--rotate` and `--check` flags
+- `scripts/generate_secrets.sh` - one-command bootstrap with `--rotate` and `--check` flags
 
 ### Database Security
 - PostgreSQL with parameterized queries (SQLAlchemy ORM, no raw SQL)
@@ -475,7 +475,7 @@ Multi-factor authentication uses RFC 6238 TOTP with 30-second time steps. MFA se
 
 ### Grafana Dashboards
 - Auto-provisioned on first boot (zero manual setup)
-- Dashboard: `telsonbase_overview.json` — Request metrics, security events, infrastructure
+- Dashboard: `telsonbase_overview.json` - Request metrics, security events, infrastructure
 - Operations dashboard: API security, HTTP traffic, agent activity, resource utilization
 
 ### Prometheus Alert Rules (`monitoring/prometheus/alerts.yml`)
@@ -536,8 +536,8 @@ Multi-factor authentication uses RFC 6238 TOTP with 30-second time steps. MFA se
 
 | Item | Status | Impact |
 |------|--------|--------|
-| ecdsa CVE-2024-23342 | Resolved in v8.0.2 — package removed | Was a transitive dep of python-jose; package removed from runtime image |
-| Per-agent rate limiter | Wired | `core/rate_limiting.py` — `agent_rate_limit` dependency on OpenClaw `evaluate_action` endpoint |
+| ecdsa CVE-2024-23342 | Resolved in v8.0.2 - package removed | Was a transitive dep of python-jose; package removed from runtime image |
+| Per-agent rate limiter | Wired | `core/rate_limiting.py` - `agent_rate_limit` dependency on OpenClaw `evaluate_action` endpoint |
 | SOC 2 Type II | Planned | Type I complete, Type II requires 6-12 months of operational evidence |
 | Penetration test | Prepared, not executed | `docs/PENTEST_PREPARATION.md` ready, awaiting third-party engagement |
 
@@ -621,7 +621,7 @@ Every security control in this document maps to a testable source file:
 ---
 
 **TelsonBase v10.0.0Bminus**
-Architect: Jeff Phillips — security@telsonbase.com
+Architect: Jeff Phillips - security@telsonbase.com
 March 3, 2026
 
 *Every claim in this document is backed by tested, running code.*

@@ -1,4 +1,4 @@
-# TB-TEST-OBS-021 — TestMQTTBus · `test_connect_failure`
+# TB-TEST-OBS-021 - TestMQTTBus · `test_connect_failure`
 
 **Sheet ID:** TB-TEST-OBS-021
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
 
 ## Source
 

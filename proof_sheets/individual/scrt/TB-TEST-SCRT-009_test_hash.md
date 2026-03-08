@@ -1,4 +1,4 @@
-# TB-TEST-SCRT-009 — TestSecretValue · `test_hash`
+# TB-TEST-SCRT-009 - TestSecretValue · `test_hash`
 
 **Sheet ID:** TB-TEST-SCRT-009
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 48-test Secrets Management suite. Run the verification command below to confirm independently.
 
 ## Source
 

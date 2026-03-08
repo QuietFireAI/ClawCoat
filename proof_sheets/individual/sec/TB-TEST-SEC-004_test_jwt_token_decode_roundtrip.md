@@ -1,4 +1,4 @@
-# TB-TEST-SEC-004 — TestAuthSecurity · `test_jwt_token_decode_roundtrip`
+# TB-TEST-SEC-004 - TestAuthSecurity · `test_jwt_token_decode_roundtrip`
 
 **Sheet ID:** TB-TEST-SEC-004
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> JWT round-trips correctly — subject and permissions claims survive encode/decode
+> JWT round-trips correctly - subject and permissions claims survive encode/decode
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

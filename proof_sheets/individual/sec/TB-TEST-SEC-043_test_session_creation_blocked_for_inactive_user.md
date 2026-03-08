@@ -1,4 +1,4 @@
-# TB-TEST-SEC-043 — TestAccessControl · `test_session_creation_blocked_for_inactive_user`
+# TB-TEST-SEC-043 - TestAccessControl · `test_session_creation_blocked_for_inactive_user`
 
 **Sheet ID:** TB-TEST-SEC-043
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

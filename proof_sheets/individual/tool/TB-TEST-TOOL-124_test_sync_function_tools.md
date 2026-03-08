@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-124 — TestForemanExecution · `test_sync_function_tools`
+# TB-TEST-TOOL-124 - TestForemanExecution · `test_sync_function_tools`
 
 **Sheet ID:** TB-TEST-TOOL-124
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

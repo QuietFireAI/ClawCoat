@@ -1,4 +1,4 @@
-# TB-TEST-INT-014 — TestKeyRevocation · `test_revocation_can_be_cleared`
+# TB-TEST-INT-014 - TestKeyRevocation · `test_revocation_can_be_cleared`
 
 **Sheet ID:** TB-TEST-INT-014
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
 
 ## Source
 

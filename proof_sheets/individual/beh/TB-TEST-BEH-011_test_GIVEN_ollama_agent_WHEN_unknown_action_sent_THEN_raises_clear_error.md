@@ -1,4 +1,4 @@
-# TB-TEST-BEH-011 — TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_WHEN_unknown_action_sent_THEN_raises_clear_error`
+# TB-TEST-BEH-011 - TestBehavior_OllamaAgent_ModelManagement · `test_GIVEN_ollama_agent_WHEN_unknown_action_sent_THEN_raises_clear_error`
 
 **Sheet ID:** TB-TEST-BEH-011
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

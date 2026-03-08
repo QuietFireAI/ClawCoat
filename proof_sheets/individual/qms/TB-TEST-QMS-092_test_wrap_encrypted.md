@@ -1,4 +1,4 @@
-# TB-TEST-QMS-092 — TestWrapQualifier · `test_wrap_encrypted`
+# TB-TEST-QMS-092 - TestWrapQualifier · `test_wrap_encrypted`
 
 **Sheet ID:** TB-TEST-QMS-092
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,7 +1,7 @@
 # TB-PROOF-037: OpenClaw Kill Switch
 
 **Sheet ID:** TB-PROOF-037
-**Claim Source:** telsonbase.com — OpenClaw Integration
+**Claim Source:** telsonbase.com - OpenClaw Integration
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.4.0CC
@@ -10,11 +10,11 @@
 
 ## Exact Claim
 
-> "Kill switch — immediately suspend any OpenClaw instance. All actions rejected until human review and reinstatement."
+> "Kill switch - immediately suspend any OpenClaw instance. All actions rejected until human review and reinstatement."
 
 ## Verdict
 
-VERIFIED — `OpenClawManager.suspend_instance()` immediately suspends a claw. The kill switch is checked at Step 2 of the governance pipeline — before trust levels, before Manners, before everything except "does this claw exist?"
+VERIFIED - `OpenClawManager.suspend_instance()` immediately suspends a claw. The kill switch is checked at Step 2 of the governance pipeline - before trust levels, before Manners, before everything except "does this claw exist?"
 
 ## Evidence
 
@@ -63,13 +63,13 @@ Step 8: Anomaly detection        → (not reached if suspended)
 ```
 
 ### Test Coverage
-- `test_suspend_blocks_all_actions` — Suspended instance has ALL actions rejected
-- `test_suspend_sets_metadata` — Suspension metadata correctly set
-- `test_reinstate_allows_actions` — Actions work again after reinstatement
-- `test_reinstate_clears_metadata` — All suspension metadata cleared
-- `test_reinstate_nonsuspended_fails` — Cannot reinstate non-suspended instance
-- `test_suspend_nonexistent_fails` — Cannot suspend nonexistent instance
-- `test_kill_switch_checked_before_trust` — Even CITIZEN level is blocked when suspended
+- `test_suspend_blocks_all_actions` - Suspended instance has ALL actions rejected
+- `test_suspend_sets_metadata` - Suspension metadata correctly set
+- `test_reinstate_allows_actions` - Actions work again after reinstatement
+- `test_reinstate_clears_metadata` - All suspension metadata cleared
+- `test_reinstate_nonsuspended_fails` - Cannot reinstate non-suspended instance
+- `test_suspend_nonexistent_fails` - Cannot suspend nonexistent instance
+- `test_kill_switch_checked_before_trust` - Even CITIZEN level is blocked when suspended
 
 ## Verification Command
 

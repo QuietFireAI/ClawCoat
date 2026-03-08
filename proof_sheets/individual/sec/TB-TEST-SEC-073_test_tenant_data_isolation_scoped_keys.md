@@ -1,4 +1,4 @@
-# TB-TEST-SEC-073 — TestDataProtection · `test_tenant_data_isolation_scoped_keys`
+# TB-TEST-SEC-073 - TestDataProtection · `test_tenant_data_isolation_scoped_keys`
 
 **Sheet ID:** TB-TEST-SEC-073
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Tenant data is stored under namespaced Redis keys — no cross-tenant bleed
+> Tenant data is stored under namespaced Redis keys - no cross-tenant bleed
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

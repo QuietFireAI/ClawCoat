@@ -1,4 +1,4 @@
-# TB-TEST-SEC-022 — TestEncryptionIntegrity · `test_different_nonces_produce_different_ciphertexts`
+# TB-TEST-SEC-022 - TestEncryptionIntegrity · `test_different_nonces_produce_different_ciphertexts`
 
 **Sheet ID:** TB-TEST-SEC-022
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> Each encryption call produces unique ciphertext — no nonce reuse
+> Each encryption call produces unique ciphertext - no nonce reuse
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

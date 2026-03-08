@@ -1,4 +1,4 @@
-# TB-TEST-BEH-020 — TestBehavior_SystemResilience · `test_GIVEN_system_running_WHEN_system_status_requested_THEN_returns_status`
+# TB-TEST-BEH-020 - TestBehavior_SystemResilience · `test_GIVEN_system_running_WHEN_system_status_requested_THEN_returns_status`
 
 **Sheet ID:** TB-TEST-BEH-020
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

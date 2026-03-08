@@ -1,4 +1,4 @@
-# TB-TEST-IDN-033 — TestAuthFlow · `test_auth_header_revoked_agent`
+# TB-TEST-IDN-033 - TestAuthFlow · `test_auth_header_revoked_agent`
 
 **Sheet ID:** TB-TEST-IDN-033
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 50-test W3C DID Agent Identity suite. Run the verification command below to confirm independently.
 
 ## Source
 

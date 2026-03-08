@@ -1,4 +1,4 @@
-# TB-TEST-SEC-067 — TestDataProtection · `test_minimum_necessary_viewer_limited_scope`
+# TB-TEST-SEC-067 - TestDataProtection · `test_minimum_necessary_viewer_limited_scope`
 
 **Sheet ID:** TB-TEST-SEC-067
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

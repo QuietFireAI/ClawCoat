@@ -1,4 +1,4 @@
-# TB-TEST-QMS-114 — TestSpecExamples · `test_spec_example_graceful_failure`
+# TB-TEST-QMS-114 - TestSpecExamples · `test_spec_example_graceful_failure`
 
 **Sheet ID:** TB-TEST-QMS-114
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

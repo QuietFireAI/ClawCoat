@@ -1,6 +1,6 @@
 # TelsonBase Backup & Recovery Guide
 
-**Architect:** Jeff Phillips — support@telsonbase.com
+**Architect:** Jeff Phillips - support@telsonbase.com
 **Last Updated:** February 23, 2026
 
 ---
@@ -16,11 +16,11 @@
 
 ## What Gets Backed Up
 
-- **PostgreSQL** — Full SQL dump of the `telsonbase` database (schema + data)
-- **Redis** — Point-in-time `dump.rdb` snapshot
-- **Secrets** — Tarball of the `secrets/` directory (encryption keys, API keys, JWT secrets)
-- **Configuration** — `.env`, `docker-compose.yml`, `alembic.ini`
-- **Manifest** — `backup_manifest.txt` with file sizes for verification
+- **PostgreSQL** - Full SQL dump of the `telsonbase` database (schema + data)
+- **Redis** - Point-in-time `dump.rdb` snapshot
+- **Secrets** - Tarball of the `secrets/` directory (encryption keys, API keys, JWT secrets)
+- **Configuration** - `.env`, `docker-compose.yml`, `alembic.ini`
+- **Manifest** - `backup_manifest.txt` with file sizes for verification
 
 ---
 

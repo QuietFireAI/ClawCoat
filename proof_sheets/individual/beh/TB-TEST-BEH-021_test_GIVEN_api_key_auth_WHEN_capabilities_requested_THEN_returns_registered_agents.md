@@ -1,4 +1,4 @@
-# TB-TEST-BEH-021 — TestBehavior_SystemResilience · `test_GIVEN_api_key_auth_WHEN_capabilities_requested_THEN_returns_registered_agents`
+# TB-TEST-BEH-021 - TestBehavior_SystemResilience · `test_GIVEN_api_key_auth_WHEN_capabilities_requested_THEN_returns_registered_agents`
 
 **Sheet ID:** TB-TEST-BEH-021
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 30-test Behavioral Specification suite. Run the verification command below to confirm independently.
 
 ## Source
 

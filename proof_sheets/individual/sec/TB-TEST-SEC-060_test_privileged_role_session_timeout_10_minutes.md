@@ -1,4 +1,4 @@
-# TB-TEST-SEC-060 — TestNetworkSecurity · `test_privileged_role_session_timeout_10_minutes`
+# TB-TEST-SEC-060 - TestNetworkSecurity · `test_privileged_role_session_timeout_10_minutes`
 
 **Sheet ID:** TB-TEST-SEC-060
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

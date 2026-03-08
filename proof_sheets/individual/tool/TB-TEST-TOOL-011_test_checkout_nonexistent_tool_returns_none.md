@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-011 — TestToolRegistry · `test_checkout_nonexistent_tool_returns_none`
+# TB-TEST-TOOL-011 - TestToolRegistry · `test_checkout_nonexistent_tool_returns_none`
 
 **Sheet ID:** TB-TEST-TOOL-011
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-CAP-003 — TestCapability · `test_capability_matches_exact`
+# TB-TEST-CAP-003 - TestCapability · `test_capability_matches_exact`
 
 **Sheet ID:** TB-TEST-CAP-003
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 15-test Capability Enforcement suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 15-test Capability Enforcement suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-013 — TestAuthSecurity · `test_mfa_required_for_privileged_roles`
+# TB-TEST-SEC-013 - TestAuthSecurity · `test_mfa_required_for_privileged_roles`
 
 **Sheet ID:** TB-TEST-SEC-013
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

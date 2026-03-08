@@ -1,4 +1,4 @@
-# TB-TEST-SEC-057 — TestNetworkSecurity · `test_health_endpoint_does_not_leak_details`
+# TB-TEST-SEC-057 - TestNetworkSecurity · `test_health_endpoint_does_not_leak_details`
 
 **Sheet ID:** TB-TEST-SEC-057
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> The /health endpoint returns status only — no internal version, config, or stack info
+> The /health endpoint returns status only - no internal version, config, or stack info
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

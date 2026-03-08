@@ -1,4 +1,4 @@
-# TB-TEST-TOOL-029 — TestForemanInstall · `test_propose_install_approved_source_creates_approval`
+# TB-TEST-TOOL-029 - TestForemanInstall · `test_propose_install_approved_source_creates_approval`
 
 **Sheet ID:** TB-TEST-TOOL-029
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 129-test Toolroom Supply-Chain Security suite. Run the verification command below to confirm independently.
 
 ## Source
 

@@ -1,4 +1,4 @@
-# TB-TEST-OBS-027 — TestMQTTBus · `test_on_message_dispatches_to_handler`
+# TB-TEST-OBS-027 - TestMQTTBus · `test_on_message_dispatches_to_handler`
 
 **Sheet ID:** TB-TEST-OBS-027
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
 
 ## Source
 

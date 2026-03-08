@@ -1,4 +1,4 @@
-# TB-TEST-INT-001 — TestFederationHandshake · `test_full_federation_handshake`
+# TB-TEST-INT-001 - TestFederationHandshake · `test_full_federation_handshake`
 
 **Sheet ID:** TB-TEST-INT-001
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 26-test Integration Layer suite. Run the verification command below to confirm independently.
 
 ## Source
 

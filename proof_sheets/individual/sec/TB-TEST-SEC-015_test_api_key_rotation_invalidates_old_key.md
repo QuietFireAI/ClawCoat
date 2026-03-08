@@ -1,4 +1,4 @@
-# TB-TEST-SEC-015 — TestAuthSecurity · `test_api_key_rotation_invalidates_old_key`
+# TB-TEST-SEC-015 - TestAuthSecurity · `test_api_key_rotation_invalidates_old_key`
 
 **Sheet ID:** TB-TEST-SEC-015
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

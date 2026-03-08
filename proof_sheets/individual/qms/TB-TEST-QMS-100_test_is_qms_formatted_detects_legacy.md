@@ -1,4 +1,4 @@
-# TB-TEST-QMS-100 — TestLegacyCompatibility · `test_is_qms_formatted_detects_legacy`
+# TB-TEST-QMS-100 - TestLegacyCompatibility · `test_is_qms_formatted_detects_legacy`
 
 **Sheet ID:** TB-TEST-QMS-100
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 115-test QMS Protocol suite. Run the verification command below to confirm independently.
 
 ## Source
 

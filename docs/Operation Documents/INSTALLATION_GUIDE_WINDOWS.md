@@ -150,7 +150,7 @@ Expected response:
 TelsonBase uses Ollama for local AI inference. After startup, pull the default model:
 
 ```powershell
-# Pull gemma2:9b (default model — ~5.4 GB download)
+# Pull gemma2:9b (default model - ~5.4 GB download)
 docker exec telsonbase-ollama-1 ollama pull gemma2:9b
 ```
 
@@ -197,7 +197,7 @@ set MCP_API_KEY=your-api-key-here
 
 ### Basic Validation Suite
 
-Runs 21 core tests — authentication, API health, audit chain, agents, compliance.
+Runs 21 core tests - authentication, API health, audit chain, agents, compliance.
 
 ```powershell
 ./run_tests.bat
@@ -313,4 +313,4 @@ docker compose up -d --build
 
 ---
 
-*TelsonBase v10.0.0Bminus — Protecting the telson through human-AI collaboration.*
+*TelsonBase v10.0.0Bminus - Protecting the telson through human-AI collaboration.*

@@ -1,4 +1,4 @@
-# TB-TEST-SEC-025 — TestEncryptionIntegrity · `test_hmac_integrity_hash_deterministic`
+# TB-TEST-SEC-025 - TestEncryptionIntegrity · `test_hmac_integrity_hash_deterministic`
 
 **Sheet ID:** TB-TEST-SEC-025
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> HMAC produces the same hash for the same input — deterministic
+> HMAC produces the same hash for the same input - deterministic
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

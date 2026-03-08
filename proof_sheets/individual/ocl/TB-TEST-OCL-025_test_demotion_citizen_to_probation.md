@@ -1,4 +1,4 @@
-# TB-TEST-OCL-025 — TestTrustLevels · `test_demotion_citizen_to_probation`
+# TB-TEST-OCL-025 - TestTrustLevels · `test_demotion_citizen_to_probation`
 
 **Sheet ID:** TB-TEST-OCL-025
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 55-test OpenClaw Governance suite. Run the verification command below to confirm independently.
 
 ## Source
 

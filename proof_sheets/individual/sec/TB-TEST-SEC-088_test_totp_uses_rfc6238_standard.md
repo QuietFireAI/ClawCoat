@@ -1,4 +1,4 @@
-# TB-TEST-SEC-088 — TestCryptographicStandards · `test_totp_uses_rfc6238_standard`
+# TB-TEST-SEC-088 - TestCryptographicStandards · `test_totp_uses_rfc6238_standard`
 
 **Sheet ID:** TB-TEST-SEC-088
 **Series:** Individual Test Evidence
@@ -13,11 +13,11 @@
 
 ## Claim
 
-> TOTP implementation is compatible with RFC 6238 — standard authenticator apps work
+> TOTP implementation is compatible with RFC 6238 - standard authenticator apps work
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 96-test Security Battery suite. Run the verification command below to confirm independently.
 
 ## Source
 

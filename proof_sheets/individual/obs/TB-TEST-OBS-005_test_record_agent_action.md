@@ -1,4 +1,4 @@
-# TB-TEST-OBS-005 — TestPrometheusMetrics · `test_record_agent_action`
+# TB-TEST-OBS-005 - TestPrometheusMetrics · `test_record_agent_action`
 
 **Sheet ID:** TB-TEST-OBS-005
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 40-test Observability & Monitoring suite. Run the verification command below to confirm independently.
 
 ## Source
 

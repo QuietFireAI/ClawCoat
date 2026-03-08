@@ -1,4 +1,4 @@
-# TB-TEST-CAP-015 — TestCapabilityEnforcer · `test_capability_profiles`
+# TB-TEST-CAP-015 - TestCapabilityEnforcer · `test_capability_profiles`
 
 **Sheet ID:** TB-TEST-CAP-015
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 15-test Capability Enforcement suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 15-test Capability Enforcement suite. Run the verification command below to confirm independently.
 
 ## Source
 

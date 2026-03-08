@@ -1,7 +1,7 @@
 # TB-PROOF-019: Human-in-the-Loop Approval Gates
 
 **Sheet ID:** TB-PROOF-019
-**Claim Source:** telsonbase.com — AI Safety Section
+**Claim Source:** telsonbase.com - AI Safety Section
 **Status:** VERIFIED
 **Last Verified:** February 23, 2026
 **Version:** 7.3.0CC
@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED — `core/approval.py` implements 7 predefined approval rules. Every agent in `agents/registry.yaml` declares which actions require approval. No bypass mechanism exists.
+VERIFIED - `core/approval.py` implements 7 predefined approval rules. Every agent in `agents/registry.yaml` declares which actions require approval. No bypass mechanism exists.
 
 ## Evidence
 

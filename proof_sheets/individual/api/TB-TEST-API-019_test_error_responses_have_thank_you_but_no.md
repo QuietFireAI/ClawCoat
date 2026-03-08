@@ -1,4 +1,4 @@
-# TB-TEST-API-019 — TestQMSConventions · `test_error_responses_have_thank_you_but_no`
+# TB-TEST-API-019 - TestQMSConventions · `test_error_responses_have_thank_you_but_no`
 
 **Sheet ID:** TB-TEST-API-019
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 19-test API Endpoint Smoke Tests suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 19-test API Endpoint Smoke Tests suite. Run the verification command below to confirm independently.
 
 ## Source
 

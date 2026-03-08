@@ -1,4 +1,4 @@
-# TB-TEST-E2E-029 — TestErrorSanitization · `test_no_stack_traces_in_errors`
+# TB-TEST-E2E-029 - TestErrorSanitization · `test_no_stack_traces_in_errors`
 
 **Sheet ID:** TB-TEST-E2E-029
 **Series:** Individual Test Evidence
@@ -17,7 +17,7 @@
 
 ## Verdict
 
-VERIFIED — This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
+VERIFIED - This test passes as part of the 29-test End-to-End Integration suite. Run the verification command below to confirm independently.
 
 ## Source
 
