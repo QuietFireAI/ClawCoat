@@ -1,11 +1,13 @@
 # Security Policy — TelsonBase
 
+**Version:** v11.0.1 | **Updated:** March 8, 2026
+
 ## Supported Versions
 
 | Version | Supported |
 |---|---|
-| 9.0.0B | Yes (current) |
-| < 9.0.0B | No |
+| 11.0.1 | Yes (current) |
+| < 11.0.1 | No |
 
 Only the latest minor release receives security patches. Upgrade to the current version before reporting.
 
@@ -62,7 +64,7 @@ TelsonBase is built on a zero-trust model. See [docs/SECURITY_ARCHITECTURE.md](d
 | Layer | Control | Implementation |
 |---|---|---|
 | **Authentication** | Three methods | API key (X-API-Key), JWT (Bearer), DID signature (X-DID-Auth) |
-| **Authorization** | Role-based + capability-based | RBAC with 5 roles, per-agent capability enforcement |
+| **Authorization** | Role-based + capability-based | RBAC with 4 roles, per-agent capability enforcement |
 | **Network** | Five-tier segmentation | `data` and `ai` networks are `internal: true` (no external access) |
 | **Secrets** | Docker secrets + env layering | Secrets resolved from `/run/secrets/` first, then env vars |
 | **Audit** | Immutable hash chain | Every state change logged with SHA-256 chain integrity |
@@ -88,7 +90,7 @@ TelsonBase is built on a zero-trust model. See [docs/SECURITY_ARCHITECTURE.md](d
 | Purpose | Algorithm | Library |
 |---|---|---|
 | JWT signing | HMAC-SHA256 | python-jose |
-| Password hashing | bcrypt (cost 12) | passlib |
+| Password hashing | bcrypt (cost 12) | bcrypt (direct) |
 | Federation trust | RSA-4096 + PSS padding | cryptography |
 | DID verification | Ed25519 | cryptography |
 | Audit chain | SHA-256 | hashlib (stdlib) |
