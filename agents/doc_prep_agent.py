@@ -35,6 +35,7 @@ from typing import Dict, Any, List, Optional
 from agents.base import SecureBaseAgent, AgentRequest
 from core.audit import audit, AuditEventType
 from core.qms import format_qms, QMSStatus
+from version import APP_VERSION
 
 logger = logging.getLogger(__name__)
 
@@ -330,7 +331,7 @@ class DocPrepAgent(SecureBaseAgent):
         lines.append(f"  Document Hash (SHA-256): [computed on finalization]")
         lines.append(f"  Template: {template['id']} — {template['name']}")
         lines.append(f"  Generated: {datetime.now(timezone.utc).isoformat()}")
-        lines.append(f"  Platform: TelsonBase v9.0.0B")
+        lines.append(f"  Platform: TelsonBase {APP_VERSION}")
         lines.append("=" * 72)
 
         return "\n".join(lines)
