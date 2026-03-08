@@ -118,7 +118,7 @@ curl http://localhost:8000/v1/system/status \
 
 **Skeptic follow-up:** *"OpenClaw agents don't natively speak MQTT - how does this work?"*
 TelsonBase's MCP gateway is the communication layer. Agents interact with TelsonBase's
-governance layer via MCP. TelsonBase routes, mediates, and logs. The agent never
+guiding layer via MCP. TelsonBase routes, mediates, and logs. The agent never
 communicates directly - it communicates through the governed proxy.
 
 ---

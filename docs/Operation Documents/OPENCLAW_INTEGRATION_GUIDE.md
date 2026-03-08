@@ -12,7 +12,7 @@ the wild - which makes it the highest-priority framework to govern. CVE-2026-252
 malicious WebSocket link) was rated critical. The ClawHub skill registry was found to contain
 malware distributed at scale. The risk profile is real and well-documented.
 
-TelsonBase wraps OpenClaw with a governance layer. Every action your claw wants to take -
+TelsonBase wraps OpenClaw with a guiding layer. Every action your claw wants to take -
 read a file, call an API, modify a document - is evaluated through the 8-step pipeline before
 execution. Nothing runs without a decision. Every decision is written to a cryptographic audit
 chain. You stay in control.
@@ -71,7 +71,7 @@ Before starting, verify each of these:
 
 ## Part 1: Install Your AI Agent
 
-TelsonBase is a governance layer - it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what TelsonBase was built and tested against first. If you are integrating a different compatible agent, the TelsonBase API steps in Parts 4-7 apply regardless of which agent you use.
+TelsonBase is a guiding layer - it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what TelsonBase was built and tested against first. If you are integrating a different compatible agent, the TelsonBase API steps in Parts 4-7 apply regardless of which agent you use.
 
 ### Install OpenClaw
 

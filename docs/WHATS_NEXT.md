@@ -119,7 +119,7 @@ Full compliance roadmap: [`docs/Compliance Documents/COMPLIANCE_ROADMAP.md`](Com
 
 ## What This Drop Is
 
-A first-mover position in a market that doesn't yet have a governance standard for autonomous AI agents. The platform is real, the tests pass, and the compliance documentation is mapped to source code. There is no other self-hosted, source-available, enterprise-grade governance layer for AI agents in production today.
+A first-mover position in a market that doesn't yet have a governance standard for autonomous AI agents. The platform is real, the tests pass, and the compliance documentation is mapped to source code. There is no other self-hosted, source-available, enterprise-grade guiding layer for AI agents in production today.
 
 We are publishing early because the threat is real and the window is now. If you are in healthcare, legal, insurance, or accounting, and you are deploying AI agents, you need this or something like it before your next compliance review.
 
