@@ -50,7 +50,7 @@ VERIFIED - Bandit security scan initially found 1 high-severity finding (tarfile
 |---|---|---|
 | v6.0.0CC | HIGH: `tarfile.extractall()` without filter (CWE-22 path traversal) | Identified |
 | v6.1.0CC | Fixed: `tarfile.extractall(filter='data')` | Remediated |
-| v9.0.0B | 0 high-severity findings | Current |
+| v11.0.1 | 0 high-severity findings | Current |
 
 ### Medium Findings (Not High)
 
@@ -77,4 +77,4 @@ bandit -r core/ api/ agents/ federation/ toolroom/ gateway/ -ll --format screen
 
 ---
 
-*Sheet TB-PROOF-027 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-027 | TelsonBase v11.0.1 | March 1, 2026*

@@ -1,6 +1,6 @@
 # TelsonBase User Guide
 
-**Version:** 10.0.0Bminus
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 **For:** Solopreneurs, small teams, and anyone running TelsonBase for the first time
 
 ---
@@ -16,7 +16,7 @@ It runs as a set of Docker containers on any machine with Docker installed. Agen
 - **Zero-trust agent governance** — every agent action is authenticated, authorized, and audited
 - **Local LLM inference** — chat and generate text with Ollama models, no data leaves your machine
 - **Human-in-the-loop approval gates** — high-risk actions require your explicit approval before execution
-- **Three authentication methods** — API key, JWT tokens, and DID-based identity (via Identiclaw)
+- **Three authentication methods** — API key, JWT tokens, and DID-based identity (engine built; Identiclaw service integration is post-launch)
 - **Real estate vertical** — transaction management, compliance monitoring, and document preparation agents
 - **Manners compliance** — runtime enforcement of Anthropic's agent safety principles
 - **Multi-tenancy** — client-matter isolation with per-tenant rate limiting
@@ -631,7 +631,6 @@ telsonbase/
 - **API Reference:** See `docs/System Documents/API_REFERENCE.md`
 - **Architecture:** See `docs/System Documents/SECURITY_ARCHITECTURE.md`
 - **Environment:** See `docs/System Documents/ENV_CONFIGURATION.md`
-- **Identiclaw:** See `docs/IDENTICLAW_OPERATIONS.md`
 - **Developer Guide:** See `docs/Operation Documents/DEVELOPER_GUIDE.md`
 - **Deployment:** See `docs/Operation Documents/DEPLOYMENT_GUIDE.md`
 
@@ -639,8 +638,8 @@ telsonbase/
 
 ## Who Built This
 
-TelsonBase was created by Jeff Phillips (Quietfire AI) and built through collaboration with three AI models: ChatGPT (initial structure), Gemini (testing/validation), and Claude Code (engineering, security hardening, and Identiclaw integration). The complete attribution and methodology is documented in the project README and `docs/Partner Comments/claude_code_comments.md`.
+TelsonBase was created by Jeff Phillips (Quietfire AI). The complete attribution and methodology is documented in the project README, including the AI collaboration disclosure.
 
 ---
 
-*Last updated: March 3, 2026 — v10.0.0Bminus*
+*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*

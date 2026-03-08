@@ -32,10 +32,10 @@ VERIFIED - `Tenant.allowed_actors` is populated on creation with `auth.actor` (t
 
 ### Data Model - `core/tenancy.py`
 
-`Tenant` dataclass has two access control fields added in v9.0.0B:
+`Tenant` dataclass has two access control fields added in v11.0.1:
 
 ```python
-# REM: v9.0.0B - Access control: creator and explicitly granted actors only
+# REM: v11.0.1 - Access control: creator and explicitly granted actors only
 created_by: str = "system"
 allowed_actors: List[str] = field(default_factory=list)
 ```
@@ -109,4 +109,4 @@ pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_acc
 
 ---
 
-*Sheet TB-PROOF-042 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-042 | TelsonBase v11.0.1 | March 1, 2026*

@@ -162,5 +162,5 @@ that a stranger could follow without asking a question.
 
 ---
 
-*Sheet TB-PROOF-040 | TelsonBase v9.0.0B | Created February 22, 2026 | Updated March 1, 2026*
+*Sheet TB-PROOF-040 | TelsonBase v11.0.1 | Created February 22, 2026 | Updated March 1, 2026*
 *Status: VERIFIED - first-user walkthrough complete February 23, 2026*

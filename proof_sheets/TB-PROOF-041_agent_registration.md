@@ -475,4 +475,4 @@ No. Registration with a trust override uses `promote_trust()` called once per st
 
 ---
 
-*Sheet TB-PROOF-041 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-041 | TelsonBase v11.0.1 | March 1, 2026*

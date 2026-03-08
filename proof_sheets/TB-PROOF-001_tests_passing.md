@@ -62,4 +62,4 @@ docker compose exec mcp_server python -m pytest tests/ \
 
 ---
 
-*Sheet TB-PROOF-001 | TelsonBase v9.0.0B | March 2, 2026 - Updated from pre-drop audit*
+*Sheet TB-PROOF-001 | TelsonBase v11.0.1 | March 2, 2026 - Updated from pre-drop audit*

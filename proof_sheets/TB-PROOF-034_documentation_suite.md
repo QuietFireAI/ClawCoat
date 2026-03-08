@@ -71,7 +71,7 @@ VERIFIED - All 6 claimed deliverables exist as substantive documents (not stubs)
 | Incident Response Plan | `docs/Backup and Recovery Documents/INCIDENT_RESPONSE.md` |
 | Security Architecture | `docs/System Documents/SECURITY_ARCHITECTURE.md` |
 
-### Integration Guides (added v8.0.2, updated v9.0.0B)
+### Integration Guides (added v8.0.2, updated v11.0.1)
 
 | Document | File Path | Notes |
 |---|---|---|
@@ -98,4 +98,4 @@ All 6 files exist with substantive file sizes (not empty stubs).
 
 ---
 
-*Sheet TB-PROOF-034 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-034 | TelsonBase v11.0.1 | March 1, 2026*

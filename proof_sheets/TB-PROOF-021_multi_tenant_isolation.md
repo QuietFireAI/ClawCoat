@@ -14,7 +14,7 @@
 
 ## Verdict
 
-VERIFIED - Multi-tenancy with Redis key namespacing, per-tenant rate limiting, litigation hold support, 4-tier data classification, and actor-scoped access control (v9.0.0B).
+VERIFIED - Multi-tenancy with Redis key namespacing, per-tenant rate limiting, litigation hold support, 4-tier data classification, and actor-scoped access control (v11.0.1).
 
 ## Evidence
 
@@ -42,9 +42,9 @@ VERIFIED - Multi-tenancy with Redis key namespacing, per-tenant rate limiting, l
 - **Redis key namespacing**: All keys prefixed with tenant ID via `tenant_scoped_key()` in `core/tenancy.py`
 - **Per-tenant rate limiting**: Redis sliding window, configurable per tier
 - **Litigation holds**: Block data deletion when legal hold is active
-- **Actor-scoped access control (v9.0.0B)**: Every tenant stores `created_by` and `allowed_actors`. All tenant and matter routes call `_require_tenant_access()` which returns HTTP 403 if `auth.actor` is not in `allowed_actors`. Admins (`admin:config` or `*`) bypass for management operations. See TB-PROOF-042 for full detail.
+- **Actor-scoped access control (v11.0.1)**: Every tenant stores `created_by` and `allowed_actors`. All tenant and matter routes call `_require_tenant_access()` which returns HTTP 403 if `auth.actor` is not in `allowed_actors`. Admins (`admin:config` or `*`) bypass for management operations. See TB-PROOF-042 for full detail.
 
-> **Correction (v9.0.0B, March 1, 2026):** Prior version of this sheet claimed "Cross-tenant query prevention: Data queries scoped to authenticated tenant." That claim was inaccurate - the routes lacked user-to-tenant binding checks. This has been corrected: `allowed_actors` enforcement is now implemented at the route layer and verified by E2E test `test_cross_tenant_access_rejected`.
+> **Correction (v11.0.1, March 1, 2026):** Prior version of this sheet claimed "Cross-tenant query prevention: Data queries scoped to authenticated tenant." That claim was inaccurate - the routes lacked user-to-tenant binding checks. This has been corrected: `allowed_actors` enforcement is now implemented at the route layer and verified by E2E test `test_cross_tenant_access_rejected`.
 
 ## Verification Command
 
@@ -67,4 +67,4 @@ pytest tests/test_e2e_integration.py::TestTenantIsolation::test_cross_tenant_acc
 
 ---
 
-*Sheet TB-PROOF-021 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-021 | TelsonBase v11.0.1 | March 1, 2026*

@@ -1,7 +1,6 @@
 # TelsonBase - Directory & Naming Conventions
 
-**Architect:** ::Jeff Phillips:: - ::support@telsonbase.com::
-**Date:** February 7, 2026
+**Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 ---
 
@@ -52,11 +51,11 @@ All Python files, configs, and documentation reference **TelsonBase** as the pro
 | Floor | Description | Status |
 |-------|-------------|--------|
 | **Below Ground** | Hardware integration, firmware sovereignty, Snowball device protocols | Future |
-| **Foundation** | Docker orchestration, network segmentation, secrets management | ✅ Built (v5.1.0CC) |
-| **Ground Level** | Core security platform: auth, signing, capabilities, audit, encryption, approval gates, egress control, behavioral anomaly detection | ✅ Built (v5.1.0CC) |
-| **Mezzanine** | Agent framework: MQTT bus, Celery workers, QMS protocol, Ollama integration | ✅ Built (v5.1.0CC) |
-| **First Floor** | Observability: Prometheus metrics, Grafana dashboards, health endpoints | ✅ Built (v5.0.0CC) |
-| **Second Floor** | Federation: cross-instance trust, encrypted messaging, session key exchange | ✅ Built (v4.1.0CC) |
+| **Foundation** | Docker orchestration, network segmentation, secrets management | ✅ Built |
+| **Ground Level** | Core security platform: auth, signing, capabilities, audit, encryption, approval gates, egress control, behavioral anomaly detection | ✅ Built |
+| **Mezzanine** | Agent framework: MQTT bus, Celery workers, QMS protocol, Ollama integration | ✅ Built |
+| **First Floor** | Observability: Prometheus metrics, Grafana dashboards, health endpoints | ✅ Built |
+| **Second Floor** | Federation: cross-instance trust, encrypted messaging, session key exchange | ✅ Built |
 | **Third Floor** | Specialized agents: legal, real estate, healthcare, financial | Future |
 | **Fourth Floor** | Agent marketplace, plugin model, third-party sandboxed execution | Future |
 | **Penthouse** | Multi-instance mesh, sovereign cloud federation, Quiet Fire SaaS offering | Future |

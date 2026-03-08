@@ -60,4 +60,4 @@ References to the governance pipeline, evaluate_action method, and OPENCLAW conf
 
 ---
 
-*Sheet TB-PROOF-035 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-035 | TelsonBase v11.0.1 | March 1, 2026*

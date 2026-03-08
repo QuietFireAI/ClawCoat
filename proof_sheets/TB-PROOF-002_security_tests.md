@@ -62,4 +62,4 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 
 ---
 
-*Sheet TB-PROOF-002 | TelsonBase v9.0.0B | March 1, 2026*
+*Sheet TB-PROOF-002 | TelsonBase v11.0.1 | March 1, 2026*
