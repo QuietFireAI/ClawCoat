@@ -6,7 +6,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
-**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 720
+**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 720 | **Proof Documents:** 787 (66 class-level + 721 individual)
 
 ---
 
@@ -113,6 +113,26 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 | Sheet | Claim | Status |
 |---|---|---|
 | [TB-PROOF-052](TB-PROOF-052_full_test_manifest.md) | Complete 720-Test Suite Manifest — every file, class, and function name | VERIFIED |
+
+### Test Suite Class-Level Evidence
+*One proof sheet per test suite. Every test class in each suite is listed with its test count and what it proves.*
+
+| Sheet | Suite | Classes | Tests | Status |
+|---|---|---|---|---|
+| [TB-PROOF-053](tb-proof-053_qms_suite.md) | Qualified Message Standard (QMS(TM)) | 13 | 115 | VERIFIED |
+| [TB-PROOF-054](tb-proof-054_toolroom_suite.md) | Toolroom and Foreman Agent | 28 | 129 | VERIFIED |
+| [TB-PROOF-055](tb-proof-055_openclaw_suite.md) | OpenClaw Governance Engine | 9 | 55 | VERIFIED |
+| [TB-PROOF-056](tb-proof-056_identiclaw_suite.md) | IdentiClaw Identity and Verification | 12 | 50 | VERIFIED |
+| [TB-PROOF-057](tb-proof-057_ollama_suite.md) | Ollama LLM Service | 12 | 49 | VERIFIED |
+| [TB-PROOF-058](tb-proof-058_observability_suite.md) | Observability and Metrics | 6 | 40 | VERIFIED |
+| [TB-PROOF-059](tb-proof-059_behavioral_suite.md) | Behavioral (GIVEN/WHEN/THEN) | 6 | 30 | VERIFIED |
+| [TB-PROOF-060](tb-proof-060_e2e_suite.md) | End-to-End Integration | 6 | 29 | VERIFIED |
+| [TB-PROOF-061](tb-proof-061_secrets_suite.md) | Secrets Management | 7 | 48 | VERIFIED |
+| [TB-PROOF-062](tb-proof-062_integration_suite.md) | Cross-System Integration | 9 | 26 | VERIFIED |
+| [TB-PROOF-063](tb-proof-063_capabilities_suite.md) | Capability Enforcement | 3 | 15 | VERIFIED |
+| [TB-PROOF-064](tb-proof-064_signing_suite.md) | Message Signing and Verification | 3 | 13 | VERIFIED |
+| [TB-PROOF-065](tb-proof-065_api_suite.md) | REST API Endpoints | 8 | 19 | VERIFIED |
+| [TB-PROOF-066](tb-proof-066_contracts_suite.md) | Enum Contracts and Operational Invariants | 4 | 7 | VERIFIED |
 
 ---
 

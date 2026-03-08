@@ -10,7 +10,7 @@
 
 Agents need manners. That is not a novel idea. It is how you raise children who know how to act in the world, and it applies just as directly to software agents operating inside a business. Without behavioral standards, everyone acts however they want and things fall apart. That was always the starting point.
 
-The Qualified Message Standard (QMS) is manners expressed as protocol. When a child learns manners, they learn to say who they are, acknowledge what they are responding to, state their need clearly, and signal when they are done. A QMS message does exactly that: it opens with an ORIGIN block (who I am), follows with a CORRELATION block (what this connects to), states its COMMAND (what I need), and closes with a terminal status (TASK.DONE, TASK.FAILED, TASK.STALLED). Agents that communicate through QMS are not just structured - they are accountable. That was the point from the beginning.
+The Qualified Message Standard (QMS(TM)) is manners expressed as protocol. When a child learns manners, they learn to say who they are, acknowledge what they are responding to, state their need clearly, and signal when they are done. A QMS message does exactly that: it opens with an ORIGIN block (who I am), follows with a CORRELATION block (what this connects to), states its COMMAND (what I need), and closes with a terminal status (TASK.DONE, TASK.FAILED, TASK.STALLED). Agents that communicate through QMS are not just structured - they are accountable. That was the point from the beginning.
 
 TelsonBase was designed around five operating principles before any external framework entered the picture. These principles came from a straightforward question: if an AI agent is going to work inside my company, how should it behave? The answers were not complicated. Ask before doing something irreversible. Be transparent about what you did. Stay in your lane. Keep data where it belongs. Assume someone is trying to break you.
 
@@ -55,7 +55,7 @@ Agents must provide visibility into their reasoning, actions, and outcomes. Ever
 
 **TelsonBase Implementation:**
 - Cryptographic audit chain (SHA-256 hash-linked) for every agent action
-- QMS (Qualified Message Standard) provides human-readable action provenance
+- QMS(TM) (Qualified Message Standard) provides human-readable action provenance
 - Agent responses include action summaries, not just raw data
 - Anomaly detection flags unexplained behavioral deviations
 - Dashboard shows real-time agent activity streams
@@ -65,7 +65,7 @@ Agents must provide visibility into their reasoning, actions, and outcomes. Ever
 |--------|--------|-------------|
 | Audit chain integrity | 100% unbroken chains | Chain verification: hash_valid on all entries |
 | Action logging rate | 100% of actions audited | Audit count vs. action count per agent |
-| QMS compliance | 100% of inter-agent messages | QMS parser: formatted vs. total messages |
+| QMS(TM) compliance | 100% of inter-agent messages | QMS(TM) parser: formatted vs. total messages |
 | Anomaly detection coverage | All agents monitored | Behavior monitor: agents with active baselines |
 
 ---
