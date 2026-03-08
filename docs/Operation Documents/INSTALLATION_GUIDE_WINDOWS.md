@@ -167,7 +167,7 @@ This is a one-time step. You do not need to repeat it on subsequent restarts.
 docker compose ps
 ```
 
-All 12 services should show **Up** or **healthy**:
+All 11 services should show **Up** or **healthy** (MailHog is dev-profile only — it won't appear here):
 
 ```
 NAME                        STATUS
@@ -245,6 +245,8 @@ curl http://localhost:11434/api/tags
    cat secrets/telsonbase_mcp_api_key
    ```
 4. Click **Connect** — the header will switch to **Live** and show the system health dot
+
+**You're in.** From here, head to: `docs/DASHBOARD_agent_registration.md` for the step-by-step walkthrough to register your first agent, promote it from QUARANTINE, and verify the governance loop.
 
 ---
 
