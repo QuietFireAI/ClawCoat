@@ -650,3 +650,65 @@ async def recent_actions(
         "actions": actions,
         "total_count": instance.action_count,
     }
+
+
+@router.get("/{instance_id}/manners")
+async def manners_report(
+    instance_id: str,
+    auth: AuthResult = Depends(authenticate_request),
+):
+    """
+    REM: Return the full Manners compliance breakdown for an agent — score, principle
+    REM: scores, violation history, status, and whether the agent is in grace period.
+    REM: Use this to understand why a score is dropping or an auto-demotion triggered.
+    """
+    _check_enabled()
+
+    manager = _get_manager()
+    instance = manager.get_instance(instance_id)
+    if not instance:
+        raise HTTPException(status_code=404, detail="OpenClaw instance not found")
+
+    try:
+        from core.manners import manners_engine
+        report = manners_engine.evaluate(instance.name)
+        violations = manners_engine.get_violations(instance.name, include_resolved=False)
+
+        return {
+            "instance_id": instance_id,
+            "name": instance.name,
+            "trust_level": instance.trust_level,
+            "overall_score": report.overall_score,
+            "status": report.status.value,
+            "violations_24h": report.violations_24h,
+            "total_active_violations": report.total_violations,
+            "is_grace_period": report.is_grace_period,
+            "principle_scores": {
+                k: {
+                    "principle": s.principle.value,
+                    "score": s.score,
+                    "violations_count": s.violations_count,
+                    "details": s.details,
+                    "last_violation": s.last_violation.isoformat() if s.last_violation else None,
+                }
+                for k, s in report.principle_scores.items()
+            },
+            "recent_violations": [v.to_dict() for v in violations[:20]],
+            "evaluated_at": report.evaluated_at.isoformat(),
+        }
+    except Exception as e:
+        logger.warning(f"REM: Manners report error for {instance_id}: {e}")
+        return {
+            "instance_id": instance_id,
+            "name": instance.name,
+            "trust_level": instance.trust_level,
+            "overall_score": instance.manners_score,
+            "status": "unknown",
+            "violations_24h": 0,
+            "total_active_violations": 0,
+            "is_grace_period": False,
+            "principle_scores": [],
+            "recent_violations": [],
+            "evaluated_at": datetime.now(timezone.utc).isoformat(),
+            "note": "Manners engine not available — showing cached score only",
+        }
