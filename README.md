@@ -41,7 +41,7 @@ The governance engine, trust pipeline, compliance infrastructure, and admin dash
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/TelsonBase](https://huggingface.co/spaces/QuietFireAI/TelsonBase)
 
 **What's stable and tested:**
-Trust governance pipeline · Cryptographic audit chain · RBAC (161 endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
+Trust governance pipeline · Cryptographic audit chain · RBAC (150 endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
 
 **What's actively being worked on:**
 User management live endpoint · QMS real-time log feed · Audit chain PostgreSQL archival beyond 100K entries · Agent actor attribution in approval decisions
@@ -270,7 +270,7 @@ This isn't a roadmap. This is shipped code with tests.
 |---|---|---|
 | **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 54 |
 | **Cryptographic Audit Trail** | SHA-256 hash-chained, tamper-evident | 11 |
-| **161 RBAC Endpoints** | 4-tier permissions, deny overrides allow | 13 |
+| **150 RBAC Endpoints** | 4-tier permissions, deny overrides allow | 13 |
 | **AES-256-GCM Encryption** | At-rest encryption, PBKDF2 key derivation | 11 |
 | **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 8 |
 | **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 12 |

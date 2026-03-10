@@ -4,7 +4,7 @@
 
 Complete index of all documentation in the repository. Root-level files follow OSS convention. Everything else lives under `docs/` organized by category.
 
-For proof sheet evidence (773 documents): see [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md).
+For proof sheet evidence (788 documents): see [`PROOF_INDEX.md`](PROOF_INDEX.md) or [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md).
 
 ---
 
@@ -13,6 +13,7 @@ For proof sheet evidence (773 documents): see [`proof_sheets/INDEX.md`](proof_sh
 | File | Purpose |
 |---|---|
 | [README.md](README.md) | Project overview, architecture, quickstart, GIFs, screenshots |
+| [QUICKSTART.md](QUICKSTART.md) | 5-minute path: clone to first governance decision |
 | [CHANGELOG.md](CHANGELOG.md) | Version history (keepachangelog format) |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute — branches, PRs, tests |
 | [GOVERNANCE.md](GOVERNANCE.md) | Project governance — maintainers, decisions, releases |
@@ -30,6 +31,8 @@ For proof sheet evidence (773 documents): see [`proof_sheets/INDEX.md`](proof_sh
 | [docs/USER_GUIDE.md](docs/USER_GUIDE.md) | End-user guide to the admin dashboard and console |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (GitHub auto-generates formatted citation) |
 | [NOTICE](NOTICE) | Apache 2.0 attribution and third-party notices |
+| [PROOF_INDEX.md](PROOF_INDEX.md) | Entry point for 788 evidence documents |
+| [Makefile](Makefile) | Developer shortcuts: make test, make run, make lint, make clean |
 
 ---
 

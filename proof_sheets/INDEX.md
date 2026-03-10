@@ -40,7 +40,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 ### Authentication and Access Control
 | Sheet | Claim | Status |
 |---|---|---|
-| [TB-PROOF-014](TB-PROOF-014_rbac_endpoints.md) | 177 RBAC-Protected Endpoints | VERIFIED |
+| [TB-PROOF-014](TB-PROOF-014_rbac_endpoints.md) | 150 RBAC-Protected Endpoints | VERIFIED |
 | [TB-PROOF-015](TB-PROOF-015_totp_mfa.md) | RFC 6238 TOTP Multi-Factor Authentication | VERIFIED |
 | [TB-PROOF-016](TB-PROOF-016_session_management.md) | HIPAA-Compliant Session Management | VERIFIED |
 | [TB-PROOF-017](TB-PROOF-017_account_lockout.md) | Account Lockout After 5 Failed Attempts | VERIFIED |
