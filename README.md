@@ -429,20 +429,21 @@ Claude Desktop works identically - point it at `http://localhost:8000/mcp` with 
 
 ## Proof Sheets
 
-The `proof_sheets/` directory contains **773 evidence documents**.
+The `proof_sheets/` directory contains **788 evidence documents**.
 
 This is not a marketing decision. If we preach governance, we have to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
-**Two tiers:**
+**Three tiers:**
 
 | Tier | Format | Count | Purpose |
 |---|---|---|---|
 | **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim - source files, verdict, verification command |
+| **Test suite class** | `tb-proof-NNN` | 15 sheets | One sheet per test suite - all classes, test counts, what each proves |
 | **Individual test** | `TB-TEST-[CODE]-NNN` | 721 sheets | One sheet per test function - single-command verification, class cross-reference |
 
 ```
 proof_sheets/
-  INDEX.md                          ← master index, all 52 claim sheets
+  INDEX.md                          ← master index, all 67 claim + class sheets
   TB-PROOF-001_tests_passing.md
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
