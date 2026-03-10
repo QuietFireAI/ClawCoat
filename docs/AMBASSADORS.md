@@ -79,10 +79,10 @@ You can help answer questions, write tutorials, or moderate discussions. You don
 
 1. **Open an Issue** on the GitHub repository with the title: `Ambassador: [Your Name] - [Your Industry]`
 2. Tell me:
-   - What industry you work in
-   - What compliance frameworks matter to you
-   - What you'd want to test first
-   - How you'd want to contribute (deploy and report, write code, answer questions, or all of the above)
+  - What industry you work in
+  - What compliance frameworks matter to you
+  - What you'd want to test first
+  - How you'd want to contribute (deploy and report, write code, answer questions, or all of the above)
 3. I'll respond personally. This isn't automated.
 
 Or email directly: **support@telsonbase.com** with subject line "Ambassador Program"

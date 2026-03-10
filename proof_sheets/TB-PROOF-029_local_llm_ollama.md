@@ -33,9 +33,9 @@ VERIFIED - `core/ollama_service.py` and `agents/ollama_agent.py` handle all LLM 
 ollama:
   image: "ollama/ollama:latest"
   networks:
-    - ai         # ai network is internal: true
+   - ai         # ai network is internal: true
   volumes:
-    - ollama_data:/root/.ollama
+   - ollama_data:/root/.ollama
 
 ai:
   driver: bridge

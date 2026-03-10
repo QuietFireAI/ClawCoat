@@ -38,10 +38,10 @@ Include:
 - **Acknowledgment**: Within 48 hours
 - **Initial Assessment**: Within 7 days
 - **Resolution Timeline**: Depends on severity
-  - Critical: 24–72 hours
-  - High: 7 days
-  - Medium: 30 days
-  - Low: Next release
+ - Critical: 24-72 hours
+ - High: 7 days
+ - Medium: 30 days
+ - Low: Next release
 
 ### Scope
 

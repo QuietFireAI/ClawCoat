@@ -186,7 +186,7 @@ netstat -ano | findstr :8000
 ```bash
 # In docker-compose.yml, change port mapping
 ports:
-  - "8001:8000"  # Use 8001 instead
+ - "8001:8000"  # Use 8001 instead
 ```
 
 ---
@@ -523,7 +523,7 @@ When reporting issues, include:
 
 ---
 
-*"When in doubt, check the logs."* — Quietfire AI
+*"When in doubt, check the logs."* - Quietfire AI
 
 ---
 

@@ -19,13 +19,13 @@ telsonbase/
 │
 ├── core/                       # Security & governance engine (~60 modules)
 │   │
-│   ├── — Governance —
+│   ├── - Governance - 
 │   ├── openclaw.py             # OpenClaw governance engine + OpenClawManager singleton
 │   ├── trust_levels.py         # AgentTrustLevel enum (QUARANTINE → AGENT), permission matrix
 │   ├── manners.py              # Manners compliance scoring engine
 │   ├── identiclaw.py           # Agent identity (DID, Ed25519, verifiable credentials)
 │   │
-│   ├── — Auth & Access —
+│   ├── - Auth & Access - 
 │   ├── config.py               # Centralized settings (pydantic)
 │   ├── auth.py                 # JWT authentication
 │   ├── auth_dependencies.py    # FastAPI auth dependency helpers
@@ -37,7 +37,7 @@ telsonbase/
 │   ├── delegation.py           # Permission delegation
 │   ├── emergency_access.py     # Break-glass emergency access
 │   │
-│   ├── — Security —
+│   ├── - Security - 
 │   ├── signing.py              # HMAC-SHA256 / Ed25519 message signing
 │   ├── capabilities.py         # Capability enforcement (filesystem, external, MQTT)
 │   ├── anomaly.py              # Behavioral anomaly detection
@@ -52,7 +52,7 @@ telsonbase/
 │   ├── threat_response.py      # Automated threat response
 │   ├── system_analysis.py      # System health analysis
 │   │
-│   ├── — Compliance —
+│   ├── - Compliance - 
 │   ├── compliance.py           # Framework orchestration
 │   ├── baa.py                  # BAA management (HIPAA)
 │   ├── breach.py               # Breach detection
@@ -71,7 +71,7 @@ telsonbase/
 │   ├── contingency.py          # HIPAA contingency planning
 │   ├── contingency_testing.py  # Contingency plan test runner
 │   │
-│   ├── — Infrastructure —
+│   ├── - Infrastructure - 
 │   ├── database.py             # SQLAlchemy async engine + session factory
 │   ├── models.py               # ORM models (shared across modules)
 │   ├── persistence.py          # Redis state management
@@ -104,7 +104,7 @@ telsonbase/
 │   ├── auth_routes.py          # Authentication endpoints
 │   ├── compliance_routes.py    # Compliance framework endpoints
 │   ├── identiclaw_routes.py    # Agent identity (DID) endpoints
-│   ├── mcp_gateway.py          # MCP server — 13 tools, Goose / Claude Desktop
+│   ├── mcp_gateway.py          # MCP server - 13 tools, Goose / Claude Desktop
 │   ├── openclaw_routes.py      # OpenClaw governance endpoints (12 routes)
 │   ├── security_routes.py      # Security event endpoints
 │   └── tenancy_routes.py       # Multi-tenant management endpoints
@@ -165,7 +165,7 @@ telsonbase/
 │   ├── test_security_flow.py   # API integration test
 │   └── test_federation.py      # Federation test
 │
-├── tests/                      # Test suite — 720 passing, 1 skipped
+├── tests/                      # Test suite - 720 passing, 1 skipped
 │   ├── conftest.py             # Pytest fixtures + _register_user helper
 │   ├── test_api.py             # API endpoint tests
 │   ├── test_behavioral.py      # Behavioral anomaly tests
@@ -184,30 +184,30 @@ telsonbase/
 │   ├── test_signing.py         # Cryptographic signing tests
 │   └── test_toolroom.py        # Toolroom supply-chain tests
 │
-├── proof_sheets/               # 787 proof documents — every claim and every test, backed by code
+├── proof_sheets/               # 787 proof documents - every claim and every test, backed by code
 │   ├── INDEX.md                # Full index (787 documents, verification status)
 │   ├── TB-PROOF-001_tests_passing.md
 │   ├── TB-PROOF-002_security_tests.md
 │   ├── ... (TB-PROOF-001 through TB-PROOF-066, class-level evidence)
 │   └── individual/             # 721 individual test proof sheets (TB-TEST-* series)
-│       ├── sec/                # 96 sheets — security battery
-│       ├── qms/                # 115 sheets — QMS™ protocol tests
-│       ├── tool/               # 129 sheets — Toolroom tests
-│       ├── ocl/                # 55 sheets — OpenClaw governance tests
-│       ├── idn/                # 50 sheets — IdentiClaw identity tests
-│       ├── oll/                # 49 sheets — Ollama LLM tests
-│       ├── obs/                # 40 sheets — Observability tests
-│       ├── beh/                # 30 sheets — Behavioral tests
-│       ├── e2e/                # 29 sheets — End-to-end integration tests
-│       ├── scrt/               # 48 sheets — Secrets management tests
-│       ├── int/                # 26 sheets — Cross-system integration tests
-│       ├── cap/                # 15 sheets — Capability enforcement tests
-│       ├── sign/               # 13 sheets — Message signing tests
-│       ├── api/                # 19 sheets — API endpoint tests
-│       └── ctrct/              # 7 sheets — Enum contract tests
+│       ├── sec/                # 96 sheets - security battery
+│       ├── qms/                # 115 sheets - QMS™ protocol tests
+│       ├── tool/               # 129 sheets - Toolroom tests
+│       ├── ocl/                # 55 sheets - OpenClaw governance tests
+│       ├── idn/                # 50 sheets - IdentiClaw identity tests
+│       ├── oll/                # 49 sheets - Ollama LLM tests
+│       ├── obs/                # 40 sheets - Observability tests
+│       ├── beh/                # 30 sheets - Behavioral tests
+│       ├── e2e/                # 29 sheets - End-to-end integration tests
+│       ├── scrt/               # 48 sheets - Secrets management tests
+│       ├── int/                # 26 sheets - Cross-system integration tests
+│       ├── cap/                # 15 sheets - Capability enforcement tests
+│       ├── sign/               # 13 sheets - Message signing tests
+│       ├── api/                # 19 sheets - API endpoint tests
+│       └── ctrct/              # 7 sheets - Enum contract tests
 │
 ├── huggingface_space/          # HuggingFace live demo
-│   ├── app.py                  # Gradio app — live governance pipeline demo
+│   ├── app.py                  # Gradio app - live governance pipeline demo
 │   ├── README.md               # HF Space config (frontmatter) + description
 │   └── requirements.txt
 │
@@ -338,8 +338,8 @@ main.py → federation/trust.py → federation/mtls.py → core/signing.py → (
 |---------|------|---------|
 | `traefik` | 80 / 443 | Reverse proxy, TLS 1.2+, HSTS |
 | `mcp_server` | 8000 | Main API + MCP gateway at /mcp |
-| `worker` | — | Celery background tasks |
-| `beat` | — | Scheduled tasks |
+| `worker` | - | Celery background tasks |
+| `beat` | - | Scheduled tasks |
 | `redis` | 6379 | Message broker, cache, agent state |
 | `postgres` | 5432 | Persistent relational storage |
 | `ollama` | 11434 | Local LLM inference (no cloud AI) |
@@ -347,7 +347,7 @@ main.py → federation/trust.py → federation/mtls.py → core/signing.py → (
 | `mosquitto` | 1883 | MQTT agent messaging bus |
 | `prometheus` | 9090 | Metrics collection |
 | `grafana` | 3001 | Monitoring dashboards |
-| `mailhog` *(dev only)* | 1025 / 8025 | SMTP capture for development — `--profile dev` |
+| `mailhog` *(dev only)* | 1025 / 8025 | SMTP capture for development - `--profile dev` |
 
 > Production deployments omit `--profile dev`. MailHog is replaced by real SMTP vars in `.env`.
 
@@ -357,9 +357,9 @@ main.py → federation/trust.py → federation/mtls.py → core/signing.py → (
 
 | Use Case | Path |
 |---|---|
-| Python agent inside TelsonBase | Inherit `SecureBaseAgent` — see `docs/Operation Documents/DEVELOPER_GUIDE.md` |
-| External agent (any language/framework) | Call `/v1/openclaw/{id}/action` — see `docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md` |
-| Goose / Claude Desktop | Point MCP client at `http://localhost:8000/mcp` with API key — see `goose.yaml` |
+| Python agent inside TelsonBase | Inherit `SecureBaseAgent` - see `docs/Operation Documents/DEVELOPER_GUIDE.md` |
+| External agent (any language/framework) | Call `/v1/openclaw/{id}/action` - see `docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md` |
+| Goose / Claude Desktop | Point MCP client at `http://localhost:8000/mcp` with API key - see `goose.yaml` |
 
 ---
 

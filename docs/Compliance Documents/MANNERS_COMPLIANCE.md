@@ -150,7 +150,7 @@ For SOC 2 and regulatory audits, Manners provides:
 
 ## See It Working
 
-**GIF 5** in the README shows Manners scoring live: a fresh agent registers at 1.0, hits two blocked actions (different reasons), and the score drops measurably after each one. The `/manners` endpoint returns the full breakdown — per-principle scores, violation history, and status — at any point.
+**GIF 5** in the README shows Manners scoring live: a fresh agent registers at 1.0, hits two blocked actions (different reasons), and the score drops measurably after each one. The `/manners` endpoint returns the full breakdown - per-principle scores, violation history, and status - at any point.
 
 **GIF 6** shows the trust tier progression: same agent, same action, three different outcomes depending on trust level. Quarantine blocks it outright. Probation gates it for human approval. Resident executes it autonomously.
 

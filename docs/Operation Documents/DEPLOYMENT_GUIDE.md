@@ -236,7 +236,7 @@ For environments without internet access or using internal CAs:
 2. Mount the certificates in `docker-compose.yml` under the Traefik service:
    ```yaml
    volumes:
-     - ./certs:/certs:ro
+    - ./certs:/certs:ro
    ```
 
 3. Add Traefik file provider configuration for the static certificate. Refer to Traefik documentation for details.

@@ -167,7 +167,7 @@ postgres:
   deploy:
     placement:
       constraints:
-        - node.labels.postgres == primary
+       - node.labels.postgres == primary
 ```
 
 ### Load Balancing
@@ -276,13 +276,13 @@ spec:
   minReplicas: 2
   maxReplicas: 10
   metrics:
-    - type: Resource
+   - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
           averageUtilization: 70
-    - type: Resource
+   - type: Resource
       resource:
         name: memory
         target:
@@ -301,7 +301,7 @@ metadata:
   name: postgresql-data
 spec:
   accessModes:
-    - ReadWriteOnce
+   - ReadWriteOnce
   storageClassName: nfs-client
   resources:
     requests:
@@ -326,14 +326,14 @@ metadata:
     nginx.ingress.kubernetes.io/hsts-preload: "true"
 spec:
   tls:
-    - hosts:
-        - telsonbase.com
+   - hosts:
+       - telsonbase.com
       secretName: telsonbase-tls
   rules:
-    - host: telsonbase.com
+   - host: telsonbase.com
       http:
         paths:
-          - path: /
+         - path: /
             pathType: Prefix
             backend:
               service:

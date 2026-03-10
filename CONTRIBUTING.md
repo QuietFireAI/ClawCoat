@@ -116,19 +116,19 @@ docker compose exec mcp_server python -m pytest tests/test_capabilities.py -v
 ### Test Categories
 
 1. **Unit Tests** (`tests/test_*.py`)
-   - Test individual functions
-   - Mock external dependencies
-   - Fast execution
+  - Test individual functions
+  - Mock external dependencies
+  - Fast execution
 
 2. **Security Flow Tests** (`scripts/test_security_flow.py`)
-   - Requires running Docker stack
-   - Tests full authentication chain
-   - Tests capability enforcement
+  - Requires running Docker stack
+  - Tests full authentication chain
+  - Tests capability enforcement
 
 3. **Federation Tests** (`docker-compose.federation-test.yml`)
-   - Multi-instance trust establishment
-   - Cross-instance message signing
-   - Trust revocation
+  - Multi-instance trust establishment
+  - Cross-instance message signing
+  - Trust revocation
 
 ### Writing New Tests
 

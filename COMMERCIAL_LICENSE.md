@@ -1,10 +1,10 @@
-# TelsonBase — Commercial License (Retired)
+# TelsonBase - Commercial License (Retired)
 
 **Effective:** March 2026
 
 TelsonBase has moved to the Apache License, Version 2.0.
 
-**No commercial license is required.** Apache 2.0 permits free use for any purpose — personal, commercial, production, research. You may use, modify, deploy, sublicense, and distribute TelsonBase without restriction, including in revenue-generating workflows.
+**No commercial license is required.** Apache 2.0 permits free use for any purpose - personal, commercial, production, research. You may use, modify, deploy, sublicense, and distribute TelsonBase without restriction, including in revenue-generating workflows.
 
 **What is required:**
 - Retain the copyright and license notices (`LICENSE` file) when distributing

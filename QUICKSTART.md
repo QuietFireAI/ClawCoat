@@ -1,4 +1,4 @@
-# TelsonBase — Quickstart
+# TelsonBase - Quickstart
 
 **From clone to your first governance decision: under 5 minutes.**
 
@@ -14,7 +14,7 @@ This guide is for developers and evaluators. It assumes Docker Desktop is instal
 
 ---
 
-## Step 1 — Clone and Configure
+## Step 1 - Clone and Configure
 
 ```bash
 git clone https://github.com/QuietFireAI/TelsonBase.git
@@ -24,7 +24,7 @@ cp .env.example .env
 
 ---
 
-## Step 2 — Generate Secrets
+## Step 2 - Generate Secrets
 
 Run this in **Git Bash** (Windows) or your POSIX shell:
 
@@ -36,7 +36,7 @@ This creates the `secrets/` directory and populates `.env` with all cryptographi
 
 ---
 
-## Step 3 — Start the Platform
+## Step 3 - Start the Platform
 
 ```bash
 docker compose up -d --build
@@ -53,7 +53,7 @@ curl http://localhost:8000/health
 
 ---
 
-## Step 4 — Run Database Migrations
+## Step 4 - Run Database Migrations
 
 ```bash
 docker compose exec mcp_server alembic upgrade head
@@ -63,7 +63,7 @@ Run this once after first startup. The API returns 500 until migrations complete
 
 ---
 
-## Step 5 — Get Your API Key
+## Step 5 - Get Your API Key
 
 ```bash
 cat secrets/telsonbase_mcp_api_key
@@ -77,7 +77,7 @@ export API_KEY=$(cat secrets/telsonbase_mcp_api_key)
 
 ---
 
-## Step 6 — Register an Agent
+## Step 6 - Register an Agent
 
 ```bash
 curl -s -X POST http://localhost:8000/v1/agents/register \
@@ -92,7 +92,7 @@ Every new agent starts at QUARANTINE. No exceptions.
 
 ---
 
-## Step 7 — See Governance in Action
+## Step 7 - See Governance in Action
 
 Attempt an action from QUARANTINE. The governance engine will block it:
 

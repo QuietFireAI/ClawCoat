@@ -23,7 +23,7 @@ VERIFIED - `docs/System Documents/SOC2_TYPE_I.md` contains 51 unique controls ac
 | File | Lines | What It Proves |
 |---|---|---|
 | `docs/System Documents/SOC2_TYPE_I.md` | Lines 118-248 | Complete SOC 2 control matrix |
-| `core/compliance.py` | Lines 34-139 | `SOC2_CONTROLS` list with CC6.1–CC8.1 mapped to source files; `ComplianceFramework.SOC2` enum; `ComplianceEngine.generate_report()` |
+| `core/compliance.py` | Lines 34-139 | `SOC2_CONTROLS` list with CC6.1-CC8.1 mapped to source files; `ComplianceFramework.SOC2` enum; `ComplianceEngine.generate_report()` |
 
 ### Control Breakdown
 

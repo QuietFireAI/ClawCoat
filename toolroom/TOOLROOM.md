@@ -5,13 +5,13 @@
 
 ## What Is the Toolroom?
 
-The Toolroom is the **single source of truth** for all tools available to agents on base. Think of it as a machine shop tool crib — nothing leaves without being signed out, nothing returns without being inspected, and one supervisor (the Foreman) manages everything.
+The Toolroom is the **single source of truth** for all tools available to agents on base. Think of it as a machine shop tool crib - nothing leaves without being signed out, nothing returns without being inspected, and one supervisor (the Foreman) manages everything.
 
 **Core principle:** All agents draw from the same Toolroom. No agent accesses external tools directly. No shadow tooling.
 
 ---
 
-**Tool access by trust tier:** See [`docs/TOOLROOM_TRUST_MATRIX.md`](../docs/TOOLROOM_TRUST_MATRIX.md) for the full matrix — what's available at each tier, how to set tool designations, and recommended defaults by tool category.
+**Tool access by trust tier:** See [`docs/TOOLROOM_TRUST_MATRIX.md`](../docs/TOOLROOM_TRUST_MATRIX.md) for the full matrix - what's available at each tier, how to set tool designations, and recommended defaults by tool category.
 
 ---
 
@@ -31,7 +31,7 @@ The Foreman is a **supervisor-level agent** responsible for:
 
 ### QMS™ as Security Gate
 
-The Foreman validates QMS™ formatting on every incoming message before processing it. A non-QMS message reaching the Foreman is not treated as a malformed request — it is treated as a security event.
+The Foreman validates QMS™ formatting on every incoming message before processing it. A non-QMS message reaching the Foreman is not treated as a malformed request - it is treated as a security event.
 
 Every valid inbound message must arrive as a proper QMS™ chain:
 
@@ -39,17 +39,17 @@ Every valid inbound message must arrive as a proper QMS™ chain:
 ::agent_id::-::@@correlation_id@@::-::action::-::data::-::_command::
 ```
 
-If the Foreman receives a message without this structure, it logs a `NON_QMS_MESSAGE` anomaly event and does not execute the request. The origin block is the identity check. The correlation block is the audit thread. The command block is the intent. A message missing any of these is missing accountability — and the Foreman does not work with unaccountable inputs.
+If the Foreman receives a message without this structure, it logs a `NON_QMS_MESSAGE` anomaly event and does not execute the request. The origin block is the identity check. The correlation block is the audit thread. The command block is the intent. A message missing any of these is missing accountability - and the Foreman does not work with unaccountable inputs.
 
 This also means silence is a signal. A registered agent that stops producing QMS™-formatted messages is as anomalous as one sending malformed messages. The behavioral baseline tracks both.
 
 ### Security Constraints
 
-- **GitHub access ONLY** — the Foreman can only pull from explicitly approved repositories listed in `APPROVED_GITHUB_SOURCES`
-- **HITL gate on ALL external operations** — the Foreman will notify the human operator and **wait for explicit authorization** before any install, update, or API-access operation
-- **Cannot modify its own capabilities** — defense-in-depth
-- **All actions audited** — hash-chained audit logs via `core/audit.py`
-- **Approval state persisted in Redis** — survives worker restarts
+- **GitHub access ONLY** - the Foreman can only pull from explicitly approved repositories listed in `APPROVED_GITHUB_SOURCES`
+- **HITL gate on ALL external operations** - the Foreman will notify the human operator and **wait for explicit authorization** before any install, update, or API-access operation
+- **Cannot modify its own capabilities** - defense-in-depth
+- **All actions audited** - hash-chained audit logs via `core/audit.py`
+- **Approval state persisted in Redis** - survives worker restarts
 
 ---
 
@@ -114,7 +114,7 @@ Foreman acknowledges:
 
 ### 4. Requesting a New Tool
 
-Agents use `::_Pretty_Please::` for escalation — this signals urgency to the HITL queue:
+Agents use `::_Pretty_Please::` for escalation - this signals urgency to the HITL queue:
 
 ```
 ::agent_id::-::@@TOOLREQ-xxxxx@@::-::New_Tool_Needed::-::##description##::-::_Pretty_Please::
@@ -159,7 +159,7 @@ Every executable tool must provide a `tool_manifest.json` at its root. The manif
 - `name`, `entry_point`, `version` are required
 - Entry points are checked for shell injection characters (`;`, `|`, `` ` ``, `$(`)
 - `sandbox_level` must be one of: `none`, `restricted`, `isolated`
-- `timeout_seconds` must be 1–3600
+- `timeout_seconds` must be 1-3600
 - `requires_network` without sandbox generates a warning
 
 Tools installed without a manifest are registered but **cannot be executed** until a manifest is provided.
@@ -188,7 +188,7 @@ Function tools:
 - Auto-generate a manifest from the decorator parameters
 - Are synced into the main tool registry via `foreman_agent.sync_function_tools`
 - Use the same checkout/return tracking as git-cloned tools
-- Execute as direct callables — no subprocess overhead
+- Execute as direct callables - no subprocess overhead
 - Have timeout protection and exception isolation
 
 ---
@@ -197,16 +197,16 @@ Function tools:
 
 The human operator can install tools from approved GitHub repos:
 
-1. **Propose** — creates HITL approval request:
+1. **Propose** - creates HITL approval request:
 ```bash
 docker compose exec worker celery -A celery_app.worker call \
   foreman_agent.propose_tool_install \
   --args='["dbcli/pgcli", "pgcli", "PostgreSQL CLI", "database", false]'
 ```
 
-2. **Approve** — human approves via approval API
+2. **Approve** - human approves via approval API
 
-3. **Execute install** — after approval:
+3. **Execute install** - after approval:
 ```bash
 docker compose exec worker celery -A celery_app.worker call \
   foreman_agent.execute_tool_install \
@@ -227,11 +227,11 @@ docker compose exec worker celery -A celery_app.worker call \
 
 The Foreman runs a daily update check via Celery Beat:
 
-1. **Check** — queries GitHub API for each tool's source repo
-2. **Compare** — uses semantic versioning (`packaging.version.parse`) to detect actual version changes. Handles `v` prefixes, pre-release tags, and patch increments correctly.
-3. **Propose** — if updates found, creates proposals for HITL review
-4. **Wait** — does NOT auto-install. Human must approve each update
-5. **Install** — after HITL approval, Foreman pulls update and verifies integrity (SHA-256)
+1. **Check** - queries GitHub API for each tool's source repo
+2. **Compare** - uses semantic versioning (`packaging.version.parse`) to detect actual version changes. Handles `v` prefixes, pre-release tags, and patch increments correctly.
+3. **Propose** - if updates found, creates proposals for HITL review
+4. **Wait** - does NOT auto-install. Human must approve each update
+5. **Install** - after HITL approval, Foreman pulls update and verifies integrity (SHA-256)
 
 ---
 
@@ -330,8 +330,8 @@ toolroom/
 
 All Foreman messages follow QMS™ chain format. The grammar:
 - Blocks delimited by `::...::`, linked by `-` separators: `::BLOCK::-::BLOCK::`
-- Leading `_` marks connector/command words (`::_Thank_You::`) — words *about* the transaction
-- No leading `_` marks action/data words (`::Checkout_Tool::`) — words *in* the transaction
+- Leading `_` marks connector/command words (`::_Thank_You::`) - words *about* the transaction
+- No leading `_` marks action/data words (`::Checkout_Tool::`) - words *in* the transaction
 - Internal `_` is a word separator (`::New_Tool_Needed::`)
 - Every valid chain ends with `::`
 

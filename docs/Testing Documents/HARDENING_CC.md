@@ -1,6 +1,6 @@
 # TelsonBase - Production Hardening Decision Log
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
-**Recorded:** February 10–11, 2026
+**Recorded:** February 10-11, 2026
 
 ---
 

@@ -1,4 +1,4 @@
-# Third-Party Notices — TelsonBase v11.0.1
+# Third-Party Notices - TelsonBase v11.0.1
 
 TelsonBase incorporates and depends on open-source software. This document
 lists all third-party dependencies, their licenses, and the corresponding
@@ -91,7 +91,7 @@ These services are not bundled with TelsonBase. They are optional integrations e
 
 | Service | Provider | License / Terms | Notes |
 |---|---|---|---|
-| OpenClaw | OpenClaw project | Provider terms | Autonomous AI agent. TelsonBase acts as a governed MCP proxy — OpenClaw is not modified. Optional integration. |
+| OpenClaw | OpenClaw project | Provider terms | Autonomous AI agent. TelsonBase acts as a governed MCP proxy - OpenClaw is not modified. Optional integration. |
 | Goose | Block, Inc. | Apache-2.0 | Open-source MCP agent operator. Optional integration. |
 | Identiclaw | vouched.id | Provider terms | DID-based agent identity. Planned future integration. Runs on operator's own Cloudflare account. |
 

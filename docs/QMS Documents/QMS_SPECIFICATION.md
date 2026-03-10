@@ -73,10 +73,10 @@ A Block is the fundamental, atomic unit of QMS. It is a self-contained, machine-
 - Every Block MUST begin with `::` and end with `::`. No exceptions.
 - A Block encapsulates a single, discrete element of an instruction.
 - The `::...::` delimiter was chosen for:
-  - High visual contrast in log files
-  - Syntactic simplicity
-  - Resistance to collision with other data formats (JSON, XML, URLs)
-  - Easy searchability (grep `::`)
+ - High visual contrast in log files
+ - Syntactic simplicity
+ - Resistance to collision with other data formats (JSON, XML, URLs)
+ - Easy searchability (grep `::`)
 
 **The underscore prefix -- connector words vs. action words:**
 
@@ -511,7 +511,7 @@ Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate
 
 ---
 
-*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." — Quietfire AI*
+*QMS is an open standard. "Just because our cows eat their cabbage a certain way does not mean yours have to." - Quietfire AI*
 
 ---
 

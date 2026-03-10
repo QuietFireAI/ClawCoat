@@ -732,7 +732,7 @@ if __name__ == "__main__":
     # List agents
     agents = client.list_agents()
     for agent in agents["agents"]:
-        print(f"  - {agent['agent_id']}")
+        print(f" - {agent['agent_id']}")
 
     # Dispatch a task
     result = client.dispatch_task(

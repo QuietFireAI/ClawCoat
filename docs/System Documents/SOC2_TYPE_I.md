@@ -322,7 +322,7 @@ The following matrix maps TelsonBase controls to the AICPA 2017 Trust Services C
 | Date | March 8, 2026 |
 | Classification | Auditor-Ready Documentation |
 | Platform Version | v11.0.1 |
-| Author | Jeff Phillips, Architect — Quietfire AI |
+| Author | Jeff Phillips, Architect - Quietfire AI |
 | Review Status | Updated for public release -- pending independent auditor review |
 | Next Review | Prior to Type II engagement or upon material system change |
 

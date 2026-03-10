@@ -59,7 +59,7 @@ grep "0 server errors" version.py
 ## Expected Result
 
 ```
-# REM:         - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
 ```
 
 ---

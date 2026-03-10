@@ -1,4 +1,4 @@
-# TelsonBase — Proof Index
+# TelsonBase - Proof Index
 
 **Every claim is backed by evidence.**
 
@@ -8,7 +8,7 @@
 
 TelsonBase publishes evidence for every security and compliance claim in the project.
 If a claim is in the README, there is a verifiable source behind it.
-If the evidence doesn't hold up, the claim gets fixed — not hidden.
+If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
 ---
 
@@ -17,7 +17,7 @@ If the evidence doesn't hold up, the claim gets fixed — not hidden.
 | Tier | Count | Format | Purpose |
 |---|---|---|---|
 | **Claim-level sheets** | 52 | `TB-PROOF-NNN` | One sheet per logical capability claim. Source files, verification command, verdict. |
-| **Test suite class sheets** | 15 | `tb-proof-NNN` | One sheet per test suite — all classes listed, test counts, what each proves. |
+| **Test suite class sheets** | 15 | `tb-proof-NNN` | One sheet per test suite - all classes listed, test counts, what each proves. |
 | **Individual test sheets** | 721 | `TB-TEST-[DOMAIN]-NNN` | One sheet per test function. Single-command verification. Cross-referenced to class sheet. |
 | **Total** | **788** | | |
 

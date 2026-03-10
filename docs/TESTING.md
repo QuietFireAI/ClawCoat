@@ -2,7 +2,7 @@
 
 **Version:** v11.0.1 | **Tests Passing:** 720 (1 skipped*) | **Updated:** March 8, 2026
 
-*\* The 1 skipped test is intentional — see [The 1 Skipped](#the-1-skipped) below.*
+*\* The 1 skipped test is intentional - see [The 1 Skipped](#the-1-skipped) below.*
 
 ---
 
@@ -28,7 +28,7 @@ Before running any tests:
 ```bash
 # 1. Copy and configure environment
 cp .env.example .env
-# Edit .env — at minimum, replace CHANGE_ME values
+# Edit .env - at minimum, replace CHANGE_ME values
 
 # 2. Generate secrets
 chmod +x scripts/generate_secrets.sh
@@ -37,7 +37,7 @@ chmod +x scripts/generate_secrets.sh
 # 3. Start the stack (dev includes MailHog)
 docker compose --profile dev up -d --build
 
-# 4. Run database migrations (required on first start — API returns 500 without this)
+# 4. Run database migrations (required on first start - API returns 500 without this)
 docker compose exec mcp_server alembic upgrade head
 
 # 5. Enable governance pipeline (required for OpenClaw tests)
@@ -54,12 +54,12 @@ Use this key as `X-API-Key` in all curl examples below.
 
 ---
 
-## 1. Full Test Suite — 720 Tests
+## 1. Full Test Suite - 720 Tests
 
 The complete automated test suite covering all platform layers.
 
 ```bash
-# Full run (excludes MQTT stress tests — run separately if needed)
+# Full run (excludes MQTT stress tests - run separately if needed)
 docker compose exec mcp_server python -m pytest tests/ -v --tb=short \
   --ignore=tests/test_mqtt_stress.py
 
@@ -70,7 +70,7 @@ docker compose exec mcp_server python -m pytest tests/ --cov=. \
 
 **Expected result:** `720 passed, 1 skipped`
 
-**The 1 Skipped:** `test_contracts.py::TestOperationalContracts::test_alembic_upgrade_head_is_idempotent` — skips when `DATABASE_URL` is not set in the test environment. This test verifies that running `alembic upgrade head` twice on an already-migrated database is a no-op. It requires a live database connection to run and skips gracefully without one. Not a failure — by design.
+**The 1 Skipped:** `test_contracts.py::TestOperationalContracts::test_alembic_upgrade_head_is_idempotent` - skips when `DATABASE_URL` is not set in the test environment. This test verifies that running `alembic upgrade head` twice on an already-migrated database is a no-op. It requires a live database connection to run and skips gracefully without one. Not a failure - by design.
 
 To run it explicitly with a live DB:
 ```bash
@@ -84,21 +84,21 @@ DATABASE_URL=postgresql://user:pass@localhost/telsonbase \
 | File | Tests | What It Covers |
 |---|---|---|
 | `test_security_battery.py` | 96 | Authentication, encryption, access control, audit trail, network security, data protection, compliance, cryptography, runtime boundaries |
-| `test_qms.py` | 115 | QMS™ protocol — block detection, chain build/parse, halt chains, validation, security flagging, spec examples |
-| `test_toolroom.py` | 129 | Toolroom and Foreman — checkout lifecycle, HITL approval, manifests, function tools, trust-gated execution |
-| `test_openclaw.py` | 55 | OpenClaw governance — registration, evaluate_action pipeline, trust promotion/demotion, kill switch, Manners scoring |
-| `test_identiclaw.py` | 50 | IdentiClaw identity — DID parsing, Ed25519 verification, verifiable credentials, auth flow |
-| `test_ollama.py` | 49 | Ollama LLM — service init, health, model listing, text generation, chat completion |
-| `test_secrets.py` | 48 | Secrets management — SecretValue masking, SecretsProvider resolution, production startup guard |
+| `test_qms.py` | 115 | QMS™ protocol - block detection, chain build/parse, halt chains, validation, security flagging, spec examples |
+| `test_toolroom.py` | 129 | Toolroom and Foreman - checkout lifecycle, HITL approval, manifests, function tools, trust-gated execution |
+| `test_openclaw.py` | 55 | OpenClaw governance - registration, evaluate_action pipeline, trust promotion/demotion, kill switch, Manners scoring |
+| `test_identiclaw.py` | 50 | IdentiClaw identity - DID parsing, Ed25519 verification, verifiable credentials, auth flow |
+| `test_ollama.py` | 49 | Ollama LLM - service init, health, model listing, text generation, chat completion |
+| `test_secrets.py` | 48 | Secrets management - SecretValue masking, SecretsProvider resolution, production startup guard |
 | `test_observability.py` | 40 | Prometheus metrics, MQTT bus, agent message events, monitoring config |
-| `test_behavioral.py` | 30 | GIVEN/WHEN/THEN behavioral tests — model fallback, QMS™ protocol discipline, security boundaries, trust progression |
-| `test_e2e_integration.py` | 29 | End-to-end — full user lifecycle, tenant isolation, audit chain integrity, error sanitization |
-| `test_integration.py` | 26 | Cross-system — federation handshake, egress blocking, approval workflow, anomaly detection |
-| `test_api.py` | 19 | REST API surface — public endpoints, auth requirements, QMS™ conventions |
-| `test_capabilities.py` | 15 | Capability enforcement — Capability, CapabilitySet, CapabilityEnforcer |
-| `test_signing.py` | 13 | Message signing — SignedAgentMessage, AgentKeyRegistry, MessageSigner, tamper detection |
-| `test_contracts.py` | 7 | Enum contract tripwires — TenantType (7 types), AgentTrustLevel (5 tiers), version format |
-| `test_mqtt_stress.py` | 26 | MQTT stress (excluded from standard run — run separately, requires broker load) |
+| `test_behavioral.py` | 30 | GIVEN/WHEN/THEN behavioral tests - model fallback, QMS™ protocol discipline, security boundaries, trust progression |
+| `test_e2e_integration.py` | 29 | End-to-end - full user lifecycle, tenant isolation, audit chain integrity, error sanitization |
+| `test_integration.py` | 26 | Cross-system - federation handshake, egress blocking, approval workflow, anomaly detection |
+| `test_api.py` | 19 | REST API surface - public endpoints, auth requirements, QMS™ conventions |
+| `test_capabilities.py` | 15 | Capability enforcement - Capability, CapabilitySet, CapabilityEnforcer |
+| `test_signing.py` | 13 | Message signing - SignedAgentMessage, AgentKeyRegistry, MessageSigner, tamper detection |
+| `test_contracts.py` | 7 | Enum contract tripwires - TenantType (7 types), AgentTrustLevel (5 tiers), version format |
+| `test_mqtt_stress.py` | 26 | MQTT stress (excluded from standard run - run separately, requires broker load) |
 
 ### Run a Single Suite
 
@@ -120,7 +120,7 @@ docker compose exec mcp_server python -m pytest tests/test_openclaw.py::TestKill
 
 ---
 
-## 2. Security Battery — 96 Tests
+## 2. Security Battery - 96 Tests
 
 The dedicated security test suite. Run in isolation to verify the security posture.
 
@@ -133,37 +133,37 @@ docker compose exec mcp_server python -m pytest tests/test_security_battery.py -
 ### Security Battery by Category
 
 ```bash
-# Authentication — 19 tests (SHA-256 key hashing, JWT, MFA, sessions)
+# Authentication - 19 tests (SHA-256 key hashing, JWT, MFA, sessions)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestAuthSecurity -v
 
-# Encryption — 11 tests (AES-256-GCM, PBKDF2, HMAC correctness)
+# Encryption - 11 tests (AES-256-GCM, PBKDF2, HMAC correctness)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestEncryptionIntegrity -v
 
-# Access Control — 13 tests (RBAC enforcement, custom grants/denials)
+# Access Control - 13 tests (RBAC enforcement, custom grants/denials)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestAccessControl -v
 
-# Audit Trail — 11 tests (SHA-256 chain, tamper detection, UTC timestamps)
+# Audit Trail - 11 tests (SHA-256 chain, tamper detection, UTC timestamps)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestAuditTrailIntegrity -v
 
-# Network — 9 tests (CORS, Redis auth, production mode, MQTT)
+# Network - 9 tests (CORS, Redis auth, production mode, MQTT)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestNetworkSecurity -v
 
-# Data Protection — 11 tests (PHI de-identification, 18 safe harbor identifiers)
+# Data Protection - 11 tests (PHI de-identification, 18 safe harbor identifiers)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestDataProtection -v
 
-# Compliance — 11 tests (HITRUST, BAA lifecycle, breach notification)
+# Compliance - 11 tests (HITRUST, BAA lifecycle, breach notification)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestComplianceInfrastructure -v
 
-# Cryptography — 8 tests (algorithm verification, key sizes, RFC 6238 TOTP)
+# Cryptography - 8 tests (algorithm verification, key sizes, RFC 6238 TOTP)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestCryptographicStandards -v
 
-# Runtime Boundaries — 3 tests (rate limiter, CAPTCHA expiry, email token expiry)
+# Runtime Boundaries - 3 tests (rate limiter, CAPTCHA expiry, email token expiry)
 docker compose exec mcp_server python -m pytest tests/test_security_battery.py::TestRuntimeBoundaries -v
 ```
 
 ---
 
-## 3. Governance Smoke Test — 11 Live Checks
+## 3. Governance Smoke Test - 11 Live Checks
 
 The most important post-deploy verification. Exercises the live governance pipeline end-to-end with a real agent.
 
@@ -200,7 +200,7 @@ docker compose exec mcp_server bash /app/scripts/governance_smoke_test.sh
 
 ---
 
-## 4. OpenClaw Governance — Manual Verification
+## 4. OpenClaw Governance - Manual Verification
 
 Step-by-step curl verification of the trust tier system.
 
@@ -218,11 +218,11 @@ curl -s -X POST $BASE/v1/openclaw/register \
   -d '{"name": "test-agent", "api_key": "test-key-abc123"}'
 ```
 
-**Expected:** `trust_level: "quarantine"` — every new agent starts here, no exceptions.
+**Expected:** `trust_level: "quarantine"` - every new agent starts here, no exceptions.
 
 Save the `instance_id` from the response as `$ID` for subsequent calls.
 
-### Evaluate an Action (QUARANTINE — should block)
+### Evaluate an Action (QUARANTINE - should block)
 
 ```bash
 curl -s -X POST $BASE/v1/openclaw/$ID/action \
@@ -231,7 +231,7 @@ curl -s -X POST $BASE/v1/openclaw/$ID/action \
   -d '{"tool_name": "read_file", "tool_args": {"path": "/data/test.txt"}}'
 ```
 
-**Expected:** `"allowed": false` — QUARANTINE blocks everything.
+**Expected:** `"allowed": false` - QUARANTINE blocks everything.
 
 ### Promote to PROBATION
 
@@ -242,7 +242,7 @@ curl -s -X POST $BASE/v1/openclaw/$ID/promote \
   -d '{"new_level": "probation", "reason": "Manual test promotion"}'
 ```
 
-### Evaluate External Action (PROBATION — should gate)
+### Evaluate External Action (PROBATION - should gate)
 
 ```bash
 curl -s -X POST $BASE/v1/openclaw/$ID/action \
@@ -251,7 +251,7 @@ curl -s -X POST $BASE/v1/openclaw/$ID/action \
   -d '{"tool_name": "http_post", "tool_args": {"url": "https://api.example.com", "body": "data"}}'
 ```
 
-**Expected:** `"allowed": false, "approval_required": true` — PROBATION gates external calls to HITL.
+**Expected:** `"allowed": false, "approval_required": true` - PROBATION gates external calls to HITL.
 
 ### Kill Switch
 
@@ -262,7 +262,7 @@ curl -s -X POST $BASE/v1/openclaw/$ID/suspend \
   -H "Content-Type: application/json" \
   -d '{"reason": "Testing kill switch"}'
 
-# Verify hard block — any action attempt should return allowed: false
+# Verify hard block - any action attempt should return allowed: false
 curl -s -X POST $BASE/v1/openclaw/$ID/action \
   -H "X-API-Key: $API_KEY" \
   -H "Content-Type: application/json" \
@@ -313,11 +313,11 @@ curl -s $BASE/v1/audit/chain/status -H "X-API-Key: $API_KEY" | python3 -m json.t
 curl -s "$BASE/v1/audit/chain/verify?entries=50" -H "X-API-Key: $API_KEY" | python3 -m json.tool
 ```
 
-**Expected:** `chain_breaks: []` — zero breaks means the hash chain is intact and no entries have been tampered with or deleted.
+**Expected:** `chain_breaks: []` - zero breaks means the hash chain is intact and no entries have been tampered with or deleted.
 
 ---
 
-## 6. MCP Gateway — 13 Tools
+## 6. MCP Gateway - 13 Tools
 
 Verify the MCP server is live and all 13 tools are registered.
 
@@ -330,7 +330,7 @@ Expected: JSON list of 13 tools including `openclaw_register`, `openclaw_evaluat
 
 **Goose integration test:**
 ```bash
-# From goose.yaml — point your MCP client at:
+# From goose.yaml - point your MCP client at:
 # http://localhost:8000/mcp
 # with X-API-Key header set to your API key
 goose session --profile telsonbase
@@ -344,7 +344,7 @@ goose session --profile telsonbase
 
 **Verify a specific claim:**
 ```bash
-# Pick any proof sheet — read the Verification Command section and run it
+# Pick any proof sheet - read the Verification Command section and run it
 # Example: verify the kill switch claim
 docker compose exec mcp_server python -m pytest \
   tests/test_openclaw.py::TestKillSwitch -v --tb=short
@@ -377,7 +377,7 @@ docker compose exec mcp_server python -m pytest tests/test_qms.py -v --tb=short
 # Run the spec examples specifically (canonical ping, halt, failure, clarification)
 docker compose exec mcp_server python -m pytest tests/test_qms.py::TestSpecExamples -v --tb=short
 
-# Verify security flagging — non-QMS messages detected
+# Verify security flagging - non-QMS messages detected
 docker compose exec mcp_server python -m pytest tests/test_qms.py::TestSecurityFlagging -v --tb=short
 ```
 
@@ -392,21 +392,21 @@ Manual UI check after stack is running.
 1. Open `http://localhost:8000/dashboard`
 2. Enter API key from `secrets/telsonbase_mcp_api_key`
 3. Verify:
-   - Overview cards show agent count, pending approvals, anomaly count
-   - Agents tab shows registered agents with trust tier pills
-   - Audit Chain tab shows entries with chain ID (copyable), verify button functional
-   - Approvals tab shows pending requests (if any)
-   - Anomalies tab shows detected events
+  - Overview cards show agent count, pending approvals, anomaly count
+  - Agents tab shows registered agents with trust tier pills
+  - Audit Chain tab shows entries with chain ID (copyable), verify button functional
+  - Approvals tab shows pending requests (if any)
+  - Anomalies tab shows detected events
 4. Register an agent via API, confirm it appears in the dashboard at QUARANTINE
 5. Promote the agent, confirm tier pill updates
 
-**Chain ID copy:** Click the copy icon next to a chain ID — full SHA-256 hash should reach clipboard. Verify button runs the hash check inline.
+**Chain ID copy:** Click the copy icon next to a chain ID - full SHA-256 hash should reach clipboard. Verify button runs the hash check inline.
 
 ---
 
 ## 10. MQTT Stress Tests
 
-Excluded from the standard run — requires sustained broker load.
+Excluded from the standard run - requires sustained broker load.
 
 ```bash
 # Run separately when broker capacity testing is needed
@@ -417,7 +417,7 @@ docker compose exec mcp_server python -m pytest tests/test_mqtt_stress.py -v --t
 
 ---
 
-## 11. Federation — Two Instances
+## 11. Federation - Two Instances
 
 Tests cross-instance trust establishment.
 
@@ -445,7 +445,7 @@ docker compose -f docker-compose.federation-test.yml down -v
 
 ### API returns 500 on first start
 ```bash
-# Migrations not applied — run:
+# Migrations not applied - run:
 docker compose exec mcp_server alembic upgrade head
 ```
 
@@ -469,7 +469,7 @@ docker compose logs redis
 
 ### Tests fail: import errors
 ```bash
-# Rebuild the container — dependency may have changed
+# Rebuild the container - dependency may have changed
 docker compose down
 docker compose up -d --build
 docker compose exec mcp_server alembic upgrade head
@@ -484,7 +484,7 @@ docker compose exec mcp_server ...
 
 ### Smoke test: OpenClaw steps skip
 ```bash
-# OpenClaw is disabled — enable it:
+# OpenClaw is disabled - enable it:
 sed -i 's/OPENCLAW_ENABLED=false/OPENCLAW_ENABLED=true/' .env
 docker compose restart mcp_server && sleep 4
 ./scripts/governance_smoke_test.sh
@@ -520,7 +520,7 @@ docker compose exec mcp_server alembic upgrade head
 
 | Layer | Command | Verifies |
 |---|---|---|
-| Full suite | `pytest tests/ --ignore=test_mqtt_stress.py` | All 720 tests — every platform layer |
+| Full suite | `pytest tests/ --ignore=test_mqtt_stress.py` | All 720 tests - every platform layer |
 | Security battery | `pytest tests/test_security_battery.py` | 96 dedicated security checks |
 | Governance smoke | `./scripts/governance_smoke_test.sh` | Live trust tier pipeline end-to-end |
 | Audit chain | `GET /v1/audit/chain/verify` | SHA-256 hash linkage intact |
@@ -530,4 +530,4 @@ docker compose exec mcp_server alembic upgrade head
 
 ---
 
-*TelsonBase v11.0.1 — Quietfire AI — March 8, 2026*
+*TelsonBase v11.0.1 - Quietfire AI - March 8, 2026*

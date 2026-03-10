@@ -622,7 +622,7 @@ risk. TelsonBase is designed so that the community can carry it forward.
 Yes. The current Docker Compose deployment is single-node and production-appropriate for
 most small and mid-market deployments. Horizontal scaling has two documented paths:
 
-- **Phase 1 - Docker Swarm:** 2–3 days of configuration. Adds multi-node redundancy,
+- **Phase 1 - Docker Swarm:** 2-3 days of configuration. Adds multi-node redundancy,
   rolling updates, and basic load distribution. Appropriate for organizations with
   moderate load and existing Docker infrastructure.
 

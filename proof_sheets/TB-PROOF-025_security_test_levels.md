@@ -39,7 +39,7 @@ VERIFIED - 5 test levels implemented and documented in `version.py` v6.0.0CC (li
 ### From version.py (v7.2.5CC line 322):
 
 ```python
-# REM:         - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
+# REM:        - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
 ```
 
 ## Verification Command
@@ -51,7 +51,7 @@ grep "5 LEVELS PASS\|Security, Chaos, Contract" version.py
 ## Expected Result
 
 ```
-# REM:         - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
+# REM:        - Advanced test suite: ALL 5 LEVELS PASS (Security, Chaos, Contract, Perf, Static)
 ```
 
 ---

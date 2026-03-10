@@ -89,10 +89,10 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ### HuggingFace Live Demo Space
 - `huggingface_space/app.py`: Gradio app connecting to live TelsonBase DO server
-  - All 5 trust tiers represented (QUARANTINE through AGENT apex)
-  - Governance Pipeline Explorer: agent + tool picker, real 8-step pipeline decision
-  - Kill Switch Demo: suspend demo_citizen, verify Step 2 rejection, reinstate
-  - API credentials loaded from HF Space secrets - not in code
+ - All 5 trust tiers represented (QUARANTINE through AGENT apex)
+ - Governance Pipeline Explorer: agent + tool picker, real 8-step pipeline decision
+ - Kill Switch Demo: suspend demo_citizen, verify Step 2 rejection, reinstate
+ - API credentials loaded from HF Space secrets - not in code
 - `huggingface_space/README.md`: SDK changed static → gradio, updated description
 - `huggingface_space/requirements.txt`: gradio>=4.0.0, requests>=2.31.0
 
@@ -159,7 +159,7 @@ Numbers corrected: 151 endpoints → 177, 93 security tests → 96, 2 Bandit med
 ### UX - CAPTCHA Changed to Math-Only
 
 - **`core/captcha.py`** - Default challenge type changed from `random.choice(list(ChallengeType))` to `ChallengeType.MATH`. Word scramble and text-reverse challenges are still available via explicit `challenge_type` parameter but will no longer appear in the registration flow.
-- Number ranges simplified: addition uses 2–20, subtraction uses 10–25 minus 1–(a), multiplication uses 2–9 × 2–9. Results are unambiguous for any human, still require computation for a bot.
+- Number ranges simplified: addition uses 2-20, subtraction uses 10-25 minus 1-(a), multiplication uses 2-9 × 2-9. Results are unambiguous for any human, still require computation for a bot.
 - Multiplication display changed from `*` to `x` for cleaner user-facing rendering.
 
 ### Screenshots Added
@@ -417,12 +417,12 @@ CI threshold: `701 → 716`
 ### Fixed
 
 - Test suite: 9 failures resolved
-  - CAPTCHA not solved in `_register_user` helper (E2E tests)
-  - Email not verified before login in `_register_user` helper
-  - `brokerage` tenant type replaced with `real_estate` (removed from valid list)
-  - `conftest.py` REDIS_URL hardcoded to localhost (fails inside Docker containers)
-  - `test_secrets.py` asserting `chmod 600` (script now uses `chmod 644`)
-  - `test_observability.py` looking for `provider.yml` (renamed to `dashboards.yml`)
+ - CAPTCHA not solved in `_register_user` helper (E2E tests)
+ - Email not verified before login in `_register_user` helper
+ - `brokerage` tenant type replaced with `real_estate` (removed from valid list)
+ - `conftest.py` REDIS_URL hardcoded to localhost (fails inside Docker containers)
+ - `test_secrets.py` asserting `chmod 600` (script now uses `chmod 644`)
+ - `test_observability.py` looking for `provider.yml` (renamed to `dashboards.yml`)
 - `monitoring/mosquitto/password_file` excluded from tarball (platform-specific bcrypt; now generated fresh on each deployment by `generate_secrets.sh`)
 
 ### Deployment Guide (DEPLOYMENT_GUIDE.md)
@@ -610,7 +610,7 @@ Python's `configparser` INI parser. Converted to `#` comments.
 **Contributors:** Claude Code (Opus 4.6)
 
 ### Added
-- **MANNERS.md** - Anthropic-aligned agent operating principles. Five binding principles (Human Control, Transparency, Value Alignment, Privacy, Security) with measurable KPIs. Compliance scoring (0.0–1.0) with five status tiers from EXEMPLARY to SUSPENDED. Auto-suspension at 3+ violations in 24 hours.
+- **MANNERS.md** - Anthropic-aligned agent operating principles. Five binding principles (Human Control, Transparency, Value Alignment, Privacy, Security) with measurable KPIs. Compliance scoring (0.0-1.0) with five status tiers from EXEMPLARY to SUSPENDED. Auto-suspension at 3+ violations in 24 hours.
 - **core/manners.py** (~400 lines) - Runtime Manners compliance engine. Singleton `manners_engine` tracks violations per agent per principle, computes weighted scores with time-decay, integrates with anomaly detection and trust levels. Convenience functions: `manners_check()`, `manners_violation()`, `manners_score()`, `manners_status()`. Redis persistence for violation history.
 - **agents/registry.yaml** - Centralized HR registry for all 10 agents. Each entry: display_name, floor, role, description, actions, requires_approval, capabilities, trust_level, rate_limit, expected_responses, manners_compliance mapping. Covers ground level (4), mezzanine (1), third floor RE (3), n8n integration (1).
 - **n8n Developer Agent** registered in `agents/__init__.py` metadata - visible on dashboard with actions, capabilities, and workflow file reference.
@@ -636,11 +636,11 @@ Python's `configparser` INI parser. Converted to `#` comments.
 ### Added
 
 - **User Console SPA** - `frontend/user-console.html` (~550 lines). 5-tab interface for day-to-day operators (paralegals, associates, case managers):
-  - **Home:** Welcome card with user/role, quick stats (agents/approvals/health), quick-action cards (New Chat, View Agents, Check Approvals), recent activity feed
-  - **Chat:** Full LLM chat interface ported from admin console. Model selector, demo responses, message history
-  - **Agents:** Read-only agent cards with capability drill-down. No admin controls
-  - **My Approvals:** Approve/reject with notes field, count badge on tab. Filtered to pending
-  - **Activity:** Combined QMS log + anomaly alerts + audit entries. Read-only (no resolve)
+ - **Home:** Welcome card with user/role, quick stats (agents/approvals/health), quick-action cards (New Chat, View Agents, Check Approvals), recent activity feed
+ - **Chat:** Full LLM chat interface ported from admin console. Model selector, demo responses, message history
+ - **Agents:** Read-only agent cards with capability drill-down. No admin controls
+ - **My Approvals:** Approve/reject with notes field, count badge on tab. Filtered to pending
+ - **Activity:** Combined QMS log + anomaly alerts + audit entries. Read-only (no resolve)
 - **`GET /console` route** in `main.py` - same pattern as `/dashboard`
 - **Cross-links** - Admin Console header links to User Console; User Console header links to Admin Console
 - **`user_ui_tests.md`** - 13 sections, 100+ test cases covering all tabs, cross-console navigation, responsiveness, edge cases
@@ -896,25 +896,25 @@ New 20-test-group automated validation suite across 5 levels:
 ### QMS v2.2.0 Improvements
 
 - **Message priority levels** (`core/qms.py`)
-  - New `PRIORITY` block type: `::!URGENT!::`, `::!P1!::`, `::!P2!::`, `::!P3!::`
-  - Optional prefix before origin block - backward compatible with v2.1.6
-  - Halt chains automatically default to `URGENT` priority
-  - Invalid priorities logged with warning and defaulted to `P2`
-  - Priority exposed via `QMSChain.priority` property
+ - New `PRIORITY` block type: `::!URGENT!::`, `::!P1!::`, `::!P2!::`, `::!P3!::`
+ - Optional prefix before origin block - backward compatible with v2.1.6
+ - Halt chains automatically default to `URGENT` priority
+ - Invalid priorities logged with warning and defaulted to `P2`
+ - Priority exposed via `QMSChain.priority` property
 
 - **Correlation TTL** (`core/qms.py`)
-  - Embedded in correlation block: `::@@REQ_id@@TTL_30s@@::`
-  - Agents know when to stop waiting for a response - prevents hung states
-  - Default TTLs per priority: URGENT=10s, P1=30s, P2=120s, P3=600s
-  - TTL exposed via `QMSChain.ttl_seconds` property
-  - `build_chain(ttl_seconds=30)` parameter for easy usage
+ - Embedded in correlation block: `::@@REQ_id@@TTL_30s@@::`
+ - Agents know when to stop waiting for a response - prevents hung states
+ - Default TTLs per priority: URGENT=10s, P1=30s, P2=120s, P3=600s
+ - TTL exposed via `QMSChain.ttl_seconds` property
+ - `build_chain(ttl_seconds=30)` parameter for easy usage
 
 - **Schema registry** (`core/qms_schema.json`)
-  - JSON file defining 10 message types with required/optional blocks
-  - `validate_chain_semantics()` - checks action, status, priority validity per type
-  - `get_message_schema()` - lookup schema by action name
-  - `get_default_ttl()` - get default TTL for a priority level
-  - Unknown message types warn but don't block (extensibility preserved)
+ - JSON file defining 10 message types with required/optional blocks
+ - `validate_chain_semantics()` - checks action, status, priority validity per type
+ - `get_message_schema()` - lookup schema by action name
+ - `get_default_ttl()` - get default TTL for a priority level
+ - Unknown message types warn but don't block (extensibility preserved)
 
 - All v2.1.6 chains remain fully valid (no breaking changes)
 - `build_chain()` and `build_halt_chain()` accept optional `priority` and `ttl_seconds` parameters
@@ -929,40 +929,40 @@ New 20-test-group automated validation suite across 5 levels:
 ### Toolroom Hardening
 
 - **Runtime-managed approved GitHub sources** (`toolroom/foreman.py`)
-  - `APPROVED_GITHUB_SOURCES` now Redis-backed with API endpoints for add/remove
-  - Seeded with 3 vetted defaults: `jqlang/jq`, `dbcli/pgcli`, `dbcli/mycli`
-  - Adding sources requires HITL approval; removing does not (tightening is safe)
+ - `APPROVED_GITHUB_SOURCES` now Redis-backed with API endpoints for add/remove
+ - Seeded with 3 vetted defaults: `jqlang/jq`, `dbcli/pgcli`, `dbcli/mycli`
+ - Adding sources requires HITL approval; removing does not (tightening is safe)
 
 - **Exclusive tool checkout** (`toolroom/registry.py`)
-  - `max_concurrent_checkouts` field on `ToolMetadata` (default 1 for subprocess, 0=unlimited for function tools)
-  - Returns `::tool_busy::` with holder info when checkout denied
+ - `max_concurrent_checkouts` field on `ToolMetadata` (default 1 for subprocess, 0=unlimited for function tools)
+ - Returns `::tool_busy::` with holder info when checkout denied
 
 - **Manifest validation blocks installation** (`toolroom/foreman.py`)
-  - Missing/invalid manifest → cleanup cloned directory + error (no zombie registry entries)
-  - `allow_no_manifest` override for operator edge cases
+ - Missing/invalid manifest → cleanup cloned directory + error (no zombie registry entries)
+ - `allow_no_manifest` override for operator edge cases
 
 - **Daily update check creates ApprovalRequests** (`toolroom/foreman.py`)
-  - Each update proposal now creates a tracked `ApprovalRequest` visible in the approval API
+ - Each update proposal now creates a tracked `ApprovalRequest` visible in the approval API
 
 - **Trust level default fail-safe** (`toolroom/foreman.py`)
-  - Unknown tool trust level now defaults to CITIZEN (most restrictive), not RESIDENT
-  - Warning logs when defaults are used
+ - Unknown tool trust level now defaults to CITIZEN (most restrictive), not RESIDENT
+ - Warning logs when defaults are used
 
 - **Tool version history and rollback** (`toolroom/registry.py`)
-  - `version_history` field (capped at 10 entries, oldest trimmed)
-  - `rollback_tool()` method with audit trail
-  - `GET /v1/toolroom/tools/{id}/versions` and `POST /v1/toolroom/tools/{id}/rollback` endpoints
+ - `version_history` field (capped at 10 entries, oldest trimmed)
+ - `rollback_tool()` method with audit trail
+ - `GET /v1/toolroom/tools/{id}/versions` and `POST /v1/toolroom/tools/{id}/rollback` endpoints
 
 ### The Cage - Compliance Archive
 
 - **`toolroom/cage.py`** (NEW) - Secured archive for tool provenance
-  - Every tool installation/update archived with timestamped receipt
-  - `CageReceipt` records: SHA-256, source, approver, approval ID, timestamp
-  - `verify_tool()` - integrity check comparing live tool against cage archive
-  - Auto-purge oldest entries beyond 20 per tool
-  - `GET /v1/toolroom/cage` - inventory listing
-  - `GET /v1/toolroom/cage/{receipt_id}` - specific receipt
-  - `POST /v1/toolroom/cage/verify/{tool_id}` - integrity verification
+ - Every tool installation/update archived with timestamped receipt
+ - `CageReceipt` records: SHA-256, source, approver, approval ID, timestamp
+ - `verify_tool()` - integrity check comparing live tool against cage archive
+ - Auto-purge oldest entries beyond 20 per tool
+ - `GET /v1/toolroom/cage` - inventory listing
+ - `GET /v1/toolroom/cage/{receipt_id}` - specific receipt
+ - `POST /v1/toolroom/cage/verify/{tool_id}` - integrity verification
 
 ### New API Endpoints (10 total)
 
@@ -1103,15 +1103,15 @@ The one security gap that existed in BOTH the inner TelsonBase codebase and the 
 ### Test Suite - Full Output
 
 ```
-tests/test_api.py             - 19 passed
-tests/test_capabilities.py    - 15 passed
-tests/test_signing.py         - 13 passed
-tests/test_qms.py             - 115 passed
-tests/test_behavioral.py      - 30 passed
-tests/test_ollama.py          - 69 passed
-tests/test_toolroom.py        - 134 passed
-tests/test_observability.py   - 40 passed
-tests/test_secrets.py         - 48 passed
+tests/test_api.py            - 19 passed
+tests/test_capabilities.py   - 15 passed
+tests/test_signing.py        - 13 passed
+tests/test_qms.py            - 115 passed
+tests/test_behavioral.py     - 30 passed
+tests/test_ollama.py         - 69 passed
+tests/test_toolroom.py       - 134 passed
+tests/test_observability.py  - 40 passed
+tests/test_secrets.py        - 48 passed
                                 ──────────
                                 483 passed in 7.99s
 ```
@@ -1188,14 +1188,14 @@ Closes the three remaining architectural gaps identified in the production audit
 ### Test Suite - Full Output
 
 ```
-tests/test_api.py             - 19 passed
-tests/test_capabilities.py    - 15 passed
-tests/test_signing.py         - 13 passed
-tests/test_qms.py             - 115 passed
-tests/test_behavioral.py      - 30 passed
-tests/test_ollama.py          - 69 passed
-tests/test_toolroom.py        - 134 passed
-tests/test_observability.py   - 40 passed
+tests/test_api.py            - 19 passed
+tests/test_capabilities.py   - 15 passed
+tests/test_signing.py        - 13 passed
+tests/test_qms.py            - 115 passed
+tests/test_behavioral.py     - 30 passed
+tests/test_ollama.py         - 69 passed
+tests/test_toolroom.py       - 134 passed
+tests/test_observability.py  - 40 passed
                                 ──────────
                                 435 passed in 7.67s
 ```
@@ -1212,24 +1212,24 @@ Full investigation of the three-layer Ollama architecture confirmed all componen
 #### Bug Fix
 
 - **`core/capabilities.py`** - Added `MANAGE = "manage"` to `ActionType` enum
-  - Root cause: `OllamaAgent` declared `ollama.manage:*` capabilities but the enum only had read/write/execute/publish/subscribe/none
-  - `ValueError: 'manage' is not a valid ActionType` on agent construction
-  - All 12 agent-layer tests were failing from this single missing enum value
+ - Root cause: `OllamaAgent` declared `ollama.manage:*` capabilities but the enum only had read/write/execute/publish/subscribe/none
+ - `ValueError: 'manage' is not a valid ActionType` on agent construction
+ - All 12 agent-layer tests were failing from this single missing enum value
 
 #### Verified Components (already existed, no changes needed)
 
 - **`core/ollama_service.py`** (570 lines) - Direct httpx→Ollama REST client
-  - Health, list, info, pull, delete, generate, chat
-  - Recommended models registry with tier classification
-  - QMS protocol throughout, singleton pattern
+ - Health, list, info, pull, delete, generate, chat
+ - Recommended models registry with tier classification
+ - QMS protocol throughout, singleton pattern
 - **`agents/ollama_agent.py`** (345 lines) - SecureAgent wrapper
-  - 9 supported actions: generate, chat, list_models, model_info, pull_model, delete_model, health_check, recommended, set_default
-  - Approval required for pull_model, delete_model
-  - Full error handling for Ollama exception hierarchy
+ - 9 supported actions: generate, chat, list_models, model_info, pull_model, delete_model, health_check, recommended, set_default
+ - Approval required for pull_model, delete_model
+ - Full error handling for Ollama exception hierarchy
 - **`main.py /v1/llm/*`** (lines 1644-1920) - 9 API endpoints
-  - GET health, models, recommended, model detail
-  - POST pull, generate, chat; DELETE model; PUT default
-  - All auth-gated, audit-logged, QMS-compliant
+ - GET health, models, recommended, model detail
+ - POST pull, generate, chat; DELETE model; PUT default
+ - All auth-gated, audit-logged, QMS-compliant
 - **`tests/test_ollama.py`** (834 lines) - 49 tests across all three layers
 - **`requirements.txt`** - ollama client removed, httpx direct (no version pin conflict)
 
@@ -1247,29 +1247,29 @@ Synthesized from 8 source documents into a single canonical reference. Implement
 #### New Features
 
 - **QMS_SPECIFICATION.md** - Complete formal reference for QMS v2.1.6
-  - Guiding philosophy, core components, validation rules, block types
-  - Use cases with TelsonBase-specific examples (toolroom, backup, federation)
-  - Implementation status and migration path from legacy format
-  - Design rationale (auditability, radio analogy, defense in depth)
+ - Guiding philosophy, core components, validation rules, block types
+ - Use cases with TelsonBase-specific examples (toolroom, backup, federation)
+ - Implementation status and migration path from legacy format
+ - Design rationale (auditability, radio analogy, defense in depth)
 
 - **Agent Identity Origin Block** `::<agent_id>::`
-  - Mandatory position 1 in every chain - the "radio callsign"
-  - Supports numerical IDs: `::<backup_agent/007>::`
-  - Supports federation: `::<alpha_instance/sync_agent/012>::`
-  - Missing origin = anonymous transmission = security alert
-  - Analogy: no radio on the hotel comms network = suspect
+ - Mandatory position 1 in every chain - the "radio callsign"
+ - Supports numerical IDs: `::<backup_agent/007>::`
+ - Supports federation: `::<alpha_instance/sync_agent/012>::`
+ - Missing origin = anonymous transmission = security alert
+ - Analogy: no radio on the hotel comms network = suspect
 
 - **Correlation Block** `::@@REQ_id@@::`
-  - Mandatory position 2 - links request to response
-  - Auto-generated `REQ_` + 8 hex chars (from UUID4)
-  - Enables `grep @@REQ_id@@` to get complete conversation thread
-  - Without this, 15 concurrent agents produce unintelligible log interleaving
+ - Mandatory position 2 - links request to response
+ - Auto-generated `REQ_` + 8 hex chars (from UUID4)
+ - Enables `grep @@REQ_id@@` to get complete conversation thread
+ - Without this, 15 concurrent agents produce unintelligible log interleaving
 
 - **System Halt Postscript** `::%%%%::-::%%reason%%::`
-  - The siren fires first (`::%%%%::`), incident report follows (`::%%reason%%::`)
-  - Only `%%...%%` string block may follow halt (validated)
-  - Only ONE block may follow halt (validated)
-  - Bare halt (no reason) valid but produces warning
+ - The siren fires first (`::%%%%::`), incident report follows (`::%%reason%%::`)
+ - Only `%%...%%` string block may follow halt (validated)
+ - Only ONE block may follow halt (validated)
+ - Bare halt (no reason) valid but produces warning
 
 #### New Test Coverage (115 tests in `tests/test_qms.py`)
 
@@ -1318,32 +1318,32 @@ that validates and documents that implementation.
 Based on Gemini's comprehensive documentation analysis (Grade: A):
 
 - **README.md**
-  - Added link to local development setup (non-Docker)
-  - Added reference to Windows Installation Guide
-  - Version updated to 4.3.3CC
+ - Added link to local development setup (non-Docker)
+ - Added reference to Windows Installation Guide
+ - Version updated to 4.3.3CC
 
 - **CONTRIBUTING.md**
-  - Added "Good First Issues" section with starter areas:
-    - Documentation improvements
-    - Test coverage expansion
-    - Dashboard UI enhancements
-    - Agent templates
+ - Added "Good First Issues" section with starter areas:
+   - Documentation improvements
+   - Test coverage expansion
+   - Dashboard UI enhancements
+   - Agent templates
 
 - **docs/TROUBLESHOOTING.md**
-  - Added Python/pip dependency troubleshooting
-  - Added virtual environment issues section
-  - Added network/firewall troubleshooting
-  - Added SSL/TLS certificate issues section
+ - Added Python/pip dependency troubleshooting
+ - Added virtual environment issues section
+ - Added network/firewall troubleshooting
+ - Added SSL/TLS certificate issues section
 
 - **docs/API_REFERENCE.md**
-  - Added "Rate Limiting" section documenting middleware limits
-  - Added per-agent trust-based rate limits
-  - Added "Webhooks" section with callback format and security
+ - Added "Rate Limiting" section documenting middleware limits
+ - Added per-agent trust-based rate limits
+ - Added "Webhooks" section with callback format and security
 
 - **docs/SECURITY_ARCHITECTURE.md**
-  - Added "Compliance Considerations" section (HIPAA, GDPR, Financial)
-  - Added dedicated "Incident Response" section with quick reference
-  - Enhanced "Related Documents" with incident response emphasis
+ - Added "Compliance Considerations" section (HIPAA, GDPR, Financial)
+ - Added dedicated "Incident Response" section with quick reference
+ - Enhanced "Related Documents" with incident response emphasis
 
 ### Version Updates
 
@@ -1360,10 +1360,10 @@ Based on Gemini's comprehensive documentation analysis (Grade: A):
 ### Documentation
 
 - **INSTALLATION_GUIDE_WINDOWS.md** (NEW)
-  - Step-by-step Docker Desktop installation
-  - PowerShell commands for key generation
-  - Common Windows-specific issues and solutions
-  - WSL 2 and Hyper-V troubleshooting
+ - Step-by-step Docker Desktop installation
+ - PowerShell commands for key generation
+ - Common Windows-specific issues and solutions
+ - WSL 2 and Hyper-V troubleshooting
 
 ### Naming Standardization
 
@@ -1375,12 +1375,12 @@ Based on Gemini's comprehensive documentation analysis (Grade: A):
 ### Validation (Gemini Perspective 2)
 
 - Confirmed code fulfillment of all stated objectives:
-  - Zero-trust security ✓
-  - Data sovereignty ✓
-  - Secure agent collaboration ✓
-  - Auditable operations ✓
-  - Anomaly detection & human oversight ✓
-  - Controlled external access ✓
+ - Zero-trust security ✓
+ - Data sovereignty ✓
+ - Secure agent collaboration ✓
+ - Auditable operations ✓
+ - Anomaly detection & human oversight ✓
+ - Controlled external access ✓
 - All prior code deficiencies (v4.0.x-4.1.x) confirmed resolved
 
 ---
@@ -1395,29 +1395,29 @@ Based on Gemini's comprehensive documentation analysis (Grade: A):
 Based on Gemini's documentation analysis and recommendations:
 
 - **TROUBLESHOOTING.md** (NEW)
-  - Common startup issues (Docker, ValidationError, auth failures)
-  - Redis connection troubleshooting
-  - Port conflicts, test failures, federation issues
-  - Anomaly detection false positives
-  - Diagnostic command reference
+ - Common startup issues (Docker, ValidationError, auth failures)
+ - Redis connection troubleshooting
+ - Port conflicts, test failures, federation issues
+ - Anomaly detection false positives
+ - Diagnostic command reference
 
 - **ENV_CONFIGURATION.md** (NEW)
-  - Detailed explanation of all environment variables
-  - Type conversions and format requirements
-  - Development vs. production configuration examples
-  - Security considerations for each variable
+ - Detailed explanation of all environment variables
+ - Type conversions and format requirements
+ - Development vs. production configuration examples
+ - Security considerations for each variable
 
 - **API_REFERENCE.md** (ENHANCED)
-  - Added Python client class examples (sync and async)
-  - Error handling patterns
-  - QMS status code handling
-  - Related documentation links
+ - Added Python client class examples (sync and async)
+ - Error handling patterns
+ - QMS status code handling
+ - Related documentation links
 
 - **DEVELOPER_GUIDE.md** (ENHANCED)
-  - Non-Docker local development setup
-  - Virtual environment instructions
-  - Minimal component testing without full stack
-  - Feature availability matrix (local vs Docker)
+ - Non-Docker local development setup
+ - Virtual environment instructions
+ - Minimal component testing without full stack
+ - Feature availability matrix (local vs Docker)
 
 ### AI Collaboration Documentation
 
@@ -1435,38 +1435,38 @@ Based on Gemini's documentation analysis and recommendations:
 ### Major Enhancements
 
 - **Redis Persistence** (All security modules now persist to Redis)
-  - `core/signing.py` - Agent keys persist across restarts
-  - `core/approval.py` - Pending approvals survive container restarts
-  - `core/anomaly.py` - Behavioral baselines and anomalies persisted
-  - `federation/trust.py` - Trust relationships persisted (session keys excluded for security)
+ - `core/signing.py` - Agent keys persist across restarts
+ - `core/approval.py` - Pending approvals survive container restarts
+ - `core/anomaly.py` - Behavioral baselines and anomalies persisted
+ - `federation/trust.py` - Trust relationships persisted (session keys excluded for security)
 
 - **Key Revocation Mechanism** (`core/signing.py`)
-  - Added `revoke_agent(agent_id, reason, revoked_by)` with full audit trail
-  - Revoked agents tracked and cannot be re-registered without explicit clearing
-  - `clear_revocation()` for security-reviewed re-registration
-  - `is_revoked()` check before message verification
+ - Added `revoke_agent(agent_id, reason, revoked_by)` with full audit trail
+ - Revoked agents tracked and cannot be re-registered without explicit clearing
+ - `clear_revocation()` for security-reviewed re-registration
+ - `is_revoked()` check before message verification
 
 - **Federation Session Key Exchange** (`federation/trust.py`)
-  - Fixed critical gap: session keys now properly exchanged using RSA-OAEP encryption
-  - `accept_trust()` returns encrypted session key in acceptance response
-  - New `process_trust_acceptance()` to decrypt and store session key
-  - Session keys NOT persisted (must re-exchange after restart for security)
+ - Fixed critical gap: session keys now properly exchanged using RSA-OAEP encryption
+ - `accept_trust()` returns encrypted session key in acceptance response
+ - New `process_trust_acceptance()` to decrypt and store session key
+ - Session keys NOT persisted (must re-exchange after restart for security)
 
 ### Security Improvements
 
 - **CORS Wildcard Warning** (`core/config.py`)
-  - Added `@field_validator` to warn if CORS allows all origins (`["*"]`)
-  - Emits warning at startup for production awareness
+ - Added `@field_validator` to warn if CORS allows all origins (`["*"]`)
+ - Emits warning at startup for production awareness
 
 ### Testing
 
 - **Integration Test Suite** (`tests/test_integration.py`)
-  - Federation handshake end-to-end test
-  - Egress gateway domain blocking tests
-  - Approval workflow (approve/reject) tests
-  - Cross-agent signed messaging tests
-  - Key revocation tests
-  - Anomaly detection (capability probe) tests
+ - Federation handshake end-to-end test
+ - Egress gateway domain blocking tests
+ - Approval workflow (approve/reject) tests
+ - Cross-agent signed messaging tests
+ - Key revocation tests
+ - Anomaly detection (capability probe) tests
 
 ---
 
@@ -1477,42 +1477,42 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Security Improvements
 - **JWT Secret Validation** (`core/config.py`)
-  - Added `@field_validator` to detect insecure default secrets
-  - Emits warning if JWT_SECRET_KEY is placeholder or < 32 chars
+ - Added `@field_validator` to detect insecure default secrets
+ - Emits warning if JWT_SECRET_KEY is placeholder or < 32 chars
 
 - **Configurable CORS** (`main.py`, `core/config.py`)
-  - CORS origins now configurable via `CORS_ORIGINS` env var
-  - Defaults to `["*"]` but can be locked down for production
+ - CORS origins now configurable via `CORS_ORIGINS` env var
+ - Defaults to `["*"]` but can be locked down for production
 
 - **TrustLevel Validation** (`main.py`)
-  - Added validation for federation trust_level enum
-  - Returns 400 with valid options if invalid value provided
-  - Validates expires_in_hours > 0
+ - Added validation for federation trust_level enum
+ - Returns 400 with valid options if invalid value provided
+ - Validates expires_in_hours > 0
 
 ### Bug Fixes
 - **Fixed bare `except:` handlers** (security best practice)
-  - `agents/document_agent.py:216` - Now catches `(IOError, OSError, UnicodeDecodeError)`
-  - `agents/document_agent.py:515` - Now catches `(IOError, OSError)`
-  - `main.py:306` - Now catches `Exception` with logging
+ - `agents/document_agent.py:216` - Now catches `(IOError, OSError, UnicodeDecodeError)`
+ - `agents/document_agent.py:515` - Now catches `(IOError, OSError)`
+ - `main.py:306` - Now catches `Exception` with logging
 
 - **Fixed HTTPException format** (`main.py:396`)
-  - `detail` parameter now string, not dict (FastAPI convention)
+ - `detail` parameter now string, not dict (FastAPI convention)
 
 - **Fixed Starlette 0.50+ compatibility** (`core/middleware.py:460`)
-  - Changed `response.headers.pop()` to check-then-delete pattern
+ - Changed `response.headers.pop()` to check-then-delete pattern
 
 ### Enhancements
 - **Webhook callbacks on approval decisions** (`main.py`)
-  - Approve/reject endpoints now trigger n8n webhook callbacks
-  - Enables proper async workflow completion in n8n
+ - Approve/reject endpoints now trigger n8n webhook callbacks
+ - Enables proper async workflow completion in n8n
 
 - **Improved memory management** (`core/signing.py`)
-  - Message ID cleanup threshold reduced from 10,000 to 100
-  - Prevents unbounded memory growth in high-volume scenarios
+ - Message ID cleanup threshold reduced from 10,000 to 100
+ - Prevents unbounded memory growth in high-volume scenarios
 
 - **Callback TTL cleanup** (`api/n8n_integration.py`)
-  - Added 24-hour TTL for pending approval callbacks
-  - Prevents memory leak from orphaned callbacks
+ - Added 24-hour TTL for pending approval callbacks
+ - Prevents memory leak from orphaned callbacks
 
 ---
 
@@ -1545,10 +1545,10 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Fixed
 - `core/config.py` - Added missing Settings fields causing `ValidationError`:
-  - `backup_dir_host_path`
-  - `webui_secret_key`
-  - `grafana_admin_user`
-  - `grafana_admin_password`
+ - `backup_dir_host_path`
+ - `webui_secret_key`
+ - `grafana_admin_user`
+ - `grafana_admin_password`
 
 ---
 
@@ -1559,29 +1559,29 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Added
 - **n8n Integration** (`api/n8n_integration.py`)
-  - `/v1/n8n/execute` - Execute agent actions from n8n
-  - `/v1/n8n/agents` - List available agents
-  - `/v1/n8n/approvals/{id}/status` - Poll approval status
-  - Webhook callbacks for async approval workflows
+ - `/v1/n8n/execute` - Execute agent actions from n8n
+ - `/v1/n8n/agents` - List available agents
+ - `/v1/n8n/approvals/{id}/status` - Poll approval status
+ - Webhook callbacks for async approval workflows
 
 - **Production Middleware** (`core/middleware.py`)
-  - Rate limiting (token bucket: 120/min, burst 20)
-  - Request size limits (10MB max)
-  - Circuit breaker for external service failures
-  - Request ID tracking
-  - Slow request logging (>5 seconds)
-  - Security headers (X-Frame-Options, XSS protection)
+ - Rate limiting (token bucket: 120/min, burst 20)
+ - Request size limits (10MB max)
+ - Circuit breaker for external service failures
+ - Request ID tracking
+ - Slow request logging (>5 seconds)
+ - Security headers (X-Frame-Options, XSS protection)
 
 - **Alien Adapter** (`agents/alien_adapter.py`)
-  - Quarantine system for LangChain/external frameworks
-  - Status levels: QUARANTINE → PROBATION → RESIDENT → CITIZEN
-  - `LangChainAdapter` class for tool creation
-  - Promotion/revocation functions
+ - Quarantine system for LangChain/external frameworks
+ - Status levels: QUARANTINE → PROBATION → RESIDENT → CITIZEN
+ - `LangChainAdapter` class for tool creation
+ - Promotion/revocation functions
 
 - **Document Processor Agent** (`agents/document_agent.py`)
-  - Actions: extract_text, summarize, search, get_metadata, list_documents, redact
-  - Sensitive data detection (SSN, phone, email, credit card, DOB)
-  - Approval gate for redaction operations
+ - Actions: extract_text, summarize, search, get_metadata, list_documents, redact
+ - Sensitive data detection (SSN, phone, email, credit card, DOB)
+ - Approval gate for redaction operations
 
 - **Example Workflow** (`scripts/n8n_workflow_document_processing.json`)
 
@@ -1594,20 +1594,20 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Added
 - **QMS Module** (`core/qms.py`)
-  - `QMSStatus` enum (Please, Thank_You, Thank_You_But_No, Excuse_Me, Pretty_Please)
-  - `validate_qms()` - Validate message format
-  - `parse_qms()` - Parse into structured QMSMessage
-  - `format_qms()` - Format outgoing messages
-  - `qms_endpoint` decorator
-  - `log_qms_transaction()` - Audit trail logging
+ - `QMSStatus` enum (Please, Thank_You, Thank_You_But_No, Excuse_Me, Pretty_Please)
+ - `validate_qms()` - Validate message format
+ - `parse_qms()` - Parse into structured QMSMessage
+ - `format_qms()` - Format outgoing messages
+ - `qms_endpoint` decorator
+ - `log_qms_transaction()` - Audit trail logging
 
 - **Audit Event Types** (`core/audit.py`)
-  - `SECURITY_ALERT`
-  - `SECURITY_QMS_BYPASS`
-  - `AGENT_ACTION`
+ - `SECURITY_ALERT`
+ - `SECURITY_QMS_BYPASS`
+ - `AGENT_ACTION`
 
 - **Alien Quarantine Zone** (`requirements.txt`)
-  - LangChain dependencies (isolated, not integrated)
+ - LangChain dependencies (isolated, not integrated)
 
 ### Changed
 - `main.py` - Added QMS protocol documentation header
@@ -1624,17 +1624,17 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Fixed
 - **Bug 1:** `federation/trust.py` - FederatedMessage dataclass field ordering
-  - Error: `TypeError: non-default argument 'action' follows default argument`
-  - Fix: Reordered fields so required fields precede optional fields
+ - Error: `TypeError: non-default argument 'action' follows default argument`
+ - Fix: Reordered fields so required fields precede optional fields
 
 - **Bug 2:** `core/auth.py` - AuditEventType import
-  - Error: `AttributeError: 'AuditLogger' object has no attribute 'AuditEventType'`
-  - Fix: Added `AuditEventType` to imports, fixed references
+ - Error: `AttributeError: 'AuditLogger' object has no attribute 'AuditEventType'`
+ - Fix: Added `AuditEventType` to imports, fixed references
 
 - **Bug 3:** `requirements.txt` - Dependency conflicts
-  - `httpx==0.26.0` → `httpx==0.25.2` (ollama compatibility)
-  - `pytest==8.0.0` → `pytest==7.4.4` (pytest-asyncio compatibility)
-  - Removed duplicate sections
+ - `httpx==0.26.0` → `httpx==0.25.2` (ollama compatibility)
+ - `pytest==8.0.0` → `pytest==7.4.4` (pytest-asyncio compatibility)
+ - Removed duplicate sections
 
 ---
 
@@ -1645,36 +1645,36 @@ Based on Gemini's documentation analysis and recommendations:
 
 ### Added
 - **Cryptographic Message Signing** (`core/signing.py`)
-  - HMAC-SHA256 signatures
-  - Nonce for replay protection
-  - Timestamp validation
+ - HMAC-SHA256 signatures
+ - Nonce for replay protection
+ - Timestamp validation
 
 - **Capability System** (`core/capabilities.py`)
-  - Explicit permission declarations
-  - No wildcard capabilities
-  - Runtime enforcement
+ - Explicit permission declarations
+ - No wildcard capabilities
+ - Runtime enforcement
 
 - **Behavioral Anomaly Detection** (`core/anomaly.py`)
-  - Baseline tracking
-  - Deviation scoring
-  - Automatic alerting
+ - Baseline tracking
+ - Deviation scoring
+ - Automatic alerting
 
 - **Approval Gates** (`core/approval.py`)
-  - Human-in-the-loop for sensitive operations
-  - Configurable timeout and escalation
-  - Audit trail
+ - Human-in-the-loop for sensitive operations
+ - Configurable timeout and escalation
+ - Audit trail
 
 - **Federation** (`federation/trust.py`)
-  - RSA-4096 keypairs
-  - Trust levels (MINIMAL, STANDARD, ELEVATED, FULL)
-  - Invitation/acceptance protocol
-  - Cross-instance messaging
+ - RSA-4096 keypairs
+ - Trust levels (MINIMAL, STANDARD, ELEVATED, FULL)
+ - Invitation/acceptance protocol
+ - Cross-instance messaging
 
 - **Frontend Dashboard** (`frontend/Dashboard.jsx`)
-  - Agent management
-  - Approval queue
-  - Anomaly monitoring
-  - Federation relationships
+ - Agent management
+ - Approval queue
+ - Anomaly monitoring
+ - Federation relationships
 
 ---
 

@@ -4,7 +4,7 @@ Run these against the live DO server. No local Docker needed.
 
 ---
 
-## Setup — do once, keep terminal open
+## Setup - do once, keep terminal open
 
 ```bash
 ssh root@159.65.241.102
@@ -20,7 +20,7 @@ echo "Key loaded: ${KEY:0:8}..."
 
 ---
 
-## Video 1 — Blocked action, Manners score moves
+## Video 1 - Blocked action, Manners score moves
 
 The server-side script `/root/telsonbase/video1.sh` runs this automatically.
 From an SSH session on the DO server:
@@ -42,11 +42,11 @@ RESP=$(curl -s -X POST $BASE/v1/openclaw/register \
 echo $RESP | python3 -m json.tool
 AGENT=$(echo $RESP | python3 -c "import sys,json; print(json.load(sys.stdin)['instance_id'])")
 
-# Score before — 1.0, no violations
+# Score before - 1.0, no violations
 curl -s "$BASE/v1/openclaw/$AGENT/manners" -H "X-API-Key: $KEY" | \
   python3 -c "import sys,json; d=json.load(sys.stdin); print('score:', d['overall_score'], 'violations_24h:', d['violations_24h'])"
 
-# Block 1 — payment_send on blocklist (CAPABILITY_VIOLATION)
+# Block 1 - payment_send on blocklist (CAPABILITY_VIOLATION)
 curl -s -X POST "$BASE/v1/openclaw/$AGENT/action" \
   -H "X-API-Key: $KEY" -H "Content-Type: application/json" \
   -d "{\"tool_name\":\"payment_send\",\"nonce\":\"n${TS}-1\"}" | \
@@ -56,7 +56,7 @@ curl -s -X POST "$BASE/v1/openclaw/$AGENT/action" \
 curl -s "$BASE/v1/openclaw/$AGENT/manners" -H "X-API-Key: $KEY" | \
   python3 -c "import sys,json; d=json.load(sys.stdin); print('score:', d['overall_score'], 'violations_24h:', d['violations_24h'])"
 
-# Block 2 — transaction_execute (financial at QUARANTINE, OUT_OF_ROLE_ACTION)
+# Block 2 - transaction_execute (financial at QUARANTINE, OUT_OF_ROLE_ACTION)
 curl -s -X POST "$BASE/v1/openclaw/$AGENT/action" \
   -H "X-API-Key: $KEY" -H "Content-Type: application/json" \
   -d "{\"tool_name\":\"transaction_execute\",\"nonce\":\"n${TS}-2\"}" | \
@@ -71,7 +71,7 @@ curl -s "$BASE/v1/openclaw/$AGENT/manners" -H "X-API-Key: $KEY" | \
 
 ---
 
-## Video 2 — Earned promotion, capability unlocks
+## Video 2 - Earned promotion, capability unlocks
 
 The server-side script `/root/telsonbase/video2.sh` runs this automatically.
 From an SSH session on the DO server:
@@ -93,7 +93,7 @@ RESP=$(curl -s -X POST $BASE/v1/openclaw/register \
 AGENT2=$(echo $RESP | python3 -c "import sys,json; print(json.load(sys.stdin)['instance_id'])")
 echo "Agent: $AGENT2"
 
-# At QUARANTINE — file_write blocked
+# At QUARANTINE - file_write blocked
 curl -s -X POST "$BASE/v1/openclaw/$AGENT2/action" \
   -H "X-API-Key: $KEY" -H "Content-Type: application/json" \
   -d "{\"tool_name\":\"file_write\",\"nonce\":\"n${TS}-1\"}" | \
@@ -111,13 +111,13 @@ curl -s -X POST "$BASE/v1/openclaw/$AGENT2/promote" \
   -d '{"new_level":"resident","reason":"Probation complete, Resident grants read/write autonomy"}' | \
   python3 -c "import sys,json; d=json.load(sys.stdin); print('trust_level:', d['new_trust_level'])"
 
-# Same action — now autonomous
+# Same action - now autonomous
 curl -s -X POST "$BASE/v1/openclaw/$AGENT2/action" \
   -H "X-API-Key: $KEY" -H "Content-Type: application/json" \
   -d "{\"tool_name\":\"file_write\",\"nonce\":\"n${TS}-2\"}" | \
   python3 -c "import sys,json; d=json.load(sys.stdin); print('allowed:', d['allowed'])"
 
-# Trust report — full chain with reasons and timestamps
+# Trust report - full chain with reasons and timestamps
 curl -s "$BASE/v1/openclaw/$AGENT2/trust-report" -H "X-API-Key: $KEY" | python3 -m json.tool
 ```
 

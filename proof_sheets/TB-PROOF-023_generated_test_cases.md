@@ -35,7 +35,7 @@ VERIFIED - Schemathesis generated 107,811 test cases across 151 API operations a
 
 From `version.py` line 312:
 ```python
-# REM:         - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
 ```
 
 ## Verification Command

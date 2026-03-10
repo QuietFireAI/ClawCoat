@@ -63,7 +63,7 @@ class MyAgent(SecureBaseAgent):
             raise ValueError(f"Unknown action: {action}")
 
     def _process_file(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        # Use self.filesystem — capability-enforced, not raw Python file I/O
+        # Use self.filesystem - capability-enforced, not raw Python file I/O
         file_path = payload.get("path")
         content = self.filesystem.read(file_path)
 
@@ -139,7 +139,7 @@ Every agent inherits from `SecureBaseAgent`, which wraps your logic with six enf
 # Promote via API
 curl -X POST http://localhost:8000/v1/openclaw/{instance_id}/promote \
   -H "X-API-Key: $API_KEY" \
-  -d '{"reason": "Initial deployment — reviewed and approved"}'
+  -d '{"reason": "Initial deployment - reviewed and approved"}'
 ```
 
 **Manners compliance score:** Every agent receives a score from 0.0 to 1.0, updated in real time. Five states:
@@ -232,7 +232,7 @@ def execute(self, request: AgentRequest) -> Optional[Dict[str, Any]]:
     return {"files_found": len(files)}
 ```
 
-If your agent tries to access a path outside its declared capabilities, a `PermissionError` is raised and logged to the audit chain. The request does not silently fail — it fails loudly and on record.
+If your agent tries to access a path outside its declared capabilities, a `PermissionError` is raised and logged to the audit chain. The request does not silently fail - it fails loudly and on record.
 
 ### External API Access
 
@@ -284,7 +284,7 @@ You do not need to sign messages manually. `send_to_agent()` handles signing. Yo
 
 ## Requiring Human Approval
 
-Add destructive or sensitive actions to `REQUIRES_APPROVAL_FOR`. The framework handles the pause/resume automatically — your `execute()` method only runs after a human approves.
+Add destructive or sensitive actions to `REQUIRES_APPROVAL_FOR`. The framework handles the pause/resume automatically - your `execute()` method only runs after a human approves.
 
 ```python
 class SensitiveAgent(SecureBaseAgent):
@@ -311,7 +311,7 @@ class SensitiveAgent(SecureBaseAgent):
 **The full approval flow:**
 
 1. Request arrives for `delete_user_data`
-2. Framework creates an approval record — visible in the dashboard and via `GET /v1/approvals`
+2. Framework creates an approval record - visible in the dashboard and via `GET /v1/approvals`
 3. Task pauses (`threading.Event.wait()`)
 4. Human reviews the payload and clicks Approve or Reject
 5. If approved: execution resumes, your method runs
@@ -390,7 +390,7 @@ class TestMyAgent:
         assert "Unknown action" in response.error
 ```
 
-Mock `self.filesystem`, `self.external`, and `self.send_to_agent` when unit testing. These wrappers call into the enforcement layer — in unit tests you want to test your logic, not the framework.
+Mock `self.filesystem`, `self.external`, and `self.send_to_agent` when unit testing. These wrappers call into the enforcement layer - in unit tests you want to test your logic, not the framework.
 
 ### Integration Testing
 

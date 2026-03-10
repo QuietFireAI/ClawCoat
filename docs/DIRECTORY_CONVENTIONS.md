@@ -62,7 +62,7 @@ All Python files, configs, and documentation reference **TelsonBase** as the pro
 
 ### Dashboard Navigation Note
 
-Agent registration lives in the **Agents tab**, not the OpenClaw tab. The Agents tab covers all agent types (OpenClaw, Generic, DID). The OpenClaw tab is monitoring-only — trust levels, action counts, Manners scores. A "Register Agent" shortcut in the OpenClaw tab header links back to the same registration modal. See [DASHBOARD_agent_registration.md](../DASHBOARD_agent_registration.md) for the full click path.
+Agent registration lives in the **Agents tab**, not the OpenClaw tab. The Agents tab covers all agent types (OpenClaw, Generic, DID). The OpenClaw tab is monitoring-only - trust levels, action counts, Manners scores. A "Register Agent" shortcut in the OpenClaw tab header links back to the same registration modal. See [DASHBOARD_agent_registration.md](../DASHBOARD_agent_registration.md) for the full click path.
 
 ### Package / Module Names
 

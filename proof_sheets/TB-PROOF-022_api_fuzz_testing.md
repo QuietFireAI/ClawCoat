@@ -28,8 +28,8 @@ VERIFIED - Schemathesis fuzz testing covered 151 API operations as documented in
 
 ```python
 # REM: 7.2.5CC - Schemathesis remediation + security posture verification (Claude Code):
-# REM:         - 16 code fixes to eliminate all server errors from API fuzz testing
-# REM:         - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+# REM:        - 16 code fixes to eliminate all server errors from API fuzz testing
+# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
 ```
 
 ### What Schemathesis Tests
@@ -55,7 +55,7 @@ grep "151 API operations\|Schemathesis" version.py
 ## Expected Result
 
 ```
-# REM:         - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
+# REM:        - Schemathesis: 107,811 generated test cases, 151 API operations, 0 server errors
 ```
 
 ---

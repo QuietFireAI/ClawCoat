@@ -24,15 +24,15 @@ Only the latest minor release receives security patches. Upgrade to the current 
 
    > **URGENT:** Security vulnerabilities must be reported to security@telsonbase.com only. Do not use general support channels for security disclosures.
 2. **Include:**
-   - Description of the vulnerability
-   - Steps to reproduce (or proof of concept)
-   - Affected version(s)
-   - Impact assessment (what an attacker could do)
-   - Suggested fix (if you have one)
+  - Description of the vulnerability
+  - Steps to reproduce (or proof of concept)
+  - Affected version(s)
+  - Impact assessment (what an attacker could do)
+  - Suggested fix (if you have one)
 3. **Response timeline:**
-   - Acknowledgment within **48 hours**
-   - Initial assessment within **5 business days**
-   - Fix target within **14 days** for critical, **30 days** for high severity
+  - Acknowledgment within **48 hours**
+  - Initial assessment within **5 business days**
+  - Fix target within **14 days** for critical, **30 days** for high severity
 4. **Coordinated disclosure:** We request 90 days before public disclosure to allow time for a patch. We will credit reporters in the release notes unless anonymity is requested.
 
 ### What Qualifies

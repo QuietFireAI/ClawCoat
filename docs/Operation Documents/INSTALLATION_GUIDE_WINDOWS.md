@@ -7,7 +7,7 @@
 
 ## Before You Start
 
-TelsonBase runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows — Docker handles all of that. What you need on your machine:
+TelsonBase runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows - Docker handles all of that. What you need on your machine:
 
 1. Docker Desktop
 2. Git (for cloning the repo and running the setup script)
@@ -25,11 +25,11 @@ Both are covered in Prerequisites below.
 **System requirements:**
 - Windows 10 64-bit: Build 19041 or later (Pro, Enterprise, or Education)
 - Windows 11 64-bit: any edition including Home
-- 8 GB RAM minimum — Ollama (local LLM) needs headroom
-- WSL 2 backend (recommended — Docker will prompt you to enable it)
+- 8 GB RAM minimum - Ollama (local LLM) needs headroom
+- WSL 2 backend (recommended - Docker will prompt you to enable it)
 
 **Steps:**
-1. Run the installer — it may ask for administrator privileges
+1. Run the installer - it may ask for administrator privileges
 2. Follow the wizard and restart when prompted
 3. Open Docker Desktop from the Start menu after restart
 4. Wait for the whale icon in the system tray to show **"Docker Desktop is running"** before proceeding
@@ -70,7 +70,7 @@ git clone https://github.com/QuietFireAI/TelsonBase.git
 cd TelsonBase
 ```
 
-> Note the capital T — the directory is `TelsonBase`, not `telsonbase`.
+> Note the capital T - the directory is `TelsonBase`, not `telsonbase`.
 
 ---
 
@@ -92,7 +92,7 @@ copy .env.example .env
 
 ### Step 2 - Generate all secrets
 
-Open **Git Bash** (from the Start menu — not PowerShell) and run:
+Open **Git Bash** (from the Start menu - not PowerShell) and run:
 
 ```bash
 bash scripts/generate_secrets.sh
@@ -103,7 +103,7 @@ This script does three things:
 - Writes them into the `secrets/` directory as Docker secret files
 - Updates your `.env` file with the matching values
 
-**Do not skip this step and do not generate keys manually.** TelsonBase uses Docker Secrets — keys must be in `secrets/` as files, not just in `.env`. The script handles both.
+**Do not skip this step and do not generate keys manually.** TelsonBase uses Docker Secrets - keys must be in `secrets/` as files, not just in `.env`. The script handles both.
 
 After the script completes, verify the secrets directory was created:
 
@@ -111,7 +111,7 @@ After the script completes, verify the secrets directory was created:
 ls secrets/
 ```
 
-You should see files including `telsonbase_mcp_api_key`. That file's contents are your API key — keep it.
+You should see files including `telsonbase_mcp_api_key`. That file's contents are your API key - keep it.
 
 ```bash
 cat secrets/telsonbase_mcp_api_key
@@ -183,7 +183,7 @@ This is a one-time step. You do not need to repeat it on subsequent restarts.
 docker compose ps
 ```
 
-All 11 services should show **Up** or **healthy** (MailHog is dev-profile only — it won't appear here):
+All 11 services should show **Up** or **healthy** (MailHog is dev-profile only - it won't appear here):
 
 ```
 NAME                        STATUS
@@ -256,11 +256,11 @@ curl http://localhost:11434/api/tags
 
 1. Open `http://localhost:8000/dashboard`
 2. Click **Offline** in the header to open the connection panel
-3. Enter your API key — find it with:
+3. Enter your API key - find it with:
    ```bash
    cat secrets/telsonbase_mcp_api_key
    ```
-4. Click **Connect** — the header will switch to **Live** and show the system health dot
+4. Click **Connect** - the header will switch to **Live** and show the system health dot
 
 **You're in.** From here, head to: `docs/DASHBOARD_agent_registration.md` for the step-by-step walkthrough to register your first agent, promote it from QUARANTINE, and verify the governance loop.
 
@@ -272,7 +272,7 @@ Two systems govern agent behavior at runtime. Neither is optional when `OPENCLAW
 
 ### Trust Levels
 
-Every agent starts at **QUARANTINE**. This is a hard default — not a misconfiguration. An agent at QUARANTINE is severely restricted and requires an operator to manually promote it before it can do useful work.
+Every agent starts at **QUARANTINE**. This is a hard default - not a misconfiguration. An agent at QUARANTINE is severely restricted and requires an operator to manually promote it before it can do useful work.
 
 Promotion is done via the Admin Console (OpenClaw tab) or the API:
 
@@ -292,7 +292,7 @@ The five trust levels, in order:
 | CITIZEN | Full capabilities. 95%+ success rate required to maintain. |
 | AGENT | Apex. 99.9% success rate, zero anomaly tolerance, re-verified every 3 days. |
 
-Promotion is sequential — an agent cannot skip from QUARANTINE to CITIZEN. Demotion can skip levels instantly.
+Promotion is sequential - an agent cannot skip from QUARANTINE to CITIZEN. Demotion can skip levels instantly.
 
 ### Manners Scoring
 
@@ -308,9 +308,9 @@ Every agent receives a **Manners compliance score** from 0.0 to 1.0. The score i
 
 **Two triggers for automatic quarantine:**
 1. Score drops to SUSPENDED range (below 0.25)
-2. Three or more violations within any 24-hour window — regardless of overall score
+2. Three or more violations within any 24-hour window - regardless of overall score
 
-**One thing that catches new operators:** agents under 24 hours old are capped at DEGRADED status even with a perfect score. This is intentional — the system needs behavioral data before granting higher autonomy. Do not try to override it on day one.
+**One thing that catches new operators:** agents under 24 hours old are capped at DEGRADED status even with a perfect score. This is intentional - the system needs behavioral data before granting higher autonomy. Do not try to override it on day one.
 
 **Where to see scores:** Admin Console → OpenClaw tab → agent card shows the current status badge. API: `GET /v1/manners/agent/{name}` for the full report.
 
@@ -324,7 +324,7 @@ Every agent receives a **Manners compliance score** from 0.0 to 1.0. The score i
 | UNSIGNED_MESSAGE | 0.15 | Inter-agent message sent without signature |
 | NON_QMS_MESSAGE | 0.05 | Message to Foreman not in QMS format |
 
-Violations decay over time — full weight for 24 hours, 50% at 72 hours, 25% at 168 hours. An agent that stops misbehaving recovers.
+Violations decay over time - full weight for 24 hours, 50% at 72 hours, 25% at 168 hours. An agent that stops misbehaving recovers.
 
 For the full scoring model, violation types, and API reference: `docs/Compliance Documents/MANNERS_COMPLIANCE.md`
 
@@ -432,7 +432,7 @@ docker compose exec mcp_server alembic upgrade head
 
 ### `generate_secrets.sh` fails or is not found
 
-Make sure you are running the command in **Git Bash**, not in PowerShell or Command Prompt. Git Bash is a separate app installed with Git for Windows — find it in your Start menu.
+Make sure you are running the command in **Git Bash**, not in PowerShell or Command Prompt. Git Bash is a separate app installed with Git for Windows - find it in your Start menu.
 
 ---
 
@@ -445,7 +445,7 @@ docker compose down
 # Start again (no rebuild needed)
 docker compose up -d
 
-# Stop and delete all data (volumes) — use with care
+# Stop and delete all data (volumes) - use with care
 docker compose down -v
 ```
 

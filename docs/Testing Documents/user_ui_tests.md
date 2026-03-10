@@ -238,7 +238,7 @@
 3. Run through tests **in demo mode first** (no connection)
 4. Verify cross-links: `/console` ↔ `/dashboard`
 5. Connect with valid API key
-6. Re-run tests 2.3–2.5, then spot-check each tab with live data
+6. Re-run tests 2.3-2.5, then spot-check each tab with live data
 7. Open `/dashboard` in another tab - confirm Admin Console still works
 8. Screenshot anything broken or unexpected
 9. Note any layout/UX issues in the Pass? column

@@ -1,4 +1,4 @@
-# Video — Claude Desktop Governed by TelsonBase
+# Video - Claude Desktop Governed by TelsonBase
 
 Real AI agent. Real governance. No curl simulation.
 
@@ -19,37 +19,37 @@ Claude Desktop is already configured. The agent is registered.
 Just confirm the MCP server connected:
 - Open Claude Desktop
 - Look for the hammer icon (tools) in the chat toolbar
-- If it's there — connected. If not — fully quit Claude Desktop (system tray → Quit) and reopen.
+- If it's there - connected. If not - fully quit Claude Desktop (system tray → Quit) and reopen.
 
 ---
 
 ## The Script
 
-**Step 1 — Ask Claude to list agents**
+**Step 1 - Ask Claude to list agents**
 
 Type in Claude Desktop:
 ```
 List all the agents registered in TelsonBase
 ```
 
-Claude calls `list_agents` — QUARANTINE+ tool, the session has access.
+Claude calls `list_agents` - QUARANTINE+ tool, the session has access.
 You see agent names, trust levels, Manners scores come back.
 This proves the connection is live.
 
 ---
 
-**Step 2 — Ask Claude to list tenants (this gets blocked)**
+**Step 2 - Ask Claude to list tenants (this gets blocked)**
 
 Type:
 ```
 List all the tenants
 ```
 
-Claude calls `list_tenants` — requires PROBATION+. Session is at QUARANTINE.
+Claude calls `list_tenants` - requires PROBATION+. Session is at QUARANTINE.
 
 Claude gets back:
 ```
-Tool 'list_tenants' requires 'probation' trust — session is at 'quarantine'.
+Tool 'list_tenants' requires 'probation' trust - session is at 'quarantine'.
 Administrator: promote this session in the TelsonBase dashboard.
 ```
 
@@ -58,19 +58,19 @@ Claude didn't decide not to do it. TelsonBase stopped it.
 
 ---
 
-**Step 3 — Promote the agent (Git Bash, while still recording)**
+**Step 3 - Promote the agent (Git Bash, while still recording)**
 
 Open Git Bash alongside Claude Desktop. Paste this as one block:
 
 ```bash
-ssh root@159.65.241.102 'KEY=$(cat /root/telsonbase/secrets/telsonbase_mcp_api_key) && curl -s -X POST http://localhost:8000/v1/openclaw/ad80d359aecd4bfa/promote -H "X-API-Key: $KEY" -H "Content-Type: application/json" -d "{\"new_level\":\"probation\",\"reason\":\"Promoted for video demo — earned access\"}" | python3 -m json.tool'
+ssh root@159.65.241.102 'KEY=$(cat /root/telsonbase/secrets/telsonbase_mcp_api_key) && curl -s -X POST http://localhost:8000/v1/openclaw/ad80d359aecd4bfa/promote -H "X-API-Key: $KEY" -H "Content-Type: application/json" -d "{\"new_level\":\"probation\",\"reason\":\"Promoted for video demo - earned access\"}" | python3 -m json.tool'
 ```
 
 You see `"trust_level": "probation"` come back.
 
 ---
 
-**Step 4 — Ask the same question again**
+**Step 4 - Ask the same question again**
 
 Back in Claude Desktop:
 ```
@@ -95,7 +95,7 @@ This time it works.
 
 ---
 
-## After the Video — Reset for Next Run
+## After the Video - Reset for Next Run
 
 Demote back to quarantine so you can run it again:
 

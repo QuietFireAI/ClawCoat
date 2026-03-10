@@ -7,20 +7,20 @@
 
 ## What Is TelsonBase?
 
-TelsonBase is a self-hosted platform for running AI agents on your own hardware. Instead of sending your data to cloud APIs, TelsonBase keeps everything local — your models, your data, your agents, your rules.
+TelsonBase is a self-hosted platform for running AI agents on your own hardware. Instead of sending your data to cloud APIs, TelsonBase keeps everything local - your models, your data, your agents, your rules.
 
 It runs as a set of Docker containers on any machine with Docker installed. Agents do work (process documents, manage real estate transactions, run local LLMs, manage backups), and TelsonBase makes sure they only do what you've authorized them to do.
 
 **Key features:**
 
-- **Zero-trust agent governance** — every agent action is authenticated, authorized, and audited
-- **Local LLM inference** — chat and generate text with Ollama models, no data leaves your machine
-- **Human-in-the-loop approval gates** — high-risk actions require your explicit approval before execution
-- **Three authentication methods** — API key, JWT tokens, and DID-based identity (engine built; Identiclaw service integration is post-launch)
-- **Real estate vertical** — transaction management, compliance monitoring, and document preparation agents
-- **Manners compliance** — runtime enforcement of Anthropic's agent safety principles
-- **Multi-tenancy** — client-matter isolation with per-tenant rate limiting
-- **Immutable audit chain** — SHA-256 hash-linked logs for tamper evidence
+- **Zero-trust agent governance** - every agent action is authenticated, authorized, and audited
+- **Local LLM inference** - chat and generate text with Ollama models, no data leaves your machine
+- **Human-in-the-loop approval gates** - high-risk actions require your explicit approval before execution
+- **Three authentication methods** - API key, JWT tokens, and DID-based identity (engine built; Identiclaw service integration is post-launch)
+- **Real estate vertical** - transaction management, compliance monitoring, and document preparation agents
+- **Manners compliance** - runtime enforcement of Anthropic's agent safety principles
+- **Multi-tenancy** - client-matter isolation with per-tenant rate limiting
+- **Immutable audit chain** - SHA-256 hash-linked logs for tamper evidence
 
 **The short version:** It's a secure, governed workbench for AI agents with built-in guardrails.
 
@@ -69,8 +69,8 @@ This starts 10 containers:
 | **mcp_server** | Main API server (FastAPI) | 8000 |
 | **redis** | State storage, caching, pub/sub | 6379 |
 | **postgres** | Primary database (users, tenants, identities) | 5432 |
-| **worker** | Background task processing (Celery) | — |
-| **beat** | Scheduled tasks (daily checks, deadline monitoring) | — |
+| **worker** | Background task processing (Celery) | - |
+| **beat** | Scheduled tasks (daily checks, deadline monitoring) | - |
 | **mosquitto** | Agent-to-agent messaging (MQTT) | 1883 |
 | **ollama** | Local LLM inference | 11434 |
 | **prometheus** | Metrics collection | 9090 |
@@ -79,7 +79,7 @@ This starts 10 containers:
 ### Step 4: Initialize the Database
 
 ```bash
-# Required on first run — API returns 500s without this:
+# Required on first run - API returns 500s without this:
 docker compose exec mcp_server alembic upgrade head
 ```
 
@@ -113,7 +113,7 @@ The admin dashboard has 7 tabs:
 | **Approvals** | Pending and completed approval requests (approve/reject from here) |
 | **QMS** | Message log with hash-chain verification, message type filtering |
 | **Anomalies** | Behavioral anomaly alerts with severity and response actions |
-| **Chat** | LLM chat interface (Ollama) — all inference local |
+| **Chat** | LLM chat interface (Ollama) - all inference local |
 
 Log in with your API key (from `.env` file). The dashboard updates every 30 seconds.
 
@@ -216,7 +216,7 @@ curl -H "X-API-Key: YOUR_MCP_API_KEY" http://localhost:8000/v1/system/health
 
 Agents are the workers. Each one has a specific job and lives on one of three floors:
 
-**Ground Level — Core Platform Agents:**
+**Ground Level - Core Platform Agents:**
 | Agent | Role |
 |---|---|
 | **backup_agent** | Backs up data on schedule (Redis, Postgres, configs) |
@@ -225,13 +225,13 @@ Agents are the workers. Each one has a specific job and lives on one of three fl
 | **demo_agent** | Testing and demonstration of security features |
 | **memory_agent** | Agent memory and context management |
 
-**Mezzanine — Supervisor Agents:**
+**Mezzanine - Supervisor Agents:**
 | Agent | Role |
 |---|---|
 | **foreman_agent** | Manages the Toolroom (tool checkout, updates, HITL gates) |
 | **goose_session** | External operator agent registered via MCP gateway (Goose / Claude Desktop) |
 
-**Third Floor — Real Estate Vertical:**
+**Third Floor - Real Estate Vertical:**
 | Agent | Role |
 |---|---|
 | **transaction_agent** | Real estate transaction lifecycle management |
@@ -268,7 +268,7 @@ Agents can't install software or download tools on their own. They request tools
 
 Think of it like a machine shop: workers sign tools out, use them, sign them back in. Everything is logged.
 
-### QMS™ — How Agents Talk
+### QMS™ - How Agents Talk
 
 QMS™ (Qualified Message Standard) is TelsonBase's internal messaging format. You'll see it in logs:
 
@@ -278,17 +278,17 @@ Tool_Checkout_Thank_You ::CHKOUT-a3f2b1c9d4e5::
 ```
 
 The suffixes tell you what happened:
-- `_Please` — A request was made
-- `_Thank_You` — It succeeded
-- `_Thank_You_But_No` — It was denied (with a reason)
-- `_Pretty_Please` — Urgent/escalated request
-- `_Excuse_Me` — Need clarification
+- `_Please` - A request was made
+- `_Thank_You` - It succeeded
+- `_Thank_You_But_No` - It was denied (with a reason)
+- `_Pretty_Please` - Urgent/escalated request
+- `_Excuse_Me` - Need clarification
 
 Priority levels: `::!URGENT!::`, `::!P1!::`, `::!P2!::`, `::!P3!::`
 
-You don't need to write QMS — it's automatic. But understanding it makes logs readable.
+You don't need to write QMS - it's automatic. But understanding it makes logs readable.
 
-### HITL — Human-in-the-Loop
+### HITL - Human-in-the-Loop
 
 Any operation that touches the outside world (downloading a tool, calling an external API, closing a transaction, deleting a model) requires your explicit approval. TelsonBase creates an **Approval Request** and waits for you to approve or reject it.
 
@@ -353,7 +353,7 @@ curl -X POST -H "X-API-Key: YOUR_KEY" \
   http://localhost:8000/v1/llm/chat
 ```
 
-Or use the **Chat** tab in either dashboard — it's a full LLM interface with model selection.
+Or use the **Chat** tab in either dashboard - it's a full LLM interface with model selection.
 
 ### Managing Real Estate Transactions
 
@@ -445,7 +445,7 @@ curl -X POST -H "X-API-Key: YOUR_KEY" \
   -d '{"did": "did:key:z6MkExample...", "display_name": "External Agent"}' \
   http://localhost:8000/v1/identity/register
 
-# Revoke a DID (kill switch — immediate):
+# Revoke a DID (kill switch - immediate):
 curl -X POST -H "X-API-Key: YOUR_KEY" \
   http://localhost:8000/v1/identity/did:key:z6MkExample.../revoke
 
@@ -462,7 +462,7 @@ The kill switch is instant, Redis-persisted, and checked before any cryptographi
 # List users:
 curl -H "X-API-Key: YOUR_KEY" http://localhost:8000/v1/auth/users
 
-# Create a tenant (requires admin:config — valid types: law_firm, insurance, real_estate,
+# Create a tenant (requires admin:config - valid types: law_firm, insurance, real_estate,
 #   healthcare, small_business, personal, general):
 curl -X POST -H "X-API-Key: YOUR_KEY" \
   -H "Content-Type: application/json" \
@@ -513,7 +513,7 @@ docker compose logs -f mcp_server
 docker compose logs -f worker
 ```
 
-Look for `REM:` prefixed lines — these are TelsonBase's internal logging. QMS messages show agent activity.
+Look for `REM:` prefixed lines - these are TelsonBase's internal logging. QMS messages show agent activity.
 
 ### Grafana Dashboard
 
@@ -534,7 +534,7 @@ curl -H "X-API-Key: YOUR_KEY" http://localhost:8000/v1/llm/health
 
 ---
 
-## Security — What You Should Know
+## Security - What You Should Know
 
 1. **Change the default secrets.** The `.env.example` has placeholder values. Replace them. Use `scripts/generate_secrets.sh` or generate random 48-character hex strings with `openssl rand -hex 32`.
 
@@ -548,9 +548,9 @@ curl -H "X-API-Key: YOUR_KEY" http://localhost:8000/v1/llm/health
 
 6. **Three auth methods.** API key for scripts, JWT for sessions, DID for agent-to-agent identity. All three can coexist.
 
-7. **Kill switch.** Any agent (including DID-authenticated ones) can be instantly revoked. The kill switch is checked before cryptographic verification — it's immediate.
+7. **Kill switch.** Any agent (including DID-authenticated ones) can be instantly revoked. The kill switch is checked before cryptographic verification - it's immediate.
 
-8. **Network segmentation.** Docker networks are separated into 5 tiers: `frontend`, `backend`, `data`, `ai`, and `monitoring`. The `data` and `ai` networks are `internal: true` — no external access.
+8. **Network segmentation.** Docker networks are separated into 5 tiers: `frontend`, `backend`, `data`, `ai`, and `monitoring`. The `data` and `ai` networks are `internal: true` - no external access.
 
 9. **Non-root containers.** All containers run as UID 1000 (non-root). Base images are slim variants.
 

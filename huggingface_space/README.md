@@ -9,20 +9,20 @@ app_file: app.py
 pinned: true
 license: apache-2.0
 tags:
-  - ai-governance
-  - ai-agents
-  - zero-trust
-  - security
-  - mcp
-  - self-hosted
-  - goose
-  - human-in-the-loop
-  - kill-switch
-  - audit-trail
-short_description: Live demo — zero-trust governance for AI agents.
+ - ai-governance
+ - ai-agents
+ - zero-trust
+ - security
+ - mcp
+ - self-hosted
+ - goose
+ - human-in-the-loop
+ - kill-switch
+ - audit-trail
+short_description: Live demo - zero-trust governance for AI agents.
 ---
 
-# TelsonBase — Live Governance Demo
+# TelsonBase - Live Governance Demo
 
 **Zero-trust governance for autonomous AI agents. Self-hosted. No cloud AI. Every action earned.**
 
@@ -31,10 +31,10 @@ Select a demo agent, pick an action, and see an actual governance decision in re
 
 ## What the Demo Shows
 
-- **Governance pipeline evaluation** — 8 steps, real decisions, real server
-- **Five trust tiers** — QUARANTINE / PROBATION / RESIDENT / CITIZEN / AGENT, each with different permissions
-- **Kill switch** — suspend an agent, watch Step 2 reject every subsequent action instantly
-- **HITL gating** — some actions held for human approval regardless of trust level
+- **Governance pipeline evaluation** - 8 steps, real decisions, real server
+- **Five trust tiers** - QUARANTINE / PROBATION / RESIDENT / CITIZEN / AGENT, each with different permissions
+- **Kill switch** - suspend an agent, watch Step 2 reject every subsequent action instantly
+- **HITL gating** - some actions held for human approval regardless of trust level
 
 ## Trust Tier Flow
 

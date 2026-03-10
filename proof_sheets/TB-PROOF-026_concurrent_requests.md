@@ -50,12 +50,12 @@ VERIFIED - 50 parallel requests via PowerShell RunspacePool all returned HTTP 20
 
 From `version.py` line 214:
 ```python
-# REM:         - Concurrent stress: 50/50 parallel requests via RunspacePool - all 200
+# REM:        - Concurrent stress: 50/50 parallel requests via RunspacePool - all 200
 ```
 
 Performance metrics from the same test:
 ```python
-# REM:         - Performance: p99=71ms (health), p99=194ms (auth), rate limiter at #25
+# REM:        - Performance: p99=71ms (health), p99=194ms (auth), rate limiter at #25
 ```
 
 ## Verification Command

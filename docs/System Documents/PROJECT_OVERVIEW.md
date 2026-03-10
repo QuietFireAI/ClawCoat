@@ -82,10 +82,10 @@ This enables scenarios like: a law firm's document analysis agent sends a contra
 │  ┌───────────────┐  ┌──────────┐  ┌──────────┐            │
 │  │  MCP Server   │  │  Worker  │  │   Beat   │            │
 │  │  (FastAPI)    │  │ (Celery) │  │(Scheduler│            │
-│  │  - Auth       │  │ - Agents │  │          │            │
-│  │  - Signing    │  │ - Tasks  │  └──────────┘            │
-│  │  - Egress     │  │ - Backup │                           │
-│  │  - Metrics    │  └──────────┘                           │
+│  │ - Auth       │  │ - Agents │  │          │            │
+│  │ - Signing    │  │ - Tasks  │  └──────────┘            │
+│  │ - Egress     │  │ - Backup │                           │
+│  │ - Metrics    │  └──────────┘                           │
 │  └───────────────┘                                         │
 └────────────────────────────────────────────────────────────┘
         │                    │

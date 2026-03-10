@@ -49,24 +49,24 @@ TelsonBase includes automated threat response. These actions are taken automatic
 ### Monitoring Points
 
 1. **Anomaly Dashboard** (`/v1/anomalies/dashboard/summary`)
-   - Real-time anomaly detection
-   - Behavioral baseline deviations
-   - Severity distribution
+  - Real-time anomaly detection
+  - Behavioral baseline deviations
+  - Severity distribution
 
 2. **Audit Chain** (`/v1/audit/chain/status`)
-   - Tamper-evident logging
-   - Chain integrity verification
-   - Compliance export capability
+  - Tamper-evident logging
+  - Chain integrity verification
+  - Compliance export capability
 
 3. **Threat Response** (`/v1/threats/recent`)
-   - Automated threat detection
-   - Response action history
-   - Unresolved threat count
+  - Automated threat detection
+  - Response action history
+  - Unresolved threat count
 
 4. **Agent Trust Levels** (`/v1/system/reverification/status`)
-   - Trust state monitoring
-   - Promotion/demotion events
-   - Re-verification failures
+  - Trust state monitoring
+  - Promotion/demotion events
+  - Re-verification failures
 
 ### Alert Channels
 
@@ -180,10 +180,10 @@ For incidents affecting:
 ### Required Documentation
 
 1. **Incident Report**
-   - Timeline of events
-   - Systems affected
-   - Actions taken
-   - Root cause (if determined)
+  - Timeline of events
+  - Systems affected
+  - Actions taken
+  - Root cause (if determined)
 
 2. **Audit Export**
    ```bash

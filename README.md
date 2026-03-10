@@ -173,14 +173,14 @@ The other side of the gate. Pending approval from a suspended agent - full paylo
 ---
 
 **GIF 5 - Manners Scoring: Behavioral Score Drops in Real Time**
-Fresh agent registers at a Manners score of 1.0. Attempts `payment_send` — blocked (it's on the agent's blocklist). Score drops to 0.95. Attempts `transaction_execute` — blocked again (wrong trust tier for financial actions). Score drops to 0.91. Two violations, two different block reasons, one continuous behavioral record. The governance pipeline doesn't just block — it remembers.
+Fresh agent registers at a Manners score of 1.0. Attempts `payment_send` - blocked (it's on the agent's blocklist). Score drops to 0.95. Attempts `transaction_execute` - blocked again (wrong trust tier for financial actions). Score drops to 0.91. Two violations, two different block reasons, one continuous behavioral record. The governance pipeline doesn't just block - it remembers.
 
 ![Manners Score Drop](screenshots/manners-score.gif)
 
 ---
 
 **GIF 6 - Trust Tiers: Earned Promotion Unlocks Actions**
-Fresh agent at QUARANTINE attempts `file_write` — blocked outright. Promoted to PROBATION — same action now triggers a HITL gate (human approval required, approval ID generated). Promoted to RESIDENT — same action, same agent, now executes autonomously. Three tiers, three outcomes, zero code changes. The agent didn't change. The governance did.
+Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to PROBATION - same action now triggers a HITL gate (human approval required, approval ID generated). Promoted to RESIDENT - same action, same agent, now executes autonomously. Three tiers, three outcomes, zero code changes. The agent didn't change. The governance did.
 
 ![Trust Tier Promotion](screenshots/trust-tiers.gif)
 
@@ -278,7 +278,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **Manners Compliance Engine** | Anthropic safety framework, runtime scoring | 7 |
 | **Egress Firewall** | Domain whitelist, external call governance | 5 |
 | **Multi-Tenant Isolation** | Redis key namespacing, litigation holds | 8 |
-| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch — see `docs/WHATS_NEXT.md`) | 50 |
+| **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch - see `docs/WHATS_NEXT.md`) | 50 |
 | **OpenClaw Governance** | Governed MCP proxy, kill switch, Manners auto-demotion | 55 |
 | **Session Management** | HIPAA-compliant idle timeout, privileged role limits | 6 |
 | **Federation** | Cross-instance trust with mTLS, RSA-4096 signatures | 5 |

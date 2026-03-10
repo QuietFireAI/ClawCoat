@@ -1,4 +1,4 @@
-# MANNERS.md — TelsonBase Agent Operating Principles
+# MANNERS.md - TelsonBase Agent Operating Principles
 
 **Version:** v11.0.1
 **Effective:** March 8, 2026
@@ -57,7 +57,7 @@ Agents must provide visibility into their reasoning, actions, and outcomes. Ever
 
 **TelsonBase Implementation:**
 - Cryptographic audit chain (SHA-256 hash-linked) for every agent action
-- QMS™ (Qualified Message Standard) provides human-readable action provenance (optional layer — platform runs without it)
+- QMS™ (Qualified Message Standard) provides human-readable action provenance (optional layer - platform runs without it)
 - Agent responses include action summaries, not just raw data
 - Anomaly detection flags unexplained behavioral deviations
 - Dashboard shows real-time agent activity streams

@@ -158,9 +158,9 @@ class BackupAgent(SecureBaseAgent):
 │                      target=/data/secrets/passwords.txt                  │
 │                                                                          │
 │    2. Check allow rules:                                                 │
-│       - "filesystem.read:/data/*" → wrong action (read vs write)        │
-│       - "filesystem.write:/app/backups/*" → wrong path                  │
-│       - No match found                                                   │
+│      - "filesystem.read:/data/*" → wrong action (read vs write)        │
+│      - "filesystem.write:/app/backups/*" → wrong path                  │
+│      - No match found                                                   │
 │                                                                          │
 │    3. DENY → PermissionError raised, logged to audit                    │
 │                                                                          │
@@ -211,9 +211,9 @@ Sensitive operations pause for human authorization:
 │    1. Check REQUIRES_APPROVAL_FOR → "delete_backup" is listed           │
 │                                                                          │
 │    2. Create ApprovalRequest:                                            │
-│       - request_id: APPR-ABC123                                          │
-│       - priority: high                                                   │
-│       - expires_at: +1 hour                                              │
+│      - request_id: APPR-ABC123                                          │
+│      - priority: high                                                   │
+│      - expires_at: +1 hour                                              │
 │                                                                          │
 │    3. Task PAUSES (threading.Event.wait())                               │
 │                                                                          │
@@ -490,8 +490,8 @@ Instance A                                    Instance B
 3. **Enable TLS** via Traefik (already configured)
 
 4. **Lock down network access:**
-   - Only expose ports 80/443 to internet
-   - Keep management ports (Redis, MQTT) internal
+  - Only expose ports 80/443 to internet
+  - Keep management ports (Redis, MQTT) internal
 
 5. **Regular backups** of Redis data (contains security state)
 
@@ -500,9 +500,9 @@ Instance A                                    Instance B
 7. **Review pending approvals** promptly
 
 8. **Monitor security warnings** in application logs for:
-   - Insecure secret warnings
-   - Failed authentication attempts
-   - Capability probe detections
+  - Insecure secret warnings
+  - Failed authentication attempts
+  - Capability probe detections
 
 ### Adding New Agents
 
@@ -528,14 +528,14 @@ Instance A                                    Instance B
    ```
 
 2. **Store keys securely:**
-   - Use a secrets manager (HashiCorp Vault, AWS Secrets Manager)
-   - Never commit keys to version control
-   - Maintain encrypted offline backup
+  - Use a secrets manager (HashiCorp Vault, AWS Secrets Manager)
+  - Never commit keys to version control
+  - Maintain encrypted offline backup
 
 3. **Key rotation:**
-   - Plan for periodic key rotation
-   - Decrypt/re-encrypt data with new key
-   - Test recovery procedures
+  - Plan for periodic key rotation
+  - Decrypt/re-encrypt data with new key
+  - Test recovery procedures
 
 ### Audit Chain Integrity
 
@@ -545,31 +545,31 @@ Instance A                                    Instance B
    ```
 
 2. **Compliance exports:**
-   - Export chain data regularly
-   - Store exports off-site
-   - Verify chain before archiving
+  - Export chain data regularly
+  - Store exports off-site
+  - Verify chain before archiving
 
 3. **Chain breaks:**
-   - Investigate immediately if breaks detected
-   - Check for unauthorized access
-   - Document in incident report
+  - Investigate immediately if breaks detected
+  - Check for unauthorized access
+  - Document in incident report
 
 ### Threat Response
 
 1. **Review automated actions:**
-   - Check `/v1/threats/recent` daily
-   - Verify quarantine decisions are appropriate
-   - Clear false positives through proper channels
+  - Check `/v1/threats/recent` daily
+  - Verify quarantine decisions are appropriate
+  - Clear false positives through proper channels
 
 2. **Tune threat indicators:**
-   - Adjust thresholds based on environment
-   - Add custom indicators for specific threats
-   - Disable indicators causing false positives
+  - Adjust thresholds based on environment
+  - Add custom indicators for specific threats
+  - Disable indicators causing false positives
 
 3. **Human override:**
-   - Automated responses can be overridden
-   - Document all manual interventions
-   - Update policies if patterns emerge
+  - Automated responses can be overridden
+  - Document all manual interventions
+  - Update policies if patterns emerge
 
 ---
 
