@@ -304,10 +304,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
       - name: Check import sorting
         run: |
-          pip install isort
-          isort --check-only --diff core/ api/ agents/ || true
+          isort --check-only --diff core/ api/ agents/
 
       - name: Check for print statements in production code
         run: |

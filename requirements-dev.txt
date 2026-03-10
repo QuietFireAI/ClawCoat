@@ -1,0 +1,21 @@
+# TelsonBase — Developer Dependencies
+# Install with: pip install -r requirements-dev.txt
+# This pulls in all runtime deps and adds dev/lint/test tooling on top.
+
+-r requirements.txt
+
+# --- Import Sorting ---
+isort==5.13.2
+
+# --- Security Linting ---
+bandit==1.8.3
+
+# --- Dependency Audit ---
+pip-audit==2.9.0
+
+# --- Test Coverage ---
+coverage==7.4.0
+pytest-cov==4.1.0
+
+# --- Type Checking (optional, run with: mypy core/ api/) ---
+mypy==1.8.0
