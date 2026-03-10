@@ -19,15 +19,15 @@ For proof sheet evidence (773 documents): see [`proof_sheets/INDEX.md`](proof_sh
 | [SUPPORT.md](SUPPORT.md) | Support channels and how to get help |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards |
 | [SECURITY.md](SECURITY.md) | Security policy and responsible disclosure |
-| [TERMS_OF_USE.md](TERMS_OF_USE.md) | Terms of use and liability |
+| [docs/TERMS_OF_USE.md](docs/TERMS_OF_USE.md) | Terms of use and liability |
 | [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md) | Commercial licensing options |
 | [TRADEMARKS.md](TRADEMARKS.md) | TelsonBase and QMS™ trademark policy |
-| [AMBASSADORS.md](AMBASSADORS.md) | Ambassador program — roles, how to apply |
-| [GLOSSARY.md](GLOSSARY.md) | Terminology reference for the full platform |
-| [MANNERS.md](MANNERS.md) | Manners compliance framework — five principles and KPI tables |
-| [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md) | Repository layout and directory descriptions |
-| [TESTING.md](TESTING.md) | Testing overview — how to run, suite breakdown |
-| [USER_GUIDE.md](USER_GUIDE.md) | End-user guide to the admin dashboard and console |
+| [docs/AMBASSADORS.md](docs/AMBASSADORS.md) | Ambassador program — roles, how to apply |
+| [docs/GLOSSARY.md](docs/GLOSSARY.md) | Terminology reference for the full platform |
+| [docs/MANNERS.md](docs/MANNERS.md) | Manners compliance framework — five principles and KPI tables |
+| [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md) | Repository layout and directory descriptions |
+| [docs/TESTING.md](docs/TESTING.md) | Testing overview — how to run, suite breakdown |
+| [docs/USER_GUIDE.md](docs/USER_GUIDE.md) | End-user guide to the admin dashboard and console |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (GitHub auto-generates formatted citation) |
 | [NOTICE](NOTICE) | Apache 2.0 attribution and third-party notices |
 

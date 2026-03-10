@@ -6,7 +6,7 @@ Every claim made on [telsonbase.com](https://telsonbase.com) has a corresponding
 
 **Format:** Each sheet follows a standardized format inspired by Safety Data Sheets (SDS). Grab the sheet number, verify the claim, move on.
 
-**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 720 (+26 stress) | **Proof Documents:** 788 (67 class-level + 721 individual)
+**Last Verified:** March 8, 2026 | **Version:** v11.0.1 | **Tests Passing:** 746 | **Proof Documents:** 788 (67 class-level + 721 individual)
 
 ---
 

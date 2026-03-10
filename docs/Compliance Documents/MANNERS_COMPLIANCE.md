@@ -156,7 +156,7 @@ For SOC 2 and regulatory audits, Manners provides:
 
 ## References
 
-- **MANNERS.md** - The five principles with full KPI tables
+- **[MANNERS.md](../MANNERS.md)** - The five principles with full KPI tables
 - **docs/YOUR_FIRST_AGENT.md** - Step-by-step walkthrough including live Manners score observation
 - **agents/registry.yaml** - Centralized agent job descriptions
 - **core/manners.py** - Runtime evaluation engine (source code)

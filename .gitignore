@@ -1,5 +1,5 @@
 # ============================================================================
-# TelsonBase v8.0.2 — .gitignore
+# TelsonBase v11.0.1 — .gitignore
 # ============================================================================
 
 # Claude Code context files (session history, plans, local AI config)
@@ -58,6 +58,10 @@ ehthumbs.db
 
 # Backups (entire directory — binary artifacts and snapshots)
 backups/
+
+# Raw recordings (converted GIFs are committed; source recordings stay local)
+screenshots/*.mp4
+screenshots/*.mov
 
 # Internal operations docs — not for public repo
 docs/Operation Documents/COMPETITIVE_POSITIONING.md

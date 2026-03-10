@@ -4,7 +4,7 @@
 
 Welcome. TelsonBase is a governance-first security platform for autonomous AI agents. Contributions that strengthen agent governance, data sovereignty, and compliance are valued.
 
-See also: [Ambassador Program](AMBASSADORS.md) for non-code contributions.
+See also: [Ambassador Program](docs/AMBASSADORS.md) for non-code contributions.
 
 ---
 

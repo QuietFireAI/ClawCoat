@@ -15,7 +15,7 @@
   <a href="docs/System%20Documents/API_REFERENCE.md">API Reference</a> &nbsp;|&nbsp;
   <a href="docs/System%20Documents/SECURITY_ARCHITECTURE.md">Security Architecture</a> &nbsp;|&nbsp;
   <a href="docs/FAQ.md">FAQ</a> &nbsp;|&nbsp;
-  <a href="AMBASSADORS.md">Ambassador Program</a>
+  <a href="docs/AMBASSADORS.md">Ambassador Program</a>
 </p>
 
 <p align="center">
@@ -478,7 +478,7 @@ Question any claim. Run the command. That's the point.
 
 I'm one person. This project needs people who see what it is and want to help carry it.
 
-If you work in a regulated industry and understand what's at stake, read [AMBASSADORS.md](AMBASSADORS.md). I'm looking for people who will:
+If you work in a regulated industry and understand what's at stake, read [AMBASSADORS.md](docs/AMBASSADORS.md). I'm looking for people who will:
 
 - Deploy TelsonBase in their environment and report what works and what doesn't
 - Help answer community questions in areas I don't have deep expertise (healthcare compliance, legal technology, insurance regulation, accounting standards)
@@ -527,7 +527,7 @@ TelsonBase is open source under the [Apache License, Version 2.0](LICENSE).
 
 Free for any use - personal, commercial, production, research. Use it, modify it, deploy it, build on it. Attribution required: retain the copyright and license notices when distributing. Full terms: [`LICENSE`](LICENSE)
 
-TelsonBase is provided as-is with no warranty. Deploying organizations are responsible for their own configurations, agents, and compliance outcomes. Full terms: [`TERMS_OF_USE.md`](TERMS_OF_USE.md)
+TelsonBase is provided as-is with no warranty. Deploying organizations are responsible for their own configurations, agents, and compliance outcomes. Full terms: [`TERMS_OF_USE.md`](docs/TERMS_OF_USE.md)
 
 ---
 

@@ -9,7 +9,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [11.0.1] - 2026-03-08 (Public launch - full documentation sweep and pre-drop polish)
 
-**Status:** 720 passed, 1 skipped, 0 failed. Public GitHub drop. DO server synced.
+**Status:** 746 passed, 1 skipped, 0 failed. Public GitHub drop. DO server synced.
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Added
