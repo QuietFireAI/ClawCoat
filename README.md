@@ -52,7 +52,11 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ## A Letter From the Developer
 
-I'm one person. One developer who saw this coming - and spent months focused, heads-down, building something real about it.
+I'm one person. This project was built over two years on consumer hardware, with standard subscriptions, using three AI platforms — not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated drift and produced what you're looking at now.
+
+TelsonBase is my interpretation of how AI agents can work together, safely — not the answer, but an answer. Specifically, it's the one I'm building on for my own agents. The core idea: agent behavior determines what tools an agent can access. Good behavior is rewarded. Errant actions are caught. Your data stays off cloud provider infrastructure.
+
+I'm sharing this freely because the problem is real and one person's solution only goes so far. If this gains traction, community contributions will drive proper vetting and expanded capability — released back openly as it comes. Take it, break it, and let's build this out for everyone.
 
 Autonomous AI agents are the most significant paradigm shift in computing since the GUI. They're also a serious security problem that the industry hasn't caught up with yet. Right now, as you read this:
 
