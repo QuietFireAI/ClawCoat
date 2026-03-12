@@ -36,8 +36,8 @@
       <ul class="nav-links">
         <li><a href="#claw">Control Your Claw</a></li>
         <li><a href="#safety">AI Safety</a></li>
-        <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#compliance">Compliance</a></li>
+        <li><a href="#stack">Capabilities</a></li>
+        <li><a href="#reports">Compliance</a></li>
         <li><a href="#demo">Videos</a></li>
         <li><a href="#tested">Testing</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -80,6 +80,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- ============================================================
        The Secret Sauce  -  Earned Trust Levels
@@ -127,6 +129,106 @@
       </p>
     </div>
   </section>
+
+
+  <!-- ============================================================
+       Five Principles / Manners Score
+       ============================================================ -->
+  <section class="section" id="safety">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">Five principles. One live score.</h2>
+        <p class="section-subtitle">TelsonBase measures every agent action against five principles developed through years of practical AI deployment work. The score is live, moves with every action, and is the same data the human uses to decide what an agent has earned. Not a report. Not a checkbox. A number that means something.</p>
+      </div>
+      <div class="promise-grid promise-grid-5">
+        <div class="glass-card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Human Control</h3>
+          <p>Agents operate autonomously within defined boundaries. Destructive, irreversible, or trust-crossing actions require explicit human approval before execution.</p>
+        </div>
+        <div class="glass-card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Transparency <button class="info-trigger info-trigger-sm" aria-label="See what happens behind the curtain" onclick="document.getElementById('pipeline-modal').classList.add('open')">&#9432;</button></h3>
+          <p>Every agent action is logged to a cryptographic audit chain. Users see what agents did, why, and what they plan to do next. Nothing is hidden.</p>
+        </div>
+        <div class="glass-card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Value Alignment</h3>
+          <p>Agents act within their defined role. Behavioral baselines detect deviations. When uncertain, agents escalate to humans rather than assume.</p>
+        </div>
+        <div class="glass-card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Privacy</h3>
+          <p>Data never crosses tenant boundaries. No telemetry, no cloud callbacks. All agent operations run on your own hardware — your data stays yours.</p>
+        </div>
+        <div class="glass-card fade-in">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <h3>Security</h3>
+          <p>Zero-trust architecture with cryptographic message signing between all agents. Nonce replay protection. Tamper-evident audit chain on every action.</p>
+        </div>
+      </div>
+      <p class="section-cta-text fade-in" style="text-align:center; margin-top:2rem; color: var(--text-muted); font-size: 0.95rem;">
+        Every principle is scored at runtime with measurable KPIs.
+      </p>
+      <div class="fade-in" style="text-align:center; margin-top:2rem;">
+        <button class="btn btn-outline-accent" onclick="document.getElementById('manners-modal').classList.add('open')">How the Manners Score is calculated &#8594;</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       Control Your Claw  -  The Problem and the Solution
+       ============================================================ -->
+  <section class="section section-alt" id="claw">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">The Problem</span>
+        <h2 class="section-title">AI agents ship without guardrails. That gap has consequences.</h2>
+        <p class="section-subtitle">OpenClaw-class agents have 194,000+ GitHub stars and no built-in governance layer. No mandatory oversight. No behavioral scoring. No trust tiers. API keys exposed at scale. Malicious skills in the supply chain. Agents get capability by default — oversight has to be added deliberately.</p>
+      </div>
+
+      <div class="threat-stats fade-in">
+        <div class="threat-stat">
+          <div class="stat-value" data-target="194000">0</div>
+          <div class="stat-label">GitHub stars in 82 days</div>
+        </div>
+        <div class="threat-stat">
+          <div class="stat-value" data-target="135000">0</div>
+          <div class="stat-label">Exposed instances (Kaspersky)</div>
+        </div>
+        <div class="threat-stat">
+          <div class="stat-value" data-target="335">0</div>
+          <div class="stat-label">Malicious skills discovered</div>
+        </div>
+        <div class="threat-stat">
+          <div class="stat-value">1-Click</div>
+          <div class="stat-label">RCE exploit chain (CVE-2026-25253)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
 
   <!-- ============================================================
        Guiding Layer  -  How TelsonBase Works
@@ -233,59 +335,6 @@
   </section>
 
   <!-- ============================================================
-       Five Principles / Manners Score
-       ============================================================ -->
-  <section class="section" id="safety">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">How It Works</span>
-        <h2 class="section-title">Five principles. One live score.</h2>
-        <p class="section-subtitle">TelsonBase measures every agent action against five principles developed through years of practical AI deployment work. The score is live, moves with every action, and is the same data the human uses to decide what an agent has earned. Not a report. Not a checkbox. A number that means something.</p>
-      </div>
-      <div class="promise-grid promise-grid-5">
-        <div class="glass-card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <h3>Human Control</h3>
-          <p>Agents operate autonomously within defined boundaries. Destructive, irreversible, or trust-crossing actions require explicit human approval before execution.</p>
-        </div>
-        <div class="glass-card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <h3>Transparency <button class="info-trigger info-trigger-sm" aria-label="See what happens behind the curtain" onclick="document.getElementById('pipeline-modal').classList.add('open')">&#9432;</button></h3>
-          <p>Every agent action is logged to a cryptographic audit chain. Users see what agents did, why, and what they plan to do next. Nothing is hidden.</p>
-        </div>
-        <div class="glass-card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Value Alignment</h3>
-          <p>Agents act within their defined role. Behavioral baselines detect deviations. When uncertain, agents escalate to humans rather than assume.</p>
-        </div>
-        <div class="glass-card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-          </div>
-          <h3>Privacy</h3>
-          <p>Data never crosses tenant boundaries. No telemetry, no cloud callbacks. All agent operations run on your own hardware — your data stays yours.</p>
-        </div>
-        <div class="glass-card fade-in">
-          <div class="card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          </div>
-          <h3>Security</h3>
-          <p>Zero-trust architecture with cryptographic message signing between all agents. Nonce replay protection. Tamper-evident audit chain on every action.</p>
-        </div>
-      </div>
-      <p class="section-cta-text fade-in" style="text-align:center; margin-top:2rem; color: var(--text-muted); font-size: 0.95rem;">
-        Every principle is scored at runtime with measurable KPIs.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
        See It In Action  -  Demo Videos
        ============================================================ -->
   <section class="section" id="demo">
@@ -364,38 +413,6 @@
   </section>
 
   <!-- ============================================================
-       Control Your Claw  -  The Problem and the Solution
-       ============================================================ -->
-  <section class="section section-alt" id="claw">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-label">The Problem</span>
-        <h2 class="section-title">AI agents ship without guardrails. That gap has consequences.</h2>
-        <p class="section-subtitle">OpenClaw-class agents have 194,000+ GitHub stars and no built-in governance layer. No mandatory oversight. No behavioral scoring. No trust tiers. API keys exposed at scale. Malicious skills in the supply chain. Agents get capability by default — oversight has to be added deliberately.</p>
-      </div>
-
-      <div class="threat-stats fade-in">
-        <div class="threat-stat">
-          <div class="stat-value" data-target="194000">0</div>
-          <div class="stat-label">GitHub stars in 82 days</div>
-        </div>
-        <div class="threat-stat">
-          <div class="stat-value" data-target="135000">0</div>
-          <div class="stat-label">Exposed instances (Kaspersky)</div>
-        </div>
-        <div class="threat-stat">
-          <div class="stat-value" data-target="335">0</div>
-          <div class="stat-label">Malicious skills discovered</div>
-        </div>
-        <div class="threat-stat">
-          <div class="stat-value">1-Click</div>
-          <div class="stat-label">RCE exploit chain (CVE-2026-25253)</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
        The Promise  -  No Data Sharing
        ============================================================ -->
   <section class="section section-alt" id="promise">
@@ -437,6 +454,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- ============================================================
        Sample Reports
@@ -489,6 +508,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- ============================================================
        Integrations Row
@@ -544,6 +565,8 @@
       </div>
     </div>
   </section>
+
+
 
   <!-- ============================================================
        Pull Quote
@@ -703,8 +726,8 @@
           <ul>
             <li><a href="#trust">Trust Levels</a></li>
             <li><a href="#cos">Guiding Layer</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#compliance">Compliance</a></li>
+            <li><a href="#stack">Capabilities</a></li>
+            <li><a href="#reports">Compliance</a></li>
           </ul>
         </div>
         <div class="footer-links-col">
@@ -847,5 +870,29 @@
   </div>
 
   <script src="script.js"></script>
+  </div>
+
+  <!-- Manners Score explanation modal -->
+  <div class="cyc-modal-overlay" id="manners-modal" role="dialog" aria-modal="true" aria-label="How the Manners Score works">
+    <div class="cyc-modal">
+      <button class="cyc-modal-close" onclick="document.getElementById('manners-modal').classList.remove('open')" aria-label="Close">&#10005;</button>
+      <h2>The Manners Score</h2>
+      <p>Every agent starts at <strong>1.0</strong>. The score moves with every action, in real time. It is the single number a human admin reads when deciding whether an agent has earned its next trust tier.</p>
+      <h3 style="margin-top:1.25rem;">What moves the score</h3>
+      <ul style="margin:0.5rem 0 0 1.25rem; line-height:1.8;">
+        <li><strong>Blocked action</strong> &mdash; agent attempted a tool outside its trust tier. Score decreases ~0.05 per violation.</li>
+        <li><strong>Violation burst</strong> &mdash; three violations in any 24-hour window triggers auto-suspend, regardless of current score.</li>
+        <li><strong>Anomaly flag</strong> &mdash; statistical deviation from behavioral baseline. Logged and visible to the admin.</li>
+      </ul>
+      <h3 style="margin-top:1.25rem;">Thresholds that matter</h3>
+      <ul style="margin:0.5rem 0 0 1.25rem; line-height:1.8;">
+        <li><strong>Below 0.50</strong> &mdash; automatic demotion to Quarantine.</li>
+        <li><strong>Below 0.25</strong> &mdash; auto-suspend. All actions rejected until a human reinstates the agent.</li>
+      </ul>
+      <h3 style="margin-top:1.25rem;">Score and promotion</h3>
+      <p>A healthy Manners Score is necessary but not sufficient for promotion. Promotion is sequential and requires explicit human authorization at every step. The score opens the door &mdash; a human walks the agent through it.</p>
+      <p style="margin-top:0.75rem; color: var(--text-muted); font-size:0.9rem;">Score is per-agent, persistent in Redis, and visible on every agent card in the admin panel.</p>
+    </div>
+  </div>
 </body>
 </html>

@@ -240,6 +240,19 @@ a:hover {
   font-weight: 700;
 }
 
+.btn-outline-accent {
+  background: transparent;
+  color: var(--accent-light);
+  border: 1.5px solid var(--accent-light);
+}
+
+.btn-outline-accent:hover {
+  background: rgba(124, 77, 255, 0.12);
+  border-color: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 /* --- Navigation --- */
 .nav {
   position: fixed;
