@@ -1693,6 +1693,7 @@
             const [status, setStatus] = useState(DEMO.status);
             const [agents, setAgents] = useState(DEMO.agents);
             const [approvals, setApprovals] = useState(DEMO.approvals);
+            const [toolProposals, setToolProposals] = useState([]);
             const [anomalies, setAnomalies] = useState(DEMO.anomalies);
             const [anomalySummary, setAnomalySummary] = useState(DEMO.anomalySummary);
             const [relationships, setRelationships] = useState(DEMO.relationships);
@@ -1845,7 +1846,7 @@
                     // endpoint may not be live yet — proposal is still recorded locally
                 }
                 finalize();
-                setApprovals(prev=>[...prev,{request_id:'tool-req-'+Date.now(),agent_id:'dashboard_user',action:'Install_Tool',description:`Install proposal: ${toolName} — awaiting human approval before package enters environment.`,priority:'normal',created_at:new Date().toISOString(),payload:{tool_name:toolName}}]);
+                setToolProposals(prev=>[...prev,{request_id:'tool-req-'+Date.now(),agent_id:'dashboard_user',action:'Install_Tool',description:`Install proposal: ${toolName} — awaiting human approval before package enters environment.`,priority:'normal',created_at:new Date().toISOString(),payload:{tool_name:toolName}}]);
             };
 
             const handleApproveToolInstall = (toolId) => {
@@ -1864,6 +1865,7 @@
             };
 
             const handleApprovalDecision = async (id, approved, notes) => {
+                setToolProposals(prev=>prev.filter(a=>a.request_id!==id));
                 if (isDemo) { setApprovals(prev=>prev.filter(a=>a.request_id!==id)); return; }
                 try { await createApi(apiUrl).post(`/v1/approvals/${id}/${approved?'approve':'reject'}`, {decided_by:'dashboard_user',notes:notes||undefined}); setApprovals(prev=>prev.filter(a=>a.request_id!==id)); } catch(e){ console.error(e); }
             };
@@ -1931,7 +1933,7 @@
                 { id:'agents', label:'Agents', icon:'zap', count:agents.length },
                 { id:'identity', label:'Agent Identity', icon:'key', count:didAgents.length },
                 { id:'openclaw', label:'OpenClaw', icon:'shield', count:(openclawInstances||[]).length },
-                { id:'approvals', label:'Approvals', icon:'checkCircle', count:approvals.length },
+                { id:'approvals', label:'Approvals', icon:'checkCircle', count:approvals.length+toolProposals.length },
                 { id:'anomalies', label:'Anomalies', icon:'alertTriangle', count:anomalies.length },
                 { id:'audit', label:'Audit Trail', icon:'fileText' },
                 { id:'tenants', label:'Tenants', icon:'building' },
@@ -2113,8 +2115,8 @@
                         </div>
                     </div>)}
 
-                    {tab === 'approvals' && (<div><h2 className="text-xl font-bold text-white mb-4">Pending Approvals{approvals.length>0 && <span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>({approvals.length} pending)</span>}</h2>
-                        {approvals.length===0 ? <EmptyState icon="checkCircle" title="No pending approvals" subtitle="All agents operating within approved parameters"/> : <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">{approvals.map(r=><ApprovalCard key={r.request_id} request={r} onDecision={handleApprovalDecision} isDemo={isDemo}/>)}</div>}
+                    {tab === 'approvals' && (<div><h2 className="text-xl font-bold text-white mb-4">Pending Approvals{(approvals.length+toolProposals.length)>0 && <span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>{(approvals.length+toolProposals.length)} pending</span>}</h2>
+                        {(approvals.length+toolProposals.length)===0 ? <EmptyState icon="checkCircle" title="No pending approvals" subtitle="All agents operating within approved parameters"/> : <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">{[...approvals,...toolProposals].map(r=><ApprovalCard key={r.request_id} request={r} onDecision={handleApprovalDecision} isDemo={isDemo}/>)}</div>}
                     </div>)}
 
                     {tab === 'anomalies' && (<div><h2 className="text-xl font-bold text-white mb-4">Anomaly Detection{anomalies.length>0 && <span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>({anomalies.length} unresolved)</span>}</h2>
