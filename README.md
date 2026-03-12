@@ -207,11 +207,11 @@ Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to 
 **Admin Dashboard - system health, audit chain status, anomaly summary at a glance**
 ![Dashboard Overview](screenshots/dashboard-overview.png)
 
-**OpenClaw Governance - six agents across all five trust tiers with live behavioral metrics**
-*`senior_research_agent` is in Quarantine with a low Manners score - the system is blocking it automatically until behavior improves. That's the point.*
-![OpenClaw Governance](screenshots/openclaw-governance.png)
+**Agent Governance - agents across trust tiers with live Manners scores and the full Trust Level Governance Matrix**
+*`invoice_agent` is at Quarantine, `analytics_agent` at Probation. Trust is earned — not assumed.*
+![Agent Governance](screenshots/openclaw-governance.png)
 
-**Audit Trail - 1,247 SHA-256 hash-chained entries, integrity verified**
+**Audit Trail - 500 SHA-256 hash-chained entries, tamper-evident and export-ready**
 ![Audit Trail](screenshots/audit-trail.png)
 
 **User Console - the non-admin view. Pending approvals, recent activity, agent list**
