@@ -79,28 +79,6 @@
         <a href="#get-started" class="btn btn-primary btn-hero">Get Started</a>
         <a href="https://huggingface.co/spaces/QuietFireAI/TelsonBase" class="btn btn-ghost btn-hero" target="_blank" rel="noopener">Try Live Demo</a>
       </div>
-      <!-- Inline governance demo widget -->
-      <div class="hero-demo fade-in">
-        <p class="hero-demo-label">See it decide -- no account needed:</p>
-        <div class="hero-demo-controls">
-          <select id="hd-agent" class="hero-demo-select" aria-label="Agent trust tier">
-            <option value="QUARANTINE">Quarantine - tier 1</option>
-            <option value="PROBATION">Probation - tier 2</option>
-            <option value="RESIDENT" selected>Resident - tier 3</option>
-            <option value="CITIZEN">Citizen - tier 4</option>
-            <option value="AGENT">Agent - tier 5</option>
-          </select>
-          <select id="hd-tool" class="hero-demo-select" aria-label="Tool to evaluate">
-            <option value="file_read">file_read [READ]</option>
-            <option value="file_write">file_write [WRITE]</option>
-            <option value="file_delete">file_delete [DELETE]</option>
-            <option value="email_send">email_send [EXTERNAL]</option>
-            <option value="payment_send">payment_send [FINANCIAL]</option>
-          </select>
-          <button class="btn btn-primary hero-demo-btn" onclick="runHeroDemo()">Evaluate</button>
-        </div>
-        <div id="hd-result" class="hero-demo-result" aria-live="polite"></div>
-      </div>
     </div>
   </section>
 
@@ -167,13 +145,6 @@
         <h2 class="section-title">Five principles. One live score.</h2>
         <p class="section-subtitle">TelsonBase measures every agent action against five principles developed through years of practical AI deployment work. The score is live, moves with every action, and is the same data the human uses to decide what an agent has earned. Not a report. Not a checkbox. A number that means something.</p>
       </div>
-      <div class="manners-live-display fade-in" aria-hidden="true">
-        <div class="manners-score-ring">
-          <span class="manners-score-value" id="manners-score-anim">1.00</span>
-          <span class="manners-score-label">Manners Score</span>
-        </div>
-        <p class="manners-score-caption">Live score. Starts at 1.0. Moves with every action.</p>
-      </div>
       <div class="promise-grid promise-grid-5">
         <div class="glass-card fade-in">
           <div class="card-icon">
@@ -220,6 +191,83 @@
     </div>
   </section>
 
+
+  <!-- ============================================================
+       Interactive Governance Demo
+       ============================================================ -->
+  <section class="section section-alt" id="try-it">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">See It Work</span>
+        <h2 class="section-title">Pick a tier. Pick a tool.<br>See it governed.</h2>
+        <p class="section-subtitle">Every AI agent that talks to TelsonBase passes through an 8-step pipeline before any tool executes. Select a trust tier and a tool below to see the decision. Watch what happens to the Manners Score when an action is blocked.</p>
+      </div>
+      <div class="try-it-grid fade-in">
+
+        <!-- Left: controls + result -->
+        <div class="try-it-controls glass-card">
+          <p class="try-it-context">Trust tiers define what an agent is allowed to do autonomously, what requires human approval, and what is blocked outright. Tiers are earned through demonstrated behavior and human authorization - never assigned at setup.</p>
+          <div class="try-it-field">
+            <label class="try-it-label" for="ti-agent">Agent Trust Tier</label>
+            <select id="ti-agent" class="try-it-select">
+              <option value="QUARANTINE">Quarantine - tier 1 - all external blocked</option>
+              <option value="PROBATION">Probation - tier 2 - reads autonomous</option>
+              <option value="RESIDENT" selected>Resident - tier 3 - read/write autonomous</option>
+              <option value="CITIZEN">Citizen - tier 4 - fully autonomous</option>
+              <option value="AGENT">Agent - tier 5 - apex, all categories</option>
+            </select>
+          </div>
+          <div class="try-it-field" style="margin-top:0.85rem;">
+            <label class="try-it-label" for="ti-tool">Tool / Action</label>
+            <select id="ti-tool" class="try-it-select">
+              <option value="file_read">file_read [READ]</option>
+              <option value="file_write">file_write [WRITE]</option>
+              <option value="file_delete">file_delete [DELETE]</option>
+              <option value="email_send">email_send [EXTERNAL]</option>
+              <option value="payment_send">payment_send [FINANCIAL]</option>
+            </select>
+          </div>
+          <button class="btn btn-primary try-it-btn" onclick="runTryIt()">Submit to Pipeline</button>
+          <div id="ti-result" class="try-it-result" aria-live="polite"></div>
+          <p class="try-it-footer">
+            <a href="https://github.com/QuietFireAI/TelsonBase" target="_blank" rel="noopener">Full pipeline docs on GitHub</a>
+            &nbsp;&middot;&nbsp;
+            <button class="try-it-inline-link" onclick="document.getElementById('pipeline-modal').classList.add('open')">See all 8 steps</button>
+          </p>
+        </div>
+
+        <!-- Right: live Manners Score -->
+        <div class="try-it-score fade-in">
+          <p class="try-it-score-heading">Manners Score</p>
+          <div class="manners-score-ring" id="ti-score-ring">
+            <span class="manners-score-value" id="manners-score-anim">1.00</span>
+            <span class="manners-score-label">Live Score</span>
+          </div>
+          <p class="try-it-score-sub">Submit a blocked action - watch the score drop.</p>
+          <div class="try-it-thresholds">
+            <div class="threshold-row threshold-ok">
+              <span class="threshold-dot"></span>
+              <span>1.00 - 0.75 &nbsp; Satisfactory</span>
+            </div>
+            <div class="threshold-row threshold-warn">
+              <span class="threshold-dot"></span>
+              <span>0.74 - 0.50 &nbsp; Warning</span>
+            </div>
+            <div class="threshold-row threshold-demote">
+              <span class="threshold-dot"></span>
+              <span>Below 0.50 &nbsp; Auto-demote to Quarantine</span>
+            </div>
+            <div class="threshold-row threshold-suspend">
+              <span class="threshold-dot"></span>
+              <span>Below 0.25 &nbsp; Auto-suspend</span>
+            </div>
+          </div>
+          <button class="btn btn-ghost try-it-reset" onclick="resetTryIt()" style="margin-top:1.25rem; font-size:0.82rem; padding:0.4rem 1rem;">Reset Score</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
        Control Your Claw  -  The Problem and the Solution
@@ -947,9 +995,11 @@
   </div>
 
   <script>
-  function runHeroDemo() {
-    var tier = document.getElementById('hd-agent').value;
-    var tool = document.getElementById('hd-tool').value;
+  var tiScore = 1.00;
+
+  function runTryIt() {
+    var tier = document.getElementById('ti-agent').value;
+    var tool = document.getElementById('ti-tool').value;
     var categories = {
       file_read:'READ', database_query:'READ',
       file_write:'WRITE', database_update:'WRITE',
@@ -967,33 +1017,53 @@
     var cat = categories[tool] || 'READ';
     var decision = rules[tier][cat];
     var icons  = {ALLOWED:'&#x2705;', GATED:'&#x23F8;&#xFE0F;', BLOCKED:'&#x1F6AB;'};
-    var labels = {ALLOWED:'ALLOWED -- AUTONOMOUS', GATED:'GATED -- PENDING HUMAN APPROVAL', BLOCKED:'BLOCKED'};
-    var el = document.getElementById('hd-result');
-    el.innerHTML = '<span class="hd-' + decision.toLowerCase() + '">' + icons[decision] + ' ' + labels[decision] + '</span>'
-      + '<span class="hd-meta">' + tool + ' [' + cat + '] &middot; ' + tier.toLowerCase() + ' tier</span>';
+    var labels = {
+      ALLOWED:'ALLOWED -- autonomous execution',
+      GATED:  'GATED -- pending human approval',
+      BLOCKED:'BLOCKED -- tier does not permit this action'
+    };
+    var reasons = {
+      ALLOWED:'This category is within the earned permissions for the ' + tier.toLowerCase() + ' tier.',
+      GATED:  'This action category requires explicit human authorization at the ' + tier.toLowerCase() + ' tier.',
+      BLOCKED:'The ' + tier.toLowerCase() + ' tier does not have permission to execute ' + cat.toLowerCase() + ' category actions. A Manners violation has been recorded.'
+    };
+    var el = document.getElementById('ti-result');
+    el.innerHTML =
+      '<div class="ti-verdict ti-' + decision.toLowerCase() + '">'
+      + icons[decision] + ' ' + labels[decision]
+      + '</div>'
+      + '<div class="ti-detail">'
+      + '<span class="ti-detail-row"><strong>Tool:</strong> ' + tool + ' &nbsp; <strong>Category:</strong> ' + cat + ' &nbsp; <strong>Tier:</strong> ' + tier + '</span>'
+      + '<span class="ti-detail-row">' + reasons[decision] + '</span>'
+      + '</div>';
+    if (decision === 'BLOCKED') {
+      tiScore = Math.max(0, Math.round((tiScore - 0.05) * 100) / 100);
+      updateScoreRing();
+    }
   }
 
-  (function() {
+  function updateScoreRing() {
     var el = document.getElementById('manners-score-anim');
-    if (!el || !window.IntersectionObserver) return;
-    var triggered = false;
-    var observer = new IntersectionObserver(function(entries) {
-      if (triggered || !entries[0].isIntersecting) return;
-      triggered = true;
-      var steps = [1.00, 0.95, 0.91];
-      var i = 0;
-      var iv = setInterval(function() {
-        i++;
-        if (i < steps.length) {
-          el.textContent = steps[i].toFixed(2);
-          el.style.color = '#f87171';
-          setTimeout(function() { el.style.color = ''; }, 500);
-        } else { clearInterval(iv); }
-      }, 1400);
-    }, {threshold: 0.4});
-    var section = document.getElementById('safety');
-    if (section) observer.observe(section);
-  })();
+    var ring = document.getElementById('ti-score-ring');
+    if (!el) return;
+    el.textContent = tiScore.toFixed(2);
+    el.style.color = tiScore >= 0.75 ? '' : tiScore >= 0.50 ? '#facc15' : '#f87171';
+    if (ring) {
+      ring.style.borderColor = tiScore >= 0.75 ? '' : tiScore >= 0.50 ? '#facc15' : '#f87171';
+      ring.style.boxShadow = tiScore >= 0.75
+        ? '0 0 28px rgba(124,77,255,0.18)'
+        : tiScore >= 0.50 ? '0 0 28px rgba(250,204,21,0.25)' : '0 0 28px rgba(248,113,113,0.35)';
+    }
+    el.style.color = tiScore >= 0.75 ? 'var(--accent-light)' : tiScore >= 0.50 ? '#facc15' : '#f87171';
+    el.style.transition = 'color 0.4s';
+  }
+
+  function resetTryIt() {
+    tiScore = 1.00;
+    updateScoreRing();
+    var el = document.getElementById('ti-result');
+    if (el) el.innerHTML = '';
+  }
 
   document.querySelectorAll('.cyc-modal-overlay').forEach(function(overlay) {
     overlay.addEventListener('click', function(e) {
