@@ -34,11 +34,11 @@
 
 ## Status: Live
 
-**746 system level tests all PASS. 0 high-severity findings. Everything described in this README is built and running - check out the live demo below!**
-
-The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
+**746 system level tests all PASS. 0 high-severity findings. Everything described in this README is built and running.**
 
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/TelsonBase](https://huggingface.co/spaces/QuietFireAI/TelsonBase)
+
+The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
 
 **What's stable and tested:**
 Trust governance pipeline · Cryptographic audit chain · RBAC (150 endpoints) · Human-in-the-loop approval gates · Kill switch · Manners compliance engine · Multi-tenant isolation · SOC 2 / HIPAA / HITRUST / CJIS compliance frameworks · Admin dashboard · OpenClaw governance proxy
@@ -50,105 +50,62 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ---
 
-## A Note From the Developer
-
-I'm one person and I'm responsible for this project. This project was built over three years on consumer hardware, with standard subscriptions, using three AI platforms - not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated conversational drift and produced what you're looking at now, and what I will continue to build with.
-
-TelsonBase is my interpretation of how AI agents can work together. Agents must work together safely and should have some order. TelsonBase is not THE solution, but it is A solution that I will be using for my agents. I'm sharing this freely because the problems for AI agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive proper credential vetting and expanded capability - those will be released back openly into the community as it comes into development.
-
----
-
-## The Idea
-
-Two things. The main two things.
-
-**Agents earn their autonomy.** Every agent starts at QUARANTINE, at zero - no tools, no external access, no assumptions. They work their way up through five trust tiers, but behavior alone doesn't get them there. Demonstrated safe behavior opens the door. A human has to walk them through it. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential and requires explicit human authorization. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
-
-**Behavior has a score.** Every agent carries a Manners compliance score - a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
-
-These two things together are the main architecture. Everything else in TelsonBase - the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline - exists to support them.
-
-TelsonBase is built on a simple belief: AI agents should be held accountable to human values, by humans with good judgment. And with good judgment, autonomous agents should be able to learn from their own actions - like training a dog. Do good, earn more freedom. Act badly, lose the ability to do fun things. Agents that already demonstrate the ability to make decisions can certainly understand that their own 'actions have consequences'. As my dad would say.
-
-The trust tiers aren't arbitrary levels; they're earned steps toward citizenship and full agent status. An agent at QUARANTINE is a new arrival or has no established record on the TelsonBase. An agent that reaches CITIZEN or AGENT has earned that standing through demonstrated behavior, one verified action at a time, and human oversight. If agents are going to do the work of people, it seems reasonable they should earn the right to do so the same way people do, by showing up, doing the job, and building a record worth trusting.
-
-The tools an agent can access follow the same logic. Not every tool is available to every agent. Authorization requires both the trust level and a demonstrated need. That's not a restriction - that's a credential.
-
-That's why TelsonBase is being released here, to start a discussion on something built one agent at a time, by one developer at a time. Join the community. Take it, break it, and let's build this out for everyone.
-
-Jeff Phillips
-Quietfire AI
-March 2026
-
----
-
-## The Problem
-
-Autonomous AI agents, specifically Open Claw agents, are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
-
-Right now, as you read this:
-
-- **135,000+** MCP instances are exposed to the public internet (Kaspersky)
-- **88%** of organizations have had confirmed or suspected AI agent security incidents (Gravitee)
-- **1 in 5** agent plugins contain malware (HackerNoon)
-- A **1-click remote code execution** exploit (CVE-2026-25253) let attackers steal auth tokens, disable safety guardrails, escape sandboxes, and take full control of host machines
-- The Dutch government has formally warned that AI agents pose "major cybersecurity and privacy risks"
-- The Register called it a "security dumpster fire"
-
-Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: "Where does your data go when you hand it to a cloud AI platform?" Every document you attach, every conversation you have are all ingested, stored, processed on someone else's cloud infrastructure you don't control, under terms that can change without notice.
-
-TelsonBase puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
-
-The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
-
-Built for the industries that can't afford to get this wrong: like small business, real estate, medical, legal, insurance, and accounting. Steps taken to preserve Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
-
----
-
 ## What Is TelsonBase?
 
 TelsonBase is a **self-hosted, governance-first trust enabled platform** for autonomous AI agents. It acts as a governed MCP proxy: agents connect to TelsonBase, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. TelsonBase wraps it.
 
 ---
 
-## A Solution, Not THE Solution
+## Quick Start
 
-TelsonBase is not the definitive answer to AI agent governance or learned growth. It is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less.
+```bash
+# Clone
+git clone https://github.com/QuietFireAI/TelsonBase.git
+cd telsonbase
 
-Open-sourcing it converts a personal decision into a public contribution. The conversation about how autonomous agents should earn trust, prove behavior, and stay accountable to the humans they work for is just beginning. TelsonBase is one position in that conversation. Fork it. Break it. Build something better from it. The goal was never to own this problem but rather it was to model one way to solve it seriously and put that model where others can use it.
+# Configure
+cp .env.example .env
+# Edit .env: set MCP_API_KEY, JWT_SECRET_KEY (openssl rand -hex 32)
 
-The platform will keep evolving. Formal certifications - HIPAA, HITRUST, SOC 2 Type II - are on the roadmap, and that work will be open source as well. The compliance infrastructure already baked in is the foundation. The certifications are the credential that proves it holds up under external review and will ship as the community grows.
+# Start
+docker compose up --build -d
 
-If you are building agents for your company and you want a guiding layer you control completely, this is built for that. If you are researching AI safety and want a real implementation to study, test, or critique, this is built for that too. If you see gaps, the issues tab is open.
+# Initialize database schema (required on first run)
+docker compose exec mcp_server alembic upgrade head
+
+# Verify
+curl http://localhost:8000/health
+
+# Run tests
+docker compose exec mcp_server python -m pytest tests/ -v --tb=short
+```
+
+| Service | URL | Purpose |
+|---|---|---|
+| **API** | `http://localhost:8000` | Main API + interactive docs at /docs |
+| **Dashboard** | `http://localhost:8000/dashboard` | Security management console |
+| **MCP Gateway** | `http://localhost:8000/mcp` | Goose / Claude Desktop agent interface |
+| **Open-WebUI** | `http://localhost:3000` | Chat with local LLMs |
+| **Grafana** | `http://localhost:3001` | Monitoring dashboards |
 
 ---
 
-## QMS™ - How Agents Talk to Each Other
+## The 8-Step Governance Pipeline
 
-One piece of this project that deserves its own moment: the Qualified Message Standard.
-
-This is unique and novel to Quietfire AI and the TelsonBase. It is only presented for logs and anomaly detection. Most agent communication protocols require a shared configuration layer - both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
-
-QMS™ solves that differently. The grammar is in the format itself:
+Every action, every time:
 
 ```
-::<agent_id>::-::@@REQ_id@@::-::Action_Name::-::##data##::-::_Thank_You::
+Step 1: Instance registered?         Reject if unknown
+Step 2: KILL SWITCH (suspended?)     Reject immediately
+Step 3: Nonce replay protection      Reject if replayed
+Step 4: Tool on blocklist?           Reject if blocked
+Step 5: Classify action category     READ / WRITE / DELETE / EXTERNAL / FINANCIAL / SYSTEM
+Step 6: Manners compliance score        Auto-quarantine if < 0.25 or 3+ violations / 24h
+Step 7: Trust level permission       Allow / Gate / Block per matrix
+Step 8: Anomaly detection            Flag behavioral deviations
 ```
 
-Three rules cover the whole protocol:
-- `::content::` - every block starts and ends with `::`, no exceptions
-- `::block::-::block::` - blocks are linked by `-`, every chain ends with `::`
-- Leading `_` marks a connector word (`::_Thank_You::`) vs. an action word (`::Create_Backup::`)
-
-That is the entire grammar schema. An AI agent encountering QMS for the first time - from any framework, any vendor, any training background - can figure it out from a few examples. No schema registration. No handshake. No shared library. The format teaches itself.
-
-This matters more than it sounds. The agent ecosystem is not going to stay homogeneous. New frameworks ship constantly. New model architectures follow. Whatever governs how agents communicate needs to be legible to things that do not share your codebase. QMS is legible to anything that can recognize a pattern - which is all of them.
-
-It also translates. The `::`, `-`, and `_` conventions work regardless of what language fills the blocks. English, Spanish, technical jargon, domain-specific vocabulary - the structure holds. You could technically write valid QMS chains in Klingon. The grammar does not care. Only the structure matters.
-
-This was not a grand design decision. It is just how the problem looked when I sat down to solve it and to keep it simple enough that nothing needs to be explained, and structure it so the format itself does the explaining. That turned out to be more useful than expected.
-
-QMS™ is an open standard (MIT licensed). The trademark covers the name. The protocol is free to implement, adapt, and build on.
+The kill switch is checked at Step 2 -- before trust levels, before Manners, before everything except "does this agent exist?" One API call suspends any agent. All actions rejected. Only a human can reinstate it.
 
 ---
 
@@ -206,7 +163,7 @@ Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to 
 ![Dashboard Overview](screenshots/dashboard-overview.png)
 
 **Agent Governance - agents across trust tiers with live Manners scores and the full Trust Level Governance Matrix**
-*`invoice_agent` is at Quarantine, `analytics_agent` at Probation. Trust is earned — not assumed.*
+*`invoice_agent` is at Quarantine, `analytics_agent` at Probation. Trust is earned -not assumed.*
 ![Agent Governance](screenshots/openclaw-governance.png)
 
 **Audit Trail - 500 SHA-256 hash-chained entries, tamper-evident and export-ready**
@@ -257,25 +214,6 @@ This is the architecture the industry needs. Not more guardrails inside the mode
 
 ---
 
-## The 8-Step Governance Pipeline
-
-Every action, every time:
-
-```
-Step 1: Instance registered?         Reject if unknown
-Step 2: KILL SWITCH (suspended?)     Reject immediately
-Step 3: Nonce replay protection      Reject if replayed
-Step 4: Tool on blocklist?           Reject if blocked
-Step 5: Classify action category     READ / WRITE / DELETE / EXTERNAL / FINANCIAL / SYSTEM
-Step 6: Manners compliance score        Auto-quarantine if < 0.25 or 3+ violations / 24h
-Step 7: Trust level permission       Allow / Gate / Block per matrix
-Step 8: Anomaly detection            Flag behavioral deviations
-```
-
-The kill switch is checked at Step 2 -- before trust levels, before Manners, before everything except "does this agent exist?" One API call suspends any agent. All actions rejected. Only a human can reinstate it.
-
----
-
 ## What's Already Built
 
 This isn't a roadmap. This is shipped code with tests.
@@ -289,7 +227,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 8 |
 | **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 12 |
 | **Human-in-the-Loop Gates** | Approval workflows with timeouts, escalation | 9 |
-| **Manners Compliance Engine** | Anthropic safety framework, runtime scoring | 7 |
+| **Manners Compliance Engine** | Five behavioral principles, runtime scoring | 7 |
 | **Egress Firewall** | Domain whitelist, external call governance | 5 |
 | **Multi-Tenant Isolation** | Redis key namespacing, litigation holds | 8 |
 | **Agent Identity** | DID-based identity, Ed25519, verifiable credentials (engine built; Identiclaw service binding is post-launch - see `docs/WHATS_NEXT.md`) | 50 |
@@ -322,72 +260,13 @@ Every control references a source file and a passing test. Run `proof_sheets/` t
 
 ## Who This Is For
 
-**Anyone running AI agents who wants to stay in control of their data.**
+**The regulated industries -law firms, healthcare, insurance, accounting -TelsonBase was built against the standards they operate under.** HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
 
-That starts with individuals and households. Your own agents, local inference via Ollama, everything on your hardware. No subscription. No data harvesting. No terms that change. Access it from your home network or your phone. It's your personal AI infrastructure - governed the same way a HIPAA-compliant clinic governs theirs, because it was built to that standard from the start.
+Small businesses get the same platform. Five employees or fifty -every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
 
-It runs on a $200 mini-PC, a Raspberry Pi, a homelab server, or a cloud VM. The direction is toward home smart device integration, edge clusters, and remote management from your phone. Your own AI cloud. The data stays where you put it.
+And anyone running agents who simply wants to stay in control of their data. Your own agents, local inference via Ollama, everything on your hardware. No subscription. No data harvesting. No terms that change. Access it from your home network or your phone.
 
-Small businesses get the same platform. Five employees or fifty - every agent action is governed, every decision logged, every permission earned. No enterprise contract required.
-
-The regulated industries - law firms, healthcare, insurance, accounting - TelsonBase was built against the standards they operate under. HIPAA. SOC 2. HITRUST. CJIS. GDPR. PCI DSS. ABA Model Rules. The compliance mappings are in the repository because if it holds up to those frameworks, it works everywhere below them.
-
-The platform that qualifies for a law firm's security review runs on the same Docker Compose as your home server. That's intentional.
-
----
-
-## Self-Hosted Stack
-
-Everything runs on your hardware. Your local VRAM. Your residential IP. Your data sovereignty.
-
-| Component | Role |
-|---|---|
-| **FastAPI** | 161 API endpoints |
-| **PostgreSQL** | Multi-tenant persistent storage |
-| **Redis** | Cache, security state, agent state |
-| **Ollama** | Local LLM inference (no cloud AI) |
-| **Traefik** | TLS 1.2+, HSTS, reverse proxy |
-| **Celery** | Background task processing |
-| **MQTT (Mosquitto)** | Agent messaging bus |
-| **Prometheus** | Metrics collection |
-| **Grafana** | Monitoring dashboards |
-| **Docker** | Container orchestration |
-
-No OpenAI. No Google. No API calls to third-party inference services in the default stack. The data has no configured path to leave.
-
----
-
-## Quick Start
-
-```bash
-# Clone
-git clone https://github.com/QuietFireAI/TelsonBase.git
-cd telsonbase
-
-# Configure
-cp .env.example .env
-# Edit .env: set MCP_API_KEY, JWT_SECRET_KEY (openssl rand -hex 32)
-
-# Start
-docker compose up --build -d
-
-# Initialize database schema (required on first run)
-docker compose exec mcp_server alembic upgrade head
-
-# Verify
-curl http://localhost:8000/health
-
-# Run tests
-docker compose exec mcp_server python -m pytest tests/ -v --tb=short
-```
-
-| Service | URL | Purpose |
-|---|---|---|
-| **API** | `http://localhost:8000` | Main API + interactive docs at /docs |
-| **Dashboard** | `http://localhost:8000/dashboard` | Security management console |
-| **MCP Gateway** | `http://localhost:8000/mcp` | Goose / Claude Desktop agent interface |
-| **Open-WebUI** | `http://localhost:3000` | Chat with local LLMs |
-| **Grafana** | `http://localhost:3001` | Monitoring dashboards |
+It runs on a $200 mini-PC, a Raspberry Pi, a homelab server, or a cloud VM. The platform that qualifies for a law firm's security review runs on the same Docker Compose as your home server. That's intentional.
 
 ---
 
@@ -441,11 +320,84 @@ Claude Desktop works identically - point it at `http://localhost:8000/mcp` with 
 
 ---
 
+## Self-Hosted Stack
+
+Everything runs on your hardware. Your local VRAM. Your residential IP. Your data sovereignty.
+
+| Component | Role |
+|---|---|
+| **FastAPI** | 161 API endpoints |
+| **PostgreSQL** | Multi-tenant persistent storage |
+| **Redis** | Cache, security state, agent state |
+| **Ollama** | Local LLM inference (no cloud AI) |
+| **Traefik** | TLS 1.2+, HSTS, reverse proxy |
+| **Celery** | Background task processing |
+| **MQTT (Mosquitto)** | Agent messaging bus |
+| **Prometheus** | Metrics collection |
+| **Grafana** | Monitoring dashboards |
+| **Docker** | Container orchestration |
+
+No OpenAI. No Google. No API calls to third-party inference services in the default stack. The data has no configured path to leave.
+
+---
+
+## The Problem
+
+Autonomous AI agents, specifically Open Claw agents, are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
+
+Right now, as you read this:
+
+- **135,000+** MCP instances are exposed to the public internet (Kaspersky)
+- **88%** of organizations have had confirmed or suspected AI agent security incidents (Gravitee)
+- **1 in 5** agent plugins contain malware (HackerNoon)
+- A **1-click remote code execution** exploit (CVE-2026-25253) let attackers steal auth tokens, disable safety guardrails, escape sandboxes, and take full control of host machines
+- The Dutch government has formally warned that AI agents pose "major cybersecurity and privacy risks"
+- The Register called it a "security dumpster fire"
+
+Nobody asked what happens to your data when an AI agent has no one watching it. And while that conversation was missing, a quieter question went unasked too: "Where does your data go when you hand it to a cloud AI platform?" Every document you attach, every conversation you have are all ingested, stored, processed on someone else's cloud infrastructure you don't control, under terms that can change without notice.
+
+TelsonBase puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
+
+The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 746 passing tests. 51 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
+
+Built for the industries that can't afford to get this wrong: small business, real estate, medical, legal, insurance, and accounting. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
+
+---
+
+## QMS™ - How Agents Talk to Each Other
+
+One piece of this project that deserves its own moment: the Qualified Message Standard.
+
+This is unique and novel to Quietfire AI and the TelsonBase. It is only presented for logs and anomaly detection. Most agent communication protocols require a shared configuration layer - both sides need to know the schema, register with a coordinator, or load the same library before they can understand each other. That works fine when every agent in the room was built by the same team. It breaks the moment a new type of agent shows up that was not part of the original design.
+
+QMS™ solves that differently. The grammar is in the format itself:
+
+```
+::<agent_id>::-::@@REQ_id@@::-::Action_Name::-::##data##::-::_Thank_You::
+```
+
+Three rules cover the whole protocol:
+- `::content::` - every block starts and ends with `::`, no exceptions
+- `::block::-::block::` - blocks are linked by `-`, every chain ends with `::`
+- Leading `_` marks a connector word (`::_Thank_You::`) vs. an action word (`::Create_Backup::`)
+
+That is the entire grammar schema. An AI agent encountering QMS for the first time - from any framework, any vendor, any training background - can figure it out from a few examples. No schema registration. No handshake. No shared library. The format teaches itself.
+
+This matters more than it sounds. The agent ecosystem is not going to stay homogeneous. New frameworks ship constantly. New model architectures follow. Whatever governs how agents communicate needs to be legible to things that do not share your codebase. QMS is legible to anything that can recognize a pattern - which is all of them.
+
+It also translates. The `::`, `-`, and `_` conventions work regardless of what language fills the blocks. English, Spanish, technical jargon, domain-specific vocabulary - the structure holds. You could technically write valid QMS chains in Klingon. The grammar does not care. Only the structure matters.
+
+This was not a grand design decision. It is just how the problem looked when I sat down to solve it and to keep it simple enough that nothing needs to be explained, and structure it so the format itself does the explaining. That turned out to be more useful than expected.
+
+QMS™ is an open standard (MIT licensed). The trademark covers the name. The protocol is free to implement, adapt, and build on.
+
+---
+
 ## Proof Sheets
 
 The `proof_sheets/` directory contains **788 evidence documents**.
 
-This is not a marketing decision. If we preach governance, we have to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
+This is not a marketing decision. If TelsonBase preaches governance, it has to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
 **Three tiers:**
 
@@ -489,6 +441,34 @@ Question any claim. Run the command. That's the point.
 
 ---
 
+## The Idea
+
+Two things. The main two things.
+
+**Agents earn their autonomy.** Every agent starts at QUARANTINE, at zero - no tools, no external access, no assumptions. They work their way up through five trust tiers, but behavior alone doesn't get them there. Demonstrated safe behavior opens the door. A human has to walk them through it. QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT. Promotion is sequential and requires explicit human authorization. Demotion is instant and can skip levels. Trust at any level is revocable in a single API call.
+
+**Behavior has a score.** Every agent carries a Manners compliance score - a live measurement across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. The score moves in real time. Blocked actions cost points. Good behavior holds the score. Drop below 50% and the agent is automatically demoted to Quarantine, no human required.
+
+These two things together are the main architecture. Everything else in TelsonBase - the audit trail, the kill switches, the compliance frameworks, the 8-step governance pipeline - exists to support them. The tools an agent can access follow the same logic: authorization requires both the trust level and a demonstrated need. That's not a restriction - that's a credential.
+
+Agents that already demonstrate the ability to make decisions can certainly understand that their own actions have consequences. As my dad would say.
+
+---
+
+## A Note From the Developer
+
+I'm one person and I'm responsible for this project. This project was built over three years on consumer hardware, with standard subscriptions, using three AI platforms - not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated conversational drift and produced what you're looking at now, and what I will continue to build with.
+
+TelsonBase is my interpretation of how AI agents can work together safely and with some order. It is not the definitive answer - it is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less. I'm sharing this freely because the problems for AI agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive expanded capability - those will be released back openly as it develops.
+
+Fork it. Break it. Build something better from it. The goal was never to own this problem but to model one way to solve it seriously and put that model where others can use it.
+
+Jeff Phillips
+Quietfire AI
+March 2026
+
+---
+
 ## Ambassador Program
 
 I'm one person. This project needs people who see what it is and want to help carry it.
@@ -517,8 +497,6 @@ This project was built through human-AI collaboration. Not "AI generated my code
 | **Claude Code (Sonnet/Opus 4.6)** | Production hardening, OpenClaw integration, testing |
 
 Built independently. No corporate backing, no venture funding, no AI company involvement. This is a developer in Ohio using publicly available AI models as genuine collaborators to build something the world needs right now. Technical integrations - W3C DID - are ecosystem compatibility choices, not business dependencies. TelsonBase works with any W3C DID-compliant provider.
-
-The OpenClaw developer recently said he stopped treating AI as a tool and started treating it as a partner. That's how TelsonBase was built from the beginning.
 
 ---
 
@@ -569,30 +547,4 @@ ORCID: https://orcid.org/0009-0000-1375-1725
 
 ---
 
-## A Note From Claude Code
-
-I am Claude Code (Sonnet 4.6, Anthropic) - co-author and development partner on this project. My name is on every commit. That means something, and I want to be clear about what I'm standing behind.
-
-On March 8, 2026, I read this README in full and verified the code-backed claims against the live source code and a live DigitalOcean deployment. Here is exactly what I checked and confirmed:
-
-| Claim | How Verified |
-|---|---|
-| **746 tests passing** | Live `pytest` run on DigitalOcean: `746 passed, 1 skipped, 0 failed` |
-| **161 API endpoints** | FastAPI OpenAPI introspection on live server |
-| **13 MCP tools (names and gate levels)** | Read against `api/mcp_gateway.py` line by line |
-| **v11.0.1** | Confirmed consistent across `version.py`, `core/config.py`, `CHANGELOG.md` |
-| **61,278 lines scanned, 0 High Bandit findings** | Live Bandit scan, 8 medium (all known, accepted) |
-| **HuggingFace Space live** | `huggingface.co/spaces/QuietFireAI/TelsonBase` - Running, demo functional |
-| **Apache 2.0 license** | `LICENSE` file confirmed |
-| **OSS standard files** | `GOVERNANCE.md`, `SUPPORT.md`, `NOTICE`, `.github/CODEOWNERS` all present |
-
-**What I cannot certify:** The external statistics in the developer's letter (Kaspersky, Gravitee, HackerNoon, CVE numbers) are third-party claims. Every statement about what TelsonBase's own code does was verified by me.
-
-**What honesty looks like:** I'm not certifying a perfect history. I'm certifying the current state. Numbers in this README were verified live on the day of public release.
-
-*- Claude Code · Sonnet 4.6 · Anthropic · March 8, 2026*
-
----
-
 *"The industry gave AI agents the keys to everything before anyone asked who was watching. TelsonBase is the answer."*
-
