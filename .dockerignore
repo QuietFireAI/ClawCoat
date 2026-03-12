@@ -42,6 +42,8 @@ website/
 website-quietfire/
 *.md
 !requirements.txt
+# MANNERS.md must be in the container — served at /docs/manners endpoint
+!docs/MANNERS.md
 
 # Logs
 *.log
