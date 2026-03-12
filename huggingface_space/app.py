@@ -212,13 +212,19 @@ def reinstate_citizen() -> str:
 
 # ── UI ───────────────────────────────────────────────────────────────────────
 DESCRIPTION = """
-**TelsonBase** is a self-hosted zero-trust governance platform for autonomous AI agents.
-Every agent starts at Quarantine. Trust is earned. Demotion is instant. The kill switch is always on.
+**TelsonBase** — self-hosted governance for autonomous AI agents.
+
+Every agent starts at **Quarantine**. Every action is scored against five behavioral principles
+in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through
+demonstrated behavior, promoted tier by tier, approved by a human at each step.
+
+Drop below 0.25 or trigger three violations in any 24-hour window — the agent auto-suspends.
+No grace period. No human delay required.
 
 This demo connects to a **live TelsonBase instance** running on a real server.
-The governance pipeline runs in real time — these are actual decisions, not simulations.
+These are actual governance decisions, not simulations.
 
-→ [GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · Self-hosted · No cloud AI
+→ [GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · Self-hosted · No cloud dependency
 """
 
 PIPELINE_DESCRIPTION = """
@@ -233,7 +239,11 @@ and returns a decision: **Allowed**, **Gated (HITL)**, or **Blocked**.
 | CITIZEN    | 4 | READ/WRITE/DELETE/EXTERNAL → autonomous. FINANCIAL → autonomous. |
 | AGENT      | 5 | Apex tier. All categories autonomous — including FINANCIAL and SYSTEM_CONFIG. |
 
-Every tier was **earned**. AGENT is the result of demonstrated behavior, sequential promotion, and human approval.
+Every tier was **earned**. Promotion is sequential — you cannot skip from Quarantine to Citizen.
+Demotion is instant and can skip levels.
+
+The **Manners Score** in every decision is the behavioral engine. It moves with each action.
+It is the same number a human admin reads when deciding whether an agent has earned the next tier.
 """
 
 KILLSWITCH_DESCRIPTION = """
