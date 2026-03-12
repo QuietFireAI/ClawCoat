@@ -959,13 +959,22 @@
             const [values, setValues] = useState(() => Object.fromEntries(fields.map(f=>[f.name, f.defaultValue||''])));
             const [submitting, setSubmitting] = useState(false);
             const [error, setError] = useState('');
+            const [result, setResult] = useState(null);
             const set = (name, val) => setValues(v=>({...v,[name]:val}));
             const handleSubmit = async(e) => {
                 e.preventDefault(); setError(''); setSubmitting(true);
-                try { await onSubmit(values); onClose(); }
+                try { const r = await onSubmit(values); if(r!=null){setResult(r);}else{onClose();} }
                 catch(err) { setError(err.message||'An error occurred'); }
                 finally { setSubmitting(false); }
             };
+            if(result) return (
+                <div className="info-modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose();}}>
+                    <div className="info-modal" style={{maxWidth:'500px'}}>
+                        <button onClick={onClose} className="info-modal-close">×</button>
+                        {result}
+                    </div>
+                </div>
+            );
             return (<div className="info-modal-overlay" onClick={e=>{if(e.target===e.currentTarget)onClose();}}>
                 <div className="info-modal" style={{maxWidth:'440px'}}>
                     <button onClick={onClose} className="info-modal-close">×</button>
@@ -2965,22 +2974,42 @@
                         if(vals.initial_trust_level!=='quarantine' && !vals.override_reason.trim()){
                             throw new Error('Justification is required when starting above QUARANTINE');
                         }
+                        const serverBase = apiUrl||'http://your-server:8000';
+                        const buildResultPanel = (instanceId, agentName, agentKey) => {
+                            const mcpUrl = `${serverBase}/mcp`;
+                            const ccSnippet = JSON.stringify({mcpServers:{telsonbase:{type:'http',url:mcpUrl,headers:{'Authorization':`Bearer ${agentKey}` }}}},null,2);
+                            const gooseSnippet = `extensions:\n  - name: telsonbase\n    type: streamable_http\n    uri: ${mcpUrl}\n    env_vars:\n      - TELSONBASE_BEARER: "${agentKey}"`;
+                            const clawSnippet = `openclaw --api-url ${serverBase} --api-key ${agentKey}`;
+                            const tabs = [['cc','Claude Code'],['goose','Goose'],['cli','OpenClaw CLI'],['idk','Identiclaw']];
+                            const CopyBtn = ({text,label='Copy'}) => { const [copied,setCopied]=React.useState(false); return <button onClick={()=>{navigator.clipboard.writeText(text).catch(()=>{});setCopied(true);setTimeout(()=>setCopied(false),2000);}} className="text-xs px-2 py-1 rounded font-medium transition" style={{background:'rgba(34,211,238,0.12)',border:'1px solid rgba(34,211,238,0.25)',color:'#22d3ee'}}>{copied?'Copied ✓':label}</button>; };
+                            const TabContent = ({tab}) => {
+                                if(tab==='cc') return <div><p className="text-xs mb-2" style={{color:'var(--text-secondary)'}}>Add to <span className="mono text-cyan-300">.mcp.json</span> in your project root, or <span className="mono text-cyan-300">~/.claude/settings.json</span> for global access:</p><div className="relative"><pre className="p-3 rounded-lg text-xs overflow-x-auto" style={{background:'var(--bg-base)',color:'#86efac',fontFamily:'monospace',lineHeight:'1.5'}}>{ccSnippet}</pre><div className="absolute top-2 right-2"><CopyBtn text={ccSnippet} label="Copy config"/></div></div><p className="text-xs mt-2" style={{color:'var(--text-muted)'}}>Restart Claude Code after saving. Look for the MCP indicator in the toolbar.</p></div>;
+                                if(tab==='goose') return <div><p className="text-xs mb-2" style={{color:'var(--text-secondary)'}}>Add to <span className="mono text-cyan-300">~/.config/goose/config.yaml</span>:</p><div className="relative"><pre className="p-3 rounded-lg text-xs overflow-x-auto" style={{background:'var(--bg-base)',color:'#86efac',fontFamily:'monospace',lineHeight:'1.5'}}>{gooseSnippet}</pre><div className="absolute top-2 right-2"><CopyBtn text={gooseSnippet} label="Copy config"/></div></div><p className="text-xs mt-2" style={{color:'var(--text-muted)'}}>Restart Goose after saving. The TelsonBase extension will appear in <span className="mono text-cyan-300">goose session</span>.</p></div>;
+                                if(tab==='cli') return <div><p className="text-xs mb-2" style={{color:'var(--text-secondary)'}}>Start the OpenClaw agent with:</p><div className="relative"><pre className="p-3 rounded-lg text-xs overflow-x-auto" style={{background:'var(--bg-base)',color:'#86efac',fontFamily:'monospace',lineHeight:'1.5'}}>{clawSnippet}</pre><div className="absolute top-2 right-2"><CopyBtn text={clawSnippet} label="Copy"/></div></div><p className="text-xs mt-2" style={{color:'var(--text-muted)'}}>Or set env: <span className="mono text-cyan-300">TELSONBASE_URL</span> and <span className="mono text-cyan-300">TELSONBASE_API_KEY</span>.</p></div>;
+                                if(tab==='idk') return <div><p className="text-xs mb-2" style={{color:'var(--text-secondary)'}}>In your Identiclaw config, set the TelsonBase endpoint and bearer token:</p><pre className="p-3 rounded-lg text-xs overflow-x-auto" style={{background:'var(--bg-base)',color:'#86efac',fontFamily:'monospace',lineHeight:'1.5'}}>{`TELSONBASE_URL=${serverBase}\nTELSONBASE_BEARER=${agentKey}`}</pre><p className="text-xs mt-2" style={{color:'var(--text-muted)'}}>Identiclaw will use the DID identity layer on top of this connection.</p></div>;
+                            };
+                            const ResultPanel = () => {
+                                const [activeTab, setActiveTab] = React.useState('cc');
+                                return <div><div className="flex items-center gap-2 mb-4"><div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background:'rgba(74,222,128,0.12)'}}><Icon name="check" size={16} className="text-green-400"/></div><div><p className="text-white font-bold">Agent registered</p><p className="text-xs mono" style={{color:'var(--text-muted)'}}>{agentName} · {instanceId}</p></div></div><div className="rounded-lg p-3 mb-4" style={{background:'rgba(248,113,113,0.08)',border:'1px solid rgba(248,113,113,0.25)'}}><p className="text-xs font-semibold text-red-400 mb-2">⚠ Copy your API key now — shown once, not stored</p><div className="flex items-center gap-2"><code className="flex-1 text-xs mono p-2 rounded" style={{background:'var(--bg-base)',color:'#22d3ee',wordBreak:'break-all'}}>{agentKey}</code><CopyBtn text={agentKey} label="Copy key"/></div></div><div className="flex gap-1 mb-3 border-b" style={{borderColor:'var(--border-subtle)'}}>{tabs.map(([id,label])=><button key={id} onClick={()=>setActiveTab(id)} className="px-3 py-2 text-xs font-medium transition rounded-t" style={{color:activeTab===id?'var(--text-primary)':'var(--text-muted)',borderBottom:activeTab===id?'2px solid #22d3ee':'2px solid transparent',background:'transparent'}}>{label}</button>)}</div><TabContent tab={activeTab}/><button onClick={()=>setShowRegisterAgentModal(false)} className="w-full mt-4 py-2.5 rounded-lg text-sm font-medium text-white transition bg-cyan-700 hover:bg-cyan-600">Done</button></div>;
+                            };
+                            return <ResultPanel/>;
+                        };
                         if(isDemo){
                             const newClaw={instance_id:`claw-${Date.now()}`,name:vals.name,trust_level:vals.initial_trust_level,manners_score:1.0,action_count:0,actions_allowed:0,actions_blocked:0,actions_gated:0,suspended:false,registered_at:new Date().toISOString()};
                             setOpenclawInstances(prev=>[newClaw,...prev]);
                             setAgents(prev=>[...prev,{agent_id:vals.name,trust_level:vals.initial_trust_level,capabilities:[],signing_key_registered:false}]);
-                            return;
+                            return buildResultPanel(newClaw.instance_id, vals.name, 'demo-key-not-real — connect to a live server to get a real key');
                         }
                         const api=createApi(apiUrl);
-                        await api.post('/v1/openclaw/register',{
+                        const reg = await api.post('/v1/openclaw/register',{
                             name:vals.name,
-                            api_key:vals.api_key,
                             initial_trust_level:vals.initial_trust_level,
                             override_reason:vals.override_reason||undefined,
                             metadata:{agent_type:vals.agent_type},
                         });
                         try{const r=await api.get('/v1/openclaw/list');setOpenclawInstances(r.instances||r||[]);}catch(e){}
                         try{const ag=await api.get('/v1/agents/');setAgents(ag.agents||[]);}catch(e){}
+                        return buildResultPanel(reg.instance_id, vals.name, reg.agent_key);
                     }}
                 />}
                 {showFederationModal && <FormModal
