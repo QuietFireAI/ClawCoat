@@ -314,9 +314,9 @@ a:hover {
 .nav-github {
   display: flex;
   align-items: center;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.75);
   transition: color var(--transition);
-  padding: 4px;
+  padding: 6px;
 }
 
 .nav-github:hover {
@@ -894,6 +894,10 @@ a:hover {
 
 .promise-grid-4 {
   grid-template-columns: repeat(4, 1fr);
+}
+
+.promise-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .promise-grid .glass-card {
@@ -1731,7 +1735,8 @@ a:hover {
   }
 
   .promise-grid,
-  .promise-grid-4 {
+  .promise-grid-4,
+  .promise-grid-5 {
     grid-template-columns: 1fr;
     gap: 16px;
   }

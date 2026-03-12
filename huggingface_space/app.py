@@ -265,9 +265,11 @@ with gr.Blocks(
         .output-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
         .status-box textarea { font-family: 'Courier New', monospace !important; font-size: 13px !important; }
         footer { display: none !important; }
+        .back-link { font-size: 14px; margin-bottom: 8px; }
     """,
 ) as demo:
 
+    gr.Markdown("← [Back to telsonbase.com](https://telsonbase.com)", elem_classes=["back-link"])
     gr.Markdown(f"# TelsonBase — Live Governance Demo\n{DESCRIPTION}")
 
     gr.Markdown("---")
@@ -325,7 +327,8 @@ with gr.Blocks(
     gr.Markdown(
         "---\n"
         "*TelsonBase v11.0.1 by Quietfire AI · "
-        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0*"
+        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · "
+        "[← telsonbase.com](https://telsonbase.com)*"
     )
 
 if __name__ == "__main__":
