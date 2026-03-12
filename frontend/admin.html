@@ -135,9 +135,9 @@
             font-size: 8px;
             font-weight: 700;
             letter-spacing: 0.05em;
-            background: rgba(234,88,12,0.08);
-            color: #fbbf24;
-            border: 1px solid rgba(251,191,36,0.2);
+            background: rgba(234,88,12,0.10);
+            color: #c2410c;
+            border: 1px solid rgba(234,88,12,0.25);
         }
         .app-body { display: flex; flex: 1; }
         /* Sidebar item row — wraps button + info icon */
@@ -685,7 +685,7 @@
             const [actionNote, setActionNote] = useState('');
             const TRUST_INFO = {
                 quarantine:{ color:'#f87171', bg:'rgba(248,113,113,0.08)', border:'rgba(248,113,113,0.2)', meaning:'New or untrusted agent. Under observation only — every request requires human approval before execution.', can:['Read with human approval'], blocked:['Write','Delete','External calls','Financial operations'], next:'probation', prev:null },
-                probation:  { color:'#b45309', bg:'rgba(234,88,12,0.08)',  border:'rgba(251,191,36,0.2)',  meaning:'Conditionally trusted. Reads autonomously, all writes and external calls require a human sign-off.',       can:['Read autonomously','Write with approval','External with approval'], blocked:['Delete','Financial operations'], next:'resident', prev:'quarantine' },
+                probation:  { color:'#b45309', bg:'rgba(234,88,12,0.08)',  border:'rgba(234,88,12,0.20)',  meaning:'Conditionally trusted. Reads autonomously, all writes and external calls require a human sign-off.',       can:['Read autonomously','Write with approval','External with approval'], blocked:['Delete','Financial operations'], next:'resident', prev:'quarantine' },
                 resident:   { color:'#60a5fa', bg:'rgba(96,165,250,0.08)',  border:'rgba(96,165,250,0.2)',  meaning:'Trusted agent. Reads and writes freely. High-risk operations (delete, financial) still require approval.', can:['Read autonomously','Write autonomously','Delete with approval','Financial with approval'], blocked:[], next:'citizen', prev:'probation' },
                 citizen:    { color:'#4ade80', bg:'rgba(74,222,128,0.08)',  border:'rgba(74,222,128,0.2)',  meaning:'Fully trusted. All operations run autonomously. Human review is triggered only when anomaly detection flags unusual behavior.', can:['All operations autonomous'], blocked:[], next:'agent', prev:'resident' },
                 agent:      { color:'#f59e0b', bg:'rgba(245,158,11,0.08)',  border:'rgba(245,158,11,0.3)',  meaning:'Full earned autonomy. This agent has proven consistent trust, maintained Manners compliance, and earned full delegation. Anomalies are logged as advisory — they do not gate execution. Trust is real, and revocable.', can:['All operations autonomous','Anomaly detection advisory only'], blocked:[], next:null, prev:'citizen' },
@@ -1596,7 +1596,7 @@
                                 </div>
                             </div>
                             {info.note && (
-                                <div className="rounded-lg px-4 py-3 border" style={{background:'rgba(251,191,36,0.04)',borderColor:'rgba(251,191,36,0.2)'}}>
+                                <div className="rounded-lg px-4 py-3 border" style={{background:'rgba(234,88,12,0.04)',borderColor:'rgba(234,88,12,0.20)'}}>
                                     <p className="text-xs font-semibold mb-1 text-amber-700">NOTE</p>
                                     <p className="text-xs" style={{color:'var(--text-secondary)'}}>{info.note}</p>
                                 </div>
@@ -2193,13 +2193,13 @@
                             <div className="flex flex-wrap items-center gap-2 text-xs">
                                 <span className="px-2 py-1 rounded-full text-red-400" style={{background:'rgba(248,113,113,0.08)',border:'1px solid rgba(248,113,113,0.2)'}}>Quarantine</span>
                                 <span style={{color:'var(--text-muted)'}}>→</span>
-                                <span className="px-2 py-1 rounded-full text-orange-600" style={{background:'rgba(234,88,12,0.08)',border:'1px solid rgba(251,191,36,0.2)'}}>Probation</span>
+                                <span className="px-2 py-1 rounded-full text-orange-600" style={{background:'rgba(234,88,12,0.08)',border:'1px solid rgba(234,88,12,0.20)'}}>Probation</span>
                                 <span style={{color:'var(--text-muted)'}}>→</span>
                                 <span className="px-2 py-1 rounded-full text-blue-400" style={{background:'rgba(96,165,250,0.08)',border:'1px solid rgba(96,165,250,0.2)'}}>Resident</span>
                                 <span style={{color:'var(--text-muted)'}}>→</span>
                                 <span className="px-2 py-1 rounded-full text-green-400" style={{background:'rgba(74,222,128,0.08)',border:'1px solid rgba(74,222,128,0.2)'}}>Citizen</span>
                                 <span style={{color:'var(--text-muted)'}}>→</span>
-                                <span className="px-2 py-1 rounded-full text-amber-700" style={{background:'rgba(234,88,12,0.08)',border:'1px solid rgba(251,191,36,0.2)'}}>Agent</span>
+                                <span className="px-2 py-1 rounded-full text-amber-700" style={{background:'rgba(234,88,12,0.08)',border:'1px solid rgba(234,88,12,0.20)'}}>Agent</span>
                             </div>
                             <p className="text-xs mt-2" style={{color:'var(--text-muted)'}}>DID agents follow the same 5-tier trust ladder as OpenClaw. Cryptographic credentials are verified at each gate — a revoked ID is rejected instantly regardless of trust level.</p>
                         </div>
@@ -2427,7 +2427,7 @@
                                 </div>
                                 <div>
                                     <p className="font-semibold text-white mb-1.5 flex items-center gap-1.5"><Icon name="alertTriangle" size={12} className="text-amber-700"/>Common causes of INVALID / "Not verified"</p>
-                                    <div className="space-y-1.5 pl-3 border-l" style={{borderColor:'rgba(251,191,36,0.3)'}}>
+                                    <div className="space-y-1.5 pl-3 border-l" style={{borderColor:'rgba(234,88,12,0.20)'}}>
                                         <p><span className="text-amber-300 font-medium">Dashboard shows "Not verified" by default</span> — the status endpoint (<span className="mono text-cyan-300">GET /v1/audit/chain/status</span>) does not verify hashes, it only returns counters. Click <span className="text-white font-medium">Verify Chain</span> above to get an actual verdict.</p>
                                         <p><span className="text-amber-300 font-medium">Service restart reconciliation</span> — on startup, in-memory entries are loaded from Redis and compared to chain_state.last_hash. If they don't match, stale entries are discarded (<span className="mono text-cyan-300">core/audit.py:361</span>). Verify on a freshly-started instance will show fewer entries_checked than entries_count.</p>
                                         <p><span className="text-amber-300 font-medium">Redis flushed or key expired</span> — chain_state is lost; a new genesis (64 zeros) is started. Any prior entries in the ZSET are now unreachable and verification is meaningless until new entries accumulate.</p>
@@ -2720,9 +2720,9 @@
                                                 {toolStatus === 'approved' ? (
                                                     <span className="badge bg-green-500/15 text-green-400 text-xs">Installed</span>
                                                 ) : toolStatus === 'pending_approval' ? (
-                                                    <span className="badge text-xs" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(251,191,36,0.25)'}}>Pending Approval</span>
+                                                    <span className="badge text-xs" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(234,88,12,0.20)'}}>Pending Approval</span>
                                                 ) : fb === 'submitted' ? (
-                                                    <span className="badge text-xs" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(251,191,36,0.25)'}}>Pending Approval</span>
+                                                    <span className="badge text-xs" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(234,88,12,0.20)'}}>Pending Approval</span>
                                                 ) : (
                                                     <button
                                                         onClick={()=>handleProposeToolInstall(tool.name)}
@@ -2810,7 +2810,7 @@
                             <h2 className="text-xl font-bold text-white flex items-center gap-2">
                                 <Icon name="terminal" size={22} className="text-purple-400"/>QMS Message Log
                                 <span className="text-sm font-normal ml-2" style={{color:'var(--text-muted)'}}>({filteredQmsLog.length} of {qmsLog.length})</span>
-                                {connected ? <div className="w-2 h-2 rounded-full bg-green-400 ml-2 live-dot" title="Live feed"/> : <span className="badge ml-2" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(251,191,36,0.2)',fontSize:'9px'}}>DEMO</span>}
+                                {connected ? <div className="w-2 h-2 rounded-full bg-green-400 ml-2 live-dot" title="Live feed"/> : <span className="badge ml-2" style={{background:'rgba(234,88,12,0.08)',color:'#b45309',border:'1px solid rgba(234,88,12,0.20)',fontSize:'9px'}}>DEMO</span>}
                             </h2>
                         </div>
                         <div className="card p-4 fade-in" style={{borderColor:'rgba(168,85,247,0.2)',background:'rgba(168,85,247,0.03)'}}>
