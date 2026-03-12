@@ -36,7 +36,7 @@ from pydantic import BaseModel, Field
 
 from core.audit import AuditEventType, audit
 from core.auth import (AuthResult, authenticate_request, create_access_token,
-                       decode_token, revoke_token)
+                       decode_token, require_permission, revoke_token)
 
 logger = logging.getLogger(__name__)
 
@@ -480,6 +480,51 @@ async def get_profile(auth: AuthResult = Depends(authenticate_request)):
         raise HTTPException(status_code=500, detail={
             "qms_status": "Thank_You_But_No",
             "error": "Failed to fetch profile",
+        })
+
+
+# REM: =======================================================================================
+# REM: USER LIST ENDPOINT (ADMIN)
+# REM: =======================================================================================
+
+@router.get("/users")
+async def list_users(auth: AuthResult = Depends(require_permission("admin:config"))):
+    """
+    REM: List all registered users with their roles and status.
+    REM: QMS: User_List_Please
+    """
+    try:
+        from core.email_verification import email_verification as ev
+        from core.mfa import mfa_manager
+        from core.rbac import rbac_manager
+
+        users = rbac_manager.list_users()
+        result = []
+        for u in users:
+            uid = u.get("user_id", "")
+            try:
+                mfa_status = mfa_manager.get_mfa_status(user_id=uid)
+                u["mfa_enabled"] = mfa_status.get("enrolled", False)
+            except Exception:
+                u["mfa_enabled"] = False
+            try:
+                u["email_verified"] = ev.is_verified(uid)
+            except Exception:
+                u["email_verified"] = False
+            result.append(u)
+
+        return {
+            "qms_status": "Thank_You",
+            "users": result,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"User list failed: {e}")
+        raise HTTPException(status_code=500, detail={
+            "qms_status": "Thank_You_But_No",
+            "error": str(e),
         })
 
 
