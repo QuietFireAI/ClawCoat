@@ -28,16 +28,16 @@
            header: background rgba(8,15,30,0.85); h1 class text-white
            ===================================================================== */
         :root {
-            --bg-base: #080f1e;
-            --bg-surface: rgba(255,255,255,0.035);
-            --bg-elevated: rgba(255,255,255,0.06);
-            --bg-sidebar: rgba(255,255,255,0.02);
-            --border-subtle: rgba(255,255,255,0.06);
-            --border-default: rgba(255,255,255,0.10);
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #4a6085;
-            --accent-cyan: #22d3ee;
+            --bg-base: #18181b;
+            --bg-surface: rgba(255,255,255,0.04);
+            --bg-elevated: rgba(255,255,255,0.07);
+            --bg-sidebar: #111113;
+            --border-subtle: rgba(255,255,255,0.07);
+            --border-default: rgba(255,255,255,0.11);
+            --text-primary: #f4f4f5;
+            --text-secondary: #a1a1aa;
+            --text-muted: #52525b;
+            --accent-cyan: #a78bfa;
             --glass-blur: blur(18px);
             --sidebar-width: 224px;
         }
@@ -56,10 +56,7 @@
         .fade-in-d3 { animation-delay: 0.12s; } .fade-in-d4 { animation-delay: 0.16s; }
         body::before {
             content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-            background:
-                radial-gradient(ellipse at 15% 40%, rgba(6,182,212,0.09) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 15%, rgba(99,102,241,0.07) 0%, transparent 50%),
-                radial-gradient(ellipse at 60% 85%, rgba(34,197,94,0.05) 0%, transparent 45%);
+            background: none;
         }
         #root { position: relative; z-index: 1; }
         .card {
@@ -428,11 +425,11 @@
 
         function QmsStatusBadge({ status, small = false }) {
             const styles = {
-                'Please': { bg: 'rgba(59,130,246,0.15)', border: 'rgba(59,130,246,0.3)', text: '#60a5fa', label: 'PLEASE' },
-                'Thank_You': { bg: 'rgba(34,197,94,0.15)', border: 'rgba(34,197,94,0.3)', text: '#4ade80', label: 'THANK YOU' },
-                'Thank_You_But_No': { bg: 'rgba(239,68,68,0.15)', border: 'rgba(239,68,68,0.3)', text: '#f87171', label: 'BUT NO' },
-                'Excuse_Me': { bg: 'rgba(234,179,8,0.15)', border: 'rgba(234,179,8,0.3)', text: '#facc15', label: 'EXCUSE ME' },
-                'Pretty_Please': { bg: 'rgba(249,115,22,0.15)', border: 'rgba(249,115,22,0.3)', text: '#fb923c', label: 'PRIORITY' },
+                'Please': { bg: 'rgba(148,163,184,0.10)', border: 'rgba(148,163,184,0.20)', text: '#94a3b8', label: 'PLEASE' },
+                'Thank_You': { bg: 'rgba(74,222,128,0.10)', border: 'rgba(74,222,128,0.20)', text: '#86efac', label: 'THANK YOU' },
+                'Thank_You_But_No': { bg: 'rgba(248,113,113,0.10)', border: 'rgba(248,113,113,0.20)', text: '#fca5a5', label: 'BUT NO' },
+                'Excuse_Me': { bg: 'rgba(251,191,36,0.10)', border: 'rgba(251,191,36,0.20)', text: '#fcd34d', label: 'EXCUSE ME' },
+                'Pretty_Please': { bg: 'rgba(167,139,250,0.10)', border: 'rgba(167,139,250,0.20)', text: '#c4b5fd', label: 'PRIORITY' },
             };
             const s = styles[status] || styles['Please'];
             const isPretty = status === 'Pretty_Please';
