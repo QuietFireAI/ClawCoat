@@ -28,16 +28,16 @@
            header: background rgba(8,15,30,0.85); h1 class text-white
            ===================================================================== */
         :root {
-            --bg-base: #18181b;
-            --bg-surface: rgba(255,255,255,0.04);
-            --bg-elevated: rgba(255,255,255,0.07);
-            --bg-sidebar: #111113;
-            --border-subtle: rgba(255,255,255,0.07);
-            --border-default: rgba(255,255,255,0.11);
-            --text-primary: #f4f4f5;
-            --text-secondary: #a1a1aa;
-            --text-muted: #52525b;
-            --accent-cyan: #a78bfa;
+            --bg-base: #f7f7f5;
+            --bg-surface: #ffffff;
+            --bg-elevated: #ffffff;
+            --bg-sidebar: #f0f0ee;
+            --border-subtle: rgba(0,0,0,0.06);
+            --border-default: rgba(0,0,0,0.10);
+            --text-primary: #18181b;
+            --text-secondary: #52525b;
+            --text-muted: #a1a1aa;
+            --accent-cyan: #18181b;
             --glass-blur: blur(18px);
             --sidebar-width: 224px;
         }
@@ -46,8 +46,8 @@
         code, .mono { font-family: 'JetBrains Mono', monospace; }
         ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.14); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.20); }
         @keyframes pulse-ring { 0% { transform: scale(0.8); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
         .pulse-ring::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid currentColor; animation: pulse-ring 2s ease-out infinite; }
         @keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -67,7 +67,7 @@
             border-radius: 12px;
             transition: border-color 0.2s, background 0.2s;
         }
-        .card:hover { border-color: rgba(34,211,238,0.2); background: rgba(255,255,255,0.05); }
+        .card:hover { border-color: rgba(0,0,0,0.15); background: #fafaf8; }
         .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
         @keyframes pulse-pretty { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .pulse-pretty { animation: pulse-pretty 1.5s ease-in-out infinite; }
@@ -108,14 +108,14 @@
             transition: background 0.15s, color 0.15s;
             border-left: 2px solid transparent;
             background: transparent;
-            color: #94a3b8;
+            color: #52525b;
             text-align: left;
         }
-        .sidebar-item:hover { color: #e2e8f0; background: rgba(255,255,255,0.04); }
+        .sidebar-item:hover { color: #18181b; background: rgba(0,0,0,0.04); }
         .sidebar-item.active {
-            color: #22d3ee;
-            background: rgba(34,211,238,0.07);
-            border-left-color: #22d3ee;
+            color: #18181b;
+            background: rgba(0,0,0,0.07);
+            border-left-color: #18181b;
         }
         .sidebar-badge {
             margin-left: auto;
@@ -123,10 +123,10 @@
             border-radius: 10px;
             font-size: 10px;
             font-weight: 600;
-            background: rgba(255,255,255,0.08);
-            color: #94a3b8;
+            background: rgba(0,0,0,0.07);
+            color: #71717a;
         }
-        .sidebar-badge.active { background: rgba(8,145,178,0.2); color: #7dd3fc; }
+        .sidebar-badge.active { background: rgba(0,0,0,0.10); color: #18181b; }
         .sidebar-demo-tag {
             margin-left: auto;
             padding: 1px 5px;
@@ -425,11 +425,11 @@
 
         function QmsStatusBadge({ status, small = false }) {
             const styles = {
-                'Please': { bg: 'rgba(148,163,184,0.10)', border: 'rgba(148,163,184,0.20)', text: '#94a3b8', label: 'PLEASE' },
-                'Thank_You': { bg: 'rgba(74,222,128,0.10)', border: 'rgba(74,222,128,0.20)', text: '#86efac', label: 'THANK YOU' },
-                'Thank_You_But_No': { bg: 'rgba(248,113,113,0.10)', border: 'rgba(248,113,113,0.20)', text: '#fca5a5', label: 'BUT NO' },
-                'Excuse_Me': { bg: 'rgba(251,191,36,0.10)', border: 'rgba(251,191,36,0.20)', text: '#fcd34d', label: 'EXCUSE ME' },
-                'Pretty_Please': { bg: 'rgba(167,139,250,0.10)', border: 'rgba(167,139,250,0.20)', text: '#c4b5fd', label: 'PRIORITY' },
+                'Please': { bg: 'rgba(37,99,235,0.07)', border: 'rgba(37,99,235,0.15)', text: '#2563eb', label: 'PLEASE' },
+                'Thank_You': { bg: 'rgba(22,163,74,0.07)', border: 'rgba(22,163,74,0.15)', text: '#16a34a', label: 'THANK YOU' },
+                'Thank_You_But_No': { bg: 'rgba(220,38,38,0.07)', border: 'rgba(220,38,38,0.15)', text: '#dc2626', label: 'BUT NO' },
+                'Excuse_Me': { bg: 'rgba(217,119,6,0.07)', border: 'rgba(217,119,6,0.15)', text: '#d97706', label: 'EXCUSE ME' },
+                'Pretty_Please': { bg: 'rgba(124,58,237,0.07)', border: 'rgba(124,58,237,0.15)', text: '#7c3aed', label: 'PRIORITY' },
             };
             const s = styles[status] || styles['Please'];
             const isPretty = status === 'Pretty_Please';
@@ -1943,7 +1943,7 @@
             const sevColors = { critical:'bg-red-500', high:'bg-orange-500', medium:'bg-yellow-500', low:'bg-blue-400' };
 
             return (<div className="min-h-screen flex flex-col">
-                <header className="sticky top-0 z-50 border-b px-6 py-3" style={{background:'rgba(8,15,30,0.85)',backdropFilter:'blur(18px)',WebkitBackdropFilter:'blur(18px)',borderColor:'var(--border-subtle)'}}>
+                <header className="sticky top-0 z-50 border-b px-6 py-3" style={{background:'rgba(247,247,245,0.92)',backdropFilter:'blur(18px)',WebkitBackdropFilter:'blur(18px)',borderColor:'var(--border-subtle)'}}>
                     <div className="flex items-center justify-between max-w-7xl mx-auto">
                         <div className="flex items-center gap-3">
                             <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{background:'rgba(34,211,238,0.12)'}}><Icon name="shield" size={20} className="text-cyan-400"/></div>
