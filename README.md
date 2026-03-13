@@ -181,8 +181,6 @@ Fresh agent at QUARANTINE attempts `file_write` - blocked outright. Promoted to 
 **Toolroom - supply-chain security for agent tools, every install proposal gated**
 ![Toolroom](screenshots/toolroom.png)
 
-**Users & Roles - RBAC with MFA enrollment status**
-![Users and Roles](screenshots/users-and-roles.png)
 
 </details>
 
