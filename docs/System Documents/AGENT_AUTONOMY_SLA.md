@@ -261,7 +261,7 @@ A conformant implementation does not need to be ClawCoat. The model should be po
 
 - **Repository:** https://github.com/QuietFireAI/ClawCoat
 - **Website:** https://clawcoat.com
-- **Live Demo:** https://huggingface.co/spaces/QuietFireAI/TelsonBase
+- **Live Demo:** https://huggingface.co/spaces/QuietFireAI/ClawCoat
 - **License:** Apache 2.0
 
 ---

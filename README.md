@@ -35,7 +35,7 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
   &nbsp;
   <img src="https://img.shields.io/badge/python-3.11-blue?style=flat&logo=python&logoColor=white" alt="Python 3.11">
   &nbsp;
-  <a href="https://huggingface.co/spaces/QuietFireAI/TelsonBase"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
+  <a href="https://huggingface.co/spaces/QuietFireAI/ClawCoat"><img src="https://img.shields.io/badge/Live%20Demo-HuggingFace-ff6b35?style=flat&logo=huggingface&logoColor=white" alt="Live Demo on HuggingFace"></a>
   &nbsp;
   <a href="https://buymeacoffee.com/jphillips"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support%20the%20project-ffdd00?style=flat&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee"></a>
   &nbsp;
@@ -48,7 +48,7 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
 **746 system level tests all PASS. 0 high-severity findings. Everything described in this README is built and running.**
 
-**Try the live demo:** [huggingface.co/spaces/QuietFireAI/TelsonBase](https://huggingface.co/spaces/QuietFireAI/TelsonBase)
+**Try the live demo:** [huggingface.co/spaces/QuietFireAI/ClawCoat](https://huggingface.co/spaces/QuietFireAI/ClawCoat)
 
 The governance engine, trust pipeline, compliance infrastructure, and admin dashboard are fully functional. The integration guide covers the full agent flow end-to-end and has been verified across multiple clean-slate deployments.
 
