@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
 """
-TelsonBase — Live Governance Demo
-Gradio app connecting to the live TelsonBase API.
+ClawCoat — Live Governance Demo
+Gradio app connecting to the live ClawCoat API.
 API credentials loaded from HuggingFace Space secrets.
 """
 
@@ -89,7 +89,7 @@ def _format_decision(data: dict, tool_name: str) -> str:
         f"  Approval ID   {approval_id}",
         f"  QMS Status    {qms_status}",
         bar,
-        f"  {_ts()} UTC · TelsonBase v11.0.1",
+        f"  {_ts()} UTC · ClawCoat v11.0.1",
     ]
     return "\n".join(lines)
 
@@ -214,19 +214,17 @@ def reinstate_citizen() -> str:
 
 # ── UI ───────────────────────────────────────────────────────────────────────
 DESCRIPTION = """
-**TelsonBase** — self-hosted governance for autonomous AI agents.
+**ClawCoat** — self-hosted active decision making for autonomous AI agents.
 
-Every agent starts at **Quarantine**. Every action is scored against five behavioral principles
-in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through
-demonstrated behavior, promoted tier by tier, approved by a human at each step.
+Every MCP tool call is intercepted before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
 
 Drop below 0.25 or trigger three violations in any 24-hour window — the agent auto-suspends.
 No grace period. No human delay required.
 
-This demo connects to a **live TelsonBase instance** running on a real server.
+This demo connects to a **live ClawCoat instance** running on a real server.
 These are actual governance decisions, not simulations.
 
-→ [GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · Self-hosted · No cloud dependency
+→ [GitHub](https://github.com/QuietFireAI/ClawCoat) · Apache 2.0 · Self-hosted · No cloud dependency
 """
 
 PIPELINE_DESCRIPTION = """
@@ -258,7 +256,7 @@ Hit **Reinstate Agent** when you're done to reset the demo for the next visitor.
 """
 
 with gr.Blocks(
-    title="TelsonBase — Live Governance Demo",
+    title="ClawCoat — Live Governance Demo",
     theme=gr.themes.Base(
         primary_hue=gr.themes.colors.violet,
         neutral_hue=gr.themes.colors.slate,
@@ -271,8 +269,8 @@ with gr.Blocks(
     """,
 ) as demo:
 
-    gr.Markdown("← [Back to telsonbase.com](https://telsonbase.com)", elem_classes=["back-link"])
-    gr.Markdown(f"# TelsonBase — Live Governance Demo\n{DESCRIPTION}")
+    gr.Markdown("← [Back to clawcoat.com](https://clawcoat.com)", elem_classes=["back-link"])
+    gr.Markdown(f"# ClawCoat — Active Decision Making for AI Agents\n{DESCRIPTION}")
 
     gr.Markdown("---")
     gr.Markdown("## Governance Pipeline Explorer")
@@ -328,9 +326,9 @@ with gr.Blocks(
 
     gr.Markdown(
         "---\n"
-        "*TelsonBase v11.0.1 by Quietfire AI · "
-        "[GitHub](https://github.com/QuietFireAI/TelsonBase) · Apache 2.0 · "
-        "[← telsonbase.com](https://telsonbase.com)*"
+        "*ClawCoat v11.0.1 by Quietfire AI · "
+        "[GitHub](https://github.com/QuietFireAI/ClawCoat) · Apache 2.0 · "
+        "[← clawcoat.com](https://clawcoat.com)*"
     )
 
 if __name__ == "__main__":
