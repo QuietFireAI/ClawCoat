@@ -248,7 +248,7 @@ class TestHITRUSTDepth:
         from core.hitrust_controls import HITRUSTManager
         mgr = HITRUSTManager()
         posture = mgr.get_compliance_posture()
-        total = posture.get("overall", {}).get("total", 0)
+        total = posture.get("overall", {}).get("total_controls", 0)
         assert total >= 10, f"Expected >= 10 baseline controls, got {total}"
 
     def test_get_controls_by_domain(self):

@@ -282,10 +282,16 @@ class TestStaticAnalysis:
         )
 
         import json
+        # Bandit may emit a rich progress indicator to stdout before the JSON.
+        # Strip any non-JSON prefix by finding the first '{'.
+        raw = result.stdout
+        json_start = raw.find("{")
+        if json_start == -1:
+            pytest.fail(f"Bandit produced no JSON output. stdout: {raw[:300]}")
         try:
-            report = json.loads(result.stdout)
+            report = json.loads(raw[json_start:])
         except json.JSONDecodeError:
-            pytest.fail(f"Bandit output was not valid JSON: {result.stdout[:500]}")
+            pytest.fail(f"Bandit output was not valid JSON: {raw[json_start:json_start+500]}")
 
         high_issues = [
             issue for issue in report.get("results", [])
