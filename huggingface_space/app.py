@@ -214,9 +214,9 @@ def reinstate_citizen() -> str:
 
 # ── UI ───────────────────────────────────────────────────────────────────────
 DESCRIPTION = """
-**ClawCoat** — self-hosted active decision making for autonomous AI agents.
+**ClawCoat** — the local-first gateway for OpenClaw.
 
-Every MCP tool call is intercepted before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
+Every MCP tool call is evaluated before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
 
 Drop below 0.25 or trigger three violations in any 24-hour window — the agent auto-suspends.
 No grace period. No human delay required.

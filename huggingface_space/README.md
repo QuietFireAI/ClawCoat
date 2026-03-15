@@ -28,7 +28,7 @@ short_description: "Every agent call: allow, gate, or block. Five tiers."
 
 # ClawCoat — Active Decision Making for AI Agents
 
-**Every MCP tool call an AI agent makes, ClawCoat intercepts it, evaluates it, and decides: allow, gate for human approval, or block. Before execution. Every time.**
+**Every MCP tool call an AI agent makes, ClawCoat evaluates it and decides: allow, gate for human approval, or block. Before execution. Every time.**
 
 This Space connects to a live ClawCoat server running the real governance pipeline. Select a demo agent, pick an action, and see an actual governance decision in real time.
 
@@ -36,7 +36,7 @@ This Space connects to a live ClawCoat server running the real governance pipeli
 
 This is not a simulation. The decisions come from a live server running the full ClawCoat stack — trust tier enforcement, Manners Engine scoring, HITL approval gates, and a cryptographic audit chain recording every event.
 
-- **Active decision making** — every call intercepted before execution. Allow, gate, or block.
+- **Active decision making** — every call evaluated before execution. Allow, gate, or block.
 - **Five trust tiers** — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, earned by behavior
 - **Manners Engine** — 8-factor behavioral score (0.0–1.0) updated on every action
 - **Kill switch** — suspend an agent instantly, every subsequent action rejected

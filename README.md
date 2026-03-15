@@ -2,7 +2,7 @@
 
 ### Local-First Gateway for OpenClaw.
 
-Every OpenClaw tool call is intercepted before execution. ClawCoat evaluates it and decides: allow, gate for human approval, or block. Every time. That is active decision making, and it is what separates governance from logging.
+Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate for human approval, or block. Every time. That is active decision making, and it is what separates governance from logging.
 
 ClawCoat is the working implementation of the Agent Autonomy SLA, a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux et al. identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)). ClawCoat is the answer.
 
