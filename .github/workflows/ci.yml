@@ -239,7 +239,8 @@ jobs:
           python -m pytest tests/ -v --tb=short \
             --ignore=tests/test_mqtt_stress.py \
             --ignore=tests/test_e2e_integration.py \
-            --cov=. --cov-report=term-missing --cov-report=xml \
+            --cov=core --cov=api --cov=agents --cov=toolroom \
+            --cov-report=term-missing --cov-report=xml \
             --cov-fail-under=60
         env:
           TELSONBASE_ENV: development
