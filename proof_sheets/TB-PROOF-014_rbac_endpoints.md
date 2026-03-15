@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-014
 **Claim Source:** clawcoat.com - Hero Section, Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep count of endpoints; RBAC enforcement tested in TestAccessControl
 **Last Verified:** March 10, 2026
 **Version:** v11.0.1
 

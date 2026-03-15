@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-032
 **Claim Source:** clawcoat.com - Integrations Section
 **Status:** VERIFIED
+**Test Coverage:** INFRA -- docker compose ps -- service health check, not a unit test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

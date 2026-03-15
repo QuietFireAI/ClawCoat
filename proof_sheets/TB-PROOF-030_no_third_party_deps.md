@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-030
 **Claim Source:** clawcoat.com - Hero Section, FAQ
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep requirements.txt for absence of cloud packages
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

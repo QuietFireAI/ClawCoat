@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-006
 **Claim Source:** clawcoat.com - Compliance Section
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- 2 tests via TestComplianceInfrastructure; 8 depth tests added March 15
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

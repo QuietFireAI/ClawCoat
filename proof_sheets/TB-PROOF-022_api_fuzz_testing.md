@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-022
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep string in version.py -- tautological; fuzz suite not in standard CI
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-027
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- bandit install only; static analysis not run as part of this sheet
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

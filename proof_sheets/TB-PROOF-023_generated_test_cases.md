@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-023
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- pip install is not a test; schemathesis not run in standard CI
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

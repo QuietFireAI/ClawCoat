@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-004
 **Claim Source:** clawcoat.com - Compliance Section, Hero Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- count of spec lines in doc; no automated behavioral test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

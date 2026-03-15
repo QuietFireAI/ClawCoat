@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-020
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- pytest -k anomal -- behavioral anomaly detection tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

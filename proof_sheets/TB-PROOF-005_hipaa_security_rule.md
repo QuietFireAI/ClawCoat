@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-005
 **Claim Source:** clawcoat.com - Compliance Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- ls of module files; verified by source inspection only
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-003
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep count in source; no automated behavioral test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

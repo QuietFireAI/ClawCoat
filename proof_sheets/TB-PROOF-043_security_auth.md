@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-043
 **Claim Source:** tests/test_security_battery.py::TestAuthSecurity
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- TestAuthSecurity -- 19 behavioral tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

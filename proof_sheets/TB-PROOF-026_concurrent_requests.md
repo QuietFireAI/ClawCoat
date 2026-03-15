@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-026
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
+**Test Coverage:** INFRA -- curl concurrent load test; functional but not a unit test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

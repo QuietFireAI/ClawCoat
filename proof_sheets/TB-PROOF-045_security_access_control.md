@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-045
 **Claim Source:** tests/test_security_battery.py::TestAccessControl
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- TestAccessControl -- 13 behavioral tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

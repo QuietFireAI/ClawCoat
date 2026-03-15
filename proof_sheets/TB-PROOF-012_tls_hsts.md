@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-012
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep docker-compose config; no automated behavioral test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

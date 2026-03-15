@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-033
 **Claim Source:** clawcoat.com - Reports Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep for RPO/RTO strings; no automated DR test exists
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-041
 **Claim Source:** clawcoat.com - Control Your Claw
 **Status:** VERIFIED
+**Test Coverage:** INFRA -- curl live server commands; requires running stack
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

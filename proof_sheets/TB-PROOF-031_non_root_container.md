@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-031
 **Claim Source:** SECURITY.md - Container Security
 **Status:** VERIFIED
+**Test Coverage:** INFRA -- docker exec whoami -- container runtime check, not a unit test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

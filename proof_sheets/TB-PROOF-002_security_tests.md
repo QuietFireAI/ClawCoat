@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-002
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- pytest test_security_battery.py -- 96 behavioral tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

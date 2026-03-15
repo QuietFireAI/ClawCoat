@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-034
 **Claim Source:** clawcoat.com - Reports Section
 **Status:** VERIFIED
+**Test Coverage:** DOCS -- ls docs directory; documentation presence, not behavioral claim
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-021
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep function name; multi-tenant isolation not covered by dedicated test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

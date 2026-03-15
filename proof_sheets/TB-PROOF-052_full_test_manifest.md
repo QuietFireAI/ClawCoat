@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-052
 **Claim Source:** README.md - "720 tests passing"
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- pytest full suite -- 746 tests listed in manifest
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

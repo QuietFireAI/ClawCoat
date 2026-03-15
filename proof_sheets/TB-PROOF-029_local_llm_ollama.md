@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-029
 **Claim Source:** clawcoat.com - The Promise Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep config values; Ollama integration requires live service
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

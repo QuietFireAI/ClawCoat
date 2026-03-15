@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-050
 **Claim Source:** tests/test_security_battery.py::TestCryptographicStandards
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- TestCryptographicStandards -- 8 behavioral tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

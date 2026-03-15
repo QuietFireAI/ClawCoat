@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-028
 **Claim Source:** clawcoat.com - The Promise Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep for absence of cloud endpoints; no behavioral egress test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

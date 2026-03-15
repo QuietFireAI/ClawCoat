@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-037
 **Claim Source:** clawcoat.com - OpenClaw Integration
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- grep source; kill switch behavior in TestOpenClaw suite (55 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

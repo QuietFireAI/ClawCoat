@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-042
 **Claim Source:** ClawCoat architecture - multi-tenancy security model
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep function name; allowed_actors enforcement not in dedicated test
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

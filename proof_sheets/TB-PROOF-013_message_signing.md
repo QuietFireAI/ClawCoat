@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-013
 **Claim Source:** clawcoat.com - AI Safety Section
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- grep source only; signing behavior in TestMessageSigning (13 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

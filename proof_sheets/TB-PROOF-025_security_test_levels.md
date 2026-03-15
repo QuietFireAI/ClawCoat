@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-025
 **Claim Source:** clawcoat.com - Security Testing Section
 **Status:** VERIFIED
+**Test Coverage:** CODE-ONLY -- grep string in version.py -- tautological; not a live security run
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

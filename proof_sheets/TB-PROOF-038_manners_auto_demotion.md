@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-038
 **Claim Source:** clawcoat.com - Control Your Claw
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- grep source; auto-demotion behavior in TestOpenClaw suite (55 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

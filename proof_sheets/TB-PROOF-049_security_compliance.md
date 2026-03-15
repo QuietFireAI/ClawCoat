@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-049
 **Claim Source:** tests/test_security_battery.py::TestComplianceInfrastructure
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- TestComplianceInfrastructure -- 11 tests (1 per module); depth tests added March 15
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-011
 **Claim Source:** clawcoat.com - Capabilities Section
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- grep source only; PBKDF2 behavior in TestEncryptionIntegrity (11 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

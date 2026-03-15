@@ -449,6 +449,14 @@ Browse the full index: [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md)
 
 Question any claim. Run the command. That's the point.
 
+**Honest test coverage status (March 15, 2026):**
+
+The governance pipeline is comprehensively tested — trust tiers, manners scoring, HITL gates, kill switch, audit chain, and the 96-test security battery. That's where the 746 tests are and where they earn their keep.
+
+The compliance infrastructure modules (HIPAA, HITRUST, breach notification, sanctions, BAA, data retention, legal hold) are fully implemented and now covered by depth tests added March 15. Some claim sheets use grep-based verification commands — those are marked CODE-ONLY in the index and are honest about what they verify: source structure, not runtime behavior.
+
+The proof sheet index now carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts. If you want to help move CODE-ONLY sheets to VERIFIED, the compliance modules are the clearest contribution opportunity — see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ---
 
 ## The Idea

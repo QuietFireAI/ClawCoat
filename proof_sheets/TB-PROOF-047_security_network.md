@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-047
 **Claim Source:** tests/test_security_battery.py::TestNetworkSecurity
 **Status:** VERIFIED
+**Test Coverage:** VERIFIED -- TestNetworkSecurity -- 9 behavioral tests
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

@@ -3,6 +3,7 @@
 **Sheet ID:** TB-PROOF-019
 **Claim Source:** clawcoat.com - AI Safety Section
 **Status:** VERIFIED
+**Test Coverage:** SMOKE -- grep registry.yaml; HITL behavior in TestOpenClaw suite (55 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
