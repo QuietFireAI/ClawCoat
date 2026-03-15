@@ -12,7 +12,7 @@
 
 **Choice:** Rewrote as a pure ASGI middleware - a class with `__init__(self, app)` and `async def __call__(self, scope, receive, send)` that directly manipulates the `http.response.start` message to inject headers.
 
-**Why it matters:** Pure ASGI middleware has zero overhead (no extra async context managers), doesn't interfere with test harnesses, and is the correct pattern for header injection. Every middleware in TelsonBase should follow this pattern. If we ever add more middleware (CSP headers, CORS tuning), this is the template.
+**Why it matters:** Pure ASGI middleware has zero overhead (no extra async context managers), doesn't interfere with test harnesses, and is the correct pattern for header injection. Every middleware in ClawCoat should follow this pattern. If we ever add more middleware (CSP headers, CORS tuning), this is the template.
 
 **Rejected:** BaseHTTPMiddleware (test incompatible), FastAPI middleware decorator (same underlying issue), response hooks (per-endpoint, not global).
 
@@ -96,7 +96,7 @@ Default limits: 600 requests/min per tenant, 120 requests/min per user, 1.5x bur
 
 ## Decision 6: Sync Endpoints with Async FastAPI
 
-**Challenge:** All TelsonBase core modules (MFA, sessions, tenancy, compliance, etc.) are synchronous Python. The agent-generated route files used `await` on every manager call, which fails at runtime with `TypeError: object X can't be used in 'await' expression`.
+**Challenge:** All ClawCoat core modules (MFA, sessions, tenancy, compliance, etc.) are synchronous Python. The agent-generated route files used `await` on every manager call, which fails at runtime with `TypeError: object X can't be used in 'await' expression`.
 
 **What happened:** The route file agents assumed the managers were async (reasonable assumption for a FastAPI project). I discovered 40+ broken `await` calls across `security_routes.py` and `compliance_routes.py` during testing.
 
@@ -188,7 +188,7 @@ Five alert rules with escalation:
 
 **Choice:** Deferred to post-hardening. Marked as incomplete in Cluster B.
 
-**Why it matters:** The API is the product. Every endpoint is documented, tested, and permission-gated. A law firm evaluating TelsonBase for a pilot doesn't need a pretty dashboard - they need to know the audit chain is tamper-evident, the compliance modules track what regulators require, and the security posture is demonstrable. The UI is a usability layer that can be built on top of a solid API. Building it before the API was hardened would have been building on sand.
+**Why it matters:** The API is the product. Every endpoint is documented, tested, and permission-gated. A law firm evaluating ClawCoat for a pilot doesn't need a pretty dashboard - they need to know the audit chain is tamper-evident, the compliance modules track what regulators require, and the security posture is demonstrable. The UI is a usability layer that can be built on top of a solid API. Building it before the API was hardened would have been building on sand.
 
 For the demo, Swagger/OpenAPI docs at `/docs` show every endpoint. For the pilot, a lightweight admin panel can be added in a single session. For GA, a proper React frontend is warranted.
 
@@ -208,7 +208,7 @@ For the demo, Swagger/OpenAPI docs at `/docs` show every endpoint. For the pilot
 - HA Architecture: Real resource calculations from docker-compose.yml, not hypothetical numbers
 - Compliance Roadmap: Honest cost estimates ($50-125K for full certification suite), identifies the FIPS 140-2 gap in CJIS compliance
 
-**Why it matters:** For law firms, documentation IS the product. A partner evaluating TelsonBase will hand these documents to their compliance officer and outside counsel. If the SOC 2 mapping is vague or the DPA is generic, the deal dies. Every document references specific TelsonBase source files because an auditor will ask "show me the control" and the answer needs to be `core/audit.py:395` not "we have an audit system."
+**Why it matters:** For law firms, documentation IS the product. A partner evaluating ClawCoat will hand these documents to their compliance officer and outside counsel. If the SOC 2 mapping is vague or the DPA is generic, the deal dies. Every document references specific ClawCoat source files because an auditor will ask "show me the control" and the answer needs to be `core/audit.py:395` not "we have an audit system."
 
 The pen test document is deliberately honest about the 16 known CVEs and the tarfile path traversal. Hiding known vulnerabilities from a pen tester is worse than useless - they'll find them anyway, and the lack of prior disclosure signals either ignorance or deception. Pre-populating the remediation tracker shows maturity.
 
@@ -254,8 +254,8 @@ Each checkpoint is taken AFTER tests pass, not before. CLAUDE.md is updated with
 
 ---
 
-*This document is the engineering record of autonomous technical decisions made under the working agreement between Jeff Phillips (architect, business direction) and Claude (engineering authority, production hardening). Every choice was made to move TelsonBase from "impressive prototype" to "deployable product that a law firm's compliance officer will approve."*
+*This document is the engineering record of autonomous technical decisions made under the working agreement between Jeff Phillips (architect, business direction) and Claude (engineering authority, production hardening). Every choice was made to move ClawCoat from "impressive prototype" to "deployable product that a law firm's compliance officer will approve."*
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

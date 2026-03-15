@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-This document outlines disaster recovery procedures for TelsonBase deployments. It covers backup strategies, recovery procedures, and business continuity measures.
+This document outlines disaster recovery procedures for ClawCoat deployments. It covers backup strategies, recovery procedures, and business continuity measures.
 
 ### Recovery Objectives
 
@@ -168,8 +168,8 @@ cp /secure-backup/.env .env
 **Step 2: Restore Encryption Keys**
 ```bash
 # Restore from secure vault
-export TelsonBase_ENCRYPTION_KEY="<from vault>"
-export TelsonBase_ENCRYPTION_SALT="<from vault>"
+export ClawCoat_ENCRYPTION_KEY="<from vault>"
+export ClawCoat_ENCRYPTION_SALT="<from vault>"
 ```
 
 **Step 3: Restore Redis Data**
@@ -301,4 +301,4 @@ After any recovery operation, verify:
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

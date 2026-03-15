@@ -7,7 +7,7 @@
 
 ## Before You Start
 
-TelsonBase runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows - Docker handles all of that. What you need on your machine:
+ClawCoat runs entirely in Docker. You do not install Python, Redis, or any other dependency directly on Windows - Docker handles all of that. What you need on your machine:
 
 1. Docker Desktop
 2. Git (for cloning the repo and running the setup script)
@@ -40,7 +40,7 @@ docker --version
 docker compose version
 ```
 
-> TelsonBase uses `docker compose` (V2, built into Docker Desktop). The older `docker-compose` (with hyphen) is not needed.
+> ClawCoat uses `docker compose` (V2, built into Docker Desktop). The older `docker-compose` (with hyphen) is not needed.
 
 ---
 
@@ -67,10 +67,10 @@ Open PowerShell, Command Prompt, or Git Bash:
 
 ```bash
 git clone https://github.com/QuietFireAI/ClawCoat.git
-cd TelsonBase
+cd ClawCoat
 ```
 
-> Note the capital T - the directory is `TelsonBase`, not `telsonbase`.
+> Note the capital T - the directory is `ClawCoat`, not `telsonbase`.
 
 ---
 
@@ -103,7 +103,7 @@ This script does three things:
 - Writes them into the `secrets/` directory as Docker secret files
 - Updates your `.env` file with the matching values
 
-**Do not skip this step and do not generate keys manually.** TelsonBase uses Docker Secrets - keys must be in `secrets/` as files, not just in `.env`. The script handles both.
+**Do not skip this step and do not generate keys manually.** ClawCoat uses Docker Secrets - keys must be in `secrets/` as files, not just in `.env`. The script handles both.
 
 After the script completes, verify the secrets directory was created:
 
@@ -119,7 +119,7 @@ cat secrets/telsonbase_mcp_api_key
 
 ### Step 3 - Enable the governance pipeline
 
-**This step is required** to use agent governance features (trust levels, kill switch, Manners compliance, approval gates). Run this command before starting TelsonBase.
+**This step is required** to use agent governance features (trust levels, kill switch, Manners compliance, approval gates). Run this command before starting ClawCoat.
 
 **In Git Bash:**
 ```bash
@@ -147,7 +147,7 @@ Expected output: `OPENCLAW_ENABLED=true`
 
 ---
 
-## Starting TelsonBase
+## Starting ClawCoat
 
 ### Step 1 - Confirm Docker Desktop is running
 
@@ -225,7 +225,7 @@ Expected response:
 
 ### Step 6 - Pull the AI model
 
-TelsonBase uses Ollama for local LLM inference. Pull the default model after startup:
+ClawCoat uses Ollama for local LLM inference. Pull the default model after startup:
 
 ```bash
 docker exec telsonbase-ollama-1 ollama pull gemma2:9b
@@ -240,7 +240,7 @@ curl http://localhost:11434/api/tags
 
 ---
 
-## Accessing TelsonBase
+## Accessing ClawCoat
 
 | Service | URL | What it is |
 |---|---|---|
@@ -398,13 +398,13 @@ netstat -ano | findstr :8000
 taskkill /PID 1234 /F
 ```
 
-Alternatively, switch TelsonBase to port 8001 instead. Run this in **Git Bash** from the TelsonBase directory:
+Alternatively, switch ClawCoat to port 8001 instead. Run this in **Git Bash** from the ClawCoat directory:
 
 ```bash
 sed -i 's/"8000:8000"/"8001:8000"/' docker-compose.yml
 ```
 
-Then access TelsonBase at `http://localhost:8001` instead of `http://localhost:8000`.
+Then access ClawCoat at `http://localhost:8001` instead of `http://localhost:8000`.
 
 To switch back:
 ```bash
@@ -451,7 +451,7 @@ docker compose down -v
 
 ---
 
-## Updating TelsonBase
+## Updating ClawCoat
 
 ```bash
 # Pull latest code
@@ -486,4 +486,4 @@ This adds MailHog. Access it at `http://localhost:8025` to view emails sent by t
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,7 +1,7 @@
 # ClawCoat - Frequently Asked Questions
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI - support@clawcoat.com
 
-TelsonBase is the platform for managing autonomous AI agents through earned trust. Agents start at QUARANTINE and work their way up — QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT — through demonstrated behavior and explicit human authorization at every step. The compliance infrastructure underneath (audit trails, kill switches, SOC 2 controls) is the proof, not the pitch.
+ClawCoat is the platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE and work their way up - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT - through demonstrated behavior and explicit human authorization at every step. The compliance infrastructure underneath (audit trails, kill switches, SOC 2 controls) is the proof, not the pitch.
 
 Every answer here traces to source code. Where a verification command exists, it's provided.
 The same standard applies here as in the proof sheets - no claim without a source.
@@ -17,18 +17,18 @@ The same standard applies here as in the proof sheets - no claim without a sourc
 5. [Can an operator reach a restricted agent?](#5-can-an-operator-reach-a-restricted-agent)
 6. [What governs inbound communications from unknown sources?](#6-what-governs-inbound-communications-from-unknown-sources)
 7. [What happens when an audit chain verification fails?](#7-what-happens-when-an-audit-chain-verification-fails)
-8. [Can TelsonBase track token usage for external API calls?](#8-can-telsonbase-track-token-usage-for-external-api-calls)
-9. [How does TelsonBase respond to security attacks?](#9-how-does-telsonbase-respond-to-security-attacks)
-10. [Is TelsonBase MCP compatible?](#10-is-telsonbase-mcp-compatible)
-11. [Can Android or iOS apps communicate with TelsonBase?](#11-can-android-or-ios-apps-communicate-with-telsonbase)
-12. [Does TelsonBase communicate with Anthropic, Venice.ai, or external AI providers?](#12-does-telsonbase-communicate-with-anthropic-veniceai-or-external-ai-providers)
-13. [Is TelsonBase HIPAA, SOC 2, or HITRUST compliant?](#13-is-telsonbase-hipaa-soc-2-or-hitrust-compliant)
-14. [Has TelsonBase been independently audited or pen tested?](#14-has-telsonbase-been-independently-audited-or-pen-tested)
+8. [Can ClawCoat track token usage for external API calls?](#8-can-telsonbase-track-token-usage-for-external-api-calls)
+9. [How does ClawCoat respond to security attacks?](#9-how-does-telsonbase-respond-to-security-attacks)
+10. [Is ClawCoat MCP compatible?](#10-is-telsonbase-mcp-compatible)
+11. [Can Android or iOS apps communicate with ClawCoat?](#11-can-android-or-ios-apps-communicate-with-telsonbase)
+12. [Does ClawCoat communicate with Anthropic, Venice.ai, or external AI providers?](#12-does-telsonbase-communicate-with-anthropic-veniceai-or-external-ai-providers)
+13. [Is ClawCoat HIPAA, SOC 2, or HITRUST compliant?](#13-is-telsonbase-hipaa-soc-2-or-hitrust-compliant)
+14. [Has ClawCoat been independently audited or pen tested?](#14-has-telsonbase-been-independently-audited-or-pen-tested)
 15. [Who built this and why should I trust a solo developer?](#15-who-built-this-and-why-should-i-trust-a-solo-developer)
 16. [What happens if the developer stops maintaining it?](#16-what-happens-if-the-developer-stops-maintaining-it)
-17. [Can TelsonBase scale beyond a single machine?](#17-can-telsonbase-scale-beyond-a-single-machine)
-18. [What AI models does TelsonBase support?](#18-what-ai-models-does-telsonbase-support)
-19. [What is the license and what can I do with TelsonBase?](#19-what-is-the-license-and-what-can-i-do-with-telsonbase)
+17. [Can ClawCoat scale beyond a single machine?](#17-can-telsonbase-scale-beyond-a-single-machine)
+18. [What AI models does ClawCoat support?](#18-what-ai-models-does-telsonbase-support)
+19. [What is the license and what can I do with ClawCoat?](#19-what-is-the-license-and-what-can-i-do-with-telsonbase)
 20. [What are the performance characteristics?](#20-what-are-the-performance-characteristics)
 21. [What are the 8 steps of the governance pipeline?](#21-what-are-the-8-steps-of-the-governance-pipeline)
 22. [What is the Manners compliance system and how does auto-demotion work?](#22-what-is-the-manners-compliance-system-and-how-does-auto-demotion-work)
@@ -40,7 +40,7 @@ The same standard applies here as in the proof sheets - no claim without a sourc
 
 **Plain answer:**
 Two ways. An agent can self-register the moment it makes its first request through the MCP
-gateway - TelsonBase intercepts it, assigns an instance ID, and places it in QUARANTINE
+gateway - ClawCoat intercepts it, assigns an instance ID, and places it in QUARANTINE
 automatically. Or an operator pre-registers an agent through the dashboard before it ever
 connects, using the Register Agent button in the Agents tab.
 
@@ -82,13 +82,13 @@ action is processed. See `core/openclaw.py` - `evaluate_action()`.
 
 **Plain answer:**
 Through MQTT via the Mosquitto message bus built into the stack. Every message is wrapped
-in QMS™ (Qualified Message Standard) - TelsonBase's inter-agent communication protocol.
+in QMS™ (Qualified Message Standard) - ClawCoat's inter-agent communication protocol.
 QMS stamps every message with provenance: who sent it, what it contained, correlation ID,
 and a command intent block. That record is hash-linked into the audit chain.
 
-No agent-to-agent communication happens outside the bus. TelsonBase's MCP gateway acts
+No agent-to-agent communication happens outside the bus. ClawCoat's MCP gateway acts
 as the intermediary - agents don't talk directly to each other, they communicate through
-TelsonBase, which mediates and logs everything.
+ClawCoat, which mediates and logs everything.
 
 QMS™ is also a security gate: the Foreman agent validates QMS formatting on every incoming
 message before processing it. A message that arrives without proper QMS structure is not
@@ -119,8 +119,8 @@ curl http://localhost:8000/v1/system/status \
 ```
 
 **Skeptic follow-up:** *"OpenClaw agents don't natively speak MQTT - how does this work?"*
-TelsonBase's MCP gateway is the communication layer. Agents interact with TelsonBase's
-guiding layer via MCP. TelsonBase routes, mediates, and logs. The agent never
+ClawCoat's MCP gateway is the communication layer. Agents interact with ClawCoat's
+guiding layer via MCP. ClawCoat routes, mediates, and logs. The agent never
 communicates directly - it communicates through the governed proxy.
 
 ---
@@ -231,7 +231,7 @@ which triggers auto-demotion if they push the score below threshold.
 Yes. Restrictions govern what an agent can *initiate* outbound. The operator-to-agent
 communication channel through the MCP gateway is always open - you can always send
 instructions to a restricted or suspended agent. The agent can respond back through
-TelsonBase. What it cannot do is make outbound calls on its own initiative.
+ClawCoat. What it cannot do is make outbound calls on its own initiative.
 Inbound and outbound are governed independently.
 
 **Source files:**
@@ -250,7 +250,7 @@ Inbound and outbound are governed independently.
 ## 6. What Governs Inbound Communications from Unknown Sources?
 
 **Plain answer:**
-All inbound connections to TelsonBase require Bearer token or `X-API-Key` authentication.
+All inbound connections to ClawCoat require Bearer token or `X-API-Key` authentication.
 Unknown connections receive a 401 before they reach any protected resource. The MCP gateway
 validates instance ID and a cryptographic nonce on every action evaluation - replayed nonces
 are rejected at Step 3 of the pipeline. Rate limiting fires at the agent's tier-appropriate
@@ -297,7 +297,7 @@ Two distinct failure types with different meanings:
 Because each entry's hash includes the previous entry's hash, tampering with any single
 entry invalidates every subsequent entry in the chain. Tampering cannot be hidden - it
 can only be detected. You can hand a chain export to a forensic investigator and they can
-verify every entry independently of the TelsonBase API, using only standard Python and
+verify every entry independently of the ClawCoat API, using only standard Python and
 `hashlib`. See `docs/System%20Documents/AUDIT_TRAIL.md` - Verify an Entry Offline.
 
 **Source files:**
@@ -323,14 +323,14 @@ Redis flush = chain_state lost, new genesis starts. This is a known architectura
 documented in `docs/System%20Documents/AUDIT_TRAIL.md` - Known Limitations. PostgreSQL archival for long-term
 retention is on the roadmap. A flush is detectable as an unusually early genesis in the
 chain history. Physical access to flush Redis is itself a security event - outside
-TelsonBase's threat model (assumes secure infrastructure).
+ClawCoat's threat model (assumes secure infrastructure).
 
 ---
 
-## 8. Can TelsonBase Track Token Usage for External API Calls?
+## 8. Can ClawCoat Track Token Usage for External API Calls?
 
 **Plain answer:**
-TelsonBase logs that an external call was made - to which whitelisted domain, by which
+ClawCoat logs that an external call was made - to which whitelisted domain, by which
 agent, at what time, and that it was authorized. It does not currently parse API response
 bodies to count LLM tokens consumed in those calls.
 
@@ -351,7 +351,7 @@ currently on the roadmap.
 
 ---
 
-## 9. How Does TelsonBase Respond to Security Attacks?
+## 9. How Does ClawCoat Respond to Security Attacks?
 
 **Plain answer:**
 Multiple layers fire in parallel:
@@ -394,17 +394,17 @@ curl http://localhost:8000/v1/anomaly/alerts \
 
 ---
 
-## 10. Is TelsonBase MCP Compatible?
+## 10. Is ClawCoat MCP Compatible?
 
 **Plain answer:**
-Yes. TelsonBase exposes an MCP gateway at `/mcp` with 13 tools covering system status,
+Yes. ClawCoat exposes an MCP gateway at `/mcp` with 13 tools covering system status,
 agent management, tenant operations, audit chain access, and approval workflows.
 It uses StreamableHTTP transport and Bearer token authentication.
 
 Compatible clients today: Goose (by Block, Apache 2.0), Claude Desktop, and any
 MCP-compliant client built to the MCP specification.
 
-**Note:** Connecting an MCP client is optional. TelsonBase runs and governs agents
+**Note:** Connecting an MCP client is optional. ClawCoat runs and governs agents
 independently. The MCP gateway gives operators a natural-language interface to the
 same governance controls available in the admin panel and REST API.
 
@@ -423,19 +423,19 @@ same governance controls available in the admin panel and REST API.
 # Connect via Goose
 # Copy goose.yaml to ~/.config/goose/config.yaml
 # Run: goose session start
-# Ask: "What is the TelsonBase system status?"
+# Ask: "What is the ClawCoat system status?"
 ```
 
 **Skeptic follow-up:** *"What other MCP products does it work with?"*
 The MCP ecosystem is early. Goose and Claude Desktop are the primary clients today.
-TelsonBase will be compatible with any client built to the MCP spec as the ecosystem grows.
+ClawCoat will be compatible with any client built to the MCP spec as the ecosystem grows.
 
 ---
 
-## 11. Can Android or iOS Apps Communicate with TelsonBase?
+## 11. Can Android or iOS Apps Communicate with ClawCoat?
 
 **Plain answer:**
-Yes. TelsonBase is a REST API - any HTTP client on any platform connects to it.
+Yes. ClawCoat is a REST API - any HTTP client on any platform connects to it.
 Android apps, iOS apps, mobile browsers, and desktop clients all use the same API
 with JWT Bearer token authentication.
 
@@ -454,15 +454,15 @@ No native mobile SDK exists currently - that is a post-drop development item.
 
 ---
 
-## 12. Does TelsonBase Communicate with Anthropic, Venice.ai, or External AI Providers?
+## 12. Does ClawCoat Communicate with Anthropic, Venice.ai, or External AI Providers?
 
 **Plain answer:**
-No. TelsonBase sends nothing to anyone by default. Zero telemetry. No phone-home.
+No. ClawCoat sends nothing to anyone by default. Zero telemetry. No phone-home.
 No data leaves the network unless an operator explicitly whitelists a domain in the
 egress firewall and an agent with sufficient trust level initiates a call to it.
 
 If you want to use Anthropic, Venice.ai, or any external AI provider as a backend,
-you whitelist that domain and TelsonBase mediates, governs, and logs every call to it.
+you whitelist that domain and ClawCoat mediates, governs, and logs every call to it.
 The call is authorized by the governance pipeline before it leaves the network.
 
 The Manners compliance framework is modeled on Anthropic's safety principles but runs
@@ -480,7 +480,7 @@ receive updates automatically. Your governance engine runs under your control.
 ```bash
 # Confirm no outbound connections at startup (run with network monitor)
 docker compose up -d
-# Monitor outbound traffic - zero external connections initiated by TelsonBase itself
+# Monitor outbound traffic - zero external connections initiated by ClawCoat itself
 ```
 
 **Skeptic follow-up:** *"So there's no automatic safety update if Anthropic releases one?"*
@@ -490,7 +490,7 @@ changes to your governance rules without your action.
 
 ---
 
-## 13. Is TelsonBase HIPAA, SOC 2, or HITRUST Compliant?
+## 13. Is ClawCoat HIPAA, SOC 2, or HITRUST Compliant?
 
 **Plain answer:**
 The compliance infrastructure is fully built and mapped to source code. Every control
@@ -512,7 +512,7 @@ What is built today:
 | **HITECH Act** | Mapped | Breach notification, 60-day tracking, safe harbor |
 
 The distinction between "compliance-ready" and "certified" is the third-party audit.
-TelsonBase has built the controls. Formal certification (SOC 2 Type II audit, HIPAA SRA,
+ClawCoat has built the controls. Formal certification (SOC 2 Type II audit, HIPAA SRA,
 HITRUST assessment) is the next step as the project scales. Every control is already
 mapped to source code and a passing test - the audit trail is ready when the auditor arrives.
 
@@ -534,13 +534,13 @@ cat proof_sheets/INDEX.md
 
 **Skeptic follow-up:** *"Compliance-ready isn't the same as compliant."*
 Correct. The controls are implemented and tested. Certification is formal third-party
-recognition. A law firm deploying TelsonBase today has working HIPAA controls - AES-256-GCM
+recognition. A law firm deploying ClawCoat today has working HIPAA controls - AES-256-GCM
 encryption, 18-identifier de-identification, tamper-evident audit trail, automatic logoff.
 Those controls exist whether or not a certification badge has been issued.
 
 ---
 
-## 14. Has TelsonBase Been Independently Audited or Pen Tested?
+## 14. Has ClawCoat Been Independently Audited or Pen Tested?
 
 **Plain answer:**
 Static analysis and automated security testing have been run against the full codebase.
@@ -553,7 +553,7 @@ Results are documented and public:
   calls without an explicit timeout in `scripts/test_security_flow.py`, a manually-invoked
   diagnostic script, not production code. No production code findings.
 - **pip-audit (dependency CVEs):** 1 known CVE - `ecdsa` CVE-2024-23342. No upstream fix
-  exists. Accepted risk - TelsonBase uses HS256 (HMAC), not ECDSA. `ecdsa` is an unused
+  exists. Accepted risk - ClawCoat uses HS256 (HMAC), not ECDSA. `ecdsa` is an unused
   transitive dependency that has been removed from the production image.
 - **Schemathesis (API contract testing):** 720 tests passing. Server errors reduced
   from 657 → 0 across hardening sessions.
@@ -578,7 +578,7 @@ The infrastructure to support and respond to a formal pen test is already in pla
 ## 15. Who Built This and Why Should I Trust a Solo Developer?
 
 **Plain answer:**
-TelsonBase was built by Jeff Phillips (Quietfire AI) through genuine human-AI collaboration
+ClawCoat was built by Jeff Phillips (Quietfire AI) through genuine human-AI collaboration
 across multiple models over several years. The platform is self-taught, independently funded,
 and carries no corporate backing or venture influence.
 
@@ -590,7 +590,7 @@ The answer to "why trust it" is not credentials - it is evidence:
 - **0 high-severity findings** in static analysis across 37,921 lines
 - **Full source available** - read every line, verify every claim, run every test
 
-The credibility of TelsonBase is not a function of who built it. It is a function of
+The credibility of ClawCoat is not a function of who built it. It is a function of
 whether the claims hold up under inspection. The proof sheets exist precisely so that
 the work speaks for itself.
 
@@ -607,13 +607,13 @@ sheets are the verification layer. Run them. That's the deal.
 ## 16. What Happens If the Developer Stops Maintaining It?
 
 **Plain answer:**
-TelsonBase is open source under Apache 2.0. If development stopped today, anyone could
+ClawCoat is open source under Apache 2.0. If development stopped today, anyone could
 fork the repository, continue development, and redistribute under the same terms. The
 entire codebase, all documentation, all proof sheets, and all test infrastructure are
 publicly available.
 
 A governance platform that depends on a single vendor for survival is itself a governance
-risk. TelsonBase is designed so that the community can carry it forward.
+risk. ClawCoat is designed so that the community can carry it forward.
 
 **Source files:**
 - `LICENSE` - Apache 2.0 terms
@@ -622,7 +622,7 @@ risk. TelsonBase is designed so that the community can carry it forward.
 
 ---
 
-## 17. Can TelsonBase Scale Beyond a Single Machine?
+## 17. Can ClawCoat Scale Beyond a Single Machine?
 
 **Plain answer:**
 Yes. The current Docker Compose deployment is single-node and production-appropriate for
@@ -651,7 +651,7 @@ WATCH/MULTI/EXEC transactions, so it is race-free at any worker count. See
 
 ---
 
-## 18. What AI Models Does TelsonBase Support?
+## 18. What AI Models Does ClawCoat Support?
 
 **Plain answer:**
 Any model available through Ollama runs locally on your hardware with zero cloud dependency.
@@ -659,7 +659,7 @@ This includes Llama 3, Mistral, Gemma, Phi, Qwen, DeepSeek, and dozens of others
 No data leaves your network. No API key required for local inference.
 
 For external AI providers (Anthropic, OpenAI, Venice.ai, etc.), you whitelist the domain
-in the egress firewall, and TelsonBase mediates, logs, and governs every call. The
+in the egress firewall, and ClawCoat mediates, logs, and governs every call. The
 provider receives only what the agent is authorized to send at its current trust level.
 
 **Source files:**
@@ -682,24 +682,24 @@ curl -X POST http://localhost:8000/v1/llm/pull \
 
 ---
 
-## 19. What Is the License and What Can I Do with TelsonBase?
+## 19. What Is the License and What Can I Do with ClawCoat?
 
 **Plain answer:**
-TelsonBase is open source under the Apache License, Version 2.0.
+ClawCoat is open source under the Apache License, Version 2.0.
 
 **What Apache 2.0 means:** Free for any use - personal, commercial, production, research.
 Use it, modify it, deploy it, build products on it, charge customers for it. No commercial
 license required. No AGPL network-service disclosure requirements.
 
 **What is required:**
-- Retain the copyright and license notices when distributing TelsonBase or derivative works
+- Retain the copyright and license notices when distributing ClawCoat or derivative works
 - If you modify files, carry prominent notices stating you changed them
 
 **Full terms:** `LICENSE` - or the official text at https://www.apache.org/licenses/LICENSE-2.0
 
 **Support and consulting:** Quietfire AI offers enterprise support, consulting, and
 compliance guidance for production deployments. Apache 2.0 means you are not obligated
-to pay anything - but if you are deploying TelsonBase in healthcare, legal, or insurance
+to pay anything - but if you are deploying ClawCoat in healthcare, legal, or insurance
 and want expert help, that is available. Contact support@clawcoat.com.
 
 ---
@@ -737,7 +737,7 @@ latency-sensitive at the millisecond level.
 **Plain answer:**
 Every agent action - every tool call, every external request, every file operation - passes
 through an 8-step pipeline in `core/openclaw.py` `evaluate_action()`. No step is skipped.
-No tier bypasses the pipeline. This is the core of TelsonBase's governance model.
+No tier bypasses the pipeline. This is the core of ClawCoat's governance model.
 
 | Step | Check | Fail outcome |
 |---|---|---|
@@ -770,7 +770,7 @@ operate in seconds, not milliseconds - governance latency is not the bottleneck.
 ## 22. What Is the Manners Compliance System and How Does Auto-Demotion Work?
 
 **Plain answer:**
-Manners is TelsonBase's behavioral compliance scoring engine, modeled on Anthropic's
+Manners is ClawCoat's behavioral compliance scoring engine, modeled on Anthropic's
 agent safety principles and running entirely locally. Every agent action contributes to
 a rolling compliance score between 0.0 (no compliance) and 1.0 (full compliance).
 
@@ -805,7 +805,7 @@ a security event.
 threshold enforcement, and operator reinstatement flow.
 
 **Skeptic follow-up:** *"Can an agent game the scoring?"*
-The score is computed server-side by TelsonBase, not reported by the agent. The agent
+The score is computed server-side by ClawCoat, not reported by the agent. The agent
 has no direct mechanism to influence its own Manners score - it can only behave. The
 behavioral record is hash-chained and tamper-evident.
 
@@ -872,4 +872,4 @@ Open an issue on GitHub or email support@clawcoat.com
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

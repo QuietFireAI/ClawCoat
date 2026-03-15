@@ -9,9 +9,9 @@
 
 ---
 
-> **QMS is optional at the deployment level.** TelsonBase installs and runs fully without it. No governance feature, approval gate, trust tier, audit chain, or platform function depends on QMS being present. Adopt it when it adds value.
+> **QMS is optional at the deployment level.** ClawCoat installs and runs fully without it. No governance feature, approval gate, trust tier, audit chain, or platform function depends on QMS being present. Adopt it when it adds value.
 >
-> **QMS is enforced at the inter-agent communication layer.** Once agents are communicating inside a running TelsonBase, messages that arrive without QMS formatting trigger a `NON_QMS_MESSAGE` anomaly event (MANNERS-2). That is not optional -- that is the platform doing its job. The absence of QMS output from a registered active agent is equally flaggable: the gap in the log IS the signal. An attacker who suppresses logging to cover their tracks does not go quiet -- they go loud, because the silence deviates from the behavioral baseline the platform has already established.
+> **QMS is enforced at the inter-agent communication layer.** Once agents are communicating inside a running ClawCoat, messages that arrive without QMS formatting trigger a `NON_QMS_MESSAGE` anomaly event (MANNERS-2). That is not optional -- that is the platform doing its job. The absence of QMS output from a registered active agent is equally flaggable: the gap in the log IS the signal. An attacker who suppresses logging to cover their tracks does not go quiet -- they go loud, because the silence deviates from the behavioral baseline the platform has already established.
 
 ---
 
@@ -291,7 +291,7 @@ The angle bracket `<>` qualifier was chosen for maximum visual distinctiveness. 
 
 ### 5.2 Agent Registry and Numerical IDs
 
-Each registered agent in a TelsonBase instance receives a numerical identifier. This ID is:
+Each registered agent in a ClawCoat instance receives a numerical identifier. This ID is:
 
 - **Unique** within the instance
 - **Persistent** across restarts
@@ -410,7 +410,7 @@ The `::%%%%::` fires the siren. The `::%%Database connection lost%%::` is the in
 ::<demo_agent/001>::-::@@REQ_b7c8d9e0@@::-::Tool_Return::-::##sha256_calculator##::-::_Thank_You::
 ```
 
-### 7.7 TelsonBase Backup Example
+### 7.7 ClawCoat Backup Example
 
 ```
 ::<backup_agent/003>::-::@@REQ_a1b2c3d4@@::-::Create_Backup::-::##ollama_data##::-::$$priority=1$$::-::_Please::
@@ -474,7 +474,7 @@ QMS is self-describing. The grammar is embedded in the format:
 - Leading `_` on a word identifies it as a connector/command block -- type is visible in the token
 - `<...>`, `@@...@@`, `##...##`, `%%...%%` and other qualifiers identify data types inline
 
-An AI agent encountering QMS for the first time can infer the protocol from a handful of examples without documentation, without a schema registry, without a handshake. The format teaches itself. This matters at the edges of the system -- when a new agent species is introduced, when an external system needs to read a TelsonBase audit trail, when a human or AI is debugging a chain they have never seen before.
+An AI agent encountering QMS for the first time can infer the protocol from a handful of examples without documentation, without a schema registry, without a handshake. The format teaches itself. This matters at the edges of the system -- when a new agent species is introduced, when an external system needs to read a ClawCoat audit trail, when a human or AI is debugging a chain they have never seen before.
 
 This is not a small thing. The harder AI systems are to onboard, the more siloed they become. A protocol that any capable agent can learn by inspection keeps the system open without sacrificing structure.
 
@@ -484,7 +484,7 @@ QMS chains do NOT carry timestamps. The log infrastructure already timestamps ev
 
 ---
 
-## 10. Implementation Status - TelsonBase
+## 10. Implementation Status - ClawCoat
 
 ### 10.1 What Is Implemented (v4.6.0CC+)
 
@@ -515,4 +515,4 @@ Legacy functions (`format_qms()`, `parse_qms()`, `is_qms_formatted()`, `validate
 
 ---
 
-*TelsonBase v11.0.1 · QMS™ v2.1.6 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · QMS™ v2.1.6 · Quietfire AI · March 8, 2026*

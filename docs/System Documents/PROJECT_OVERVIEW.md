@@ -10,13 +10,13 @@
 
 ## What This Is
 
-TelsonBase is a self-hosted platform for managing autonomous AI agents through earned trust. Agents start at QUARANTINE — no permissions, no record — and advance through five tiers (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) by demonstrating compliant behavior. Every promotion requires an explicit human authorization. No tier is skipped. No trust is assumed.
+ClawCoat is a self-hosted platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE - no permissions, no record - and advance through five tiers (QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT) by demonstrating compliant behavior. Every promotion requires an explicit human authorization. No tier is skipped. No trust is assumed.
 
 Every agent carries a live Manners compliance score across five principles: Human Control, Transparency, Value Alignment, Privacy, and Security. Score drops trigger automatic demotion. Reinstatement always requires a human.
 
-The compliance and security infrastructure underneath — SOC 2 controls, HIPAA mappings, kill switches, tamper-evident audit trails — is the proof that the earned-trust model holds. It is not the pitch.
+The compliance and security infrastructure underneath - SOC 2 controls, HIPAA mappings, kill switches, tamper-evident audit trails - is the proof that the earned-trust model holds. It is not the pitch.
 
-Every component runs inside Docker containers on a single machine. No cloud dependencies. No external API calls required. No vendor lock-in. The platform is designed for industries where data cannot leave the premises — legal, healthcare, finance, manufacturing — but the architecture applies to any organization that wants AI capabilities without surrendering control.
+Every component runs inside Docker containers on a single machine. No cloud dependencies. No external API calls required. No vendor lock-in. The platform is designed for industries where data cannot leave the premises - legal, healthcare, finance, manufacturing - but the architecture applies to any organization that wants AI capabilities without surrendering control.
 
 ---
 
@@ -24,21 +24,21 @@ Every component runs inside Docker containers on a single machine. No cloud depe
 
 ### 1. Earned Autonomy Through a Five-Tier Trust Ladder
 
-Agents do not arrive with permissions. They earn them. Every agent starts at QUARANTINE — a new arrival with no record — and advances through five tiers by demonstrating compliant behavior. Every step up requires a human authorization decision. Every step down can happen instantly, automatically, based on behavior.
+Agents do not arrive with permissions. They earn them. Every agent starts at QUARANTINE - a new arrival with no record - and advances through five tiers by demonstrating compliant behavior. Every step up requires a human authorization decision. Every step down can happen instantly, automatically, based on behavior.
 
 The five tiers: **QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT**
 
-The tiers are citizenship, not security levels. An agent at QUARANTINE is not a threat — it's an unknown. An agent at AGENT tier has a verified record across every check the platform runs.
+The tiers are citizenship, not security levels. An agent at QUARANTINE is not a threat - it's an unknown. An agent at AGENT tier has a verified record across every check the platform runs.
 
 The behavioral enforcement infrastructure underneath:
 
-- **Manners Compliance Scoring:** Every agent carries a live compliance score (0.0–1.0) across five principles: Human Control, Transparency, Value Alignment, Privacy, Security. Score drops below threshold trigger automatic demotion to QUARANTINE — no human delay, no grace period.
-- **8-Step Governance Pipeline:** Every action passes through registration check, kill switch, nonce replay, Manners compliance, trust level, capability, anomaly detection, and final decision — in that order, on every call.
+- **Manners Compliance Scoring:** Every agent carries a live compliance score (0.0–1.0) across five principles: Human Control, Transparency, Value Alignment, Privacy, Security. Score drops below threshold trigger automatic demotion to QUARANTINE - no human delay, no grace period.
+- **8-Step Governance Pipeline:** Every action passes through registration check, kill switch, nonce replay, Manners compliance, trust level, capability, anomaly detection, and final decision - in that order, on every call.
 - **Capability Enforcement:** Agents declare what they can do at registration. The platform enforces those boundaries at runtime. An agent registered for "document analysis" cannot perform "file system access" even if it tries.
 - **Approval Gates:** Sensitive operations require explicit human approval before execution. Requests queue in Redis and wait for sign-off. Promotion through tiers always requires a human.
-- **Kill Switch:** One API call suspends any agent instantly. Checked at Step 2 of the pipeline — before trust levels, before Manners, before everything except "does this agent exist?"
+- **Kill Switch:** One API call suspends any agent instantly. Checked at Step 2 of the pipeline - before trust levels, before Manners, before everything except "does this agent exist?"
 - **Egress Gateway:** All outbound network requests pass through a controlled gateway with domain whitelisting. Agents cannot contact unauthorized endpoints.
-- **Audit Trail with Hash Chain:** Every action — allowed, gated, or blocked — is logged with a cryptographic hash chain. Tampered entries break the chain and are detectable.
+- **Audit Trail with Hash Chain:** Every action - allowed, gated, or blocked - is logged with a cryptographic hash chain. Tampered entries break the chain and are detectable.
 
 ### 2. Qualified Message Standard (QMS™)
 
@@ -59,13 +59,13 @@ No other agent communication standard does this. LangChain, CrewAI, and AutoGen 
 
 ### 3. Multi-AI Collaborative Development
 
-TelsonBase was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms - ChatGPT, Google Gemini, and Claude - rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
+ClawCoat was developed using a deliberate methodology: the architect (Jeff Phillips) directed implementation across three AI platforms - ChatGPT, Google Gemini, and Claude - rotating between them to reduce drift, hallucination, and single-platform bias. Each platform's contributions are tracked via version suffixes (G, C, CC).
 
 This is documented in the codebase and is part of the project's story. Gemini ran the first external test suite (Colab). Claude built the security core, observability, and MQTT bus. ChatGPT contributed early architectural scaffolding. The rotation methodology itself - using cross-platform validation to maintain coherence - is a reproducible pattern for AI-assisted software development.
 
 ### 4. Federation - Cross-Instance Encrypted Trust
 
-TelsonBase instances can establish trust relationships with other TelsonBase instances for cross-organizational agent collaboration. The federation protocol uses RSA-OAEP encrypted session key exchange, and all cross-instance messages are encrypted end-to-end. Trust levels (Standard, Elevated, Full) control what actions federated agents can perform.
+ClawCoat instances can establish trust relationships with other ClawCoat instances for cross-organizational agent collaboration. The federation protocol uses RSA-OAEP encrypted session key exchange, and all cross-instance messages are encrypted end-to-end. Trust levels (Standard, Elevated, Full) control what actions federated agents can perform.
 
 This enables scenarios like: a law firm's document analysis agent sends a contract to an external compliance agent at an accounting firm, with every message encrypted, signed, and auditable on both sides.
 
@@ -247,7 +247,7 @@ Archives are `.tar.gz` files stored in `./backups/{type}/` on the host. Restore 
 
 ### Monitoring
 
-Prometheus scrapes 5 targets: MCP Server application metrics, Redis (via exporter), Docker containers (via cAdvisor), host (via Node Exporter), and Prometheus itself. Grafana auto-provisions with a TelsonBase infrastructure dashboard on first boot. Application-level metrics include request latency histograms, active agent counts, security event counters, and Ollama inference timing.
+Prometheus scrapes 5 targets: MCP Server application metrics, Redis (via exporter), Docker containers (via cAdvisor), host (via Node Exporter), and Prometheus itself. Grafana auto-provisions with a ClawCoat infrastructure dashboard on first boot. Application-level metrics include request latency histograms, active agent counts, security event counters, and Ollama inference timing.
 
 ---
 
@@ -305,7 +305,7 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 ## What This Project Proves
 
-1. Earned autonomy is not a philosophy — it's an architecture with 746 passing tests and a live Manners score on every registered agent.
+1. Earned autonomy is not a philosophy - it's an architecture with 746 passing tests and a live Manners score on every registered agent.
 2. Multi-AI collaborative development produces more robust output than single-platform development.
 3. Data sovereignty is not a marketing term - it's a 42,000-line platform running on hardware you own, with zero external dependencies.
 4. AI-assisted development, directed by a human architect with clear vision, can produce production-grade infrastructure.
@@ -318,4 +318,4 @@ The rotation serves as a form of cross-validation. Each platform reviews the oth
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

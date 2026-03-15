@@ -2,7 +2,7 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-This guide explains how to build AI agents that run within the TelsonBase zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside TelsonBase.
+This guide explains how to build AI agents that run within the ClawCoat zero-trust architecture using the **embedded Python integration path** - agents written in Python that inherit from `SecureBaseAgent` and run inside ClawCoat.
 
 > **External agents (Goose, Claude Desktop, any HTTP client)** use a different path - the OpenClaw REST API. See [OPENCLAW_INTEGRATION_GUIDE.md](OPENCLAW_INTEGRATION_GUIDE.md) for that approach.
 
@@ -323,7 +323,7 @@ The approval record includes the full payload so the reviewer knows exactly what
 
 ## QMS Logging Conventions
 
-TelsonBase uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
+ClawCoat uses the Qualified Message Standard (QMS™) in logs for human readability. Your agent's base class appends these suffixes automatically. Understanding them helps when reading audit logs.
 
 | Suffix | Meaning | Example |
 |---|---|---|
@@ -525,7 +525,7 @@ docker run -d -p 6379:6379 --name redis-dev redis:7-alpine
 
 ```bash
 git clone https://github.com/QuietFireAI/ClawCoat.git
-cd TelsonBase
+cd ClawCoat
 
 python -m venv venv
 
@@ -592,8 +592,8 @@ For questions: support@clawcoat.com
 
 ---
 
-> **On AI collaboration:** TelsonBase was built with Claude Code (Anthropic) as engineering co-author. 80+ commits carry a `Co-Authored-By: Claude Sonnet 4.6` trailer. That is an accurate record of how this was built, not a liability disclaimer. The README contains a full verification note from Claude Code covering what was checked against the live codebase before launch. If you have questions about methodology, `support@clawcoat.com` reaches the human.
+> **On AI collaboration:** ClawCoat was built with Claude Code (Anthropic) as engineering co-author. 80+ commits carry a `Co-Authored-By: Claude Sonnet 4.6` trailer. That is an accurate record of how this was built, not a liability disclaimer. The README contains a full verification note from Claude Code covering what was checked against the live codebase before launch. If you have questions about methodology, `support@clawcoat.com` reaches the human.
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

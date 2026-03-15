@@ -2,20 +2,20 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-Definitions of key terms used throughout TelsonBase documentation and code.
+Definitions of key terms used throughout ClawCoat documentation and code.
 
 ---
 
 ## A
 
 ### Agent
-A software component that performs tasks autonomously. In TelsonBase, agents are isolated, capability-restricted, and cryptographically verified. Each agent has a trust level, declared capabilities, and a signed identity.
+A software component that performs tasks autonomously. In ClawCoat, agents are isolated, capability-restricted, and cryptographically verified. Each agent has a trust level, declared capabilities, and a signed identity.
 
 ### Agent Trust Level
 Progression system for agent permissions: `QUARANTINE` (new/untrusted) → `PROBATION` (limited) → `RESIDENT` (standard) → `CITIZEN` (full trust) → `AGENT` (apex tier). Higher trust unlocks more tool access and capabilities. See `core/trust_levels.py`. For toolroom access specifically - which tools are available at each tier and how designations are set - see `docs/System Documents/TOOLROOM_TRUST_MATRIX.md`.
 
 ### Alien
-Code or frameworks from external sources (LangChain, AutoGPT, etc.) that haven't been verified against TelsonBase security standards. Aliens run in quarantine with restricted capabilities. See `agents/alien_adapter.py`.
+Code or frameworks from external sources (LangChain, AutoGPT, etc.) that haven't been verified against ClawCoat security standards. Aliens run in quarantine with restricted capabilities. See `agents/alien_adapter.py`.
 
 ### Anomaly Detection
 Behavioral monitoring that establishes baselines for agent activity and flags deviations. Triggers include unusual request rates, unexpected capability usage, or out-of-hours activity. See `core/anomaly.py`.
@@ -98,10 +98,10 @@ Constraint (v5.4.0CC) preventing multiple agents from checking out the same subp
 ## F
 
 ### Federation
-Protocol allowing multiple TelsonBase instances to establish trust relationships and securely exchange messages across organizational boundaries. Uses RSA-4096 keypairs and mTLS. See `federation/trust.py`.
+Protocol allowing multiple ClawCoat instances to establish trust relationships and securely exchange messages across organizational boundaries. Uses RSA-4096 keypairs and mTLS. See `federation/trust.py`.
 
 ### Federation Invitation
-Cryptographic token (RSA-4096 signed) used to initiate trust between TelsonBase instances. Contains instance identity, public key, and trust parameters.
+Cryptographic token (RSA-4096 signed) used to initiate trust between ClawCoat instances. Contains instance identity, public key, and trust parameters.
 
 ### Foreman
 Supervisor-level agent managing the Toolroom. The only agent permitted to access GitHub repositories. All tool installations, updates, and external access go through the Foreman with HITL approval. See `toolroom/foreman.py`.
@@ -117,14 +117,14 @@ A Python function registered via `@register_function_tool` decorator for in-proc
 Hash-based Message Authentication Code using SHA-256. Used for signing agent messages to ensure integrity and authenticity.
 
 ### Human-in-the-Loop (HITL)
-Design pattern where critical operations require explicit human approval before execution. In TelsonBase, ALL external API access triggers HITL - no exceptions. Implemented via approval gates.
+Design pattern where critical operations require explicit human approval before execution. In ClawCoat, ALL external API access triggers HITL - no exceptions. Implemented via approval gates.
 
 ---
 
 ## I
 
 ### Instance ID
-Unique identifier for a TelsonBase deployment. Used in federation to distinguish between trusted instances.
+Unique identifier for a ClawCoat deployment. Used in federation to distinguish between trusted instances.
 
 ---
 
@@ -138,7 +138,7 @@ Token format used for API authentication. Contains claims (user identity, permis
 ## M
 
 ### MCP (Model Context Protocol)
-Standard protocol for AI model communication. TelsonBase uses MCP-compatible message structures for agent interactions.
+Standard protocol for AI model communication. ClawCoat uses MCP-compatible message structures for agent interactions.
 
 ### Manifest (Tool)
 JSON file (`tool_manifest.json`) that defines a tool's execution contract: entry point, inputs, outputs, sandbox level, timeout, dependencies. Required for tool installation (v5.4.0CC). See `toolroom/manifest.py`.
@@ -151,7 +151,7 @@ Agent-to-agent communication system using Mosquitto. Topic structure: `telsonbas
 ## O
 
 ### Ollama
-Local LLM inference engine. TelsonBase runs Ollama in Docker for sovereign AI - all inference happens on your hardware. Accessed via `core/ollama_service.py` and the `agents/ollama_agent.py` wrapper.
+Local LLM inference engine. ClawCoat runs Ollama in Docker for sovereign AI - all inference happens on your hardware. Accessed via `core/ollama_service.py` and the `agents/ollama_agent.py` wrapper.
 
 ### Origin Block
 QMS v2.1.6 element (`::<agent_id>::`) identifying the sending agent. Mandatory position 1 in every QMS chain - the "radio callsign." Missing origin = anonymous transmission = security alert.
@@ -171,7 +171,7 @@ Identifier format used throughout the toolroom for QMS parseability: `CHKOUT-{uu
 ## Q
 
 ### QMS™ (Qualified Message Standard)
-TelsonBase's inter-agent communication protocol (v2.1.6). Blocks are delimited by `::...::` and linked by `-` separators: `::BLOCK::-::BLOCK::`. Every valid chain ends with `::`. Command/connector words carry a leading `_` prefix (`::_Thank_You::`) to distinguish them from action words (`::Create_Backup::`). See `core/qms.py` and `QMS_SPECIFICATION.md`.
+ClawCoat's inter-agent communication protocol (v2.1.6). Blocks are delimited by `::...::` and linked by `-` separators: `::BLOCK::-::BLOCK::`. Every valid chain ends with `::`. Command/connector words carry a leading `_` prefix (`::_Thank_You::`) to distinguish them from action words (`::Create_Backup::`). See `core/qms.py` and `QMS_SPECIFICATION.md`.
 
 ### QMS Chain
 Structured message format where blocks are linked by `-`: `::origin::-::@@correlation@@::-::action::-::data::-::_command::`. The chain always ends with `::` -- the closing delimiter of the final block. Supports halt postscript (`::%%%%::-::%%reason%%::`) for emergency stops.
@@ -201,7 +201,7 @@ Control mechanism restricting request frequency per client/agent. Supports per-a
 Permission system for human operators. Roles define what API endpoints and operations a user can access. See `core/rbac.py`.
 
 ### REM Comment
-Documentation comment style (`# REM:`) used in TelsonBase to explain architectural decisions and security rationale. Named after the BASIC language remark statement.
+Documentation comment style (`# REM:`) used in ClawCoat to explain architectural decisions and security rationale. Named after the BASIC language remark statement.
 
 ### Rollback (Tool)
 Ability (v5.4.0CC) to revert a tool to a previous version from its version history. Updates registry metadata. See `ToolRegistry.rollback_tool()` in `toolroom/registry.py`.
@@ -226,7 +226,7 @@ Cryptographic key used to sign agent messages. Per-agent keys stored in Redis. S
 Component (`core/signing.py`) that handles message signing and verification using HMAC-SHA256. Includes key revocation mechanism with audit trail.
 
 ### Sovereign Score
-0-100 metric measuring how independent a TelsonBase instance is from external services. Factors: LLM locality (35%), data residency (25%), network exposure (20%), backup sovereignty (10%), auth posture (10%).
+0-100 metric measuring how independent a ClawCoat instance is from external services. Factors: LLM locality (35%), data residency (25%), network exposure (20%), backup sovereignty (10%), auth posture (10%).
 
 ---
 
@@ -245,7 +245,7 @@ See **Agent Trust Level**.
 Federation parameter indicating the degree of trust between instances. Levels: `MINIMAL`, `STANDARD`, `ELEVATED`, `FULL`.
 
 ### Trust Relationship
-Established connection between two TelsonBase instances allowing secure message exchange. Created via invitation/acceptance protocol.
+Established connection between two ClawCoat instances allowing secure message exchange. Created via invitation/acceptance protocol.
 
 ---
 

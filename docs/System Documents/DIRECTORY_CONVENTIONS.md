@@ -6,7 +6,7 @@
 
 ## The Building Metaphor
 
-TelsonBase is structured as a building. This release is **Ground Level** - the foundation that everything else sits on. Future development builds upward (new agent layers, UI, marketplace) and downward (deeper kernel security, hardware integration, firmware-level sovereignty).
+ClawCoat is structured as a building. This release is **Ground Level** - the foundation that everything else sits on. Future development builds upward (new agent layers, UI, marketplace) and downward (deeper kernel security, hardware integration, firmware-level sovereignty).
 
 ---
 
@@ -36,14 +36,14 @@ Examples:
 
 ### Internal References
 
-All Python files, configs, and documentation reference **TelsonBase** as the project name. All code uses `TelsonBase` (display) or `telsonbase` (identifier) exclusively.
+All Python files, configs, and documentation reference **ClawCoat** as the project name. All code uses `ClawCoat` (display) or `telsonbase` (identifier) exclusively.
 
 ```python
 # Old:
-# TelsonBase/core/auth.py
+# ClawCoat/core/auth.py
 
 # New:
-# TelsonBase/core/auth.py
+# ClawCoat/core/auth.py
 ```
 
 ### The Building Floors
@@ -102,4 +102,4 @@ Convention: `telsonbase_` (Docker auto-prefixes from the root directory name)
 
 ## Summary
 
-The project is **TelsonBase**. The directory is `telsonbase/`. The version is in the archive filename. This is Ground Level. We build from here.
+The project is **ClawCoat**. The directory is `telsonbase/`. The version is in the archive filename. This is Ground Level. We build from here.

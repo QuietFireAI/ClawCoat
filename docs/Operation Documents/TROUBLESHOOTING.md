@@ -452,7 +452,7 @@ sudo ufw allow 8000/tcp
 Get-NetFirewallRule | Where-Object { $_.LocalPort -eq 8000 }
 
 # Add rule if needed
-New-NetFirewallRule -DisplayName "TelsonBase API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
+New-NetFirewallRule -DisplayName "ClawCoat API" -Direction Inbound -LocalPort 8000 -Protocol TCP -Action Allow
 ```
 
 **Docker network issues:**
@@ -515,7 +515,7 @@ Ensure `TRAEFIK_ACME_EMAIL` is set in `.env` for automatic certificate provision
 4. **Email:** support@clawcoat.com
 
 When reporting issues, include:
-- TelsonBase version (`curl http://localhost:8000/health`)
+- ClawCoat version (`curl http://localhost:8000/health`)
 - Docker version (`docker --version`)
 - Python version (`python --version`)
 - Relevant logs (`docker-compose logs --tail=100 mcp_server`)
@@ -527,4 +527,4 @@ When reporting issues, include:
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

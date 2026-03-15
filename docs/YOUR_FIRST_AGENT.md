@@ -2,10 +2,10 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-**Who this is for:** You just finished installation. TelsonBase is running. This guide walks you through registering your first agent and watching it governed - blocked, promoted, and unblocked - start to finish.
+**Who this is for:** You just finished installation. ClawCoat is running. This guide walks you through registering your first agent and watching it governed - blocked, promoted, and unblocked - start to finish.
 
 **What you need:**
-- TelsonBase running (local Docker or remote server)
+- ClawCoat running (local Docker or remote server)
 - Your API key (`MCP_API_KEY` from your `.env`, or from `secrets/telsonbase_mcp_api_key` on the server)
 - A terminal with `curl` and `python3`
 
@@ -66,7 +66,7 @@ Expected response:
 
 1. `"trust_level": "quarantine"` - every agent starts here, no exceptions. Quarantine means almost nothing is autonomous. READ actions are gated for human approval. Everything else is blocked. Trust is earned, not granted.
 
-2. `"agent_key"` - this is returned **once**. TelsonBase generated this key for your agent. It is not stored in plaintext anywhere. Copy it now and keep it somewhere safe. You will use it as the `X-Agent-Key` header when the agent submits its own actions. In production, store this in an environment variable or secrets manager - never hardcode it or commit it to source control.
+2. `"agent_key"` - this is returned **once**. ClawCoat generated this key for your agent. It is not stored in plaintext anywhere. Copy it now and keep it somewhere safe. You will use it as the `X-Agent-Key` header when the agent submits its own actions. In production, store this in an environment variable or secrets manager - never hardcode it or commit it to source control.
 
 Store your instance ID:
 ```bash
@@ -252,7 +252,7 @@ curl -s -X POST "http://localhost:8000/v1/openclaw/$AGENT_ID/action" \
   | python3 -m json.tool
 ```
 
-When `X-Agent-Key` is present, TelsonBase verifies the key matches the `instance_id` in the path. A key for Agent A cannot submit actions as Agent B. This is the per-agent zero-trust enforcement layer - each agent has its own identity, and that identity is verified on every action.
+When `X-Agent-Key` is present, ClawCoat verifies the key matches the `instance_id` in the path. A key for Agent A cannot submit actions as Agent B. This is the per-agent zero-trust enforcement layer - each agent has its own identity, and that identity is verified on every action.
 
 ---
 
@@ -261,9 +261,9 @@ When `X-Agent-Key` is present, TelsonBase verifies the key matches the `instance
 - **View recent actions:** `GET /v1/openclaw/{id}/actions`
 - **Full Manners breakdown:** `GET /v1/openclaw/{id}/manners`
 - **Suspend an agent (kill switch):** `POST /v1/openclaw/{id}/suspend`
-- **Full API reference:** `GET /docs` (Swagger UI at your TelsonBase URL)
+- **Full API reference:** `GET /docs` (Swagger UI at your ClawCoat URL)
 - **Compliance documentation:** `docs/Compliance Documents/`
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · Apache 2.0*
+*ClawCoat v11.0.1 · Quietfire AI · Apache 2.0*

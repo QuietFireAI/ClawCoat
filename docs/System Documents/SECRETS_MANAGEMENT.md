@@ -6,7 +6,7 @@
 
 ## What This Covers
 
-TelsonBase uses Docker Secrets for all sensitive values - API keys, signing keys,
+ClawCoat uses Docker Secrets for all sensitive values - API keys, signing keys,
 encryption keys, and all infrastructure passwords. This document explains how the
 secrets system works, how to generate and rotate secrets, what each secret does,
 and what happens if you skip any of it.
@@ -150,7 +150,7 @@ or after a restore.
 ## File Permissions: Why 644, Not 600
 
 Secret files are set to mode `644` (owner read/write, group and world read). This is
-intentional. TelsonBase containers run as non-root users and need to read the secrets
+intentional. ClawCoat containers run as non-root users and need to read the secrets
 mounted at `/run/secrets/`. Mode `600` would block that read and cause startup failures.
 
 The `secrets/` **directory** is mode `700` (owner only). Files inside are readable but the
@@ -289,4 +289,4 @@ both recommend regular key rotation; the specific interval depends on your risk 
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

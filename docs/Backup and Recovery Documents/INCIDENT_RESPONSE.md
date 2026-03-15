@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-This document defines the incident response procedures for TelsonBase deployments. It covers detection, classification, response, and recovery for security incidents involving the agent platform.
+This document defines the incident response procedures for ClawCoat deployments. It covers detection, classification, response, and recovery for security incidents involving the agent platform.
 
 ### Scope
 
@@ -32,7 +32,7 @@ This plan applies to:
 
 ### Automated Response Triggers
 
-TelsonBase includes automated threat response. These actions are taken automatically:
+ClawCoat includes automated threat response. These actions are taken automatically:
 
 | Indicator | Threat Level | Automatic Action |
 |-----------|--------------|------------------|
@@ -268,4 +268,4 @@ curl -H "X-API-Key: $KEY" http://localhost:8000/v1/audit/chain/verify
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,7 +1,7 @@
 # ClawCoat - Security Policy
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI - security@clawcoat.com
 
-TelsonBase is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
+ClawCoat is built on zero-trust principles. Every agent message is cryptographically signed, every action requires declared capabilities, and behavioral anomalies trigger automatic quarantine.
 
 **This is security infrastructure for AI agents.** We take vulnerabilities seriously.
 
@@ -67,7 +67,7 @@ Out of scope:
 
 ## Security Architecture Overview
 
-TelsonBase's security model is documented across the following sources. There is no single architecture document - the architecture is verified through proof sheets and explained through the technical reference.
+ClawCoat's security model is documented across the following sources. There is no single architecture document - the architecture is verified through proof sheets and explained through the technical reference.
 
 | Document | What It Covers |
 |---|---|
@@ -145,4 +145,4 @@ Security patches are announced via:
 
 *"Data sovereignty is security sovereignty."* - Quietfire AI
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

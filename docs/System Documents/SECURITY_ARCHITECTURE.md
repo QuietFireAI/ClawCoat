@@ -6,7 +6,7 @@
 
 ## Overview
 
-TelsonBase implements a **zero-trust security model** for AI agent orchestration. This document describes the security layers, threat model, and implementation details.
+ClawCoat implements a **zero-trust security model** for AI agent orchestration. This document describes the security layers, threat model, and implementation details.
 
 ## Threat Model
 
@@ -304,7 +304,7 @@ Sensitive data in Redis is encrypted with AES-256-GCM:
 │    ┌───────────────────────┐                                            │
 │    │  SecureStorageManager │                                            │
 │    │                       │                                            │
-│    │  1. PBKDF2 key derive │  ← Key from TelsonBase_ENCRYPTION_KEY      │
+│    │  1. PBKDF2 key derive │  ← Key from ClawCoat_ENCRYPTION_KEY      │
 │    │  2. Generate nonce    │                                            │
 │    │  3. AES-256-GCM enc   │                                            │
 │    └───────────────────────┘                                            │
@@ -523,8 +523,8 @@ Instance A                                    Instance B
 
 1. **Set encryption key:**
    ```bash
-   export TelsonBase_ENCRYPTION_KEY=$(openssl rand -hex 32)
-   export TelsonBase_ENCRYPTION_SALT=$(openssl rand -hex 16)
+   export ClawCoat_ENCRYPTION_KEY=$(openssl rand -hex 32)
+   export ClawCoat_ENCRYPTION_SALT=$(openssl rand -hex 16)
    ```
 
 2. **Store keys securely:**
@@ -577,7 +577,7 @@ Instance A                                    Instance B
 
 ### SOC2 Trust Services Criteria
 
-| Criteria | TelsonBase Feature |
+| Criteria | ClawCoat Feature |
 |----------|-------------------|
 | CC6.1 Logical access | API authentication, RBAC |
 | CC6.2 Prior authorization | Capability system, approval gates |
@@ -589,7 +589,7 @@ Instance A                                    Instance B
 
 ### ISO 27001 Control Mapping
 
-| Control | TelsonBase Feature |
+| Control | ClawCoat Feature |
 |---------|-------------------|
 | A.9.2 User access | RBAC, trust levels |
 | A.9.4 System access | Capability enforcement |
@@ -603,11 +603,11 @@ Instance A                                    Instance B
 
 ## Compliance Considerations
 
-TelsonBase is designed with regulatory compliance awareness. While the platform provides security controls, **compliance certification requires additional organizational policies and procedures**.
+ClawCoat is designed with regulatory compliance awareness. While the platform provides security controls, **compliance certification requires additional organizational policies and procedures**.
 
 ### HIPAA (Healthcare)
 
-TelsonBase supports HIPAA compliance through:
+ClawCoat supports HIPAA compliance through:
 - **Encryption at rest** (AES-256-GCM for sensitive data in Redis)
 - **Audit trails** (cryptographic hash-chained logs for non-repudiation)
 - **Access controls** (RBAC, capability-based permissions)
@@ -621,7 +621,7 @@ TelsonBase supports HIPAA compliance through:
 
 ### GDPR (European Data Protection)
 
-TelsonBase supports GDPR compliance through:
+ClawCoat supports GDPR compliance through:
 - **Data sovereignty** (self-hosted, data never leaves your control)
 - **Audit logging** (track all data access and processing)
 - **Federated architecture** (data stays in appropriate jurisdictions)
@@ -635,7 +635,7 @@ TelsonBase supports GDPR compliance through:
 
 ### Financial Services (SOX, PCI-DSS)
 
-TelsonBase supports financial compliance through:
+ClawCoat supports financial compliance through:
 - **Change control** (audit trail of all modifications)
 - **Access segregation** (trust levels, RBAC)
 - **Monitoring** (anomaly detection, threat response)
@@ -684,4 +684,4 @@ Quick reference:
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,4 +1,4 @@
-# MANNERS.md - TelsonBase Agent Operating Principles
+# MANNERS.md - ClawCoat Agent Operating Principles
 
 **Version:** v11.0.1
 **Effective:** March 8, 2026
@@ -12,11 +12,11 @@ Agents need manners. That is not a novel idea. It is how you raise children who 
 
 The Qualified Message Standard (QMS™) is manners expressed as protocol. When a child learns manners, they learn to say who they are, acknowledge what they are responding to, state their need clearly, and signal when they are done. A QMS™ message does exactly that: blocks linked by `-` separators, opening with an ORIGIN block (who I am), a CORRELATION block (what this connects to), a COMMAND block (what I need), and always closing with a connector word that signals the outcome -- `::_Thank_You::` when done, `::_Thank_You_But_No::` when refused, `::_Excuse_Me::` when clarification is needed, or `::%%%%::` when something has gone catastrophically wrong. Every valid chain ends with `::`. The format is self-describing: the leading `_` on the final block marks it as a connector word -- a word about the transaction, not in it. Agents that communicate through QMS™ are not just structured - they are accountable. That was the point from the beginning.
 
-QMS™ is not required to operate TelsonBase. Every governance feature - approval gates, trust tiers, kill switch, audit chain - works without it. That said: within a running TelsonBase, inter-agent messages that arrive without QMS™ formatting trigger a NON_QMS_MESSAGE anomaly event. The absence of QMS™ output from a registered active agent is equally flaggable - the gap in the log is the signal. Suppressing the logs does not hide the attacker. It identifies them. That security behavior is the reason QMS™ was built in the first place.
+QMS™ is not required to operate ClawCoat. Every governance feature - approval gates, trust tiers, kill switch, audit chain - works without it. That said: within a running ClawCoat, inter-agent messages that arrive without QMS™ formatting trigger a NON_QMS_MESSAGE anomaly event. The absence of QMS™ output from a registered active agent is equally flaggable - the gap in the log is the signal. Suppressing the logs does not hide the attacker. It identifies them. That security behavior is the reason QMS™ was built in the first place.
 
-TelsonBase was designed around five operating principles before any external framework entered the picture. These principles came from a straightforward question: if an AI agent is going to work inside my company, how should it behave? The answers were not complicated. Ask before doing something irreversible. Be transparent about what you did. Stay in your lane. Keep data where it belongs. Assume someone is trying to break you.
+ClawCoat was designed around five operating principles before any external framework entered the picture. These principles came from a straightforward question: if an AI agent is going to work inside my company, how should it behave? The answers were not complicated. Ask before doing something irreversible. Be transparent about what you did. Stay in your lane. Keep data where it belongs. Assume someone is trying to break you.
 
-When the Developer came across Anthropic's published framework for developing safe and trustworthy agents, the alignment was significant. The principles TelsonBase was already built around mapped closely to what Anthropic had independently articulated from a research and safety perspective. That alignment is why TelsonBase implements and references Anthropic's framework - not because Anthropic prescribed how TelsonBase should work, but because two independent paths to the same conclusions is a signal worth taking seriously.
+When the Developer came across Anthropic's published framework for developing safe and trustworthy agents, the alignment was significant. The principles ClawCoat was already built around mapped closely to what Anthropic had independently articulated from a research and safety perspective. That alignment is why ClawCoat implements and references Anthropic's framework - not because Anthropic prescribed how ClawCoat should work, but because two independent paths to the same conclusions is a signal worth taking seriously.
 
 Every agent deployed on this platform - whether built-in, third-party, or user-created - operates within these principles. Compliance is not optional. It is measured, scored, and enforced at runtime.
 
@@ -34,7 +34,7 @@ Every agent deployed on this platform - whether built-in, third-party, or user-c
 
 Agents operate autonomously within defined boundaries. Any action that is destructive, irreversible, or crosses a trust boundary requires explicit human approval before execution. The human stays in control. Always.
 
-**TelsonBase Implementation:**
+**ClawCoat Implementation:**
 - HITL (Human-in-the-Loop) approval gates on all destructive actions
 - `REQUIRES_APPROVAL_FOR` list enforced on every agent class
 - Approval requests routed to User Console with full context
@@ -55,7 +55,7 @@ Agents operate autonomously within defined boundaries. Any action that is destru
 
 Agents must provide visibility into their reasoning, actions, and outcomes. Every action is logged to the cryptographic audit chain. Users must be able to understand what an agent did, why it did it, and what it plans to do next. No black boxes.
 
-**TelsonBase Implementation:**
+**ClawCoat Implementation:**
 - Cryptographic audit chain (SHA-256 hash-linked) for every agent action
 - QMS™ (Qualified Message Standard) provides human-readable action provenance (optional layer - platform runs without it)
 - Agent responses include action summaries, not just raw data
@@ -76,7 +76,7 @@ Agents must provide visibility into their reasoning, actions, and outcomes. Ever
 
 Agents must act within their defined role and capabilities. An agent must not take actions that seem reasonable internally but are misaligned with the user's actual objectives. When uncertain, agents escalate rather than assume. Stay in your lane.
 
-**TelsonBase Implementation:**
+**ClawCoat Implementation:**
 - Capability enforcement: agents can only access resources in their capability profile
 - Behavioral baselines: anomaly detector flags actions outside established patterns
 - Trust levels (QUARANTINE, PROBATION, RESIDENT, CITIZEN, AGENT) constrain agent reach
@@ -97,7 +97,7 @@ Agents must act within their defined role and capabilities. An agent must not ta
 
 Agents must not carry sensitive information from one context to another without explicit authorization. Data stays within its tenant, matter, and classification boundaries. Nothing leaves the deployment without human approval.
 
-**TelsonBase Implementation:**
+**ClawCoat Implementation:**
 - Multi-tenancy with client-matter isolation and litigation holds
 - Data classification system (PUBLIC, INTERNAL, CONFIDENTIAL, RESTRICTED)
 - Self-hosted deployment model: data never leaves the customer's network
@@ -118,7 +118,7 @@ Agents must not carry sensitive information from one context to another without 
 
 Agent systems must safeguard sensitive data and prevent misuse. Agents must resist prompt injection, capability escalation, and adversarial manipulation. The platform assumes hostile input at every boundary.
 
-**TelsonBase Implementation:**
+**ClawCoat Implementation:**
 - Zero-trust architecture: no implicit trust between agents or services
 - Cryptographic message signing (Ed25519) for all inter-agent communication
 - Rate limiting at agent, user, and tenant levels
@@ -184,7 +184,7 @@ Agents that have been operational for less than 24 hours default to DEGRADED sta
 
 ## Framework Reference
 
-Anthropic's published framework for responsible agent development aligns closely with the principles TelsonBase was built around. Where that alignment exists, TelsonBase implements it and credits the source. As Anthropic and others publish updated guidance on responsible agent development, TelsonBase will evaluate and incorporate what applies.
+Anthropic's published framework for responsible agent development aligns closely with the principles ClawCoat was built around. Where that alignment exists, ClawCoat implements it and credits the source. As Anthropic and others publish updated guidance on responsible agent development, ClawCoat will evaluate and incorporate what applies.
 
 **Current reference sources:**
 - Anthropic: "Framework for Developing Safe and Trustworthy Agents" (2025)
@@ -199,10 +199,10 @@ Anthropic's published framework for responsible agent development aligns closely
 > and harmless. This technical alignment challenge requires urgent research."
 > -- Anthropic, Core Views on AI Safety
 
-TelsonBase does not claim to solve AI alignment. It claims to build the governance infrastructure that makes alignment measurable, enforceable, and auditable for real deployments. The principles here are not borrowed - they are the product of asking a simple question about how agents should behave and building the answer from scratch. That the answer lines up with serious research from teams working on the same problem is not coincidence. It is the point.
+ClawCoat does not claim to solve AI alignment. It claims to build the governance infrastructure that makes alignment measurable, enforceable, and auditable for real deployments. The principles here are not borrowed - they are the product of asking a simple question about how agents should behave and building the answer from scratch. That the answer lines up with serious research from teams working on the same problem is not coincidence. It is the point.
 
 Built by Quietfire AI. Accountable to our users.
 
 ---
 
-*TelsonBase v11.0.1 - Quietfire AI - March 8, 2026*
+*ClawCoat v11.0.1 - Quietfire AI - March 8, 2026*

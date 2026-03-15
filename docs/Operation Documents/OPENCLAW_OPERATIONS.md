@@ -2,7 +2,7 @@
 
 ## ClawCoat v11.0.1 - "Control Your Claw"
 
-**Architecture:** TelsonBase acts as a governed MCP proxy. OpenClaw is never modified - TelsonBase wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
+**Architecture:** ClawCoat acts as a governed MCP proxy. OpenClaw is never modified - ClawCoat wraps it. Every action the claw wants to take is evaluated through an 8-step governance pipeline before execution.
 
 ---
 
@@ -87,7 +87,7 @@ Save the `instance_id` - you'll use it for all subsequent operations.
 
 ## Submit an Action for Governance Evaluation
 
-This is the core operation. When an OpenClaw instance wants to do something, it submits the action to TelsonBase, which runs it through the 8-step pipeline and returns a decision.
+This is the core operation. When an OpenClaw instance wants to do something, it submits the action to ClawCoat, which runs it through the 8-step pipeline and returns a decision.
 
 ```powershell
 curl -s -X POST `
@@ -185,7 +185,7 @@ curl -s -X POST `
 
 ### Automatic Demotion (Manners Auto-Demotion)
 
-If a claw's Manners compliance score drops below the configured threshold, TelsonBase automatically demotes it to QUARANTINE without human intervention. This fires at step 4 of the governance pipeline and is audited.
+If a claw's Manners compliance score drops below the configured threshold, ClawCoat automatically demotes it to QUARANTINE without human intervention. This fires at step 4 of the governance pipeline and is audited.
 
 ---
 
@@ -367,4 +367,4 @@ curl -s -H "X-API-Key: $env:MCP_API_KEY" "http://localhost:8000/v1/audit/chain/e
 
 ---
 
-*TelsonBase v11.0.1 · OpenClaw Governance · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · OpenClaw Governance · Quietfire AI · March 8, 2026*

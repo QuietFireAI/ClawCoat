@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
 """
-ClawCoat — Live Governance Demo
+ClawCoat - Live Governance Demo
 Gradio app connecting to the live ClawCoat API.
 API credentials loaded from HuggingFace Space secrets.
 """
@@ -214,9 +214,9 @@ def reinstate_citizen() -> str:
 
 # ── UI ───────────────────────────────────────────────────────────────────────
 DESCRIPTION = """
-**ClawCoat** — the local-first gateway for OpenClaw.
+**ClawCoat** - the local-first gateway for OpenClaw.
 
-Every MCP tool call is evaluated before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time — that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
+Every MCP tool call is evaluated before execution. The governance pipeline decides: **Allow**, **Gate** (hold for human approval), or **Block**. Every agent starts at **Quarantine**. Every action is scored against five behavioral principles in real time - that score is the **Manners Score** (0.0–1.0). Trust is earned through demonstrated behavior, promoted tier by tier, approved by a human at each step.
 
 Drop below 0.25 or trigger three violations in any 24-hour window — the agent auto-suspends.
 No grace period. No human delay required.
@@ -256,7 +256,7 @@ Hit **Reinstate Agent** when you're done to reset the demo for the next visitor.
 """
 
 with gr.Blocks(
-    title="ClawCoat — Live Governance Demo",
+    title="ClawCoat - Live Governance Demo",
     theme=gr.themes.Base(
         primary_hue=gr.themes.colors.violet,
         neutral_hue=gr.themes.colors.slate,
@@ -270,7 +270,7 @@ with gr.Blocks(
 ) as demo:
 
     gr.Markdown("← [Back to clawcoat.com](https://clawcoat.com)", elem_classes=["back-link"])
-    gr.Markdown(f"# ClawCoat — Active Decision Making\n{DESCRIPTION}")
+    gr.Markdown(f"# ClawCoat - Active Decision Making\n{DESCRIPTION}")
 
     gr.Markdown("---")
     gr.Markdown("## Governance Pipeline Explorer")

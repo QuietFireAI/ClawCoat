@@ -1,6 +1,6 @@
 # Data Processing Agreement
 
-**TelsonBase Zero-Trust AI Agent Security Platform**
+**ClawCoat Zero-Trust AI Agent Security Platform**
 
 ---
 
@@ -18,11 +18,11 @@ This Data Processing Agreement ("DPA") is entered into as of [EFFECTIVE DATE] ("
 [CUSTOMER NAME], a [ENTITY TYPE] organized under the laws of [JURISDICTION], with its principal office at [CUSTOMER ADDRESS] ("Controller" or "Customer").
 
 **Data Processor:**
-Quietfire AI, doing business as TelsonBase ("Processor" or "TelsonBase").
+Quietfire AI, doing business as ClawCoat ("Processor" or "ClawCoat").
 
 Controller and Processor are each a "Party" and collectively the "Parties."
 
-This DPA is incorporated into and forms part of the Master Service Agreement or Software License Agreement between the Parties dated [MSA DATE] ("Service Agreement") under which TelsonBase provides the Controller with a self-hosted, zero-trust AI agent security platform (the "Platform").
+This DPA is incorporated into and forms part of the Master Service Agreement or Software License Agreement between the Parties dated [MSA DATE] ("Service Agreement") under which ClawCoat provides the Controller with a self-hosted, zero-trust AI agent security platform (the "Platform").
 
 ---
 
@@ -425,7 +425,7 @@ Name: ___________________________________
 
 Title: ___________________________________
 
-Organization: Quietfire AI (dba TelsonBase)
+Organization: Quietfire AI (dba ClawCoat)
 
 Date: ___________________________________
 
@@ -471,4 +471,4 @@ If this changes, the Processor shall notify the Controller in accordance with Se
 
 ---
 
-*This Data Processing Agreement is a template provided for informational purposes. It should be reviewed, customized, and approved by qualified legal counsel before execution. TelsonBase makes no representation that this template satisfies all legal requirements applicable to any particular Controller's circumstances.*
+*This Data Processing Agreement is a template provided for informational purposes. It should be reviewed, customized, and approved by qualified legal counsel before execution. ClawCoat makes no representation that this template satisfies all legal requirements applicable to any particular Controller's circumstances.*

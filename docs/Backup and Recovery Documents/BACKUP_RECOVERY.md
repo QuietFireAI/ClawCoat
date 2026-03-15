@@ -31,7 +31,7 @@ Add this cron entry to run backups daily at 2:00 AM:
 # Edit crontab
 crontab -e
 
-# Add this line (adjust path to your TelsonBase installation):
+# Add this line (adjust path to your ClawCoat installation):
 0 2 * * * cd /path/to/telsonbase && ./scripts/backup.sh >> /var/log/telsonbase-backup.log 2>&1
 ```
 
@@ -123,7 +123,7 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 
 | Responsibility | Owner |
 |---------------|-------|
-| Backup script correctness | TelsonBase project (automated) |
+| Backup script correctness | ClawCoat project (automated) |
 | Running backups on schedule | **Operator** |
 | Offsite backup storage | **Operator** |
 | Monitoring backup success/failure | **Operator** |
@@ -143,4 +143,4 @@ rsync -av backups/ nas:/volume1/telsonbase-backups/
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

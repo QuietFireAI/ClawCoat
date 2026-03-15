@@ -13,7 +13,7 @@
 
 ## Abstract
 
-This document defines the Agent Autonomy SLA, a formal per-agent commitment framework that governs what an autonomous AI agent is permitted to do, under what conditions, with what oversight, and with what accountability. It is implemented in ClawCoat, a self-hosted, zero-trust AI agent governance platform.
+This document defines the Agent Autonomy SLA, a formal per-agent commitment framework that governs what an OpenClaw agent is permitted to do, under what conditions, with what oversight, and with what accountability. It is implemented in ClawCoat, a self-hosted, zero-trust AI agent governance platform.
 
 This specification is offered as an open standard. Any system that intercepts MCP tool calls in real time and enforces per-tier policy may claim compliance with the Agent Autonomy SLA model defined here.
 
@@ -26,7 +26,7 @@ Traditional SLAs cover infrastructure: uptime, latency, throughput, error rates.
 Jouneaux et al. (2025) identify agent SLAs as "an open challenge":
 
 > "We argue that the notion of Service Level Agreement (SLA) for AI agents is still largely open and would require new research efforts to tackle the properties that make AI agents unique."
-> — *AgentSLA: Towards a Service Level Agreement for AI Agents*, arXiv:2511.02885
+> - *AgentSLA: Towards a Service Level Agreement for AI Agents*, arXiv:2511.02885
 
 The gap is precise. An API gateway can confirm that a request was authenticated and responded within 200ms. It cannot determine whether that request, tool call, file write, transaction initiation, was appropriate for the agent that made it, given its behavioral history, trust standing, and the human oversight policy in effect at that moment.
 

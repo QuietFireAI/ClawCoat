@@ -8,11 +8,11 @@
 
 ## I. Executive Summary
 
-TelsonBase is a self-hosted, zero-trust AI agent orchestration platform currently deployed for real estate and legal professionals. This document is forward-looking - it maps TelsonBase's existing and extended security infrastructure to the HIPAA Security Rule (45 CFR Part 164), the HITECH Act, and the HITRUST Common Security Framework (CSF).
+ClawCoat is a self-hosted, zero-trust AI agent orchestration platform currently deployed for real estate and legal professionals. This document is forward-looking - it maps ClawCoat's existing and extended security infrastructure to the HIPAA Security Rule (45 CFR Part 164), the HITECH Act, and the HITRUST Common Security Framework (CSF).
 
-**TelsonBase is not currently deployed in healthcare environments and does not process Protected Health Information (PHI) in production.** This document demonstrates that the architectural controls, administrative safeguards, and technical mechanisms required for HIPAA compliance are already in place or pre-mapped within the platform. All healthcare-specific controls layer on top of - and do not conflict with - the existing real estate and legal compliance infrastructure documented in `LEGAL_COMPLIANCE.md`.
+**ClawCoat is not currently deployed in healthcare environments and does not process Protected Health Information (PHI) in production.** This document demonstrates that the architectural controls, administrative safeguards, and technical mechanisms required for HIPAA compliance are already in place or pre-mapped within the platform. All healthcare-specific controls layer on top of - and do not conflict with - the existing real estate and legal compliance infrastructure documented in `LEGAL_COMPLIANCE.md`.
 
-When and if TelsonBase pursues healthcare as a target market, the transition will be a configuration exercise rather than an architectural overhaul. Every module referenced in this document exists in the codebase today.
+When and if ClawCoat pursues healthcare as a target market, the transition will be a configuration exercise rather than an architectural overhaul. Every module referenced in this document exists in the codebase today.
 
 ---
 
@@ -241,13 +241,13 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 | Control | Implementation | Files |
 |---------|---------------|-------|
 | **12 HITRUST CSF Domains Tracked** | Information Protection Program (01), Endpoint Protection (02), Portable Media Security (03), Mobile Device Security (04), Wireless Security (05), Configuration Management (06), Vulnerability Management (07), Network Protection (08), Transmission Protection (09), Password Management (10), Access Control (11), Audit Logging & Monitoring (12) | `core/hitrust_controls.py` |
-| **17 Baseline Controls Pre-Mapped** | Controls mapped from TelsonBase modules to HITRUST requirements: MFA (01.b), RBAC (01.c), encryption at rest (06.d), encryption in transit (09.m), audit logging (09.aa), session management (01.t), data classification (07.a), breach notification (11.a), contingency testing (12.c), BAA tracking (05.i), sanctions (02.e), training (02.e), network segmentation (09.m), PHI de-identification (07.c), minimum necessary (01.d), emergency access (01.b), integrity verification (09.s) | `core/hitrust_controls.py` |
+| **17 Baseline Controls Pre-Mapped** | Controls mapped from ClawCoat modules to HITRUST requirements: MFA (01.b), RBAC (01.c), encryption at rest (06.d), encryption in transit (09.m), audit logging (09.aa), session management (01.t), data classification (07.a), breach notification (11.a), contingency testing (12.c), BAA tracking (05.i), sanctions (02.e), training (02.e), network segmentation (09.m), PHI de-identification (07.c), minimum necessary (01.d), emergency access (01.b), integrity verification (09.s) | `core/hitrust_controls.py` |
 | **Risk Assessment Tracking** | Per-control risk assessment with inherent risk, residual risk, control effectiveness scoring (0-100), risk owner assignment, review date tracking, remediation plan linkage | `core/hitrust_controls.py` |
 | **Compliance Posture Reporting** | On-demand HITRUST readiness report with domain-level and control-level scoring, gap analysis, evidence mapping, exportable JSON format for assessor consumption | `core/hitrust_controls.py` |
 
 ### HITRUST CSF Domain Mapping
 
-| HITRUST Domain | TelsonBase Controls | Readiness |
+| HITRUST Domain | ClawCoat Controls | Readiness |
 |----------------|-------------------|-----------|
 | 01 - Information Protection Program | Data classification, retention, legal hold, PHI handling policies | Pre-Mapped |
 | 02 - Endpoint Protection | Session management, auto-logoff, security headers | Pre-Mapped |
@@ -367,7 +367,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ### §164.308 - Administrative Safeguards
 
-| HIPAA Section | Requirement | TelsonBase Module | Status |
+| HIPAA Section | Requirement | ClawCoat Module | Status |
 |---------------|-------------|-------------------|--------|
 | §164.308(a)(1)(i) | Security management process | `core/compliance.py`, `core/hitrust_controls.py` | Implemented |
 | §164.308(a)(1)(ii)(A) | Risk analysis | `core/hitrust_controls.py` | Implemented |
@@ -384,7 +384,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ### §164.310 - Physical Safeguards
 
-| HIPAA Section | Requirement | TelsonBase Module | Status |
+| HIPAA Section | Requirement | ClawCoat Module | Status |
 |---------------|-------------|-------------------|--------|
 | §164.310(a)(1) | Facility access controls | `docker-compose.yml` (network isolation) | Implemented (logical) |
 | §164.310(b) | Workstation use | `core/session_management.py` | Implemented |
@@ -393,7 +393,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ### §164.312 - Technical Safeguards
 
-| HIPAA Section | Requirement | TelsonBase Module | Status |
+| HIPAA Section | Requirement | ClawCoat Module | Status |
 |---------------|-------------|-------------------|--------|
 | §164.312(a)(1) | Access control | `core/rbac.py`, `core/capabilities.py` | Implemented |
 | §164.312(a)(2)(i) | Unique user identification | `core/audit.py` (ActorType) | Implemented |
@@ -410,7 +410,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ### §164.314 - Organizational Requirements
 
-| HIPAA Section | Requirement | TelsonBase Module | Status |
+| HIPAA Section | Requirement | ClawCoat Module | Status |
 |---------------|-------------|-------------------|--------|
 | §164.314(a)(1) | Business associate contracts | `core/baa_tracking.py` | Implemented |
 | §164.314(a)(2) | BA contract requirements | `core/baa_tracking.py` | Implemented |
@@ -418,7 +418,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ### §164.316 - Policies, Procedures, and Documentation
 
-| HIPAA Section | Requirement | TelsonBase Module | Status |
+| HIPAA Section | Requirement | ClawCoat Module | Status |
 |---------------|-------------|-------------------|--------|
 | §164.316(a) | Policies and procedures | `docs/`, `core/compliance.py` | Implemented |
 | §164.316(b)(1) | Documentation | `core/audit.py`, `core/compliance.py` | Implemented |
@@ -476,7 +476,7 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
             |                         |    |
             |              +--- BACKEND NETWORK ---+
             |              |          |            |
-            |          [Worker]    [Beat]    [TelsonBase Core]
+            |          [Worker]    [Beat]    [ClawCoat Core]
             |              |          |            |
             |              |   +------+------+     |
             |              |   |  HIPAA Controls   |
@@ -542,8 +542,8 @@ When and if TelsonBase pursues healthcare as a target market, the transition wil
 
 ---
 
-*This document is intended for healthcare compliance evaluators, HIPAA security auditors, HITRUST assessors, and enterprise procurement teams assessing TelsonBase for deployment in healthcare-adjacent or healthcare-ready environments. TelsonBase does not currently process PHI in production - this document demonstrates infrastructure readiness for HIPAA/HITECH/HITRUST compliance. For current production compliance details covering real estate and legal markets, see `LEGAL_COMPLIANCE.md`. For technical implementation details, refer to the referenced source files.*
+*This document is intended for healthcare compliance evaluators, HIPAA security auditors, HITRUST assessors, and enterprise procurement teams assessing ClawCoat for deployment in healthcare-adjacent or healthcare-ready environments. ClawCoat does not currently process PHI in production - this document demonstrates infrastructure readiness for HIPAA/HITECH/HITRUST compliance. For current production compliance details covering real estate and legal markets, see `LEGAL_COMPLIANCE.md`. For technical implementation details, refer to the referenced source files.*
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

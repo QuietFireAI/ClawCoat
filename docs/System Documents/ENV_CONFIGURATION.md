@@ -6,7 +6,7 @@
 
 ## Overview
 
-TelsonBase uses environment variables for configuration. Copy `.env.example` to `.env` and customize for your deployment.
+ClawCoat uses environment variables for configuration. Copy `.env.example` to `.env` and customize for your deployment.
 
 ```bash
 cp .env.example .env
@@ -130,10 +130,10 @@ JWT_EXPIRATION_HOURS=24
 
 ## Encryption Variables (v4.3.0+)
 
-### TelsonBase_ENCRYPTION_KEY
+### ClawCoat_ENCRYPTION_KEY
 
 ```bash
-TelsonBase_ENCRYPTION_KEY=your_encryption_key_here
+ClawCoat_ENCRYPTION_KEY=your_encryption_key_here
 ```
 
 **Purpose:** Master key for encrypting sensitive data at rest in Redis.
@@ -154,10 +154,10 @@ openssl rand -hex 32
 
 ---
 
-### TelsonBase_ENCRYPTION_SALT
+### ClawCoat_ENCRYPTION_SALT
 
 ```bash
-TelsonBase_ENCRYPTION_SALT=your_salt_here
+ClawCoat_ENCRYPTION_SALT=your_salt_here
 ```
 
 **Purpose:** Salt for key derivation (PBKDF2).
@@ -349,8 +349,8 @@ ALLOWED_EXTERNAL_DOMAINS=api.anthropic.com,api.perplexity.ai
 LOG_LEVEL=INFO
 TRAEFIK_ACME_EMAIL=admin@yourcompany.com
 TRAEFIK_DOMAIN=telsonbase.yourcompany.com
-TelsonBase_ENCRYPTION_KEY=<generated with openssl rand -hex 32>
-TelsonBase_ENCRYPTION_SALT=<generated with openssl rand -hex 16>
+ClawCoat_ENCRYPTION_KEY=<generated with openssl rand -hex 32>
+ClawCoat_ENCRYPTION_SALT=<generated with openssl rand -hex 16>
 GRAFANA_ADMIN_PASSWORD=<secure password>
 ```
 

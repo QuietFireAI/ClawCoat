@@ -2,7 +2,7 @@
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 **Status:** Planning Document
-**Applies to:** TelsonBase v11.0.1
+**Applies to:** ClawCoat v11.0.1
 
 ---
 
@@ -22,7 +22,7 @@
 
 ### Single-Node Docker Compose Deployment
 
-TelsonBase runs as a single-host Docker Compose stack. All services execute on one machine, communicating over five segmented bridge networks (frontend, backend, data, ai, monitoring).
+ClawCoat runs as a single-host Docker Compose stack. All services execute on one machine, communicating over five segmented bridge networks (frontend, backend, data, ai, monitoring).
 
 #### Service Inventory
 
@@ -454,7 +454,7 @@ Application impact: The MQTT client in `core/mqtt_bus.py` connects by hostname. 
 
 ### Data Sovereignty
 
-TelsonBase's primary market is law firms where attorney-client privilege demands that data never leaves the firm's network. All HA strategies must preserve this constraint:
+ClawCoat's primary market is law firms where attorney-client privilege demands that data never leaves the firm's network. All HA strategies must preserve this constraint:
 
 - No cloud dependency. All components run on-premises.
 - No external SaaS for any data path (monitoring, logging, backups).
@@ -549,7 +549,7 @@ A single 8-core / 32 GB node comfortably hosts the full stack with headroom for 
 
 ### Recommended Path
 
-For TelsonBase's current trajectory (law firm pilots, self-hosted, compliance-driven):
+For ClawCoat's current trajectory (law firm pilots, self-hosted, compliance-driven):
 
 1. **Now:** Continue with single-node deployment. Focus on completing Cluster C hardening items (SOC 2 documentation, pen test prep, disaster recovery testing).
 
@@ -583,4 +583,4 @@ For TelsonBase's current trajectory (law firm pilots, self-hosted, compliance-dr
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

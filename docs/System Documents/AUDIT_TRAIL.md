@@ -1,7 +1,7 @@
 # ClawCoat Audit Trail
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
-Every governance decision made by TelsonBase is written to a hash-chained audit record. Not logged to a file. Not stored in a table. **Hash-chained** - each entry cryptographically binds to the one before it. You can hand this record to a regulator, opposing counsel, or a forensic investigator and prove that nothing was altered after the fact.
+Every governance decision made by ClawCoat is written to a hash-chained audit record. Not logged to a file. Not stored in a table. **Hash-chained** - each entry cryptographically binds to the one before it. You can hand this record to a regulator, opposing counsel, or a forensic investigator and prove that nothing was altered after the fact.
 
 This document covers the implementation, the API, the real-time stream, and the limits you need to know about before you go to production.
 
@@ -11,7 +11,7 @@ This document covers the implementation, the API, the real-time stream, and the 
 
 Conventional log files can be edited. A compromised system can append to them, truncate them, or rewrite them. This is an obvious problem when the thing being logged is an AI agent with file system access.
 
-TelsonBase's audit chain uses the same principle as a blockchain - without the overhead. Every entry contains a SHA-256 hash computed over its own content plus the hash of the previous entry. To silently alter entry #4,200, you would need to recompute the hash of #4,200, then #4,201, then every entry after it, and update the chain state stored in Redis - all without triggering a verification failure. In practice: if the chain shows `valid`, nothing was tampered with. If it shows `invalid`, something was.
+ClawCoat's audit chain uses the same principle as a blockchain - without the overhead. Every entry contains a SHA-256 hash computed over its own content plus the hash of the previous entry. To silently alter entry #4,200, you would need to recompute the hash of #4,200, then #4,201, then every entry after it, and update the chain state stored in Redis - all without triggering a verification failure. In practice: if the chain shows `valid`, nothing was tampered with. If it shows `invalid`, something was.
 
 The genesis entry uses a 64-character zero hash (`0000...0000`) as its `previous_hash`. From there, every entry is linked.
 
@@ -132,7 +132,7 @@ The `entry_hash` is SHA-256 of the canonical JSON of `sequence + timestamp + eve
 
 **Verification scope**: `GET /v1/audit/chain/verify` verifies the last N entries loaded into memory (default: 100, max: 1,000). A verification pass against 100 entries tells you those 100 are intact. To verify the full chain, export it and verify offline, or increase the verification limit.
 
-**On restart**: chain entries are reloaded from Redis. If the last loaded entry's hash doesn't match the saved chain state, TelsonBase discards the stale in-memory entries rather than introduce a false chain break at the session boundary. This is logged as a warning.
+**On restart**: chain entries are reloaded from Redis. If the last loaded entry's hash doesn't match the saved chain state, ClawCoat discards the stale in-memory entries rather than introduce a false chain break at the session boundary. This is logged as a warning.
 
 ---
 
@@ -232,7 +232,7 @@ GET /v1/audit/stream?api_key=YOUR_KEY&last_sequence=0
 
 New entries are pushed as [Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) within approximately 2 seconds of being written to the chain. Use `last_sequence` to receive only entries you haven't seen yet - pass the sequence number of the last entry you received to resume without re-receiving old entries.
 
-**Authentication note**: Browser `EventSource` cannot send custom headers. The `api_key` query parameter is the authentication mechanism for this endpoint specifically. On a local self-hosted deployment this is acceptable. If you're exposing TelsonBase to a network boundary, put it behind Traefik with TLS and rate-limit the endpoint.
+**Authentication note**: Browser `EventSource` cannot send custom headers. The `api_key` query parameter is the authentication mechanism for this endpoint specifically. On a local self-hosted deployment this is acceptable. If you're exposing ClawCoat to a network boundary, put it behind Traefik with TLS and rate-limit the endpoint.
 
 ### Browser / JavaScript
 
@@ -288,7 +288,7 @@ The stream sends `: keepalive` comment lines when no new entries arrive. These m
 
 ## Dashboard Integration
 
-The TelsonBase admin dashboard (`/dashboard` → Audit Trail tab) connects to the SSE stream when you're on the tab and authenticated. You'll see a pulsing green indicator labeled **"Live stream · entries pushed in real-time"** when the EventSource connection is open. If the SSE endpoint is unreachable, it falls back to a 10-second poll and shows **"Polling · refreshing every 10s"** in amber.
+The ClawCoat admin dashboard (`/dashboard` → Audit Trail tab) connects to the SSE stream when you're on the tab and authenticated. You'll see a pulsing green indicator labeled **"Live stream · entries pushed in real-time"** when the EventSource connection is open. If the SSE endpoint is unreachable, it falls back to a 10-second poll and shows **"Polling · refreshing every 10s"** in amber.
 
 The **Verify Chain** button in the dashboard calls `POST /v1/audit/chain/verify` and displays the result inline - no browser `alert()`, no page reload. The **Export JSON** button fetches up to 1,000 entries via the API client (with authentication headers) and downloads `audit_export.json` to your machine.
 
@@ -296,7 +296,7 @@ The **Verify Chain** button in the dashboard calls `POST /v1/audit/chain/verify`
 
 ## Verify an Entry Offline
 
-You don't need the TelsonBase API to verify a single entry. The hash is deterministic and reproducible:
+You don't need the ClawCoat API to verify a single entry. The hash is deterministic and reproducible:
 
 ```python
 import json
@@ -352,7 +352,7 @@ The `qms_status` parameter appends a QMS suffix to the message (`_Thank_You`, `_
 
 **Verification window**: Chain verification operates on the in-memory window (last 1,000 entries) plus whatever Redis returns. You cannot verify the full chain via the API once entries are trimmed. Export first, then verify the export.
 
-**In-memory/state mismatch after restart**: If Redis entries from a previous session don't match the saved chain state, TelsonBase discards the in-memory entries. The chain tip is preserved and new entries continue from there. This appears as a gap in sequence numbers but does not corrupt the ongoing chain.
+**In-memory/state mismatch after restart**: If Redis entries from a previous session don't match the saved chain state, ClawCoat discards the in-memory entries. The chain tip is preserved and new entries continue from there. This appears as a gap in sequence numbers but does not corrupt the ongoing chain.
 
 ---
 
@@ -366,4 +366,4 @@ docker compose exec mcp_server python -m pytest tests/test_audit.py -v
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

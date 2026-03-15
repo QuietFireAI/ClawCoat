@@ -8,7 +8,7 @@
 
 ## 1. Purpose
 
-This document describes the automated disaster recovery (DR) test procedure for TelsonBase. The DR test validates that backup and restore scripts function correctly and that recovery time objectives are achievable under realistic conditions.
+This document describes the automated disaster recovery (DR) test procedure for ClawCoat. The DR test validates that backup and restore scripts function correctly and that recovery time objectives are achievable under realistic conditions.
 
 **Recommended frequency:**
 - Quarterly (minimum) as part of compliance obligations
@@ -23,7 +23,7 @@ This document describes the automated disaster recovery (DR) test procedure for 
 Before running the DR test, confirm the following:
 
 - Docker Engine is running and `docker compose` is functional
-- All TelsonBase services are up (`docker compose ps` shows healthy containers)
+- All ClawCoat services are up (`docker compose ps` shows healthy containers)
 - At least one valid backup exists in `backups/` (for `--quick` mode)
 - No active client sessions or in-flight transactions (for `--full` mode)
 - Sufficient disk space for a new backup (check with `df -h`)
@@ -97,7 +97,7 @@ The DR test passes (exit code 0) when ALL of the following are true:
 
 ```
 +--------------------------------------------------------------+
-|       TelsonBase -- Disaster Recovery Test (full)            |
+|       ClawCoat -- Disaster Recovery Test (full)            |
 |                    by Quietfire AI                              |
 +--------------------------------------------------------------+
 
@@ -172,4 +172,4 @@ Test results are written to `logs/dr_test_YYYYMMDD.log` and should be retained f
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

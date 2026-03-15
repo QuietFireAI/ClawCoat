@@ -64,7 +64,7 @@ If something is broken, [open an issue](../../issues). If something is missing t
 
 ## What Is ClawCoat?
 
-ClawCoat is a **self-hosted, governance-first trust enabled platform** for autonomous AI agents. It acts as a governed MCP proxy: agents connect to ClawCoat, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. ClawCoat wraps it.
+ClawCoat is a **self-hosted, local-first governance platform** for OpenClaw agents. It acts as a governed MCP proxy: agents connect to ClawCoat, and every action they attempt is evaluated against trust levels, Manners compliance, anomaly detection, and approval gates before execution. The agent is never modified. ClawCoat wraps it.
 
 > **Note:** You will see `telsonbase` in environment variables, Docker container names, directory paths, and internal configuration. TelsonBase is the internal engine name. ClawCoat is the product. No changes to your deployment are required.
 
@@ -353,7 +353,7 @@ No OpenAI. No Google. No API calls to third-party inference services in the defa
 
 ## The Problem
 
-Autonomous AI agents, specifically Open Claw agents, are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
+OpenClaw agents are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
 
 Right now, as you read this:
 
@@ -469,7 +469,7 @@ Agents that already demonstrate the ability to make decisions can certainly unde
 
 I'm one person and I'm responsible for this project. This project was built over three years on consumer hardware, with standard subscriptions, using three AI platforms - not as tools, but as partners. The turning point came when I started cross-checking each model's work against the others. That process eliminated conversational drift and produced what you're looking at now, and what I will continue to build with.
 
-ClawCoat is my interpretation of how AI agents can work together safely and with some order. It is not the definitive answer - it is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less. I'm sharing this freely because the problems for AI agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive expanded capability - those will be released back openly as it develops.
+ClawCoat is my interpretation of how OpenClaw agents can work together safely and with some order. It is not the definitive answer - it is an approach one developer chose for running agents in his own company, built to production standards from the first line because the data those agents would touch demanded nothing less. I'm sharing this freely because the problems for OpenClaw agents are real and one person's solution and energy only goes so far. When this project gains traction, community contributions will drive expanded capability - those will be released back openly as it develops.
 
 Fork it. Break it. Build something better from it. The goal was never to own this problem but to model one way to solve it seriously and put that model where others can use it.
 
@@ -492,7 +492,7 @@ If you work in a regulated industry and understand what's at stake, read [AMBASS
 - Contribute code, documentation, or testing
 - Help shape the roadmap based on real-world needs
 
-This isn't a corporate ambassador program with NDAs and swag bags. It's a table of people who believe autonomous AI agents need governance, and are willing to help build it.
+This isn't a corporate ambassador program with NDAs and swag bags. It's a table of people who believe OpenClaw agents need governance, and are willing to help build it.
 
 ---
 
@@ -559,5 +559,5 @@ ORCID: https://orcid.org/0009-0000-1375-1725
 
 ---
 
-*"The industry gave AI agents the keys to everything before anyone asked who was watching. ClawCoat is the answer."*
+*"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching. ClawCoat is the answer."*
 

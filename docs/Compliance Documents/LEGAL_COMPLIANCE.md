@@ -8,9 +8,9 @@
 
 ## I. Executive Summary
 
-TelsonBase is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure - no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
+ClawCoat is a self-hosted, zero-trust AI agent orchestration platform designed for industries where data sovereignty, auditability, and regulatory compliance are non-negotiable. The platform runs entirely on the customer's infrastructure - no data leaves the deployment, no client data is sent to third-party AI services for training, and all AI inference occurs locally via Ollama.
 
-This document maps TelsonBase's security architecture to the compliance frameworks most commonly evaluated by real estate brokerages, law firms, and their respective regulatory bodies.
+This document maps ClawCoat's security architecture to the compliance frameworks most commonly evaluated by real estate brokerages, law firms, and their respective regulatory bodies.
 
 ---
 
@@ -337,7 +337,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 ### For Real Estate Evaluators
 
-| Regulation | TelsonBase Feature | Status |
+| Regulation | ClawCoat Feature | Status |
 |-----------|-------------------|--------|
 | Fair Housing Act | Tenant isolation prevents cross-client data leakage, data classification, audit trail | Implemented |
 | RESPA | Transaction data isolation via client-matter model, 3-5 year retention support, access audit trail | Implemented |
@@ -348,7 +348,7 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 ### For Legal Evaluators
 
-| Regulation | TelsonBase Feature | Status |
+| Regulation | ClawCoat Feature | Status |
 |-----------|-------------------|--------|
 | ABA Rule 1.6 (Confidentiality) | AES-256-GCM encryption, RBAC, MFA, audit trail, self-hosted (no third-party AI training), data classification (RESTRICTED level for privilege) | Implemented |
 | ABA Rule 1.7 / 1.10 (Conflicts) | Client-matter isolation, tenant scoping, ethical wall support via matter-level access control | Implemented |
@@ -399,8 +399,8 @@ This document maps TelsonBase's security architecture to the compliance framewor
 
 ---
 
-*This document is intended for compliance evaluators, security auditors, and enterprise procurement teams assessing TelsonBase for deployment in regulated industries. For technical implementation details, refer to the referenced source files.*
+*This document is intended for compliance evaluators, security auditors, and enterprise procurement teams assessing ClawCoat for deployment in regulated industries. For technical implementation details, refer to the referenced source files.*
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

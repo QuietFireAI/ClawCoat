@@ -4,9 +4,9 @@
 
 ## Why This Exists
 
-TelsonBase was built by one person. Shipping it to the world requires more than one person.
+ClawCoat was built by one person. Shipping it to the world requires more than one person.
 
-This isn't a marketing program. There are no tiers, no point systems, no swag budgets. This is a table of people who understand that autonomous AI agents need to earn their autonomy — through demonstrated behavior and explicit human authorization — and who are willing to help carry that idea into the industries where it matters most.
+This isn't a marketing program. There are no tiers, no point systems, no swag budgets. This is a table of people who understand that OpenClaw agents need to earn their autonomy - through demonstrated behavior and explicit human authorization - and who are willing to help carry that idea into the industries where it matters most.
 
 If you deploy AI agents in a regulated environment and you're tired of hoping the guardrails hold, this is for you.
 
@@ -16,19 +16,19 @@ If you deploy AI agents in a regulated environment and you're tired of hoping th
 
 ### Small Business Ambassadors
 
-You run a small business and you're already using — or thinking about using — AI agents to handle real work. You don't need a compliance team. You need agents that do what they're supposed to do and stay out of things they're not.
+You run a small business and you're already using - or thinking about using - AI agents to handle real work. You don't need a compliance team. You need agents that do what they're supposed to do and stay out of things they're not.
 
-TelsonBase gives you that without the enterprise price tag, the cloud dependency, or the vendor lock-in. You own the hardware. You set the rules. The agent earns the right to act.
+ClawCoat gives you that without the enterprise price tag, the cloud dependency, or the vendor lock-in. You own the hardware. You set the rules. The agent earns the right to act.
 
 **What we need from you:**
-- Deploy TelsonBase on whatever hardware you have — a spare PC, a NAS, a mini-PC in a closet
+- Deploy ClawCoat on whatever hardware you have - a spare PC, a NAS, a mini-PC in a closet
 - Tell us what your agents actually need to do and what you'd never let them touch
 - Report what works, what's confusing, and what's missing for a business your size
 
 **What you get:**
 - A direct line to the developer. Not a ticket queue.
 - Your real-world use cases shape what gets built next.
-- Proof that this works for businesses that aren't law firms or hospitals — which matters for everyone who comes after you.
+- Proof that this works for businesses that aren't law firms or hospitals - which matters for everyone who comes after you.
 
 ---
 
@@ -39,9 +39,9 @@ You're building agents, studying AI, or just convinced this is the right way to 
 The earned autonomy model is an idea worth stress-testing. Break it, extend it, argue with it. That's how it gets better.
 
 **What we need from you:**
-- Build something with TelsonBase — an integration, a use case, a tool, a test
+- Build something with ClawCoat - an integration, a use case, a tool, a test
 - Open issues when something is wrong or missing
-- Write about what you find — a blog post, a README, a tutorial
+- Write about what you find - a blog post, a README, a tutorial
 - Bring the next developer in
 
 **What you get:**
@@ -53,7 +53,7 @@ The earned autonomy model is an idea worth stress-testing. Break it, extend it, 
 
 ### Industry Ambassadors
 
-You work in one of TelsonBase's target industries and can provide real-world feedback that shapes the platform.
+You work in one of ClawCoat's target industries and can provide real-world feedback that shapes the platform.
 
 | Industry | What We Need |
 |---|---|
@@ -63,7 +63,7 @@ You work in one of TelsonBase's target industries and can provide real-world fee
 | **Accounting** | SOX compliance validation, financial data handling review, audit trail adequacy, multi-client data isolation testing |
 
 **What you commit to:**
-- Deploy TelsonBase in a test environment (Docker Compose on any hardware)
+- Deploy ClawCoat in a test environment (Docker Compose on any hardware)
 - Report what works, what breaks, and what's missing for your industry
 - Participate in monthly check-ins (async is fine)
 - Be honest. If something is wrong, say so. That's the whole point.
@@ -90,7 +90,7 @@ You're an engineer, security professional, or DevOps practitioner who can contri
 
 ### Community Ambassadors
 
-You can help answer questions, write tutorials, or moderate discussions. You don't need to be a developer. You need to understand what TelsonBase does and why it matters.
+You can help answer questions, write tutorials, or moderate discussions. You don't need to be a developer. You need to understand what ClawCoat does and why it matters.
 
 **What this looks like:**
 - Answer questions in GitHub Issues and Discussions
@@ -133,7 +133,7 @@ Or email directly: **support@clawcoat.com** with subject line "Ambassador Progra
 - This is not a commitment to work for free forever.
 - This is not a corporate partner channel.
 
-This is a group of people who see that autonomous AI agents without earned trust are the biggest accountability gap of the decade, and who want to help build the answer rather than wait for someone else to do it.
+This is a group of people who see that OpenClaw agents without earned trust are the biggest accountability gap of the decade, and who want to help build the answer rather than wait for someone else to do it.
 
 ---
 
@@ -141,7 +141,7 @@ This is a group of people who see that autonomous AI agents without earned trust
 
 Every ambassador gets the same thing I give myself: honesty about what works, what doesn't, and what needs to happen next.
 
-If TelsonBase isn't ready for your environment, I'll say so. If your feedback changes the architecture, you'll see the commit. If you find a vulnerability, you'll see the fix and the test that prevents regression.
+If ClawCoat isn't ready for your environment, I'll say so. If your feedback changes the architecture, you'll see the commit. If you find a vulnerability, you'll see the fix and the test that prevents regression.
 
 This project was built as a partnership between a human and AI collaborators. The ambassador program extends that partnership to the community. You're not users. You're not testers. You're co-owners of something that matters.
 
@@ -153,4 +153,4 @@ This project was built as a partnership between a human and AI collaborators. Th
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

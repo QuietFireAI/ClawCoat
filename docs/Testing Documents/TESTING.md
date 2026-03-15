@@ -530,4 +530,4 @@ docker compose exec mcp_server alembic upgrade head
 
 ---
 
-*TelsonBase v11.0.1 - Quietfire AI - March 8, 2026*
+*ClawCoat v11.0.1 - Quietfire AI - March 8, 2026*

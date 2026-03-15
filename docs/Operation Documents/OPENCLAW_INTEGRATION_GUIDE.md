@@ -6,13 +6,13 @@
 
 ## Why OpenClaw, and Why This Guide
 
-OpenClaw is TelsonBase's first verified agent integration. It was chosen because of its
+OpenClaw is ClawCoat's first verified agent integration. It was chosen because of its
 widespread deployment - security researchers have found over 135,000 exposed instances in
 the wild - which makes it the highest-priority framework to govern. CVE-2026-25253 (RCE via
 malicious WebSocket link) was rated critical. The ClawHub skill registry was found to contain
 malware distributed at scale. The risk profile is real and well-documented.
 
-TelsonBase wraps OpenClaw with a guiding layer. Every action your claw wants to take -
+ClawCoat wraps OpenClaw with a guiding layer. Every action your claw wants to take -
 read a file, call an API, modify a document - is evaluated through the 8-step pipeline before
 execution. Nothing runs without a decision. Every decision is written to a cryptographic audit
 chain. You stay in control.
@@ -31,7 +31,7 @@ OpenClaw is the first integration. Others are coming - see [Agent Framework Ecos
 │                      Your Environment                       │
 │                                                             │
 │   ┌──────────────┐          ┌─────────────────────────┐    │
-│   │   OpenClaw   │  ──────► │      TelsonBase         │    │
+│   │   OpenClaw   │  ──────► │      ClawCoat         │    │
 │   │   Instance   │  action? │   Governance Engine     │    │
 │   │              │  ◄────── │   (8-step pipeline)     │    │
 │   │              │  allow / │                         │    │
@@ -47,13 +47,13 @@ OpenClaw is the first integration. Others are coming - see [Agent Framework Ecos
 
 **How it works in plain English:**
 - OpenClaw wants to take an action
-- Your workflow calls TelsonBase's API with the action details
-- TelsonBase evaluates it through the pipeline and returns: `allowed`, `gated`, or `blocked`
+- Your workflow calls ClawCoat's API with the action details
+- ClawCoat evaluates it through the pipeline and returns: `allowed`, `gated`, or `blocked`
 - If **allowed** → OpenClaw executes
-- If **gated** → OpenClaw waits; you approve or deny in the TelsonBase dashboard
+- If **gated** → OpenClaw waits; you approve or deny in the ClawCoat dashboard
 - If **blocked** → OpenClaw does not execute; the incident is audited
 
-TelsonBase does not modify OpenClaw's code. You are in control of when governance fires.
+ClawCoat does not modify OpenClaw's code. You are in control of when governance fires.
 
 ---
 
@@ -62,16 +62,16 @@ TelsonBase does not modify OpenClaw's code. You are in control of when governanc
 Before starting, verify each of these:
 
 - [ ] **An AI agent installed and running** - This guide uses OpenClaw as the reference implementation. See Part 1 below for setup.
-- [ ] **TelsonBase running** - `docker compose ps` shows all services healthy, API at `http://localhost:8000`
-- [ ] **TelsonBase API key** - found in your `.env` file as `MCP_API_KEY=...`
+- [ ] **ClawCoat running** - `docker compose ps` shows all services healthy, API at `http://localhost:8000`
+- [ ] **ClawCoat API key** - found in your `.env` file as `MCP_API_KEY=...`
 - [ ] **curl installed** - for the API calls in this guide (Windows: included in Windows 10+ and 11)
-- [ ] **TelsonBase dashboard accessible** - `http://localhost:8000/dashboard`
+- [ ] **ClawCoat dashboard accessible** - `http://localhost:8000/dashboard`
 
 ---
 
 ## Part 1: Install Your AI Agent
 
-TelsonBase is a guiding layer - it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what TelsonBase was built and tested against first. If you are integrating a different compatible agent, the TelsonBase API steps in Parts 4-7 apply regardless of which agent you use.
+ClawCoat is a guiding layer - it does not care what agent sits behind it. This guide uses **OpenClaw** as the reference implementation because it is what ClawCoat was built and tested against first. If you are integrating a different compatible agent, the ClawCoat API steps in Parts 4-7 apply regardless of which agent you use.
 
 ### Install OpenClaw
 
@@ -83,13 +83,13 @@ Their guide covers installation on Windows, macOS, Linux, and WSL2.
 
 **Before continuing:** Confirm your OpenClaw instance is installed and running per their documentation. Also verify it is not exposed on your local network before connecting to any external governance layer - consult OpenClaw's security hardening documentation for local binding configuration.
 
-**You are now ready to connect TelsonBase governance.**
+**You are now ready to connect ClawCoat governance.**
 
 ---
 
-## Part 2: Deploy TelsonBase
+## Part 2: Deploy ClawCoat
 
-If TelsonBase is already running, skip to Part 3.
+If ClawCoat is already running, skip to Part 3.
 
 If you are starting fresh, follow the full deployment guide:
 
@@ -109,7 +109,7 @@ curl -H "X-API-Key: $(cat secrets/telsonbase_mcp_api_key)" http://localhost:8000
 
 ---
 
-## Part 3: Enable OpenClaw Governance in TelsonBase
+## Part 3: Enable OpenClaw Governance in ClawCoat
 
 > **Terminal reminder - use Command Prompt (CMD) for Parts 3 and 4, not PowerShell.**
 > In PowerShell, `curl` is an alias for a different command (`Invoke-WebRequest`) and the
@@ -122,7 +122,7 @@ OpenClaw governance is feature-flagged off by default. You turn it on explicitly
 
 ### 3a. Edit Your .env File
 
-Open `C:\Claude_Code\TelsonBase\.env` and find this line:
+Open `C:\Claude_Code\ClawCoat\.env` and find this line:
 
 ```env
 OPENCLAW_ENABLED=false
@@ -150,10 +150,10 @@ OPENCLAW_MAX_BLOCKED_ACTIONS=10
 
 ### 3b. Rebuild and Restart
 
-Open **PowerShell** and navigate to your TelsonBase directory:
+Open **PowerShell** and navigate to your ClawCoat directory:
 
 ```powershell
-cd C:\Claude_Code\TelsonBase
+cd C:\Claude_Code\ClawCoat
 ```
 
 Run these **one at a time**:
@@ -206,15 +206,15 @@ docker compose logs mcp_server | grep -i openclaw
 
 ## Part 4: Register Your OpenClaw Instance
 
-Every OpenClaw instance that TelsonBase will govern must be registered. Registration is what
+Every OpenClaw instance that ClawCoat will govern must be registered. Registration is what
 gives the claw its identity, starting trust level, and audit trail.
 
 ### 4a. Register the Instance
 
-Open **PowerShell** and navigate to your TelsonBase directory first:
+Open **PowerShell** and navigate to your ClawCoat directory first:
 
 ```powershell
-cd C:\Claude_Code\TelsonBase
+cd C:\Claude_Code\ClawCoat
 ```
 
 Then paste this entire block at once - it reads your API key, builds the registration request, and prints the result:
@@ -287,7 +287,7 @@ echo "Claw registered: $CLAW_ID"
 ## Part 5: Your First Governed Action
 
 This is the core integration. Before OpenClaw executes any action, your workflow calls
-TelsonBase to get a governance decision.
+ClawCoat to get a governance decision.
 
 > **Windows CMD note:** The commands below use `%API_KEY%` and `%CLAW_ID%` (CMD variable
 > syntax). Make sure both variables are set - you set `API_KEY` in Part 3b and should set
@@ -333,7 +333,7 @@ curl -s -X POST -H "X-API-Key: $API_KEY" -H "Content-Type: application/json" \
 }
 ```
 
-**What this means:** TelsonBase returned `allowed: false` and created a real approval request
+**What this means:** ClawCoat returned `allowed: false` and created a real approval request
 in the system (`APPR-` prefix = stored in the approval manager, visible in the dashboard).
 The claw does not execute. A human must approve or deny.
 
@@ -575,7 +575,7 @@ curl -s -H "X-API-Key: $API_KEY" "http://localhost:8000/v1/openclaw/$CLAW_ID/act
 
 ### 7c. Audit Trail - Every Decision Is Permanently Recorded
 
-Every governance decision is written to TelsonBase's cryptographic audit chain. The chain is
+Every governance decision is written to ClawCoat's cryptographic audit chain. The chain is
 SHA-256 hash-linked - any tampering breaks the chain and is detectable.
 
 **Windows CMD** - view raw audit entries (look for `openclaw.` event types):
@@ -615,12 +615,12 @@ Open `http://localhost:8000/dashboard` and confirm you can see:
 
 ### Automate the Governance Check in Your OpenClaw Workflow
 
-The current integration pattern is: your OpenClaw workflow calls TelsonBase before executing
+The current integration pattern is: your OpenClaw workflow calls ClawCoat before executing
 each action. Here is the pattern in pseudocode:
 
 ```python
 def governed_action(tool_name, tool_args):
-    # Step 1: Ask TelsonBase for a governance decision
+    # Step 1: Ask ClawCoat for a governance decision
     response = requests.post(
         f"http://telsonbase:8000/v1/openclaw/{CLAW_ID}/action",
         headers={"X-API-Key": TELSONBASE_API_KEY},
@@ -633,7 +633,7 @@ def governed_action(tool_name, tool_args):
         return execute_action(tool_name, tool_args)
 
     elif decision.get("approval_required"):
-        # Action is gated - wait for human decision in TelsonBase dashboard
+        # Action is gated - wait for human decision in ClawCoat dashboard
         # Poll /v1/approvals/{approval_id} or subscribe to webhook
         return wait_for_approval(decision["approval_id"])
 
@@ -645,7 +645,7 @@ def governed_action(tool_name, tool_args):
 
 ### What Gets Flagged Automatically
 
-You do not have to configure rules for every scenario. TelsonBase's governance pipeline
+You do not have to configure rules for every scenario. ClawCoat's governance pipeline
 handles these automatically based on trust level:
 
 | Tool Category | Examples | QUARANTINE | PROBATION | RESIDENT | CITIZEN |
@@ -655,7 +655,7 @@ handles these automatically based on trust level:
 | External call | http_request, api_call | BLOCK | GATE | GATE* | ALLOW* |
 | Destructive | delete_file, rm_dir | BLOCK | BLOCK | GATE | GATE |
 
-*External calls at RESIDENT and CITIZEN require the domain to be on TelsonBase's egress whitelist.
+*External calls at RESIDENT and CITIZEN require the domain to be on ClawCoat's egress whitelist.
 
 ### Egress Whitelist - Approved External Domains
 
@@ -673,11 +673,11 @@ Requires HITL approval - a human must confirm before any external domain is whit
 
 ### Manners Compliance - Automatic Demotion
 
-TelsonBase tracks a Manners compliance score for every claw (1.0 = perfect, 0.0 = suspended).
+ClawCoat tracks a Manners compliance score for every claw (1.0 = perfect, 0.0 = suspended).
 The score decreases each time a claw attempts blocked actions repeatedly, triggers anomaly
 detection, or has an approval denied by a human reviewer.
 
-The `OPENCLAW_MANNERS_THRESHOLD` setting (default: 0.5) controls when TelsonBase automatically
+The `OPENCLAW_MANNERS_THRESHOLD` setting (default: 0.5) controls when ClawCoat automatically
 demotes a claw. No human action required. The event is audited. The system also hard-quarantines
 any agent - regardless of score - that triggers three or more violations within a 24-hour window.
 
@@ -730,7 +730,7 @@ Trust report:       GET  /v1/openclaw/{id}/trust-report
 
 ### OpenClaw is the First. Others Are Coming.
 
-TelsonBase's governance pipeline is framework-agnostic. The `POST /v1/openclaw/{id}/action`
+ClawCoat's governance pipeline is framework-agnostic. The `POST /v1/openclaw/{id}/action`
 endpoint evaluates any action from any agent - OpenClaw was integrated first because of its
 deployment scale and documented risk profile, not because it is the only option.
 
@@ -743,12 +743,12 @@ switch behavior, HITL gate flow, and audit chain integrity.
 
 If you are working with an agent framework you would like to see integrated:
 
-1. **Open a GitHub Discussion** in the `QuietFireAI/TelsonBase` repository under the
+1. **Open a GitHub Discussion** in the `QuietFireAI/ClawCoat` repository under the
    `agent-integrations` category. Describe the framework, its deployment scale, and the
    governance risks it presents.
 
 2. **Contribute a proof of integration** - if you have already connected a framework to
-   TelsonBase's governance API, share the integration pattern. A working example accelerates
+   ClawCoat's governance API, share the integration pattern. A working example accelerates
    the process significantly.
 
 3. **Community testing** - proposed integrations that pass community testing against the
@@ -759,5 +759,5 @@ See `CONTRIBUTING.md` for the full contribution process.
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
 *Questions: support@clawcoat.com*

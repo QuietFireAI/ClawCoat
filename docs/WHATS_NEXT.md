@@ -2,7 +2,7 @@
 
 **Version:** v11.0.1 · **Launch:** March 8, 2026 · **Maintainer:** Quietfire AI
 
-This document is an honest account of where TelsonBase stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
+This document is an honest account of where ClawCoat stands at launch and where it is going. It is not a marketing roadmap. It is a planning artifact - things that are real gaps, things that are deferred by design, and things that are scheduled for the near term.
 
 ---
 
@@ -92,17 +92,17 @@ These are the first things that get worked on after launch:
 Full governance proxy integration is live. Every action evaluated through the 8-step pipeline. Trust levels, Manners, anomaly detection, kill switch, approval gates - all working.
 
 ### Identiclaw (Post-Launch)
-TelsonBase's W3C DID identity engine (`core/identiclaw.py`) is built and tested - Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
+ClawCoat's W3C DID identity engine (`core/identiclaw.py`) is built and tested - Ed25519 keypairs, verifiable credentials, local verification with no external calls. The engine is framework-agnostic by design.
 
-The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how TelsonBase thinks about agent identity.
+The next step is binding that engine to the Identiclaw service (vouched.id) specifically: agent identity issuance via their Cloudflare-based DID infrastructure, credential flow into the governance pipeline, trust level binding on registration. That integration is scheduled for the first post-launch sprint. Identiclaw was chosen for its inherent convention alignment with how ClawCoat thinks about agent identity.
 
 ### Goose (Current - Native MCP)
-Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 TelsonBase tools are available. Configuration via `goose.yaml`.
+Goose by Block connects natively via the MCP gateway at `/mcp`. All 13 ClawCoat tools are available. Configuration via `goose.yaml`.
 
 ### Other Agent Frameworks
-OpenClaw is a third-party autonomous AI agent. TelsonBase's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer - every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
+OpenClaw is a third-party OpenClaw agent. ClawCoat's governance proxy code (`core/openclaw.py`) wraps it at the MCP layer - every action evaluated through the 8-step pipeline before execution. OpenClaw itself is never modified. The claw doesn't know it's on a leash.
 
-Any MCP-compatible agent framework can connect to TelsonBase without modification. The governance proxy wraps the agent at the MCP layer - the agent never needs to know TelsonBase exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
+Any MCP-compatible agent framework can connect to ClawCoat without modification. The governance proxy wraps the agent at the MCP layer - the agent never needs to know ClawCoat exists. Post-launch evaluation will include Claude Desktop and other Goose integrations as compatible frameworks mature.
 
 ---
 
@@ -119,7 +119,7 @@ Full compliance roadmap: [`docs/Compliance Documents/COMPLIANCE_ROADMAP.md`](Com
 
 ## What This Drop Is
 
-A first-mover position in a market that doesn't yet have a governance standard for autonomous AI agents. The platform is real, the tests pass, and the compliance documentation is mapped to source code. There is no other self-hosted, source-available, enterprise-grade guiding layer for AI agents in production today.
+A first-mover position in a market that doesn't yet have a governance standard for OpenClaw agents. The platform is real, the tests pass, and the compliance documentation is mapped to source code. There is no other self-hosted, source-available, enterprise-grade guiding layer for AI agents in production today.
 
 We are publishing early because the threat is real and the window is now. If you are in healthcare, legal, insurance, or accounting, and you are deploying AI agents, you need this or something like it before your next compliance review.
 
@@ -127,4 +127,4 @@ If you find something broken, open an issue. If something is missing, start a di
 
 ---
 
-*TelsonBase v11.0.1 · March 8, 2026 · Quietfire AI*
+*ClawCoat v11.0.1 · March 8, 2026 · Quietfire AI*

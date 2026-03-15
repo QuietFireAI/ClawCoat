@@ -1,7 +1,7 @@
 # Adding Your First Agent - Dashboard Walkthrough
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
-**Prerequisite:** TelsonBase is running. Docker Desktop is open. You have your API key.
+**Prerequisite:** ClawCoat is running. Docker Desktop is open. You have your API key.
 
 ---
 
@@ -9,7 +9,7 @@
 
 Two things you need in hand:
 
-1. **Your platform API key** - the key generated when you ran `generate_secrets.sh`. Find it any time by running this in **Git Bash** from the TelsonBase directory:
+1. **Your platform API key** - the key generated when you ran `generate_secrets.sh`. Find it any time by running this in **Git Bash** from the ClawCoat directory:
    ```bash
    cat secrets/telsonbase_mcp_api_key
    ```
@@ -50,7 +50,7 @@ You're now talking to the backend. Every action you take from here is real and a
 
 3. Click **Submit**
 
-> **About the API Key field:** TelsonBase uses the platform API key as the agent's credential because all governance calls run through the same authenticated API. Each agent is tracked by its unique `instance_id`, not by a separate key - so the same platform key works for every agent you register. Agent 1 and Agent 2 both use the same key but have completely separate trust levels, Manners scores, action histories, and kill switches.
+> **About the API Key field:** ClawCoat uses the platform API key as the agent's credential because all governance calls run through the same authenticated API. Each agent is tracked by its unique `instance_id`, not by a separate key - so the same platform key works for every agent you register. Agent 1 and Agent 2 both use the same key but have completely separate trust levels, Manners scores, action histories, and kill switches.
 
 ---
 
@@ -77,7 +77,7 @@ An agent at QUARANTINE cannot do useful work. Promote it one level to PROBATION 
 3. Enter a brief reason: `Initial setup, reviewed and approved`
 4. Trust level updates to **PROBATION**
 
-**Or from Git Bash** (run these from the TelsonBase directory):
+**Or from Git Bash** (run these from the ClawCoat directory):
 
 First, set your API key as a variable so you don't have to paste it repeatedly:
 ```bash
@@ -101,7 +101,7 @@ curl -X POST http://localhost:8000/v1/openclaw/YOUR_INSTANCE_ID/promote \
 
 ## Step 5 - Verify the Loop
 
-Open **Git Bash** from the TelsonBase directory. If you have not set your API key variable yet, do it now:
+Open **Git Bash** from the ClawCoat directory. If you have not set your API key variable yet, do it now:
 
 ```bash
 API_KEY=$(cat secrets/telsonbase_mcp_api_key)
@@ -178,7 +178,7 @@ Same process. Repeat Steps 2-5 with a different name. Each agent gets its own `i
 | Type | Use it when |
 |---|---|
 | **OpenClaw** | You want the full 8-step governance pipeline. Trust levels, Manners scoring, approval gates, kill switch, anomaly detection - all of it. This is the right choice for any autonomous agent. |
-| **Generic** | You have an agent that isn't OpenClaw but you want TelsonBase to track its actions and apply governance. Same pipeline, no OpenClaw-specific assumptions. |
+| **Generic** | You have an agent that isn't OpenClaw but you want ClawCoat to track its actions and apply governance. Same pipeline, no OpenClaw-specific assumptions. |
 | **DID Agent** | W3C DID-based identity. Selecting this redirects to the Identity tab. Use for agents that authenticate via cryptographic DID rather than API key. |
 
 ---
@@ -206,4 +206,4 @@ Same process. Repeat Steps 2-5 with a different name. Each agent gets its own `i
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

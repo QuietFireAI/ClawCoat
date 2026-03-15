@@ -1,7 +1,7 @@
 # ClawCoat Deployment Guide
 
 **Version:** v11.0.1 · **Updated:** March 8, 2026
-**Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying TelsonBase on customer premises for law firms and professional services organizations.
+**Audience:** IT administrators, managed service providers (MSPs), and systems integrators deploying ClawCoat on customer premises for law firms and professional services organizations.
 
 ---
 
@@ -96,7 +96,7 @@ DENY  ALL      FROM 0.0.0.0/0    # Default deny
 
 ## 2. Quick Start
 
-For experienced administrators who want TelsonBase running in under 30 minutes.
+For experienced administrators who want ClawCoat running in under 30 minutes.
 
 ```bash
 # 1. Clone the repository
@@ -210,7 +210,7 @@ Verify secret generation:
 
 ### 3d. Configure TLS
 
-TelsonBase ships with Traefik as its reverse proxy, pre-configured for automatic TLS via Let's Encrypt.
+ClawCoat ships with Traefik as its reverse proxy, pre-configured for automatic TLS via Let's Encrypt.
 
 **Option A: Automatic TLS with Let's Encrypt (recommended)**
 
@@ -267,7 +267,7 @@ This starts the following 12 services:
 | 5 | open-webui | ghcr.io/open-webui/open-webui | Human-AI interface |
 | 6 | mosquitto | eclipse-mosquitto:2 | MQTT event bus for real-time agent communication |
 | 7 | ollama | ollama/ollama | Local AI inference engine |
-| 8 | mcp_server | (built from Dockerfile) | TelsonBase API server (FastAPI) |
+| 8 | mcp_server | (built from Dockerfile) | ClawCoat API server (FastAPI) |
 | 9 | worker | (built from Dockerfile) | Celery background task workers |
 | 10 | beat | (built from Dockerfile) | Celery scheduler (periodic tasks) |
 | 11 | prometheus | prom/prometheus:v2.49.1 | Metrics collection |
@@ -314,7 +314,7 @@ curl -sk https://localhost/health
 
 ### 3g. Run Initial Database Migration
 
-The PostgreSQL database must be initialized with the TelsonBase schema:
+The PostgreSQL database must be initialized with the ClawCoat schema:
 
 ```bash
 docker compose exec mcp_server alembic upgrade head
@@ -411,7 +411,7 @@ curl -X POST https://your-domain.com/v1/security/mfa/confirm \
 
 ### 3k. Verify Audit Chain
 
-TelsonBase maintains a cryptographic audit chain (SHA-256 hash-linked) for tamper-evident logging. Verify its integrity:
+ClawCoat maintains a cryptographic audit chain (SHA-256 hash-linked) for tamper-evident logging. Verify its integrity:
 
 ```bash
 curl -s https://your-domain.com/v1/audit/chain/verify \
@@ -496,7 +496,7 @@ All configuration is managed through the `.env` file and Docker secrets.
 
 ### Network Segmentation
 
-TelsonBase uses 5 isolated Docker networks to prevent lateral movement:
+ClawCoat uses 5 isolated Docker networks to prevent lateral movement:
 
 | Network | Type | Connected Services |
 |---------|------|--------------------|
@@ -512,7 +512,7 @@ Networks marked `internal` have no external access. Services on the `data` and `
 
 ## 6. Backup Configuration
 
-TelsonBase includes built-in backup and disaster recovery tooling. See `docs/BACKUP_RECOVERY.md` for the full reference.
+ClawCoat includes built-in backup and disaster recovery tooling. See `docs/BACKUP_RECOVERY.md` for the full reference.
 
 ### Configure Daily Automated Backups
 
@@ -736,7 +736,7 @@ docker compose exec mcp_server alembic history
 
 **Symptom:** MCP server starts but endpoints return 500 errors.
 
-TelsonBase services have the following dependency chain:
+ClawCoat services have the following dependency chain:
 
 ```
 traefik -> mcp_server -> redis, postgres, mosquitto, ollama
@@ -780,7 +780,7 @@ This validates that all secrets meet minimum entropy requirements and no default
 
 ### Enable Encryption at Rest
 
-TelsonBase supports volume-level encryption for all persistent data. See `docs/ENCRYPTION_AT_REST.md` for the complete guide.
+ClawCoat supports volume-level encryption for all persistent data. See `docs/ENCRYPTION_AT_REST.md` for the complete guide.
 
 **Linux (LUKS):**
 ```bash
@@ -848,7 +848,7 @@ docker compose stop open-webui
 
 - Use a VPN or SSH tunnel for accessing internal services (Grafana, Prometheus).
 - Consider placing the server behind a corporate firewall with IDS/IPS.
-- TelsonBase's Docker network segmentation (5 isolated networks) prevents lateral movement between tiers.
+- ClawCoat's Docker network segmentation (5 isolated networks) prevents lateral movement between tiers.
 
 ### Regular Security Maintenance
 
@@ -914,12 +914,12 @@ docker compose stop open-webui
 
 ### Contact
 
-For deployment assistance, contact your TelsonBase account representative or visit [clawcoat.com](https://clawcoat.com).
+For deployment assistance, contact your ClawCoat account representative or visit [clawcoat.com](https://clawcoat.com).
 
 ---
 
-*This document is part of the TelsonBase deployment package. Keep it updated when infrastructure changes are made.*
+*This document is part of the ClawCoat deployment package. Keep it updated when infrastructure changes are made.*
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*

@@ -1,10 +1,10 @@
-# Manners Compliance Guide - TelsonBase
+# Manners Compliance Guide - ClawCoat
 
 **Version:** v11.0.1 · **Maintainer:** Quietfire AI
 
 ## Overview
 
-TelsonBase implements **Manners** - a runtime
+ClawCoat implements **Manners** - a runtime
 compliance framework that evaluates every agent against five principles derived from
 Anthropic's published guidelines on responsible AI agent development.
 
@@ -14,22 +14,22 @@ before execution.
 
 ## Why Anthropic's Framework
 
-TelsonBase follows Anthropic's lead on AI safety because:
+ClawCoat follows Anthropic's lead on AI safety because:
 
 1. **Empiricism over theory.** Anthropic grounds safety research in computational experiments
-   and real AI systems, not speculation. TelsonBase mirrors this by measuring compliance
+   and real AI systems, not speculation. ClawCoat mirrors this by measuring compliance
    with real metrics, not policy documents.
 
 2. **Proportional protection.** Safety measures scale with capability. A backup agent
    doesn't need the same scrutiny as an agent that modifies legal documents.
 
 3. **Portfolio approach.** Anthropic prepares for optimistic and pessimistic outcomes.
-   TelsonBase builds governance infrastructure that works regardless of how capable
+   ClawCoat builds governance infrastructure that works regardless of how capable
    the underlying models become.
 
 ## The Five Manners Principles
 
-| # | Principle | Anthropic Source | TelsonBase Mechanism |
+| # | Principle | Anthropic Source | ClawCoat Mechanism |
 |---|-----------|-----------------|---------------------|
 | 1 | Human Control | "Keeping Humans in Control While Enabling Agent Autonomy" | HITL approval gates, trust levels, kill switch |
 | 2 | Transparency | "Transparency in Agent Behavior" | Cryptographic audit chain, QMS provenance, dashboard |
@@ -166,4 +166,4 @@ For SOC 2 and regulatory audits, Manners provides:
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · March 8, 2026*
+*ClawCoat v11.0.1 · Quietfire AI · March 8, 2026*
