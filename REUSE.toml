@@ -1,0 +1,11 @@
+version = 1
+
+[[annotations]]
+path = ["**"]
+SPDX-FileCopyrightText = "2026 Quietfire AI / Jeff Phillips"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = ["LICENSES/*"]
+SPDX-FileCopyrightText = "Various -- see individual license files"
+SPDX-License-Identifier = "LicenseRef-scancode-public-domain"
