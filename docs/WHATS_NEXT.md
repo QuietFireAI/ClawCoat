@@ -8,18 +8,18 @@ This document is an honest account of where ClawCoat stands at launch and where 
 
 ## What's Shipped and Stable
 
-Everything documented in the README is built, tested, and passing 720 tests. That means:
+Everything documented in the README is built, tested, and passing 854 tests. That means:
 
 - Trust governance pipeline (5 tiers: QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT, sequential promotion, instant demotion)
 - Cryptographic audit chain (SHA-256, tamper-evident, 11 tests)
-- RBAC with 140+ endpoints, 4-tier permissions
+- RBAC with 149 endpoints, 5-role permissions (viewer/operator/admin/security_officer/super_admin)
 - Human-in-the-loop approval gates
 - Manners compliance engine with auto-demotion
 - Behavioral anomaly detection
 - Egress firewall with domain whitelist
 - Multi-tenant isolation with access control (`allowed_actors` enforcement)
 - Kill switch (Redis-persisted, survives restarts)
-- SOC 2 / HIPAA / HITRUST / CJIS / GDPR / PCI DSS / ABA compliance frameworks documented and mapped
+- SOC 2 / HIPAA / HITRUST / CJIS / GDPR / PCI DSS / ABA compliance frameworks: **controls implemented in source code, behavioral tests pass** — see Certification Boundary below
 - OpenClaw governance proxy (8-step pipeline, tested live)
 - Agent status announcement endpoint (`GET /v1/openclaw/{id}/status`)
 - Demotion review framework (flag on demotion, clear-review endpoint, audit trail)
@@ -106,12 +106,36 @@ Any MCP-compatible agent framework can connect to ClawCoat without modification.
 
 ---
 
+## Certification Boundary
+
+This section exists because honesty is the whole point.
+
+**What ClawCoat has done:**
+- Implemented source code modules mapping to SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, and ABA Model Rules
+- Written 64 SOC 2 controls mapped to specific source files with evidence locations
+- Built behavioral enforcement code: PHI de-identification (18 Safe Harbor identifiers), breach notification (60-day deadline tracking), BAA lifecycle, sanctions tracking, training compliance, minimum necessary enforcement, legal hold, contingency testing
+- Verified all of the above with 854 passing tests — including 90 compliance depth tests added March 15, 2026
+
+**What ClawCoat has NOT done:**
+- Passed a SOC 2 Type I audit (requires engaging a licensed CPA firm)
+- Completed a HITRUST CSF assessment (requires a HITRUST-authorized external assessor via MyCSF)
+- Undergone an OCR HIPAA audit or third-party HIPAA risk assessment
+- Received external pen test certification
+
+**What the proof sheets mean:** VERIFIED on a compliance proof sheet means the implementation exists and the behavioral tests pass. It does not mean an external auditor has signed off. Anyone representing it otherwise is wrong.
+
+**Certification is a funded next step.** The controls are built. The evidence trail is automated. An auditor can trace any SOC 2 control to source code and a passing test today. The remaining work is the engagement cost, the observation period, and the report. Those require budget. They are in the pipeline as funding allows.
+
+---
+
 ## Compliance Roadmap
 
-SOC 2 Type I documentation and 51 controls are complete. The path to Type II is:
-1. **90-day observation period** - automated collection of evidence already in place via the audit chain
-2. **Auditor engagement** - Quietfire AI consulting customers and enterprise sponsors will receive assistance
-3. **Continuous monitoring** - Prometheus + Grafana dashboards + QMS log feed
+SOC 2 Type I documentation and 64 controls are complete and mapped to source. The path to a signed Type I report:
+1. **90-day observation period** - automated evidence collection is already in place via the audit chain
+2. **Auditor engagement** - requires a licensed CPA firm; estimated cost $20-50k depending on scope
+3. **Continuous monitoring** - Prometheus + Grafana dashboards + QMS log feed already operational
+
+HITRUST CSF assessment: controls are registered, gap analysis runs, posture score calculates. Formal assessment requires HITRUST-authorized assessor via MyCSF platform.
 
 Full compliance roadmap: [`docs/Compliance Documents/COMPLIANCE_ROADMAP.md`](Compliance%20Documents/COMPLIANCE_ROADMAP.md)
 

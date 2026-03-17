@@ -230,9 +230,9 @@ This isn't a roadmap. This is shipped code with tests.
 
 | Capability | Implementation | Tests |
 |---|---|---|
-| **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 54 |
+| **Trust Level Governance** | 5-tier earned trust, sequential promotion, instant demotion | 55 |
 | **Cryptographic Audit Trail** | SHA-256 hash-chained, tamper-evident | 11 |
-| **149 RBAC Endpoints** | 4-tier permissions, deny overrides allow | 13 |
+| **149 RBAC Endpoints** | 5-role permissions (viewer/operator/admin/security_officer/super_admin), deny overrides allow | 13 |
 | **AES-256-GCM Encryption** | At-rest encryption, PBKDF2 key derivation | 11 |
 | **TOTP Multi-Factor Auth** | RFC 6238, QR enrollment, backup codes | 8 |
 | **Behavioral Anomaly Detection** | Rate spikes, capability probes, enumeration | 12 |
@@ -265,6 +265,8 @@ This isn't a roadmap. This is shipped code with tests.
 | **HITECH Act** | Mapped | Breach notification, 60-day tracking, safe harbor |
 
 Every control references a source file and a passing test. Run `proof_sheets/` to verify any claim.
+
+**Certification boundary:** "Baked in" means the controls are implemented in source code and verified by 854 passing tests — including 90 compliance depth tests covering PHI de-identification, breach notification, BAA lifecycle, HITRUST domain controls, sanctions, training, and more. It does not mean a SOC 2 Type I report has been signed, a HITRUST assessment completed, or an OCR HIPAA audit conducted. Those require external assessors and budget. The implementation is audit-ready. The certifications are next. See [`docs/WHATS_NEXT.md`](docs/WHATS_NEXT.md).
 
 ---
 
@@ -409,13 +411,12 @@ The `proof_sheets/` directory contains **67 evidence documents** (52 claim-level
 
 This is not a marketing decision. If ClawCoat preaches governance, it has to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
-**Three tiers:**
+**Two tiers:**
 
 | Tier | Format | Count | Purpose |
 |---|---|---|---|
 | **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim - source files, verdict, verification command |
 | **Test suite class** | `tb-proof-NNN` | 15 sheets | One sheet per test suite - all classes, test counts, what each proves |
-| **Individual test** | `TB-TEST-[CODE]-NNN` | 721 sheets | One sheet per test function - single-command verification, class cross-reference |
 
 ```
 proof_sheets/
@@ -424,20 +425,11 @@ proof_sheets/
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
   ...
-  individual/
-    sec/    (96)   TB-TEST-SEC-001 through TB-TEST-SEC-096
-    qms/    (115)  TB-TEST-QMS-001 through TB-TEST-QMS-115
-    tool/   (129)  TB-TEST-TOOL-001 through TB-TEST-TOOL-129
-    ocl/    (55)   TB-TEST-OCL-001 through TB-TEST-OCL-055
-    ...            (15 domains total)
 ```
 
 ```bash
 # Check a specific claim
 cat proof_sheets/TB-PROOF-037_openclaw_kill_switch.md
-
-# Check one specific test - the exact docker command is inside
-cat proof_sheets/individual/sec/TB-TEST-SEC-001_test_api_key_hash_uses_sha256.md
 
 # Verify any test yourself
 docker compose exec mcp_server python -m pytest \

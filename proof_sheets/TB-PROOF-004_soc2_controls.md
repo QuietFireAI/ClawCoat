@@ -49,6 +49,12 @@ Example control mapping from SOC2_TYPE_I.md:
 | CC7.1 | System monitoring | core/anomaly.py, core/metrics.py |
 ```
 
+## Certification Boundary
+
+> **VERIFIED means:** 64 control entries implemented in source code, mapped in SOC2_TYPE_I.md, structure verified by automated tests. An auditor can trace any control to a source file and a passing test.
+>
+> **VERIFIED does not mean:** A licensed CPA firm has issued a SOC 2 Type I report. That requires an auditor engagement (~$20-50k). The controls are built and audit-ready. The signed report is a funded next step. See `docs/WHATS_NEXT.md` — Certification Boundary section.
+
 ## Verification Command
 
 ```bash
@@ -58,8 +64,8 @@ docker compose exec mcp_server python -m pytest \
 
 ## Expected Result
 
-64+ rows (controls appear in main tables and cross-reference matrix). 51 unique control IDs.
+64 control entries verified (48 primary + 16 CUEC). Document structure, Trust Service Criteria, and source file citations all confirmed.
 
 ---
 
-*Sheet TB-PROOF-004 | TelsonBase v11.0.1 | Updated March 1, 2026*
+*Sheet TB-PROOF-004 | TelsonBase v11.0.1 | Updated March 16, 2026*

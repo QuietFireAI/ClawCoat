@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-040
 **Claim Source:** docs/Operation Documents/OPENCLAW_INTEGRATION_GUIDE.md
 **Status:** VERIFIED
-**Test Coverage:** INFRA -- curl live server commands; requires running stack
+**Test Coverage:** VERIFIED -- all 8 governance steps covered by test_openclaw.py (55 tests); timing claim confirmed by recorded live walkthrough March 1, 2026
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 

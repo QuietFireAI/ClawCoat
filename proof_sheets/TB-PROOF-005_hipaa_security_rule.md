@@ -48,17 +48,28 @@ VERIFIED - 12 HIPAA/HITECH compliance modules implemented with real enforcement 
 | Technical - Transmission | 45 CFR 164.312(e) | TLS 1.2+, HSTS preload |
 | Organizational | 45 CFR 164.314 | BAA templates, data processing agreements |
 
+## Certification Boundary
+
+> **VERIFIED means:** 12 HIPAA-mapped source modules exist with CFR citations, substantive content, and behavioral tests covering PHI de-identification, breach notification, BAA lifecycle, minimum necessary enforcement, and more. Verified by automated tests including 90 compliance depth tests (March 15, 2026).
+>
+> **VERIFIED does not mean:** An OCR HIPAA audit has been conducted, a third-party HIPAA risk assessment completed, or any formal attestation issued. HIPAA compliance in the regulatory sense requires external assessment. The implementation is built and testable. The formal assessment is a funded next step. See `docs/WHATS_NEXT.md` — Certification Boundary section.
+
 ## Verification Command
 
 ```bash
 docker compose exec mcp_server python -m pytest \
-  tests/test_depth_hardening.py::TestHIPAASecurityRuleMapping -v --tb=short
+  tests/test_depth_hardening.py::TestHIPAASecurityRuleMapping \
+  tests/test_compliance_depth.py::TestPHIDeidentificationDepth \
+  tests/test_compliance_depth.py::TestBreachNotificationDepth \
+  tests/test_compliance_depth.py::TestBAADepth \
+  tests/test_compliance_depth.py::TestMinimumNecessaryDepth \
+  -v --tb=short
 ```
 
 ## Expected Result
 
-12+ Python files implementing HIPAA compliance modules.
+All tests pass. 12 HIPAA compliance modules confirmed present with citations. PHI de-id, breach, BAA, and minimum necessary behavioral tests all green.
 
 ---
 
-*Sheet TB-PROOF-005 | TelsonBase v11.0.1 | February 23, 2026*
+*Sheet TB-PROOF-005 | TelsonBase v11.0.1 | Updated March 16, 2026*

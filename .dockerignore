@@ -35,15 +35,11 @@ htmlcov/
 .hypothesis/
 token_response.json
 
-# Documentation (not needed in container)
-docs/
+# Documentation — docs/ included in container so compliance tests can verify file existence
+# proof_sheets/ excluded (not needed at runtime)
 proof_sheets/
 website/
 website-quietfire/
-*.md
-!requirements.txt
-# MANNERS.md must be in the container — served at /docs/manners endpoint
-!docs/MANNERS.md
 
 # Logs
 *.log

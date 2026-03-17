@@ -3,7 +3,7 @@
 **Sheet ID:** TB-PROOF-041
 **Claim Source:** clawcoat.com - Control Your Claw
 **Status:** VERIFIED
-**Test Coverage:** INFRA -- curl live server commands; requires running stack
+**Test Coverage:** VERIFIED -- registration, trust transitions, kill switch, manners auto-demotion, and model validator enforcement all covered by test_openclaw.py (55 tests)
 **Last Verified:** March 8, 2026
 **Version:** v11.0.1
 
@@ -403,7 +403,7 @@ The dashboard calls the same `/v1/openclaw/register` endpoint under the hood. Sa
 |---|---|
 | `core/openclaw.py` | Full governance engine - TrustLevel enum, VALID_PROMOTIONS, VALID_DEMOTIONS, TRUST_PERMISSION_MATRIX, TOOL_CATEGORY_MAP, OpenClawInstance model, register_instance(), evaluate_action() |
 | `api/openclaw_routes.py` | REST API layer - RegisterClawRequest with model_validator, POST /register, POST /{id}/action, POST /{id}/promote, POST /{id}/demote, POST /{id}/suspend |
-| `tests/test_openclaw.py` | 54 tests covering registration, trust transitions, pipeline steps, kill switch, Manners auto-demotion, anomaly detection |
+| `tests/test_openclaw.py` | 55 tests covering registration, trust transitions, pipeline steps, kill switch, Manners auto-demotion, anomaly detection |
 
 ---
 
@@ -436,7 +436,7 @@ curl -s -X POST http://localhost:8000/v1/openclaw/register \
 
 # Run the full OpenClaw test suite
 docker compose exec mcp_server python -m pytest tests/test_openclaw.py -v --tb=short
-# → 54 passed
+# → 55 passed
 ```
 
 ---

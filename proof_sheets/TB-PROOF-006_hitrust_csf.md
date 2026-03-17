@@ -40,6 +40,12 @@ VERIFIED - `core/hitrust.py` and `core/hitrust_controls.py` implement 12 HITRUST
 11. Access Control
 12. Audit Logging and Monitoring
 
+## Certification Boundary
+
+> **VERIFIED means:** All 12 HITRUST CSF domains are defined, baseline controls register and produce a posture score, gap analysis runs, risk assessments are recorded. Verified by automated tests.
+>
+> **VERIFIED does not mean:** A HITRUST-authorized external assessor has completed a CSF assessment via the MyCSF platform. Formal HITRUST certification requires that engagement. The implementation is built and assessor-ready. The formal certification is a funded next step. See `docs/WHATS_NEXT.md` — Certification Boundary section.
+
 ## Verification Command
 
 ```bash
@@ -52,8 +58,8 @@ docker compose exec mcp_server python -m pytest \
 
 ## Expected Result
 
-Domain definitions and control mappings for all 12 HITRUST CSF domains.
+All 12 domains confirmed, all 5 control statuses present, posture score calculated, risk assessment recorded, gap analysis returns list.
 
 ---
 
-*Sheet TB-PROOF-006 | TelsonBase v11.0.1 | February 23, 2026*
+*Sheet TB-PROOF-006 | TelsonBase v11.0.1 | Updated March 16, 2026*

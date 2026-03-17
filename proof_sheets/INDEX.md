@@ -107,8 +107,8 @@ The governance pipeline (trust tiers, manners scoring, HITL gates, audit chain) 
 ### Integration Guides
 | Sheet | Claim | Test Coverage |
 |---|---|---|
-| [TB-PROOF-040](TB-PROOF-040_openclaw_integration_guide.md) | OpenClaw Integration: Start to Finish (under 45 min) | INFRA |
-| [TB-PROOF-041](TB-PROOF-041_agent_registration.md) | How to Add an Agent - Developer Deep Dive | INFRA |
+| [TB-PROOF-040](TB-PROOF-040_openclaw_integration_guide.md) | OpenClaw Integration: Start to Finish (under 45 min) | VERIFIED |
+| [TB-PROOF-041](TB-PROOF-041_agent_registration.md) | How to Add an Agent - Developer Deep Dive | VERIFIED |
 
 ### Security Battery - Test-by-Test Evidence
 *One proof sheet per test class. Every claim in the 96-test security battery is traceable to source code and a verification command.*
