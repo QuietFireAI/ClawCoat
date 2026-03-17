@@ -127,15 +127,20 @@ class TestMFADisable:
         client.post("/v1/security/mfa/enroll",
                     json={"user_id": "u-mfad-001", "username": "disableuser"},
                     headers=AUTH)
-        resp = client.delete("/v1/security/mfa/u-mfad-001", headers=AUTH)
+        resp = client.delete("/v1/security/mfa/u-mfad-001",
+                             params={"disabled_by": "admin"},
+                             headers=AUTH)
         assert resp.status_code in (200, 404)
 
     def test_disable_requires_auth(self, client):
-        resp = client.delete("/v1/security/mfa/u-mfad-002")
+        resp = client.delete("/v1/security/mfa/u-mfad-002",
+                             params={"disabled_by": "admin"})
         assert resp.status_code == 401
 
     def test_disable_unenrolled_user(self, client):
-        resp = client.delete("/v1/security/mfa/u-mfad-never", headers=AUTH)
+        resp = client.delete("/v1/security/mfa/u-mfad-never",
+                             params={"disabled_by": "admin"},
+                             headers=AUTH)
         assert resp.status_code in (200, 404, 500)
 
 
