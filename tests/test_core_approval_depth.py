@@ -93,7 +93,7 @@ def gate():
     return ApprovalGate()
 
 
-def _make_rule(rule_id="test-rule", action_pattern="test.*", conditions=None):
+def _make_rule(rule_id="test-rule", action_pattern="test.*", conditions=None, timeout_seconds=60):
     return ApprovalRule(
         rule_id=rule_id,
         name="Test Rule",
@@ -101,7 +101,7 @@ def _make_rule(rule_id="test-rule", action_pattern="test.*", conditions=None):
         action_pattern=action_pattern,
         conditions=conditions or [],
         priority=ApprovalPriority.NORMAL,
-        timeout_seconds=60,
+        timeout_seconds=timeout_seconds,
     )
 
 
