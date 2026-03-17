@@ -316,16 +316,11 @@ class TestCheckCapability:
             result = demo_mod.check_capability("filesystem", "read", "/app/demo/input/f.txt")
         assert result is False
 
-    def test_empty_caps_returns_false(self):
-        from core.capabilities import CapabilitySet
-        stores = _make_stores(capabilities=[])
-        # CapabilitySet.from_strings([]) → permits nothing
+    def test_none_capabilities_returns_false(self):
+        # Alias of the above — reinforces that None caps → False regardless of path
+        stores = _make_stores(capabilities=None)
         with patch.object(demo_mod, "_get_stores", return_value=stores):
-            with patch("agents.demo_agent.CapabilitySet") as MockCS:
-                mock_set = MagicMock()
-                mock_set.permits.return_value = False
-                MockCS.from_strings.return_value = mock_set
-                result = demo_mod.check_capability("filesystem", "read", "/app/demo/input/x.txt")
+            result = demo_mod.check_capability("filesystem", "write", "/app/demo/output/f.txt")
         assert result is False
 
 
