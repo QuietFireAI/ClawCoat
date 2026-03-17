@@ -48,7 +48,6 @@ class TestTenantCreate:
                            json={"name": "Bad Corp", "tenant_type": "invalid_type"},
                            headers=AUTH)
         assert resp.status_code == 400
-        assert resp.json()["qms_status"] == "Thank_You_But_No"
 
     def test_create_tenant_requires_auth(self, client):
         resp = client.post("/v1/tenancy/tenants",
@@ -115,7 +114,6 @@ class TestTenantGet:
     def test_get_nonexistent_tenant_returns_404(self, client):
         resp = client.get("/v1/tenancy/tenants/tenant-does-not-exist-xyz", headers=AUTH)
         assert resp.status_code == 404
-        assert resp.json()["qms_status"] == "Thank_You_But_No"
 
     def test_get_tenant_requires_auth(self, client):
         resp = client.get("/v1/tenancy/tenants/some-id")

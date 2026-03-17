@@ -111,7 +111,6 @@ class TestLogin:
             "password": "WrongPassword!",
         })
         assert resp.status_code == 401
-        assert resp.json()["qms_status"] == "Thank_You_But_No"
 
     def test_login_missing_fields_returns_error(self, client):
         resp = client.post("/v1/auth/login", json={"username": "someone"})

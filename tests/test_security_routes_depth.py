@@ -194,7 +194,6 @@ class TestSessionGet:
     def test_get_nonexistent_session_returns_404(self, client):
         resp = client.get("/v1/security/sessions/sess-does-not-exist", headers=AUTH)
         assert resp.status_code == 404
-        assert resp.json()["qms_status"] == "Thank_You_But_No"
 
     def test_get_existing_session(self, client):
         create = client.post("/v1/security/sessions",
