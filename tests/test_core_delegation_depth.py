@@ -187,8 +187,10 @@ class TestDelegate:
         assert mgr._delegations[did2].delegation_depth == 1
 
     def test_delegate_chain_too_deep_rejected(self, mgr):
+        # MAX_DELEGATION_DEPTH=3 means depths 0,1,2,3 are valid (4 hops).
+        # Build the max valid chain then attempt one more.
         did_prev = None
-        for i in range(mgr.MAX_DELEGATION_DEPTH):
+        for i in range(mgr.MAX_DELEGATION_DEPTH + 1):
             grantor = f"agent-chain-{i}"
             grantee = f"agent-chain-{i+1}"
             caps_to_use = CAPS if i == 0 else []
@@ -198,12 +200,12 @@ class TestDelegate:
                 grantor_capabilities=caps_to_use,
                 parent_delegation_id=did_prev,
             )
-            assert ok is True, f"Step {i} failed"
+            assert ok is True, f"Step {i} failed unexpectedly"
             did_prev = did
 
-        # One level too deep
+        # This one exceeds MAX — must be rejected
         ok, msg, did = mgr.delegate(
-            f"agent-chain-{mgr.MAX_DELEGATION_DEPTH}",
+            f"agent-chain-{mgr.MAX_DELEGATION_DEPTH + 1}",
             "agent-chain-final",
             "filesystem.read:/data/*",
             grantor_capabilities=[],
