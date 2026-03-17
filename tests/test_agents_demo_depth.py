@@ -339,7 +339,8 @@ class TestRegisterAgent:
         stores = _make_stores()
         with patch.object(demo_mod, "_get_stores", return_value=stores):
             demo_mod.register_agent()
-        stores["signing_store"].store_key.assert_called_once_with("demo_agent", pytest.approx)
+        from unittest.mock import ANY
+        stores["signing_store"].store_key.assert_called_once_with("demo_agent", ANY)
 
     def test_register_agent_stores_capabilities(self):
         stores = _make_stores()
