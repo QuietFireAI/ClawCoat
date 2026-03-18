@@ -18,10 +18,10 @@ from core.tenant_rate_limiting import (
 )
 
 
-# ─── Patch Redis so audit.log() uses in-memory path ────────────────────────────
+# ─── Patch Redis so TenantRateLimiter uses in-memory fallback path ─────────────
 @pytest.fixture(autouse=True)
 def _no_redis(monkeypatch):
-    monkeypatch.setattr("core.persistence.get_redis", lambda: None)
+    monkeypatch.setattr("core.tenant_rate_limiting._get_redis_client", lambda: None)
 
 
 @pytest.fixture

@@ -109,6 +109,12 @@ class TestAgentBaseline:
 # BehaviorMonitor fixture
 # ═══════════════════════════════════════════════════════════════════════════════
 
+@pytest.fixture(autouse=True)
+def _no_store(monkeypatch):
+    """REM: Prevent BehaviorMonitor from loading persisted anomalies between tests."""
+    monkeypatch.setattr("core.anomaly._get_store", lambda: None)
+
+
 @pytest.fixture
 def monitor():
     return BehaviorMonitor()
