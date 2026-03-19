@@ -2,11 +2,11 @@
 
 **Every claim is backed by evidence.**
 
-**Last Verified:** March 8, 2026 &nbsp;|&nbsp; **Version:** v11.0.1 &nbsp;|&nbsp; **Tests Passing:** 746 &nbsp;|&nbsp; **Proof Documents:** 788
+**Last Verified:** March 19, 2026 &nbsp;|&nbsp; **Version:** v11.0.2 &nbsp;|&nbsp; **Tests Passing:** 5,416 &nbsp;|&nbsp; **Proof Documents:** 788
 
 ---
 
-TelsonBase publishes evidence for every security and compliance claim in the project.
+ClawCoat publishes evidence for every security and compliance claim in the project.
 If a claim is in the README, there is a verifiable source behind it.
 If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
@@ -74,4 +74,4 @@ Question any claim. Run the command. That is the point.
 
 ---
 
-*TelsonBase v11.0.1 · Quietfire AI · Apache 2.0*
+*ClawCoat v11.0.2 · Quietfire AI · Apache 2.0*
