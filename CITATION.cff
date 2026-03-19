@@ -1,15 +1,17 @@
 cff-version: 1.2.0
 message: "If you use ClawCoat in your research or work, please cite it using this metadata."
-title: "TelsonBase"
+title: "ClawCoat"
 version: 11.0.2
 date-released: 2026-03-08
 license: Apache-2.0
 abstract: >
-  TelsonBase is a self-hosted zero-trust AI agent governance platform.
-  It provides earned trust tiers, a kill switch for instant agent suspension,
-  human-in-the-loop approval gates, behavioral scoring, tamper-evident audit
-  chain, and full MCP integration. Designed for production AI agent deployments
-  requiring auditability and human oversight.
+  ClawCoat is a self-hosted zero-trust AI agent governance platform providing
+  active decision making for every MCP tool call. It provides earned trust tiers,
+  a kill switch for instant agent suspension, human-in-the-loop approval gates,
+  behavioral scoring, tamper-evident audit chain, and full MCP integration.
+  Designed for production AI agent deployments requiring auditability and
+  human oversight — the answer to the open challenge of Agent Autonomy SLAs
+  (arXiv:2511.02885).
 authors:
   - name: "J. Phillips"
     alias: "Jeff Phillips"

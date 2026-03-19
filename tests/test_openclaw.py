@@ -626,3 +626,115 @@ class TestQueryMethods:
     def test_get_nonexistent_instance(self, manager):
         """REM: get_instance returns None for nonexistent ID."""
         assert manager.get_instance("nonexistent") is None
+
+
+# REM: =======================================================================================
+# REM: DEREGISTER TESTS
+# REM: =======================================================================================
+
+class TestDeregister:
+    """REM: Tests for permanent instance deregistration."""
+
+    def test_deregister_removes_from_local_cache(self, manager, registered_claw):
+        """REM: Deregistered instance is no longer in local cache."""
+        iid = registered_claw.instance_id
+        result = manager.deregister_instance(iid, deregistered_by="admin", reason="cleanup")
+        assert result is True
+        assert iid not in manager._instances
+
+    def test_deregister_get_returns_none(self, manager, registered_claw):
+        """REM: get_instance returns None after deregistration (no Redis fallback in test)."""
+        iid = registered_claw.instance_id
+        manager.deregister_instance(iid, deregistered_by="admin")
+        assert manager.get_instance(iid) is None
+
+    def test_deregister_nonexistent_returns_false(self, manager):
+        """REM: Deregistering a nonexistent ID returns False."""
+        assert manager.deregister_instance("nonexistent-id", deregistered_by="admin") is False
+
+    def test_deregister_clears_suspended_set(self, manager, registered_claw):
+        """REM: Suspension flag is cleared on deregistration."""
+        iid = registered_claw.instance_id
+        manager.suspend_instance(iid, suspended_by="admin", reason="test")
+        assert iid in manager._suspended_ids
+        manager.deregister_instance(iid, deregistered_by="admin")
+        assert iid not in manager._suspended_ids
+
+    def test_deregister_clears_trust_history(self, manager, registered_claw):
+        """REM: Trust history is removed on deregistration."""
+        iid = registered_claw.instance_id
+        manager.deregister_instance(iid, deregistered_by="admin")
+        assert iid not in manager._trust_history
+
+    def test_deregister_returns_true_on_success(self, manager, registered_claw):
+        """REM: Successful deregistration returns True."""
+        result = manager.deregister_instance(
+            registered_claw.instance_id, deregistered_by="admin", reason="test cleanup"
+        )
+        assert result is True
+
+    def test_deregister_idempotent_second_call_returns_false(self, manager, registered_claw):
+        """REM: Second deregistration of the same ID returns False (already gone)."""
+        iid = registered_claw.instance_id
+        manager.deregister_instance(iid, deregistered_by="admin")
+        assert manager.deregister_instance(iid, deregistered_by="admin") is False
+
+    def test_deregister_does_not_affect_other_instances(self, manager):
+        """REM: Deregistering one instance does not touch others."""
+        a = manager.register_instance("Agent A", api_key="key-aaa", registered_by="admin")
+        b = manager.register_instance("Agent B", api_key="key-bbb", registered_by="admin")
+        manager.deregister_instance(a.instance_id, deregistered_by="admin")
+        assert manager.get_instance(b.instance_id) is not None
+
+
+# REM: =======================================================================================
+# REM: DEMOTION HARD-BLOCK (AGENT TIER) TESTS
+# REM: =======================================================================================
+
+class TestAgentDemotionHardBlock:
+    """REM: Tests for AGENT-tier demotion requiring acknowledged=true at route layer.
+    REM: The manager itself allows the demotion — the hard-block lives in the route handler.
+    REM: These tests verify the manager behavior and DemoteRequest model validation.
+    """
+
+    @pytest.fixture
+    def agent_claw(self, manager, registered_claw):
+        """REM: Promote a claw all the way to AGENT tier."""
+        iid = registered_claw.instance_id
+        manager.promote_trust(iid, "probation", "admin", "test")
+        manager.promote_trust(iid, "resident", "admin", "test")
+        manager.promote_trust(iid, "citizen", "admin", "test")
+        manager.promote_trust(iid, "agent", "admin", "test")
+        return manager.get_instance(iid)
+
+    def test_manager_demote_from_agent_succeeds(self, manager, agent_claw):
+        """REM: Manager allows demotion from AGENT — hard-block is route-layer only."""
+        iid = agent_claw.instance_id
+        result = manager.demote_trust(iid, "citizen", demoted_by="admin", reason="behaviour review")
+        assert result is True
+        assert manager.get_instance(iid).trust_level == "citizen"
+
+    def test_manager_demote_from_agent_sets_review_flag(self, manager, agent_claw):
+        """REM: Demotion from AGENT sets the demotion review flag."""
+        iid = agent_claw.instance_id
+        manager.demote_trust(iid, "probation", demoted_by="admin", reason="anomaly spike")
+        assert manager._is_review_required(iid) or manager.get_review_status(iid) is not None
+
+    def test_manager_demote_agent_to_quarantine(self, manager, agent_claw):
+        """REM: AGENT can be demoted all the way to QUARANTINE in one step."""
+        iid = agent_claw.instance_id
+        result = manager.demote_trust(iid, "quarantine", demoted_by="admin", reason="critical violation")
+        assert result is True
+        assert manager.get_instance(iid).trust_level == "quarantine"
+
+    def test_demote_request_acknowledged_field_defaults_false(self):
+        """REM: DemoteRequest.acknowledged defaults to False (hard-block active by default)."""
+        from api.openclaw_routes import DemoteRequest
+        req = DemoteRequest(new_level="citizen", reason="test")
+        assert req.acknowledged is False
+
+    def test_demote_request_acknowledged_can_be_true(self):
+        """REM: DemoteRequest.acknowledged accepts true."""
+        from api.openclaw_routes import DemoteRequest
+        req = DemoteRequest(new_level="citizen", reason="test", acknowledged=True)
+        assert req.acknowledged is True

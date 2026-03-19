@@ -7,25 +7,29 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [11.0.2] - 2026-03-17 (Coverage depth — 650+ new tests, CI gate 40%→58%)
+## [11.0.2] - 2026-03-19 (Deep coverage, RBAC persistence, governance hardening)
 
-**Status:** 1,295+ passed, 0 failed. CI verified 58.48% coverage on run #260.
+**Status:** 5,416 passed, 3 skipped, 0 failed. CI run #309 GREEN. Coverage: 76.13% (gate: 63%).
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Added
-- 470 coverage-boost tests (compliance, semantic matching, auth helpers, rotation dataclasses)
-- 180+ depth tests: security routes (MFA/sessions/email/captcha/emergency), tenancy routes, auth routes, delegation manager, MCP gateway tools
+- `DELETE /v1/openclaw/{id}` — agent deregister endpoint: removes instance, trust history, suspension flag, demotion review from Redis and local cache. Requires `admin:config` permission. Audit-logged via `openclaw.deregistered` event.
+- `AuditEventType.OPENCLAW_DEREGISTERED` — new audit event type for permanent deregistration
+- Demotion hard-block for AGENT tier: `POST /v1/openclaw/{id}/demote` requires `acknowledged=true` when demoting from apex tier, preventing accidental deregistration without paper trail. Returns HTTP 409 with clear message.
+- RBAC Redis write-through persistence: users, sessions, API keys survive restarts and support multi-worker deploys (`WEB_CONCURRENCY=2` now unblocked)
+- 3,400+ depth tests across all core modules: anomaly, manners, signing, approval gate, audit chain, data classification, PHI de-identification, session management, HITRUST controls, toolroom (manifest/registry/executor/foreman/function_tools), tenancy, openclaw, auth_dependencies, agents (base/alien adapter)
 - AGENT_AUTONOMY_SLA.md — formal 5-tier open-standard SLA spec, cites arXiv:2511.02885
 - REUSE compliance: LICENSES/Apache-2.0.txt, .reuse/DEP5, SPDX headers on 250 Python files
 
 ### Changed
-- CI coverage gate: 40% → 58% (calibrated to verified 58.48%)
-- `.dockerignore`: docs/ restored to container for compliance file-existence tests
-- README: certification boundary disclosure, RBAC role count corrected (4-tier → 5-role)
+- `CITATION.cff`: title updated TelsonBase → ClawCoat; abstract updated to active decision making positioning with arXiv citation
+- CI coverage gate: 40% → 63% (verified 76.13% on run #309)
+- Proof sheets: all 68 sheets updated to ClawCoat v11.0.2, March 19, 2026
+- Website: version footer v11.0.1 → v11.0.2; lines of code counter 61,278 → 93,893; API operations 161 → 162
 
 ### Fixed
-- Proof sheets: HIPAA/HITRUST/SOC2 rating corrections
-- Stale numbers corrected in README and proof index
+- Test isolation: `test_core_rbac_depth.py` mgr fixture patched Redis I/O methods to no-op, preventing cross-test state contamination after write-through persistence was added
+- Proof sheets: HIPAA/HITRUST/SOC2 rating corrections, stale version/date references cleaned
 
 ---
 

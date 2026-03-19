@@ -180,6 +180,7 @@ class AuditEventType(str, Enum):
     OPENCLAW_TRUST_DEMOTED = "openclaw.trust_demoted"             # Trust level demoted
     OPENCLAW_SUSPENDED = "openclaw.suspended"                     # Kill switch activated
     OPENCLAW_REINSTATED = "openclaw.reinstated"                   # Kill switch cleared
+    OPENCLAW_DEREGISTERED = "openclaw.deregistered"               # Instance permanently removed
 
 
 # REM: v6.3.0CC Enhancement — HIPAA 45 CFR 164.312(a)(2)(i) Unique User Identification

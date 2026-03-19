@@ -126,6 +126,13 @@ class DemoteRequest(BaseModel):
     """REM: Request to demote a claw's trust level."""
     new_level: str = Field(..., description="Target trust level (quarantine, probation, resident)")
     reason: str = Field(default="", description="Reason for demotion")
+    acknowledged: bool = Field(
+        default=False,
+        description=(
+            "Required when demoting from AGENT tier. Set to true to confirm apex demotion "
+            "after reviewing the agent's action history."
+        )
+    )
 
 
 class SuspendRequest(BaseModel):
@@ -524,10 +531,26 @@ async def demote_trust(
 ):
     """
     REM: Demote a claw's trust level. Can skip levels (instant consequences).
+    REM: Demotion from AGENT tier requires acknowledged=true — hard-block prevents
+    REM: accidental apex demotion without an explicit paper trail.
     """
     _check_enabled()
 
     manager = _get_manager()
+
+    # REM: Hard-block for apex demotion — AGENT tier requires explicit acknowledgment.
+    # REM: Operator must set acknowledged=true after reviewing the agent's action history.
+    instance = manager.get_instance(instance_id)
+    if instance and instance.trust_level == "agent" and not request.acknowledged:
+        raise HTTPException(
+            status_code=409,
+            detail=format_qms(
+                "Demoting from AGENT tier requires explicit acknowledgment. "
+                "Review the agent's action history, then resubmit with acknowledged=true.",
+                QMSStatus.EXCUSE_ME
+            )
+        )
+
     success = manager.demote_trust(
         instance_id=instance_id,
         new_level=request.new_level,
@@ -609,6 +632,37 @@ async def reinstate_claw(
         "instance_id": instance_id,
         "suspended": False,
         "reinstated_by": auth.actor,
+        "qms_status": "Thank_You",
+    }
+
+
+@router.delete("/{instance_id}", status_code=200)
+async def deregister_claw(
+    instance_id: str,
+    auth: AuthResult = Depends(authenticate_request),
+):
+    """
+    REM: Permanently remove an OpenClaw instance from governance.
+    REM: Deletes all state (instance record, suspension flag, trust history, demotion review).
+    REM: Irreversible — agent must re-register to re-enter governance.
+    REM: Requires admin:config permission.
+    """
+    _check_enabled()
+    require_permission(auth, "admin:config")
+
+    manager = _get_manager()
+    success = manager.deregister_instance(
+        instance_id=instance_id,
+        deregistered_by=auth.actor,
+    )
+
+    if not success:
+        raise HTTPException(status_code=404, detail="OpenClaw instance not found")
+
+    return {
+        "instance_id": instance_id,
+        "deregistered": True,
+        "deregistered_by": auth.actor,
         "qms_status": "Thank_You",
     }
 

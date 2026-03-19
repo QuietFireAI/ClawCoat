@@ -1242,6 +1242,57 @@ class OpenClawManager:
         )
         return True
 
+    def deregister_instance(self, instance_id: str, deregistered_by: str, reason: str = "") -> bool:
+        """
+        REM: Permanently remove an OpenClaw instance from governance.
+        REM: Deletes all Redis state (instance record, suspension flag, trust history,
+        REM: demotion review). Irreversible — agent must re-register to re-enter governance.
+        """
+        instance = self.get_instance(instance_id)
+        if not instance:
+            return False
+
+        # REM: Capture name before removal for audit record
+        name = instance.name
+        trust_level = instance.trust_level
+        action_count = instance.action_count
+
+        # REM: Remove from local caches
+        self._instances.pop(instance_id, None)
+        self._suspended_ids.discard(instance_id)
+        self._trust_history.pop(instance_id, None)
+
+        # REM: Remove all Redis keys for this instance
+        client = self._get_redis()
+        if client:
+            try:
+                client.delete(f"openclaw:instance:{instance_id}")
+                client.delete(f"openclaw:suspended:{instance_id}")
+                client.delete(f"openclaw:trust_history:{instance_id}")
+                client.delete(f"openclaw:review_required:{instance_id}")
+            except Exception as e:
+                logger.warning(f"REM: Failed to delete OpenClaw instance from Redis: {e}")
+
+        audit.log(
+            AuditEventType.OPENCLAW_DEREGISTERED,
+            f"OpenClaw instance DEREGISTERED: ::{name}:: ({instance_id})",
+            actor=deregistered_by,
+            details={
+                "instance_id": instance_id,
+                "name": name,
+                "reason": reason,
+                "trust_level": trust_level,
+                "action_count": action_count,
+            },
+            qms_status="Thank_You"
+        )
+
+        logger.info(
+            f"REM: OpenClaw instance deregistered: ::{name}:: "
+            f"by {deregistered_by}_Thank_You"
+        )
+        return True
+
     def is_suspended(self, instance_id: str) -> bool:
         """REM: Check if an instance is suspended. Always checked first in governance pipeline."""
         if instance_id in self._suspended_ids:
