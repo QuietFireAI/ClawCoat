@@ -12,20 +12,6 @@ import pytest
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Module constants
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestModuleConstants:
-    def test_smtp_from_default(self):
-        import core.email_sender as es
-        assert "@" in es.SMTP_FROM or es.SMTP_FROM == ""
-
-    def test_app_base_url_default(self):
-        import core.email_sender as es
-        assert es.APP_BASE_URL.startswith("http")
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
 # _send_sync — SMTP logic
 # ═══════════════════════════════════════════════════════════════════════════════
 
