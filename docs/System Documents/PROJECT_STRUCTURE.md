@@ -1,6 +1,6 @@
 # ClawCoat Project Structure
 
-**Version:** v11.0.1 | **Updated:** March 8, 2026
+**Version:** v11.0.2 | **Updated:** March 19, 2026
 
 ```
 telsonbase/
@@ -13,7 +13,6 @@ telsonbase/
 ├── docker-compose.federation-test.yml  # Multi-instance federation test setup
 ├── alembic.ini                 # Database migration configuration
 ├── pytest.ini                  # Test configuration
-├── run_all_tests.sh            # Convenience test runner script
 ├── goose.yaml                  # Goose MCP client config (copy to ~/.config/goose/)
 ├── .env.example                # Environment template (copy to .env)
 │
@@ -29,7 +28,7 @@ telsonbase/
 │   ├── config.py               # Centralized settings (pydantic)
 │   ├── auth.py                 # JWT authentication
 │   ├── auth_dependencies.py    # FastAPI auth dependency helpers
-│   ├── rbac.py                 # Role-based access control (4-tier)
+│   ├── rbac.py                 # Role-based access control (5 roles, Redis-persisted)
 │   ├── mfa.py                  # TOTP multi-factor authentication (RFC 6238)
 │   ├── captcha.py              # CAPTCHA challenge/response
 │   ├── sessions.py             # Session store
@@ -170,30 +169,115 @@ telsonbase/
 │   ├── generate_class_level_proof_sheets.py # Generate TB-PROOF-053+ class-level sheets
 │   ├── backup.sh               # Backup script
 │   ├── restore.sh              # Restore script
+│   ├── run_all_tests.sh        # Convenience test runner script
 │   ├── dr_test.sh              # Disaster recovery test
 │   ├── governance_smoke_test.sh  # 13-step live governance verification
 │   ├── seed_demo_data.py       # Demo data setup
 │   ├── test_security_flow.py   # API integration test
 │   └── test_federation.py      # Federation test
 │
-├── tests/                      # Test suite - 746 passing, 1 skipped
+├── tests/                      # Test suite — 5,416 passing, 3 skipped, 0 failed (CI run #309)
 │   ├── conftest.py             # Pytest fixtures + _register_user helper
-│   ├── test_api.py             # API endpoint tests
-│   ├── test_behavioral.py      # Behavioral anomaly tests
-│   ├── test_capabilities.py    # Permission enforcement tests
-│   ├── test_contracts.py       # Enum contract tripwires (TenantType, AgentTrustLevel)
-│   ├── test_e2e_integration.py # End-to-end integration tests (29)
-│   ├── test_identiclaw.py      # Agent identity tests
-│   ├── test_integration.py     # Integration tests
+│   │
+│   ├── — Core governance & security —
+│   ├── test_openclaw.py        # OpenClaw governance engine (55 tests)
+│   ├── test_qms.py             # QMS v2.2.0 protocol (115 tests)
+│   ├── test_identiclaw.py      # Agent identity — DID / Ed25519 (50 tests)
+│   ├── test_security_battery.py  # 9-category security attack surface (96 tests)
+│   ├── test_behavioral.py      # Trust progression behavioral specs (30 tests)
+│   ├── test_contracts.py       # Enum contract tripwires (7 tests)
+│   ├── test_signing.py         # Cryptographic signing (13 tests)
+│   ├── test_secrets.py         # Secrets management (48 tests)
+│   ├── test_capabilities.py    # Capability enforcement (15 tests)
+│   │
+│   ├── — Infrastructure & integration —
+│   ├── test_api.py             # API endpoint smoke tests (19 tests)
+│   ├── test_e2e_integration.py # End-to-end workflows (29 tests)
+│   ├── test_integration.py     # Integration layer (26 tests)
+│   ├── test_observability.py   # Metrics and monitoring (40 tests)
+│   ├── test_ollama.py          # Local LLM inference (49 tests)
+│   ├── test_toolroom.py        # Toolroom supply-chain security (129 tests)
 │   ├── test_mqtt_stress.py     # MQTT stress tests (excluded from standard run)
-│   ├── test_observability.py   # Metrics and monitoring tests
-│   ├── test_ollama.py          # Local LLM tests
-│   ├── test_openclaw.py        # OpenClaw governance tests
-│   ├── test_qms.py             # QMS logging tests
-│   ├── test_secrets.py         # Secrets management tests
-│   ├── test_security_battery.py  # 96-test security battery
-│   ├── test_signing.py         # Cryptographic signing tests
-│   └── test_toolroom.py        # Toolroom supply-chain tests
+│   │
+│   ├── — Core module depth tests (one file per module) —
+│   ├── test_core_qms_depth.py                  # 165 tests
+│   ├── test_core_audit_depth.py                # 159 tests
+│   ├── test_core_semantic_matching_depth.py    # 127 tests
+│   ├── test_core_data_classification_depth.py  # 122 tests
+│   ├── test_core_threat_response_depth.py      # 115 tests
+│   ├── test_core_trust_levels_depth.py         # 100 tests
+│   ├── test_core_phi_deidentification_depth.py # 100 tests
+│   ├── test_core_tenancy_depth.py              # 97 tests
+│   ├── test_core_manners_depth.py              # 96 tests
+│   ├── test_core_hitrust_controls_depth.py     # 95 tests
+│   ├── test_core_training_depth.py             # 85 tests
+│   ├── test_core_rbac_depth.py                 # 85 tests
+│   ├── test_core_openclaw_depth.py             # 83 tests
+│   ├── test_core_session_management_depth.py   # 79 tests
+│   ├── test_core_data_retention_depth.py       # 79 tests
+│   ├── test_core_tenant_rate_limiting_depth.py # 78 tests
+│   ├── test_core_minimum_necessary_depth.py    # 75 tests
+│   ├── test_compliance_depth.py                # 74 tests
+│   ├── test_core_rate_limiting_depth.py        # 68 tests
+│   ├── test_core_compliance_depth.py           # 68 tests
+│   ├── test_core_captcha_depth.py              # 68 tests
+│   ├── test_core_approval_depth.py             # 67 tests
+│   ├── test_core_breach_notification_depth.py  # 66 tests
+│   ├── test_core_secrets_depth.py              # 64 tests
+│   ├── test_core_capabilities_depth.py         # 64 tests
+│   ├── test_core_sanctions_depth.py            # 63 tests
+│   ├── test_core_anomaly_depth.py              # 61 tests
+│   ├── test_core_user_management_depth.py      # 60 tests
+│   ├── test_core_secure_storage_depth.py       # 60 tests
+│   ├── test_core_system_analysis_depth.py      # 59 tests
+│   ├── test_core_legal_hold_depth.py           # 55 tests
+│   ├── test_core_baa_tracking_depth.py         # 54 tests
+│   ├── test_core_email_verification_depth.py   # 53 tests
+│   ├── test_core_rotation_depth.py             # 51 tests
+│   ├── test_core_contingency_testing_depth.py  # 51 tests
+│   ├── test_core_mfa_depth.py                  # 49 tests
+│   ├── test_core_emergency_access_depth.py     # 49 tests
+│   ├── test_core_signing_depth.py              # 47 tests
+│   ├── test_core_middleware_depth.py           # 47 tests
+│   ├── test_core_phi_disclosure_depth.py       # 46 tests
+│   ├── test_core_delegation_depth.py           # 41 tests
+│   ├── test_core_persistence_depth.py          # 40 tests
+│   ├── test_core_metrics_depth.py              # 36 tests
+│   ├── test_core_auth_depth.py                 # 26 tests
+│   ├── test_core_auth_dependencies_depth.py    # 18 tests
+│   │
+│   ├── — Agent depth tests —
+│   ├── test_agents_transaction_depth.py        # 140 tests
+│   ├── test_agents_memory_depth.py             # 100 tests
+│   ├── test_agents_document_depth.py           # 62 tests
+│   ├── test_agents_alien_adapter_depth.py      # 56 tests
+│   ├── test_agents_backup_depth.py             # 50 tests
+│   ├── test_agents_demo_depth.py               # 42 tests
+│   ├── test_agents_base_depth.py               # 29 tests
+│   │
+│   ├── — API routes depth tests —
+│   ├── test_security_routes_depth.py           # 58 tests
+│   ├── test_tenancy_routes_depth.py            # 38 tests
+│   ├── test_mcp_gateway_depth.py               # 34 tests
+│   ├── test_auth_routes_depth.py               # 27 tests
+│   │
+│   ├── — Toolroom depth tests —
+│   ├── test_toolroom_registry_depth.py         # 105 tests
+│   ├── test_toolroom_manifest_depth.py         # 92 tests
+│   ├── test_toolroom_function_tools_depth.py   # 42 tests
+│   ├── test_toolroom_executor_depth.py         # 40 tests
+│   ├── test_toolroom_foreman_depth.py          # 38 tests
+│   │
+│   ├── — Supplemental —
+│   ├── test_user_mgmt_and_analysis.py          # 68 tests
+│   ├── test_depth_infrastructure.py            # 31 tests
+│   ├── test_depth_hardening.py                 # 28 tests
+│   ├── test_coverage_boost.py                  # 106 tests
+│   ├── test_coverage_boost2.py                 # 70 tests
+│   ├── test_coverage_boost3.py                 # 25 tests
+│   ├── test_coverage_boost4.py                 # 33 tests
+│   ├── test_coverage_boost5.py                 # 124 tests
+│   └── test_coverage_boost6.py                 # 44 tests
 │
 ├── proof_sheets/               # 788 proof documents - every claim and every test, backed by code
 │   ├── INDEX.md                # Full index (788 documents, verification status)

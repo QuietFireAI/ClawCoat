@@ -13,8 +13,8 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 > *"The industry gave OpenClaw agents the keys to everything before anyone asked who was watching."*
 
 <p align="center">
-  <strong>v11.0.1</strong> &nbsp;|&nbsp;
-  <strong>854 tests passing</strong> &nbsp;|&nbsp;
+  <strong>v11.0.2</strong> &nbsp;|&nbsp;
+  <strong>5,416 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
   <strong>161 API endpoints</strong> &nbsp;|&nbsp;
   <strong>0 data shared</strong>
@@ -46,7 +46,7 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
 ## Status: Live
 
-**854 system level tests all PASS. 0 high-severity findings. Everything described in this README is built and running.**
+**5,416 tests passing. 76% coverage. 0 high-severity findings. Everything described in this README is built and running.**
 
 **Try the live demo:** [huggingface.co/spaces/QuietFireAI/ClawCoat](https://huggingface.co/spaces/QuietFireAI/ClawCoat)
 
@@ -247,7 +247,7 @@ This isn't a roadmap. This is shipped code with tests.
 | **Kill Switch** | Instant suspension, Redis-persisted, survives restarts | 7 |
 | **MCP Gateway (Goose)** | 13 tools exposed via MCP, trust-gated sessions, native Goose / Claude Desktop integration | live |
 
-**Total: 854 tests passing. 1 skipped. 0 high-severity findings across 63,294 lines scanned.**
+**Total: 5,416 tests passing. 3 skipped. 0 high-severity findings across 61,278 lines scanned.**
 
 ---
 
@@ -353,6 +353,95 @@ No OpenAI. No Google. No API calls to third-party inference services in the defa
 
 ---
 
+## Project Structure
+
+```
+telsonbase/
+├── main.py                     # FastAPI application entry point
+├── version.py                  # Single source of truth for version string
+├── requirements.txt            # Runtime dependencies (pinned)
+├── requirements-dev.txt        # Dev/lint/test tooling
+├── Dockerfile                  # Container build
+├── docker-compose.yml          # Full stack (12 services)
+├── docker-compose.prod.yml     # Production overrides (no MailHog)
+├── alembic.ini / pytest.ini    # DB migrations + test config
+├── goose.yaml                  # Goose MCP client config
+│
+├── core/                       # Security & governance engine (~60 modules)
+│   ├── openclaw.py             # OpenClaw governance engine
+│   ├── trust_levels.py         # AgentTrustLevel enum (QUARANTINE → AGENT)
+│   ├── manners.py              # Manners compliance scoring
+│   ├── audit.py                # SHA-256 hash-chained audit trail
+│   ├── rbac.py                 # RBAC (5 roles, Redis-persisted)
+│   ├── auth.py / mfa.py        # JWT + TOTP authentication
+│   ├── capabilities.py         # Capability enforcement
+│   ├── anomaly.py              # Behavioral anomaly detection
+│   ├── approval.py             # Human-in-the-loop gates
+│   ├── signing.py              # HMAC-SHA256 / Ed25519 signing
+│   ├── secure_storage.py       # AES-256-GCM encrypted storage
+│   ├── persistence.py          # Redis state management
+│   ├── tenancy.py              # Multi-tenant isolation
+│   ├── compliance.py + ...     # HIPAA/HITRUST/SOC2 compliance modules
+│   └── qms.py                  # QMS™ protocol logger
+│
+├── agents/                     # Agent implementations
+│   ├── base.py                 # SecureBaseAgent abstract class
+│   ├── transaction_agent.py
+│   ├── memory_agent.py
+│   ├── document_agent.py
+│   ├── backup_agent.py
+│   ├── demo_agent.py
+│   └── alien_adapter.py        # Quarantine adapter for external frameworks
+│
+├── api/                        # FastAPI route handlers (161 endpoints)
+│   ├── openclaw_routes.py      # OpenClaw governance
+│   ├── auth_routes.py          # Authentication
+│   ├── security_routes.py      # Security events
+│   ├── tenancy_routes.py       # Multi-tenant management
+│   ├── mcp_gateway.py          # MCP server (13 tools)
+│   └── compliance_routes.py    # Compliance frameworks
+│
+├── toolroom/                   # Supply-chain security for agent tools
+│   ├── registry.py / manifest.py
+│   ├── executor.py / foreman.py
+│   └── cage.py                 # Tool sandboxing
+│
+├── federation/                 # Cross-instance trust (mTLS, RSA-4096)
+├── gateway/                    # Egress security + domain whitelist
+├── alembic/                    # Database migrations
+├── celery_app/                 # Background task processing
+├── monitoring/                 # Prometheus + Grafana + Mosquitto config
+│
+├── tests/                      # 5,416 passing tests across 88 files
+│   ├── test_security_battery.py  # 9-category security attack surface
+│   ├── test_openclaw.py          # Governance pipeline
+│   ├── test_qms.py               # QMS protocol
+│   ├── test_toolroom.py          # Supply-chain security
+│   ├── test_*_depth.py           # Deep coverage — one file per core module
+│   └── test_coverage_boost*.py   # Supplemental coverage
+│
+├── proof_sheets/               # 788 evidence documents
+│   ├── INDEX.md
+│   ├── TB-PROOF-001 … TB-PROOF-067  # Claim-level + suite-level proof sheets
+│   └── individual/             # 721 individual test case sheets
+│
+├── scripts/                    # Operational utilities
+│   ├── generate_secrets.sh
+│   ├── governance_smoke_test.sh
+│   └── run_all_tests.sh
+│
+├── docs/                       # Technical documentation
+│   ├── Operation Documents/    # Developer Guide, Deployment Guide, Integration Guide
+│   ├── System Documents/       # API Reference, Security Architecture, Project Structure
+│   └── Compliance Documents/   # HIPAA, HITRUST, SOC2, GDPR mappings
+│
+└── huggingface_space/          # Live demo (Gradio app → DO server)
+```
+
+Full annotated structure: [`docs/System Documents/PROJECT_STRUCTURE.md`](docs/System%20Documents/PROJECT_STRUCTURE.md)
+
+---
+
 ## The Problem
 
 OpenClaw agents are the most significant paradigm shift in computing since the GUI, and the industry handed them the keys to everything before anyone built the guardrails.
@@ -370,7 +459,7 @@ Nobody asked what happens to your data when an AI agent has no one watching it. 
 
 ClawCoat puts you back in control. Every action by an AI agent is evaluated. Every permission earned. Every decision is auditable. The model runs on your hardware. Your data stays on your network. Nothing leaves unless you say so.
 
-The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 854 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
+The compliance frameworks aren't on a roadmap; they're already built. SOC 2, HIPAA, HITRUST, CJIS, GDPR, PCI DSS, ABA Model Rules. 5,416 passing tests. 64 SOC 2 controls mapped to source code. Cryptographic audit trails. Human-in-the-loop approval gates. Behavioral anomaly detection. Kill switches.
 
 Built for the industries that can't afford to get this wrong: small business, real estate, medical, legal, insurance, and accounting. Attorney-client privilege. Protected health information. Financial records. The kind of data where "we'll figure out security later" means malpractice, regulatory action, or worse.
 
@@ -407,7 +496,7 @@ QMS™ is an open standard (MIT licensed). The trademark covers the name. The pr
 
 ## Proof Sheets
 
-The `proof_sheets/` directory contains **67 evidence documents** (52 claim-level + 15 test-suite-level).
+The `proof_sheets/` directory contains **788 evidence documents** (67 claim/suite-level + 721 individual test case sheets).
 
 This is not a marketing decision. If ClawCoat preaches governance, it has to practice it. Every claim has a receipt. Every test has a sheet. If the evidence doesn't hold up, the claim gets fixed - not hidden.
 
@@ -416,15 +505,19 @@ This is not a marketing decision. If ClawCoat preaches governance, it has to pra
 | Tier | Format | Count | Purpose |
 |---|---|---|---|
 | **Claim-level** | `TB-PROOF-NNN` | 52 sheets | One sheet per logical claim - source files, verdict, verification command |
-| **Test suite class** | `tb-proof-NNN` | 15 sheets | One sheet per test suite - all classes, test counts, what each proves |
+| **Test suite** | `tb-proof-NNN` | 15 sheets | One sheet per test suite - all classes, test counts, what each proves |
+| **Individual tests** | `TB-TEST-*` | 721 sheets | One sheet per test function in `individual/` |
 
 ```
 proof_sheets/
-  INDEX.md                          ← master index, all 67 claim + class sheets
-  TB-PROOF-001_tests_passing.md
+  INDEX.md                          ← master index
+  TB-PROOF-001_tests_passing.md     ← 5,416 tests, all 88 files, version history
   TB-PROOF-035_openclaw_governance.md
   TB-PROOF-043_security_auth.md     ← 9 security battery category sheets
+  tb-proof-053_qms_suite.md         ← test suite class sheets
   ...
+  individual/                       ← 721 individual test case proof sheets
+    api/  beh/  cap/  ctrct/  e2e/  int/  ...
 ```
 
 ```bash
@@ -441,13 +534,11 @@ Browse the full index: [`proof_sheets/INDEX.md`](proof_sheets/INDEX.md)
 
 Question any claim. Run the command. That's the point.
 
-**Honest test coverage status (March 15, 2026):**
+**Test coverage status (March 2026):**
 
-The governance pipeline is comprehensively tested — trust tiers, manners scoring, HITL gates, kill switch, audit chain, and the 96-test security battery. That's where the 854 tests are and where they earn their keep.
+5,416 tests across 88 files. 76% line coverage (CI-verified). Every core module has dedicated depth tests: governance pipeline, trust tiers, manners scoring, HITL gates, kill switch, audit chain, all compliance infrastructure, all agents, all toolroom modules, and all API routes.
 
-The compliance infrastructure modules (HIPAA, HITRUST, breach notification, sanctions, BAA, data retention, legal hold) are fully implemented and now covered by depth tests added March 15. Some claim sheets use grep-based verification commands — those are marked CODE-ONLY in the index and are honest about what they verify: source structure, not runtime behavior.
-
-The proof sheet index now carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts. If you want to help move CODE-ONLY sheets to VERIFIED, the compliance modules are the clearest contribution opportunity — see [CONTRIBUTING.md](CONTRIBUTING.md).
+The proof sheet index carries a **Test Coverage** rating for every sheet: VERIFIED, SMOKE, CODE-ONLY, INFRA, or DOCS. Read the ratings before you read the verdicts.
 
 ---
 
@@ -520,7 +611,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full process and [GOVERNANCE.md](
 2. Create a feature branch
 3. Write tests (we don't ship untested code)
 4. Submit a PR with a clear description
-5. Every PR runs the full test suite (854 and growing)
+5. Every PR runs the full test suite (5,416 and growing)
 
 Questions or bugs? See [SUPPORT.md](SUPPORT.md).
 
@@ -552,7 +643,7 @@ If you use ClawCoat in research, a paper, or a published project, a `CITATION.cf
 
 Manual citation:
 ```
-Phillips, J. (2026). ClawCoat (v11.0.1). Quietfire AI.
+Phillips, J. (2026). ClawCoat (v11.0.2). Quietfire AI.
 https://github.com/QuietFireAI/ClawCoat
 ORCID: https://orcid.org/0009-0000-1375-1725
 ```
