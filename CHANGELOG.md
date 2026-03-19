@@ -7,9 +7,9 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [11.0.2] - 2026-03-19 (Deep coverage, RBAC persistence, governance hardening)
+## [11.0.2] - 2026-03-19 (Sprint 1 complete — deep coverage, RBAC persistence, governance hardening, federation)
 
-**Status:** 5,416 passed, 3 skipped, 0 failed. CI run #309 GREEN. Coverage: 76.13% (gate: 63%).
+**Status:** 5,416 passed, 3 skipped, 0 failed. CI run #325 GREEN. Coverage: 76.13% (gate: 63%).
 **Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
 
 ### Added
@@ -17,18 +17,21 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 - `AuditEventType.OPENCLAW_DEREGISTERED` — new audit event type for permanent deregistration
 - Demotion hard-block for AGENT tier: `POST /v1/openclaw/{id}/demote` requires `acknowledged=true` when demoting from apex tier, preventing accidental deregistration without paper trail. Returns HTTP 409 with clear message.
 - RBAC Redis write-through persistence: users, sessions, API keys survive restarts and support multi-worker deploys (`WEB_CONCURRENCY=2` now unblocked)
+- Federation backend wiring: `POST /v1/federation/invitations` now accepts `name`/`remote_url`/`description`; stores `pending_outbound` relationship in Redis; response includes `relationship_id`. Admin panel now shows copyable invitation token in result panel.
 - 3,400+ depth tests across all core modules: anomaly, manners, signing, approval gate, audit chain, data classification, PHI de-identification, session management, HITRUST controls, toolroom (manifest/registry/executor/foreman/function_tools), tenancy, openclaw, auth_dependencies, agents (base/alien adapter)
 - AGENT_AUTONOMY_SLA.md — formal 5-tier open-standard SLA spec, cites arXiv:2511.02885
 - REUSE compliance: LICENSES/Apache-2.0.txt, .reuse/DEP5, SPDX headers on 250 Python files
 
 ### Changed
 - `CITATION.cff`: title updated TelsonBase → ClawCoat; abstract updated to active decision making positioning with arXiv citation
-- CI coverage gate: 40% → 63% (verified 76.13% on run #309)
+- CI coverage gate: 40% → 63% (verified 76.13% on run #325)
 - Proof sheets: all 68 sheets updated to ClawCoat v11.0.2, March 19, 2026
 - Website: version footer v11.0.1 → v11.0.2; lines of code counter 61,278 → 93,893; API operations 161 → 162
 
 ### Fixed
 - Test isolation: `test_core_rbac_depth.py` mgr fixture patched Redis I/O methods to no-op, preventing cross-test state contamination after write-through persistence was added
+- Test isolation: `conftest.py` client fixture flushes RBAC Redis keys (`security:rbac_users`, `security:rbac_api_keys`, `security:rbac_username_idx`) and resets in-memory RBAC state between tests, preventing first-user detection failures
+- Demotion test: `test_manager_demote_from_agent_records_in_trust_history` checks `_trust_history` in-memory dict instead of Redis-dependent `_is_review_required()`, making it deterministic in unit test environment
 - Proof sheets: HIPAA/HITRUST/SOC2 rating corrections, stale version/date references cleaned
 
 ---
