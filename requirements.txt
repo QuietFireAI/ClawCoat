@@ -79,7 +79,7 @@ python-json-logger==4.0.0
 
 # --- Prometheus Metrics ---
 # REM: Client library for exposing application metrics to Prometheus.
-prometheus-client==0.20.0
+prometheus-client==0.24.1
 
 # --- Async HTTP Client ---
 # REM: High-performance HTTP client used by Ollama service and egress proxy.
