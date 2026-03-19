@@ -398,9 +398,6 @@ Mock `self.filesystem`, `self.external`, and `self.send_to_agent` when unit test
 # Run all tests inside Docker (full stack available)
 docker compose exec mcp_server python -m pytest -v
 
-# Run with coverage
-docker compose exec mcp_server python -m pytest --cov=agents --cov-report=html
-
 # Run specific test file
 docker compose exec mcp_server python -m pytest tests/test_my_agent.py -v
 ```
