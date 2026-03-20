@@ -54,7 +54,11 @@ class TestGetDb:
         with patch("core.database.SessionLocal", return_value=mock_session):
             gen = get_db()
             next(gen)
-            gen.throw(RuntimeError("simulated error"))
+            # REM: gen.throw() propagates the exception after finally runs
+            try:
+                gen.throw(RuntimeError("simulated error"))
+            except RuntimeError:
+                pass
         mock_session.close.assert_called_once()
 
 
