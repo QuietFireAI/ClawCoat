@@ -313,7 +313,7 @@ The `OversightLevel` metric type, the quality model taxonomy, and the JSON DSL u
 
 Jouneaux, G. and Cabot, J. (2025). *AgentSLA: Towards a Service Level Agreement for AI Agents*. arXiv:2511.02885. https://arxiv.org/abs/2511.02885
 
-Cihon, P. et al. (2025). *[AI Autonomy and Oversight]*. arXiv:2502.15212. (Referenced via Jouneaux & Cabot's `OversightLevel` metric definition.)
+Cihon, P., Stein, M., Bansal, G., Manning, S., and Xu, K. (2025). *Measuring AI agent autonomy: Towards a scalable approach with code inspection*. arXiv:2502.15212. (Referenced via Jouneaux & Cabot's `OversightLevel` metric definition.)
 
 This specification is the working enforcement implementation of the open challenge described in Jouneaux & Cabot (2025).
 

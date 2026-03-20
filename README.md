@@ -6,7 +6,7 @@ Every OpenClaw tool call passes through ClawCoat before execution. Allow, gate f
 
 ClawCoat is the working implementation of the [Agent Autonomy SLA](docs/System%20Documents/AGENT_AUTONOMY_SLA.md), a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) — and defined `OversightLevel` as a first-class quality metric for AI agent services. ClawCoat makes it runtime-enforced and behaviorally dynamic. The [formal machine-readable spec](docs/System%20Documents/agent-autonomy-sla-spec.json) is expressed in their DSL.
 
-Five trust tiers, earned by behavior. The Manners Engine measures every action continuously - the active measurement device that drives automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
+Five trust tiers, earned by behavior. The Manners Engine measures every action continuously — the active measurement device that drives automatic demotion. Human-in-the-loop gates decide promotion. A cryptographic audit chain records every governance decision. Nothing leaves your network.
 
 Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
@@ -14,9 +14,9 @@ Self-hosted. Open source. Apache 2.0. [clawcoat.com](https://clawcoat.com)
 
 <p align="center">
   <strong>v11.0.3</strong> &nbsp;|&nbsp;
-  <strong>5,416 tests passing</strong> &nbsp;|&nbsp;
+  <strong>6,254 tests passing</strong> &nbsp;|&nbsp;
   <strong>64 SOC 2 controls</strong> &nbsp;|&nbsp;
-  <strong>161 API endpoints</strong> &nbsp;|&nbsp;
+  <strong>162 API endpoints</strong> &nbsp;|&nbsp;
   <strong>0 data shared</strong>
 </p>
 
