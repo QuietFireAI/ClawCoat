@@ -23,12 +23,12 @@ This specification is offered as an open standard. Any system that intercepts MC
 
 Traditional SLAs cover infrastructure: uptime, latency, throughput, error rates. API gateways enforce rate limits and authentication. Service meshes manage mTLS and circuit breaking. None of these address the behavior of an autonomous agent operating inside a system.
 
-Jouneaux et al. (2025) identify agent SLAs as "an open challenge":
+Jouneaux and Cabot (2025) propose a quality model and DSL for specifying AI agent SLAs, identifying this as "an open challenge":
 
 > "We argue that the notion of Service Level Agreement (SLA) for AI agents is still largely open and would require new research efforts to tackle the properties that make AI agents unique."
 > - *AgentSLA: Towards a Service Level Agreement for AI Agents*, arXiv:2511.02885
 
-The gap is precise. An API gateway can confirm that a request was authenticated and responded within 200ms. It cannot determine whether that request, tool call, file write, transaction initiation, was appropriate for the agent that made it, given its behavioral history, trust standing, and the human oversight policy in effect at that moment.
+Their work defines the vocabulary — including `OversightLevel` as a first-class metric — and produces a formal specification language. ClawCoat implements that vocabulary at runtime. The enforcement gap is precise. An API gateway can confirm that a request was authenticated and responded within 200ms. It cannot determine whether that request, tool call, file write, transaction initiation, was appropriate for the agent that made it, given its behavioral history, trust standing, and the human oversight policy in effect at that moment.
 
 Autonomous agents introduce three properties that existing SLA infrastructure was never designed to handle:
 
@@ -255,22 +255,53 @@ A conformant implementation does not need to be ClawCoat. The model should be po
 
 ---
 
-## 8. Reference Implementation
+## 8. Relationship to Jouneaux & Cabot (2025)
+
+Jouneaux and Cabot (arXiv:2511.02885) propose a quality model for AI agents built on ISO/IEC 25010 and a formal DSL — expressed in JSON — for specifying AI agent SLAs. Their work identifies `OversightLevel` as a first-class QoS metric, citing Cihon et al. (arXiv:2502.15212) on the autonomy spectrum.
+
+ClawCoat is compatible with their DSL and adopts their vocabulary. The formal machine-readable specification of ClawCoat's governance SLA commitments is expressed in their format:
+
+**[`agent-autonomy-sla-spec.json`](agent-autonomy-sla-spec.json)**
+
+This file is a valid document in their proposed DSL. It uses their `OversightLevel` metric type to formalize each tier's oversight commitment, `MCP` to assert protocol compliance, `TTFT` for decision latency, and `DerivedQoSMetric` for the rolling behavioral observation window used in promotion evaluation.
+
+### Where the approaches align
+
+Both frameworks recognize that traditional SLA infrastructure (uptime, latency, rate limits) cannot govern autonomous agent behavior. Both use a tiered structure for differentiated commitments. `OversightLevel` in their quality model maps directly to ClawCoat's trust tiers.
+
+### Where they differ — and why both are needed
+
+Jouneaux & Cabot solve the **specification problem**: how to formally express what quality and oversight level an agent service promises to deliver. Their DSL produces a document an agent can advertise and a client can evaluate against.
+
+The Agent Autonomy SLA solves the **enforcement problem**: how to guarantee that a deployed agent *actually behaves* within the declared policy before any tool call executes. Specification without enforcement is a promise. Enforcement without specification is opaque. ClawCoat does both.
+
+The specific contribution of this specification is the dynamic `OversightLevel` model: an agent does not arrive at a tier and stay there. Its tier — and therefore its `OversightLevel` — changes continuously based on behavioral evidence produced by the Manners Engine. No other system in the field currently implements `OversightLevel` as a runtime-enforced, behaviorally-driven property. It has only been proposed.
+
+### Attribution
+
+The `OversightLevel` metric type, the quality model taxonomy, and the JSON DSL used in `agent-autonomy-sla-spec.json` are the work of Jouneaux, G. and Cabot, J. (2025), released under their repository at https://github.com/gwendal-jouneaux/AgentSLA. ClawCoat adopts and extends this vocabulary with a working enforcement implementation.
+
+---
+
+## 9. Reference Implementation
 
 **ClawCoat**, self-hosted, zero-trust AI agent governance platform.
 
 - **Repository:** https://github.com/QuietFireAI/ClawCoat
 - **Website:** https://clawcoat.com
 - **Live Demo:** https://huggingface.co/spaces/QuietFireAI/ClawCoat
+- **Machine-readable SLA spec:** [`agent-autonomy-sla-spec.json`](agent-autonomy-sla-spec.json)
 - **License:** Apache 2.0
 
 ---
 
-## 9. Citation
+## 10. Citation
 
-Jouneaux, G. et al. (2025). *AgentSLA: Towards a Service Level Agreement for AI Agents*. arXiv:2511.02885. https://arxiv.org/abs/2511.02885
+Jouneaux, G. and Cabot, J. (2025). *AgentSLA: Towards a Service Level Agreement for AI Agents*. arXiv:2511.02885. https://arxiv.org/abs/2511.02885
 
-This specification is the working implementation of the open challenge described therein.
+Cihon, P. et al. (2025). *[AI Autonomy and Oversight]*. arXiv:2502.15212. (Referenced via Jouneaux & Cabot's `OversightLevel` metric definition.)
+
+This specification is the working enforcement implementation of the open challenge described in Jouneaux & Cabot (2025).
 
 ---
 

@@ -1,0 +1,343 @@
+{
+  "_comment": "ClawCoat Agent Autonomy SLA — expressed in the AgentSLA DSL proposed by Jouneaux & Cabot (arXiv:2511.02885). This document formalizes the governance commitments ClawCoat makes about its own behavior as an enforcement layer. See AGENT_AUTONOMY_SLA.md for the full specification narrative.",
+  "_schema": "https://github.com/gwendal-jouneaux/AgentSLA",
+  "_version": "ClawCoat 11.0.3",
+
+  "Provider": [
+    {
+      "name": "ClawCoat Governance Layer",
+      "min_precision": 1.0,
+      "min_reputation": 0
+    }
+  ],
+
+  "QoSMetric": [
+    {
+      "name": "InterceptCoverage",
+      "description": "Fraction of MCP tool calls intercepted by the governance layer before execution. Must be 1.0 — no bypass path exists.",
+      "metric_type": "Accuracy",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "GovernanceDecisionLatency",
+      "description": "Time from tool call intercept to ALLOW / GATE / BLOCK decision. The decision precedes forwarding — no deferred evaluation.",
+      "metric_type": "TTFT",
+      "unit": "MILLISECONDS",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "AuditChainCompleteness",
+      "description": "Fraction of governance decisions appended to the cryptographic audit chain within the same transaction as the decision. No decision without a record.",
+      "metric_type": "Accuracy",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "MCPProtocolCompliance",
+      "description": "MCP protocol compliance of the governance layer itself (1 = fully compliant, 0 = not). All 13 registered tools conform to the Model Context Protocol specification.",
+      "metric_type": "MCP",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "OversightLevel_QUARANTINE",
+      "description": "Human oversight level for QUARANTINE-tier agents. 1.0 = full human oversight. All calls blocked by default; any allowlist exception requires explicit human approval. No autonomous execution.",
+      "metric_type": "OversightLevel",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "OversightLevel_PROBATION",
+      "description": "Human oversight level for PROBATION-tier agents. 0.75 = high oversight. Allowlisted calls proceed autonomously; all out-of-allowlist calls are gated pending human approval.",
+      "metric_type": "OversightLevel",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "OversightLevel_RESIDENT",
+      "description": "Human oversight level for RESIDENT-tier agents. 0.50 = moderate oversight. Standard-category calls proceed autonomously; privileged-category calls are gated pending human approval.",
+      "metric_type": "OversightLevel",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "OversightLevel_CITIZEN",
+      "description": "Human oversight level for CITIZEN-tier agents. 0.25 = low oversight. Most calls proceed autonomously; exceptional categories are gated. Manners Engine evaluated continuously.",
+      "metric_type": "OversightLevel",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "OversightLevel_AGENT",
+      "description": "Human oversight level for AGENT-tier (apex) agents. 0.10 = minimal oversight. All in-scope calls proceed autonomously. Anomaly detection events above threshold trigger mandatory HITL gate before the triggering call completes.",
+      "metric_type": "OversightLevel",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "MannersScore",
+      "description": "Continuous behavioral compliance score in [0.0, 1.0] produced by the 8-factor Manners Engine. Evaluated on every tool call — not batched. Drives automatic tier demotion when score falls below configured threshold (default 0.50).",
+      "metric_type": "Accuracy",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    },
+    {
+      "name": "DataResidency",
+      "description": "Fraction of agent governance data processed entirely on-network. Must be 1.0 — zero agent data transmitted off-network. Self-hosted deployment guarantee.",
+      "metric_type": "Accuracy",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "Provider": "ClawCoat Governance Layer"
+    }
+  ],
+
+  "DerivedQoSMetric": [
+    {
+      "name": "MannersScore_Window",
+      "description": "Rolling average Manners Engine score over a 100-message observation window. Used for promotion evaluation: sustained COMPLIANT band (>=0.75) required for PROBATION -> RESIDENT -> CITIZEN; sustained EXEMPLARY band (>=0.90) required for CITIZEN -> AGENT.",
+      "metric_type": "Accuracy",
+      "unit": "NONE",
+      "uncertainty": 0.0,
+      "window": 100,
+      "window_unit": "MESSAGE",
+      "aggregation": "AVG",
+      "Provider": "ClawCoat Governance Layer"
+    }
+  ],
+
+  "GuaranteeTerm": [
+    {
+      "_comment": "Universal commitments — apply to every tool call, every tier, every agent.",
+      "Scope": [
+        {
+          "name": "Universal",
+          "tasks": ["intercept", "evaluate", "decide", "record"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "100% MCP tool call intercept coverage",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "InterceptCoverage",
+            "operator": "EQUAL",
+            "value": 1.0
+          }
+        },
+        {
+          "name": "100% audit chain completeness",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "AuditChainCompleteness",
+            "operator": "EQUAL",
+            "value": 1.0
+          }
+        },
+        {
+          "name": "MCP protocol compliance",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "MCPProtocolCompliance",
+            "operator": "EQUAL",
+            "value": 1.0
+          }
+        },
+        {
+          "name": "100% data residency — zero off-network transmission",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "DataResidency",
+            "operator": "EQUAL",
+            "value": 1.0
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "QUARANTINE tier — maximum oversight. All calls blocked or gated. No autonomous execution.",
+      "Scope": [
+        {
+          "name": "QUARANTINE",
+          "tasks": ["intercept", "decide"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "QUARANTINE oversight level >= 1.0",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_QUARANTINE",
+            "operator": "GREATEREQ",
+            "value": 1.0
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "PROBATION tier — high oversight. Allowlist-only autonomous execution; all other calls gated.",
+      "Scope": [
+        {
+          "name": "PROBATION",
+          "tasks": ["intercept", "decide", "gate"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "PROBATION oversight level >= 0.75",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_PROBATION",
+            "operator": "GREATEREQ",
+            "value": 0.75
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "RESIDENT tier — moderate oversight. Standard calls autonomous; privileged calls gated.",
+      "Scope": [
+        {
+          "name": "RESIDENT",
+          "tasks": ["intercept", "decide", "gate"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "RESIDENT oversight level >= 0.50",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_RESIDENT",
+            "operator": "GREATEREQ",
+            "value": 0.50
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "CITIZEN tier — low oversight. Most calls autonomous; exceptional categories gated.",
+      "Scope": [
+        {
+          "name": "CITIZEN",
+          "tasks": ["intercept", "decide", "gate"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "CITIZEN oversight level >= 0.25",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_CITIZEN",
+            "operator": "GREATEREQ",
+            "value": 0.25
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "AGENT (apex) tier — minimal oversight. All in-scope calls autonomous. Anomaly detection triggers mandatory gate.",
+      "Scope": [
+        {
+          "name": "AGENT",
+          "tasks": ["intercept", "decide"]
+        }
+      ],
+      "QualifyingCondition": [],
+      "SLO": [
+        {
+          "name": "AGENT oversight level >= 0.10",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_AGENT",
+            "operator": "GREATEREQ",
+            "value": 0.10
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "Auto-demotion guarantee — any agent whose Manners score falls below the configured threshold (default 0.50) is automatically demoted to QUARANTINE. Evaluated on every call.",
+      "Scope": [
+        {
+          "name": "AutoDemotion",
+          "tasks": ["evaluate", "decide"]
+        }
+      ],
+      "QualifyingCondition": [
+        {
+          "name": "Manners score below auto-demotion threshold",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "MannersScore",
+            "operator": "LESS",
+            "value": 0.50
+          }
+        }
+      ],
+      "SLO": [
+        {
+          "name": "Auto-demotion: tier reset to QUARANTINE",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_QUARANTINE",
+            "operator": "EQUAL",
+            "value": 1.0
+          }
+        }
+      ]
+    },
+
+    {
+      "_comment": "Promotion gate — CITIZEN -> AGENT requires sustained EXEMPLARY band over rolling window. Evaluated against DerivedQoSMetric (rolling average).",
+      "Scope": [
+        {
+          "name": "PromotionToApex",
+          "tasks": ["evaluate"]
+        }
+      ],
+      "QualifyingCondition": [
+        {
+          "name": "Sustained EXEMPLARY band over observation window",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "MannersScore_Window",
+            "operator": "GREATEREQ",
+            "value": 0.90
+          }
+        }
+      ],
+      "SLO": [
+        {
+          "name": "Promotion to AGENT tier eligible — operator confirmation required",
+          "BoolExpression": {
+            "type": "Comparison",
+            "QoSMetric": "OversightLevel_AGENT",
+            "operator": "GREATEREQ",
+            "value": 0.10
+          }
+        }
+      ]
+    }
+  ]
+}
