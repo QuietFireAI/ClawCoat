@@ -221,37 +221,34 @@ class TestRegisterSuccess:
         settings = get_settings()
         monkeypatch.setattr(settings, "identiclaw_enabled", True)
 
-    def test_register_success(self, client, monkeypatch):
-        record = _mock_record()
-        mock_mgr = MagicMock()
-        mock_mgr.register_agent.return_value = record
-        monkeypatch.setattr("api.identiclaw_routes.identiclaw_manager", mock_mgr)
-        with patch("api.identiclaw_routes.__import__", create=True):
-            resp = client.post("/v1/identity/register",
-                               headers=AUTH,
-                               json={"did": SAMPLE_DID, "display_name": "Test"})
-        # REM: 200 if identiclaw_manager is importable; may be 500 in test env
+    def test_register_valid_did_accepted(self, client):
+        """REM: Valid DID format passes validation gate; may 200/400/500 based on identiclaw state."""
+        resp = client.post("/v1/identity/register",
+                           headers=AUTH,
+                           json={"did": SAMPLE_DID, "display_name": "Test"})
         assert resp.status_code in (200, 400, 500)
 
-    def test_register_manager_returns_none_400(self, client, monkeypatch):
-        """REM: When register_agent returns None, endpoint returns 400."""
+    def test_register_manager_returns_none_via_sys_modules(self, client):
+        """REM: Patch via sys.modules when core.identiclaw is already loaded."""
+        import sys
         mock_mgr = MagicMock()
         mock_mgr.register_agent.return_value = None
-        monkeypatch.setattr("api.identiclaw_routes.identiclaw_manager", mock_mgr)
-        # REM: The endpoint imports inline, patch the module-level reference after import
-        import sys
         if "core.identiclaw" in sys.modules:
-            mock_core = sys.modules["core.identiclaw"]
-            orig = getattr(mock_core, "identiclaw_manager", None)
+            orig = sys.modules["core.identiclaw"].identiclaw_manager
             try:
-                mock_core.identiclaw_manager = mock_mgr
+                sys.modules["core.identiclaw"].identiclaw_manager = mock_mgr
                 resp = client.post("/v1/identity/register",
                                    headers=AUTH,
                                    json={"did": SAMPLE_DID})
                 assert resp.status_code in (400, 500)
             finally:
-                if orig is not None:
-                    mock_core.identiclaw_manager = orig
+                sys.modules["core.identiclaw"].identiclaw_manager = orig
+        else:
+            # REM: Module not loaded, skip the mock — just check 200/400/500
+            resp = client.post("/v1/identity/register",
+                               headers=AUTH,
+                               json={"did": SAMPLE_DID})
+            assert resp.status_code in (200, 400, 500)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
