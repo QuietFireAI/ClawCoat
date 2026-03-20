@@ -54,7 +54,7 @@ No agent arrives at AGENT tier. Every agent starts at QUARANTINE and earns its w
 
 ## The Agent Autonomy SLA
 
-ClawCoat is the working implementation of the Agent Autonomy SLA - a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux et al. identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)). ClawCoat is the answer.
+ClawCoat is the working implementation of the Agent Autonomy SLA - a formal per-tier commitment framework defining what an OpenClaw agent may do, under what conditions, and with what audit trail. Jouneaux and Cabot identified this as an open challenge in November 2025 ([arXiv:2511.02885](https://arxiv.org/abs/2511.02885)) and defined `OversightLevel` as a first-class quality metric for AI agent services. ClawCoat makes it runtime-enforced and behaviorally dynamic.
 
 ## Full Repository
 

@@ -1,6 +1,7 @@
 {
   "_comment": "ClawCoat Agent Autonomy SLA — expressed in the AgentSLA DSL proposed by Jouneaux & Cabot (arXiv:2511.02885). This document formalizes the governance commitments ClawCoat makes about its own behavior as an enforcement layer. See AGENT_AUTONOMY_SLA.md for the full specification narrative.",
   "_schema": "https://github.com/gwendal-jouneaux/AgentSLA",
+  "_license_note": "The AgentSLA DSL structure, metric type vocabulary (OversightLevel, MCP, TTFT, etc.), and field names used in this document are the work of Gwendal Jouneaux and Jordi Cabot. Their repository carries no explicit LICENSE file at time of this writing. This document conforms to their schema format but does not copy their source code. We have cited their work in full. If you are the author and would like a license added, please open an issue at https://github.com/QuietFireAI/ClawCoat.",
   "_version": "ClawCoat 11.0.3",
 
   "Provider": [
