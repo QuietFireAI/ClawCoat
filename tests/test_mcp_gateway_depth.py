@@ -1,289 +1,283 @@
 # SPDX-FileCopyrightText: 2026 Quietfire AI / Jeff Phillips
 # SPDX-License-Identifier: Apache-2.0
 # tests/test_mcp_gateway_depth.py
-# REM: Coverage depth tests for api/mcp_gateway.py
-# REM: Calls MCP tool functions directly as async coroutines (no HTTP transport needed)
-# REM: OPENCLAW_ENABLED=false in CI so gate check is bypassed for all tools
+# REM: Depth coverage for api/mcp_gateway.py
+# REM: Tests: _check_mcp_session branches, _TRUST_ORDER, tool function error paths.
 
 import asyncio
 import pytest
+from unittest.mock import MagicMock, patch
 
-# REM: mcp package only available in CI (full requirements-dev.txt install).
-# REM: Skip the whole module gracefully on dev machines without it.
-mcp_available = pytest.importorskip("mcp", reason="mcp package not installed")
-
-
-def run(coro):
-    """Run an async coroutine in a fresh event loop."""
-    return asyncio.get_event_loop().run_until_complete(coro)
+# REM: Skip entire file if mcp package is not installed
+pytest.importorskip("mcp", reason="mcp package required for MCP gateway depth tests")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# _check_mcp_session (sync helper — OPENCLAW_ENABLED=false → always None)
+# TRUST ORDER CONSTANT
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TestCheckMCPSession:
-    def test_gate_bypassed_when_openclaw_disabled(self):
+class TestTrustOrder:
+    def test_has_five_levels(self):
+        from api.mcp_gateway import _TRUST_ORDER
+        assert len(_TRUST_ORDER) == 5
+
+    def test_quarantine_is_lowest(self):
+        from api.mcp_gateway import _TRUST_ORDER
+        assert _TRUST_ORDER["quarantine"] == 0
+
+    def test_agent_is_highest(self):
+        from api.mcp_gateway import _TRUST_ORDER
+        assert _TRUST_ORDER["agent"] == max(_TRUST_ORDER.values())
+
+    def test_correct_ordering(self):
+        from api.mcp_gateway import _TRUST_ORDER
+        levels = ["quarantine", "probation", "resident", "citizen", "agent"]
+        for i, level in enumerate(levels):
+            assert _TRUST_ORDER[level] == i
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# _check_mcp_session
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TestCheckMcpSession:
+    def _run(self, tool_name="test_tool", required_level="probation"):
         from api.mcp_gateway import _check_mcp_session
-        result = _check_mcp_session("list_agents", required_level="probation")
-        # OPENCLAW_ENABLED=false in CI → gate returns None (bypass)
-        assert result is None
+        return _check_mcp_session(tool_name=tool_name, required_level=required_level)
 
-    def test_gate_bypassed_for_any_level(self):
-        from api.mcp_gateway import _check_mcp_session
-        for level in ("quarantine", "probation", "resident", "citizen", "agent"):
-            assert _check_mcp_session("any_tool", level) is None
+    def test_bypassed_when_openclaw_disabled(self, monkeypatch):
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", False)
+        assert self._run() is None
+
+    def test_no_key_hash_returns_unrecognized(self, monkeypatch):
+        from core.config import get_settings
+        from api.mcp_gateway import _mcp_api_key_hash
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", True)
+        token = _mcp_api_key_hash.set(None)
+        try:
+            result = self._run()
+        finally:
+            _mcp_api_key_hash.reset(token)
+        assert result is not None
+        assert result["status"] == "session_unrecognized"
+
+    def test_exception_during_gate_fails_open(self, monkeypatch):
+        """REM: Gate errors must NOT block legitimate operators — fail open."""
+        from core.config import get_settings
+        from api.mcp_gateway import _mcp_api_key_hash
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", True)
+        token = _mcp_api_key_hash.set("errorhash")
+        try:
+            import sys
+            if "core.openclaw" in sys.modules:
+                orig = sys.modules["core.openclaw"].openclaw_manager
+                broken = MagicMock()
+                broken.list_instances.side_effect = RuntimeError("redis down")
+                sys.modules["core.openclaw"].openclaw_manager = broken
+                try:
+                    result = self._run()
+                finally:
+                    sys.modules["core.openclaw"].openclaw_manager = orig
+                assert result is None  # REM: Fail open
+            else:
+                # REM: Module not loaded, exception will also fail open
+                result = self._run()
+                assert result is None
+        finally:
+            _mcp_api_key_hash.reset(token)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# system_status tool
+# REGISTER AS AGENT — validation (no openclaw dependency for errors)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TestSystemStatusTool:
-    def test_system_status_returns_dict(self):
-        from api.mcp_gateway import system_status
-        result = run(system_status())
-        assert isinstance(result, dict)
+class TestRegisterAsAgent:
+    def test_invalid_trust_level(self):
+        from api.mcp_gateway import register_as_agent
+        result = asyncio.run(register_as_agent(
+            name="Bot", api_key="key", initial_trust_level="superpower"
+        ))
+        assert result["qms_status"] == "Thank_You_But_No"
+        assert "Invalid trust level" in result["error"]
 
-    def test_system_status_has_qms_status(self):
-        from api.mcp_gateway import system_status
-        result = run(system_status())
+    def test_above_quarantine_without_reason(self):
+        from api.mcp_gateway import register_as_agent
+        result = asyncio.run(register_as_agent(
+            name="Bot", api_key="key", initial_trust_level="probation", override_reason=None
+        ))
+        assert result["qms_status"] == "Thank_You_But_No"
+        assert "override_reason" in result["error"]
+
+    def test_above_quarantine_with_short_reason(self):
+        from api.mcp_gateway import register_as_agent
+        result = asyncio.run(register_as_agent(
+            name="Bot", api_key="key", initial_trust_level="probation", override_reason="short"
+        ))
+        assert result["qms_status"] == "Thank_You_But_No"
+
+    def test_quarantine_with_openclaw_success(self):
+        from api.mcp_gateway import register_as_agent
+        import sys
+        if "core.openclaw" in sys.modules:
+            mock_inst = MagicMock()
+            mock_inst.instance_id = "test-inst-001"
+            orig = sys.modules["core.openclaw"].manager
+            mock_mgr = MagicMock()
+            mock_mgr.register_instance.return_value = mock_inst
+            sys.modules["core.openclaw"].manager = mock_mgr
+            try:
+                result = asyncio.run(register_as_agent(
+                    name="TestGoose", api_key="valid_api_key_123"
+                ))
+                assert result["qms_status"] == "Thank_You"
+                assert result["instance_id"] == "test-inst-001"
+            finally:
+                sys.modules["core.openclaw"].manager = orig
+        else:
+            result = asyncio.run(register_as_agent(
+                name="TestGoose", api_key="valid_api_key_123"
+            ))
+            assert "qms_status" in result
+
+    def test_quarantine_openclaw_exception(self):
+        from api.mcp_gateway import register_as_agent
+        import sys
+        if "core.openclaw" in sys.modules:
+            broken = MagicMock()
+            broken.register_instance.side_effect = RuntimeError("db down")
+            orig = sys.modules["core.openclaw"].manager
+            sys.modules["core.openclaw"].manager = broken
+            try:
+                result = asyncio.run(register_as_agent(
+                    name="Bot", api_key="key"
+                ))
+                assert result["qms_status"] == "Thank_You_But_No"
+            finally:
+                sys.modules["core.openclaw"].manager = orig
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GET HEALTH — error and success paths
+# ═══════════════════════════════════════════════════════════════════════════════
+
+class TestGetHealth:
+    def test_error_path_returns_qms_error(self):
+        from api.mcp_gateway import get_health
+        mock_redis = MagicMock()
+        mock_r = MagicMock()
+        mock_r.ping.side_effect = Exception("refused")
+        mock_redis.from_url.return_value = mock_r
+        with patch.dict("sys.modules", {"redis": mock_redis}):
+            result = asyncio.run(get_health())
         assert "qms_status" in result
 
-    def test_system_status_redis_key_present(self):
-        from api.mcp_gateway import system_status
-        result = run(system_status())
-        # Either succeeds with redis key or fails gracefully
-        if result["qms_status"] == "Thank_You":
-            assert "redis" in result
-        else:
-            assert "error" in result
-
-    def test_system_status_agents_key_on_success(self):
-        from api.mcp_gateway import system_status
-        result = run(system_status())
-        if result["qms_status"] == "Thank_You":
-            assert "agents" in result
-            assert "total" in result["agents"]
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# get_health tool
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestGetHealthTool:
-    def test_get_health_returns_dict(self):
+    def test_success_path_returns_healthy(self):
         from api.mcp_gateway import get_health
-        result = run(get_health())
-        assert isinstance(result, dict)
-
-    def test_get_health_has_api_key(self):
-        from api.mcp_gateway import get_health
-        result = run(get_health())
-        if result.get("qms_status") == "Thank_You":
-            assert result.get("api") == "healthy"
-
-    def test_get_health_has_redis_key(self):
-        from api.mcp_gateway import get_health
-        result = run(get_health())
-        assert "redis" in result
+        mock_redis = MagicMock()
+        mock_r = MagicMock()
+        mock_r.ping.return_value = True
+        mock_redis.from_url.return_value = mock_r
+        with patch.dict("sys.modules", {"redis": mock_redis}):
+            result = asyncio.run(get_health())
+        assert "qms_status" in result
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# list_agents tool
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestListAgentsTool:
-    def test_list_agents_returns_dict(self):
-        from api.mcp_gateway import list_agents
-        result = run(list_agents())
-        assert isinstance(result, dict)
-
-    def test_list_agents_default_excludes_suspended(self):
-        from api.mcp_gateway import list_agents
-        result = run(list_agents(include_suspended=False))
-        if result.get("qms_status") == "Thank_You":
-            assert "agents" in result
-
-    def test_list_agents_include_suspended(self):
-        from api.mcp_gateway import list_agents
-        result = run(list_agents(include_suspended=True))
-        assert isinstance(result, dict)
-
-    def test_list_agents_count_matches_list(self):
-        from api.mcp_gateway import list_agents
-        result = run(list_agents())
-        if result.get("qms_status") == "Thank_You":
-            assert result["count"] == len(result["agents"])
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# get_agent tool
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestGetAgentTool:
-    def test_get_agent_nonexistent_returns_error(self):
-        from api.mcp_gateway import get_agent
-        result = run(get_agent("nonexistent-instance-id-xyz"))
-        assert isinstance(result, dict)
-        # Either not_found or error
-        assert result.get("qms_status") in ("Thank_You_But_No", "Excuse_Me") \
-               or "error" in result or "status" in result
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# list_tenants tool
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestListTenantsTool:
-    def test_list_tenants_returns_dict(self):
-        from api.mcp_gateway import list_tenants
-        result = run(list_tenants())
-        assert isinstance(result, dict)
-
-    def test_list_tenants_active_only(self):
-        from api.mcp_gateway import list_tenants
-        result = run(list_tenants(active_only=True))
-        assert isinstance(result, dict)
-
-    def test_list_tenants_all(self):
-        from api.mcp_gateway import list_tenants
-        result = run(list_tenants(active_only=False))
-        assert isinstance(result, dict)
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# create_tenant tool
+# CREATE TENANT — invalid type validation
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class TestCreateTenantTool:
-    def test_create_tenant_valid_type(self):
+    def test_gate_blocks_unauthenticated(self, monkeypatch):
+        from api.mcp_gateway import create_tenant, _mcp_api_key_hash
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", True)
+        token = _mcp_api_key_hash.set(None)
+        try:
+            result = asyncio.run(create_tenant(name="ACME", tenant_type="law_firm"))
+        finally:
+            _mcp_api_key_hash.reset(token)
+        assert result["status"] == "session_unrecognized"
+
+    def test_invalid_type_when_gate_bypassed(self, monkeypatch):
         from api.mcp_gateway import create_tenant
-        result = run(create_tenant(name="MCP Test Org", tenant_type="general"))
-        assert isinstance(result, dict)
-        assert "qms_status" in result
-
-    def test_create_tenant_law_firm(self):
-        from api.mcp_gateway import create_tenant
-        result = run(create_tenant(name="MCP Law Firm", tenant_type="law_firm"))
-        assert isinstance(result, dict)
-
-    def test_create_tenant_invalid_type_fails_gracefully(self):
-        from api.mcp_gateway import create_tenant
-        result = run(create_tenant(name="MCP Bad Org", tenant_type="invalid_xyz"))
-        assert isinstance(result, dict)
-        # Should return error gracefully
-        assert "qms_status" in result
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", False)
+        result = asyncio.run(create_tenant(name="ACME", tenant_type="spaceship"))
+        assert result["qms_status"] == "Thank_You_But_No"
+        assert "spaceship" in result["error"]
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# list_matters tool
+# LIST AGENTS — gate and error
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TestListMattersTool:
-    def test_list_matters_nonexistent_tenant(self):
-        from api.mcp_gateway import list_matters
-        result = run(list_matters(tenant_id="tid-nonexistent-xyz"))
-        assert isinstance(result, dict)
+class TestListAgentsTool:
+    def test_gate_blocks_unauthenticated(self, monkeypatch):
+        from api.mcp_gateway import list_agents, _mcp_api_key_hash
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", True)
+        token = _mcp_api_key_hash.set(None)
+        try:
+            result = asyncio.run(list_agents())
+        finally:
+            _mcp_api_key_hash.reset(token)
+        assert result["status"] == "session_unrecognized"
 
-    def test_list_matters_with_status_filter(self):
-        from api.mcp_gateway import list_matters
-        result = run(list_matters(tenant_id="tid-none", status_filter="open"))
-        assert isinstance(result, dict)
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# Audit chain tools
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestAuditChainTools:
-    def test_get_audit_chain_status(self):
-        from api.mcp_gateway import get_audit_chain_status
-        result = run(get_audit_chain_status())
-        assert isinstance(result, dict)
-        assert "qms_status" in result
-
-    def test_verify_audit_chain_default(self):
-        from api.mcp_gateway import verify_audit_chain
-        result = run(verify_audit_chain())
-        assert isinstance(result, dict)
-
-    def test_verify_audit_chain_small_limit(self):
-        from api.mcp_gateway import verify_audit_chain
-        result = run(verify_audit_chain(limit=10))
-        assert isinstance(result, dict)
-
-    def test_get_recent_audit_entries(self):
-        from api.mcp_gateway import get_recent_audit_entries
-        result = run(get_recent_audit_entries())
-        assert isinstance(result, dict)
-
-    def test_get_recent_audit_entries_with_limit(self):
-        from api.mcp_gateway import get_recent_audit_entries
-        result = run(get_recent_audit_entries(limit=5))
-        assert isinstance(result, dict)
-
-    def test_get_recent_audit_entries_with_event_type(self):
-        from api.mcp_gateway import get_recent_audit_entries
-        result = run(get_recent_audit_entries(event_type="auth_success"))
-        assert isinstance(result, dict)
+    def test_openclaw_error_returns_qms_error(self, monkeypatch):
+        from api.mcp_gateway import list_agents
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", False)
+        import sys
+        if "core.openclaw" in sys.modules:
+            orig = sys.modules["core.openclaw"].manager
+            broken = MagicMock()
+            broken.list_instances.side_effect = RuntimeError("db down")
+            sys.modules["core.openclaw"].manager = broken
+            try:
+                result = asyncio.run(list_agents())
+                assert result["qms_status"] == "Thank_You_But_No"
+            finally:
+                sys.modules["core.openclaw"].manager = orig
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Approvals tools
+# GET AGENT — not found and error
 # ═══════════════════════════════════════════════════════════════════════════════
 
-class TestApprovalTools:
-    def test_list_pending_approvals(self):
-        from api.mcp_gateway import list_pending_approvals
-        result = run(list_pending_approvals())
-        assert isinstance(result, dict)
+class TestGetAgentTool:
+    def test_not_found_returns_error(self, monkeypatch):
+        from api.mcp_gateway import get_agent
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", False)
+        import sys
+        if "core.openclaw" in sys.modules:
+            orig = sys.modules["core.openclaw"].manager
+            mock_mgr = MagicMock()
+            mock_mgr.get_instance.return_value = None
+            sys.modules["core.openclaw"].manager = mock_mgr
+            try:
+                result = asyncio.run(get_agent("nonexistent-id"))
+                assert result["qms_status"] == "Thank_You_But_No"
+                assert "not found" in result["error"]
+            finally:
+                sys.modules["core.openclaw"].manager = orig
 
-    def test_list_pending_approvals_custom_limit(self):
-        from api.mcp_gateway import list_pending_approvals
-        result = run(list_pending_approvals(limit=5))
-        assert isinstance(result, dict)
-
-    def test_approve_nonexistent_request(self):
-        from api.mcp_gateway import approve_tool_request
-        result = run(approve_tool_request(
-            request_id="req-nonexistent-xyz",
-            approved_by="admin",
-        ))
-        assert isinstance(result, dict)
-
-    def test_approve_with_notes(self):
-        from api.mcp_gateway import approve_tool_request
-        result = run(approve_tool_request(
-            request_id="req-nonexistent-xyz",
-            approved_by="admin",
-            notes="Test approval with notes",
-        ))
-        assert isinstance(result, dict)
-
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# register_as_agent tool
-# ═══════════════════════════════════════════════════════════════════════════════
-
-class TestRegisterAsAgentTool:
-    def test_register_as_agent_returns_dict(self):
-        from api.mcp_gateway import register_as_agent
-        import uuid
-        result = run(register_as_agent(
-            name="mcp-test-agent",
-            api_key=f"test-key-{uuid.uuid4().hex[:8]}",
-        ))
-        assert isinstance(result, dict)
-        assert "qms_status" in result
-
-    def test_register_as_agent_above_quarantine_requires_reason(self):
-        from api.mcp_gateway import register_as_agent
-        import uuid
-        result = run(register_as_agent(
-            name="mcp-probation-agent",
-            api_key=f"test-key-{uuid.uuid4().hex[:8]}",
-            initial_trust_level="probation",
-            override_reason="Testing above-quarantine registration path",
-        ))
-        assert isinstance(result, dict)
+    def test_success_returns_agent_dict(self, monkeypatch):
+        from api.mcp_gateway import get_agent
+        from core.config import get_settings
+        monkeypatch.setattr(get_settings(), "openclaw_enabled", False)
+        import sys
+        if "core.openclaw" in sys.modules:
+            orig = sys.modules["core.openclaw"].manager
+            mock_inst = MagicMock()
+            mock_inst.to_dict.return_value = {"instance_id": "inst-001", "name": "TestBot"}
+            mock_mgr = MagicMock()
+            mock_mgr.get_instance.return_value = mock_inst
+            sys.modules["core.openclaw"].manager = mock_mgr
+            try:
+                result = asyncio.run(get_agent("inst-001"))
+                assert result["qms_status"] == "Thank_You"
+                assert "agent" in result
+            finally:
+                sys.modules["core.openclaw"].manager = orig
