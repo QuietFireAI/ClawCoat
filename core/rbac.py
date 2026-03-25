@@ -329,6 +329,10 @@ class RBACManager:
             security_store.store_record(
                 "rbac_sessions", session.session_id, data, ttl=remaining
             )
+            # REM: Maintain user → sessions index for cross-worker deactivation
+            security_store.add_to_set(
+                f"rbac_user_sessions:{session.user_id}", session.session_id
+            )
         except Exception as e:
             logger.warning(
                 f"REM: Failed to save session to Redis: {e}_Thank_You_But_No"
@@ -515,7 +519,7 @@ class RBACManager:
         return False
 
     def deactivate_user(self, user_id: str, deactivated_by: str = "system") -> bool:
-        """REM: Deactivate a user account."""
+        """REM: Deactivate a user account. Kills all sessions across all workers."""
         user = self._users.get(user_id)
         if not user:
             return False
@@ -523,11 +527,32 @@ class RBACManager:
         user.is_active = False
         self._save_user(user)
 
-        # REM: Invalidate all in-memory sessions; Redis TTL sessions expire naturally
-        for session_id, session in list(self._sessions.items()):
-            if session.user_id == user_id:
-                session.is_valid = False
-                self._delete_session_from_redis(session_id)
+        # REM: Collect session IDs from local cache AND Redis index
+        # REM: Redis index covers sessions created on other workers
+        local_ids = {
+            sid for sid, s in self._sessions.items() if s.user_id == user_id
+        }
+        try:
+            from core.persistence import security_store
+            redis_ids = security_store.get_set_members(f"rbac_user_sessions:{user_id}")
+        except Exception:
+            redis_ids = set()
+
+        all_ids = local_ids | redis_ids
+        for session_id in all_ids:
+            if session_id in self._sessions:
+                self._sessions[session_id].is_valid = False
+            self._delete_session_from_redis(session_id)
+
+        # REM: Clear the user sessions index now that all sessions are gone
+        try:
+            from core.persistence import security_store
+            for session_id in all_ids:
+                security_store.remove_from_set(
+                    f"rbac_user_sessions:{user_id}", session_id
+                )
+        except Exception:
+            pass
 
         logger.warning(
             f"REM: User ::{user.username}:: deactivated by ::{deactivated_by}::_Thank_You"
@@ -599,10 +624,18 @@ class RBACManager:
     def invalidate_session(self, session_id: str) -> bool:
         """REM: Invalidate a session (in-memory and Redis)."""
         found = False
-        session = self._sessions.get(session_id)
+        session = self._sessions.pop(session_id, None)
         if session:
             session.is_valid = False
             found = True
+            # REM: Remove from user sessions index
+            try:
+                from core.persistence import security_store
+                security_store.remove_from_set(
+                    f"rbac_user_sessions:{session.user_id}", session_id
+                )
+            except Exception:
+                pass
         self._delete_session_from_redis(session_id)
         return found
 

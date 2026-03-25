@@ -20,6 +20,7 @@
 # REM:   Circuit open: Service_Unavailable_Thank_You_But_No with ::service::
 # REM: =======================================================================================
 
+import hashlib
 import logging
 import time
 import uuid
@@ -46,6 +47,41 @@ logger = logging.getLogger(__name__)
 # REM: RATE LIMITER
 # REM: =======================================================================================
 
+# REM: Lua script for atomic Redis token bucket. Runs server-side so no race conditions.
+# REM: Returns [1, remaining] if allowed, [0, 0] if denied.
+_LUA_TOKEN_BUCKET = """
+local key = KEYS[1]
+local capacity = tonumber(ARGV[1])
+local rate = tonumber(ARGV[2])
+local now = tonumber(ARGV[3])
+
+local data = redis.call('HMGET', key, 'tokens', 'ts')
+local tokens = tonumber(data[1])
+local ts = tonumber(data[2])
+
+if tokens == nil then
+    tokens = capacity
+    ts = now
+end
+
+local elapsed = now - ts
+tokens = math.min(capacity, tokens + elapsed * rate)
+ts = now
+
+local allowed = 0
+local remaining = 0
+if tokens >= 1 then
+    tokens = tokens - 1
+    allowed = 1
+    remaining = math.floor(tokens)
+end
+
+redis.call('HMSET', key, 'tokens', tokens, 'ts', ts)
+redis.call('EXPIRE', key, 600)
+return {allowed, remaining}
+"""
+
+
 class RateLimiter:
     """
     REM: Token bucket rate limiter.
@@ -64,26 +100,42 @@ class RateLimiter:
         self.burst_size = burst_size
         self.tokens_per_second = requests_per_minute / 60.0
 
-        # REM: Track buckets per client
+        # REM: In-memory fallback buckets (used only when Redis unavailable)
         self._buckets: Dict[str, Dict] = defaultdict(lambda: {
             "tokens": burst_size,
             "last_update": time.time()
         })
         self._last_cleanup = time.time()
+        self._redis_script = None  # Cached Lua script handle
     
     def _get_client_key(self, request: Request) -> str:
-        """REM: Get unique identifier for rate limiting."""
-        # REM: Check for API key first
+        """REM: Get unique identifier for rate limiting.
+        REM: API keys are hashed (SHA-256) — full key prevents shared-prefix bucket collision.
+        """
         api_key = request.headers.get("X-API-Key")
         if api_key:
-            return f"key:{api_key[:16]}"
-        
+            key_hash = hashlib.sha256(api_key.encode()).hexdigest()
+            return f"key:{key_hash}"
+
         # REM: Fall back to IP
         forwarded = request.headers.get("X-Forwarded-For")
         if forwarded:
             return f"ip:{forwarded.split(',')[0].strip()}"
-        
+
         return f"ip:{request.client.host if request.client else 'unknown'}"
+
+    def _get_redis_client(self):
+        """REM: Lazy Redis client for distributed rate limiting. Returns None if unavailable."""
+        try:
+            import redis as redis_lib
+            return redis_lib.from_url(
+                settings.redis_url,
+                decode_responses=False,
+                socket_connect_timeout=1,
+                socket_timeout=1,
+            )
+        except Exception:
+            return None
     
     def _refill_bucket(self, bucket: Dict) -> None:
         """REM: Refill tokens based on elapsed time."""
@@ -118,16 +170,49 @@ class RateLimiter:
     def is_allowed(self, request: Request) -> tuple[bool, Dict[str, Any]]:
         """
         REM: Check if request should be allowed.
+        REM: Uses Redis atomic Lua token bucket when available — enforces limits across
+        REM: all workers. Falls back to in-memory bucket if Redis is unavailable.
         Returns (allowed, info_dict)
         """
-        # REM: Periodic cleanup of stale entries
-        self._cleanup_stale_buckets()
-
         client_key = self._get_client_key(request)
+
+        # REM: Try Redis-backed distributed rate limiting
+        try:
+            r = self._get_redis_client()
+            if r:
+                if self._redis_script is None:
+                    self._redis_script = r.register_script(_LUA_TOKEN_BUCKET)
+                redis_key = f"ratelimit:{client_key}"
+                result = self._redis_script(
+                    keys=[redis_key],
+                    args=[self.burst_size, self.tokens_per_second, time.time()]
+                )
+                allowed = bool(result[0])
+                remaining = int(result[1])
+                retry_after = max(1, int(1.0 / self.tokens_per_second) + 1)
+                if allowed:
+                    return True, {
+                        "client": client_key,
+                        "remaining": remaining,
+                        "limit": self.requests_per_minute,
+                    }
+                return False, {
+                    "client": client_key,
+                    "remaining": 0,
+                    "limit": self.requests_per_minute,
+                    "retry_after": retry_after,
+                }
+        except Exception as e:
+            logger.warning(
+                f"REM: Redis rate limiter unavailable, using local fallback: {e}_Thank_You_But_No"
+            )
+            self._redis_script = None  # Force re-register on next call
+
+        # REM: Fallback: in-memory token bucket (single-worker only)
+        self._cleanup_stale_buckets()
         bucket = self._buckets[client_key]
-        
         self._refill_bucket(bucket)
-        
+
         if bucket["tokens"] >= 1:
             bucket["tokens"] -= 1
             return True, {
@@ -135,13 +220,12 @@ class RateLimiter:
                 "remaining": int(bucket["tokens"]),
                 "limit": self.requests_per_minute,
             }
-        else:
-            return False, {
-                "client": client_key,
-                "remaining": 0,
-                "limit": self.requests_per_minute,
-                "retry_after": int((1 - bucket["tokens"]) / self.tokens_per_second) + 1
-            }
+        return False, {
+            "client": client_key,
+            "remaining": 0,
+            "limit": self.requests_per_minute,
+            "retry_after": int((1 - bucket["tokens"]) / self.tokens_per_second) + 1,
+        }
 
 
 # REM: Global rate limiter instance

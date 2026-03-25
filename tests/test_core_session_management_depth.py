@@ -283,7 +283,8 @@ class TestCheckSession:
         s = _create(manager)
         s.expires_at = datetime.now(timezone.utc) - timedelta(hours=1)
         manager.check_session(s.session_id)
-        assert manager._sessions[s.session_id].is_active is False
+        # Session is removed from local cache after termination (prevents memory leak)
+        assert s.session_id not in manager._sessions
 
     def test_idle_session_returns_false(self, manager):
         s = _create(manager, role="operator")
@@ -294,7 +295,8 @@ class TestCheckSession:
         s = _create(manager, role="operator")
         s.last_activity = datetime.now(timezone.utc) - timedelta(minutes=20)
         manager.check_session(s.session_id)
-        assert manager._sessions[s.session_id].is_active is False
+        # Session is removed from local cache after termination (prevents memory leak)
+        assert s.session_id not in manager._sessions
 
     def test_inactive_session_returns_false(self, manager):
         s = _create(manager)
@@ -329,16 +331,17 @@ class TestTerminateSession:
         manager.terminate_session(s.session_id)
         assert manager.terminate_session(s.session_id) is False
 
-    def test_session_is_inactive_after_terminate(self, manager):
+    def test_session_is_removed_after_terminate(self, manager):
+        # Terminated sessions are evicted from the local cache (no memory leak)
         s = _create(manager)
         manager.terminate_session(s.session_id)
-        assert manager._sessions[s.session_id].is_active is False
+        assert s.session_id not in manager._sessions
 
-    def test_session_stays_in_dict(self, manager):
-        # Session record remains; only is_active changes
+    def test_session_no_longer_in_dict_after_terminate(self, manager):
+        # Session is removed from local cache after termination (not merely marked inactive)
         s = _create(manager)
         manager.terminate_session(s.session_id)
-        assert s.session_id in manager._sessions
+        assert s.session_id not in manager._sessions
 
     def test_custom_reason_accepted(self, manager):
         s = _create(manager)
@@ -453,8 +456,9 @@ class TestCleanupExpired:
             s.expires_at = datetime.now(timezone.utc) - timedelta(hours=1)
         assert manager.cleanup_expired() == 3
 
-    def test_cleaned_sessions_become_inactive(self, manager):
+    def test_cleaned_sessions_removed_from_cache(self, manager):
+        # Expired sessions are evicted from local cache after cleanup (no memory leak)
         s = _create(manager)
         s.expires_at = datetime.now(timezone.utc) - timedelta(hours=1)
         manager.cleanup_expired()
-        assert manager._sessions[s.session_id].is_active is False
+        assert s.session_id not in manager._sessions

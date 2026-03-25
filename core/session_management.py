@@ -98,8 +98,43 @@ class SessionManager:
         logger.info("REM: SessionManager initialized with idle=%d min, max=%d hrs_Thank_You",
                      self._config.max_idle_minutes, self._config.max_session_hours)
 
+    def _get_session_from_redis(self, session_id: str) -> Optional["UserSession"]:
+        """REM: Load a single session directly from Redis (cross-worker lookup)."""
+        try:
+            from core.persistence import security_store
+            data = security_store.get_record("sessions", session_id)
+            if not data:
+                return None
+            return UserSession(
+                session_id=data["session_id"],
+                user_id=data["user_id"],
+                created_at=datetime.fromisoformat(data["created_at"]),
+                last_activity=datetime.fromisoformat(data["last_activity"]),
+                expires_at=datetime.fromisoformat(data["expires_at"]),
+                is_active=data.get("is_active", True),
+                ip_address=data.get("ip_address"),
+                user_agent=data.get("user_agent"),
+                role=data.get("role", "operator"),
+            )
+        except Exception as e:
+            logger.warning(
+                f"REM: Failed to load session ::{session_id}:: from Redis: {e}_Thank_You_But_No"
+            )
+            return None
+
+    def _get_user_session_ids_from_redis(self, user_id: str) -> set:
+        """REM: Return all session IDs for a user from the Redis index (all workers)."""
+        try:
+            from core.persistence import security_store
+            return security_store.get_set_members(f"user_sessions:{user_id}")
+        except Exception as e:
+            logger.warning(
+                f"REM: Failed to get user session index from Redis: {e}_Thank_You_But_No"
+            )
+            return set()
+
     def _load_from_redis(self) -> None:
-        """REM: Load session records from Redis on startup. In-memory dict is primary."""
+        """REM: Load session records from Redis on startup. In-memory dict is a local cache."""
         try:
             from core.persistence import security_store
             all_records = security_store.list_records("sessions")
@@ -221,6 +256,11 @@ class SessionManager:
             True if session was active and updated, False otherwise
         """
         session = self._sessions.get(session_id)
+        if session is None:
+            # REM: Session may exist on another worker — check Redis
+            session = self._get_session_from_redis(session_id)
+            if session:
+                self._sessions[session_id] = session
         if not session or not session.is_active:
             return False
 
@@ -232,6 +272,7 @@ class SessionManager:
         """
         REM: Validate that a session is still active, not expired, and not idle.
         REM: Automatically terminates sessions that have exceeded their limits.
+        REM: Falls back to Redis on cache miss — handles sessions created on other workers.
 
         Args:
             session_id: Session to validate
@@ -240,6 +281,11 @@ class SessionManager:
             True if session is valid, False if expired/idle/terminated
         """
         session = self._sessions.get(session_id)
+        if session is None:
+            # REM: Not in local cache — another worker may have created this session
+            session = self._get_session_from_redis(session_id)
+            if session:
+                self._sessions[session_id] = session
         if not session or not session.is_active:
             return False
 
@@ -293,12 +339,16 @@ class SessionManager:
 
         self._save_record(session_id)
         self._delete_record(session_id, session.user_id)
+        # REM: Remove from local cache — prevents memory leak and ensures cross-worker
+        # REM: consistency (a session terminated here is gone, not just marked inactive)
+        self._sessions.pop(session_id, None)
 
         return was_active
 
     def terminate_all_user_sessions(self, user_id: str, reason: str = "manual") -> int:
         """
-        REM: Terminate all active sessions for a specific user.
+        REM: Terminate all active sessions for a specific user across all workers.
+        REM: Combines local cache and Redis index so sessions on other workers are caught.
 
         Args:
             user_id: User whose sessions should be terminated
@@ -307,10 +357,18 @@ class SessionManager:
         Returns:
             Number of sessions terminated
         """
+        # REM: Collect from local cache
+        local_ids = {
+            sid for sid, s in self._sessions.items()
+            if s.user_id == user_id and s.is_active
+        }
+        # REM: Collect from Redis index — covers sessions created on other workers
+        redis_ids = self._get_user_session_ids_from_redis(user_id)
+        all_ids = local_ids | redis_ids
+
         count = 0
-        for sid, session in self._sessions.items():
-            if session.user_id == user_id and session.is_active:
-                self.terminate_session(sid, reason=reason)
+        for sid in all_ids:
+            if self.terminate_session(sid, reason=reason):
                 count += 1
 
         if count > 0:
@@ -321,8 +379,14 @@ class SessionManager:
     def get_session(self, session_id: str) -> Optional[UserSession]:
         """
         REM: v7.2.0CC: Retrieve a specific session by ID.
+        REM: Falls back to Redis on cache miss for cross-worker consistency.
         """
-        return self._sessions.get(session_id)
+        session = self._sessions.get(session_id)
+        if session is None:
+            session = self._get_session_from_redis(session_id)
+            if session:
+                self._sessions[session_id] = session
+        return session
 
     def get_active_sessions(self, user_id: Optional[str] = None) -> List[UserSession]:
         """
