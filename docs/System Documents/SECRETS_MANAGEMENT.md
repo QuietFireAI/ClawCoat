@@ -234,7 +234,7 @@ TELSONBASE_ENV=production
 
 In production mode:
 - **JWT secret using an insecure default** → `ValueError` raised, application refuses to start
-- **Infrastructure passwords using dev defaults** (`telsonbase_dev`, `telsonbase_redis_dev`) → `warnings.warn()` at startup
+- **Infrastructure passwords using dev defaults** (`clawcoat_dev`, `clawcoat_redis_dev`) → `warnings.warn()` at startup
 - `validate_production_secrets()` in `core/config.py` runs additional checks and returns a list of any failures
 
 The difference matters: the JWT check is a hard block. The infrastructure password checks

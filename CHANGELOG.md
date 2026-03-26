@@ -7,6 +7,40 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [Unreleased] - 2026-03-25 (Security hardening H1–H13 + TelsonBase branding sweep)
+
+**CI:** Run #384 in progress on commit `c30040c`.
+**Contributors:** Jeff Phillips (Quietfire AI), Claude Code (Anthropic)
+
+### Security (HIGH — all 13 items resolved)
+- **H1** `core/auth.py` — JWT revocation fail-closed: Redis unavailable → `is_token_revoked` returns True, `revoke_token` returns False; in-memory fallback set removed entirely
+- **H2** `core/signing.py` — Agent revocation set persisted to Redis; survives multi-worker restart
+- **H3** `core/secure_storage.py` — `compute_integrity_hash` raises RuntimeError if manager not initialized; no fallback key
+- **H4** `core/secure_storage.py` — Missing `CLAWCOAT_ENCRYPTION_KEY` raises ValueError at startup; ephemeral key generation removed
+- **H5** `core/session_management.py` — `role` param validated against VALID_ROLES allowlist on session creation; invalid role defaults to `operator`
+- **H6** `core/threat_response.py` — `_matches_pattern` requires at least one positive criterion (anomaly_type / anomaly_severity / event_type); `count_threshold` enforced via prior event count within window
+- **H7** `core/threat_response.py` — `ImportError` in quarantine/isolate/escalate handlers re-raised as critical failure rather than silently returning False
+- **H8** `core/anomaly.py` — `avg_actions_per_minute`, `std_actions_per_minute`, `max_observed_rate` computed from `_recent_records` via 5-minute window + EMA (α=0.1)
+- **H9** `core/anomaly.py` — Baselines lazy-loaded from Redis on first agent access; baseline learning survives restart
+- **H10** `core/rbac.py` — API keys stored as SHA-256 hash in Redis; plaintext retained in-process memory only
+- **H11** `core/rbac.py` — Zero-user bypass re-verified against Redis before allowing; Redis unavailable → HTTP 503
+- **H12** `core/rbac.py` — `require_permission` now checks JWT Bearer token and session cookie in addition to X-API-Key
+- **H13** `core/config.py` — Missing `MCP_API_KEY` raises ValueError at startup; silent "MISSING_API_KEY" default removed
+- **H14** `core/openclaw.py` — Verified non-issue: `TrustLevel.AGENT` was already present in `TRUST_PERMISSION_MATRIX`
+
+### Changed (branding sweep)
+- All `core/` file headers updated from TelsonBase → ClawCoat
+- `core/audit.py`: chain ID prefix `telsonbase_` → `clawcoat_`
+- `core/mfa.py`: TOTP issuer name → `ClawCoat`
+- `core/secure_storage.py`: env vars → `CLAWCOAT_ENCRYPTION_KEY` / `CLAWCOAT_ENCRYPTION_SALT`; backward-compat fallback for `TELSONBASE_*` so existing deployments continue to work
+- `core/config.py`: dev DB URL default and Redis password default → `clawcoat_dev`; production validation strings updated
+- `core/identiclaw.py` + `api/identiclaw_routes.py` + `core/auth.py`: Pydantic field `telsonbase_permissions` → `clawcoat_permissions` (DB column unchanged — requires Alembic migration)
+- Frontend: localStorage keys renamed (`telsonbase_*` → `clawcoat_*`); `telsonbase_permissions` → `clawcoat_permissions` in admin UI
+- `.env.example`: header, DB URL default, MOSQUITTO_USER default updated
+- Docker secret filenames (`telsonbase_*`) and `TELSONBASE_ENV` env var intentionally unchanged — production filesystem/infrastructure names
+
+---
+
 ## [11.0.3] - 2026-03-20 (Bug fixes — route ordering, mcp_gateway imports, coverage gate 80%)
 
 **Status:** 6,254 passed, 54 skipped, 0 failed. CI run #367 GREEN. Coverage: ≥80% (gate: 80%).

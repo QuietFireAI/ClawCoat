@@ -192,7 +192,7 @@ Use this checklist during initial deployment or when hardening an existing insta
 - [ ] Verify MFA secrets are Fernet-encrypted in Redis (check `SecureRedisStore` usage in application logs)
 - [ ] Verify sensitive Redis fields are AES-256-GCM encrypted via `SecureStorageManager`
 - [ ] Verify password hashes use bcrypt (not reversible encryption) -- check `core/auth.py`
-- [ ] Verify `TELSONBASE_ENCRYPTION_KEY` and `TELSONBASE_ENCRYPTION_SALT` are set via Docker secrets (not hardcoded defaults)
+- [ ] Verify `CLAWCOAT_ENCRYPTION_KEY` and `CLAWCOAT_ENCRYPTION_SALT` are set via Docker secrets (not hardcoded defaults)
 
 ### Network and Transport Encryption
 
@@ -212,7 +212,7 @@ Use this checklist during initial deployment or when hardening an existing insta
 
 - [ ] Include encryption key recovery in the disaster recovery runbook
 - [ ] Schedule periodic verification that volume encryption remains enabled
-- [ ] Rotate `TELSONBASE_ENCRYPTION_KEY` per your compliance schedule (see `SECRETS_MANAGEMENT.md`)
+- [ ] Rotate `CLAWCOAT_ENCRYPTION_KEY` per your compliance schedule (see `SECRETS_MANAGEMENT.md`)
 - [ ] Audit access to encryption keys and recovery keys
 
 ---
