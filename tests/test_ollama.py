@@ -699,13 +699,24 @@ class TestOllamaAgentExecute:
 
 class TestLLMEndpoints:
     """REM: Test /v1/llm/* API endpoints."""
-    
+
+    @pytest.fixture(autouse=True)
+    def mock_redis_auth(self):
+        """REM: Mock auth Redis client so is_token_revoked returns False (not revoked).
+        REM: Fail-closed behavior is correct for production; tests run without Redis."""
+        mock_client = MagicMock()
+        mock_client.exists.return_value = 0   # 0 = key not in set = not revoked
+        mock_client.set.return_value = True
+        mock_client.setex.return_value = True
+        with patch("core.auth._get_redis_client", return_value=mock_client):
+            yield
+
     @pytest.fixture
     def client(self):
         from fastapi.testclient import TestClient
         from main import app
         return TestClient(app)
-    
+
     @pytest.fixture
     def auth_headers(self):
         """REM: Get valid auth headers for API requests."""
