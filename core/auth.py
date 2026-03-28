@@ -42,6 +42,8 @@ logger = logging.getLogger(__name__)
 # REM: =======================================================================================
 _apikey_last_logged: Dict[str, datetime] = {}
 APIKEY_AUDIT_INTERVAL = timedelta(minutes=5)
+# REM: Cap to prevent unbounded growth under high-throughput with many unique actors
+_APIKEY_LOGGED_MAX = 5000
 
 
 def _should_log_apikey_auth(actor: str) -> bool:
@@ -49,6 +51,15 @@ def _should_log_apikey_auth(actor: str) -> bool:
     now = datetime.now(timezone.utc)
     last = _apikey_last_logged.get(actor)
     if last is None or (now - last) >= APIKEY_AUDIT_INTERVAL:
+        # REM: Enforce cap — evict actors whose suppression window has lapsed before inserting
+        if len(_apikey_last_logged) >= _APIKEY_LOGGED_MAX:
+            cutoff = now - APIKEY_AUDIT_INTERVAL
+            expired_actors = [k for k, v in _apikey_last_logged.items() if v < cutoff]
+            for k in expired_actors:
+                del _apikey_last_logged[k]
+            # REM: If still at cap after eviction, skip logging rather than growing unbounded
+            if len(_apikey_last_logged) >= _APIKEY_LOGGED_MAX:
+                return False
         _apikey_last_logged[actor] = now
         return True
     return False

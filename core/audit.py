@@ -163,6 +163,9 @@ class AuditEventType(str, Enum):
     TOOL_REQUEST = "tool.request"             # Agent requested a new tool
     TOOL_HITL_GATE = "tool.hitl_gate"         # HITL approval required for tool operation
 
+    # Session lifecycle events
+    AUTH_SESSION_TERMINATED = "auth.session_terminated"  # Session explicitly ended
+
     # Identity events (v7.3.0CC — W3C DID identity integration)
     IDENTITY_REGISTERED = "identity.registered"               # New DID agent registered
     IDENTITY_VERIFIED = "identity.verified"                   # DID signature verified

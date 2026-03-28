@@ -336,7 +336,7 @@ class SessionManager:
 
         if was_active:
             audit.log(
-                AuditEventType.AUTH_SUCCESS,
+                AuditEventType.AUTH_SESSION_TERMINATED,
                 f"Session terminated for ::{session.user_id}:: - Reason: ::{reason}::",
                 actor=session.user_id,
                 resource=session_id,

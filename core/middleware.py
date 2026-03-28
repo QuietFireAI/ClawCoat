@@ -167,6 +167,17 @@ class RateLimiter:
         if stale_keys:
             logger.debug(f"REM: Cleaned up {len(stale_keys)} stale rate limit buckets")
 
+        # REM: Enforce MAX_TRACKED_CLIENTS cap — if still over limit after time-based
+        # REM: cleanup, evict the oldest entries to bound memory in the fallback path.
+        if len(self._buckets) > self.MAX_TRACKED_CLIENTS:
+            overflow = len(self._buckets) - self.MAX_TRACKED_CLIENTS
+            oldest_keys = sorted(self._buckets, key=lambda k: self._buckets[k]["last_update"])[:overflow]
+            for k in oldest_keys:
+                del self._buckets[k]
+            logger.warning(
+                f"REM: Rate limiter fallback bucket cap exceeded — evicted {overflow} oldest entries_Thank_You_But_No"
+            )
+
     def is_allowed(self, request: Request) -> tuple[bool, Dict[str, Any]]:
         """
         REM: Check if request should be allowed.

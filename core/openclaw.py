@@ -621,8 +621,10 @@ class OpenClawManager:
                 trust_level_at_decision=instance.trust_level,
             )
 
-        # REM: Step 5 — Classify the action
-        category = TOOL_CATEGORY_MAP.get(tool_name, ActionCategory.WRITE_INTERNAL)
+        # REM: Step 5 — Classify the action.
+        # REM: Unknown tools default to DELETE (most restrictive gated category) so that
+        # REM: tools not explicitly mapped always require approval rather than running autonomously.
+        category = TOOL_CATEGORY_MAP.get(tool_name, ActionCategory.DELETE)
         trust_level = TrustLevel(instance.trust_level)
 
         # REM: Step 6 — Manners compliance auto-demotion check
