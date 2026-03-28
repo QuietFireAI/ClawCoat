@@ -151,10 +151,11 @@ class EmergencyAccessManager:
 
         now = datetime.now(timezone.utc)
         if request.expires_at and now > request.expires_at:
-            # REM: Auto-expire the request
+            # REM: Auto-expire the request — persist to Redis so all workers see the deactivation
             request.is_active = False
             if request.user_id in self._active_by_user:
                 del self._active_by_user[request.user_id]
+            self._save_record(request.request_id)
 
             logger.warning(
                 f"REM: Emergency access ::{request.request_id}:: for user "

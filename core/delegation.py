@@ -489,8 +489,10 @@ class DelegationManager:
 
         return False, None
 
-    def cleanup_expired(self) -> int:
-        """REM: Mark expired delegations and cascade to children (v5.3.0CC)."""
+    def cleanup_expired(self, retention_hours: int = 24) -> int:
+        """REM: Mark expired delegations, cascade to children, and prune old non-ACTIVE entries.
+        REM: Expired/revoked delegations older than retention_hours are removed from memory
+        REM: to prevent unbounded dict growth. Redis records are kept for audit purposes."""
         now = datetime.now(timezone.utc)
         count = 0
         newly_expired = []
@@ -508,6 +510,23 @@ class DelegationManager:
 
         if count > 0:
             logger.info(f"REM: Cleaned up {count} expired delegations_Thank_You")
+
+        # REM: Prune old non-ACTIVE delegations from memory to prevent OOM growth.
+        # REM: retention_hours after expiry/revocation is sufficient for any in-flight checks.
+        retention_cutoff = now - timedelta(hours=retention_hours)
+        to_prune = [
+            did for did, d in self._delegations.items()
+            if d.status != DelegationStatus.ACTIVE and d.expires_at < retention_cutoff
+        ]
+        for did in to_prune:
+            d = self._delegations.pop(did)
+            self._by_grantor.get(d.grantor_id, set()).discard(did)
+            self._by_grantee.get(d.grantee_id, set()).discard(did)
+
+        if to_prune:
+            logger.info(
+                f"REM: Pruned {len(to_prune)} old non-active delegations from memory_Thank_You"
+            )
 
         return count
 
