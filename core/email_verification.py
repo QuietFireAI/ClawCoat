@@ -347,11 +347,8 @@ class EmailVerificationManager:
             )
             return None
 
-        # REM: Track this resend request
-        now = datetime.now(timezone.utc)
-        if user_id not in self._resend_tracking:
-            self._resend_tracking[user_id] = []
-        self._resend_tracking[user_id].append(now)
+        # REM: Track this resend request in Redis + in-memory for cross-worker consistency
+        self._record_resend(user_id)
 
         # REM: Generate a fresh token for the same email
         new_token = self.create_verification(user_id, record.email)
@@ -426,10 +423,32 @@ class EmailVerificationManager:
 
         return len(expired_users)
 
+    def _record_resend(self, user_id: str) -> None:
+        """REM: Record a resend attempt in Redis (primary) and in-memory (fallback)."""
+        now = datetime.now(timezone.utc)
+        # REM: In-memory tracking (fallback path)
+        if user_id not in self._resend_tracking:
+            self._resend_tracking[user_id] = []
+        self._resend_tracking[user_id].append(now)
+        # REM: Redis INCR with 1-hour TTL — cross-worker resend counter
+        try:
+            from core.config import get_settings
+            import redis as redis_lib
+            r = redis_lib.from_url(
+                get_settings().redis_url, decode_responses=True,
+                socket_connect_timeout=1, socket_timeout=1,
+            )
+            redis_key = f"email_resend:{user_id}"
+            r.incr(redis_key)
+            r.expire(redis_key, 3600)  # REM: 1-hour rolling window
+        except Exception:
+            pass  # REM: In-memory tracking above is the fallback
+
     def _check_rate_limit(self, user_id: str) -> bool:
         """
         REM: Check if a user is within the resend rate limit.
         REM: Allows MAX_RESENDS_PER_HOUR resend requests per hour.
+        REM: Primary check uses Redis for cross-worker consistency; in-memory is fallback.
 
         Args:
             user_id: The user's unique identifier
@@ -437,16 +456,29 @@ class EmailVerificationManager:
         Returns:
             True if the user is within the rate limit
         """
+        # REM: Try Redis first — cross-worker consistent count
+        try:
+            from core.config import get_settings
+            import redis as redis_lib
+            r = redis_lib.from_url(
+                get_settings().redis_url, decode_responses=True,
+                socket_connect_timeout=1, socket_timeout=1,
+            )
+            redis_key = f"email_resend:{user_id}"
+            count = r.get(redis_key)
+            if count is not None:
+                return int(count) < self.MAX_RESENDS_PER_HOUR
+            return True  # REM: No key = no resends yet
+        except Exception:
+            pass  # REM: Fall through to in-memory check
+
+        # REM: In-memory fallback (single-worker only)
         if user_id not in self._resend_tracking:
             return True
-
         now = datetime.now(timezone.utc)
         one_hour_ago = now - timedelta(hours=1)
-
-        # REM: Filter to only recent resend timestamps within the last hour
         recent = [ts for ts in self._resend_tracking[user_id] if ts > one_hour_ago]
         self._resend_tracking[user_id] = recent
-
         return len(recent) < self.MAX_RESENDS_PER_HOUR
 
 
