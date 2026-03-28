@@ -101,7 +101,7 @@ cryptography==46.0.6
 # --- PostgreSQL Database ---
 # REM: SQLAlchemy ORM for durable structured storage (audit, users, tenants, compliance).
 # REM: psycopg2-binary provides the PostgreSQL driver. Alembic handles schema migrations.
-sqlalchemy==2.0.36
+sqlalchemy==2.0.48
 psycopg2-binary==2.9.10
 alembic==1.18.4
 
