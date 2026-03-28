@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # ClawFilters/core/audit.py
 # REM: =======================================================================================
-# REM: AUDIT LOGGING SYSTEM FOR CLAWCOAT
+# REM: AUDIT LOGGING SYSTEM FOR CLAWFILTERS
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026

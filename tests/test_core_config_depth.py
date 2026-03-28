@@ -412,7 +412,7 @@ class TestValidateProductionSecrets:
         assert any("GRAFANA_ADMIN_PASSWORD" in e and "too short" in e for e in errors)
 
     def test_dev_postgres_password(self, good_settings):
-        good_settings.database_url = "postgresql://clawcoat:clawfilters_dev@postgres:5432/clawcoat"
+        good_settings.database_url = "postgresql://clawfilters:clawfilters_dev@postgres:5432/clawfilters"
         errors = validate_production_secrets(good_settings)
         assert any("POSTGRES_PASSWORD" in e for e in errors)
 

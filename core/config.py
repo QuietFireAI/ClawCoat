@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # ClawFilters/core/config.py
 # REM: =======================================================================================
-# REM: CENTRALIZED CONFIGURATION FOR CLAWCOAT
+# REM: CENTRALIZED CONFIGURATION FOR CLAWFILTERS
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026
@@ -161,7 +161,7 @@ class Settings(BaseSettings):
     
     # --- Database ---
     database_url: str = Field(
-        default="postgresql://clawcoat:clawfilters_dev@postgres:5432/clawcoat",
+        default="postgresql://clawfilters:clawfilters_dev@postgres:5432/clawfilters",
         env="DATABASE_URL"
     )
 
@@ -377,7 +377,7 @@ def validate_production_secrets(settings: Settings) -> list:
     # REM: Redis password must not be the dev default
     if settings.redis_password == "clawfilters_redis_dev":
         errors.append(
-            "REDIS_PASSWORD: must not be 'clawcoat_redis_dev' in production — "
+            "REDIS_PASSWORD: must not be 'clawfilters_redis_dev' in production — "
             "run scripts/generate_secrets.sh and set REDIS_PASSWORD"
         )
 

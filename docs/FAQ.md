@@ -1,5 +1,5 @@
 # ClawFilters - Frequently Asked Questions
-**Version:** v11.0.3 · **Maintainer:** Quietfire AI - support@clawfilters.com
+**Version:** v11.0.4 · **Maintainer:** Quietfire AI - support@clawfilters.com
 
 ClawFilters is the platform for managing OpenClaw agents through earned trust. Agents start at QUARANTINE and work their way up - QUARANTINE → PROBATION → RESIDENT → CITIZEN → AGENT - through demonstrated behavior and explicit human authorization at every step. The compliance infrastructure underneath (audit trails, kill switches, SOC 2 controls) is the proof, not the pitch.
 
@@ -17,18 +17,18 @@ The same standard applies here as in the proof sheets - no claim without a sourc
 5. [Can an operator reach a restricted agent?](#5-can-an-operator-reach-a-restricted-agent)
 6. [What governs inbound communications from unknown sources?](#6-what-governs-inbound-communications-from-unknown-sources)
 7. [What happens when an audit chain verification fails?](#7-what-happens-when-an-audit-chain-verification-fails)
-8. [Can ClawFilters track token usage for external API calls?](#8-can-clawcoat-track-token-usage-for-external-api-calls)
-9. [How does ClawFilters respond to security attacks?](#9-how-does-clawcoat-respond-to-security-attacks)
-10. [Is ClawFilters MCP compatible?](#10-is-clawcoat-mcp-compatible)
-11. [Can Android or iOS apps communicate with ClawFilters?](#11-can-android-or-ios-apps-communicate-with-clawcoat)
-12. [Does ClawFilters communicate with Anthropic, Venice.ai, or external AI providers?](#12-does-clawcoat-communicate-with-anthropic-veniceai-or-external-ai-providers)
-13. [Is ClawFilters HIPAA, SOC 2, or HITRUST compliant?](#13-is-clawcoat-hipaa-soc-2-or-hitrust-compliant)
-14. [Has ClawFilters been independently audited or pen tested?](#14-has-clawcoat-been-independently-audited-or-pen-tested)
+8. [Can ClawFilters track token usage for external API calls?](#8-can-clawfilters-track-token-usage-for-external-api-calls)
+9. [How does ClawFilters respond to security attacks?](#9-how-does-clawfilters-respond-to-security-attacks)
+10. [Is ClawFilters MCP compatible?](#10-is-clawfilters-mcp-compatible)
+11. [Can Android or iOS apps communicate with ClawFilters?](#11-can-android-or-ios-apps-communicate-with-clawfilters)
+12. [Does ClawFilters communicate with Anthropic, Venice.ai, or external AI providers?](#12-does-clawfilters-communicate-with-anthropic-veniceai-or-external-ai-providers)
+13. [Is ClawFilters HIPAA, SOC 2, or HITRUST compliant?](#13-is-clawfilters-hipaa-soc-2-or-hitrust-compliant)
+14. [Has ClawFilters been independently audited or pen tested?](#14-has-clawfilters-been-independently-audited-or-pen-tested)
 15. [Who built this and why should I trust a solo developer?](#15-who-built-this-and-why-should-i-trust-a-solo-developer)
 16. [What happens if the developer stops maintaining it?](#16-what-happens-if-the-developer-stops-maintaining-it)
-17. [Can ClawFilters scale beyond a single machine?](#17-can-clawcoat-scale-beyond-a-single-machine)
-18. [What AI models does ClawFilters support?](#18-what-ai-models-does-clawcoat-support)
-19. [What is the license and what can I do with ClawFilters?](#19-what-is-the-license-and-what-can-i-do-with-clawcoat)
+17. [Can ClawFilters scale beyond a single machine?](#17-can-clawfilters-scale-beyond-a-single-machine)
+18. [What AI models does ClawFilters support?](#18-what-ai-models-does-clawfilters-support)
+19. [What is the license and what can I do with ClawFilters?](#19-what-is-the-license-and-what-can-i-do-with-clawfilters)
 20. [What are the performance characteristics?](#20-what-are-the-performance-characteristics)
 21. [What are the 8 steps of the governance pipeline?](#21-what-are-the-8-steps-of-the-governance-pipeline)
 22. [What is the Manners compliance system and how does auto-demotion work?](#22-what-is-the-manners-compliance-system-and-how-does-auto-demotion-work)

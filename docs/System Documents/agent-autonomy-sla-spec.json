@@ -1,12 +1,12 @@
 {
-  "_comment": "ClawCoat Agent Autonomy SLA — expressed in the AgentSLA DSL proposed by Jouneaux & Cabot (arXiv:2511.02885). This document formalizes the governance commitments ClawCoat makes about its own behavior as an enforcement layer. See AGENT_AUTONOMY_SLA.md for the full specification narrative.",
+  "_comment": "ClawFilters Agent Autonomy SLA — expressed in the AgentSLA DSL proposed by Jouneaux & Cabot (arXiv:2511.02885). This document formalizes the governance commitments ClawFilters makes about its own behavior as an enforcement layer. See AGENT_AUTONOMY_SLA.md for the full specification narrative.",
   "_schema": "https://github.com/gwendal-jouneaux/AgentSLA",
-  "_license_note": "The AgentSLA DSL structure, metric type vocabulary (OversightLevel, MCP, TTFT, etc.), and field names used in this document are the work of Gwendal Jouneaux and Jordi Cabot. Their repository carries no explicit LICENSE file at time of this writing. This document conforms to their schema format but does not copy their source code. We have cited their work in full. If you are the author and would like a license added, please open an issue at https://github.com/QuietFireAI/ClawCoat.",
-  "_version": "ClawCoat 11.0.3",
+  "_license_note": "The AgentSLA DSL structure, metric type vocabulary (OversightLevel, MCP, TTFT, etc.), and field names used in this document are the work of Gwendal Jouneaux and Jordi Cabot. Their repository carries no explicit LICENSE file at time of this writing. This document conforms to their schema format but does not copy their source code. We have cited their work in full. If you are the author and would like a license added, please open an issue at https://github.com/QuietFireAI/ClawFilters.",
+  "_version": "ClawFilters 11.0.4",
 
   "Provider": [
     {
-      "name": "ClawCoat Governance Layer",
+      "name": "ClawFilters Governance Layer",
       "min_precision": 1.0,
       "min_reputation": 0
     }
@@ -19,7 +19,7 @@
       "metric_type": "Accuracy",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "GovernanceDecisionLatency",
@@ -27,7 +27,7 @@
       "metric_type": "TTFT",
       "unit": "MILLISECONDS",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "AuditChainCompleteness",
@@ -35,7 +35,7 @@
       "metric_type": "Accuracy",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "MCPProtocolCompliance",
@@ -43,7 +43,7 @@
       "metric_type": "MCP",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "OversightLevel_QUARANTINE",
@@ -51,7 +51,7 @@
       "metric_type": "OversightLevel",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "OversightLevel_PROBATION",
@@ -59,7 +59,7 @@
       "metric_type": "OversightLevel",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "OversightLevel_RESIDENT",
@@ -67,7 +67,7 @@
       "metric_type": "OversightLevel",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "OversightLevel_CITIZEN",
@@ -75,7 +75,7 @@
       "metric_type": "OversightLevel",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "OversightLevel_AGENT",
@@ -83,7 +83,7 @@
       "metric_type": "OversightLevel",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "MannersScore",
@@ -91,7 +91,7 @@
       "metric_type": "Accuracy",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     },
     {
       "name": "DataResidency",
@@ -99,7 +99,7 @@
       "metric_type": "Accuracy",
       "unit": "NONE",
       "uncertainty": 0.0,
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     }
   ],
 
@@ -113,7 +113,7 @@
       "window": 100,
       "window_unit": "MESSAGE",
       "aggregation": "AVG",
-      "Provider": "ClawCoat Governance Layer"
+      "Provider": "ClawFilters Governance Layer"
     }
   ],
 

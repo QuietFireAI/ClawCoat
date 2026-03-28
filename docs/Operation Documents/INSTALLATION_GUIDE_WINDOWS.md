@@ -70,7 +70,7 @@ git clone https://github.com/QuietFireAI/ClawFilters.git
 cd ClawFilters
 ```
 
-> Note the capital C - the directory is `ClawFilters`, not `clawcoat`.
+> Note the capital C - the directory is `ClawFilters`, not `clawfilters`.
 
 ---
 

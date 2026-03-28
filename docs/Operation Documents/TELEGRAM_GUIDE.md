@@ -34,7 +34,7 @@ This is not a notification add-on. It is a full governance channel. Every decisi
 1. Open Telegram and start a conversation with **@BotFather**
 2. Send `/newbot`
 3. Choose a name (e.g. `ClawFilters Governance`)
-4. Choose a username ending in `bot` (e.g. `clawcoat_ops_bot`)
+4. Choose a username ending in `bot` (e.g. `clawfilters_ops_bot`)
 5. BotFather returns a token — copy it. This is your `TELEGRAM_BOT_TOKEN`.
 
 Keep this token private. It gives full control of the bot.
@@ -76,7 +76,7 @@ TELEGRAM_CHAT_ID=-1001234567890
 For **webhook mode** (HTTPS deployments — recommended for production):
 
 ```env
-TELEGRAM_WEBHOOK_URL=https://your-clawcoat-domain.com
+TELEGRAM_WEBHOOK_URL=https://your-clawfilters-domain.com
 ```
 
 Leave `TELEGRAM_WEBHOOK_URL` empty to use polling mode (default). Polling works on any deployment including localhost and non-HTTPS setups.

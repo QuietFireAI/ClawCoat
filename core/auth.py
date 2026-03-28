@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # ClawFilters/core/auth.py
 # REM: =======================================================================================
-# REM: AUTHENTICATION & AUTHORIZATION FOR CLAWCOAT
+# REM: AUTHENTICATION & AUTHORIZATION FOR CLAWFILTERS
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026

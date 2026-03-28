@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # ClawFilters/core/middleware.py
 # REM: =======================================================================================
-# REM: PRODUCTION HARDENING MIDDLEWARE FOR CLAWCOAT
+# REM: PRODUCTION HARDENING MIDDLEWARE FOR CLAWFILTERS
 # REM: =======================================================================================
 # REM: Architect: ::Quietfire AI Project::
 # REM: Date: February 23, 2026

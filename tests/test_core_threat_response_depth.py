@@ -633,7 +633,7 @@ class TestResolveThreat:
 
     def test_resolve_known_event_returns_true(self, engine):
         event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
-        assert engine.resolve_threat(event.event_id, "admin@clawcoat") is True
+        assert engine.resolve_threat(event.event_id, "admin@clawfilters.com") is True
 
     def test_resolved_flag_set(self, engine):
         event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
@@ -647,8 +647,8 @@ class TestResolveThreat:
 
     def test_human_reviewed_by_set(self, engine):
         event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
-        engine.resolve_threat(event.event_id, "admin@clawcoat")
-        assert event.human_reviewed_by == "admin@clawcoat"
+        engine.resolve_threat(event.event_id, "admin@clawfilters.com")
+        assert event.human_reviewed_by == "admin@clawfilters.com"
 
     def test_human_reviewed_at_is_datetime(self, engine):
         event = engine.evaluate_anomaly("agent-001", "approval_bypass", "critical", {})
