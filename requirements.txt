@@ -96,7 +96,7 @@ mcp>=1.2.0
 # --- Cryptography ---
 # REM: Provides RSA, AES-GCM, x509 certificates for federation mTLS,
 # REM: secure storage encryption at rest, and trust key exchange.
-cryptography==46.0.6
+cryptography==46.0.7
 
 # --- PostgreSQL Database ---
 # REM: SQLAlchemy ORM for durable structured storage (audit, users, tenants, compliance).
